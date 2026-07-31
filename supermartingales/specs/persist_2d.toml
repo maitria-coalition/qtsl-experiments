@@ -1,0 +1,72 @@
+# SUPERSEDED (wave-1, 2026-07-18): the reconstruction now lives as TWIN
+# candidates — specs/persist_2d_uniform.toml + specs/persist_2d_gaussian.toml
+# (shared skeleton, noise class the twin variable; both envelope-PASS;
+# uniform twin house-certified). Full story: out/persist2d/PERSIST2D-REPORT.md.
+# This file is retained as the wave-0 determination record.
+#
+# RECONSTRUCTION OPEN (wave-0 determination only — no executable candidate yet).
+#
+# What the paper actually pins (the conditional-flag question):
+# - The distribution grammar names exactly two distributions plus an ellipsis:
+#   P ::= Bernoulli(E) | Gaussian(E, E) | ...   (v7 main.tex l.161-162).
+#   "Uniform" appears in benchmark NAMES but never in the grammar; Gaussian is
+#   the only named continuous distribution.
+# - persist_2d has no Farkas bound (no linear SM), 2-layer arch (3,1),
+#   PA 0.1026 (0.9) / PW 0.1175 (0.9) — the only §1 row where program-AWARE is
+#   notably WORSE than program-agnostic, consistent with a continuous kernel
+#   making the symbolic post-expectation hard (cf. repulse100_uniform's PW
+#   failure).
+# - Lineage: "based on benchmarks used in prior work" citing ChakarovS13
+#   (Probabilistic Program Analysis with Martingales, CAV'13) — the
+#   persistence-property example family. No arXiv version of ChakarovS13 exists
+#   (export API searched, wave 0); pinning the dynamics needs the CAV'13 PDF or
+#   its Colorado TR — a wave-1 procurement leg.
+#
+# CONSEQUENCE: Gaussian noise is LIVE for this
+# row — if the ChakarovS13 example carries Gaussian (or the reconstruction
+# lands there), wave 1 needs the box-truncation + tail-mass leg (exact moments
+# + a tail bound; machinery straightforward, not yet in-tree — priced in the
+# campaign plan). NOT BUILT in wave 0.
+#
+# Envelope available once a candidate exists: exact/MC p_true <= 0.1026.
+#
+# WAVE-1 PROCUREMENT RESULT (2026-07-18): the CAV'25 Zenodo
+# artifact 15222907 ("Quantitative Supermartingale Certificates", same
+# group) was downloaded (1.17 GB, an OCI image mislabeled .zip) and its
+# full layer census run: benchmark set = {becomingRichOnce, gamblersRuin
+# d2-d5, reactivityOne/Two, repeatedCoin} (Handelman-template sets 1-4).
+# ZERO CONCUR'23 names anywhere in any layer — it does NOT pin persist_2d
+# or any SS1 definition. ChakarovS13 (CAV'13) fetched: its only 2D
+# candidate is 2DWALK ("random walk on R^2", 4 vars), details in an
+# offline TR (systems.cs.colorado.edu link, dead). The group's actual
+# persistence paper (Chakarov-Voronin-Sankaranarayanan, TACAS'16
+# "Deductive Proofs of Almost Sure Persistence and Recurrence") was also
+# fetched: its 2D persistence exemplars come in BOTH U(a,b) and N(mu,s2)
+# variants (two-room controller; jump systems; an additional-systems
+# table with N(-1,1), N(0,1), U(-1,1) 2D dynamics). NOISE CLASS REMAINS
+# UNPINNED; grammar still leans Gaussian (only named continuous dist).
+# Sharpened requirements for the conditional Gaussian leg (NOT built):
+# with a GLOBAL polynomial certificate, E[V(f(s,w))] has exact rational
+# coefficients (even central moments of N(0,s2) are rational) — no
+# truncation needed; global nonnegativity then needs PSD/SOS (psdcert),
+# not BernCone-on-box. The truncation + tail-mass machinery is required
+# only if a PIECEWISE certificate is wanted (incomplete Gaussian moments
+# are non-rational and need enclosures). Scratch receipts:
+# ~/scratch/zenodo/ (layer lists, extracted app/, both PDFs+text).
+[benchmark]
+name = "persist_2d"
+family = "robot_motion"
+section = 1
+provenance = "reconstruction open; noise class undetermined by the paper (Gaussian live per grammar)"
+reconstruction_open = true
+state = ["x", "y"]
+init = {x = 0, y = 0}
+guard = "true"
+assertion = "true"
+
+[benchmark.farkas]
+published = "none"
+note = "No executable candidate in wave 0; negative fingerprint deferred to the wave-1 reconstruction."
+
+[benchmark.truth]
+method = "none"

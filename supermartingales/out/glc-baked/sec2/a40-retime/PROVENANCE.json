@@ -1,0 +1,22 @@
+{
+ "date": "2026-07-30T08:53:23Z",
+ "machine": "a40 (rented; cgroup quota ~7.65 vCPU / 50 GB)",
+ "gpu": "NVIDIA A40, 46068 MiB, 580.159.04",
+ "cpu": "Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz",
+ "nproc_host": 96,
+ "binaries": {
+  "onesys-driver": {
+   "path": "onesys-driver",
+   "sha256": "442975f694b98bb5fb89098d1565ffc61cc264facfa4ce59046f113176093f25"
+  },
+  "glc-check": {
+   "path": "glc-check",
+   "sha256": "18d11182d6ef29d449504257063db6c6f19216b387c1babcb55c90bfc8217864"
+  },
+  "qtsl2bl": {
+   "path": "qtsl2bl",
+   "sha256": "ee6ebd5d9a19fd1098e58bf65d0ac93fd5a8cddc448f20c480f750d5daccc529"
+  }
+ },
+ "protocol": "10 repeats per benchmark (+1 flagged warmup on produce); serial, one process at a time"
+}

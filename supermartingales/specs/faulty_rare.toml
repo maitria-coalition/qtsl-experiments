@@ -1,0 +1,32 @@
+# RECONSTRUCTION (no listing). faulty_loop with fault rate 1/10000 (manifest
+# hypothesis, confirmed by fingerprint: 9 * (1/10000) / (9999/20000) = 2/1111 =
+# 0.0018001... -> ceil 0.0019 = published; neighboring natural rates fail, e.g.
+# 2/10000 gives 0.0037).
+[benchmark]
+name = "faulty_rare"
+family = "unreliable_hardware"
+section = 3
+provenance = "reconstruction; fault rate pinned by Farkas fingerprint"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/10000",    update = {error = "1"}},
+  {prob = "9999/20000", update = {i = "i + 1"}},
+  {prob = "9999/20000", update = {}},
+]
+
+[benchmark.farkas]
+published = "0.0019"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame. Expected optimum 2/1111."
+
+[benchmark.truth]
+method = "chain"

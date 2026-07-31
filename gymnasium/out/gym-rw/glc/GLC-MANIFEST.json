@@ -1,0 +1,375 @@
+{
+  "checker": "glc-check --gym-rw: classifies by the container's prerequisite table (the gym reward-table vocabulary revision), enforces the closed primary-data grammar, constructs the well-formedness / boundary / step / claim-mixture obligations from the certificate dimensions, and discharges them as one gymRwTableValid walk per certificate element in exact integer arithmetic. Pass --gym-rw to pin the family; --expect-claims gymRwTableValid=1 guards node deletion.",
+  "family": "gym-rw-v0",
+  "format": "geolog commit container (.glc), magic geologfl v1",
+  "mode_flag": "--gym-rw",
+  "mutants": [
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "FAIL",
+      "file": "m01_claim_inflated.glc",
+      "glc_sha256": "fd55b8a85bf6c872a7cff8216b123b3e454517e60d8f49c98d347e53804a40a6",
+      "locus": "claim-mixture obligation: bound raised above the certified value",
+      "mutant": "m01_claim_inflated"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "FAIL",
+      "file": "m02_table_raised.glc",
+      "glc_sha256": "db647d01f4934f6a1166067ff553195e257960af836651dd2cdde61e83b14610",
+      "locus": "step obligation at the raised interior cell",
+      "mutant": "m02_table_raised"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "FAIL",
+      "file": "m03_kernel_perturbed.glc",
+      "glc_sha256": "e16a23c1912c9c9d831421c15e54b2d18c002ff2e42497b1e2e09cb7efd2890c",
+      "locus": "kernel well-formedness: group numerators no longer sum to D",
+      "mutant": "m03_kernel_perturbed"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "FAIL",
+      "file": "m04_boundary.glc",
+      "glc_sha256": "55f2c3d3da759ca120071e2c4042a08db8dcbd96e77fd43b880ceceed8ab9214",
+      "locus": "boundary obligation: terminal-row numerator positive",
+      "mutant": "m04_boundary"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "REFUSE",
+      "file": "m05_policy_range.glc",
+      "glc_sha256": "758c3c230228e8742ed34fbe30438dfd006f2b61bc306fa6cda95ea6cfb2da92",
+      "locus": "policy action out of range: no kernel group resolvable",
+      "mutant": "m05_policy_range"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "FAIL",
+      "file": "m06_reward_deflated.glc",
+      "glc_sha256": "8ee6a82a4f908524641a4be1e222eaef4af17eac7e10976cd036ee7fe93107d7",
+      "locus": "step obligation: kernel reward lowered under an unchanged table",
+      "mutant": "m06_reward_deflated"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "FAIL",
+      "file": "m07_init_sum.glc",
+      "glc_sha256": "96a406e6d0483076c676432b11eec9640804865bd3d7b421e26747c6fdf8ebcb",
+      "locus": "initial-distribution well-formedness: weights no longer sum to I",
+      "mutant": "m07_init_sum"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "REFUSE",
+      "file": "m08_body_byte.glc",
+      "glc_sha256": "402f083f3c2816e0905559ec6cfa6e2cc5c8e195da9ea37c78ffc8b1b3990c4b",
+      "locus": "body-hash binding: one body byte flipped",
+      "mutant": "m08_body_byte"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "REFUSE",
+      "file": "m09_sig_byte.glc",
+      "glc_sha256": "f01a5c021415cd3477096e22ce6edcf14c71540a80ca9b47572d021ae8a0b90f",
+      "locus": "signature verification: one signature byte flipped",
+      "mutant": "m09_sig_byte"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "REFUSE",
+      "file": "m10_truncate.glc",
+      "glc_sha256": "a473062bf5e5a3ae4c1f4349cd401f1cf6c981a6c02cb9cc518cf1dc313edfc9",
+      "locus": "container grammar: truncated",
+      "mutant": "m10_truncate"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "REFUSE",
+      "file": "m11_magic.glc",
+      "glc_sha256": "ea256ba1ea6fffa82300df5970278e692a8c7c6f46ea020a558b9e1e456c16ea",
+      "locus": "container grammar: magic broken",
+      "mutant": "m11_magic"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "REFUSE",
+      "file": "m12_version.glc",
+      "glc_sha256": "62713bdde2361882dc7d78f5c2eed00638b633f2ed75e37a95f54caa16d274cb",
+      "locus": "container grammar: unsupported version",
+      "mutant": "m12_version"
+    },
+    {
+      "base": "cliffwalking-slippery_rwslab_T25.glc",
+      "expected": "ACCEPT_BY_DESIGN",
+      "file": "m13_coherent_forgery.glc",
+      "glc_sha256": "4ba19433e7dfb0de2375b93bf4c14ab5fb998042bcab805d09f1a0cbdddc406d",
+      "locus": "whole-certificate forgery: kernel rewards altered and the table re-derived",
+      "mutant": "m13_coherent_forgery",
+      "reach_note": "a TRUE statement about a DIFFERENT decision process; in-lane obligations cannot see it. The falsifier with this reach is provenance: regeneration from the pinned kernel builders (byte-identity with the committed corpus) and the manifest's source-certificate tie — this specimen's claim and rows match no committed certificate."
+    }
+  ],
+  "positives": [
+    {
+      "bytes": 45399,
+      "claim": "-13",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-det_rwslab_T100.glc",
+      "glc_sha256": "acf8d2c61f72acde233209329bd31bba27b1c5ff9eb6a7291a22659bca848c0b",
+      "ops": 10140,
+      "source_cert": "gymnasium/out/cliffwalking-det/rwslab_T100.cbor"
+    },
+    {
+      "bytes": 74211,
+      "claim": "-13",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-det_rwdyadic_k48_T100.glc",
+      "glc_sha256": "cc510e61fd6e92aa7fdf0b26267a91ff9f52ac7a06bd2af3beced560b8ff3e52",
+      "ops": 10140,
+      "source_cert": "gymnasium/out/cliffwalking-det/rwdyadic_k48_T100.cbor"
+    },
+    {
+      "bytes": 8474,
+      "claim": "-10",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-slippery_rwslab_T10.glc",
+      "glc_sha256": "f45792169890c2a628dad68f2a3941a00e9593ac0e9a9b3b689026d4f984c9b1",
+      "ops": 1736,
+      "source_cert": "gymnasium/out/cliffwalking-slippery/rwslab_T10.cbor"
+    },
+    {
+      "bytes": 17628,
+      "claim": "-2352694164493/94143178827",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-slippery_rwslab_T25.glc",
+      "glc_sha256": "2a0dc7c00bb39bb6eabc71bb6e8ef37c45d936ef3aa1b43b0de17c03246daa24",
+      "ops": 3191,
+      "source_cert": "gymnasium/out/cliffwalking-slippery/rwslab_T25.cbor"
+    },
+    {
+      "bytes": 37780,
+      "claim": "-11271532092177526198835782/239299329230617529590083",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-slippery_rwslab_T50.glc",
+      "glc_sha256": "539ffbd64b7391bd0aef634047ccd1474b3c0ef9faf7e6b2ca9c43d17340f763",
+      "ops": 5616,
+      "source_cert": "gymnasium/out/cliffwalking-slippery/rwslab_T50.cbor"
+    },
+    {
+      "bytes": 96230,
+      "claim": "-10825225366697995759498256828834801626574306838298/171792506910670443678820376588540424234035840667",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-slippery_rwslab_T100.glc",
+      "glc_sha256": "64722c4abbb0b2251fa0288b94aa73582f161055ab2f21ec383a60a6d5ce47e8",
+      "ops": 10466,
+      "source_cert": "gymnasium/out/cliffwalking-slippery/rwslab_T100.cbor"
+    },
+    {
+      "bytes": 57528,
+      "claim": "-4129665/65536",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-slippery_rwdyadic_k16_T100.glc",
+      "glc_sha256": "d0247209a6c0ac7f896587a8f3f512efda48208913c5d96bb0af7bd05582c420",
+      "ops": 10466,
+      "source_cert": "gymnasium/out/cliffwalking-slippery/rwdyadic_k16_T100.cbor"
+    },
+    {
+      "bytes": 67157,
+      "claim": "-16915023595/268435456",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-slippery_rwdyadic_k32_T100.glc",
+      "glc_sha256": "18842f41ee549ca1c931fba54c2484d76abbb9a858757b5706107b31748a57b9",
+      "ops": 10466,
+      "source_cert": "gymnasium/out/cliffwalking-slippery/rwdyadic_k32_T100.cbor"
+    },
+    {
+      "bytes": 76763,
+      "claim": "-4434171944943057/70368744177664",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "cliffwalking-slippery_rwdyadic_k48_T100.glc",
+      "glc_sha256": "f84211775ac86bc0a7938145e61b4200ad5c79113c92f8303c6dd5d6c16c9666",
+      "ops": 10466,
+      "source_cert": "gymnasium/out/cliffwalking-slippery/rwdyadic_k48_T100.cbor"
+    },
+    {
+      "bytes": 1098686,
+      "claim": "793/100",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-dry_rwslab_T200.glc",
+      "glc_sha256": "151f040174b0053c3e769757b92da963debfcb1c951251f18360eb1f62dcb235",
+      "ops": 207007,
+      "source_cert": "gymnasium/out/taxi-dry/rwslab_T200.cbor"
+    },
+    {
+      "bytes": 1695098,
+      "claim": "793/100",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-dry_rwdyadic_k48_T200.glc",
+      "glc_sha256": "8bac68ab64303c9e9bb7c053632060d504a1789a8a6ef2f4f54f40924b750676",
+      "ops": 207007,
+      "source_cert": "gymnasium/out/taxi-dry/rwdyadic_k48_T200.cbor"
+    },
+    {
+      "bytes": 1179448,
+      "claim": "-162673978760740238092597/1953125000000000000000",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy_rwslab_tail_T25.glc",
+      "glc_sha256": "3dee9de111b65c9e4b6fd1a50dae9879ddb059a37400618741de846ff7f09af5",
+      "ops": 209654,
+      "source_cert": "gymnasium/out/taxi-rainy/rwslab_tail_T25.cbor"
+    },
+    {
+      "bytes": 1365107,
+      "claim": "144749614210281408141926492376220104097851031067/36621093750000000000000000000000000000000000000",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy_rwslab_tail_T50.glc",
+      "glc_sha256": "c6bf19fbde3e0347f9c9cbb8fb1cdcce7f87c586ffab4bdedc17068488c4e8cf",
+      "ops": 209654,
+      "source_cert": "gymnasium/out/taxi-rainy/rwslab_tail_T50.cbor"
+    },
+    {
+      "bytes": 2146084,
+      "claim": "231713350579145728773770303218562901932301857269784027573749885603471549555424453403047922872714093/58593750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy_rwslab_tail_T100.glc",
+      "glc_sha256": "cbc96464ab2d26774cfdb0eef0acee5ab86db9887e342203f2db4d32748bcd2a",
+      "ops": 209654,
+      "source_cert": "gymnasium/out/taxi-rainy/rwslab_tail_T100.cbor"
+    },
+    {
+      "bytes": 1317214,
+      "claim": "77747417/19660800",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy_rwdyadic_k16_T200.glc",
+      "glc_sha256": "334c630231de5bd2ff8a348cd5c0fcdbfb52cc80d2ac2aa153311b35afa11212",
+      "ops": 209654,
+      "source_cert": "gymnasium/out/taxi-rainy/rwdyadic_k16_T200.cbor"
+    },
+    {
+      "bytes": 1714823,
+      "claim": "10435441593250213/2638827906662400",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy_rwdyadic_k48_T200.glc",
+      "glc_sha256": "c629aedc2eb27058ef9aaf5faddcfaf140006f66979109d1b3c6dd24f98acde4",
+      "ops": 209654,
+      "source_cert": "gymnasium/out/taxi-rainy/rwdyadic_k48_T200.cbor"
+    },
+    {
+      "bytes": 2274717,
+      "claim": "419/50",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-fickle_rwslab_tail_T100.glc",
+      "glc_sha256": "b7973c60f0f841f9978f49876118adca8c579e374d9ae5d2b8e17e9caf305b64",
+      "ops": 414323,
+      "source_cert": "gymnasium/out/taxi-fickle/rwslab_tail_T100.cbor"
+    },
+    {
+      "bytes": 3429112,
+      "claim": "707628091450589099/84442493013196800",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-fickle_rwdyadic_k48_T200.glc",
+      "glc_sha256": "cbba8e3bf77c8d80516fd94e416d377f58ab05d03fdfe94e8ddcf0163fa68204",
+      "ops": 414323,
+      "source_cert": "gymnasium/out/taxi-fickle/rwdyadic_k48_T200.cbor"
+    },
+    {
+      "bytes": 2796833,
+      "claim": "857599542760193795724375008068868532926710594051843/187500000000000000000000000000000000000000000000000",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy-fickle_rwslab_tail_T50.glc",
+      "glc_sha256": "ee1c3fc7a2a5634957023bce255cf8874172b1a80665cd1235cdd0fcefd87049",
+      "ops": 420721,
+      "source_cert": "gymnasium/out/taxi-rainy-fickle/rwslab_tail_T50.cbor"
+    },
+    {
+      "bytes": 4403719,
+      "claim": "42896684502587508712583768273673051745427586248160563447708844567044531167272340353063721581290501027/9375000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy-fickle_rwslab_tail_T100.glc",
+      "glc_sha256": "530d518064493f7e87262ca076d5962b8ee3d398b0e20d994e5d6036269b70f0",
+      "ops": 420721,
+      "source_cert": "gymnasium/out/taxi-rainy-fickle/rwslab_tail_T100.cbor"
+    },
+    {
+      "bytes": 2685616,
+      "claim": "22489573/4915200",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy-fickle_rwdyadic_k16_T200.glc",
+      "glc_sha256": "f800b455b1dddfd053119d1730deda20b78aad05f67bf1654d5bacdf5cc171a2",
+      "ops": 420721,
+      "source_cert": "gymnasium/out/taxi-rainy-fickle/rwdyadic_k16_T200.cbor"
+    },
+    {
+      "bytes": 3480027,
+      "claim": "128792994894189647/28147497671065600",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "taxi-rainy-fickle_rwdyadic_k48_T200.glc",
+      "glc_sha256": "c5662e66f1e237ee1d5f843840ce69c991baee0fb86a0c35320de8a066f9f62e",
+      "ops": 420721,
+      "source_cert": "gymnasium/out/taxi-rainy-fickle/rwdyadic_k48_T200.cbor"
+    },
+    {
+      "bytes": 138504,
+      "claim": "-3954908734551683826282634489/91733330193268616658399616009",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "blackjack_rwslab_T22.glc",
+      "glc_sha256": "d6729ba43736e4fc9609b43aed6aedbe5c5ad456d494c1f0b16349b18df7e04c",
+      "ops": 17080,
+      "source_cert": "gymnasium/out/blackjack/rwslab_T22.cbor"
+    },
+    {
+      "bytes": 93356,
+      "claim": "-477629/11075584",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "blackjack_rwdyadic_k16_T22.glc",
+      "glc_sha256": "80df33e2382962fa6388459f19c11c05ba248e8dacb018114a088149f445ce72",
+      "ops": 17080,
+      "source_cert": "gymnasium/out/blackjack/rwdyadic_k16_T22.cbor"
+    },
+    {
+      "bytes": 97840,
+      "claim": "-99322173/2303721472",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "blackjack_rwdyadic_k20_T22.glc",
+      "glc_sha256": "7e8923fc2dae00947f79889c51e96ba31155be253a6a2c1aedf49111d4547a6c",
+      "ops": 17080,
+      "source_cert": "gymnasium/out/blackjack/rwdyadic_k20_T22.cbor"
+    },
+    {
+      "bytes": 118401,
+      "claim": "-26661166971776791/618400523833311232",
+      "expect_claims": "gymRwTableValid=1",
+      "expected": "ACCEPT",
+      "file": "blackjack_rwdyadic_k48_T22.glc",
+      "glc_sha256": "7c4024a7b459becd1fb55ef7d4b5d9838ccebec508bb3053762c3dbc8a83b681",
+      "ops": 17080,
+      "source_cert": "gymnasium/out/blackjack/rwdyadic_k48_T22.cbor"
+    }
+  ]
+}

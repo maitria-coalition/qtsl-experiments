@@ -1,0 +1,785 @@
+[
+ {
+  "name": "enclosure_v1_golden_cos6",
+  "container_bytes": 609,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "unsupported",
+  "t_e2e_ms": 11.804,
+  "verdict": "VERDICT UNSUPPORTED fun_outside_fragment 3",
+  "maxrss_kb": 12748,
+  "load1": 9.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "ctmc_sis_gen",
+  "container_bytes": 925,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 14.492,
+  "verdict": "s QTSLAB ACCEPT v0 0201000002010201000001010008010302010002000102010100020101020",
+  "maxrss_kb": 12760,
+  "load1": 9.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "ctmc_sis_gen",
+  "container_bytes": 925,
+  "route": "qtslab",
+  "pass": 2,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 14.526,
+  "verdict": "s QTSLAB ACCEPT v0 0201000002010201000001010008010302010002000102010100020101020",
+  "maxrss_kb": 12760,
+  "load1": 9.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "ctmc_sis_gen",
+  "container_bytes": 925,
+  "route": "qtslab",
+  "pass": 3,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 14.467,
+  "verdict": "s QTSLAB ACCEPT v0 0201000002010201000001010008010302010002000102010100020101020",
+  "maxrss_kb": 12764,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "ctmc_fk_mid",
+  "container_bytes": 1799,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 896.944,
+  "verdict": "s QTSLAB ACCEPT v0 0203010000020102010000010100018080400302010002000102010100020",
+  "maxrss_kb": 108604,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "ctmc_fk_mid",
+  "container_bytes": 1799,
+  "route": "qtslab",
+  "pass": 2,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 895.911,
+  "verdict": "s QTSLAB ACCEPT v0 0203010000020102010000010100018080400302010002000102010100020",
+  "maxrss_kb": 108604,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "ctmc_fk_mid",
+  "container_bytes": 1799,
+  "route": "qtslab",
+  "pass": 3,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 895.855,
+  "verdict": "s QTSLAB ACCEPT v0 0203010000020102010000010100018080400302010002000102010100020",
+  "maxrss_kb": 108604,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "micro2_stable",
+  "container_bytes": 2190,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 853.209,
+  "verdict": "s QTSLAB ACCEPT v0 02020202000102030100010100000101e1f5d1f0faa8b80d8080808080808",
+  "maxrss_kb": 255160,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "micro2_stable",
+  "container_bytes": 2190,
+  "route": "qtslab",
+  "pass": 2,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 837.495,
+  "verdict": "s QTSLAB ACCEPT v0 02020202000102030100010100000101e1f5d1f0faa8b80d8080808080808",
+  "maxrss_kb": 255148,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "micro2_stable",
+  "container_bytes": 2190,
+  "route": "qtslab",
+  "pass": 3,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 851.899,
+  "verdict": "s QTSLAB ACCEPT v0 02020202000102030100010100000101e1f5d1f0faa8b80d8080808080808",
+  "maxrss_kb": 255164,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "cartpole_core_decrease_s0001",
+  "container_bytes": 4074,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 5511.833,
+  "verdict": "s QTSLAB ACCEPT v0 0202000202030100010103060000000600000003010001010306000001060",
+  "maxrss_kb": 489564,
+  "load1": 9.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "cartpole_core_decrease_s0001",
+  "container_bytes": 4074,
+  "route": "qtslab",
+  "pass": 2,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 5561.863,
+  "verdict": "s QTSLAB ACCEPT v0 0202000202030100010103060000000600000003010001010306000001060",
+  "maxrss_kb": 489500,
+  "load1": 9.4,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "cartpole_core_decrease_s0001",
+  "container_bytes": 4074,
+  "route": "qtslab",
+  "pass": 3,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 5512.889,
+  "verdict": "s QTSLAB ACCEPT v0 0202000202030100010103060000000600000003010001010306000001060",
+  "maxrss_kb": 489500,
+  "load1": 9.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "rode_uniform_decrease",
+  "container_bytes": 7658,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 11729.252,
+  "verdict": "s QTSLAB ACCEPT v0 0203010000040304030101040101010001040300010401010100010403000",
+  "maxrss_kb": 1380268,
+  "load1": 9.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "rode_uniform_decrease",
+  "container_bytes": 7658,
+  "route": "qtslab",
+  "pass": 2,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 11777.541,
+  "verdict": "s QTSLAB ACCEPT v0 0203010000040304030101040101010001040300010401010100010403000",
+  "maxrss_kb": 1380108,
+  "load1": 10.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "rode_uniform_decrease",
+  "container_bytes": 7658,
+  "route": "qtslab",
+  "pass": 3,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 11728.991,
+  "verdict": "s QTSLAB ACCEPT v0 0203010000040304030101040101010001040300010401010100010403000",
+  "maxrss_kb": 1380060,
+  "load1": 11.0,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "cartpole_dp_core_decrease",
+  "container_bytes": 9342,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 48121.682,
+  "verdict": "s QTSLAB ACCEPT v0 0202000202030100010103060000000600000003010001010306000001060",
+  "maxrss_kb": 3505396,
+  "load1": 10.9,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "cartpole_dp_core_decrease",
+  "container_bytes": 9342,
+  "route": "qtslab",
+  "pass": 2,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 48063.427,
+  "verdict": "s QTSLAB ACCEPT v0 0202000202030100010103060000000600000003010001010306000001060",
+  "maxrss_kb": 3505404,
+  "load1": 10.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "cartpole_dp_core_decrease",
+  "container_bytes": 9342,
+  "route": "qtslab",
+  "pass": 3,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 48080.787,
+  "verdict": "s QTSLAB ACCEPT v0 0202000202030100010103060000000600000003010001010306000001060",
+  "maxrss_kb": 3505404,
+  "load1": 10.2,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "dp_composite_syzygy",
+  "container_bytes": 17597,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 423580.166,
+  "verdict": "s QTSLAB ACCEPT v0 0202020002020301000101030600000006000000030100010103060000010",
+  "maxrss_kb": 4198460,
+  "load1": 8.8,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "dp_composite_syzygy",
+  "container_bytes": 17597,
+  "route": "qtslab",
+  "pass": 2,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 428007.303,
+  "verdict": "s QTSLAB ACCEPT v0 0202020002020301000101030600000006000000030100010103060000010",
+  "maxrss_kb": 4198516,
+  "load1": 9.9,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "dp_composite_syzygy",
+  "container_bytes": 17597,
+  "route": "qtslab",
+  "pass": 3,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 432781.757,
+  "verdict": "s QTSLAB ACCEPT v0 0202020002020301000101030600000006000000030100010103060000010",
+  "maxrss_kb": 4198492,
+  "load1": 20.2,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "dp_composite_eigenrate",
+  "container_bytes": 22062,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "verdict": null,
+  "maxrss_kb": 708296,
+  "load1": 13.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "lti_sampled_flow",
+  "container_bytes": 24692,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "verdict": null,
+  "maxrss_kb": 748244,
+  "load1": 14.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "acasx4_init_s0000",
+  "container_bytes": 43407,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "verdict": null,
+  "maxrss_kb": 1010224,
+  "load1": 23.9,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "dp_composite_smallgain",
+  "container_bytes": 46021,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "verdict": null,
+  "maxrss_kb": 1398072,
+  "load1": 26.0,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "acasx4_promise_closedloop",
+  "container_bytes": 57785,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "verdict": null,
+  "maxrss_kb": 1558552,
+  "load1": 26.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "rode_nest_shell",
+  "container_bytes": 119223,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "verdict": null,
+  "maxrss_kb": 4201752,
+  "load1": 23.5,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ },
+ {
+  "name": "rode_hold_flow",
+  "container_bytes": 126222,
+  "route": "qtslab",
+  "pass": 1,
+  "budget_s": 600.0,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "verdict": null,
+  "maxrss_kb": 4202072,
+  "load1": 16.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "qtslab",
+   "md5": "2157d0ca1a2dafb77944a900d7b4f6d0",
+   "sha256": "68fbbadd23ba4faabaa35e9d941317eef1aa222438c73d43ce23b5bf266d0400",
+   "bytes": 2009280
+  },
+  "note": "qtslab rebuilt on gb10 from the landed route-d qtslab_arm8.S (md5 e7f7497d260ce59aa922a87e3571a72b, recPairsAF+wgcd repairs) + audit-pack basis_ffi.c (d5427009), gcc 13.3 -O2; verdict-parity spot-checked against the census-v3 accept lines"
+ }
+]

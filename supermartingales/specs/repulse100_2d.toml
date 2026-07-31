@@ -1,0 +1,61 @@
+# RECONSTRUCTION (no listing), AMBIGUOUS-WITH-CANDIDATES (y-dynamics only).
+# 2D repulse variant. The published Farkas bound is IDENTICAL to 1D repulse100
+# (0.0991) — a strong constraint: the optimal 2D-linear certificate must use
+# only the x coordinate, i.e. the y-dynamics admit no linear improvement (any
+# y-drift toward/away from the hazard would move the LP value). Candidate: x
+# exactly as repulse100; y an independent symmetric +-1 walk reflected on
+# [0,10]; hazard on x only. Under this spec the y-coefficient is forced to 0 by
+# the opposing reflection drifts, so the LP mechanically reproduces 10/101 —
+# and the true reach probability equals repulse100's exactly (y is a
+# spectator), which their looser 2D neural bounds (0.0568/0.0541 vs 1D
+# 0.0288/0.0268) are consistent with (harder learning problem, same truth).
+# y-init unidentifiable from published data; y=5 chosen (center). Divergence
+# risk: their y-dynamics/coupling could differ in ways invisible to both the
+# Farkas fingerprint and the envelope; noted in STATUS.md.
+[benchmark]
+name = "repulse100_2d"
+family = "robot_motion"
+section = 2
+provenance = "reconstruction; x-dynamics pinned by shared Farkas value; y-dynamics candidate (spectator walk)"
+state = ["x", "y"]
+init = {x = 10, y = 5}
+guard = "x >= 0"
+assertion = "x <= 100"
+
+[[benchmark.dynamics]]
+region = "1 <= y && y <= 9"
+branches = [
+  {prob = "1/4", update = {x = "x - 2", y = "y - 1"}},
+  {prob = "1/4", update = {x = "x - 2", y = "y + 1"}},
+  {prob = "1/4", update = {x = "x + 1", y = "y - 1"}},
+  {prob = "1/4", update = {x = "x + 1", y = "y + 1"}},
+]
+
+[[benchmark.dynamics]]
+region = "y < 1"
+branches = [
+  {prob = "1/4", update = {x = "x - 2"}},
+  {prob = "1/4", update = {x = "x - 2", y = "y + 1"}},
+  {prob = "1/4", update = {x = "x + 1"}},
+  {prob = "1/4", update = {x = "x + 1", y = "y + 1"}},
+]
+
+[[benchmark.dynamics]]
+region = "y > 9"
+branches = [
+  {prob = "1/4", update = {x = "x - 2", y = "y - 1"}},
+  {prob = "1/4", update = {x = "x - 2"}},
+  {prob = "1/4", update = {x = "x + 1", y = "y - 1"}},
+  {prob = "1/4", update = {x = "x + 1"}},
+]
+
+[benchmark.farkas]
+published = "0.0991"
+grid = {x = [0, 101], y = [0, 10]}
+invariant = "0 <= x && x <= 100 && 0 <= y && y <= 10"
+target = "x >= 101"
+objective = {x = 10, y = 5}
+note = "Reflection at both y-ends forces the y-coefficient to 0; expected optimum 10/101 exactly as 1D."
+
+[benchmark.truth]
+method = "chain"

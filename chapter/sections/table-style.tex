@@ -1,0 +1,33 @@
+% table-style.tex --- shared cell-tint vocabulary for the Experiments
+% chapter's tables, defined once and used by every section (the legend
+% lives in the conventions section, sec:exp-conventions).
+%
+% Requires: xcolor + colortbl in the including document's preamble
+% (chapter-standalone.tex and the book's preamble both load them).
+% The accent palette is the book's; \providecolor keeps these
+% definitions inert wherever the book has already defined them.
+\providecolor{accent}{HTML}{F1D9CB}
+\providecolor{accentmid}{HTML}{C4623F}
+\providecolor{NoteGray}{RGB}{92,92,92}
+\providecolor{MarkGreen}{RGB}{22,122,58}
+
+% The win-tint ladder: how far below the comparison baseline the
+% certified value sits, in orders of magnitude of the improvement
+% ratio.  Color is always decoration on top of the printed ratio ---
+% never the only carrier of the distinction.
+\colorlet{winA}{accent!22}     % within one order of magnitude
+\colorlet{winB}{accent!45}     % 1--10 orders
+\colorlet{winC}{accentmid!30}  % 10--25 orders
+\colorlet{winD}{accentmid!48}  % 25--45 orders
+\colorlet{winE}{accentmid!68}  % 45+ orders
+
+% exact-cell tint: a certified value with zero conservatism against
+% its model (paired with the cell's own text, e.g. "optimal, exactly")
+\colorlet{exacttint}{MarkGreen!14}
+
+% legend swatch (text-mode; no TikZ dependency)
+\providecommand{\swx}[1]{\begingroup\fboxsep0pt\colorbox{#1}{\rule{0pt}{1.6ex}\hspace{2.4mm}}\endgroup}
+
+% alternate-reading row marker + demphasized table text
+\providecommand{\altrow}{{\footnotesize$\hookrightarrow$}\,}
+\providecommand{\tdemph}[1]{\textcolor{NoteGray}{#1}}

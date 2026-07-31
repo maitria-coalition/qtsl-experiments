@@ -1,0 +1,419 @@
+{
+ "gym_sha": "4347ce9470044f092ce9d3620bf335aced328e4c",
+ "claim_class": "E_pi[sum_{t<T} r] >= B, terminal-absorbing at 0",
+ "rows": {
+  "cliffwalking-det": {
+   "env_id": "CliffWalking-v1",
+   "kwargs": "",
+   "deadline": 100,
+   "ns": 48,
+   "L": 1,
+   "exact": {
+    "100": {
+     "bound": "-13",
+     "bound_float": -13.0,
+     "produce_ms": 0.0,
+     "cert": "cliffwalking-det/rwslab_T100.cbor",
+     "cert_bytes": 21785
+    }
+   },
+   "tail": {},
+   "dyadic": {
+    "48": {
+     "bound": "-13",
+     "bound_float": -13.0,
+     "gap_to_optimum": 0.0,
+     "produce_ms": 9.6,
+     "cert": "cliffwalking-det/rwdyadic_k48_T100.cbor",
+     "cert_bytes": 49639
+    }
+   },
+   "certs": [
+    "cliffwalking-det/rwslab_T100.cbor",
+    "cliffwalking-det/rwdyadic_k48_T100.cbor"
+   ],
+   "optimum": {
+    "fraction": "-13",
+    "float": -13.0,
+    "produce_ms": 5.2
+   },
+   "jnp_crosscheck_delta": 0.0,
+   "wall_s": 1.02
+  },
+  "cliffwalking-slippery": {
+   "env_id": "CliffWalkingSlippery-v1",
+   "kwargs": "is_slippery=True",
+   "deadline": 100,
+   "ns": 48,
+   "L": 3,
+   "exact": {
+    "10": {
+     "bound": "-10",
+     "bound_float": -10.0,
+     "produce_ms": 6.6,
+     "cert": "cliffwalking-slippery/rwslab_T10.cbor",
+     "cert_bytes": 6947
+    },
+    "25": {
+     "bound": "-2352694164493/94143178827",
+     "bound_float": -24.99059617283981,
+     "produce_ms": 1.3,
+     "cert": "cliffwalking-slippery/rwslab_T25.cbor",
+     "cert_bytes": 12378
+    },
+    "50": {
+     "bound": "-11271532092177526198835782/239299329230617529590083",
+     "bound_float": -47.102230200214755,
+     "produce_ms": 8.9,
+     "cert": "cliffwalking-slippery/rwslab_T50.cbor",
+     "cert_bytes": 26222
+    },
+    "100": {
+     "bound": "-10825225366697995759498256828834801626574306838298/171792506910670443678820376588540424234035840667",
+     "bound_float": -63.01337329181041,
+     "produce_ms": 0.5,
+     "cert": "cliffwalking-slippery/rwslab_T100.cbor",
+     "cert_bytes": 71872
+    }
+   },
+   "tail": {},
+   "dyadic": {
+    "16": {
+     "bound": "-4129665/65536",
+     "bound_float": -63.01368713378906,
+     "gap_to_optimum": 0.00031384197865520465,
+     "produce_ms": 10.3,
+     "cert": "cliffwalking-slippery/rwdyadic_k16_T100.cbor",
+     "cert_bytes": 33292
+    },
+    "32": {
+     "bound": "-16915023595/268435456",
+     "bound_float": -63.01337329670787,
+     "gap_to_optimum": 4.897461280715611e-09,
+     "produce_ms": 15.3,
+     "cert": "cliffwalking-slippery/rwdyadic_k32_T100.cbor",
+     "cert_bytes": 52022
+    },
+    "48": {
+     "bound": "-4434171944943057/70368744177664",
+     "bound_float": -63.01337329181048,
+     "gap_to_optimum": 7.389619855136153e-14,
+     "produce_ms": 15.3,
+     "cert": "cliffwalking-slippery/rwdyadic_k48_T100.cbor",
+     "cert_bytes": 52174
+    }
+   },
+   "certs": [
+    "cliffwalking-slippery/rwslab_T10.cbor",
+    "cliffwalking-slippery/rwslab_T25.cbor",
+    "cliffwalking-slippery/rwslab_T50.cbor",
+    "cliffwalking-slippery/rwslab_T100.cbor",
+    "cliffwalking-slippery/rwdyadic_k16_T100.cbor",
+    "cliffwalking-slippery/rwdyadic_k32_T100.cbor",
+    "cliffwalking-slippery/rwdyadic_k48_T100.cbor"
+   ],
+   "optimum": {
+    "fraction": "-10825225366697995759498256828834801626574306838298/171792506910670443678820376588540424234035840667",
+    "float": -63.01337329181041,
+    "produce_ms": 11.9
+   },
+   "jnp_crosscheck_delta": 1.1368683772161603e-13,
+   "wall_s": 0.19
+  },
+  "taxi-dry": {
+   "env_id": "Taxi-v4",
+   "kwargs": "",
+   "deadline": 200,
+   "ns": 500,
+   "L": 1,
+   "exact": {
+    "200": {
+     "bound": "793/100",
+     "bound_float": 7.93,
+     "produce_ms": 0.2,
+     "cert": "taxi-dry/rwslab_T200.cbor",
+     "cert_bytes": 431939
+    }
+   },
+   "tail": {},
+   "dyadic": {
+    "48": {
+     "bound": "793/100",
+     "bound_float": 7.93,
+     "gap_to_optimum": 0.0,
+     "produce_ms": 210.8,
+     "cert": "taxi-dry/rwdyadic_k48_T200.cbor",
+     "cert_bytes": 1026493
+    }
+   },
+   "certs": [
+    "taxi-dry/rwslab_T200.cbor",
+    "taxi-dry/rwdyadic_k48_T200.cbor"
+   ],
+   "optimum": {
+    "fraction": "793/100",
+    "float": 7.93,
+    "produce_ms": 184.7
+   },
+   "jnp_crosscheck_delta": 8.881784197001252e-16,
+   "wall_s": 4.08
+  },
+  "taxi-rainy": {
+   "env_id": "Taxi-v4",
+   "kwargs": "is_rainy=True",
+   "deadline": 200,
+   "ns": 500,
+   "L": 10,
+   "exact": {},
+   "tail": {
+    "25": {
+     "bound": "-162673978760740238092597/1953125000000000000000",
+     "bound_float": -83.289077125499,
+     "gap_to_optimum": 87.24365164204983,
+     "produce_ms": 53.7,
+     "cert": "taxi-rainy/rwslab_tail_T25.cbor",
+     "cert_bytes": 595955
+    },
+    "50": {
+     "bound": "144749614210281408141926492376220104097851031067/36621093750000000000000000000000000000000000000",
+     "bound_float": 3.952629465368751,
+     "gap_to_optimum": 0.0019450511820777532,
+     "produce_ms": 164.0,
+     "cert": "taxi-rainy/rwslab_tail_T50.cbor",
+     "cert_bytes": 767358
+    },
+    "100": {
+     "bound": "231713350579145728773770303218562901932301857269784027573749885603471549555424453403047922872714093/58593750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "bound_float": 3.9545745165507538,
+     "gap_to_optimum": 7.496720653948247e-14,
+     "produce_ms": 250.3,
+     "cert": "taxi-rainy/rwslab_tail_T100.cbor",
+     "cert_bytes": 1518343
+    }
+   },
+   "dyadic": {
+    "16": {
+     "bound": "77747417/19660800",
+     "bound_float": 3.9544381205240886,
+     "gap_to_optimum": 0.00013639602674019662,
+     "produce_ms": 253.7,
+     "cert": "taxi-rainy/rwdyadic_k16_T200.cbor",
+     "cert_bytes": 636572
+    },
+    "48": {
+     "bound": "10435441593250213/2638827906662400",
+     "bound_float": 3.9545745165507973,
+     "gap_to_optimum": 3.14161299243548e-14,
+     "produce_ms": 285.6,
+     "cert": "taxi-rainy/rwdyadic_k48_T200.cbor",
+     "cert_bytes": 1052643
+    }
+   },
+   "certs": [
+    "taxi-rainy/rwslab_tail_T25.cbor",
+    "taxi-rainy/rwslab_tail_T50.cbor",
+    "taxi-rainy/rwslab_tail_T100.cbor",
+    "taxi-rainy/rwdyadic_k16_T200.cbor",
+    "taxi-rainy/rwdyadic_k48_T200.cbor"
+   ],
+   "optimum": {
+    "fraction": "19309445881595843448627373001600614193715982066678900731085227494409981724750684730627288270168036185869486115691006194521343780106187043505661332912911466023595521095785356532912166802575262090699/4882812500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "float": 3.954574516550829,
+    "produce_ms": 505.9
+   },
+   "jnp_crosscheck_delta": 5.773159728050814e-15,
+   "wall_s": 15.84
+  },
+  "taxi-fickle": {
+   "env_id": "Taxi-v4",
+   "kwargs": "fickle_passenger=True",
+   "deadline": 200,
+   "ns": 1000,
+   "L": 10,
+   "exact": {},
+   "tail": {
+    "100": {
+     "bound": "419/50",
+     "bound_float": 8.38,
+     "gap_to_optimum": 0.0,
+     "produce_ms": 383.5,
+     "cert": "taxi-fickle/rwslab_tail_T100.cbor",
+     "cert_bytes": 956360
+    }
+   },
+   "dyadic": {
+    "48": {
+     "bound": "707628091450589099/84442493013196800",
+     "bound_float": 8.379999999999999,
+     "gap_to_optimum": 1.0066022089934752e-15,
+     "produce_ms": 525.0,
+     "cert": "taxi-fickle/rwdyadic_k48_T200.cbor",
+     "cert_bytes": 2062322
+    }
+   },
+   "certs": [
+    "taxi-fickle/rwslab_tail_T100.cbor",
+    "taxi-fickle/rwdyadic_k48_T200.cbor"
+   ],
+   "optimum": {
+    "fraction": "419/50",
+    "float": 8.38,
+    "produce_ms": 802.2
+   },
+   "jnp_crosscheck_delta": 0.0,
+   "wall_s": 28.7
+  },
+  "taxi-rainy-fickle": {
+   "env_id": "Taxi-v4",
+   "kwargs": "is_rainy=True, fickle_passenger=True",
+   "deadline": 200,
+   "ns": 1000,
+   "L": 100,
+   "exact": {},
+   "tail": {
+    "50": {
+     "bound": "857599542760193795724375008068868532926710594051843/187500000000000000000000000000000000000000000000000",
+     "bound_float": 4.573864228054367,
+     "gap_to_optimum": 0.0017821188883692766,
+     "produce_ms": 154.1,
+     "cert": "taxi-rainy-fickle/rwslab_tail_T50.cbor",
+     "cert_bytes": 1580072
+    },
+    "100": {
+     "bound": "42896684502587508712583768273673051745427586248160563447708844567044531167272340353063721581290501027/9375000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "bound_float": 4.575646346942667,
+     "gap_to_optimum": 6.85910910390258e-14,
+     "produce_ms": 447.0,
+     "cert": "taxi-rainy-fickle/rwslab_tail_T100.cbor",
+     "cert_bytes": 3102602
+    }
+   },
+   "dyadic": {
+    "16": {
+     "bound": "22489573/4915200",
+     "bound_float": 4.575515340169271,
+     "gap_to_optimum": 0.00013100677346535378,
+     "produce_ms": 423.4,
+     "cert": "taxi-rainy-fickle/rwdyadic_k16_T200.cbor",
+     "cert_bytes": 1304679
+    },
+    "48": {
+     "bound": "128792994894189647/28147497671065600",
+     "bound_float": 4.575646346942706,
+     "gap_to_optimum": 2.9849798131585507e-14,
+     "produce_ms": 705.0,
+     "cert": "taxi-rainy-fickle/rwdyadic_k48_T200.cbor",
+     "cert_bytes": 2131747
+    }
+   },
+   "certs": [
+    "taxi-rainy-fickle/rwslab_tail_T50.cbor",
+    "taxi-rainy-fickle/rwslab_tail_T100.cbor",
+    "taxi-rainy-fickle/rwdyadic_k16_T200.cbor",
+    "taxi-rainy-fickle/rwdyadic_k48_T200.cbor"
+   ],
+   "optimum": {
+    "fraction": "10724171125647037938515564785119240792761629003002499616858270192753753279561556805939158179953820807766059658674199439024226909317291691252312499274053770973989069279383909444150090681775170728492133/2343750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "float": 4.575646346942736,
+    "produce_ms": 945.2
+   },
+   "jnp_crosscheck_delta": 7.105427357601002e-15,
+   "wall_s": 38.1
+  },
+  "blackjack": {
+   "env_id": "Blackjack-v1",
+   "kwargs": "sab=True, natural=False (registry defaults)",
+   "deadline": 22,
+   "ns": 291,
+   "L": 1792160394037,
+   "exact": {
+    "22": {
+     "bound": "-3954908734551683826282634489/91733330193268616658399616009",
+     "bound_float": -0.043113105413477015,
+     "produce_ms": 5.6,
+     "cert": "blackjack/rwslab_T22.cbor",
+     "cert_bytes": 115779
+    }
+   },
+   "tail": {},
+   "dyadic": {
+    "48": {
+     "bound": "-26661166971776791/618400523833311232",
+     "bound_float": -0.043113105413479985,
+     "gap_to_optimum": 2.972001785144953e-15,
+     "produce_ms": 16.0,
+     "cert": "blackjack/rwdyadic_k48_T22.cbor",
+     "cert_bytes": 100920
+    }
+   },
+   "certs": [
+    "blackjack/rwslab_T22.cbor",
+    "blackjack/rwdyadic_k48_T22.cbor"
+   ],
+   "optimum": {
+    "fraction": "-3954908734551683826282634489/91733330193268616658399616009",
+    "float": -0.043113105413477015,
+    "produce_ms": 19.7
+   },
+   "jnp_crosscheck_delta": 1.3877787807814457e-17,
+   "wall_s": 0.83
+  }
+ },
+ "gym_p_crosscheck": {
+  "ran": false,
+  "note": "pinned-gym venv absent; see README to reproduce"
+ },
+ "hitting_companion": {
+  "cert": "cliffwalking-det/hitting_exact_T13.cbor",
+  "bound": "1",
+  "deadline": 13,
+  "cert_bytes": 5954
+ },
+ "mutants": [
+  {
+   "name": "slab_claim_inflated",
+   "cert": "tt_mutants/mutant_slab_claim_inflated.cbor",
+   "expected_locus": "claim"
+  },
+  {
+   "name": "slab_table_raised",
+   "cert": "tt_mutants/mutant_slab_table_raised.cbor",
+   "expected_locus": "step"
+  },
+  {
+   "name": "slab_kernel_perturbed",
+   "cert": "tt_mutants/mutant_slab_kernel_perturbed.cbor",
+   "expected_locus": "wf"
+  },
+  {
+   "name": "slab_boundary",
+   "cert": "tt_mutants/mutant_slab_boundary.cbor",
+   "expected_locus": "boundary"
+  },
+  {
+   "name": "slab_policy_range",
+   "cert": "tt_mutants/mutant_slab_policy_range.cbor",
+   "expected_locus": "policy"
+  },
+  {
+   "name": "slab_reward_deflated",
+   "cert": "tt_mutants/mutant_slab_reward_deflated.cbor",
+   "expected_locus": "step"
+  },
+  {
+   "name": "slab_init_sum",
+   "cert": "tt_mutants/mutant_slab_init_sum.cbor",
+   "expected_locus": "wf"
+  },
+  {
+   "name": "dyadic_table_raised",
+   "cert": "tt_mutants/mutant_dyadic_table_raised.cbor",
+   "expected_locus": "step"
+  },
+  {
+   "name": "dyadic_claim_inflated",
+   "cert": "tt_mutants/mutant_dyadic_claim_inflated.cbor",
+   "expected_locus": "claim"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+# Verbatim listing (v7 l.1101-1115, lst:cliff): x=0; y=0; while x<=50 do
+# assert(y<=10); p~Bernoulli(0.9); x+=1; if p==0 then y+=1 else if y>=1 then y-=1.
+# NOTE Bernoulli(0.9) with the y+=1 branch on p==0: upward (cliffward) drift has
+# probability 1/10.
+[benchmark]
+name = "cliff_crossing"
+family = "robot_motion"
+section = 2
+provenance = "listing verbatim (v7 l.1101-1115)"
+state = ["x", "y"]
+init = {x = 0, y = 0}
+guard = "x <= 50"
+assertion = "y <= 10"
+
+[[benchmark.dynamics]]
+region = "y >= 1"
+branches = [
+  {prob = "1/10", update = {x = "x + 1", y = "y + 1"}},
+  {prob = "9/10", update = {x = "x + 1", y = "y - 1"}},
+]
+
+[[benchmark.dynamics]]
+region = "y < 1"
+branches = [
+  {prob = "1/10", update = {x = "x + 1", y = "y + 1"}},
+  {prob = "9/10", update = {x = "x + 1"}},
+]
+
+[benchmark.farkas]
+published = "0.4546"
+grid = {x = [0, 50], y = [0, 11]}
+invariant = "0 <= x && x <= 50 && 0 <= y && y <= 11"
+target = "y >= 11"
+objective = {x = 0, y = 0}
+note = "X-frame pinned by their own published certificate surface (graphs/cliff_crossing_linear.dat fits V(x,y) = (50+10y-x)/110 exactly): nonneg stops at x=50 (V(51,0) = -1/110 < 0 at the reachable exit column — the exit-hole), A corner at integer overshoot (50,11). Expected optimum 5/11 -> ceil 0.4546 (round-nearest gives 0.4545: second pin of the ceiling convention)."
+
+[benchmark.truth]
+method = "chain"

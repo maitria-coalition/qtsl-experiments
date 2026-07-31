@@ -1,0 +1,16 @@
+{
+ "file": "faulty_marbles_floor_01.bernfmt",
+ "n": 200,
+ "median_ms": 2.256,
+ "p10_ms": 2.132,
+ "p90_ms": 2.566,
+ "min_ms": 2.04,
+ "silicon": "epyc/n2d-highmem-16 AMD EPYC, nice -n 10",
+ "loadavg": [
+  1.28076171875,
+  1.6875,
+  1.9541015625
+ ],
+ "binary": "fastcheck (same-era source tree)",
+ "sample_line": "/workspace/verify/neural-supermartingales/out/sec1/faulty_marbles/bernfmt/faulty_marbles_floor_01.bernfmt: ACCEPT  (3 nodes, parse 32.52\u00b5s, check 42.29\u00b5s)"
+}

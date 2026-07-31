@@ -1,0 +1,82 @@
+{
+ "semicon/out/minifab/fbfs_core_84wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 56
+ },
+ "semicon/out/minifab/fbfs_core_95wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 23
+ },
+ "semicon/out/minifab/fbfs_setupadv_78wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 23
+ },
+ "semicon/out/minifab/lbfs_core_84wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 18
+ },
+ "semicon/out/minifab/lbfs_core_90wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 21
+ },
+ "semicon/out/minifab/lbfs_core_94wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 23
+ },
+ "semicon/out/minifab/lbfs_core_95wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 25
+ },
+ "semicon/out/minifab/lbfs_setupadv_72wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 20
+ },
+ "semicon/out/minifab/lbfs_setupadv_76wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 25
+ },
+ "semicon/out/minifab/lbfs_setupadv_78wk.cbor": {
+  "count": 2107,
+  "maxdenbits": 24
+ },
+ "semicon/out/mimac7/fbfs_core_th125.cbor": {
+  "count": 31526,
+  "maxdenbits": 26
+ },
+ "semicon/out/mimac7/lbfs_avail_th100.cbor": {
+  "count": 31526,
+  "maxdenbits": 159
+ },
+ "semicon/out/mimac7/lbfs_avail_th115.cbor": {
+  "count": 31526,
+  "maxdenbits": 159
+ },
+ "semicon/out/mimac7/lbfs_core_th100.cbor": {
+  "count": 31526,
+  "maxdenbits": 24
+ },
+ "semicon/out/mimac7/lbfs_core_th125.cbor": {
+  "count": 31526,
+  "maxdenbits": 26
+ },
+ "semicon/out/mimac7/lbfs_core_th132.cbor": {
+  "count": 31526,
+  "maxdenbits": 27
+ },
+ "rung25/mimac7/tree_core_th150.cbor": {
+  "count": 42082,
+  "maxdenbits": 256
+ },
+ "rung25/mimac7/tree_core_thc90.cbor": {
+  "count": 42348,
+  "maxdenbits": 301
+ },
+ "rung25/minifab/lbfs_core_191_2wk.cbor": {
+  "count": 662,
+  "maxdenbits": 27
+ },
+ "rung25/minifab/lbfs_core_959_10wk.cbor": {
+  "count": 662,
+  "maxdenbits": 27
+ }
+}

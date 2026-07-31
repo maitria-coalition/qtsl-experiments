@@ -1,0 +1,36 @@
+# RECONSTRUCTION (no listing), AMBIGUOUS-WITH-CANDIDATES. Farkas fingerprint:
+# published 0.0121 = ceil(12/999) = ceil(0.012012...). The LP value 12/999 is
+# hit by a degenerate family { D * fault/advance = 12/999 }: (D=6, race
+# 1/1000 : 999/2000) here, (D=12, deterministic advance) in
+# faulty_walk__det12.toml. True probabilities differ by ~1e-5 (0.0119229 vs
+# 0.0119341), both inside the neural envelope (PA 0.0173 / PW 0.0166) — the
+# fingerprint cannot separate them and the consequence is negligible; both are
+# frozen, primary = race-D6 (family template carries the q-coin).
+[benchmark]
+name = "faulty_walk"
+family = "unreliable_hardware"
+section = 3
+provenance = "reconstruction; LP value 12/999 pinned, D/advance split degenerate (see __det12 alt); SAS'10 walk lineage"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 7"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/2000", update = {i = "i + 1"}},
+  {prob = "999/2000", update = {}},
+]
+
+[benchmark.farkas]
+published = "0.0121"
+grid = {i = [0, 7], error = [0, 1]}
+invariant = "0 <= i && i <= 7"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame. Expected optimum 12/999 = 4/333."
+
+[benchmark.truth]
+method = "chain"

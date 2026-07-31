@@ -1,0 +1,15 @@
+{
+ "n": 1000000,
+ "wall_s": 571.9,
+ "workers": 8,
+ "steps_total": 251705302,
+ "steps_per_s": 440088,
+ "mean": 238.0409888958483,
+ "std": 105.31280050118009,
+ "min": -366.50449008465466,
+ "max": 336.85896673879427,
+ "frac_landed": 0.920815,
+ "frac_truncated": 0.014612,
+ "frac_ge_200": 0.900709,
+ "machine": "GB10 workstation (aarch64), nice -n 15"
+}

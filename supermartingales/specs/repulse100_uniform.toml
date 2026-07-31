@@ -1,0 +1,48 @@
+# RECONSTRUCTION (no listing). repulse100 with continuous-uniform step
+# x += u, u ~ U[-2, 1] (mean -1/2, matching repulse100's drift). The continuous
+# reading is selected over discrete-uniform {-2..1} (__discrete alt) because it
+# alone explains the paper's own report that program-AWARE synthesis failed here
+# from "indicator functions in the post-expectation" (v7 l.1049): a continuous
+# kernel integrated across the guard/target boundaries produces those
+# indicators; a 4-point discrete mixture is structurally identical to the
+# Bernoulli rows their program-aware route handled fine. CONVENTION CAVEAT: for
+# real-valued x, the tightest closed A-region is x >= 100 (closure of x > 100),
+# whose LP optimum is 1/10 -> 0.1000, NOT the published 0.0991. The published
+# value equals the LP with A = {x >= 101} — i.e. their Farkas run reused
+# repulse100's integer-overshoot target region for the uniform variant (shared-
+# invariant sloppiness consistent with their per-row "educated guess"
+# invariants). The farkas block below reproduces THEIR LP (target x >= 101),
+# with this caveat recorded; the house-sound analysis (wave 1) uses the true A.
+[benchmark]
+name = "repulse100_uniform"
+family = "robot_motion"
+section = 2
+provenance = "reconstruction; noise class selected by program-aware-failure evidence; Farkas matched under shared-A convention"
+state = ["x"]
+reals = ["x"]
+init = {x = 10}
+guard = "x >= 0"
+assertion = "x <= 100"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1", update = {x = "x + u"}},
+]
+
+[benchmark.noise]
+u = {dist = "uniform", lo = "-2", hi = "1"}
+
+[benchmark.farkas]
+published = "0.0991"
+grid = {x = [0, 101]}
+invariant = "0 <= x && x <= 100"
+target = "x >= 101"
+objective = {x = 10}
+note = "Their LP as reverse-engineered: repulse100's A and invariant reused verbatim (see header caveat). E[u] = -1/2 exactly. Expected optimum 10/101."
+
+[benchmark.truth]
+method = "mc"
+mc = {n = 2000000, t_max = 1500, seed = 46102}
+# t_max: drift -1/2 per step from x=10; survivors at 1500 are counted honestly
+# as unabsorbed (expected O(1e-few) — the estimator reports them).

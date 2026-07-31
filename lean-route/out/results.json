@@ -1,0 +1,744 @@
+[
+ {
+  "name": "enclosure_v1_golden_cos6",
+  "container_bytes": 603,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "refuse",
+  "t_e2e_ms": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "enclosure_v1_golden_cos6",
+  "container_bytes": 603,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "refuse",
+  "rc": 1,
+  "t_wall_s": 4.66,
+  "maxrss_kb": 2621076,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "ctmc_sis_gen",
+  "container_bytes": 919,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 2.37157,
+  "t_read_ms": 1.59898,
+  "t_rows_ms": 1.28875,
+  "t_elev_ms": 0.03463,
+  "t_valid_ms": 0.1082,
+  "maxrss_kb": 75028,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "ctmc_sis_gen",
+  "container_bytes": 919,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 2.418069,
+  "t_read_ms": 1.796101,
+  "t_rows_ms": 1.41748,
+  "t_elev_ms": 0.034129,
+  "t_valid_ms": 0.140551,
+  "maxrss_kb": 75272,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "ctmc_sis_gen",
+  "container_bytes": 919,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "oom",
+  "rc": 137,
+  "t_wall_s": 443.68,
+  "maxrss_kb": 129787296,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "ctmc_fk_mid",
+  "container_bytes": 1793,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 50.220663,
+  "t_read_ms": 22.544702,
+  "t_rows_ms": 10.82996,
+  "t_elev_ms": 2.132751,
+  "t_valid_ms": 19.308312,
+  "maxrss_kb": 69276,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "ctmc_fk_mid",
+  "container_bytes": 1793,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 51.263143,
+  "t_read_ms": 21.960551,
+  "t_rows_ms": 9.050211,
+  "t_elev_ms": 0.16198,
+  "t_valid_ms": 19.423391,
+  "maxrss_kb": 70404,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "ctmc_fk_mid",
+  "container_bytes": 1793,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "oom",
+  "rc": 137,
+  "t_wall_s": 525.78,
+  "maxrss_kb": 129790932,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "micro2_stable",
+  "container_bytes": 2184,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 119.548686,
+  "t_read_ms": 102.354087,
+  "t_rows_ms": 20.629149,
+  "t_elev_ms": 2.12657,
+  "t_valid_ms": 2.53317,
+  "maxrss_kb": 69508,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "micro2_stable",
+  "container_bytes": 2184,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 118.460107,
+  "t_read_ms": 102.161817,
+  "t_rows_ms": 18.13037,
+  "t_elev_ms": 0.40494,
+  "t_valid_ms": 2.086871,
+  "maxrss_kb": 70560,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "micro2_stable",
+  "container_bytes": 2184,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_wall_s": null,
+  "maxrss_kb": 790436,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "cartpole_core_decrease_s0001",
+  "container_bytes": 4068,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 435.339851,
+  "t_read_ms": 329.044998,
+  "t_rows_ms": 23.275861,
+  "t_elev_ms": 1.619,
+  "t_valid_ms": 76.761422,
+  "maxrss_kb": 71248,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "cartpole_core_decrease_s0001",
+  "container_bytes": 4068,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 428.082591,
+  "t_read_ms": 322.303668,
+  "t_rows_ms": 21.621701,
+  "t_elev_ms": 1.59259,
+  "t_valid_ms": 72.803732,
+  "maxrss_kb": 70992,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "cartpole_core_decrease_s0001",
+  "container_bytes": 4068,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_wall_s": null,
+  "maxrss_kb": 800164,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "rode_uniform_decrease",
+  "container_bytes": 7652,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 2853.847906,
+  "t_read_ms": 2619.811635,
+  "t_rows_ms": 164.250304,
+  "t_elev_ms": 10.114789,
+  "t_valid_ms": 29.254689,
+  "maxrss_kb": 72844,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "rode_uniform_decrease",
+  "container_bytes": 7652,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 2847.060896,
+  "t_read_ms": 2608.902326,
+  "t_rows_ms": 153.322044,
+  "t_elev_ms": 10.406609,
+  "t_valid_ms": 28.713569,
+  "maxrss_kb": 72640,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "rode_uniform_decrease",
+  "container_bytes": 7652,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_wall_s": null,
+  "maxrss_kb": 800164,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "cartpole_dp_core_decrease",
+  "container_bytes": 9336,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 9601.783507,
+  "t_read_ms": 9054.876489,
+  "t_rows_ms": 93.366186,
+  "t_elev_ms": 5.12045,
+  "t_valid_ms": 235.826391,
+  "maxrss_kb": 72892,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "cartpole_dp_core_decrease",
+  "container_bytes": 9336,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 9612.388107,
+  "t_read_ms": 9064.757679,
+  "t_rows_ms": 92.167576,
+  "t_elev_ms": 4.96203,
+  "t_valid_ms": 232.850711,
+  "maxrss_kb": 72860,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "cartpole_dp_core_decrease",
+  "container_bytes": 9336,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_syzygy",
+  "container_bytes": 17591,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 97979.932287,
+  "t_read_ms": 87668.365931,
+  "t_rows_ms": 347.186176,
+  "t_elev_ms": 12.06765,
+  "t_valid_ms": 428.793673,
+  "maxrss_kb": 77192,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_syzygy",
+  "container_bytes": 17591,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 100547.125429,
+  "t_read_ms": 88154.349736,
+  "t_rows_ms": 341.900346,
+  "t_elev_ms": 12.18464,
+  "t_valid_ms": 426.512213,
+  "maxrss_kb": 77384,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_syzygy",
+  "container_bytes": 17591,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_eigenrate",
+  "container_bytes": 22056,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 447628.080792,
+  "t_read_ms": 447122.314269,
+  "t_rows_ms": 598.321787,
+  "t_elev_ms": 12.12667,
+  "t_valid_ms": 6515.293779,
+  "maxrss_kb": 88340,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_eigenrate",
+  "container_bytes": 22056,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 437521.164698,
+  "t_read_ms": 433272.185769,
+  "t_rows_ms": 601.679259,
+  "t_elev_ms": 12.23065,
+  "t_valid_ms": 6350.332963,
+  "maxrss_kb": 88264,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_eigenrate",
+  "container_bytes": 22056,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "lti_sampled_flow",
+  "container_bytes": 24686,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 485718.290877,
+  "t_read_ms": 470188.745358,
+  "t_rows_ms": 2619.992109,
+  "t_elev_ms": 30.385979,
+  "t_valid_ms": 122.969695,
+  "maxrss_kb": 84072,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "lti_sampled_flow",
+  "container_bytes": 24686,
+  "route": "compiled",
+  "pass": 2,
+  "budget_s": 600,
+  "outcome": "accept",
+  "t_e2e_ms": 476716.498189,
+  "t_read_ms": 467277.851562,
+  "t_rows_ms": 2586.644608,
+  "t_elev_ms": 30.728298,
+  "t_valid_ms": 123.832926,
+  "maxrss_kb": 83944,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "lti_sampled_flow",
+  "container_bytes": 24686,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "acasx4_init_s0000",
+  "container_bytes": 43401,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "outer_wall_s": 630,
+  "maxrss_kb": 94008,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "acasx4_init_s0000",
+  "container_bytes": 43401,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_smallgain",
+  "container_bytes": 46015,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "outer_wall_s": 630,
+  "maxrss_kb": 86392,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "dp_composite_smallgain",
+  "container_bytes": 46015,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "acasx4_promise_closedloop",
+  "container_bytes": 57779,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "outer_wall_s": 630,
+  "maxrss_kb": 88392,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "acasx4_promise_closedloop",
+  "container_bytes": 57779,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "rode_nest_shell",
+  "container_bytes": 119217,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "outer_wall_s": 630,
+  "maxrss_kb": 127028,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "rode_nest_shell",
+  "container_bytes": 119217,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "rode_hold_flow",
+  "container_bytes": 126216,
+  "route": "compiled",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "timeout",
+  "t_e2e_ms": null,
+  "outer_wall_s": 630,
+  "maxrss_kb": 133656,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ },
+ {
+  "name": "rode_hold_flow",
+  "container_bytes": 126216,
+  "route": "kernel",
+  "pass": 1,
+  "budget_s": 600,
+  "outcome": "not_attempted",
+  "t_wall_s": null,
+  "maxrss_kb": null,
+  "host": {
+   "host": "epyc-lean-dedicated",
+   "cpu": "AMD EPYC 7B13",
+   "threads": 16,
+   "mem_gib": 125.8,
+   "arch": "x86_64"
+  }
+ }
+]

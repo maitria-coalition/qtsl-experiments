@@ -1,0 +1,6 @@
+CPU(s):                                  16
+On-line CPU(s) list:                     0-15
+Model name:                              AMD EPYC 7B13
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-15
+ 11:08:14 up 10 min,  2 users,  load average: 3.61, 3.70, 2.09

@@ -1,0 +1,155 @@
+{
+ "ceremony": "replaycheck mutant battery",
+ "checker": "harness/replaycheck/target/release/replaycheck",
+ "pass": true,
+ "rows": [
+  {
+   "name": "control-base-pong",
+   "expected": [
+    "ACCEPT"
+   ],
+   "observed": "ACCEPT",
+   "ok": true,
+   "wall_s": 166.1,
+   "witness": "",
+   "exit": 0
+  },
+  {
+   "name": "control-base-freeway",
+   "expected": [
+    "ACCEPT"
+   ],
+   "observed": "ACCEPT",
+   "ok": true,
+   "wall_s": 167.2,
+   "witness": "",
+   "exit": 0
+  },
+  {
+   "name": "m01-trace-stale-hash",
+   "expected": [
+    "trace-hash"
+   ],
+   "observed": "trace-hash",
+   "ok": true,
+   "wall_s": 0.0,
+   "witness": "REFUSE trace-hash: traces/k01.atrc.gz has sha256 9a934cd6d12b76b1756e8cd5ee8b50bf6a4a300c3199db4112d6a611289a03cc, claim pins 35ae3c3f4bf1247f5378c7a3fb2c5d8ab9de3e076897aadfc65e78f72e069a42",
+   "exit": 1
+  },
+  {
+   "name": "m02-trace-ram-tamper",
+   "expected": [
+    "trace-ram"
+   ],
+   "observed": "trace-ram",
+   "ok": true,
+   "wall_s": 125.4,
+   "witness": "REFUSE trace-ram: lane 1 (k=1) frame 30 ram[77]: trace=0xff replay=0x00",
+   "exit": 1
+  },
+  {
+   "name": "m03-trace-reward-tamper",
+   "expected": [
+    "trace-reward"
+   ],
+   "observed": "trace-reward",
+   "ok": true,
+   "wall_s": 112.6,
+   "witness": "REFUSE trace-reward: lane 2 (k=2) frame 20: trace=1 replay=0",
+   "exit": 1
+  },
+  {
+   "name": "m04-off-by-one-frame",
+   "expected": [
+    "trace-ram"
+   ],
+   "observed": "trace-ram",
+   "ok": true,
+   "wall_s": 87.2,
+   "witness": "REFUSE trace-ram: lane 0 (k=0) frame 0 ram[8]: trace=0x45 replay=0x44",
+   "exit": 1
+  },
+  {
+   "name": "m05-trace-truncated",
+   "expected": [
+    "trace-length"
+   ],
+   "observed": "trace-length",
+   "ok": true,
+   "wall_s": 0.0,
+   "witness": "REFUSE trace-length: traces/k03.atrc.gz has 62 records, claim declares 63",
+   "exit": 1
+  },
+  {
+   "name": "m06-wrong-init",
+   "expected": [
+    "trace-ram"
+   ],
+   "observed": "trace-ram",
+   "ok": true,
+   "wall_s": 89.4,
+   "witness": "REFUSE trace-ram: lane 1 (k=1) frame 1 ram[4]: trace=0x0f replay=0x0e",
+   "exit": 1
+  },
+  {
+   "name": "m07-return-perturbed",
+   "expected": [
+    "return-mismatch"
+   ],
+   "observed": "return-mismatch",
+   "ok": true,
+   "wall_s": 166.2,
+   "witness": "REFUSE return-mismatch: lane 2 (k=2) computed 0, claim says 1",
+   "exit": 1
+  },
+  {
+   "name": "m08-bound-perturbed",
+   "expected": [
+    "bound"
+   ],
+   "observed": "bound",
+   "ok": true,
+   "wall_s": 166.2,
+   "witness": "REFUSE bound: min return 0 < claimed bound 1",
+   "exit": 1
+  },
+  {
+   "name": "m09-netlist-gate-flip",
+   "expected": [
+    "trace-ram",
+    "trace-reward",
+    "vsync-timeout",
+    "return-mismatch"
+   ],
+   "observed": "trace-ram",
+   "ok": true,
+   "wall_s": 87.2,
+   "witness": "REFUSE trace-ram: lane 0 (k=0) frame 0 ram[7]: trace=0x07 replay=0x02",
+   "exit": 1
+  },
+  {
+   "name": "m10-aig-tampered",
+   "expected": [
+    "aig-hash"
+   ],
+   "observed": "aig-hash",
+   "ok": true,
+   "wall_s": 0.0,
+   "witness": "REFUSE aig-hash: certs/mutants/m10-aig-tampered/tampered.aig has sha256 6e5babfc963ba4966a331eb9ee742d47221ba3910bec1689c1da0d11dd6b7fc8, claim pins 0adaab67cc9d356d5a8b9a1281a1f1fd090651c0da5bb5d922c0a029d526f781",
+   "exit": 1
+  },
+  {
+   "name": "m11-reward-decode-swap",
+   "expected": [
+    "trace-reward",
+    "return-mismatch"
+   ],
+   "observed": "trace-reward",
+   "ok": true,
+   "wall_s": 88.3,
+   "witness": "REFUSE trace-reward: lane 0 (k=0) frame 0: trace=0 replay=1",
+   "exit": 1
+  }
+ ],
+ "date": "2026-07-22 17:01 UTC"
+}

@@ -1,0 +1,17 @@
+name	container_bytes	n_ops	n_cert_rows	n_proof_nodes	species_family	body_bytes	ref_checker_verdict	fastcheck_verdict	commit_hash
+enclosure_v1_golden_cos6	603	12	12	1	enclosure-v1 (PEnclosure)	174	ACCEPT	REJECT(2) (fast-path-subset scope refusal, not invalidity)	60c5f12d2bc5019f81e225441bf719926d71f024f70c4324ddc8dc221451bddc
+ctmc_sis_gen	919	110	110	3	ctmc supermartingale	502	ACCEPT	ACCEPT	8f1103fb41db3609f89945cdad9d791b386cc2749a28ebf46fc937f68f0cd648
+ctmc_fk_mid	1793	764	764	35	ctmc supermartingale (Foster-Kolmogorov)	1377	ACCEPT	ACCEPT	415e1e11f1a5a025d922f60067484d5f004a144d396b90c5b5a10bff6fe472f5
+micro2_stable	2184	1230	1230	96	micro2 stability (tag-9 promise rules)	1766	ACCEPT	REJECT(2) (fast-path-subset scope refusal, not invalidity)	7249cbc87eae569f64205a54c84596275f4c8df277e8b60ae6df968b8bedf699
+cartpole_core_decrease_s0001	4068	1863	1863	65	cartpole DP core-decrease (family member)	3635	ACCEPT	ACCEPT	494a4f61135bbdb99565c44c8b8ab44c174581bd08a64b5ece668b8b746b2af5
+rode_uniform_decrease	7652	5398	5398	143	RODE uniform decrease	7226	ACCEPT	ACCEPT	959c95d2377d1c3f523feb19a65276934ed1b69a4700d5d53fd09eeb87769848
+cartpole_dp_core_decrease	9336	5389	5389	197	cartpole DP core-decrease	8906	ACCEPT	ACCEPT	bdef95e2936da479f5f859d5837b65d5effb897226a2665659d1712245672fd9
+dp_composite_syzygy	17591	11664	11664	377	dp_composite (syzygy)	17167	ACCEPT	ACCEPT	60ca10a5021d88e15218504ac248f6c0d73f6767090c3cd8b36a6c6c1c2c752a
+dp_composite_eigenrate	22056	16346	16346	647	dp_composite (eigenrate)	21629	ACCEPT	ACCEPT	7c1cf58377295abe277c29e2f289adc2002f59b0ad98bde35fef7d69cebf08be
+lti_sampled_flow	24686	24046	24046	1693	LTI sampled flow (sampled X-lane, tag-25)	24265	ACCEPT	REJECT(1) (fast-path-subset scope refusal, not invalidity)	23e76a5d1944f7867702a433ebcd081f3f217796d082161d9d637f637feaa17c
+acasx4_init_s0000	43401	21663	21663	527	acasx4 neural (init family member)	42979	ACCEPT	ACCEPT	259f38b33a9c40b021851cb9c84334efec878858f75ed14e8774bee0880d39ef
+dp_composite_smallgain	46015	32515	32515	1081	dp_composite (smallgain)	45588	ACCEPT	ACCEPT	ee17484b92bf6f8c9d239efbb4fb41c7f23d6b7c309d3d4058786bc0a05f3591
+acasx4_promise_closedloop	57779	31130	31130	1055	acasx4 neural closed-loop (tag-25)	57349	ACCEPT	REJECT(1) (fast-path-subset scope refusal, not invalidity)	072258db02262d7356bbbdf264683b461549e68c8ef9c979d18631d2f1d26a83
+rode_nest_shell	119217	100886	100886	4629	RODE filter-nest shell (sampled X-lane, tag-25)	118797	ACCEPT	REJECT(1) (fast-path-subset scope refusal, not invalidity)	05a5716de61315f34b6479c2249bb5419016cc7376d540ae3ff5761ebe7829a7
+rode_hold_flow	126216	111388	111388	5773	RODE hold-set flow (sampled X-lane, tag-25)	125797	ACCEPT	REJECT(1) (fast-path-subset scope refusal, not invalidity)	857bb8891d80ea7ccf6fb30e8a7cbb6bb44b7f7d1ff9bc1d03646a98129fcaaa
+terms_v1_bern_fastpath	1042	136	136	4	terms-v1 bern fastpath (EXCLUDED)	615	REFUSED	REJECT(1) (fast-path-subset scope refusal, not invalidity)	30a0ea5e1e550a8fac5be5bc026aac4c824c704f4fb48d8b834dff66065507aa

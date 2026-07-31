@@ -1,0 +1,234 @@
+{
+"claim": "certs/montezuma-key-family-T828/claim.cbor",
+"game": "montezuma",
+"species": "familydir:per-offset-scripts",
+"horizon": 828,
+"init_set": [
+0,
+30
+],
+"returns": [
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100,
+100
+],
+"min_return": 100,
+"python_reward_crosscheck": "identical (records 1..k+T-1, all lanes)",
+"total_wall_s": 427.59,
+"lanes": [
+{
+"k": 0,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1064 1fe3:1958 1fe4:895 1fe9:896 1fed:895 1ff2:1678 1ff6:1677",
+"wall_s": 13.53
+},
+{
+"k": 1,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1036 1fe3:1931 1fe4:896 1fe9:897 1fed:896 1ff2:1751 1ff6:1750",
+"wall_s": 13.62
+},
+{
+"k": 2,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:989 1fe3:1885 1fe4:897 1fe9:898 1fed:897 1ff2:1723 1ff6:1722",
+"wall_s": 13.59
+},
+{
+"k": 3,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1018 1fe3:1915 1fe4:898 1fe9:899 1fed:898 1ff2:1687 1ff6:1686",
+"wall_s": 13.66
+},
+{
+"k": 4,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:957 1fe3:1855 1fe4:899 1fe9:900 1fed:899 1ff2:1755 1ff6:1754",
+"wall_s": 13.62
+},
+{
+"k": 5,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1076 1fe3:1975 1fe4:900 1fe9:901 1fed:900 1ff2:1769 1ff6:1768",
+"wall_s": 13.65
+},
+{
+"k": 6,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:999 1fe3:1899 1fe4:901 1fe9:902 1fed:901 1ff2:1695 1ff6:1694",
+"wall_s": 13.66
+},
+{
+"k": 7,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1090 1fe3:1991 1fe4:902 1fe9:903 1fed:902 1ff2:1704 1ff6:1703",
+"wall_s": 13.69
+},
+{
+"k": 8,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1003 1fe3:1905 1fe4:903 1fe9:904 1fed:903 1ff2:1744 1ff6:1743",
+"wall_s": 13.75
+},
+{
+"k": 9,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1007 1fe3:1910 1fe4:904 1fe9:905 1fed:904 1ff2:1696 1ff6:1695",
+"wall_s": 13.72
+},
+{
+"k": 10,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:964 1fe3:1868 1fe4:905 1fe9:906 1fed:905 1ff2:1757 1ff6:1756",
+"wall_s": 13.68
+},
+{
+"k": 11,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1029 1fe3:1934 1fe4:906 1fe9:907 1fed:906 1ff2:1684 1ff6:1683",
+"wall_s": 13.71
+},
+{
+"k": 12,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:995 1fe3:1901 1fe4:907 1fe9:908 1fed:907 1ff2:1707 1ff6:1706",
+"wall_s": 13.73
+},
+{
+"k": 13,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:984 1fe3:1891 1fe4:908 1fe9:909 1fed:908 1ff2:1742 1ff6:1741",
+"wall_s": 13.78
+},
+{
+"k": 14,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1023 1fe3:1931 1fe4:909 1fe9:910 1fed:909 1ff2:1756 1ff6:1755",
+"wall_s": 13.82
+},
+{
+"k": 15,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1032 1fe3:1941 1fe4:910 1fe9:911 1fed:910 1ff2:1731 1ff6:1730",
+"wall_s": 13.79
+},
+{
+"k": 16,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1007 1fe3:1917 1fe4:911 1fe9:912 1fed:911 1ff2:1769 1ff6:1768",
+"wall_s": 13.79
+},
+{
+"k": 17,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1012 1fe3:1923 1fe4:912 1fe9:913 1fed:912 1ff2:1693 1ff6:1692",
+"wall_s": 13.82
+},
+{
+"k": 18,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1024 1fe3:1936 1fe4:913 1fe9:914 1fed:913 1ff2:1716 1ff6:1715",
+"wall_s": 13.79
+},
+{
+"k": 19,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:952 1fe3:1865 1fe4:914 1fe9:915 1fed:914 1ff2:1712 1ff6:1711",
+"wall_s": 13.82
+},
+{
+"k": 20,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1063 1fe3:1977 1fe4:915 1fe9:916 1fed:915 1ff2:1775 1ff6:1774",
+"wall_s": 13.86
+},
+{
+"k": 21,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1031 1fe3:1946 1fe4:916 1fe9:917 1fed:916 1ff2:1718 1ff6:1717",
+"wall_s": 13.85
+},
+{
+"k": 22,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:996 1fe3:1912 1fe4:917 1fe9:918 1fed:917 1ff2:1785 1ff6:1784",
+"wall_s": 13.9
+},
+{
+"k": 23,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1090 1fe3:2007 1fe4:918 1fe9:919 1fed:918 1ff2:1803 1ff6:1802",
+"wall_s": 13.92
+},
+{
+"k": 24,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:978 1fe3:1896 1fe4:919 1fe9:920 1fed:919 1ff2:1780 1ff6:1779",
+"wall_s": 13.93
+},
+{
+"k": 25,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1023 1fe3:1942 1fe4:920 1fe9:921 1fed:920 1ff2:1802 1ff6:1801",
+"wall_s": 13.91
+},
+{
+"k": 26,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:974 1fe3:1894 1fe4:921 1fe9:922 1fed:921 1ff2:1726 1ff6:1725",
+"wall_s": 13.94
+},
+{
+"k": 27,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1006 1fe3:1927 1fe4:922 1fe9:923 1fed:922 1ff2:1797 1ff6:1796",
+"wall_s": 14.0
+},
+{
+"k": 28,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1006 1fe3:1928 1fe4:923 1fe9:924 1fed:923 1ff2:1794 1ff6:1793",
+"wall_s": 13.95
+},
+{
+"k": 29,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1020 1fe3:1943 1fe4:924 1fe9:925 1fed:924 1ff2:1793 1ff6:1792",
+"wall_s": 13.98
+},
+{
+"k": 30,
+"return": 100,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1017 1fe3:1941 1fe4:925 1fe9:926 1fed:925 1ff2:1771 1ff6:1770",
+"wall_s": 14.1
+}
+]
+}

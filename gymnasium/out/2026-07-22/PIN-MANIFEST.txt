@@ -1,0 +1,25 @@
+# Gymnasium re-run — pins (2026-07-22)
+# (qtsl pin corrected to main during the run; an earlier index's fc29210dd
+# was a branch tip)
+
+mtk                 184f a3014389050289a6ec4af055aa517eec0af6   (main; producer gymdp + gymdp.cu)
+geolog-alpha        c5aea09ba86f6985270bcf00df731d269aad7cc0    (consumed via mtk's committed lock)
+qtsl (checker src)  c94af1f735254b91298202aa8212a2b9004542b8    (BOTH lanes: flcheck/fluidcheck exist at no newer rev —
+                     f147e95 on 2026-07-21 reverted them out of qtsl main; qtsl main at run time = c0099c932)
+kernels lane A      bd1eafdce7a5f6eb223846ab228bbcb45f88f11e    (committed Cargo.lock replay = regression control)
+kernels lane B      b0143fa3a27ec60bfefe2c992b5be0c8be7b0bd5    (latest tip; Cargo.lock.tips here)
+qtsl-experiments    as committed here
+
+machines (see MACHINES.md):
+  epyc     GCP europe-west1-b, n2d-highmem-16 (AMD EPYC 7B13, 16c/128G, SPOT)
+  gb10     NVIDIA GB10 (aarch64, Grace; the published numbers' machine), runs nice -n 10 + taskset
+  rtx5090  rented RTX 5090 32GB sm_120, driver 570.211.01
+           (the published wave-3 GPU rows rode the same model at driver 575.51.03)
+
+protocols:
+  producer: gymdp produce --compare <committed corpus>; 1-core = taskset 1 cpu + RAYON_NUM_THREADS=1,
+            --repeat 15 (min-of-15, wave-3 protocol); 4-core = 4 cpus + RAYON_NUM_THREADS=4, --repeat 7;
+            cold = --repeat 1, process wall from receipts total_wall_s
+  checker:  run_checks.ts / run_tt_checks.ts (bench 200, single core pinned); box2d flcheck --bench 50;
+            sweep-lanes.txt = flcheck --lane ref|auto --bench 200 on the 9 sweep-comparison certs
+  gpu:      gymdp gpu-bench --repeat 15 (min/median; bit-identity asserted per lane)

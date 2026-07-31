@@ -1,0 +1,1343 @@
+[
+ {
+  "name": "cliff_crossing",
+  "section": 2,
+  "provenance": "listing verbatim (v7 l.1101-1115)",
+  "spec": "cliff_crossing.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.4546,
+   "pa_bound": 0.0553,
+   "pw_bound": 0.0591,
+   "pa_success": 0.9,
+   "pw_success": 0.8
+  },
+  "farkas": {
+   "name": "cliff_crossing",
+   "published": "0.4546",
+   "status": "ok",
+   "optimum": "5/11",
+   "certified_optimal": true,
+   "n_constraints": 614,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "2273/5000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-1/110",
+    "1/11",
+    "5/11"
+   ],
+   "ms": 360.1
+  },
+  "chain": {
+   "p_true": "1720783194455513048071034579389072679459/2000000000000000000000000000000000000000000000000",
+   "p_true_float": 8.603915972277566e-10,
+   "n_active": 506,
+   "n_bad": 40,
+   "n_safe": 12,
+   "ms": 17.9
+  },
+  "mc": {
+   "p_hat": 0.0,
+   "stderr": 0.0,
+   "n": 1000000,
+   "hits": 0,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 10533.3,
+   "z_vs_chain": -860.39
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0553,
+    "p": 8.603915972277566e-10,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0591,
+    "p": 8.603915972277566e-10,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_concave",
+  "section": 2,
+  "provenance": "listing verbatim (v7 l.1119-1140)",
+  "spec": "faulty_concave.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.1819,
+   "pa_bound": 0.1399,
+   "pw_bound": 0.1356,
+   "pa_success": 1.0,
+   "pw_success": 0.9
+  },
+  "farkas": {
+   "name": "faulty_concave",
+   "published": "0.1819",
+   "status": "ok",
+   "optimum": "2/11",
+   "certified_optimal": true,
+   "n_constraints": 24,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "1819/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/99",
+    "1",
+    "20/99"
+   ],
+   "ms": 4.0
+  },
+  "chain": {
+   "p_true": "94702752984981142/799930801408546171",
+   "p_true_float": 0.1183886816437437,
+   "n_active": 9,
+   "n_bad": 9,
+   "n_safe": 1,
+   "ms": 0.7
+  },
+  "mc": {
+   "p_hat": 0.118057,
+   "stderr": 0.0003226756029683682,
+   "n": 1000000,
+   "hits": 118057,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9693.1,
+   "z_vs_chain": -1.03
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.1399,
+    "p": 0.1183886816437437,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.1356,
+    "p": 0.1183886816437437,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_easy1",
+  "section": 3,
+  "provenance": "reconstruction; D=40 pinned by Farkas fingerprint; SAS'10 easy1 lineage",
+  "spec": "faulty_easy1.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0801,
+   "pa_bound": 0.1007,
+   "pw_bound": 0.0865,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_easy1",
+   "published": "0.0801",
+   "status": "ok",
+   "optimum": "80/999",
+   "certified_optimal": true,
+   "n_constraints": 85,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "801/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/999",
+    "1",
+    "82/999"
+   ],
+   "ms": 7.5
+  },
+  "chain": {
+   "p_true": "80019761316053287666882383626946526210867577020165079364994264838050714178450383603426877797287121316016019760000080000/1040789972051865100738973857928349950098126003540482186324697457071150214024652046129374043803332399038099399880780040001",
+   "p_true_float": 0.07688367822981457,
+   "n_active": 40,
+   "n_bad": 40,
+   "n_safe": 1,
+   "ms": 2.2
+  },
+  "mc": {
+   "p_hat": 0.077282,
+   "stderr": 0.0002670383726658025,
+   "n": 1000000,
+   "hits": 77282,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9962.2,
+   "z_vs_chain": 1.49
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.1007,
+    "p": 0.07688367822981457,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0865,
+    "p": 0.07688367822981457,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_loop",
+  "section": 3,
+  "provenance": "listing (v7 l.1068-1083); init adjudicated i=1, see adjudications/faulty_loop.md",
+  "spec": "faulty_loop.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0181,
+   "pa_bound": 0.0195,
+   "pw_bound": 0.0184,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_loop",
+   "published": "0.0181",
+   "status": "ok",
+   "optimum": "2/111",
+   "certified_optimal": true,
+   "n_constraints": 23,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "181/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/999",
+    "1",
+    "20/999"
+   ],
+   "ms": 2.3
+  },
+  "chain": {
+   "p_true": "18000168000252000072000002/1009036084126126084036009001",
+   "p_true_float": 0.017838973534668994,
+   "n_active": 9,
+   "n_bad": 9,
+   "n_safe": 1,
+   "ms": 0.3
+  },
+  "mc": {
+   "p_hat": 0.017932,
+   "stderr": 0.000132704345731404,
+   "n": 1000000,
+   "hits": 17932,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9822.1,
+   "z_vs_chain": 0.7
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0195,
+    "p": 0.017838973534668994,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0184,
+    "p": 0.017838973534668994,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_loop__as_listed",
+  "section": 3,
+  "provenance": "listing verbatim (v7 l.1068-1083), init i=0 as printed",
+  "spec": "faulty_loop__as_listed.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0181,
+   "pa_bound": 0.0195,
+   "pw_bound": 0.0184,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_loop__as_listed",
+   "published": "0.0181",
+   "status": "ok",
+   "optimum": "2/111",
+   "certified_optimal": true,
+   "n_constraints": 21,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "181/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/999",
+    "1",
+    "2/111"
+   ],
+   "ms": 3.8
+  },
+  "chain": {
+   "p_true": "20000240000504000240000020000/1010045120210252210120045010001",
+   "p_true_float": 0.01980133322790642,
+   "n_active": 10,
+   "n_bad": 10,
+   "n_safe": 1,
+   "ms": 0.6
+  },
+  "mc": {
+   "p_hat": 0.019897,
+   "stderr": 0.00013964637263817487,
+   "n": 1000000,
+   "hits": 19897,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9637.8,
+   "z_vs_chain": 0.69
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0195,
+    "p": 0.01980133322790642,
+    "consistent": false
+   },
+   "pw_bound": {
+    "bound": 0.0184,
+    "p": 0.01980133322790642,
+    "consistent": false
+   }
+  },
+  "status": "refuted-listing-instance (envelope violation expected)"
+ },
+ {
+  "name": "faulty_marbles",
+  "section": 1,
+  "provenance": "reconstruction candidate (zero-drift marble collection, N=8); negative-fingerprint + envelope validated only",
+  "spec": "faulty_marbles.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": "none",
+   "pa_bound": 0.0739,
+   "pw_bound": 0.0649,
+   "pa_success": 0.9,
+   "pw_success": 0.8
+  },
+  "farkas": {
+   "name": "faulty_marbles",
+   "published": "none",
+   "status": "ok",
+   "optimum": "1",
+   "certified_optimal": true,
+   "n_constraints": 20,
+   "tight": [
+    "nonincrease",
+    "indicating",
+    "nonincrease"
+   ],
+   "ceil4": "1",
+   "match": true,
+   "kind": "negative",
+   "certificate": [
+    "0",
+    "0",
+    "1"
+   ],
+   "ms": 8.6
+  },
+  "chain": {
+   "p_true": "66374065670022081974002/1064364111590096043984001",
+   "p_true_float": 0.062360300340137564,
+   "n_active": 8,
+   "n_bad": 8,
+   "n_safe": 1,
+   "ms": 0.3
+  },
+  "mc": {
+   "p_hat": 0.062504,
+   "stderr": 0.00024206868856586967,
+   "n": 1000000,
+   "hits": 62504,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9503.0,
+   "z_vs_chain": 0.59
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0739,
+    "p": 0.062360300340137564,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0649,
+    "p": 0.062360300340137564,
+    "consistent": true
+   }
+  },
+  "status": "envelope-validated"
+ },
+ {
+  "name": "faulty_ndecr",
+  "section": 3,
+  "provenance": "reconstruction; D=28 pinned by Farkas fingerprint (det-D56 twin noted); SAS'10 ndecr lineage",
+  "spec": "faulty_ndecr.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0561,
+   "pa_bound": 0.0723,
+   "pw_bound": 0.063,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_ndecr",
+   "published": "0.0561",
+   "status": "ok",
+   "optimum": "56/999",
+   "certified_optimal": true,
+   "n_constraints": 61,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "561/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/999",
+    "1",
+    "58/999"
+   ],
+   "ms": 3.3
+  },
+  "chain": {
+   "p_true": "56006552196562368093813842948434884394884362948373813802368080196560006552000056000/1028381296573657927155025044614639237314072603242310020009289416838300478276378028001",
+   "p_true_float": 0.05446088175967803,
+   "n_active": 28,
+   "n_bad": 28,
+   "n_safe": 1,
+   "ms": 0.8
+  },
+  "mc": {
+   "p_hat": 0.054627,
+   "stderr": 0.00022725072248730037,
+   "n": 1000000,
+   "hits": 54627,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9626.7,
+   "z_vs_chain": 0.73
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0723,
+    "p": 0.05446088175967803,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.063,
+    "p": 0.05446088175967803,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_rare",
+  "section": 3,
+  "provenance": "reconstruction; fault rate pinned by Farkas fingerprint",
+  "spec": "faulty_rare.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0019,
+   "pa_bound": 0.0022,
+   "pw_bound": 0.0022,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_rare",
+   "published": "0.0019",
+   "status": "ok",
+   "optimum": "2/1111",
+   "certified_optimal": true,
+   "n_constraints": 23,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "19/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/9999",
+    "1",
+    "20/9999"
+   ],
+   "ms": 2.2
+  },
+  "chain": {
+   "p_true": "1800000168000002520000007200000002/1000900360084012601260084003600090001",
+   "p_true_float": 0.0017983809775519671,
+   "n_active": 9,
+   "n_bad": 9,
+   "n_safe": 1,
+   "ms": 0.3
+  },
+  "mc": {
+   "p_hat": 0.001832,
+   "stderr": 4.276264463290361e-05,
+   "n": 1000000,
+   "hits": 1832,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9477.7,
+   "z_vs_chain": 0.79
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0022,
+    "p": 0.0017983809775519671,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0022,
+    "p": 0.0017983809775519671,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_regions",
+  "section": 1,
+  "provenance": "reconstruction candidate it.3 (zero-drift walk, region-dependent fault); negative-fingerprint + envelope validated only",
+  "spec": "faulty_regions.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": "none",
+   "pa_bound": 0.0473,
+   "pw_bound": 0.0411,
+   "pa_success": 0.9,
+   "pw_success": 0.9
+  },
+  "farkas": {
+   "name": "faulty_regions",
+   "published": "none",
+   "status": "ok",
+   "optimum": "1",
+   "certified_optimal": true,
+   "n_constraints": 25,
+   "tight": [
+    "nonincrease",
+    "indicating",
+    "nonincrease"
+   ],
+   "ceil4": "1",
+   "match": true,
+   "kind": "negative",
+   "certificate": [
+    "0",
+    "0",
+    "1"
+   ],
+   "ms": 39.5
+  },
+  "chain": {
+   "p_true": "141450445114201068363597250530666/3479461559586789736608522537275833",
+   "p_true_float": 0.04065296963102512,
+   "n_active": 10,
+   "n_bad": 10,
+   "n_safe": 1,
+   "ms": 0.9
+  },
+  "mc": {
+   "p_hat": 0.040585,
+   "stderr": 0.0001973267791633969,
+   "n": 1000000,
+   "hits": 40585,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9953.7,
+   "z_vs_chain": -0.34
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0473,
+    "p": 0.04065296963102512,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0411,
+    "p": 0.04065296963102512,
+    "consistent": true
+   }
+  },
+  "status": "envelope-validated"
+ },
+ {
+  "name": "faulty_uniform",
+  "section": 3,
+  "provenance": "reconstruction; drift + LP pinned by shared Farkas value with faulty_loop",
+  "spec": "faulty_uniform.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0181,
+   "pa_bound": 0.0233,
+   "pw_bound": 0.0221,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_uniform",
+   "published": "0.0181",
+   "status": "ok",
+   "optimum": "2/111",
+   "certified_optimal": true,
+   "n_constraints": 23,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "181/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/999",
+    "1",
+    "20/999"
+   ],
+   "ms": 2.6
+  },
+  "mc": {
+   "p_hat": 0.018582,
+   "stderr": 9.549007612312391e-05,
+   "n": 2000000,
+   "hits": 37164,
+   "unabsorbed": 0,
+   "t_max": 400,
+   "seed": 46101,
+   "ms": 6294.0
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0233,
+    "p": 0.018582,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0221,
+    "p": 0.018582,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_unreliable",
+  "section": 1,
+  "provenance": "reconstruction candidate (zero-drift progress walk); negative-fingerprint + envelope validated only",
+  "spec": "faulty_unreliable.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": "none",
+   "pa_bound": 0.0553,
+   "pw_bound": 0.0536,
+   "pa_success": 0.9,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_unreliable",
+   "published": "none",
+   "status": "ok",
+   "optimum": "1",
+   "certified_optimal": true,
+   "n_constraints": 24,
+   "tight": [
+    "nonincrease",
+    "indicating",
+    "nonincrease"
+   ],
+   "ceil4": "1",
+   "match": true,
+   "kind": "negative",
+   "certificate": [
+    "0",
+    "0",
+    "1"
+   ],
+   "ms": 13.4
+  },
+  "chain": {
+   "p_true": "27763255982230078815760024000/537463858610260063487616041999",
+   "p_true_float": 0.051656042610973965,
+   "n_active": 10,
+   "n_bad": 10,
+   "n_safe": 1,
+   "ms": 0.4
+  },
+  "mc": {
+   "p_hat": 0.051807,
+   "stderr": 0.00022163716915490504,
+   "n": 1000000,
+   "hits": 51807,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9331.9,
+   "z_vs_chain": 0.68
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0553,
+    "p": 0.051656042610973965,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0536,
+    "p": 0.051656042610973965,
+    "consistent": true
+   }
+  },
+  "status": "envelope-validated"
+ },
+ {
+  "name": "faulty_varying",
+  "section": 2,
+  "provenance": "reconstruction candidate (regions-swapped concave); worst-region pinned by shared Farkas value",
+  "spec": "faulty_varying.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.1819,
+   "pa_bound": 0.0864,
+   "pw_bound": 0.0865,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_varying",
+   "published": "0.1819",
+   "status": "ok",
+   "optimum": "2/11",
+   "certified_optimal": true,
+   "n_constraints": 24,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "1819/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/99",
+    "1",
+    "20/99"
+   ],
+   "ms": 2.2
+  },
+  "chain": {
+   "p_true": "54099579295951941142/778736499726882567871",
+   "p_true_float": 0.06947096908251466,
+   "n_active": 9,
+   "n_bad": 9,
+   "n_safe": 1,
+   "ms": 0.3
+  },
+  "mc": {
+   "p_hat": 0.069985,
+   "stderr": 0.00025512173520694,
+   "n": 1000000,
+   "hits": 69985,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9357.7,
+   "z_vs_chain": 2.01
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0864,
+    "p": 0.06947096908251466,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0865,
+    "p": 0.06947096908251466,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_varying__last_step",
+  "section": 2,
+  "provenance": "reconstruction alternate for faulty_varying",
+  "spec": "faulty_varying__last_step.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.1819,
+   "pa_bound": 0.0864,
+   "pw_bound": 0.0865,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_varying__last_step",
+   "published": "0.1819",
+   "status": "ok",
+   "optimum": "2/11",
+   "certified_optimal": true,
+   "n_constraints": 24,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "1819/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/99",
+    "1",
+    "20/99"
+   ],
+   "ms": 2.2
+  },
+  "chain": {
+   "p_true": "327278836377381823418182/9255530333006878075346191",
+   "p_true_float": 0.03536035479352781,
+   "n_active": 9,
+   "n_bad": 9,
+   "n_safe": 1,
+   "ms": 0.3
+  },
+  "mc": {
+   "p_hat": 0.035451,
+   "stderr": 0.00018491680994166,
+   "n": 1000000,
+   "hits": 35451,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9419.6,
+   "z_vs_chain": 0.49
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0864,
+    "p": 0.03536035479352781,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0865,
+    "p": 0.03536035479352781,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_walk",
+  "section": 3,
+  "provenance": "reconstruction; LP value 12/999 pinned, D/advance split degenerate (see __det12 alt); SAS'10 walk lineage",
+  "spec": "faulty_walk.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0121,
+   "pa_bound": 0.0173,
+   "pw_bound": 0.0166,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_walk",
+   "published": "0.0121",
+   "status": "ok",
+   "optimum": "4/333",
+   "certified_optimal": true,
+   "n_constraints": 17,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "121/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-2/999",
+    "1",
+    "14/999"
+   ],
+   "ms": 2.1
+  },
+  "chain": {
+   "p_true": "12000040000012000/1006015020015006001",
+   "p_true_float": 0.011928291090358674,
+   "n_active": 6,
+   "n_bad": 6,
+   "n_safe": 1,
+   "ms": 0.2
+  },
+  "mc": {
+   "p_hat": 0.012053,
+   "stderr": 0.00010912252375655541,
+   "n": 1000000,
+   "hits": 12053,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9497.3,
+   "z_vs_chain": 1.14
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0173,
+    "p": 0.011928291090358674,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0166,
+    "p": 0.011928291090358674,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "faulty_walk__det12",
+  "section": 3,
+  "provenance": "reconstruction alternate (fingerprint-degenerate twin of faulty_walk)",
+  "spec": "faulty_walk__det12.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0121,
+   "pa_bound": 0.0173,
+   "pw_bound": 0.0166,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "faulty_walk__det12",
+   "published": "0.0121",
+   "status": "ok",
+   "optimum": "4/333",
+   "certified_optimal": true,
+   "n_constraints": 29,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "121/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-1/999",
+    "1",
+    "13/999"
+   ],
+   "ms": 2.3
+  },
+  "chain": {
+   "p_true": "11934219505791076791505219934011999/1000000000000000000000000000000000000",
+   "p_true_float": 0.011934219505791077,
+   "n_active": 12,
+   "n_bad": 12,
+   "n_safe": 1,
+   "ms": 0.3
+  },
+  "mc": {
+   "p_hat": 0.011974,
+   "stderr": 0.00010876866885275374,
+   "n": 1000000,
+   "hits": 11974,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9501.0,
+   "z_vs_chain": 0.37
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0173,
+    "p": 0.011934219505791077,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0166,
+    "p": 0.011934219505791077,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "fixed_loop",
+  "section": 3,
+  "provenance": "reconstruction; advance-determinism + init pinned by Farkas fingerprint + neural envelope",
+  "spec": "fixed_loop.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0091,
+   "pa_bound": 0.0095,
+   "pw_bound": 0.0094,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "fixed_loop",
+   "published": "0.0091",
+   "status": "ok",
+   "optimum": "1/111",
+   "certified_optimal": true,
+   "n_constraints": 23,
+   "tight": [
+    "nonincrease",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "91/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "-1/999",
+    "1",
+    "10/999"
+   ],
+   "ms": 4.4
+  },
+  "chain": {
+   "p_true": "8964083874125916035991001/1000000000000000000000000000",
+   "p_true_float": 0.008964083874125915,
+   "n_active": 9,
+   "n_bad": 9,
+   "n_safe": 1,
+   "ms": 0.5
+  },
+  "mc": {
+   "p_hat": 0.008972,
+   "stderr": 9.429476770213712e-05,
+   "n": 1000000,
+   "hits": 8972,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9569.8,
+   "z_vs_chain": 0.08
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0095,
+    "p": 0.008964083874125915,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0094,
+    "p": 0.008964083874125915,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "persist_2d",
+  "section": 1,
+  "provenance": "reconstruction open; noise class undetermined by the paper (Gaussian live per grammar)",
+  "spec": "persist_2d.toml",
+  "open": true,
+  "published": {
+   "farkas_bound": "none",
+   "pa_bound": 0.1026,
+   "pw_bound": 0.1175,
+   "pa_success": 0.9,
+   "pw_success": 0.9
+  },
+  "status": "open"
+ },
+ {
+  "name": "repulse100",
+  "section": 2,
+  "provenance": "listing verbatim (v7 l.1086-1097)",
+  "spec": "repulse100.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0991,
+   "pa_bound": 0.0288,
+   "pw_bound": 0.0268,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "repulse100",
+   "published": "0.0991",
+   "status": "ok",
+   "optimum": "10/101",
+   "certified_optimal": true,
+   "n_constraints": 103,
+   "tight": [
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "991/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "1/101",
+    "0"
+   ],
+   "ms": 4.5
+  },
+  "chain": {
+   "p_true": "58/606973307099993770613",
+   "p_true_float": 9.555609665458482e-20,
+   "n_active": 101,
+   "n_bad": 1,
+   "n_safe": 2,
+   "ms": 2.4
+  },
+  "mc": {
+   "p_hat": 0.0,
+   "stderr": 0.0,
+   "n": 1000000,
+   "hits": 0,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 8889.8,
+   "z_vs_chain": -0.0
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0288,
+    "p": 9.555609665458482e-20,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0268,
+    "p": 9.555609665458482e-20,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "repulse100_2d",
+  "section": 2,
+  "provenance": "reconstruction; x-dynamics pinned by shared Farkas value; y-dynamics candidate (spectator walk)",
+  "spec": "repulse100_2d.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0991,
+   "pa_bound": 0.0568,
+   "pw_bound": 0.0541,
+   "pa_success": 1.0,
+   "pw_success": 1.0
+  },
+  "farkas": {
+   "name": "repulse100_2d",
+   "published": "0.0991",
+   "status": "ok",
+   "optimum": "10/101",
+   "certified_optimal": true,
+   "n_constraints": 1125,
+   "tight": [
+    "nonneg",
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "991/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "1/101",
+    "0",
+    "0"
+   ],
+   "ms": 3143.5
+  },
+  "chain": {
+   "p_true": "58/606973307099993770613",
+   "p_true_float": 9.555609665458482e-20,
+   "n_active": 1111,
+   "n_bad": 11,
+   "n_safe": 22,
+   "ms": 220318.0
+  },
+  "mc": {
+   "p_hat": 0.0,
+   "stderr": 0.0,
+   "n": 1000000,
+   "hits": 0,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 10329.2,
+   "z_vs_chain": -0.0
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0568,
+    "p": 9.555609665458482e-20,
+    "consistent": true
+   },
+   "pw_bound": {
+    "bound": 0.0541,
+    "p": 9.555609665458482e-20,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "repulse100_uniform",
+  "section": 2,
+  "provenance": "reconstruction; noise class selected by program-aware-failure evidence; Farkas matched under shared-A convention",
+  "spec": "repulse100_uniform.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0991,
+   "pa_bound": 0.0344,
+   "pw_bound": "none",
+   "pa_success": 1.0,
+   "pw_success": "none"
+  },
+  "farkas": {
+   "name": "repulse100_uniform",
+   "published": "0.0991",
+   "status": "ok",
+   "optimum": "10/101",
+   "certified_optimal": true,
+   "n_constraints": 103,
+   "tight": [
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "991/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "1/101",
+    "0"
+   ],
+   "ms": 4.3
+  },
+  "mc": {
+   "p_hat": 0.0,
+   "stderr": 0.0,
+   "n": 2000000,
+   "hits": 0,
+   "unabsorbed": 0,
+   "t_max": 1500,
+   "seed": 46102,
+   "ms": 22623.3
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0344,
+    "p": 0.0,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ },
+ {
+  "name": "repulse100_uniform__discrete",
+  "section": 2,
+  "provenance": "reconstruction alternate (discrete-uniform reading)",
+  "spec": "repulse100_uniform__discrete.toml",
+  "open": false,
+  "published": {
+   "farkas_bound": 0.0991,
+   "pa_bound": 0.0344,
+   "pw_bound": "none",
+   "pa_success": 1.0,
+   "pw_success": "none"
+  },
+  "farkas": {
+   "name": "repulse100_uniform__discrete",
+   "published": "0.0991",
+   "status": "ok",
+   "optimum": "10/101",
+   "certified_optimal": true,
+   "n_constraints": 103,
+   "tight": [
+    "nonneg",
+    "indicating"
+   ],
+   "ceil4": "991/10000",
+   "match": true,
+   "kind": "positive",
+   "certificate": [
+    "1/101",
+    "0"
+   ],
+   "ms": 5.0
+  },
+  "chain": {
+   "p_true": "1400/95222056896641065039964330469865947377",
+   "p_true_float": 1.4702475934957298e-35,
+   "n_active": 101,
+   "n_bad": 1,
+   "n_safe": 2,
+   "ms": 3.2
+  },
+  "mc": {
+   "p_hat": 0.0,
+   "stderr": 0.0,
+   "n": 1000000,
+   "hits": 0,
+   "unabsorbed": 0,
+   "t_max": 2000,
+   "seed": 461,
+   "ms": 9600.9,
+   "z_vs_chain": -0.0
+  },
+  "envelope": {
+   "pa_bound": {
+    "bound": 0.0344,
+    "p": 1.4702475934957298e-35,
+    "consistent": true
+   }
+  },
+  "status": "fingerprint-pinned"
+ }
+]

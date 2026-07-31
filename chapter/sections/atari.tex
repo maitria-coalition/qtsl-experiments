@@ -1,0 +1,133 @@
+\section{Atari as a circuit: making the environment white-box}
+\label{sec:exp-atari}
+
+The fourth campaign closes a loop between the previous two. It takes
+an environment family from the reinforcement-learning suite's hardest
+tier --- Atari 2600 games, which Gymnasium reaches through an
+emulator plugin --- and turns each game into an object of the
+hardware campaign's kind. Rather than treating the emulator as a
+black box to be sampled, the campaign compiles the console itself
+into a synchronous digital circuit: an open-source Verilog
+implementation of the 2600 (vendor-pinned, with three local repairs,
+each carried in a ledger) is synthesized with the game ROM baked in,
+down to an and-inverter graph. Pong closes to a circuit with $52$
+input bits, $1{,}491$ flip-flops, and $20{,}821$ AND gates; Freeway
+to $52$/$1{,}491$/$20{,}798$; Montezuma's Revenge --- whose
+$8$\,KB bank-switched cartridge brings its mapper hardware into the
+netlist alongside the console --- to $52$/$1{,}501$/$36{,}698$. The
+machines' full state spaces are $2^{1491}$ and $2^{1501}$.
+
+This is where the scope condition of section~\ref{sec:exp-claims} has
+its teeth, so it bears restating in this campaign's terms: the
+toolkit can actually \emph{examine} the environment's digital-circuit
+structure. The transition relation is a given, finite, white-box
+object, and every claim species of this chapter becomes definable
+over it --- the ranking rows of section~\ref{sec:exp-circuits} apply
+to the environment itself, not to an abstraction of it. System
+identification --- recovering such a circuit from observations of
+play --- is a separate problem, and one the toolkit does not yet have
+tools for. Nothing in this campaign learns the environment; it is
+handed the mechanism and reasons about it.
+
+What is landed at this preview is the foundation tier: the compiled
+circuits and their fidelity receipts. Differential validation runs
+the circuit and the suite's own emulator (ale-py) frame-locked, side
+by side: on Pong and Freeway, episode returns are \emph{identical} --- Pong's
+rally period is exactly $140$ frames on both; Freeway's first
+crossing lands on the same frame --- and $116$--$123$ of the $128$
+RAM bytes match exactly on every frame, with each remaining
+divergence assigned to a named class (an input-transduction mismatch,
+since resolved by measurement; a one-to-two-frame boot-time skew
+attributed to the pinned CPU core's known non-cycle-exactness)
+rather than left as noise. One finding from this validation is
+recorded as a surprise: the emulator's RAM trace is invariant across
+its random seeds --- for these games, the suite's stochasticity lives
+in frame-skip and action timing, not in the machine.
+
+The first certified rows above that foundation landed as this
+preview closed: exact-replay returns --- worst-case over the suite's
+full initial-condition randomization, all $31$ no-op offsets (species
+U1 of section~\ref{sec:exp-claims}) --- for a fixed open-loop
+policy, certified by a checker whose only dynamics
+authority is the compiled circuit itself --- ``this policy scores
+$R$'' turned from a measurement into a theorem about the circuit.
+Table~\ref{tab:exp-atari} shows the rows. The Freeway row carries a
+finding: the certified per-offset returns span $\{2,3,4\}$, so a
+single rollout of this policy reports a number drawn from the init
+lottery, and the certified minimum ($2$) sits strictly below the
+modal return --- the gap between ``return of a rollout'' and ``return
+guaranteed over the init set,'' exhibited concretely.
+
+The last two rows take the same claim species to Montezuma's Revenge
+--- the suite's canonical hard-exploration benchmark, the game whose
+sparse rewards famously held early deep reinforcement-learning agents
+to a score of zero. To our knowledge these are the first certified
+return claims for this game at any claim class; every published
+Montezuma number is an empirical rollout statistic. The certified
+content is exact: reaching the first key (return $100$) is certified
+at \emph{every} one of the $31$ no-op init offsets, and a
+$1{,}548$-frame trajectory that collects the key and opens a door of
+the first room is certified at return exactly $400$ from the declared
+initial state --- each reward event pinned to its frame, all
+$128.5$ million netlist clock ticks of the replay re-derived by the
+checker, every frame of the pinned witness traces compared bit-exact.
+The rows' structure carries a finding of the Freeway kind, amplified:
+a committed instrument row certifies that the fixed key script which
+scores $100$ at offset zero scores exactly $0$ at every other offset
+--- total collapse under the init lottery, where Freeway's spread was
+one point --- so the per-offset row holds thirty-one separately
+searched scripts, one per offset. Transfer fails the same way at
+finer grain: a script optimized against the reference emulator, where
+it scores $400$, scores only $100$ when replayed through the circuit,
+losing a life at a pixel-perfect skull crossing that succeeds under
+the emulator's timing and fails under the circuit's. Trajectories
+that certify on the circuit were searched on the circuit; the
+searcher is producer-side and untrusted, and nothing about how the
+scripts were found enters the trust story --- the certificate is the
+exact replay.
+
+In flight at this preview: liveness rows over the compiled circuit at
+the previous section's claim classes, and policy rows --- closed-loop
+pixels-to-action policies rather than fixed scripts --- for the games
+themselves; toward the latter, the checker has already grown a pixel
+lane, which on the key trajectory compared every one of the
+$26{,}997{,}440$ pixels the game renders across its $706$ frames
+bit-exact against the circuit's video output.
+Each will carry the same receipts discipline as every table above.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}%
+\input{generated/atari-table.tex}
+\caption{Certified exact-replay rows (worst-case species U1 of
+section~\ref{sec:exp-claims}); each environment is the compiled
+circuit \texttt{AtariCircuit-}$\langle$game$\rangle$. ``Min return''
+is the certified minimum over the row's declared init set
+(exact, hence the exact-cell tint of
+section~\ref{sec:exp-conventions}) --- all
+$31$ no-op offsets, except that the key+door row declares the single
+offset $k=0$; the per-offset Montezuma row certifies one separately
+searched script per offset. Check times are single-core replay of
+the claim's own circuit.}
+\label{tab:exp-atari}
+\end{table}
+
+\paragraph{What is not claimed.} These exact-replay rows are the
+certified ladder's weakest rung --- a fixed open-loop policy, exact replay, no
+quantification over adversaries and no learned certificate --- and
+their receipts say so; no liveness or policy-optimality claim is
+stated for any Atari game at this preview. The Montezuma key+door row
+in particular quantifies over nothing: one declared initial state,
+one script, $1{,}548$ frames --- it certifies that score on that
+trajectory exactly and is silent about the rest of the game. Nothing
+here ``solves'' Montezuma's Revenge; what is new is that a Montezuma
+score is carried by a machine-checked certificate against the
+machine's own transition relation instead of by a rollout report.
+The five-to-twelve
+divergent RAM bytes per frame in the emulator differential are
+declared, not resolved; the CPU core's cycle-exactness is a
+named seam of exactly the circuit-manifest kind
+(section~\ref{sec:exp-circuits}); and claims about the emulator
+itself rest on the differential receipts alone. The white-box
+condition above is load-bearing: none of this machinery applies to an
+environment whose mechanism cannot be handed over.

@@ -1,0 +1,143 @@
+{
+  "machine": "GB10 workstation (aarch64)",
+  "schema": "fluid-drift-cover-v1",
+  "dataset": "mimac-set7-fab7",
+  "rows": [
+    {
+      "name": "lbfs_core_th100",
+      "policy": "lbfs",
+      "variant": "core",
+      "theta": "1/10",
+      "theta_float": 0.1,
+      "eps_emitted": "2436613/10000000",
+      "eps_max_exact": "2436613/10000000",
+      "eps_float": 0.2436613,
+      "sha256": "ec97dd97e2ff3c0d4ec4c2ad79696645c7e2e9cba4f1df14851e122257933e24",
+      "byte_stable": true,
+      "checker": "ACCEPT modes=172 obligations=59340 eps=2436613/10000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1/10 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=52900 verify_us=40861 bench_n=20 verify_min_ns=34287237 verify_median_ns=34825114"
+    },
+    {
+      "name": "lbfs_core_th125",
+      "policy": "lbfs",
+      "variant": "core",
+      "theta": "1/8",
+      "theta_float": 0.125,
+      "eps_emitted": "2728831/50000000",
+      "eps_max_exact": "436613/8000000",
+      "eps_float": 0.05457662,
+      "sha256": "65fcdb8fd3ecd6f92f1c785fa8b22df98ba1fa4df4df4b35e2cb8250fbb26a7d",
+      "byte_stable": true,
+      "checker": "ACCEPT modes=172 obligations=59340 eps=2728831/50000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1/8 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=86850 verify_us=67650 bench_n=20 verify_min_ns=17664904 verify_median_ns=18317806"
+    },
+    {
+      "name": "lbfs_core_th132",
+      "policy": "lbfs",
+      "variant": "core",
+      "theta": "33/250",
+      "theta_float": 0.132,
+      "eps_emitted": "163291/100000000",
+      "eps_max_exact": "408229/250000000",
+      "eps_float": 0.00163291,
+      "sha256": "4b2c2dc2df9f33324ac3947c1b697a8a8c4bceb20ea5a632b28ffb381c3122b2",
+      "byte_stable": true,
+      "checker": "ACCEPT modes=172 obligations=59340 eps=163291/100000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=33/250 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=32009 verify_us=22317 bench_n=20 verify_min_ns=17502822 verify_median_ns=18139740"
+    },
+    {
+      "name": "fbfs_core_th125",
+      "policy": "fbfs",
+      "variant": "core",
+      "theta": "1/8",
+      "theta_float": 0.125,
+      "eps_emitted": "2728831/50000000",
+      "eps_max_exact": "436613/8000000",
+      "eps_float": 0.05457662,
+      "sha256": "5a51c9424f28f1af09b7dd96935a87adfb9b07c4d50a2d3ad4cdbf7c91551c44",
+      "byte_stable": true,
+      "checker": "ACCEPT modes=172 obligations=59340 eps=2728831/50000000 model=\"MIMAC set7 (Fab7) core skeleton, FBFS, theta=1/8 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=48268 verify_us=40149 bench_n=20 verify_min_ns=17903722 verify_median_ns=33787936"
+    },
+    {
+      "name": "lbfs_avail_th100",
+      "policy": "lbfs",
+      "variant": "avail",
+      "theta": "1/10",
+      "theta_float": 0.1,
+      "eps_emitted": "13626331/100000000",
+      "eps_max_exact": "144377523874910951618270187273317720485530406824009/1059547968843032433775629589738232078082931000000000",
+      "eps_float": 0.13626331,
+      "sha256": "8cdb89e48bcd769ec9324c163a7ef89a3fc709f78f8d87d4492301e11fca4734",
+      "byte_stable": true,
+      "checker": "ACCEPT modes=172 obligations=59340 eps=13626331/100000000 model=\"MIMAC set7 (Fab7) avail skeleton, LBFS, theta=1/10 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=32213 verify_us=32458 bench_n=20 verify_min_ns=27548837 verify_median_ns=28380766"
+    },
+    {
+      "name": "lbfs_avail_th115",
+      "policy": "lbfs",
+      "variant": "avail",
+      "theta": "23/200",
+      "theta_float": 0.115,
+      "eps_emitted": "670281/100000000",
+      "eps_max_exact": "142039142593854585893325538071611336918406356952207/21190959376860648675512591794764641561658620000000000",
+      "eps_float": 0.00670281,
+      "sha256": "96b1466fe31c2448a494d89c73d542ec5b26ec741847f3b59e29d112b6dbd601",
+      "byte_stable": true,
+      "checker": "ACCEPT modes=172 obligations=59340 eps=670281/100000000 model=\"MIMAC set7 (Fab7) avail skeleton, LBFS, theta=23/200 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=117171 verify_us=120330 bench_n=20 verify_min_ns=53117160 verify_median_ns=57465937"
+    }
+  ],
+  "probes": [
+    {
+      "policy": "lbfs",
+      "variant": "core",
+      "theta": "27/200",
+      "eps_max_float": -0.021057245,
+      "verdict": "no certificate at station-top granularity (correctly)"
+    },
+    {
+      "policy": "lbfs",
+      "variant": "avail",
+      "theta": "3/25",
+      "eps_max_float": -0.03648401606670453,
+      "verdict": "no certificate at station-top granularity (correctly)"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "eps_inflated",
+      "expect_locus": "drift-bound",
+      "verdict": "REFUSE locus=drift-bound detail=cell 0: dual value exceeds -eps - <w,lambda>",
+      "ok": true
+    },
+    {
+      "name": "neg_y",
+      "expect_locus": "dual-sign",
+      "verdict": "REFUSE locus=dual-sign detail=cell 0: y[318] < 0",
+      "ok": true
+    },
+    {
+      "name": "bump_z",
+      "expect_locus": "identity",
+      "verdict": "REFUSE locus=identity detail=cell 1: column 313 combination != objective",
+      "ok": true
+    },
+    {
+      "name": "drop_cell",
+      "expect_locus": "wf",
+      "verdict": "REFUSE locus=wf detail=cover has 172 cells but certificate carries 171 duals",
+      "ok": true
+    },
+    {
+      "name": "swap_duals",
+      "expect_locus": "identity",
+      "verdict": "REFUSE locus=identity detail=cell 0: column 244 combination != objective",
+      "ok": true
+    },
+    {
+      "name": "unsorted_y",
+      "expect_locus": "shape",
+      "verdict": "REFUSE locus=shape detail=cell 0: y indices not strictly ascending at 538",
+      "ok": true
+    }
+  ],
+  "ceiling_core_exact": "1000000/7563387",
+  "ceiling_core_float": 0.13221589745440765,
+  "ceiling_avail_exact": "105954796884303243377562958973823207808293100000000/915170444968121482157359402464914357597400593175991",
+  "ceiling_avail_float": 0.11577602562110058
+}

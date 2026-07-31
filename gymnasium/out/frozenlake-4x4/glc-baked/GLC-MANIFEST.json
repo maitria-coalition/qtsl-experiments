@@ -1,0 +1,199 @@
+{
+  "checker": "glc-check --baked-cert (container + envelope integrity, then claim-row discharge against the DERIVED dc index: the qtsl_deadline_table claim row per node walks WF/B/S/C from the node's closure alone over the chain's dprob/dinit rows — absorbing states are explicit self-loop rows, no action/policy layer exists; pass --expect-claims from this manifest; zero-claim containers REFUSE)",
+  "exclusions": [
+    {
+      "obstructing_states": [
+        0,
+        2
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T25.cbor",
+      "stem": "exact_T25"
+    },
+    {
+      "obstructing_states": [
+        0,
+        2
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T50.cbor",
+      "stem": "exact_T50"
+    },
+    {
+      "obstructing_states": [
+        0,
+        2
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T100.cbor",
+      "stem": "exact_T100"
+    },
+    {
+      "obstructing_states": [
+        0,
+        2
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k16_T100.cbor",
+      "stem": "dyadic_k16_T100"
+    },
+    {
+      "obstructing_states": [
+        0,
+        2
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k24_T100.cbor",
+      "stem": "dyadic_k24_T100"
+    },
+    {
+      "obstructing_states": [
+        0,
+        2
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k32_T100.cbor",
+      "stem": "dyadic_k32_T100"
+    },
+    {
+      "obstructing_states": [
+        0,
+        2
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k48_T100.cbor",
+      "stem": "dyadic_k48_T100"
+    }
+  ],
+  "family": "gym-hit-baked-v1",
+  "format": ".glc — sealed geolog commit containers (single commit, single dc prereq)",
+  "mode_flag": "--baked-cert",
+  "mutants": [
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/b1_table_raised.glc",
+      "glc_sha256": "d2e0e46fbcd7da9f661279f6d4fbf4e4b55bb6cdf3c5e132a0bf948b0ffb0332",
+      "locus": "V_0(init) raised one grain above the backward-induction value (step obligation)",
+      "mutant": "b1_table_raised"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/b2_claim_inflated.glc",
+      "glc_sha256": "3eb4013b22a1db9d39048b750eb9b353b7cc2a1191c176e611e03bc16d656c88",
+      "locus": "claimed bound raised one grain above V_0(init) (claim obligation)",
+      "mutant": "b2_claim_inflated"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/b3_outcome_bumped.glc",
+      "glc_sha256": "ad08717ef26e4054a0cd1db468a95ac27793265c892b8a752ed883fcc9bdba78",
+      "locus": "first outcome probability bumped one grain (row-mass obligation)",
+      "mutant": "b3_outcome_bumped"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/b4_dinit_cut.glc",
+      "glc_sha256": "6d5c32ab04c26c52b8664d5a72a1db31b9f015e062012b98b13de33b162ec20f",
+      "locus": "the initial point mass rewritten to 1/2 (init-mass obligation)",
+      "mutant": "b4_dinit_cut"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/b5_goal_dropped.glc",
+      "glc_sha256": "42b92900abe9a33ca85f71b1d9750b3cfe2d8a67eef6840b57a0a087957b0633",
+      "locus": "goal region emptied (lower atom raised past the upper); boundary obligation at the true goal",
+      "mutant": "b5_goal_dropped"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/b6_boundary.glc",
+      "glc_sha256": "106c6a4072803e8f9edbce044cc691372674749aa32b32e9c4c92e8684b510df",
+      "locus": "V_T at a non-goal state raised from 0 to 1 (boundary obligation)",
+      "mutant": "b6_boundary"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/b7_claim_dropped.glc",
+      "glc_sha256": "730b6580fb6985049c8ec25c96119801b3d071216a9f4d65932dbceb3f2aaea0",
+      "locus": "the claim row popped (zero-claim containers refuse the vacuous accept)",
+      "mutant": "b7_claim_dropped"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/b8_body_byte.glc",
+      "glc_sha256": "d45ee4e29df1c80c3fe7b116929fd3d83e7185800bf35c9743cb03e27409eae2",
+      "locus": "one body byte flipped (body-hash binding)",
+      "mutant": "b8_body_byte"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/b9_sig_byte.glc",
+      "glc_sha256": "282d372009432392c0d0d1b766755985260a0e9ea4fb91b9ed661122f23e21c4",
+      "locus": "one signature byte flipped (signature verification)",
+      "mutant": "b9_sig_byte"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/b10_truncated.glc",
+      "glc_sha256": "60e3095268747ebd4b12e20e7a069a9571a95db7cf599ce798465be05b7a74bd",
+      "locus": "container truncated 40 bytes short (grammar)",
+      "mutant": "b10_truncated"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/b11_magic.glc",
+      "glc_sha256": "71e36650b03a28505d1ee0986878af2b036fdda5964f349420cca7853177d80d",
+      "locus": "magic corrupted (not a geolog container)",
+      "mutant": "b11_magic"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/b12_version.glc",
+      "glc_sha256": "0bacb5a7faced594f63ba033bfe80736063960c74b6b5e885fc974fe1d7dc057",
+      "locus": "container version bumped to 2 (unsupported by this reader)",
+      "mutant": "b12_version"
+    },
+    {
+      "base": "exact_T5",
+      "expected": "FAIL",
+      "file": "mutants/b13_le_v0_raised.glc",
+      "glc_sha256": "1e6a99bbd01a9903df1151519275a411a37ed66828d23d786401077a3652aef6",
+      "locus": "V_0(init) raised on the LE-face certificate — the super-solution table survives the raise; the mixture above the claimed upper bound q = 0 is the single falsifier (claim obligation)",
+      "mutant": "b13_le_v0_raised"
+    }
+  ],
+  "positives": [
+    {
+      "claim": "0",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "face": "SProbLE",
+      "file": "exact_T5.glc",
+      "glc_sha256": "329a75bd890b3a3af04ed6be4a7a913a97ce3e75f8e705be6f37dbccdf7b436d",
+      "selection": "0:0 1:0 2:0 3:0 4:0 5:loop 6:0 7:loop 8:0 9:0 10:0 11:loop 12:loop 13:0 14:0 15:loop",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T5.cbor"
+    },
+    {
+      "claim": "815/19683",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "face": "SProbGE",
+      "file": "exact_T10.glc",
+      "glc_sha256": "fb8c45a806bc7d5ef1225a634749c94a2efd1204dab974e7335433091060161b",
+      "selection": "0:1 1:3 2:2 3:3 4:0 5:loop 6:0 7:loop 8:3 9:1 10:0 11:loop 12:loop 13:2 14:1 15:loop",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T10.cbor"
+    }
+  ]
+}

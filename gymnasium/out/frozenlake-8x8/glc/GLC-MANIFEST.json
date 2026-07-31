@@ -1,0 +1,73 @@
+{
+  "checker": "glc-check (container + envelope integrity, then obligation ENUMERATION from the sealed rows — every QDeadlineTable rule node discharged through the exact-rational deadline-table walk: WF/B/S/C recomputed from the node's closure alone, absorbing self-loops determined from DState/absorbing marks, dyadic tables embedded exactly in Q; pass the mode flag --gym (a prerequisite-table assertion) plus --expect-claims from this manifest; zero-node containers REFUSE)",
+  "family": "gym-hit-v0",
+  "format": ".glc — sealed geolog commit containers (single commit per certificate)",
+  "mode_flag": "--gym",
+  "mutants": [],
+  "positives": [
+    {
+      "claim": "10919075365/847288609443",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T25.glc",
+      "glc_sha256": "f0c82a9882a48a6a818602f75da20bb09a48dee515620db523d2a16119618217",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T25.cbor"
+    },
+    {
+      "claim": "163932893256526120275536/717897987691852588770249",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T50.glc",
+      "glc_sha256": "d51339f9dd07c93ffedd8df4e366cb3d37d8a6374c62e85d5edaedc2d471bdbc",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T50.cbor"
+    },
+    {
+      "claim": "330212308997432874019625029655474284010893178749/515377520732011331036461129765621272702107522001",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T100.glc",
+      "glc_sha256": "29faeaf7e8e44872281bcc2b2ab775a8cc1223ba8a3d20416ef6ffd5a5d46a0d",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T100.cbor"
+    },
+    {
+      "claim": "242564046816878609457126251570661721844569994797946973146743220640505103761463925939752700902225/265613988875874769338781322035779626829233452653394495974574961739092490901302182994384699044001",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T200.glc",
+      "glc_sha256": "7ba68edcadd76d4f035b1f42b1bafc796d9fe1b743575bd631ecce88169e4409",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T200.cbor"
+    },
+    {
+      "claim": "29907/32768",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k16_T200.glc",
+      "glc_sha256": "eaf96d12d27a922d85446aba408b0da3216cbe0f7d1f86640eded0344841c3a3",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k16_T200.cbor"
+    },
+    {
+      "claim": "15321257/16777216",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k24_T200.glc",
+      "glc_sha256": "d8a1678a0046ce3d6b86d656aebdde99148c2d23d964d8c006bfc8c172078fde",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k24_T200.cbor"
+    },
+    {
+      "claim": "3922250645/4294967296",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k32_T200.glc",
+      "glc_sha256": "d338103d129575fcb80c359de3d9bb3c7fb7d6a3ec1f6b6704492e9ae2d862bd",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k32_T200.cbor"
+    },
+    {
+      "claim": "128524310254835/140737488355328",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k48_T200.glc",
+      "glc_sha256": "2557638f8daa8e0580f9fd95e374e0145a5cc6bab488bb4f94eb03ba27c5d20c",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k48_T200.cbor"
+    }
+  ]
+}

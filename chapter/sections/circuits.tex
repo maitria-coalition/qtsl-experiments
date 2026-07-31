@@ -1,0 +1,223 @@
+\section{Hardware model checking: certificates where verdicts were}
+\label{sec:exp-circuits}
+
+The third campaign targets a benchmark from a different community: the
+hardware model-checking suite introduced by the neural model-checking
+line of work (Giacobbe, Kroening, Pal, and Tautschnig, \emph{Neural
+Model Checking}, NeurIPS 2024, arXiv 2410.23790) and extended by the
+same group at NeurIPS 2025 (\emph{Let a Neural Network Be Your
+Invariant}) --- eleven Verilog designs (UART and I\textsuperscript{2}C
+controllers, VGA and LCD drivers, PWM, counter, and
+thermocouple-interface blocks), each with a ladder of parameter
+instances, under three
+property classes: $219$ pure-liveness tasks
+($\mathsf{FG}\,\alpha \to \mathsf{GF}\,\beta$), $206$ safety tasks, and
+$209$ combined safety-plus-liveness tasks (premise-guarded
+until-properties such as $\mathsf{G}(r \to p\,\mathsf{U}\,q)$) ---
+$634$ verification tasks in all. The published pipelines train a
+neural certificate per task --- a ranking function by gradient descent
+in 2024; ranking and invariant functions by MILP in 2025 --- quantize
+it, and hand a single validity query to an SMT solver; the reported
+verdict per task is the solver's ``unsat.'' The baselines are mature
+model checkers (nuXmv, ABC, rIC3), and the experimental budget is five
+hours per task.
+
+The toolkit's route is structurally different, and the difference is
+the point. Every one of the $634$ specifications reduces, by a chain
+of temporal rewrite steps, to conjunctions of two certified forms:
+pure recurrence $\mathsf{GF}\,\gamma$, discharged by a ranking
+function --- piecewise-affine with exact rational coefficients over a
+cell partition of the circuit's own branch structure, input wires
+resolved demonically (universally) at every step --- and $k$-step
+safety windows, discharged by obligations on the exact one-step image
+(plus small inductive invariants on the four families that need
+them). No
+B\"uchi automaton and no product construction appears anywhere on the
+suite. The trust story is layered the same way at every level: the
+consuming lemmas (a ranking that drops by $\varepsilon_0$ off the
+target and stays nonnegative forces target steps to recur; a window
+whose obligations hold on the reachable image holds always) are a few
+lines of mathematics each, machine-checked in Lean with no measure
+theory; every rewrite rule's soundness is machine-checked \emph{twice},
+in Lean and independently in HOL4; each task carries a rewrite-chain
+witness that a standalone checker replays from the verbatim
+specification text; and every ranking and window condition is an
+ordinary polynomial-nonnegativity row of the
+\bookref{ch:qtsl-manual}{QTSL manual} calculus, recomputed exactly in
+$\mathbb{Q}$ by standalone checkers that import nothing from the
+producers.
+
+At this preview the sweep covers the entire suite: \textbf{all $634$
+tasks, across all three classes} --- $219/219$ pure liveness ($245$
+certificates: the two conjunction families carry two per task),
+$206/206$ safety ($222$ certificates), and $209/209$
+safety-plus-liveness ($418$: one window and one recurrence certificate
+per task) --- $885$ certificates and $634$ chain witnesses in all.
+Table~\ref{tab:exp-nmc} sets this against the published field on the
+field's own numbers: the strongest single published tool, the 2025
+MILP method, completes $554$ of $634$; the per-task union of
+\emph{every} tool in the 2025 paper's comparison completes $617$.
+Seventeen tasks are completed by nothing published at all ---
+twelve pure-liveness tasks (eleven blink instances and the largest
+\texttt{load\_store} instance) and the five largest blink safety-plus-liveness
+tasks. The toolkit certifies all seventeen; blink is a counter ladder,
+and its certificates have the same shape at $N = 2^{32}$ as at
+$N = 2^{8}$.
+
+\begin{table}[htbp]
+\centering\small
+\input{generated/nmc-table.tex}
+\caption{The full NeurIPS'25 neural-model-checking suite: completions
+by property class (pure liveness $219$, safety $206$,
+safety-plus-liveness $209$). Baseline counts are recomputed from the
+2025 paper's own artefact --- its plotting script's hard-coded runtime
+arrays are the paper's published data --- at the paper's own five-hour
+timeout. The 2024 method is a liveness-only technique; the artefact
+records no runs for it outside that class (n/a). The virtual-best row
+is the per-task union of every baseline in the artefact's comparison,
+including the linear variant of the 2025 method, which is not shown as
+a separate row. The toolkit's per-task evidence is an exact-arithmetic
+certificate replayed by a standalone checker, with consuming lemmas
+machine-checked in Lean and every spec-rewrite rule machine-checked in
+both Lean and HOL4. A toolkit count carries the exact-cell tint of
+section~\ref{sec:exp-conventions} where it strictly exceeds the
+virtual best of the whole published portfolio (ties untinted).}
+\label{tab:exp-nmc}
+\end{table}
+
+Three anchoring notes travel with Table~\ref{tab:exp-nmc}. First,
+\emph{the comparison is like-for-like with the 2025 paper} and only
+approximately comparable to the 2024 publication: the benchmark's
+circuits were revised between the two editions ($142$ source files
+changed semantically, an edit the 2025 paper does not mention), and the
+toolkit certifies the revised circuits --- the same files the 2025
+re-runs measured. The 2024 method's own line shows the drift: $93\%$
+of its original $194$ tasks as published, on the 2024-era circuits;
+$172/219$ under its authors' re-run on the revised, extended class. Second, \emph{the semantics certified is the benchmark's
+exactly}: the suite's generated SMV models carry no initial-state
+constraint, so every task is a from-every-state claim under
+demonically-resolved inputs --- precisely the universal form the
+certificates prove. For the until-shaped class this was additionally
+confirmed off-calculus: an independent explicit-state model checker (a
+demonic greatest-fixpoint computation written against the
+specification semantics, not the certificate calculus) verifies each
+safety-plus-liveness property as stated on the smallest instance of
+every family, and falsifies none. Third, \emph{the completion race is
+not the durable claim} --- model checkers are healthy, and successor
+methods will contest counts. The durable column is the last one: on
+this suite, every completed task ships an auditable certificate, a
+small exact object whose consuming lemma is machine-checked, where
+every baseline --- neural or classical --- ships a verdict.
+
+The checking economics stay flat as the suite triples. Certificates
+run $0.4$--$7.4$\,KB ($98\%$ under $4$\,KB; the tail is the VGA safety
+windows); individual checks run from tens of microseconds to
+a few milliseconds; replaying every certificate \emph{and} every
+rewrite-chain witness in all three classes takes under a second of
+single-core wall-clock in total (per the class receipts: certificate
+checks of $78$, $195$, and $171$\,ms for liveness, safety, and
+safety-plus-liveness, plus $82$, $118$, and $150$\,ms of chain
+replay). Certificate size and check time are constant along each
+design's parameter ladder, with only coefficient widths growing as
+$\log N$, where the learning pipelines pay training and solving per
+instance. Per the conventions of section~\ref{sec:exp-conventions},
+the two sides' times are a contrast of kind, not a ratio --- searching
+for a proof and re-verifying a shipped one are different jobs on
+different machines: the paper reports a five-hour-per-task budget and
+roughly nine thousand machine-hours for its full experimental
+campaign; the toolkit's whole-suite certificate replay is the
+under-a-second figure above.
+
+Refusal is exercised as systematically as acceptance. Each class
+ships a mutant battery --- deliberately corrupted certificates and
+chain witnesses, each designed to be refused at one specific check:
+seventeen layer-targeted attacks with four positive controls for the
+liveness class (ported into this repository's re-check driver),
+thirteen attacks with three controls for safety, and fourteen attacks
+with nine controls for the combined class, two of those attacks
+cross-layer (accepted by the certificate checker, refused by the
+chain checker) --- and each is in fact refused at the attacked layer,
+with every control passing. The remaining producer-side trust seam is
+the circuit manifests: that the certified step system \emph{is} the
+Verilog's semantics. It is narrowed by two-simulator cross-checks,
+exhaustive on the full state--input box of each family's smallest
+instance and sampled on the largest, and --- since the safety campaign
+--- by an independent re-transcription of every design. That newest
+instrument earned its keep immediately: the two original simulators
+share an author, the first edition of this section said so as its
+declared residue, and the re-transcription caught exactly the failure
+that caveat named --- a shared misreading of one LCD counter's wrap
+point, latent in the already-swept liveness manifests. The manifests
+were repaired and the full battery re-run green within the hour; the
+fixtures in this repository are the repaired ones. Replacing this seam
+with a netlist-level bridge remains named successor work.
+
+Exact re-derivation of a published field keeps yielding findings of
+the same genre as the Gymnasium campaign's unsatisfiable Taxi
+threshold (section~\ref{sec:exp-gym}). Three from this campaign are
+worth recording. \emph{The sound premise is not the obvious one}: the
+natural liveness premise for the until-introduction rewrite rule ---
+$\mathsf{GF}\,q$, ``the window eventually closes'' --- is false
+whole-box on the I\textsuperscript{2}C family, whose clock-stretch
+freeze states never reach the window and satisfy $\lnot p$ forever
+instead; the sound premise is $\mathsf{GF}(\lnot p \lor q)$. The
+correction was forced during rule design and then observed
+semantically: the explicit-state falsifier's demon-winning regions are
+nonempty exactly on those frozen states. \emph{One task's two
+specification sources disagree}: the delay design's first combined
+property reads $\mathsf{G}\,\lnot\mathit{rst} \to \cdots$ in the
+runner's specification text but $\mathsf{FG}\,\lnot\mathit{rst} \to
+\cdots$ in the same runner's nuXmv property line. The toolkit
+certifies the specification text as stated --- the chain witness pins
+its verbatim bytes --- and records the discrepancy; certifying
+as-stated rather than as-presumably-meant is what makes such
+discrepancies visible at all. \emph{The artefact's own aggregation
+has a slip}: the 2025 plotting script assembles its safety-class
+aggregate with one VGA family's arrays included twice and the other's
+omitted. The counts in Table~\ref{tab:exp-nmc} are unaffected ---
+they are recomputed from the per-family arrays, and both VGA safety
+families are fully solved by the classical baselines --- but the
+paper's aggregate safety timing figures ride the wrong multiset. (The
+2024 edition had a kindred fossil: an appendix table summing to $177$
+completions where the summary claims $180$; the census here restored
+the three footnoted rows a naive parse drops, scoring that comparison
+in the paper's favor.)
+
+Because the producers here are benchmark-specific and written by us,
+the fair cost question is not only ``how fast is the check?'' but
+``what did it cost to \emph{get} the certificates, method invention
+included?'' --- and the campaign's working sessions are timestamped,
+so it has a measured answer. The pure-liveness campaign end-to-end ---
+reading the papers, designing the route, machine-checking the
+consuming lemma, writing the certificate format, the checker, and
+every producer, and sweeping all its tasks --- took about $75$ minutes
+of commit-stamped wall-clock on one desk-side machine (this
+repository's invention-time comparison table carries the per-phase
+receipts and its estimating conventions). The safety class and the
+combined class were each added in a single further working session the
+following day --- the combined class including six new
+until-introduction rewrite rules, each proved twice, in Lean and in
+HOL4. These figures sit beside the published five-hours-per-task
+budget as, again, a contrast of kind: method invention on one side of
+the ledger is being compared to certificate search on the other, and
+we print no ratio.
+
+\paragraph{What is not claimed.} Synthesis wall-clock supremacy is not
+claimed: on tasks the 2025 MILP method completes, it is itself fast
+(sub-second on most families); the measured advantages here are
+completion, the check side, and the evidence class. Generality over
+automaton-requiring specifications is not claimed: no property in this
+suite needs genuine automaton memory --- the 2025 additions, though
+until-shaped, reduce by premise-checked implication rules --- and on a
+suite where that machinery is needed, it would return. Sim-tightness
+is claimed only where measured: every liveness family's worst-case
+descent bound is achieved exactly by a simulated run of the circuit.
+And the reproduction spine in this repository is complete at this
+preview for the pure-liveness class only --- committed fixtures, the
+pinned independent checker, and the mutant battery, re-run end to end
+by one make target; the safety and combined classes' receipt tables
+are vendored here, and their fixtures and checkers arrive with the
+producer layer's migration. Per the preview note of
+section~\ref{sec:exp-repro}, until a cited artefact lands in the
+public repository, its mention is a statement of what exists, not yet
+a link.

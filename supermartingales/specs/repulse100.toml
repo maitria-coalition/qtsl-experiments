@@ -1,0 +1,29 @@
+# Verbatim listing (v7 l.1086-1097, lst:repulse): x=10; while x>=0 do
+# assert(x<=100); x -= 2 w.p. 1/2 else x += 1.
+[benchmark]
+name = "repulse100"
+family = "robot_motion"
+section = 2
+provenance = "listing verbatim (v7 l.1086-1097)"
+state = ["x"]
+init = {x = 10}
+guard = "x >= 0"
+assertion = "x <= 100"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/2", update = {x = "x - 2"}},
+  {prob = "1/2", update = {x = "x + 1"}},
+]
+
+[benchmark.farkas]
+published = "0.0991"
+grid = {x = [0, 101]}
+invariant = "0 <= x && x <= 100"
+target = "x >= 101"
+objective = {x = 10}
+note = "Integer-overshoot A corner (x=101, the only reachable violation state); nonneg on [0,100] only — exit states x in {-1,-2} unconstrained (exit-hole convention; inductive nonneg down to -2 would give 12/103 -> 0.1166, refuted by published value). Expected optimum 10/101; ceil-to-4 = 0.0991 pins the ceiling convention (round-nearest gives 0.0990)."
+
+[benchmark.truth]
+method = "chain"

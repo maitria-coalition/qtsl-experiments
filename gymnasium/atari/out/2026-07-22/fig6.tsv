@@ -1,0 +1,9 @@
+instance_id	section	lane	config	outcome	t_produce_ms	t_check_ms	t_total_ms	timeout_s	silicon	cert_bytes	obligation_count	state_space_size	retrain_count
+AtariCircuit-Pong-noop-T1000/export-1454FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		1442646		0	gb10	5106	31465	2^1454	0
+AtariCircuit-Freeway-up-T1000/export-1454FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		1392256		0	gb10	5113	31465	2^1454	0
+AtariCircuit-Pong-noop-T1000/tips-1491FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		1405410		0	gb10	5300	31465	2^1491	0
+AtariCircuit-Freeway-up-T1000/tips-1491FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		1409507		0	gb10	5307	31465	2^1491	0
+AtariCircuit-Pong-noop-T1000/export-1454FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		2795627		0	epyc	5106	31465	2^1454	0
+AtariCircuit-Freeway-up-T1000/export-1454FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		2818779		0	epyc	5113	31465	2^1454	0
+AtariCircuit-Pong-noop-T1000/tips-1491FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		2883679		0	epyc	5300	31465	2^1491	0
+AtariCircuit-Freeway-up-T1000/tips-1491FF	atari	cpu	replaycheck-bitparallel-31lane-u64	solved		2864841		0	epyc	5307	31465	2^1491	0

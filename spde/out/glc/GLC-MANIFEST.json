@@ -1,0 +1,313 @@
+{
+  "checker": "glc-check (container + envelope integrity, then claim discharge through the exact-rational ground provider; --expect-claims from this manifest)",
+  "family": "spde-moment-v0",
+  "format": ".glc — sealed geolog commit containers (single commit per certificate)",
+  "mutants": [
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "FAIL",
+      "file": "mutants/m1_trace_forged.glc",
+      "glc_sha256": "d89cac6f038a0804b06b421b78344d66f27c4a8b184e792c565bae9b3db0fd74",
+      "mutant": "m1_trace_forged"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "FAIL",
+      "file": "mutants/m2_beta_laundered.glc",
+      "glc_sha256": "085bb06c0bda186552712c612aa191b30a39cb000ad7854ca52ab2382f4dfdea",
+      "mutant": "m2_beta_laundered"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "FAIL",
+      "file": "mutants/m3_consistent_forgery.glc",
+      "glc_sha256": "50d07c7ad9ad02b0f32f1d90e4d55397fea69119b0a9b01e7307ad47d8fe68f1",
+      "mutant": "m3_consistent_forgery"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "FAIL",
+      "file": "mutants/m4_enclosure_nudged.glc",
+      "glc_sha256": "9d02e352d7ac0d798423c92f2d09033a054264b9694d15fd17cdd085f2c50b76",
+      "mutant": "m4_enclosure_nudged"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "FAIL",
+      "file": "mutants/m5_mode_dropped.glc",
+      "glc_sha256": "d732eac4a2a77ba2caff4e37a670e3ac73f7b3048c8b69e926fa62891dce6c6c",
+      "mutant": "m5_mode_dropped"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "FAIL",
+      "file": "mutants/m6_power_padded.glc",
+      "glc_sha256": "7e62907dd97915d653433308344768005e416f0eb93d0704a437af8127421909",
+      "mutant": "m6_power_padded"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "FAIL",
+      "file": "mutants/m7_sf_dropped.glc",
+      "glc_sha256": "c3291ae705790a7e2b17b71328dc3d5a382f0aacf91fa1be6cf8501547a82526",
+      "mutant": "m7_sf_dropped"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "REFUSE",
+      "file": "mutants/m8_body_byte.glc",
+      "glc_sha256": "dce6cbe17a99d98281f2bd1e7d219816430855983a7e6c219b738df9a05fadc6",
+      "mutant": "m8_body_byte"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "REFUSE",
+      "file": "mutants/m9_sig_byte.glc",
+      "glc_sha256": "5b5f67262530b18d8572b2b327b9dc48f7c6d922e0884ea64c2ca3c00614d489",
+      "mutant": "m9_sig_byte"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "REFUSE",
+      "file": "mutants/m10_truncated.glc",
+      "glc_sha256": "dda499b4e61e559f4bccb0e911f2e092205f8b86804cf080a6b740cea6b25456",
+      "mutant": "m10_truncated"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "REFUSE",
+      "file": "mutants/m11_magic.glc",
+      "glc_sha256": "46864f09202cfc4403a4da4c7289e43db435fdc7867b0f048145c5853598822a",
+      "mutant": "m11_magic"
+    },
+    {
+      "base": "stoch-heat-1d-periodic",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "expected": "REFUSE",
+      "file": "mutants/m12_version.glc",
+      "glc_sha256": "9c0f1d2bc1402dd2bf79c1645a9266e38f0c1c2c1b48b866ea3c5354caecb411",
+      "mutant": "m12_version"
+    },
+    {
+      "base": "stoch-heat-1d-periodic-spectrum",
+      "expect_claims": "qtsl_poly_canonical=5",
+      "expected": "FAIL",
+      "file": "mutants/sp1_amp_noncanonical.glc",
+      "glc_sha256": "e506aeb88e623107394672640bc4ba85deae02b41f0511fdd92a37fa5733b8a3",
+      "mutant": "sp1_amp_noncanonical",
+      "note": ""
+    },
+    {
+      "base": "stoch-heat-1d-periodic-spectrum",
+      "expect_claims": "qtsl_poly_canonical=5",
+      "expected": "FAIL",
+      "file": "mutants/sp2_amp_zero_coeff.glc",
+      "glc_sha256": "7c589b7f67f866914b12705eba3f7c57a5d78cbfeb5e5a636df794d48153fe28",
+      "mutant": "sp2_amp_zero_coeff",
+      "note": ""
+    },
+    {
+      "base": "stoch-heat-1d-periodic-spectrum",
+      "expect_claims": "qtsl_poly_canonical=5",
+      "expected": "ACCEPT",
+      "file": "mutants/sp3_coeff_forged.glc",
+      "glc_sha256": "1b6b0cbdfdd1b424a6feb3ea823b9f868e2642bd6de8689d72963069f57d8129",
+      "mutant": "sp3_coeff_forged",
+      "note": "designed ACCEPT — the documented limitation: no baked spectrum-law claim exists pre-pipeline; the production gate refuses this content (witnessed in-crate)"
+    },
+    {
+      "base": "stoch-heat-1d-periodic-spectrum",
+      "expect_claims": "qtsl_poly_canonical=5",
+      "expected": "REFUSE",
+      "file": "mutants/sp4_zero_claims.glc",
+      "glc_sha256": "ce7376bcd5da59e367e744a90c587715f6abe0387a68efbe13ab262e2dc8656d",
+      "mutant": "sp4_zero_claims",
+      "note": ""
+    },
+    {
+      "base": "stoch-heat-1d-periodic-spectrum",
+      "expect_claims": "qtsl_poly_canonical=5",
+      "expected": "REFUSE",
+      "file": "mutants/sp5_prereq_mix.glc",
+      "glc_sha256": "c154daff7fe80f97795f347bc3d38f4c33e79f781adc0c317408be8cc5d0a48f",
+      "mutant": "sp5_prereq_mix",
+      "note": ""
+    },
+    {
+      "base": "stoch-heat-1d-periodic-spectrum",
+      "expect_claims": "qtsl_poly_canonical=5",
+      "expected": "REFUSE",
+      "file": "mutants/sp6_body_byte.glc",
+      "glc_sha256": "f01af6c60509a8b905332f9b544435d6abcc4bc075f575a83f7b1b3791f85626",
+      "mutant": "sp6_body_byte",
+      "note": ""
+    },
+    {
+      "base": "stoch-heat-1d-periodic-spectrum",
+      "expect_claims": "qtsl_poly_canonical=5",
+      "expected": "REFUSE",
+      "file": "mutants/sp7_truncated.glc",
+      "glc_sha256": "a971fb8d1314d54b5c4da12cee9fd2e77a88f848d7a8d8178cb8ab9c941ec653",
+      "mutant": "sp7_truncated",
+      "note": ""
+    }
+  ],
+  "positives": [
+    {
+      "cert": "stoch-heat-1d-periodic",
+      "commit_address_blake3": "52b647168b138801007e832273b1def521fa3c891736ee33b3f85157b8432bc5",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "file": "stoch-heat-1d-periodic.glc",
+      "floor": "13/10",
+      "glc_bytes": 1431,
+      "glc_sha256": "703bbde6af48d5490edc741d042334197f278775f4f69acb2884c30f9392a720",
+      "kit_floor_tied": true,
+      "ops": 198,
+      "producer_wall_ms": 6,
+      "source": "certificate_heat.json",
+      "source_sha256": "6dc0d4fc2772f411bd573ff47f96198dfee77b511a50a3c53c783417310f79b9",
+      "trace": "13/50"
+    },
+    {
+      "cert": "stoch-heat-1d-periodic-sharp",
+      "commit_address_blake3": "78e7c639a4c87edb9305a07e0a2eefc093323aba0ad46994f864e34c0f113ceb",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "file": "stoch-heat-1d-periodic-sharp.glc",
+      "floor": "1/1",
+      "glc_bytes": 1146,
+      "glc_sha256": "a47647e0aa1bdb4327f59b97aacb007e3a557b4614c4106f5a04e35b8de20133",
+      "kit_floor_tied": true,
+      "ops": 135,
+      "producer_wall_ms": 0,
+      "source": "certificate_heat_sharp.json",
+      "source_sha256": "77a88a4a92a752d08be37241baa60068c13109a2a3f5d432b75bfd54fb5def6f",
+      "trace": "1/5"
+    },
+    {
+      "cert": "stoch-burgers-1d-periodic",
+      "commit_address_blake3": "b0a1eb09215179f3d1c17881bd98b5fe02ed3bbcbd1d1e8efc4f9821ad435532",
+      "expect_claims": "spdeClaimValid=2,spdeTierWitnessValid=1,spdeSummedFloorValid=1",
+      "file": "stoch-burgers-1d-periodic.glc",
+      "floor": "13/10",
+      "glc_bytes": 1434,
+      "glc_sha256": "004dd4ab54f081dd060b69ae4f4736f6f288508d00a1c7f7fc931bc6ec493af4",
+      "kit_floor_tied": false,
+      "ops": 198,
+      "producer_wall_ms": 1,
+      "source": "certificate.json",
+      "source_sha256": "666412ac62fb2db88e316c9fc6f05f44f5cc75328e385b8d620e8895fffedaea",
+      "trace": "13/50"
+    }
+  ],
+  "producer": "mtk (system reconstructed through the SPDE preset; covariance derived, never stored; sealed with the public v0 reproduction seed; deterministic — double-emit byte-identity asserted at production)",
+  "scope": "the S0/S1 stochastic moment core (claims, Ito-correction discipline, tier witnesses, summed-floor enclosures); jet-layer and probability-row species are named successors",
+  "spectra": [
+    {
+      "cert": "stoch-heat-1d-periodic",
+      "claim_surface": "qtsl_poly_canonical per driver amp (amp well-formedness); spectrum LAW stays checked on the synthetic side + the production derived-q gate — the per-former SPDE pipeline is the named successor for a baked spectrum-law claim",
+      "commit_address_blake3": "19fa8866d29a9f2566064889eb5df72e18b8eb12043a1bf22244ecdd6d98280b",
+      "drivers": [
+        {
+          "coeff": "1/5",
+          "mode": 1
+        },
+        {
+          "coeff": "2/5",
+          "mode": 1
+        },
+        {
+          "coeff": "1/10",
+          "mode": 2
+        },
+        {
+          "coeff": "1/10",
+          "mode": 2
+        },
+        {
+          "coeff": "1/5",
+          "mode": 2
+        }
+      ],
+      "expect_claims": "qtsl_poly_canonical=5",
+      "file": "stoch-heat-1d-periodic-spectrum.glc",
+      "glc_bytes": 889,
+      "glc_sha256": "ab53c4db8bfd81a405eb57a24cf3f0a2debb223880a3e87727de479f06b38dd9",
+      "ops": 83,
+      "prereq": "baked qc closure revision",
+      "producer_wall_ms": 62,
+      "witness_container_address": "52b647168b138801007e832273b1def521fa3c891736ee33b3f85157b8432bc5"
+    },
+    {
+      "cert": "stoch-heat-1d-periodic-sharp",
+      "claim_surface": "qtsl_poly_canonical per driver amp (amp well-formedness); spectrum LAW stays checked on the synthetic side + the production derived-q gate — the per-former SPDE pipeline is the named successor for a baked spectrum-law claim",
+      "commit_address_blake3": "3c40aaa69065b5b299fa2d74c31d4e32d3f5cb3ec7e292db22e2c5819e1c2cfa",
+      "drivers": [
+        {
+          "coeff": "1/5",
+          "mode": 1
+        },
+        {
+          "coeff": "2/5",
+          "mode": 1
+        }
+      ],
+      "expect_claims": "qtsl_poly_canonical=2",
+      "file": "stoch-heat-1d-periodic-sharp-spectrum.glc",
+      "glc_bytes": 836,
+      "glc_sha256": "a716fab903f316f8ac4ea1f84cbf04faa456ef19e5f535caae673acfbf7e36c1",
+      "ops": 38,
+      "prereq": "baked qc closure revision",
+      "producer_wall_ms": 0,
+      "witness_container_address": "78e7c639a4c87edb9305a07e0a2eefc093323aba0ad46994f864e34c0f113ceb"
+    },
+    {
+      "cert": "stoch-burgers-1d-periodic",
+      "claim_surface": "qtsl_poly_canonical per driver amp (amp well-formedness); spectrum LAW stays checked on the synthetic side + the production derived-q gate — the per-former SPDE pipeline is the named successor for a baked spectrum-law claim",
+      "commit_address_blake3": "ff65ad3eed1ff328a4f71d641e962f8f2ba3badf7a67b8379dbf49fc4028a5fa",
+      "drivers": [
+        {
+          "coeff": "1/5",
+          "mode": 1
+        },
+        {
+          "coeff": "2/5",
+          "mode": 1
+        },
+        {
+          "coeff": "1/10",
+          "mode": 2
+        },
+        {
+          "coeff": "1/10",
+          "mode": 2
+        },
+        {
+          "coeff": "1/5",
+          "mode": 2
+        }
+      ],
+      "expect_claims": "qtsl_poly_canonical=5",
+      "file": "stoch-burgers-1d-periodic-spectrum.glc",
+      "glc_bytes": 892,
+      "glc_sha256": "0e36b3a6129d0526e5bdbb0d6e94e1efb8546bc84fd23e3bbb2b559d09b7f8bb",
+      "ops": 83,
+      "prereq": "baked qc closure revision",
+      "producer_wall_ms": 1,
+      "witness_container_address": "b0a1eb09215179f3d1c17881bd98b5fe02ed3bbcbd1d1e8efc4f9821ad435532"
+    }
+  ],
+  "spectrum_lane": "per certificate, the noise spectrum re-homed onto the baked qc closure as its own container (mixed prereq tables are prereq_mix by checker design): baked-vocabulary rows (mkFourierTerm/mkDriver/mkNoiseSpectrum, tailZero), sum-of-rational-squares driver re-expression, qtsl_poly_canonical claims, checked via glc-check --baked-cert; cross-tied to the witness container by commit-address citation + the production derived-q equality gate",
+  "spectrum_vocabulary_rev_qc": "6862edc88ff1d788550d196078a28cb2fe971f10d478a5e32800f2892a7292b9",
+  "vocabulary_rev": "6d6169747269612d737064652d6d6f6d656e742d766f6361622d763000000000"
+}

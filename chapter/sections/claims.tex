@@ -1,0 +1,97 @@
+This chapter reports what happens when the toolkit is pointed at
+benchmarks it does not own: a peer-reviewed verification paper's results
+table, the standard reinforcement-learning environment suite, a hardware
+model-checking benchmark, a family of semiconductor-fab process models
+--- and, fusing the second and third, an Atari 2600 console compiled
+into a digital circuit so that its games become white-box verification
+targets. Each campaign produces \emph{certified} results: a concrete
+policy, controller, or ranking function together with a
+machine-checkable certificate that a stated quantitative claim holds.
+(The youngest campaign carries at this preview only the weakest rung
+of that ladder, and says so.)
+
+The working standard is the Executive Summary's assurance stance
+(\bookref{ch:exec-summary}{the Executive Summary}), applied to
+experiments: a result earns its row by being an improvement on at least
+one axis --- bound tightness, soundness level, or the cost of
+\emph{checking} --- while regressing on none that matters, and by
+carrying an artefact the reader can re-check rather than an assertion
+the reader must trust. Where a comparison point exists in the
+literature, it appears beside our number; where none exists, the row
+says so; where our own result is weak or missing, that appears in the
+same tables at the same prominence. Every number in this chapter is
+re-derived mechanically from receipt files in the experiments
+repository (section~\ref{sec:exp-repro}) at each preview; none is
+transcribed by hand. The chapter is the working record of a moving
+campaign: it reports state as of July 30, 2026, names what is in
+flight as in-flight, and grows at each preview. One transition spans
+this preview: the certificate vocabulary has been unified into a
+single committed schema, and the campaigns below --- produced on its
+predecessors --- are being re-conducted uniformly on it;
+section~\ref{sec:exp-repro} states the discipline, and the tables
+flip to re-conducted receipts as they land.
+
+\section{What a certified experiment claims}
+\label{sec:exp-claims}
+
+``Certified'' is doing precise work in this chapter, and it resolves to
+one of five claim species. Throughout, $\pi$ is a concrete shipped
+policy (a lookup table, a switching law, a short program --- never a
+description of a training run), and the certificate is a finite object
+whose acceptance by an independent checker implies the stated bound.
+
+\begin{description}
+\item[U1 --- worst-case return over the initial set.] For deterministic
+  dynamics with a set-valued initial condition: return $\ge B$ for
+  \emph{every} $x_0 \in X_0$. No probability appears in the
+  certificate. This is a stronger statement than any empirical average,
+  and it is the natural claim for the classic control environments.
+\item[U2 --- certified cost-to-goal.] For shortest-path-style
+  objectives: a ranking argument bounding steps-to-goal, hence return
+  $\ge -B_{\text{steps}}$.
+\item[U3 --- exact or almost-sure probabilistic bounds.] For genuinely
+  stochastic transitions: success probability or expected return
+  $\ge B$, exact in $\mathbb{Q}$ for finite chains (backward-induction
+  tables re-verified in exact arithmetic), supermartingale certificates
+  for continuous state.
+\item[U4 --- infinite-horizon averages.] Throughput and long-run
+  stability claims for queueing-network models: fluid-limit drift
+  certificates (in the tradition of Dai's fluid-limit criterion),
+  reducing stability of a dispatch policy at a stated load to
+  piecewise-linear inequalities over polyhedral cones --- exactly the
+  Farkas/linear-programming rows the checker family of
+  \bookref{ch:qtsl-manual}{the QTSL manual} replays.
+\item[U5 --- i.i.d.\ confidence bounds.] An anytime-valid
+  lower confidence bound on $\mathbb{E}[\text{return}]$ from rollouts
+  of a fixed policy: a betting-martingale ledger whose validity rests
+  on Ville's inequality. Model-free, and therefore applicable even
+  where the environment's semantics is a compiled physics engine ---
+  but the bound holds with confidence $1-\alpha$, not almost surely:
+  the least-guaranteed species of the five. U5 rows are qualitatively
+  weaker evidence than U1--U4 and are always displayed as their own
+  class, never mixed into a table of exact rows.
+\end{description}
+
+Two structural facts about the species matter for reading what
+follows. First, some species are \emph{terminal}: an exact
+finite-chain certificate (U3 on a tabular environment) computes the
+true optimum, and no future method can produce a better bound at that
+claim class --- only a cheaper check. Others are
+\emph{anytime-refinable}: cover-based and i.i.d.-tier certificates
+trace a curve of bound quality against certificate size and check
+time, and the experiments below measure those curves rather than
+single points. Second, the claim class is part of the result: a table
+row's meaning changes entirely if a $1-\alpha$ bound is read as an
+almost-sure one, so the class label travels with every row.
+
+One scope condition applies to every species, and it is stated here
+once, plainly, because it frames what all of the results below do and
+do not claim. The toolkit's certified policies come from
+\emph{white-box} examination of the environment's structure --- the
+transition tables, the exact simulator semantics, or (in
+section~\ref{sec:exp-atari}) the environment's digital-circuit
+transition relation, which the toolkit can actually examine.
+\emph{System identification} --- recovering that structure from
+observations of a black box --- is a separate problem, and one the
+toolkit does not yet have tools for. Everything below is conditional
+on being handed the mechanism; nothing below learns it.

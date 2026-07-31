@@ -1,0 +1,32 @@
+{
+  "date": "2026-07-23",
+  "what": "replay of the stored certificate corpus behind eight of the seventeen published-table rows through the certified checker's current build",
+  "corpus": {
+    "families": 8,
+    "certificates": 4105,
+    "source": "supermartingales/out/sec2/rows-certs.tar.zst (stored plain-text row listings, pinned per file in supermartingales/MANIFEST.jsonl)",
+    "identity": "4105/4105 extracted listings sha256-match their manifest pins; the sealed input containers replayed here were compiled from those listings, and the compiled bodies' listings byte-match the stored ones (headers aside)"
+  },
+  "checker": {
+    "name": "qtslab (the certified checker; see the book's front matter for its overall standing)",
+    "emitted_assembly_md5": "e7f7497d260ce59aa922a87e3571a72b",
+    "native_binary_md5": "d6e774c0d8937a0229b349031a635bba",
+    "toolchain": "gcc 13.3 -O2, aarch64",
+    "theorem_note": "the machine-code theorem over this emission (HOL4, through the CakeML verified compiler) was re-established at the same emission: a run of the emitted code that prints ACCEPT with a sequent implies the logic-level checker function accepts those bytes with that sequent"
+  },
+  "agreement": {
+    "fast_path_at_seal": "accept x 4105 (seal-twin-verdicts.tsv): the untrusted fast-path twin, run when each container was sealed",
+    "reference_lane": "the stored listings are additionally gated by this repository's reference-checker lane (the supermartingales make target)"
+  },
+  "protocol": {
+    "machine": "NVIDIA GB10 (Arm Cortex-X925 cores), aarch64; one single-threaded checker process per certificate",
+    "parallelism": "four families concurrently, serial within each family",
+    "timeout_s": 120,
+    "walls": "single-shot per certificate; a serial 3-run spot sample (2 certificates x 4 families) ran 0.01-0.05 s, so the census walls carry mild concurrency inflation at most"
+  },
+  "files": {
+    "census.tsv": "one row per certificate: family, certificate stem, exit code, first verdict line, wall-clock seconds",
+    "seal-twin-verdicts.tsv": "one row per certificate: certificate stem, seal-time fast-path verdict, and an auxiliary count recorded by the sealing run (not consumed by the table generator)"
+  },
+  "not_yet_public": "the certified build itself (its emitted assembly and the HOL4 development that emits and proves it) and the container-sealing tool have not yet migrated into the public trees; per the chapter's reproduction section, their mention here is a statement of what exists, not yet a link"
+}

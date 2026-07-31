@@ -1,0 +1,557 @@
+{
+ "flcheck": "target/release/flcheck",
+ "note": "min/median over bench_n in-process passes per lane, core-pinned (taskset); the printed comparison uses MIN (the uncontended per-lane floor \u2014 this box hosts many services and unpinned medians were ~2x bimodal). ref = per-op checked lanes, sweep = maitria-kernels slab lane (envelope-gated; lane field reports what actually ran)",
+ "certs": {
+  "blackjack/rwdyadic_k16_T22.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 7277,
+    "verify_min_ns": 144449,
+    "verify_median_ns": 145665,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-477629/11075584"
+   },
+   "auto": {
+    "rows": 7277,
+    "verify_min_ns": 90497,
+    "verify_median_ns": 91344,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "-477629/11075584"
+   }
+  },
+  "blackjack/rwdyadic_k20_T22.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 7277,
+    "verify_min_ns": 143841,
+    "verify_median_ns": 144689,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-99322173/2303721472"
+   },
+   "auto": {
+    "rows": 7277,
+    "verify_min_ns": 89104,
+    "verify_median_ns": 90977,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "-99322173/2303721472"
+   }
+  },
+  "blackjack/rwdyadic_k48_T22.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 7277,
+    "verify_min_ns": 143105,
+    "verify_median_ns": 143698,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-26661166971776791/618400523833311232"
+   },
+   "auto": {
+    "rows": 7277,
+    "verify_min_ns": 158097,
+    "verify_median_ns": 159106,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-26661166971776791/618400523833311232"
+   }
+  },
+  "cliffwalking-det/rwdyadic_k48_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 5042,
+    "verify_min_ns": 48656,
+    "verify_median_ns": 48784,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-13/1"
+   },
+   "auto": {
+    "rows": 5042,
+    "verify_min_ns": 23793,
+    "verify_median_ns": 23920,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "-13/1"
+   }
+  },
+  "cliffwalking-slippery/rwdyadic_k16_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 5042,
+    "verify_min_ns": 60288,
+    "verify_median_ns": 60449,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-4129665/65536"
+   },
+   "auto": {
+    "rows": 5042,
+    "verify_min_ns": 34176,
+    "verify_median_ns": 34433,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "-4129665/65536"
+   }
+  },
+  "cliffwalking-slippery/rwdyadic_k32_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 5042,
+    "verify_min_ns": 60385,
+    "verify_median_ns": 60497,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-16915023595/268435456"
+   },
+   "auto": {
+    "rows": 5042,
+    "verify_min_ns": 34192,
+    "verify_median_ns": 34353,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "-16915023595/268435456"
+   }
+  },
+  "cliffwalking-slippery/rwdyadic_k48_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 5042,
+    "verify_min_ns": 60304,
+    "verify_median_ns": 60432,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "-4434171944943057/70368744177664"
+   },
+   "auto": {
+    "rows": 5042,
+    "verify_min_ns": 34224,
+    "verify_median_ns": 34432,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "-4434171944943057/70368744177664"
+   }
+  },
+  "frozenlake-4x4-det/dyadic_k16_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 11376,
+    "verify_median_ns": 11424,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 12800,
+    "verify_median_ns": 12960,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   }
+  },
+  "frozenlake-4x4-det/dyadic_k24_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 11360,
+    "verify_median_ns": 11424,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 12768,
+    "verify_median_ns": 12913,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   }
+  },
+  "frozenlake-4x4-det/dyadic_k32_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 11344,
+    "verify_median_ns": 11408,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 13088,
+    "verify_median_ns": 13216,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   }
+  },
+  "frozenlake-4x4-det/dyadic_k48_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 11376,
+    "verify_median_ns": 11456,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 13072,
+    "verify_median_ns": 13232,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "1/1"
+   }
+  },
+  "frozenlake-4x4-sr34/dyadic_k16_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12592,
+    "verify_median_ns": 12704,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "57191/65536"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15232,
+    "verify_median_ns": 15440,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "57191/65536"
+   }
+  },
+  "frozenlake-4x4-sr34/dyadic_k24_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12592,
+    "verify_median_ns": 12656,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "7324191/8388608"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15184,
+    "verify_median_ns": 15408,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "7324191/8388608"
+   }
+  },
+  "frozenlake-4x4-sr34/dyadic_k32_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12672,
+    "verify_median_ns": 12737,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "3749992957/4294967296"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15168,
+    "verify_median_ns": 15312,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "3749992957/4294967296"
+   }
+  },
+  "frozenlake-4x4-sr34/dyadic_k48_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12640,
+    "verify_median_ns": 12720,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "61439885035201/70368744177664"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15216,
+    "verify_median_ns": 15377,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "61439885035201/70368744177664"
+   }
+  },
+  "frozenlake-4x4/dyadic_k16_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12592,
+    "verify_median_ns": 12656,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "48757/65536"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15088,
+    "verify_median_ns": 15248,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "48757/65536"
+   }
+  },
+  "frozenlake-4x4/dyadic_k24_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12560,
+    "verify_median_ns": 12608,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "12485427/16777216"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15168,
+    "verify_median_ns": 15344,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "12485427/16777216"
+   }
+  },
+  "frozenlake-4x4/dyadic_k32_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12656,
+    "verify_median_ns": 12784,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "3196272933/4294967296"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15152,
+    "verify_median_ns": 15312,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "3196272933/4294967296"
+   }
+  },
+  "frozenlake-4x4/dyadic_k48_T100.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 1581,
+    "verify_min_ns": 12736,
+    "verify_median_ns": 12785,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "209470943935025/281474976710656"
+   },
+   "auto": {
+    "rows": 1581,
+    "verify_min_ns": 15136,
+    "verify_median_ns": 15312,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "209470943935025/281474976710656"
+   }
+  },
+  "frozenlake-8x8/dyadic_k16_T200.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 12921,
+    "verify_min_ns": 137313,
+    "verify_median_ns": 137505,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "29907/32768"
+   },
+   "auto": {
+    "rows": 12921,
+    "verify_min_ns": 99489,
+    "verify_median_ns": 99937,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "29907/32768"
+   }
+  },
+  "frozenlake-8x8/dyadic_k24_T200.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 12921,
+    "verify_min_ns": 137745,
+    "verify_median_ns": 137969,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "15321257/16777216"
+   },
+   "auto": {
+    "rows": 12921,
+    "verify_min_ns": 99793,
+    "verify_median_ns": 102689,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "15321257/16777216"
+   }
+  },
+  "frozenlake-8x8/dyadic_k32_T200.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 12921,
+    "verify_min_ns": 137361,
+    "verify_median_ns": 137697,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "3922250645/4294967296"
+   },
+   "auto": {
+    "rows": 12921,
+    "verify_min_ns": 99809,
+    "verify_median_ns": 101729,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "3922250645/4294967296"
+   }
+  },
+  "frozenlake-8x8/dyadic_k48_T200.cbor": {
+   "bench_n": 200,
+   "ref": {
+    "rows": 12921,
+    "verify_min_ns": 137329,
+    "verify_median_ns": 137649,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "128524310254835/140737488355328"
+   },
+   "auto": {
+    "rows": 12921,
+    "verify_min_ns": 99729,
+    "verify_median_ns": 100481,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "128524310254835/140737488355328"
+   }
+  },
+  "taxi-dry/rwdyadic_k48_T200.cbor": {
+   "bench_n": 50,
+   "ref": {
+    "rows": 103502,
+    "verify_min_ns": 1539675,
+    "verify_median_ns": 1542844,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "793/100"
+   },
+   "auto": {
+    "rows": 103502,
+    "verify_min_ns": 490739,
+    "verify_median_ns": 495012,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "793/100"
+   }
+  },
+  "taxi-fickle/rwdyadic_k48_T200.cbor": {
+   "bench_n": 10,
+   "ref": {
+    "rows": 207002,
+    "verify_min_ns": 3454010,
+    "verify_median_ns": 3463498,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "707628091450589099/84442493013196800"
+   },
+   "auto": {
+    "rows": 207002,
+    "verify_min_ns": 1063304,
+    "verify_median_ns": 1066280,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "707628091450589099/84442493013196800"
+   }
+  },
+  "taxi-rainy-fickle/rwdyadic_k16_T200.cbor": {
+   "bench_n": 50,
+   "ref": {
+    "rows": 207002,
+    "verify_min_ns": 4076495,
+    "verify_median_ns": 4085615,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "22489573/4915200"
+   },
+   "auto": {
+    "rows": 207002,
+    "verify_min_ns": 1536523,
+    "verify_median_ns": 1544620,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "22489573/4915200"
+   }
+  },
+  "taxi-rainy-fickle/rwdyadic_k48_T200.cbor": {
+   "bench_n": 10,
+   "ref": {
+    "rows": 207002,
+    "verify_min_ns": 4082719,
+    "verify_median_ns": 4092799,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "128792994894189647/28147497671065600"
+   },
+   "auto": {
+    "rows": 207002,
+    "verify_min_ns": 1515723,
+    "verify_median_ns": 1525372,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "128792994894189647/28147497671065600"
+   }
+  },
+  "taxi-rainy/rwdyadic_k16_T200.cbor": {
+   "bench_n": 50,
+   "ref": {
+    "rows": 103502,
+    "verify_min_ns": 1851374,
+    "verify_median_ns": 1854942,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "77747417/19660800"
+   },
+   "auto": {
+    "rows": 103502,
+    "verify_min_ns": 693269,
+    "verify_median_ns": 698277,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "77747417/19660800"
+   }
+  },
+  "taxi-rainy/rwdyadic_k48_T200.cbor": {
+   "bench_n": 50,
+   "ref": {
+    "rows": 103502,
+    "verify_min_ns": 1852638,
+    "verify_median_ns": 1855774,
+    "lane": "ref",
+    "kernel_lane": "neon",
+    "bound": "10435441593250213/2638827906662400"
+   },
+   "auto": {
+    "rows": 103502,
+    "verify_min_ns": 692965,
+    "verify_median_ns": 698197,
+    "lane": "sweep",
+    "kernel_lane": "neon",
+    "bound": "10435441593250213/2638827906662400"
+   }
+  }
+ }
+}

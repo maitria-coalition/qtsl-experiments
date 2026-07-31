@@ -1,0 +1,19 @@
+== console (ROM as free inputs) ==
+     2367   $_AND_
+     1588   $_DFF_P_
+    17952   $_AND_
+     1588   $_DFF_P_
+== pong (closed) ==
+     1700   $_AND_
+     1491   $_DFF_P_
+    20821   $_AND_
+     1491   $_DFF_P_
+== freeway (closed) ==
+     1695   $_AND_
+     1491   $_DFF_P_
+    20798   $_AND_
+     1491   $_DFF_P_
+== AIG headers (M I L O A) ==
+out/console.aig: aig 19601 61 1588 45 17952
+out/freeway.aig: aig 22341 52 1491 26 20798
+out/pong.aig: aig 22364 52 1491 26 20821

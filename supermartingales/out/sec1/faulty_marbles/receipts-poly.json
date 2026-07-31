@@ -1,0 +1,84 @@
+{
+ "benchmark": "faulty_marbles",
+ "route": "poly-lp",
+ "degree": 4,
+ "eta": "1/1000000",
+ "all_rows_certified": true,
+ "coverage_complete": true,
+ "invariance_ok": true,
+ "p_true": "66374065670022081974002/1064364111590096043984001",
+ "certified_bound": {
+  "exact": "91186572690622438497049368779590418664833/1460762717838719810846849585427275331055941",
+  "float": 0.06242394577644895,
+  "ceil4": "1/16",
+  "sound(p_bar>=p_true)": true
+ },
+ "vs_published": {
+  "pw": "649/10000",
+  "beats_pw_neural": true,
+  "vs_linear": "no linear SM exists (negative fingerprint); this degree-4 polynomial certifies 0.062424"
+ },
+ "P_coeffs": {
+  "(0,)": "37929397/557529931",
+  "(1,)": "-757485/811402993",
+  "(2,)": "-191148/204697963",
+  "(3,)": "-217/742750269",
+  "(4,)": "-64/403526579"
+ },
+ "rows": [
+  {
+   "kind": "nonneg",
+   "cell": [
+    "0",
+    "8"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "5712016572610294244671742771/1460762717838719810846849585427275331055941",
+   "checker": "ACCEPT",
+   "note": ""
+  },
+  {
+   "kind": "floor",
+   "cell": [
+    "0",
+    "8"
+   ],
+   "status": "certified",
+   "leaves": 0,
+   "min_tau": null,
+   "checker": "trivial(=0)",
+   "note": "identically zero"
+  },
+  {
+   "kind": "drift",
+   "cell": [
+    "0",
+    "1/2"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "0",
+   "checker": "ACCEPT",
+   "note": ""
+  },
+  {
+   "kind": "drift",
+   "cell": [
+    "1",
+    "7"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "0",
+   "checker": "ACCEPT",
+   "note": ""
+  }
+ ],
+ "bernfmt": [
+  "faulty_marbles_poly_nonneg_00.bernfmt",
+  "faulty_marbles_poly_drift_02.bernfmt",
+  "faulty_marbles_poly_drift_03.bernfmt"
+ ],
+ "verdict": "CERTIFIED"
+}

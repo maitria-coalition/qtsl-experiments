@@ -1,0 +1,42 @@
+# RECONSTRUCTION (no listing). faulty_loop with continuous-uniform advance:
+# i += u, u ~ U[0,1], when no fault (mean advance 1/2 — identical drift to the
+# q-coin, hence the identical published Farkas 0.0181; the LP is exactly
+# faulty_loop's). Continuous (not discrete-uniform {0,1}) because DU{0,1} would
+# BE faulty_loop verbatim, while their table gives faulty_uniform distinct
+# neural bounds/timings and the name a distinct point. State variable i is
+# real-valued; all constraint boundaries remain integral so the LP grid stays
+# exact.
+[benchmark]
+name = "faulty_uniform"
+family = "unreliable_hardware"
+section = 3
+provenance = "reconstruction; drift + LP pinned by shared Farkas value with faulty_loop"
+state = ["i", "error"]
+reals = ["i"]
+init = {i = 1, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/1000", update = {i = "i + u"}},
+]
+
+[benchmark.noise]
+u = {dist = "uniform", lo = "0", hi = "1"}
+
+[benchmark.farkas]
+published = "0.0181"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame; E[u] = 1/2 exactly. Expected optimum 2/111."
+
+[benchmark.truth]
+method = "mc"
+mc = {n = 2000000, t_max = 400, seed = 46101}
+# t_max: absorption is a race between fault (1/1000/step) and ~18 mean-1/2
+# advances; P[alive at 400] is negligible and reported honestly as unabsorbed.

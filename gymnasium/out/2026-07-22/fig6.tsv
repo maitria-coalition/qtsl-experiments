@@ -1,0 +1,146 @@
+instance_id	section	lane	config	outcome	t_produce_ms	t_check_ms	t_total_ms	timeout_s	silicon	cert_bytes	obligation_count	state_space_size	retrain_count
+blackjack/rwdyadic_k48_T22.cbor	gymnasium	cpu	rwdyadic_k48_T22	solved	0.211	0.1596	0.3706	0	gb10/single core pinned, nice	100920	7277	291	0
+blackjack/rwslab_T22.cbor	gymnasium	cpu	rwslab_T22	solved	1.953	1.4908	3.4438	0	gb10/single core pinned, nice	115779	7277	291	0
+cliffwalking-det/hitting_exact_T13.cbor	gymnasium	cpu	hitting_exact_T13	solved	0.044	0.0722	0.1162	0	gb10/single core pinned, nice	5954	852	48	0
+cliffwalking-det/rwdyadic_k48_T100.cbor	gymnasium	cpu	rwdyadic_k48_T100	solved	0.136	0.024	0.16	0	gb10/single core pinned, nice	49639	5042	48	0
+cliffwalking-det/rwslab_T100.cbor	gymnasium	cpu	rwslab_T100	solved	0.0	0.2285	0.2285	0	gb10/single core pinned, nice	21785	5042	48	0
+cliffwalking-slippery/rwdyadic_k16_T100.cbor	gymnasium	cpu	rwdyadic_k16_T100	solved	0.183	0.0346	0.2176	0	gb10/single core pinned, nice	33292	5042	48	0
+cliffwalking-slippery/rwdyadic_k32_T100.cbor	gymnasium	cpu	rwdyadic_k32_T100	solved	0.185	0.0346	0.2196	0	gb10/single core pinned, nice	52022	5042	48	0
+cliffwalking-slippery/rwdyadic_k48_T100.cbor	gymnasium	cpu	rwdyadic_k48_T100	solved	0.187	0.0345	0.2215	0	gb10/single core pinned, nice	52174	5042	48	0
+cliffwalking-slippery/rwslab_T10.cbor	gymnasium	cpu	rwslab_T10	solved	0.093	0.0396	0.1326	0	gb10/single core pinned, nice	6947	722	48	0
+cliffwalking-slippery/rwslab_T100.cbor	gymnasium	cpu	rwslab_T100	solved	0.36	0.6307	0.9907	0	gb10/single core pinned, nice	71872	5042	48	0
+cliffwalking-slippery/rwslab_T25.cbor	gymnasium	cpu	rwslab_T25	solved	0.237	0.101	0.338	0	gb10/single core pinned, nice	12378	1442	48	0
+cliffwalking-slippery/rwslab_T50.cbor	gymnasium	cpu	rwslab_T50	solved	0.598	0.2482	0.8462	0	gb10/single core pinned, nice	26222	2642	48	0
+frozenlake-4x4-det/dyadic_k16_T100.cbor	gymnasium	cpu	dyadic_k16_T100	solved	0.025	0.013	0.038	0	gb10/single core pinned, nice	8703	1581	16	0
+frozenlake-4x4-det/dyadic_k24_T100.cbor	gymnasium	cpu	dyadic_k24_T100	solved	0.022	0.0131	0.0351	0	gb10/single core pinned, nice	8704	1581	16	0
+frozenlake-4x4-det/dyadic_k32_T100.cbor	gymnasium	cpu	dyadic_k32_T100	solved	0.024	0.0131	0.0371	0	gb10/single core pinned, nice	13392	1581	16	0
+frozenlake-4x4-det/dyadic_k48_T100.cbor	gymnasium	cpu	dyadic_k48_T100	solved	0.022	0.0132	0.0352	0	gb10/single core pinned, nice	13392	1581	16	0
+frozenlake-4x4-det/exact_T10.cbor	gymnasium	cpu	exact_T10	solved	0.011	0.0176	0.0286	0	gb10/single core pinned, nice	1775	231	16	0
+frozenlake-4x4-det/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	0.11	0.171	0.281	0	gb10/single core pinned, nice	10598	1581	16	0
+frozenlake-4x4-sr34/dyadic_k16_T100.cbor	gymnasium	cpu	dyadic_k16_T100	solved	0.03	0.0155	0.0455	0	gb10/single core pinned, nice	7068	1581	16	0
+frozenlake-4x4-sr34/dyadic_k24_T100.cbor	gymnasium	cpu	dyadic_k24_T100	solved	0.028	0.0154	0.0434	0	gb10/single core pinned, nice	9212	1581	16	0
+frozenlake-4x4-sr34/dyadic_k32_T100.cbor	gymnasium	cpu	dyadic_k32_T100	solved	0.027	0.0153	0.0423	0	gb10/single core pinned, nice	9619	1581	16	0
+frozenlake-4x4-sr34/dyadic_k48_T100.cbor	gymnasium	cpu	dyadic_k48_T100	solved	0.027	0.0154	0.0424	0	gb10/single core pinned, nice	13906	1581	16	0
+frozenlake-4x4-sr34/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	0.513	8.9103	9.4233	0	gb10/single core pinned, nice	52015	1581	16	0
+frozenlake-4x4/dyadic_k16_T100.cbor	gymnasium	cpu	dyadic_k16_T100	solved	0.028	0.0153	0.0433	0	gb10/single core pinned, nice	7047	1581	16	0
+frozenlake-4x4/dyadic_k24_T100.cbor	gymnasium	cpu	dyadic_k24_T100	solved	0.028	0.0153	0.0433	0	gb10/single core pinned, nice	9192	1581	16	0
+frozenlake-4x4/dyadic_k32_T100.cbor	gymnasium	cpu	dyadic_k32_T100	solved	0.027	0.0153	0.0423	0	gb10/single core pinned, nice	9598	1581	16	0
+frozenlake-4x4/dyadic_k48_T100.cbor	gymnasium	cpu	dyadic_k48_T100	solved	0.029	0.0152	0.0442	0	gb10/single core pinned, nice	13886	1581	16	0
+frozenlake-4x4/exact_T10.cbor	gymnasium	cpu	exact_T10	solved	0.025	0.1645	0.1895	0	gb10/single core pinned, nice	2511	231	16	0
+frozenlake-4x4/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	0.527	9.5581	10.0851	0	gb10/single core pinned, nice	31846	1581	16	0
+frozenlake-4x4/exact_T25.cbor	gymnasium	cpu	exact_T25	solved	0.07	0.8055	0.8755	0	gb10/single core pinned, nice	4928	456	16	0
+frozenlake-4x4/exact_T5.cbor	gymnasium	cpu	exact_T5	solved	0.011	0.052	0.063	0	gb10/single core pinned, nice	1936	156	16	0
+frozenlake-4x4/exact_T50.cbor	gymnasium	cpu	exact_T50	solved	0.176	2.8179	2.9939	0	gb10/single core pinned, nice	11164	831	16	0
+frozenlake-8x8/dyadic_k16_T200.cbor	gymnasium	cpu	dyadic_k16_T200	solved	0.217	0.1012	0.3182	0	gb10/single core pinned, nice	52389	12921	64	0
+frozenlake-8x8/dyadic_k24_T200.cbor	gymnasium	cpu	dyadic_k24_T200	solved	0.214	0.1022	0.3162	0	gb10/single core pinned, nice	72649	12921	64	0
+frozenlake-8x8/dyadic_k32_T200.cbor	gymnasium	cpu	dyadic_k32_T200	solved	0.215	0.1017	0.3167	0	gb10/single core pinned, nice	74041	12921	64	0
+frozenlake-8x8/dyadic_k48_T200.cbor	gymnasium	cpu	dyadic_k48_T200	solved	0.225	0.1001	0.3251	0	gb10/single core pinned, nice	114964	12921	64	0
+frozenlake-8x8/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	1.927	47.2761	49.2031	0	gb10/single core pinned, nice	143356	6621	64	0
+frozenlake-8x8/exact_T200.cbor	gymnasium	cpu	exact_T200	solved	6.66	189.0441	195.7041	0	gb10/single core pinned, nice	500289	12921	64	0
+frozenlake-8x8/exact_T25.cbor	gymnasium	cpu	exact_T25	solved	0.278	3.5291	3.8071	0	gb10/single core pinned, nice	20649	1896	64	0
+frozenlake-8x8/exact_T50.cbor	gymnasium	cpu	exact_T50	solved	0.687	13.6581	14.3451	0	gb10/single core pinned, nice	48202	3471	64	0
+taxi-dry/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	4.281	0.4956	4.7766	0	gb10/single core pinned, nice	1026493	103502	500	0
+taxi-dry/rwslab_T200.cbor	gymnasium	cpu	rwslab_T200	solved	0.001	5.733	5.734	0	gb10/single core pinned, nice	431939	103502	500	0
+taxi-fickle/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	8.269	1.0616	9.3306	0	gb10/single core pinned, nice	2062322	207002	1000	0
+taxi-fickle/rwslab_tail_T100.cbor	gymnasium	cpu	rwslab_tail_T100	solved	48.535	12.7486	61.2836	0	gb10/single core pinned, nice	956360	207002	1000	0
+taxi-rainy-fickle/rwdyadic_k16_T200.cbor	gymnasium	cpu	rwdyadic_k16_T200	solved	9.805	1.5765	11.3815	0	gb10/single core pinned, nice	1304679	207002	1000	0
+taxi-rainy-fickle/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	9.999	1.5021	11.5011	0	gb10/single core pinned, nice	2131747	207002	1000	0
+taxi-rainy-fickle/rwslab_tail_T100.cbor	gymnasium	cpu	rwslab_tail_T100	solved	85.639	31.0521	116.6911	0	gb10/single core pinned, nice	3102602	207002	1000	0
+taxi-rainy-fickle/rwslab_tail_T50.cbor	gymnasium	cpu	rwslab_tail_T50	solved	34.761	23.6807	58.4417	0	gb10/single core pinned, nice	1580072	207002	1000	0
+taxi-rainy/rwdyadic_k16_T200.cbor	gymnasium	cpu	rwdyadic_k16_T200	solved	4.73	0.6989	5.4289	0	gb10/single core pinned, nice	636572	103502	500	0
+taxi-rainy/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	4.879	0.6967	5.5757	0	gb10/single core pinned, nice	1052643	103502	500	0
+taxi-rainy/rwslab_tail_T100.cbor	gymnasium	cpu	rwslab_tail_T100	solved	24.361	13.5521	37.9131	0	gb10/single core pinned, nice	1518343	103502	500	0
+taxi-rainy/rwslab_tail_T25.cbor	gymnasium	cpu	rwslab_tail_T25	solved	4.985	8.6774	13.6624	0	gb10/single core pinned, nice	595955	103502	500	0
+taxi-rainy/rwslab_tail_T50.cbor	gymnasium	cpu	rwslab_tail_T50	solved	11.091	10.128	21.219	0	gb10/single core pinned, nice	767358	103502	500	0
+blackjack/rwdyadic_k16_T22.cbor	gymnasium	cpu	rwdyadic_k16_T22	solved		0.0916		0	gb10/single core pinned, nice	63732	7277	291	0
+blackjack/rwdyadic_k20_T22.cbor	gymnasium	cpu	rwdyadic_k20_T22	solved		0.0917		0	gb10/single core pinned, nice	74179	7277	291	0
+ll/ll_u4_min_a100.cbor	gymnasium	cpu	ll_u4_min_a100	solved		124.3859		0	gb10/single core pinned, nice	9000860	16000000		0
+ll/ll_u4_fixture_n20k.cbor	gymnasium	cpu	ll_u4_fixture_n20k	solved		1.3558		0	gb10/single core pinned, nice	180824	320000		0
+llc/llc_u4_min_a100.cbor	gymnasium	cpu	llc_u4_min_a100	solved		124.7346		0	gb10/single core pinned, nice	9000891	16000000		0
+llc/llc_u4_fixture_n20k.cbor	gymnasium	cpu	llc_u4_fixture_n20k	solved		1.3574		0	gb10/single core pinned, nice	180855	320000		0
+blackjack/rwdyadic_k48_T22.cbor	gymnasium	cpu	rwdyadic_k48_T22	solved	0.311	0.2999	0.6109	0	epyc/single core pinned	100920	7277	291	0
+blackjack/rwslab_T22.cbor	gymnasium	cpu	rwslab_T22	solved	2.747	2.9333	5.6803	0	epyc/single core pinned	115779	7277	291	0
+cliffwalking-det/hitting_exact_T13.cbor	gymnasium	cpu	hitting_exact_T13	solved	0.08	0.1668	0.2468	0	epyc/single core pinned	5954	852	48	0
+cliffwalking-det/rwdyadic_k48_T100.cbor	gymnasium	cpu	rwdyadic_k48_T100	solved	0.228	0.0377	0.2657	0	epyc/single core pinned	49639	5042	48	0
+cliffwalking-det/rwslab_T100.cbor	gymnasium	cpu	rwslab_T100	solved	0.001	0.5443	0.5453	0	epyc/single core pinned	21785	5042	48	0
+cliffwalking-slippery/rwdyadic_k16_T100.cbor	gymnasium	cpu	rwdyadic_k16_T100	solved	0.327	0.0505	0.3775	0	epyc/single core pinned	33292	5042	48	0
+cliffwalking-slippery/rwdyadic_k32_T100.cbor	gymnasium	cpu	rwdyadic_k32_T100	solved	0.332	0.0506	0.3826	0	epyc/single core pinned	52022	5042	48	0
+cliffwalking-slippery/rwdyadic_k48_T100.cbor	gymnasium	cpu	rwdyadic_k48_T100	solved	0.334	0.0509	0.3849	0	epyc/single core pinned	52174	5042	48	0
+cliffwalking-slippery/rwslab_T10.cbor	gymnasium	cpu	rwslab_T10	solved	0.187	0.0927	0.2797	0	epyc/single core pinned	6947	722	48	0
+cliffwalking-slippery/rwslab_T100.cbor	gymnasium	cpu	rwslab_T100	solved	0.412	1.3236	1.7356	0	epyc/single core pinned	71872	5042	48	0
+cliffwalking-slippery/rwslab_T25.cbor	gymnasium	cpu	rwslab_T25	solved	0.472	0.2353	0.7073	0	epyc/single core pinned	12378	1442	48	0
+cliffwalking-slippery/rwslab_T50.cbor	gymnasium	cpu	rwslab_T50	solved	1.154	0.5582	1.7122	0	epyc/single core pinned	26222	2642	48	0
+frozenlake-4x4-det/dyadic_k16_T100.cbor	gymnasium	cpu	dyadic_k16_T100	solved	0.037	0.0244	0.0614	0	epyc/single core pinned	8703	1581	16	0
+frozenlake-4x4-det/dyadic_k24_T100.cbor	gymnasium	cpu	dyadic_k24_T100	solved	0.036	0.0245	0.0605	0	epyc/single core pinned	8704	1581	16	0
+frozenlake-4x4-det/dyadic_k32_T100.cbor	gymnasium	cpu	dyadic_k32_T100	solved	0.036	0.0262	0.0622	0	epyc/single core pinned	13392	1581	16	0
+frozenlake-4x4-det/dyadic_k48_T100.cbor	gymnasium	cpu	dyadic_k48_T100	solved	0.036	0.0261	0.0621	0	epyc/single core pinned	13392	1581	16	0
+frozenlake-4x4-det/exact_T10.cbor	gymnasium	cpu	exact_T10	solved	0.021	0.041	0.062	0	epyc/single core pinned	1775	231	16	0
+frozenlake-4x4-det/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	0.216	0.3926	0.6086	0	epyc/single core pinned	10598	1581	16	0
+frozenlake-4x4-sr34/dyadic_k16_T100.cbor	gymnasium	cpu	dyadic_k16_T100	solved	0.042	0.0271	0.0691	0	epyc/single core pinned	7068	1581	16	0
+frozenlake-4x4-sr34/dyadic_k24_T100.cbor	gymnasium	cpu	dyadic_k24_T100	solved	0.04	0.0268	0.0668	0	epyc/single core pinned	9212	1581	16	0
+frozenlake-4x4-sr34/dyadic_k32_T100.cbor	gymnasium	cpu	dyadic_k32_T100	solved	0.04	0.0267	0.0667	0	epyc/single core pinned	9619	1581	16	0
+frozenlake-4x4-sr34/dyadic_k48_T100.cbor	gymnasium	cpu	dyadic_k48_T100	solved	0.04	0.027	0.067	0	epyc/single core pinned	13906	1581	16	0
+frozenlake-4x4-sr34/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	0.909	15.0335	15.9425	0	epyc/single core pinned	52015	1581	16	0
+frozenlake-4x4/dyadic_k16_T100.cbor	gymnasium	cpu	dyadic_k16_T100	solved	0.041	0.0265	0.0675	0	epyc/single core pinned	7047	1581	16	0
+frozenlake-4x4/dyadic_k24_T100.cbor	gymnasium	cpu	dyadic_k24_T100	solved	0.041	0.0267	0.0677	0	epyc/single core pinned	9192	1581	16	0
+frozenlake-4x4/dyadic_k32_T100.cbor	gymnasium	cpu	dyadic_k32_T100	solved	0.041	0.0268	0.0678	0	epyc/single core pinned	9598	1581	16	0
+frozenlake-4x4/dyadic_k48_T100.cbor	gymnasium	cpu	dyadic_k48_T100	solved	0.04	0.0269	0.0669	0	epyc/single core pinned	13886	1581	16	0
+frozenlake-4x4/exact_T10.cbor	gymnasium	cpu	exact_T10	solved	0.048	0.2983	0.3463	0	epyc/single core pinned	2511	231	16	0
+frozenlake-4x4/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	0.893	16.2029	17.0959	0	epyc/single core pinned	31846	1581	16	0
+frozenlake-4x4/exact_T25.cbor	gymnasium	cpu	exact_T25	solved	0.133	1.3758	1.5088	0	epyc/single core pinned	4928	456	16	0
+frozenlake-4x4/exact_T5.cbor	gymnasium	cpu	exact_T5	solved	0.021	0.1004	0.1214	0	epyc/single core pinned	1936	156	16	0
+frozenlake-4x4/exact_T50.cbor	gymnasium	cpu	exact_T50	solved	0.321	4.6559	4.9769	0	epyc/single core pinned	11164	831	16	0
+frozenlake-8x8/dyadic_k16_T200.cbor	gymnasium	cpu	dyadic_k16_T200	solved	0.329	0.1623	0.4913	0	epyc/single core pinned	52389	12921	64	0
+frozenlake-8x8/dyadic_k24_T200.cbor	gymnasium	cpu	dyadic_k24_T200	solved	0.324	0.163	0.487	0	epyc/single core pinned	72649	12921	64	0
+frozenlake-8x8/dyadic_k32_T200.cbor	gymnasium	cpu	dyadic_k32_T200	solved	0.329	0.1616	0.4906	0	epyc/single core pinned	74041	12921	64	0
+frozenlake-8x8/dyadic_k48_T200.cbor	gymnasium	cpu	dyadic_k48_T200	solved	0.327	0.1601	0.4871	0	epyc/single core pinned	114964	12921	64	0
+frozenlake-8x8/exact_T100.cbor	gymnasium	cpu	exact_T100	solved	3.457	78.0228	81.4798	0	epyc/single core pinned	143356	6621	64	0
+frozenlake-8x8/exact_T200.cbor	gymnasium	cpu	exact_T200	solved	11.612	300.0641	311.6761	0	epyc/single core pinned	500289	12921	64	0
+frozenlake-8x8/exact_T25.cbor	gymnasium	cpu	exact_T25	solved	0.53	5.8904	6.4204	0	epyc/single core pinned	20649	1896	64	0
+frozenlake-8x8/exact_T50.cbor	gymnasium	cpu	exact_T50	solved	1.309	22.052	23.361	0	epyc/single core pinned	48202	3471	64	0
+taxi-dry/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	7.024	0.7634	7.7874	0	epyc/single core pinned	1026493	103502	500	0
+taxi-dry/rwslab_T200.cbor	gymnasium	cpu	rwslab_T200	solved	0.002	13.5966	13.5986	0	epyc/single core pinned	431939	103502	500	0
+taxi-fickle/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	15.091	1.6195	16.7105	0	epyc/single core pinned	2062322	207002	1000	0
+taxi-fickle/rwslab_tail_T100.cbor	gymnasium	cpu	rwslab_tail_T100	solved	84.047	31.2026	115.2496	0	epyc/single core pinned	956360	207002	1000	0
+taxi-rainy-fickle/rwdyadic_k16_T200.cbor	gymnasium	cpu	rwdyadic_k16_T200	solved	20.08	2.1876	22.2676	0	epyc/single core pinned	1304679	207002	1000	0
+taxi-rainy-fickle/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	20.29	2.1987	22.4887	0	epyc/single core pinned	2131747	207002	1000	0
+taxi-rainy-fickle/rwslab_tail_T100.cbor	gymnasium	cpu	rwslab_tail_T100	solved	133.951	67.76	201.711	0	epyc/single core pinned	3102602	207002	1000	0
+taxi-rainy-fickle/rwslab_tail_T50.cbor	gymnasium	cpu	rwslab_tail_T50	solved	58.023	55.7992	113.8222	0	epyc/single core pinned	1580072	207002	1000	0
+taxi-rainy/rwdyadic_k16_T200.cbor	gymnasium	cpu	rwdyadic_k16_T200	solved	8.857	1.0121	9.8691	0	epyc/single core pinned	636572	103502	500	0
+taxi-rainy/rwdyadic_k48_T200.cbor	gymnasium	cpu	rwdyadic_k48_T200	solved	8.941	1.0053	9.9463	0	epyc/single core pinned	1052643	103502	500	0
+taxi-rainy/rwslab_tail_T100.cbor	gymnasium	cpu	rwslab_tail_T100	solved	44.112	28.3252	72.4372	0	epyc/single core pinned	1518343	103502	500	0
+taxi-rainy/rwslab_tail_T25.cbor	gymnasium	cpu	rwslab_tail_T25	solved	9.742	20.4837	30.2257	0	epyc/single core pinned	595955	103502	500	0
+taxi-rainy/rwslab_tail_T50.cbor	gymnasium	cpu	rwslab_tail_T50	solved	20.434	22.828	43.262	0	epyc/single core pinned	767358	103502	500	0
+blackjack/rwdyadic_k16_T22.cbor	gymnasium	cpu	rwdyadic_k16_T22	solved		0.1396		0	epyc/single core pinned	63732	7277	291	0
+blackjack/rwdyadic_k20_T22.cbor	gymnasium	cpu	rwdyadic_k20_T22	solved		0.1404		0	epyc/single core pinned	74179	7277	291	0
+ll/ll_u4_min_a100.cbor	gymnasium	cpu	ll_u4_min_a100	solved		190.0231		0	epyc/single core pinned	9000860	16000000		0
+ll/ll_u4_fixture_n20k.cbor	gymnasium	cpu	ll_u4_fixture_n20k	solved		1.9884		0	epyc/single core pinned	180824	320000		0
+llc/llc_u4_min_a100.cbor	gymnasium	cpu	llc_u4_min_a100	solved		189.9165		0	epyc/single core pinned	9000891	16000000		0
+llc/llc_u4_fixture_n20k.cbor	gymnasium	cpu	llc_u4_fixture_n20k	solved		1.9853		0	epyc/single core pinned	180855	320000		0
+blackjack/rwdyadic_k48_T22.cbor	gymnasium	gpu	rwdyadic_k48	solved	0.1365			0	rtx5090	100920		291	0
+cliffwalking-det/rwdyadic_k48_T100.cbor	gymnasium	gpu	rwdyadic_k48	solved	0.4163			0	rtx5090	49639		48	0
+cliffwalking-slippery/rwdyadic_k16_T100.cbor	gymnasium	gpu	rwdyadic_k16	solved	0.456			0	rtx5090	33292		48	0
+cliffwalking-slippery/rwdyadic_k32_T100.cbor	gymnasium	gpu	rwdyadic_k32	solved	0.4555			0	rtx5090	52022		48	0
+cliffwalking-slippery/rwdyadic_k48_T100.cbor	gymnasium	gpu	rwdyadic_k48	solved	0.4537			0	rtx5090	52174		48	0
+frozenlake-4x4-det/dyadic_k16_T100.cbor	gymnasium	gpu	dyadic_k16	solved	0.2513			0	rtx5090	8703		16	0
+frozenlake-4x4-det/dyadic_k24_T100.cbor	gymnasium	gpu	dyadic_k24	solved	0.2518			0	rtx5090	8704		16	0
+frozenlake-4x4-det/dyadic_k32_T100.cbor	gymnasium	gpu	dyadic_k32	solved	0.2514			0	rtx5090	13392		16	0
+frozenlake-4x4-det/dyadic_k48_T100.cbor	gymnasium	gpu	dyadic_k48	solved	0.251			0	rtx5090	13392		16	0
+frozenlake-4x4-sr34/dyadic_k16_T100.cbor	gymnasium	gpu	dyadic_k16	solved	0.2828			0	rtx5090	7068		16	0
+frozenlake-4x4-sr34/dyadic_k24_T100.cbor	gymnasium	gpu	dyadic_k24	solved	0.2817			0	rtx5090	9212		16	0
+frozenlake-4x4-sr34/dyadic_k32_T100.cbor	gymnasium	gpu	dyadic_k32	solved	0.2814			0	rtx5090	9619		16	0
+frozenlake-4x4-sr34/dyadic_k48_T100.cbor	gymnasium	gpu	dyadic_k48	solved	0.2816			0	rtx5090	13906		16	0
+frozenlake-4x4/dyadic_k16_T100.cbor	gymnasium	gpu	dyadic_k16	solved	0.2807			0	rtx5090	7047		16	0
+frozenlake-4x4/dyadic_k24_T100.cbor	gymnasium	gpu	dyadic_k24	solved	0.2814			0	rtx5090	9192		16	0
+frozenlake-4x4/dyadic_k32_T100.cbor	gymnasium	gpu	dyadic_k32	solved	0.2811			0	rtx5090	9598		16	0
+frozenlake-4x4/dyadic_k48_T100.cbor	gymnasium	gpu	dyadic_k48	solved	0.2815			0	rtx5090	13886		16	0
+frozenlake-8x8/dyadic_k16_T200.cbor	gymnasium	gpu	dyadic_k16	solved	0.5521			0	rtx5090	52389		64	0
+frozenlake-8x8/dyadic_k24_T200.cbor	gymnasium	gpu	dyadic_k24	solved	0.5521			0	rtx5090	72649		64	0
+frozenlake-8x8/dyadic_k32_T200.cbor	gymnasium	gpu	dyadic_k32	solved	0.551			0	rtx5090	74041		64	0
+frozenlake-8x8/dyadic_k48_T200.cbor	gymnasium	gpu	dyadic_k48	solved	0.5527			0	rtx5090	114964		64	0
+taxi-dry/rwdyadic_k48_T200.cbor	gymnasium	gpu	rwdyadic_k48	solved	2.1429			0	rtx5090	1026493		500	0
+taxi-fickle/rwdyadic_k48_T200.cbor	gymnasium	gpu	rwdyadic_k48	solved	4.3614			0	rtx5090	2062322		1000	0
+taxi-rainy-fickle/rwdyadic_k16_T200.cbor	gymnasium	gpu	rwdyadic_k16	solved	5.7494			0	rtx5090	1304679		1000	0
+taxi-rainy-fickle/rwdyadic_k48_T200.cbor	gymnasium	gpu	rwdyadic_k48	solved	5.7419			0	rtx5090	2131747		1000	0
+taxi-rainy/rwdyadic_k16_T200.cbor	gymnasium	gpu	rwdyadic_k16	solved	2.792			0	rtx5090	636572		500	0
+taxi-rainy/rwdyadic_k48_T200.cbor	gymnasium	gpu	rwdyadic_k48	solved	2.8056			0	rtx5090	1052643		500	0

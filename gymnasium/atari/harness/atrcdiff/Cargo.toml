@@ -1,0 +1,8 @@
+[package]
+name = "atrcdiff"
+version = "0.1.0"
+edition = "2021"
+description = "differential comparator for .atrc Atari RAM traces (ALE vs circuit env)"
+
+[profile.release]
+lto = true

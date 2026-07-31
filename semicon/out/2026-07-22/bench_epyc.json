@@ -1,0 +1,162 @@
+[
+ {
+  "cert": "semicon/out/minifab/fbfs_core_84wk.cbor",
+  "cert_bytes": 18451,
+  "e2e_wall_ms_median7": 8.928,
+  "e2e_wall_ms_min": 8.613,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=6923209477/24747380706600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=84/wk\" decode_us=2663 verify_us=5043",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=6923209477/24747380706600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=84/wk\" decode_us=2542 verify_us=5085 bench_n=200 verify_min_ns=4853419 verify_median_ns=5030090"
+ },
+ {
+  "cert": "semicon/out/minifab/fbfs_core_95wk.cbor",
+  "cert_bytes": 14984,
+  "e2e_wall_ms_median7": 6.333,
+  "e2e_wall_ms_min": 6.261,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1/38880 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=95/wk\" decode_us=2273 verify_us=3003",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1/38880 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=95/wk\" decode_us=2260 verify_us=3004 bench_n=200 verify_min_ns=2860000 verify_median_ns=2880000"
+ },
+ {
+  "cert": "semicon/out/minifab/fbfs_setupadv_78wk.cbor",
+  "cert_bytes": 14971,
+  "e2e_wall_ms_median7": 6.579,
+  "e2e_wall_ms_min": 6.294,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1/287280 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=FBFS; release=78/wk\" decode_us=2389 verify_us=2966",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1/287280 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=FBFS; release=78/wk\" decode_us=2316 verify_us=2976 bench_n=200 verify_min_ns=2836551 verify_median_ns=2854050"
+ },
+ {
+  "cert": "semicon/out/minifab/lbfs_core_84wk.cbor",
+  "cert_bytes": 14205,
+  "e2e_wall_ms_median7": 5.938,
+  "e2e_wall_ms_min": 5.815,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1/3600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=84/wk\" decode_us=2208 verify_us=2602",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1/3600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=84/wk\" decode_us=2177 verify_us=2609 bench_n=200 verify_min_ns=2445850 verify_median_ns=2494370"
+ },
+ {
+  "cert": "semicon/out/minifab/lbfs_core_90wk.cbor",
+  "cert_bytes": 14244,
+  "e2e_wall_ms_median7": 6.002,
+  "e2e_wall_ms_min": 5.918,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1/7200 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=90/wk\" decode_us=2245 verify_us=2569",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1/7200 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=90/wk\" decode_us=2206 verify_us=2530 bench_n=200 verify_min_ns=2423410 verify_median_ns=2477320"
+ },
+ {
+  "cert": "semicon/out/minifab/lbfs_core_94wk.cbor",
+  "cert_bytes": 14316,
+  "e2e_wall_ms_median7": 6.084,
+  "e2e_wall_ms_min": 5.967,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1/21600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=94/wk\" decode_us=2289 verify_us=2669",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1/21600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=94/wk\" decode_us=2219 verify_us=2660 bench_n=200 verify_min_ns=2519480 verify_median_ns=2555270"
+ },
+ {
+  "cert": "semicon/out/minifab/lbfs_core_95wk.cbor",
+  "cert_bytes": 14353,
+  "e2e_wall_ms_median7": 6.126,
+  "e2e_wall_ms_min": 5.859,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1/43200 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=95/wk\" decode_us=2205 verify_us=2641",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1/43200 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=95/wk\" decode_us=2201 verify_us=2635 bench_n=200 verify_min_ns=2486210 verify_median_ns=2537069"
+ },
+ {
+  "cert": "semicon/out/minifab/lbfs_setupadv_72wk.cbor",
+  "cert_bytes": 14853,
+  "e2e_wall_ms_median7": 6.631,
+  "e2e_wall_ms_min": 6.302,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=11/74760 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=72/wk\" decode_us=2253 verify_us=3044",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=11/74760 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=72/wk\" decode_us=2455 verify_us=2988 bench_n=200 verify_min_ns=2868490 verify_median_ns=2940299"
+ },
+ {
+  "cert": "semicon/out/minifab/lbfs_setupadv_76wk.cbor",
+  "cert_bytes": 14964,
+  "e2e_wall_ms_median7": 6.495,
+  "e2e_wall_ms_min": 6.429,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=23/448560 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=76/wk\" decode_us=2317 verify_us=3073",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=23/448560 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=76/wk\" decode_us=2284 verify_us=3094 bench_n=200 verify_min_ns=2913340 verify_median_ns=2965690"
+ },
+ {
+  "cert": "semicon/out/minifab/lbfs_setupadv_78wk.cbor",
+  "cert_bytes": 14951,
+  "e2e_wall_ms_median7": 6.487,
+  "e2e_wall_ms_min": 6.303,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1/299040 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=78/wk\" decode_us=2251 verify_us=3072",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1/299040 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=78/wk\" decode_us=2349 verify_us=3076 bench_n=200 verify_min_ns=2906920 verify_median_ns=2973749"
+ },
+ {
+  "cert": "semicon/out/mimac7/fbfs_core_th125.cbor",
+  "cert_bytes": 361096,
+  "e2e_wall_ms_median7": 86.246,
+  "e2e_wall_ms_min": 84.226,
+  "verdict": "ACCEPT modes=172 obligations=59340 eps=2728831/50000000 model=\"MIMAC set7 (Fab7) core skeleton, FBFS, theta=1/8 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=49520 verify_us=32678",
+  "bench200": "ACCEPT modes=172 obligations=59340 eps=2728831/50000000 model=\"MIMAC set7 (Fab7) core skeleton, FBFS, theta=1/8 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=49245 verify_us=31637 bench_n=200 verify_min_ns=28275209 verify_median_ns=28407359"
+ },
+ {
+  "cert": "semicon/out/mimac7/lbfs_avail_th100.cbor",
+  "cert_bytes": 401451,
+  "e2e_wall_ms_median7": 105.245,
+  "e2e_wall_ms_min": 104.1,
+  "verdict": "ACCEPT modes=172 obligations=59340 eps=13626331/100000000 model=\"MIMAC set7 (Fab7) avail skeleton, LBFS, theta=1/10 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=53556 verify_us=47596",
+  "bench200": "ACCEPT modes=172 obligations=59340 eps=13626331/100000000 model=\"MIMAC set7 (Fab7) avail skeleton, LBFS, theta=1/10 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=53503 verify_us=47584 bench_n=200 verify_min_ns=43123728 verify_median_ns=44240808"
+ },
+ {
+  "cert": "semicon/out/mimac7/lbfs_avail_th115.cbor",
+  "cert_bytes": 401455,
+  "e2e_wall_ms_median7": 106.501,
+  "e2e_wall_ms_min": 103.498,
+  "verdict": "ACCEPT modes=172 obligations=59340 eps=670281/100000000 model=\"MIMAC set7 (Fab7) avail skeleton, LBFS, theta=23/200 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=53989 verify_us=48358",
+  "bench200": "ACCEPT modes=172 obligations=59340 eps=670281/100000000 model=\"MIMAC set7 (Fab7) avail skeleton, LBFS, theta=23/200 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=53460 verify_us=48381 bench_n=200 verify_min_ns=43093928 verify_median_ns=43973918"
+ },
+ {
+  "cert": "semicon/out/mimac7/lbfs_core_th100.cbor",
+  "cert_bytes": 361622,
+  "e2e_wall_ms_median7": 86.895,
+  "e2e_wall_ms_min": 83.568,
+  "verdict": "ACCEPT modes=172 obligations=59340 eps=2436613/10000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1/10 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=51937 verify_us=36196",
+  "bench200": "ACCEPT modes=172 obligations=59340 eps=2436613/10000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1/10 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=50237 verify_us=32286 bench_n=200 verify_min_ns=28203529 verify_median_ns=28307528"
+ },
+ {
+  "cert": "semicon/out/mimac7/lbfs_core_th125.cbor",
+  "cert_bytes": 361622,
+  "e2e_wall_ms_median7": 86.523,
+  "e2e_wall_ms_min": 85.607,
+  "verdict": "ACCEPT modes=172 obligations=59340 eps=2728831/50000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1/8 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=49689 verify_us=31882",
+  "bench200": "ACCEPT modes=172 obligations=59340 eps=2728831/50000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1/8 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=49584 verify_us=32402 bench_n=200 verify_min_ns=28357969 verify_median_ns=28506909"
+ },
+ {
+  "cert": "semicon/out/mimac7/lbfs_core_th132.cbor",
+  "cert_bytes": 361626,
+  "e2e_wall_ms_median7": 85.7,
+  "e2e_wall_ms_min": 84.154,
+  "verdict": "ACCEPT modes=172 obligations=59340 eps=163291/100000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=33/250 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=48892 verify_us=31974",
+  "bench200": "ACCEPT modes=172 obligations=59340 eps=163291/100000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=33/250 of nominal release (0.5664 lots/day); station-top cover, remaining-work weights\" decode_us=48876 verify_us=31546 bench_n=200 verify_min_ns=28494628 verify_median_ns=28849549"
+ },
+ {
+  "cert": "extras/tree_core_th150.cbor",
+  "cert_bytes": 907363,
+  "e2e_wall_ms_median7": 385.355,
+  "e2e_wall_ms_min": 383.789,
+  "verdict": "ACCEPT modes=244 obligations=84180 eps=5750631/50000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1964/9903 of nominal release; refined sign-split tree cover (244 cells), joint-LP weights (rung 2.5)\" decode_us=98564 verify_us=281070",
+  "bench200": "ACCEPT modes=244 obligations=84180 eps=5750631/50000000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1964/9903 of nominal release; refined sign-split tree cover (244 cells), joint-LP weights (rung 2.5)\" decode_us=99436 verify_us=281611 bench_n=200 verify_min_ns=273102878 verify_median_ns=274704677"
+ },
+ {
+  "cert": "extras/tree_core_thc90.cbor",
+  "cert_bytes": 923835,
+  "e2e_wall_ms_median7": 397.377,
+  "e2e_wall_ms_min": 394.566,
+  "verdict": "ACCEPT modes=244 obligations=84180 eps=794413/6250000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1865/9509 of nominal release; refined sign-split tree cover (244 cells), joint-LP weights (rung 2.5)\" decode_us=101619 verify_us=290450",
+  "bench200": "ACCEPT modes=244 obligations=84180 eps=794413/6250000 model=\"MIMAC set7 (Fab7) core skeleton, LBFS, theta=1865/9509 of nominal release; refined sign-split tree cover (244 cells), joint-LP weights (rung 2.5)\" decode_us=100296 verify_us=290713 bench_n=200 verify_min_ns=280904417 verify_median_ns=283149397"
+ },
+ {
+  "cert": "extras/lbfs_core_191_2wk.cbor",
+  "cert_bytes": 8387,
+  "e2e_wall_ms_median7": 3.663,
+  "e2e_wall_ms_min": 3.63,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=1157/100000000 model=\"Kempf Mini-Fab core skeleton, LBFS, release 191/2 lots/wk (fluid capacity 96); FULL sign-split tree cover (= v0 walk); joint-LP weights (rung 2.5)\" decode_us=1194 verify_us=1483",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=1157/100000000 model=\"Kempf Mini-Fab core skeleton, LBFS, release 191/2 lots/wk (fluid capacity 96); FULL sign-split tree cover (= v0 walk); joint-LP weights (rung 2.5)\" decode_us=1264 verify_us=1561 bench_n=200 verify_min_ns=1390070 verify_median_ns=1464180"
+ },
+ {
+  "cert": "extras/lbfs_core_959_10wk.cbor",
+  "cert_bytes": 8368,
+  "e2e_wall_ms_median7": 3.773,
+  "e2e_wall_ms_min": 3.585,
+  "verdict": "ACCEPT modes=63 obligations=819 eps=231/100000000 model=\"Kempf Mini-Fab core skeleton, LBFS, release 959/10 lots/wk (fluid capacity 96); FULL sign-split tree cover (= v0 walk); joint-LP weights (rung 2.5)\" decode_us=1188 verify_us=1493",
+  "bench200": "ACCEPT modes=63 obligations=819 eps=231/100000000 model=\"Kempf Mini-Fab core skeleton, LBFS, release 959/10 lots/wk (fluid capacity 96); FULL sign-split tree cover (= v0 walk); joint-LP weights (rung 2.5)\" decode_us=1170 verify_us=1523 bench_n=200 verify_min_ns=1362710 verify_median_ns=1436790"
+ }
+]

@@ -1,0 +1,39 @@
+# RECONSTRUCTION (no listing). Faulty variant of easy1 from the
+# Alias-Darte-Feautrier-Gonnord SAS'10 termination suite (their cite
+# [mdranking]). The Farkas fingerprint pins the effective advance count D = 40
+# with the standard family race (fault 1/1000, advance 999/2000):
+# 40 * (1/1000)/(999/2000) = 80/999 = 0.0800800... -> ceil 0.0801 = published.
+# (D=40 is the unique integer hit in the natural family; e.g. D=39 -> 0.0781,
+# D=41 -> 0.0821; doubled-fault/halved-D combinations miss the 4th decimal.)
+# Loop skeleton below is the family template with the D=40 span; the original
+# easy1's variable structure (two counters) collapses to this 1-counter chain
+# for reach-probability purposes — divergence risk is limited to presentation,
+# not probability, and is noted in STATUS.md.
+[benchmark]
+name = "faulty_easy1"
+family = "unreliable_hardware"
+section = 3
+provenance = "reconstruction; D=40 pinned by Farkas fingerprint; SAS'10 easy1 lineage"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 41"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/2000", update = {i = "i + 1"}},
+  {prob = "999/2000", update = {}},
+]
+
+[benchmark.farkas]
+published = "0.0801"
+grid = {i = [0, 41], error = [0, 1]}
+invariant = "0 <= i && i <= 41"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame. Expected optimum 80/999."
+
+[benchmark.truth]
+method = "chain"

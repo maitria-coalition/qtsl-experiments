@@ -1,0 +1,57 @@
+{
+  "checker": "glc-check (container + envelope integrity, then obligation ENUMERATION from the sealed rows — every QDeadlineTable rule node discharged through the exact-rational deadline-table walk: WF/B/S/C recomputed from the node's closure alone, absorbing self-loops determined from DState/absorbing marks, dyadic tables embedded exactly in Q; pass the mode flag --gym (a prerequisite-table assertion) plus --expect-claims from this manifest; zero-node containers REFUSE)",
+  "family": "gym-hit-v0",
+  "format": ".glc — sealed geolog commit containers (single commit per certificate)",
+  "mode_flag": "--gym",
+  "mutants": [],
+  "positives": [
+    {
+      "claim": "1",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T10.glc",
+      "glc_sha256": "57d1666d234e2f16b43b559adf1c15e219735ef6465da490ea7cd334d390877c",
+      "source_cert": "gymnasium/out/frozenlake-4x4-det/exact_T10.cbor"
+    },
+    {
+      "claim": "1",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T100.glc",
+      "glc_sha256": "c5e2df29778d51c2d2d0b13cb382b88c7c168cd2e2718306bb9282f2b2c07cbe",
+      "source_cert": "gymnasium/out/frozenlake-4x4-det/exact_T100.cbor"
+    },
+    {
+      "claim": "1",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k16_T100.glc",
+      "glc_sha256": "5c449ddf18e0ba5447f26280977edcb94ca85eb18d49df56f630973ea709968e",
+      "source_cert": "gymnasium/out/frozenlake-4x4-det/dyadic_k16_T100.cbor"
+    },
+    {
+      "claim": "1",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k24_T100.glc",
+      "glc_sha256": "c32736c3735ff7373f4be7d7b2146e5b19a99ff8469ab6262ee2d5c5f807e4bf",
+      "source_cert": "gymnasium/out/frozenlake-4x4-det/dyadic_k24_T100.cbor"
+    },
+    {
+      "claim": "1",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k32_T100.glc",
+      "glc_sha256": "251f9dd25807785b50bbbdb25cb3c2f59d962ee6df6515cf59dca6744cb7cb63",
+      "source_cert": "gymnasium/out/frozenlake-4x4-det/dyadic_k32_T100.cbor"
+    },
+    {
+      "claim": "1",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k48_T100.glc",
+      "glc_sha256": "8e680509237da9e02a1c078e318cef6ac6f1e8a49c11c322518d1747d9526e5f",
+      "source_cert": "gymnasium/out/frozenlake-4x4-det/dyadic_k48_T100.cbor"
+    }
+  ]
+}

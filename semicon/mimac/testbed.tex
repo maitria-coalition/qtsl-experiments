@@ -1,0 +1,391 @@
+   \batchmode
+   \documentstyle[12pt]{article}
+   \addtolength{\textwidth}{+1.05truein}
+   \addtolength{\textheight}{+1.75truein}
+   \addtolength{\hoffset}{-0.5truein}
+   \addtolength{\voffset}{-0.85truein}
+   
+   \pagestyle{empty}
+   
+   \begin{document}
+   
+   \title{Semiconductor Wafer Manufacturing \\ Data Format Specification}
+   
+   \author{Gerry Feigin\thanks{With the help of: Sarah Hood, Frank Chance, and
+   Dan Connors.}\\
+   {\em IBM Research Division} \\
+   {\em T. J. Watson Research Center} \\
+   {\em P. O.  Box 218}   \\
+   {\em Yorktown Heights, NY  10598}\\
+   \\
+   {John Fowler} \\
+   {Jennifer Robinson} \\
+   {\em SEMATECH} \\
+   {\em 2706 Montopolis Drive} \\
+   {\em Austin, TX 78741} \\
+   \\
+   {Robert Leachman} \\
+   {\em University of California} \\
+   {\em Dept. of Industrial Engineering and Operations Research} \\
+   {\em Berkeley, CA 94720}  \\
+   \\
+   }
+   \date{July 19, 1994}
+   \maketitle
+   
+   %\begin{abstract}
+   %\end{abstract}
+   
+   
+   %\newpage
+   %\setcounter{page}{2}
+   \pagestyle{plain}
+   
+   \baselineskip 17pt plus 2pt minus 2pt
+   
+   \section{Introduction}
+   This document describes the format for the semiconductor manufacturing
+   line data as well as relevant comments and
+   information about the data.  For each data set, there are 5 data files
+   (or tables) as well as a sixth comments file.
+   The name of each file for a given data set
+   should have a prefix common to all the files for this data set
+   followed by a unique suffix to identify the file.   For example,
+   if the data set were \verb+ibm+, then the the files corresponding to this 
+   data set would have the names \verb+ibm.<suffix>+.
+   \\
+   \\
+   Below is a list of the
+   six files, along with their suffixes and a brief description
+   of the data they contain.
+   
+   \begin{center}
+   \begin{tabular}{|l|c|l|}  \hline
+   {\em File} & {\em Suffix ID} & {\em Description} \\ \hline
+   Process Route &  pr &    Process route information for
+                           all processes \\
+   Rework Sequences & rw &   Information on rework sequences \\
+   Tool Set   &     ts &   Information on tools  \\
+   Operator Set  &  os  &  Information on operators  \\
+   Volume/release & vr &   Release rate information \\ 
+   Comment File  &  cf  &  General comments and sample run 
+                          results  \\  \hline 
+   \end{tabular}
+   \end{center}
+   
+   \section{File descriptions}
+   In this section, a detailed description is given
+   of the format for each of the files described in the previous
+   section. For each of the 5 data files, a list of all the fields for
+   each record is given, and for each field, its type (e.g. integer,
+   float, etc.), its width, and a brief description of its contents
+   are specified.
+   A description of the comments file is also provided. 
+
+   
+   \subsection{Process Route File}
+   
+   \begin{center}
+   \begin{tabular}{|l|c|c|l|}  \hline
+   {\em Field Name} &  {\em Type} & {\em Width } & {\em Remarks} \\ \hline
+   Process Flow ID  & String & 10 & Unique process flow ID \\
+   Step ID & String & 10 & Process step ID \\
+   Operation Description  & String & 25 & A brief operation description \\
+   Tool Set ID & String & 10 & Assume
+   1 tool needed from this tool group \\
+    & & & for this operation \\
+   Operator Set ID & String & 15 &  Assume 1 operator needed for this
+   operation \\
+    & & & (see operator set file for more info) \\
+   Load Time & Float & 10 & Time to load wafers/lot/batch into tool \\
+   Unload Time & Float & 10 & Time to unload wafers/lot/batch from tool \\
+   Time per Wafer in Process & Float & 10 & Processing time per wafer (excluding 
+   travel \\
+    & & & time within tool) (as appropriate) \\
+   Wafer Travel Time & Float & 10 & Travel time within tool (as appropriate)\\
+   Time per Lot & Float & 10 & Lot processing time (as appropriate) \\
+   Time per Batch & Float & 10 & Batch processing time (as appropriate) \\
+   Min Batch Size & Integer & 5 & Minimum batch size (in wafers) \\
+   Max Batch Size & Integer & 5 & Maximum batch size (in wafers) \\
+   Batch ID & String & 10 & Used to identify which operations \\
+    & & & can be batched together \\
+   Time per Spec. Setup & Float & 10 & Setup time required for changing from one 
+   \\
+    & & &  process flow step (recipe spec.) to another \\
+   Time per Group Setup & Float & 10 & Setup time required for changing
+   from \\
+    & & & one ``group'' to another where group is specified \\
+    & & & by the Setup Group ID  \\
+   Setup Group ID & String & 15 & See above \\
+   Lot Scrap Probability & Float & 10 & Prob. an entire lot is scrapped \\
+    & & & after this operation \\
+   Wafer Scrap Probability & Float & 10 & Prob. a wafer in a lot is
+   scrapped \\
+    & & & after this operation \\
+   Lot Rework Probability & Float & 10 & Prob. an entire lot is
+   sent for rework after \\
+    & & & this operation given it has not been scrapped \\
+   Wafer Rework Probability & Float & 10 & Prob. a wafer in a lot
+   is sent for rework given it \\
+    & & & is has not been scrapped \\
+   Rework Sequence ID & String & 10 & Rework sequence to follow \\
+   Rework Return Step ID & String & 10 & Step to which wafers return
+   after rework \\
+   Travel Time & Float & 10 & Time to travel to next operation process step \\
+   Travel Time Operator ID & String & 15 &  Operator set
+   needed for travel \\ \hline
+   \end{tabular}
+   \end{center}
+
+   \newpage
+   
+   \subsection{Rework Sequences File}
+   The format for a rework sequence record is almost identical
+   to the corresponding format given for the process route.  The
+   difference  is that instead of a Process ID, there is
+   a rework sequence ID.
+   
+   \begin{center}
+   \begin{tabular}{|l|c|c|l|}  \hline
+   {\em Field Name} &  {\em Type} & {\em Width } & {\em Remarks} \\ \hline
+   Rework Sequence ID  & String & 10 & Unique product family ID \\
+   Step ID & String & 10 & Process step ID \\
+   Operation Description  & String & 25 & A brief operation description \\
+   Tool Set ID & String & 10 & Assume
+   1 tool needed from this tool set \\
+    & & & for this operation \\
+   Operator Set ID & String & 15 &  Assume 1 operator needed for this
+   operation \\
+    & & & (see operator set file for more info) \\
+   Load Time & Float & 10 & Time to load wafers/lot/batch into tool \\
+   Unload Time & Float & 10 & Time to unload wafers/lot/batch from tool \\
+   Time per Wafer in Process & Float & 10 & Processing time per wafer (excluding 
+   travel \\
+    & & & time within tool) (as appropriate) \\
+   Wafer Travel Time & Float & 10 & Travel time within tool (as appropriate)\\
+   Time per Lot & Float & 10 & Lot processing time (as appropriate) \\
+   Time per Batch & Float & 10 & Batch processing time (as appropriate) \\
+   Min Batch Size & Integer & 5 & Minimum batch size (in wafers) \\
+   Max Batch Size & Integer & 5 & Maximum batch size (in wafers) \\
+   Batch ID & String & 10 & Used to identify which operations \\
+    & & & can be batched together \\
+   Time per Spec. Setup & Float & 10 & Setup time required for changing from one 
+   \\
+    & & &  process flow step (recipe spec.) to another \\
+   Time per Group Setup & Float & 10 & Setup time required for changing
+   from \\
+    & & & one ``group'' to another where group is specified \\
+    & & & by the Setup Group ID  \\
+   Setup Group ID & String & 15 & See above \\
+   Lot Scrap Probability & Float & 10 & Prob. an entire lot is scrapped \\
+    & & & after this operation \\
+   Wafer Scrap Probability & Float & 10 & Prob. a wafer in a lot is
+   scrapped \\
+    & & & after this operation \\
+   Lot Rework Probability & Float & 10 & Prob. an entire lot is
+   sent for rework after \\
+    & & & this operation given it has not been scrapped \\
+   Wafer Rework Probability & Float & 10 & Prob. a wafer in a lot
+   is sent for rework given it \\
+    & & & is has not been scrapped \\
+   Rework Sequence ID & String & 10 & Rework sequence to follow \\
+   Rework Return Step ID & String & 10 & Step to which wafers return
+   after rework \\
+   Travel Time & Float & 10 & Time to travel to next operation process step \\
+   Travel Time Operator ID & String & 15 &  Operator set
+   needed for travel \\ \hline
+   \end{tabular}
+   \end{center}
+   
+   \subsection{Tool Set File}
+   
+   \begin{center}
+   \begin{tabular}{|l|c|c|l|}  \hline
+   {\em Field Name} &  {\em Type} & {\em Width } & {\em Remarks} \\ \hline
+   Tool Set ID & String & 10 & Tool set identifier \\
+   Tool Description & String & 25 & Name or description of tool \\
+   Quantity & Integer & 5 & Number of (identical) tools in tool set \\
+   Operator Load Fraction & Float & 10 & Fraction of time operator is needed \\
+    & & & for lot loading \\
+   Operator Unload Fraction & Float & 10 & Fraction of time operator is needed \\
+    & & & for lot unloading \\
+   Operator Process Fraction & Float & 10 & Fraction of time operator is
+   needed \\
+    & & & for lot processing \\
+   Down Time \#1 Description & String & 25 & Description of tool down time
+   type 1 \\
+   Down Time \#1 Type & Integer & 5 & 0 = time based; 1 = run based \\
+   Time or Runs Between \#1 & Float & 15 & Mean time (runs) between this \\
+    & & & down time event \\
+   Duration \#1 & Float & 10 & Duration of this down time event \\
+   Down Time \#1 Operator Set ID & String & 15 & Operator needed from
+    this set\\ 
+    & & & during this down time event\\
+   Down Time \#2 Description & String & 25 & Description of tool down time
+   type 2 \\
+   Down Time \#2 Type & Integer & 5 & 0 = time based; 1 = run based \\
+   Time or Runs Between \#2 & Float & 15 & Mean time (runs) between this \\
+    & & & down time event \\
+   Duration \#2 & Float & 10 & Duration of this down time event \\
+   Down Time \#2 Operator Set ID & String & 15 & Operator needed from
+   this set \\
+    & & & during this down time event\\
+   Down Time \#3 Description & String & 25 & Description of tool down time
+   type 3 \\
+   Down Time \#3 Type & Integer & 5 & 0 = time based; 1 = run based \\
+   Time or Runs Between \#3 & Float & 15 & Mean time (runs) between this \\
+    & & & down time event \\
+   Duration \#3 & Float & 10 & Duration of this down time event \\
+   Down Time \#3 Operator Set ID & String & 15 & Operator needed from
+   this set \\
+    & & & during this down time event\\
+   Down Time \#4 Description & String & 25 & Description of tool down time
+   type 4 \\
+   Down Time \#4 Type & Integer & 5 & 0 = time based; 1 = run based \\
+   Time or Runs Between \#4 & Float & 15 & Mean time (runs) between events \\
+   Duration \#4 & Float & 10 & Duration of this down time event \\
+   Down Time \#4 Operator Set ID & String & 15 & Operator needed from
+   this set \\
+    & & & during this down time event\\
+   Down Time \#5 Description & String & 25 & Description of tool down time
+   type 5 \\
+   Down Time \#5 Type & Integer & 5 & 0 = time based; 1 = run based \\
+   Time or Runs Between \#5 & Float & 15 & Mean time (runs) between events \\
+   Duration \#5 & Float & 10 & Duration of this down time event \\
+   Down Time \#5 Operator Set ID & String & 15 & Operator needed from
+   this set \\
+    & & & during this down time event\\ \hline
+   \end{tabular}
+   \end{center}
+   
+   \newpage
+   \subsection{Operator Set File}
+   The format for operator set records is similar to the format for
+   the tool set.
+   
+   \begin{center}
+   \begin{tabular}{|l|c|c|l|}  \hline
+   {\em Field Name} &  {\em Type} & {\em Width } & {\em Remarks} \\ \hline
+   Operator Set ID & String & 15 & Operator set identifier \\
+   Operator Description & String & 25 & Operator Set Name \\
+   Quantity  & Integer & 5 & Number of operators in this set \\
+   Break \#1 Description & String & 25 & Description of break type \\
+   Time Between \#1 & Float & 15 & Time between breaks of this type \\
+   Duration \#1 & Float & 10 & Duration of breaks of this type \\
+   Break \#2 Description & String & 25 & Description of break type \\
+   Time Between \#2 & Float & 15 & Time between breaks of this type \\
+   Duration \#2 & Float & 10 & Duration of breaks of this type \\
+   Break \#3 Description & String & 25 & Description of break type \\
+   Time Between \#3 & Float & 15 & Time between breaks of this type \\
+   Duration \#3 & Float & 10 & Duration of breaks of this type \\ \hline
+   \end{tabular}
+   \end{center}
+   
+   \subsection{Volume/Release  File}
+   
+   \begin{center}
+   \begin{tabular}{|l|c|c|l|}  \hline
+   {\em Field Name} &  {\em Type} & {\em Width } & {\em Remarks} \\ \hline
+   Process Flow & String & 10 & Process Flow ID \\
+   Product ID & String & 10 & Unique product family ID  \\
+   Product Name & String & 25 & Name of Product (optional) \\
+   Start Rate & Float & 10 & Number of wafers per day  released into \\
+    & & & line based on 7 day/week operation \\
+   Lot Size & Integer & 10 & Number of wafers in a released lot \\ \hline
+   \end{tabular}
+   \end{center}
+  
+  \subsection{Comments File}
+   The comments file contains information about the factory represented 
+   by the dataset, including the type of product manufactured, 
+   number of process flows
+   in the dataset, number of equipment groups, and approximate wafer starts
+   per month. The file also contains sample simulation output, including  
+   assumptions, simulation run conditions, and results (cycle times and 
+   number of outs).
+
+
+
+
+ 
+   \newpage
+   \section{Additional Information}
+   
+   In this section, we list, in no particular order,
+   relevant issues and clarifying points
+   relating to the data sets.
+   
+   \begin{enumerate}
+   \item All times are specified in minutes except if stated explicitly
+   otherwise.
+   \item  All tools in a tool set and all operators in a operator set
+   are considered identical.  In particular, all tools in a tool set
+   are considered qualified to perform all operations coming to that
+   tool set.  The same holds true for operators.
+   \item  An operation is uniquely specified by its Process ID
+   (or Rework ID) and Step ID.
+   However, we allow multiple entries
+   for the same Product ID, Step ID pair.  The resolution of such
+   multiple entries should be made in the description field.
+   Multiple entries might be used to specify alternative tool sets
+   or operator sets that can be used to perform an operation.
+   \item The following formulas can be used to calculate processing
+   time per lot (pt), time until tool becomes free (
+   tf), and
+   total lot cycle time through an operation (ct): \\
+   pt = \verb+Time per Batch+ * Number of batches required for the lot \\
+   ~~~~~+ \verb+Time per Lot+  +  \verb+Time per Wafer in Process+
+    * Number of wafers in lot \\
+   ~~~~~+ \verb+Product Setup+ (if appropriate) +
+   \verb+Group Setup+ (if appropriate) \\
+   tf = \verb+Load Time+ + pt + \verb+Unload Time+ \\
+   ct = \verb+Load Time+ + pt + \verb+Wafer Travel Time+ +
+   \verb+Unload Time+ \\
+   
+   \item No distributional information is included in the data
+   sets beyond first moment (mean) information.  Fields with
+   names like \verb+Load Time+ have the implicit prefix qualifier
+   \verb+Mean+.
+   \item  The wafer start rates given in the Volume/release
+   file are intended as guidelines.  The exact method by
+   which lots are released is to be determined by the users of the
+   data.
+   \item  Information on
+   process holds, engineering holds and send aheads is not included.
+   \item Time bound sequences cannot be specified explicitly.
+   \item The following types of tools typically found in a semiconductor
+   wafer manufacturing line can be modeled by making appropriate
+   use of the processing time parameters:
+   \begin{enumerate}
+   \item Single wafer tools.  Set \verb+Time per Wafer in Process+ field
+   to wafer processing time and all other process time parameters to 0.
+   \item Batch tools.  Set \verb+Min Batch Size+ and \verb+Max Batch Size+ 
+   fields appropriately.  Set \verb+Time per Batch+
+   field to batch processing time and all other process time
+   parameters to 0. Lots with the same batch ID may be batched 
+   together (up to the max batch size). Where batch IDs are left blank
+   only lots at the same step of the same process flow may be batched together.
+   \item Multi-Sequence tools.  Set \verb+Min Batch Size+ and 
+   \verb+Max Batch Size+ fields appropriately.   Set \verb+Time per Batch+
+   field to the largest single tank time and set 
+   \verb+ Wafer Travel Time+ field to the  remaining tank time. Set other process
+   time parameters to 0.
+   \item Conveyor tools. Set \verb+Time per Wafer in Process+ field
+   to wafer processing time and \verb+ Wafer Travel Time+ field 
+   to the wafer travel time.  Set other process time parameters to 0.
+   \item Inspect tools. Set \verb+Time per Lot+ field to inspect time.
+   Set other process time parameters to 0.
+   \item Certain cluster tools.  Model as batch tools.
+   \item Linked track/ linked lithography tools. Model as conveyor
+   tools.
+   \end{enumerate}
+   \item Group and spec. setups are assumed to be done whenever the group or 
+   process flow step ID changes from one operation to another. However, the duration of the 
+   setup does not vary as a function of the specific group or product preceding 
+   the operation.
+   \item An Operator Set ID or Tool Set ID field that is blank indictes that no resource is 
+   needed for that step.
+   \end{enumerate}
+   \newpage
+   
+   \end{document}

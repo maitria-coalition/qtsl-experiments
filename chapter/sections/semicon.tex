@@ -1,0 +1,151 @@
+\section{Process control: the semiconductor ladder}
+\label{sec:exp-semicon}
+
+The final campaign leaves benchmarks-with-leaderboards entirely and
+instantiates the chapter's infinite-horizon species (U4 of
+section~\ref{sec:exp-claims}: long-run throughput and stability
+claims for queueing-network models) on a ladder of semiconductor-fab
+process models --- the application-domain family the toolkit's programme
+context cares about, and a domain where the certified claim is
+economically legible: \emph{this dispatch policy keeps the line
+stable at this load}. That claim has teeth because it is famously
+falsifiable: re-entrant lines destabilize under plausible dispatch
+policies strictly below nominal capacity (the Kumar--Seidman
+phenomenon), and the fluid-limit criteria of Dai and Dai--Weiss
+reduce stability to exactly the polyhedral drift inequalities the
+toolkit's checkers replay.
+
+\paragraph{The ladder, whole.} The campaign's target is a fixed
+progression of eleven public fab models in four stages --- the Intel
+Mini-Fab; the seven SEMATECH MIMAC testbed fabs
+\bookcite{fowler95}{(Fowler and Robinson 1995)}; the two SMT2020
+scenario fabs \bookcite{kopp20}{(Kopp, Hassoun, Kalir, and M\"onch
+2020)}; and SMAT2022 \bookcite{lee22}{(Lee, Song, Chang, and Park
+2022)} --- carrying the same claim species at every rung, so the
+ladder is a progression in scale and modelled physics, never a change
+of subject:
+
+\begin{center}\small
+\begin{tabular}{@{}llc@{}}
+\toprule
+rung & one-line identity & certified rows\\
+\midrule
+Mini-Fab & 3 stations, 5 machines, 6 re-entrant steps (Kempf 1994) &
+  this preview\\
+MIMAC set 1 & 2 products, 265 tools, routes to 245 steps & ---\\
+MIMAC set 2 & 7 products, 274 tools, routes to 354 steps & ---\\
+MIMAC set 3 & 11 products, 354 tools, routes to 547 steps & ---\\
+MIMAC set 4 & 7 products, 69 tools, routes to 92 steps & ---\\
+MIMAC set 5 & 21 products, 176 tools, routes to 266 steps & ---\\
+MIMAC set 6 & 9 products, 228 tools, routes to 355 steps & ---\\
+MIMAC set 7 & 1 product, 38 tools, one 172-step re-entrant route &
+  this preview\\
+SMT2020 HV/LM & high-volume/low-mix scenario fab, $\sim\!10^3$ tools & ---\\
+SMT2020 LV/HM & low-volume/high-mix scenario fab, $\sim\!10^3$ tools & ---\\
+SMAT2022 & the SMT2020 fabs + automated material handling & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent {\small MIMAC set characteristics are the testbed's own
+dataset tables, tabulated independently by Zhou and Rose
+\bookcite{zhou09}{(2009)}. One count deserves a flag: the testbed's
+catalogue prose says \emph{six} datasets, and that count circulates in
+the citing literature --- but set~7 (a synthetic single-product fab
+adapted from a published model of Lawrence Wein's) entered the
+archive days after the catalogue text's 1997 revision and was never
+re-catalogued, and the archive itself ships seven. SMT2020's two
+scenario fabs each ship with an engineering-lots variant; SMAT2022
+extends all four SMT2020 models with a full automated-material-handling
+layer --- vehicles, rails, bays, ports.}\medskip
+
+The stages differ in which physics must enter the certificate, and
+that difference is the ladder's actual content. The Mini-Fab is small
+enough that every modelling decision can be witnessed line by line
+--- \bookref{ch:qtsl-minifab}{the book's worked-example chapter}
+gives the model and this campaign's certificates a chapter-length
+reading --- yet it already carries the domain's hard structure
+(re-entrance, batching, sequence-dependent setups, shared personnel,
+failures), so certifying it means fluid-drift stability with the
+awkward layers priced by explicit adversarial rows, and
+work-in-progress and cycle-time moments as named successors. The
+MIMAC stage is the same claim species at real-fab scale, where the
+sign-mode census dies combinatorially: certifying it means aggregated
+covers with certified refinement paths, plus an extraction pipeline
+from the testbed's 1990s fixed-width dataset format to declared
+network rows. The SMT2020 stage adds another order of magnitude
+($\sim\!10^3$ tools) and a maintained community simulator
+(PySCFabSim), so analytic rows gain a simulation oracle beside them
+--- anytime-valid statistical confidence bounds (the U5 rows of
+section~\ref{sec:exp-claims}) apply at every rung today and are the
+honest first deliverable at the top ones. SMAT2022 adds the transport
+network itself to the contended resources, and its reference
+simulator is closed-shape, so the declared model carries the
+semantics alone.
+
+\textbf{Certified today: the Mini-Fab.} The base rung's model --- the
+community's minimal re-entrant fab, whose batching, setup, personnel,
+and failure layers make five machines an honest miniature of the
+domain --- is described at reading depth in
+\bookref{ch:qtsl-minifab}{the book's worked-example chapter}, which
+also walks these certificates decision by decision; here, the
+campaign summary. For the fluid model of the deterministic core,
+under named static-priority dispatch policies (last- and
+first-buffer-first-served), with all residual scheduling freedom
+resolved adversarially: certified linear-Lyapunov drain certificates
+at release rates up to $95.9$ of the $96$ lots/week fluid capacity
+($99.90\%$), with the checker independently rebuilding every polytope
+and replaying one exact-$\mathbb{Q}$ Farkas dual per mode --- and the
+probe at $96$ correctly failing, because the load is genuinely at
+capacity: producer-side bisection brackets the last certifiable
+release within $6 \times 10^{-5}$ lots/week of the fluid capacity, so
+the one-lot gap in this campaign's earlier grid was grid granularity,
+not lost capacity. A setup-adversarial variant (setup times charged
+worst-case inline) certifies up to $99.8\%$ of its own reduced
+ceiling. Certificates carry $819$ obligations and check in
+$1$--$3$\,ms; the two rows nearest capacity ride fully-refined
+sign-split tree covers --- the refinement species the testbed rung
+below leans on, exercised first here. The certified drain rates also
+separate the two policies near capacity --- an exact
+policy-comparison number of the kind this claim species was chosen to
+produce.
+
+\textbf{Certified today: MIMAC set 7, at the cover and one
+refinement in} (the smallest of the seven by tool count: one product,
+38 machines in 24 tool groups, one 172-step re-entrant route). The
+structural problem at this scale is that mode-by-mode certification
+is $2^{172}$-large; the certificate instead quantifies over an
+\emph{aggregated cover} --- cells whose relaxed polytopes provably
+over-approximate every sign mode, by a lemma whose only move is
+dropping constraints (so soundness is monotone by construction). The
+honest price appears in the bound, and so, now, does the refinement
+path. At the coarsest cover ($172$ cells; proven weight-optimal for
+that cover) the certified stable load is $13.2\%$ of the dataset's
+nominal release (availability-adjusted variant: $11.5\%$). Walking
+the certificate format's built-in refinement path (binary sign-split
+trees, anytime-refinable down to the exact mode walk) --- with the
+weight search and every cell's dual solved as one sparse linear
+program --- lifts this to a certified $1964/9903 \approx 19.8\%$ of
+nominal on a $244$-cell tree ($1.50\times$ the coarsest cover;
+$84{,}180$ obligations, replayed by the checker exactly like every
+other row). Both numbers are weak, both are displayed at full
+prominence, and the certified $19.8\%$ is a floor rather than a
+ceiling: the refinement run was stopped early, with producer-side
+bisection already bracketing $23$--$24\%$ at five times the cells
+(measured, not yet certified) --- and the measured refinement curve
+is sublinear enough that explicit trees cannot reach nominal load at
+fab scale, so pricing that species limit, and the implicit-cover
+species that removes it, is named successor work. The aggregation
+gap is a measured frontier, not fine print.
+
+\paragraph{What is not claimed.} These are claims about declared fluid
+models of the fabs, with batching, setups, and failures handled by
+explicit adversarial or interval rows where modelled at all --- the
+model gap to the discrete line rides a declared ledger, and the
+conversion from certified drain rates to work-in-progress and
+cycle-time bounds on the discrete line (via Foster--Lyapunov moment
+rows and Little's law) is named successor work. No claim is made
+about optimality of the dispatch policies, only their certified
+stability region. The ladder's remaining nine rungs --- MIMAC sets
+1--6, the SMT2020 pair, and SMAT2022 --- are census-scoped but carry
+no certificates at this preview.

@@ -1,0 +1,8 @@
+CPU(s):                                  20
+On-line CPU(s) list:                     0-19
+Model name:                              Cortex-X925
+CPU(s) scaling MHz:                      100%
+Model name:                              Cortex-A725
+CPU(s) scaling MHz:                      100%
+NUMA node0 CPU(s):                       0-19
+ 12:17:14 up 9 days, 16:03,  4 users,  load average: 2.82, 4.55, 5.58

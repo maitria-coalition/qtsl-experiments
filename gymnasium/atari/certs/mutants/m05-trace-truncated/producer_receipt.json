@@ -1,0 +1,45 @@
+{
+ "claim": "certs/mutants/base-pong/claim.cbor",
+ "game": "pong",
+ "species": "noop",
+ "horizon": 60,
+ "init_set": [
+  0,
+  3
+ ],
+ "returns": [
+  0,
+  0,
+  0,
+  0
+ ],
+ "min_return": 0,
+ "python_reward_crosscheck": "identical (records 1..k+T-1, all lanes)",
+ "total_wall_s": 3.61,
+ "lanes": [
+  {
+   "k": 0,
+   "return": 0,
+   "sim_line": "OK frames=60 clks=4774080 clks/frame=79568.0",
+   "wall_s": 0.88
+  },
+  {
+   "k": 1,
+   "return": 0,
+   "sim_line": "OK frames=61 clks=4853648 clks/frame=79568.0",
+   "wall_s": 0.88
+  },
+  {
+   "k": 2,
+   "return": 0,
+   "sim_line": "OK frames=62 clks=4933216 clks/frame=79568.0",
+   "wall_s": 0.88
+  },
+  {
+   "k": 3,
+   "return": 0,
+   "sim_line": "OK frames=63 clks=5012784 clks/frame=79568.0",
+   "wall_s": 0.94
+  }
+ ]
+}

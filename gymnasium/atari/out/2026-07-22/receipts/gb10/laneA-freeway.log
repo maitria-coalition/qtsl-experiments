@@ -1,0 +1,28 @@
+ACCEPT AtariCircuit-Freeway up-T1000: 31 lanes (k in 0..=30), horizon 1000, min return 2 >= bound 2
+  returns: [3, 3, 3, 3, 3, 3, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
+  cross-check: 31 traces bit-exact (31465 frames, 4027520 RAM bytes + rewards compared)
+  replay: 87386010 clks in 1392.3 s (0.06 Mclk/s, 31-lane bit-parallel word)
+  trust base: ../../out/freeway.aig (sha256 5af75c42177a3547), latch init: 0 zero / 0 one / 1454 uninitialized->zero, reward decode "freeway", boot "ale"
+	Command being timed: "/work/atari-circuit/harness/replaycheck/target/release/replaycheck check /work/qtsl-experiments/gymnasium/atari/certs/freeway-up-T1000/claim.cbor --aig /tmp/atari-rerun-scratch/old-aigs/freeway.aig --traces-dir /work/atari-circuit/certs/freeway-up-T1000 --receipt /tmp/atari-rerun-scratch/gb10-receipts/laneA-freeway.json"
+	User time (seconds): 1374.33
+	System time (seconds): 0.08
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 23:12.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7236
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 693
+	Minor (reclaiming a frame) page faults: 1557
+	Voluntary context switches: 1077
+	Involuntary context switches: 22301
+	Swaps: 0
+	File system inputs: 9672
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

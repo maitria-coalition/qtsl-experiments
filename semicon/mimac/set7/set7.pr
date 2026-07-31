@@ -1,0 +1,172 @@
+R_D_FLOW  001       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  002       DEPOSITION               TMGOX                                                               298.800
+R_D_FLOW  003       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  004       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  005       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  006       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  007       ETCHING                  PLM7                                                                324.600
+R_D_FLOW  008       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  009       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  010       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  011       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  012       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  013       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  014       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  015       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  016       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  017       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  018       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  019       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  020       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  021       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  022       DEPOSITION               TU_73                                                               261.000
+R_D_FLOW  023       DEPOSITION               TMFOX                                                               280.800
+R_D_FLOW  024       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  025       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  026       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  027       DEPOSITION               TMGOX                                                               298.800
+R_D_FLOW  028       DEPOSITION               TU_73                                                               261.000
+R_D_FLOW  029       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  030       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  031       LITHOGRAPHY              PHJPS                                                               215.400
+R_D_FLOW  032       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  033       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  034       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  035       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  036       LITHOGRAPHY              PHJPS                                                               215.400
+R_D_FLOW  037       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  038       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  039       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  040       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  041       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  042       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  043       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  044       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  045       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  046       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  047       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  048       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  049       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  050       DEPOSITION               TMGOX                                                               298.800
+R_D_FLOW  051       DEPOSITION               TU_73                                                               261.000
+R_D_FLOW  052       DEPOSITION               TU_74                                                               282.600
+R_D_FLOW  053       ETCHING                  PLM8                                                                454.800
+R_D_FLOW  054       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  055       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  056       DEPOSITION               TMFOX                                                               280.800
+R_D_FLOW  057       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  058       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  059       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  060       DEPOSITION               TMGOX                                                               298.800
+R_D_FLOW  061       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  062       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  063       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  064       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  065       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  066       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  067       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  068       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  069       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  070       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  071       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  072       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  073       DEPOSITION               TMGOX                                                               298.800
+R_D_FLOW  074       DEPOSITION               TU_72                                                               373.800
+R_D_FLOW  075       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  076       DEPOSITION               TMNOX                                                               327.000
+R_D_FLOW  077       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  078       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  079       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  080       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  081       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  082       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  083       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  084       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  085       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  086       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  087       LITHOGRAPHY              PHJPS                                                               215.400
+R_D_FLOW  088       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  089       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  090       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  091       ETCHING                  PLM7                                                                324.600
+R_D_FLOW  092       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  093       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  094       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  095       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  096       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  097       DEPOSITION               TMNOX                                                               327.000
+R_D_FLOW  098       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  099       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  100       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  101       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  102       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  103       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  104       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  105       DEPOSITION               TU_74                                                               282.600
+R_D_FLOW  106       ETCHING                  PLM8                                                                454.800
+R_D_FLOW  107       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  108       DEPOSITION               TMNOX                                                               327.000
+R_D_FLOW  109       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  110       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  111       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  112       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  113       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  114       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  115       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  116       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  117       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  118       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  119       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  120       DEPOSITION               TMNOX                                                               327.000
+R_D_FLOW  121       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  122       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  123       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  124       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  125       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  126       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  127       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  128       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  129       ION IMPLANT              IMP                                                                 231.600
+R_D_FLOW  130       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  131       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  132       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  133       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  134       DEPOSITION               TMNOX                                                               327.000
+R_D_FLOW  135       DEPOSITION               PLM5L                                                               243.000
+R_D_FLOW  136       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  137       DEPOSITION               SPUT                                                                366.000
+R_D_FLOW  138       DEPOSITION               TU_43                                                               465.600
+R_D_FLOW  139       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  140       DEPOSITION               TU_43                                                               465.600
+R_D_FLOW  141       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  142       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  143       DEPOSITION               TMFOX                                                               280.800
+R_D_FLOW  144       DEPOSITION               PLM5L                                                               243.000
+R_D_FLOW  145       ETCHING                  PLM6                                                                832.800
+R_D_FLOW  146       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  147       DEPOSITION               CLEAN                                                                93.000
+R_D_FLOW  148       DEPOSITION               PLM5L                                                               243.000
+R_D_FLOW  149       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  150       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  151       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  152       ETCHING                  PLM8                                                                454.800
+R_D_FLOW  153       DEPOSITION               SPUT                                                                366.000
+R_D_FLOW  154       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  155       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  156       LITHOGRAPHY              PHJPS                                                               215.400
+R_D_FLOW  157       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  158       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  159       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  160       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  161       LITHOGRAPHY              PHBI                                                                177.600
+R_D_FLOW  162       ETCHING                  PLM6                                                                832.800
+R_D_FLOW  163       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  164       ETCHING                  PHWET                                                                62.400
+R_D_FLOW  165       LITHOGRAPHY              PHFI                                                                 93.600
+R_D_FLOW  166       DEPOSITION               PLM5U                                                               471.600
+R_D_FLOW  167       LITHOGRAPHY              PHPPS                                                               253.800
+R_D_FLOW  168       LITHOGRAPHY              PHGCA                                                               469.200
+R_D_FLOW  169       LITHOGRAPHY              PHHB                                                                 52.200
+R_D_FLOW  170       ETCHING                  PLM8                                                                454.800
+R_D_FLOW  171       RESIST STRIP             PHPLO                                                                65.400
+R_D_FLOW  172       DEPOSITION               TU_11                                                               368.400

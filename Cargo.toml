@@ -1,0 +1,24 @@
+# qtsl-experiments workspace: thin CLI wrappers around the checker
+# libraries imported from the companion qtsl repository (Cargo git
+# references; the committed Cargo.lock pins the exact revisions).
+[workspace]
+resolver = "2"
+members = [
+    "checkers/flcheck-cli",
+    "checkers/fluidcheck-cli",
+    "gymnasium/atari/harness/simreplay",
+]
+
+[workspace.package]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+# The checker libraries' historical manifests (immutable at their pinned
+# revision) reference the kernels repository by its public name; resolve
+# that reference against the dev-rail mirror carrying the same content.
+[patch."https://github.com/maitria-coalition/kernels"]
+maitria-kernels = { git = "https://github.com/maitria-coalition/kernels-dev", rev = "b0143fa3a27ec60bfefe2c992b5be0c8be7b0bd5" }

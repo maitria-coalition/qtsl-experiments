@@ -1,0 +1,292 @@
+\section{Gymnasium: first certified rows for a standard RL suite}
+\label{sec:exp-gym}
+
+The second campaign marched the same machinery across Farama's
+Gymnasium --- the de-facto standard reinforcement-learning benchmark
+suite --- pinned at repository revision \texttt{4347ce947}, with every
+certificate naming its environment id and keyword arguments. To our
+knowledge, no prior certified bound at any of this chapter's claim
+classes has been published for any Gymnasium environment; the
+comparison points that exist are the suite's own registered
+``solved'' thresholds and code-comment optima, plus empirical
+leaderboard numbers, and the campaign's rows are therefore firsts at
+their class.
+
+One property of these certificates deserves stating before the table,
+because every row reads differently in its light: they are
+\emph{constructive}. Each certificate ships the policy itself --- a
+lookup table, indexed by state and step, sitting in the certificate
+bytes beside the value table and the claim --- so no row asserts
+merely that a policy achieving the bound \emph{exists}; it asserts
+that \emph{this} one does, and whoever holds the certificate holds the
+policy. The checker enforces the distinction structurally: its
+per-step obligations bound each state's value by the kernel-weighted
+value of the shipped policy's own action --- never by a maximum over
+actions --- so the policy is load-bearing in every obligation it
+discharges, and a tampered policy entry is among the refused mutants
+of the battery. Table~\ref{tab:exp-gym} is the master table for the
+tabular tier.
+
+\begin{table}[htbp]
+\centering\small
+\input{generated/gym-table.tex}
+\caption{Certified rows for the Gymnasium tabular tier. The claim
+column names the species of section~\ref{sec:exp-claims}: U2 is a
+certified cost-to-goal, U3 an exact probabilistic bound. Policies are
+shipped lookup tables; checks are single-core medians. ``Optimal,
+exactly'' means the bound is the exact optimum of the
+(deadline-truncated) environment: terminal at its claim class ---
+those cells carry the exact-cell tint of
+section~\ref{sec:exp-conventions}.}
+\label{tab:exp-gym}
+\end{table}
+
+Four findings come out of this table.
+
+\paragraph{The suite's own Taxi threshold is unsatisfiable.} The
+registry declares Taxi ``solved'' at average return $8$, with a code
+comment placing the optimum at $8.46$. The true optimum of the pinned
+environment is exactly $793/100 = 7.93$ --- \emph{below} the
+threshold; no policy can meet it. The $8.46$ is a fossil: on the
+pre-correction map (before an upstream fix added one wall segment) the
+same exact computation yields $2539/300 = 8.4633\ldots$, which we
+reproduced by swapping only the map. The threshold was never updated
+for the wall.
+
+\paragraph{The first exact value for the textbook blackjack.} Sutton
+and Barto's blackjack variant (infinite deck, dealer stands on all
+17s, hit/stand only) may be the most-reimplemented exercise in
+reinforcement learning; a literature search --- the textbook, Baldwin
+et al.\ 1956, the gambling-mathematics literature, recent preprints
+--- found no published exact expected value under optimal play. It is
+$-3954908734551683826282634489 / 13^{26} \approx -4.311\%$, now with
+a machine-checkable certificate. (Consistency: the same game with 3:2
+naturals is known to run near $-2.42\%$, and the difference is the
+order of the forgone bonus. A subtlety: the suite's observation space
+cannot distinguish a two-card 21 from a three-card 21, but the payout
+rule can --- the certificate runs on a slightly enriched state space
+while proving the shipped policy never uses the extra information.)
+
+\paragraph{Hidden state, certified honestly.} Taxi's ``fickle
+passenger'' variant re-draws the destination mid-trip with probability
+$3/10$, invisibly until it fires. A certificate on the full state
+would be clairvoyant; these rows certify the \emph{belief} chain
+instead, so the shipped policy is implementable from the observation
+history. The variant also \emph{raises} the optimum (dry
+$7.93 \to 8.38$; rainy $3.9546 \to 4.5756$): a uniform mid-trip
+re-draw is on average favourable, and the certified policies exploit
+the re-route.
+
+\paragraph{The registry's comment optima were truncations of numbers
+nobody had.} The FrozenLake comments say ``optimal average reward
+0.74 / 0.91.'' The exact optima --- rationals with denominators
+$3^{99}$ and $3^{200}$ --- were computed here, we believe for the
+first time; the comments are truncations of them.
+
+\subsection{How the rows were produced: exact backward induction
+and its wall-clock cost}
+\label{sec:exp-gym-producer}
+
+The producer strategy for the whole tabular tier is the classical
+algorithm, executed exactly: backward induction --- finite-horizon
+dynamic programming --- over the deadline-truncated chain. Starting
+at the deadline and stepping backward, the producer computes, for
+every state at every step, the optimal value by a single Bellman
+backup --- a maximum over actions of the expected one-step reward
+plus the kernel-weighted value one step ahead --- in exact rational
+arithmetic, recording a maximizing action as it goes. The
+recorded actions \emph{are} the shipped policy; the value tables
+become the certificate's obligation rows; the value at the initial
+state (or the exact mixture over the initial distribution) becomes
+the claim. Termination and exactness are structural: the horizon is
+finite --- the deadline is the environment's own truncation, or the
+certificate's declared one --- the state and action sets are finite,
+and no backup ever rounds, so after $T$ sweeps the result is the
+exact optimum of the truncated environment, not an approximation to
+it. There is no learning loop, no convergence tolerance, and no
+rounding anywhere in the construction. (Making exactness fast is an
+implementation matter, not an algorithmic one: values at each step
+are stored as integers over a shared power of the kernel
+denominators' least common multiple, so the hot loop is
+integer multiply-accumulate, division-free, with canonical reduction
+deferred to emission.) Nor is tightness taken from the producer on
+trust: for the exact lanes the checker has an optimality mode whose
+obligations quantify over \emph{all} actions --- a supersolution
+check beside the shipped policy's attainment --- so ``optimal,
+exactly'' in Table~\ref{tab:exp-gym} is itself a machine-checkable
+statement, and the mode's test fixtures include a matched pair
+exhibiting the gap: a certificate that passes as a bound but refuses
+as an optimum.
+
+The direct answer to ``how long does producing the optimal policy and
+its certificate take'' is: for the entire tabular catalogue --- all
+$53$ certificates, the master table's rows and the frontier studies'
+variants below included --- the optimized producer runs from process
+start to every certificate synthesized, emitted, and byte-compared in
+$0.69$\,s of wall-clock time on four CPU cores. The per-lane receipts
+break that down: the heaviest single computation, the exact optimum
+of the rainy fickle-passenger Taxi belief chain, takes $117$\,ms on
+one core ($35$\,ms on four); the 8x8 FrozenLake exact table,
+$6.6$\,ms; the textbook-blackjack optimum, $2.2$\,ms. The reference
+implementation that first produced the corpus takes roughly
+$3.2$\,s single-core for the same spans; the optimized producer
+takes $0.5$\,s on one core ($6.5\times$), and the two emit
+byte-identical certificates on all $53$ --- the strongest available
+cross-implementation check. A GPU lane reproduces
+the dyadic tables bit-identically with a $\sim 2\times$ gain on the
+largest rows only; on small rows the kernel-launch floor loses to the
+CPU, a null result recorded as such. Throughout, producer cost and
+check cost are measured separately: the check columns of every table
+in this section time only the checker.
+
+These certificates also ride the sealed-container lanes of
+section~\ref{sec:exp-repro}, and their re-emission on the unified
+schema returned a finding rather than a formality. The schema's
+chain species is a pure discrete-time Markov chain --- transition
+and initial rows, no action layer --- so a hitting-lane certificate
+carries over verbatim, table and claimed bound alike, exactly when
+the decision problem admits a \emph{stationary} composition: one
+action per state admissible at every step of the deadline. The
+hitting corpus splits $9/29$ on that criterion, and the split is
+semantic content, not an artifact: every deterministic-dynamics
+certificate composes, while slippery FrozenLake at long deadlines
+has states where no single action is admissible at every step ---
+near the deadline the optimal policy gambles where far from it it
+detours. The nine composable certificates already ride the unified
+schema with their tables and claims byte-verbatim; the twenty
+time-varying ones stand in the pre-unification record, each
+exclusion a manifest fact naming its obstructing states, and their
+re-emission awaits the schema's decision species
+(\texttt{make gymnasium-glc} re-checks both lanes and the exclusion
+records alike).
+
+\subsection{The measured frontier: bound versus check cost}
+\label{sec:exp-gym-frontier}
+
+Because the tabular certificates are terminal in bound, the
+interesting curve is in the \emph{representation}. Two honest knobs
+trace it: the deadline $T'$ (certifying ``goal within $T'$ steps'' for
+$T' \le T$ weakens the bound but shrinks the table) and the precision
+$k$ of a dyadic re-emission (round-down integer tables with bound loss
+$\le T \cdot 2^{-k}$, turning every obligation into an integer
+comparison). On the FrozenLake rows, moving from exact rational
+arithmetic to dyadic integer tables at equal obligation count speeds
+the check by roughly $400\times$--$1400\times$ at a bound cost of
+order $10^{-13}$ --- far below any displayed digit. The general
+lesson, confirmed three independent times in this campaign's receipts:
+\emph{certificates should be engineered for their checkers} ---
+rationals belong in the claim line, shared-denominator integer slabs
+in the obligations, and the checker's hot loop then vectorizes (the
+kernel-level lanes add a further $1.6\times$--$3.3\times$ on the
+larger reward tables, at $5$--$7$\,ns per obligation).
+
+Honest non-dominations in the same receipts: on the smallest
+certificates the vectorized lane's setup cost makes it
+$0.83\times$--$0.89\times$ the plain lane (crossover near the 8x8
+scale); and one certificate family (blackjack at high dyadic
+precision) structurally exceeds the vectorized lane's overflow
+envelope, is declined, and falls back to the reference lane ---
+deferral costs completeness, never soundness, and the fix is a
+smaller~$k$.
+
+\subsection{Beyond tables: continuous state and solver-semantics
+environments}
+\label{sec:exp-gym-beyond}
+
+Above the tabular tier the campaign is deliberately breadth-first, and
+at this preview two further tiers carry rows.
+
+\textbf{Continuous state: certified worst-case return.} The first
+continuous-state row certifies Pendulum-v1: a Bellman-supersolution
+certificate over a polynomial cell cover of the state space (the
+environment's velocity clipping entering as explicit piecewise
+structure), yielding a certified \emph{worst-case} return bound: one
+holding for every initial state, with no probability anywhere in the
+certificate --- the strongest of the claim species of
+section~\ref{sec:exp-claims} (U1) --- and carrying an anytime
+cover-refinement curve measured from a few dozen cells to nearly a
+thousand. At this preview the certified bound stands at return
+$\ge -1.192$ over the full initial set, with the cover-refinement gap
+driven to $2.4\times 10^{-4}$, and a five-mutant battery refused. The corresponding
+CartPole certificate (worst-case return exactly $500$, the same
+species) has crossed the composition step it was staged behind ---
+and the step dissolved rather than being climbed: instead of
+transporting a continuous-time decrease certificate through the
+environment's explicit-Euler step map, the certified row states a
+per-cell contraction on the step map itself, which
+denominator-clears to a polynomial of its own, leaving only
+kernel-checked enclosures of the current state's sine and cosine.
+The first certified CartPole row now stands at the subsystem where
+it is honest: under an exhibited cell-table bang-bang policy, the
+pole angle provably never reaches the termination threshold, from
+every initial state in the reset box, in exact rational arithmetic,
+with a designed-locus mutant battery refused. The return bound
+itself still waits on the cart-position excursion, which the
+pole-only policy does not regulate; that full-state variant is the
+campaign's first genuinely large checking workload ($10^6$--$10^7$
+polynomial cells), sized to exercise the batched checking engine of
+the Geolog tier as it lands.
+
+\textbf{Solver-semantics environments: i.i.d.\ confidence
+bounds.} Where the environment's dynamics is a compiled physics
+engine (the Box2D and contact-rich MuJoCo families), no analytic
+species reaches the binary's semantics, and pretending otherwise
+would be a category error. What applies instead is the
+\emph{i.i.d.\ tier}: an anytime-valid lower confidence bound on
+the expected return, certified from recorded rollouts of a pinned
+policy --- the weakest species of section~\ref{sec:exp-claims} (U5),
+holding with probability at least $1 - \alpha$ rather than almost
+surely, but model-free, which is exactly what lets it reach a
+compiled binary at all. Its rows are always displayed as their own
+class, never mixed into a table of exact rows: Table~\ref{tab:exp-ll}
+shows the first two --- to our knowledge the first certified
+statements of any kind at this claim class for Box2D environments.
+Each is a betting-martingale ledger over $10^6$
+rollouts of the suite's own heuristic controller; the checker
+re-verifies the entire wealth process in directed-rounding fixed
+point ($1.6 \times 10^7$ obligations in $\sim 130$--$200$\,ms,
+single-core), and the certificate is \emph{anytime-valid}: extending
+the ledger with more episodes can only tighten the bound, with no
+statistical penalty.
+
+\begin{table}[htbp]
+\centering\small
+\input{generated/ll-table.tex}
+\caption{First i.i.d.-tier rows (species U5 of
+section~\ref{sec:exp-claims}; confidence-qualified: each bound
+holds with probability $\ge 1-\alpha$ over the sampling; never to be
+read as almost-sure). Policies are the suite's own heuristic
+controllers; $n = 10^6$ episodes each; the almost-sure return range
+required by the bound is itself a certified lemma about the
+environment's code, not an assumption. Bound-cell tints are the
+win-tint ladder of section~\ref{sec:exp-conventions}, read against
+the registry threshold beside them.}
+\label{tab:exp-ll}
+\end{table}
+
+One reading of Table~\ref{tab:exp-ll} previews the genre's point: the
+\emph{certified floor} of the continuous-throttle variant ($281$)
+exceeds the discrete variant's \emph{empirical mean} ($238$) --- a
+policy-comparison statement made entirely below the certified line,
+where it cannot be an artefact of sampling luck.
+
+\paragraph{What is not claimed.} The tabular certificates' trust seam
+--- that the modelled kernel is the environment's --- is narrowed here
+by asserting the modelled tables equal to the suite's own published
+transition tables (exact equality, with the handful of float-literal
+discrepancies carried as declared ledger rows), but it remains
+producer-side. The i.i.d.-tier rows trust the pinned
+pseudorandom generator and the policy's determinism, both named in
+the certificate. No worst-case, cost-to-goal, or exact-probabilistic
+claim (species U1--U3) is made for any solver-semantics environment. No MuJoCo
+row appears in this preview's tables; the named route --- its design
+landed as this preview goes to press, rows in flight --- is a
+hybrid-time composition pattern: discrete controller ticks with
+bounded clock jitter coupled to continuous-time physics, the jitter
+entering as a certificate \emph{parameter} rather than a disturbance,
+with the suite's contact-free environments (InvertedPendulum and its
+ladder) as first targets and the contact-rich families expected to
+arrive i.i.d.-tier first. Producer-side synthesis time for the continuous
+tier is reported in the repository but not compared against
+reinforcement-learning training costs: the claims differ in kind, and
+a wall-clock race between them would compare nothing meaningful.

@@ -1,0 +1,124 @@
+{
+ "containers": [
+  {
+   "name": "acasx4_init_s0000",
+   "source_fixture": "fixtures/acasx4_init_s0000.geolog",
+   "source_sha256": "c1c9abc8e8865aebb7e9a504a10d23f7a9d3f751c76f0d7ef74bea309a3511db",
+   "minted_sha256": "f9b0e121c50a9e46b7bc5211658127a499de54898dadb2d587bd898abd688f57",
+   "container_bytes": 43407,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "acasx4_promise_closedloop",
+   "source_fixture": "fixtures/acasx4_promise_closedloop.geolog",
+   "source_sha256": "f02679a52b491f1fa93f3413d2f9fa29b6f7d1918f63b8e455d463b8a7a387bc",
+   "minted_sha256": "dc940e74bf7e6a2c7be20eb8b1634f67485fe63b2bd7540f62a3afebae85eb1c",
+   "container_bytes": 57785,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "cartpole_core_decrease_s0001",
+   "source_fixture": "fixtures/cartpole_core_decrease_s0001.geolog",
+   "source_sha256": "3f223609f4f2c746fe3118d29ae5f0b832e707577b79bd3b36fb79e24a509930",
+   "minted_sha256": "e7c210d8b566f84085d9b88b0528053ff0a121328dbac9d1a6feb4680f9bc8bc",
+   "container_bytes": 4074,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "cartpole_dp_core_decrease",
+   "source_fixture": "fixtures/cartpole_dp_core_decrease.geolog",
+   "source_sha256": "d214d1bf81ab9b7b7719f8e973ca7cc9d0014a3ac88fae814a001c9d1f170b3e",
+   "minted_sha256": "c4c959f88453b18211b2dd1545eb16e84c6eea64d17e07739c520b2a038eb972",
+   "container_bytes": 9342,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "ctmc_fk_mid",
+   "source_fixture": "fixtures/ctmc_fk_mid.geolog",
+   "source_sha256": "5c1e8037329ae19cbab8b3d173c5b4636d6e6e19950d0807c80fe1729ab0f0cf",
+   "minted_sha256": "b651c09c87198868ba0f0cd41f2425ed34dcf56f552a49ae80b5b28e89a469f2",
+   "container_bytes": 1799,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "ctmc_sis_gen",
+   "source_fixture": "fixtures/ctmc_sis_gen.geolog",
+   "source_sha256": "0f37c750e4f7fed69163aef3bb0499ad52a3421d970dec63ac863ea58ccbf64e",
+   "minted_sha256": "d35f556caa2349dc1df326751e53f5428042daefb093fc82ea1c4b4e2cb620df",
+   "container_bytes": 925,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "dp_composite_eigenrate",
+   "source_fixture": "fixtures/dp_composite_eigenrate.geolog",
+   "source_sha256": "9c31dceb48c472b04a19bb6c2db6d6c4a56184d57c23611aaef674786ee48eb0",
+   "minted_sha256": "fc0428c281b064499acc6f252d2ed8274f4bf35305523b968451d2c67459db36",
+   "container_bytes": 22062,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "dp_composite_smallgain",
+   "source_fixture": "fixtures/dp_composite_smallgain.geolog",
+   "source_sha256": "c640dcfd2b7b7752d4991e0678d74c912f30c098f7050367d4a5b25335a35ff2",
+   "minted_sha256": "14a8d57f89081e6aff8863ac800c83f00f421106b92951a1e406de027e00f5ae",
+   "container_bytes": 46021,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "dp_composite_syzygy",
+   "source_fixture": "fixtures/dp_composite_syzygy.geolog",
+   "source_sha256": "ed738f259e94d34eda3a04871f3c5decb58eb4d36dc184e1b681be627871fc33",
+   "minted_sha256": "74688658ea6939907645c9d84e325b7e4911e7ba3d5b50d15ba15b27afae57ac",
+   "container_bytes": 17597,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "enclosure_v1_golden_cos6",
+   "source_fixture": "fixtures/enclosure_v1_golden_cos6.geolog",
+   "source_sha256": "b81f6edce9ec63adeb35ab5ec36e5b4a73d8b1b7c8a8fefb31c83927caa2f36b",
+   "minted_sha256": "a8cb2397ea9207a2d86e7bf892e030b1e972821395adf287627b8bf8e36bb01a",
+   "container_bytes": 609,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "lti_sampled_flow",
+   "source_fixture": "fixtures/lti_sampled_flow.geolog",
+   "source_sha256": "fe6df316c6b217bd4d1b8406a85e392403ea6d278047399ab61d3c074baeefcb",
+   "minted_sha256": "9c97a19dc055fa73d7c02674ccd651237d4a1fedfe8a52a0d20eb0946624e73c",
+   "container_bytes": 24692,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "micro2_stable",
+   "source_fixture": "fixtures/micro2_stable.geolog",
+   "source_sha256": "83007ac6d11a59c318ebd7a44fd45be41bc2aecbbe1bb0e113ac0e0bd61fac95",
+   "minted_sha256": "a372cdb172959e8ea55944f42510b6165a31ef327dfe26ce85eb3be22025564f",
+   "container_bytes": 2190,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "rode_hold_flow",
+   "source_fixture": "fixtures/rode_hold_flow.geolog",
+   "source_sha256": "9ff0cb1e6379251ee10a1a7d736ddcb976ec53cce61a5ae394050a313a7fe5a3",
+   "minted_sha256": "cd947b3b1cf345e06613c46572c568f9ef4c5df37da9f0258ac6fc1c0add0a1c",
+   "container_bytes": 126222,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "rode_nest_shell",
+   "source_fixture": "fixtures/rode_nest_shell.geolog",
+   "source_sha256": "684a8376ba334f92384ed6d20fa712284194d430b1e57a02de17f40481a99a62",
+   "minted_sha256": "a312a82c2d079926038eef51a29ecb40cb3b0337baf5626de69085a9216e8214",
+   "container_bytes": 119223,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  },
+  {
+   "name": "rode_uniform_decrease",
+   "source_fixture": "fixtures/rode_uniform_decrease.geolog",
+   "source_sha256": "237c9556246c997968dcb5feaa0a6b7de67590c874abc8e6d97dc1d8ceb1c220",
+   "minted_sha256": "aaaf6cb011df3ad89da75cd4a7d64c1f16e0e6bc463841ecfd4becf91402c3fb",
+   "container_bytes": 7658,
+   "transform": "prereq flags 0->1 (assumed-held -> content-resolved), resolution ordinals u16le 0..2 inserted; commit body, skeleton, signature, and prerequisite content-ids byte-identical"
+  }
+ ]
+}

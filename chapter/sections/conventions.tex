@@ -1,0 +1,64 @@
+\section{How to read the tables}
+\label{sec:exp-conventions}
+
+The conventions below are uniform across the chapter. They are genre
+features, not footnotes: most of them exist because their absence is
+how empirical results in this area go wrong.
+
+\begin{itemize}
+\item \textbf{Rounding is directed.} Displayed lower bounds round
+  toward $-\infty$, upper bounds toward $+\infty$, always in the
+  claim-weakening direction: a displayed number is never stronger than
+  the certified one.
+\item \textbf{Check time is the headline cost.} ``Check'' columns
+  report the wall-clock for an independent checker to re-verify the
+  certificate --- median over repeated passes, single CPU core, machine
+  named in the repository receipts --- separately from the (much
+  larger, unverified, freely sloppy) cost of \emph{finding} the
+  certificate. Cross-machine comparisons against published tool times
+  are stated qualitatively and never as ratios.
+\item \textbf{Cell tints.} Two tint vocabularies recur across the
+  chapter's tables, always as decoration on top of a printed value,
+  never as the only carrier of a distinction. The \emph{win-tint
+  ladder} shades an improvement ratio by its order of magnitude:
+  \swx{winA}~within one order of magnitude, \swx{winB}~1--10 orders,
+  \swx{winC}~10--25, \swx{winD}~25--45, \swx{winE}~45 and beyond.
+  The \emph{exact-cell tint} \swx{exacttint}~marks a certified value
+  with zero conservatism against its model: an exact optimum, an
+  exact replay minimum, a complete acceptance.
+\item \textbf{Everything is pinned.} A certificate about a benchmark
+  names the benchmark's exact revision (for the RL suite: the
+  repository commit and the environment's keyword arguments, because
+  reward semantics have changed across versions). A certificate that
+  pins nothing is about nothing.
+\item \textbf{Trust seams are declared, not hidden.} Every certificate
+  family states exactly what is re-derived by the checker (everything
+  downstream of the stored certificate object, in exact arithmetic)
+  and what
+  remains producer-side trust --- centrally, that the modelled
+  transition kernel \emph{is} the benchmark's. Where that seam has been
+  narrowed (e.g.\ by asserting the modelled kernel equal to the
+  benchmark's own transition tables, or by exhaustive cross-simulation),
+  the row says so; where it has not, the gap rides a declared
+  model-gap ledger in the style of the cookbook's declared-prior
+  pattern (\bookref{ch:mtk-cookbook}{the agents' cookbook}).
+\item \textbf{Mutant batteries.} Each certificate family ships with
+  deliberately corrupted certificates --- inflated claims, perturbed
+  kernels, dropped goal states, sabotaged rankings --- each designed to
+  be refused at a specific check, and each in fact refused. A checker
+  that has never rejected anything is untested machinery; the mutant
+  battery is the family's specification made executable (the cookbook's
+  mutant-battery pattern, \bookref{ch:mtk-cookbook}{the agents' cookbook}).
+\item \textbf{Sim-tight markers.} A bound is marked \emph{sim-tight}
+  when simulation exhibits a trajectory achieving it exactly: the
+  certificate's conservatism against the model is zero, and any
+  remaining slack lives in the declared model gap.
+\item \textbf{Not-claimed paragraphs.} Each campaign section ends by
+  stating what it does \emph{not} establish. These paragraphs are part
+  of the result.
+\item \textbf{Artefacts, not verdicts.} The distinction this chapter
+  leans on hardest: an exact-$\mathbb{Q}$ certificate replayed by a
+  small independent checker is a different epistemic object from a
+  solver's bare ``unsat.'' Both may be correct; only one can be
+  audited without re-trusting the machinery that produced it.
+\end{itemize}

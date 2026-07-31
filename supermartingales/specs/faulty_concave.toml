@@ -1,0 +1,41 @@
+# Verbatim listing (v7 l.1119-1140, lst:concave): init i=1, region-dependent
+# fault rate 0.001 (i<4) / 0.01 (i>=4). This row's listed init i=1 is the anchor
+# for the family-wide Y-frame adjudication: its Farkas 0.1819 reproduces exactly
+# (2/11) at the LISTED init under the Y-frame, and NOT under the X-frame at the
+# listed init (which gives 16/99 -> 0.1617).
+[benchmark]
+name = "faulty_concave"
+family = "unreliable_hardware"
+section = 2
+provenance = "listing verbatim (v7 l.1119-1140)"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "i < 4"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/2000", update = {i = "i + 1"}},
+  {prob = "999/2000", update = {}},
+]
+
+[[benchmark.dynamics]]
+region = "i >= 4"
+branches = [
+  {prob = "1/100",  update = {error = "1"}},
+  {prob = "99/200", update = {i = "i + 1"}},
+  {prob = "99/200", update = {}},
+]
+
+[benchmark.farkas]
+published = "0.1819"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame at listed init. Worst-region drift constraint (fault 1/100, advance 99/200) governs; expected optimum 2/11."
+
+[benchmark.truth]
+method = "chain"

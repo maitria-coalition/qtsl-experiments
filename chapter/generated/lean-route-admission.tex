@@ -1,0 +1,19 @@
+{\setlength{\tabcolsep}{4pt}%
+\begin{tabular}{@{}p{10.5em}rllll@{}}
+\toprule
+species & max B & fragment & pred.\ med. & pred.\ max & verdict \\
+\midrule
+hardware liveness (circuits) & 2{,}627 & untested & 9.1\,ms & 0.22\,s & pass \\
+Atari certified replay & 5{,}113 & untested & 22\,ms & 1.9\,s & pass \\
+FrozenLake 4x4 (det + slippery + sr34) & 52{,}015 & exp.\ in & 15\,s & 97\,min & partial \\
+CliffWalking & 71{,}872 & exp.\ in & 14\,min & 5.1\,h & fail \\
+FrozenLake 8x8 & 500{,}289 & exp.\ in & 5.5\,h & 0.59\,yr & fail \\
+Blackjack & 115{,}779 & exp.\ in & 10\,h & 28\,h & fail \\
+Taxi (all weather/passenger variants) & 3{,}102{,}602 & exp.\ in & 7\,yr & 400\,yr & fail \\
+LunarLander / LunarLanderContinuous (statistical tier) & 12{,}226{,}428 & untested & $\sim$$10^{4}$\,yr & $\sim$$10^{5}$\,yr & fail \\
+published-table supermartingale corpus & 50{,}000 & exp.\ in & 97\,ms & 84\,min & partial \\
+semiconductor fluid ladder (minifab) & 18{,}451 & untested & 65\,s & 2.5\,min & pass \\
+semiconductor fluid ladder (mimac) & 401{,}455 & untested & 0.18\,yr & 0.27\,yr & fail \\
+interval-enclosure certificates (primitive applications) & 603 & out & 4.4\,ms & 4.4\,ms & \emph{out of fragment} \\
+\bottomrule
+\end{tabular}}

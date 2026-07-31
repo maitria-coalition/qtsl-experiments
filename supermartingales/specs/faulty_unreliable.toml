@@ -1,0 +1,61 @@
+# RECONSTRUCTION CANDIDATE (no listing, no Farkas fingerprint — their table has
+# "-": no linear supermartingale exists). Validation instruments available:
+# (a) NEGATIVE fingerprint: the candidate must make the Farkas LP useless
+#     (optimum >= 1) under any guard-based invariant — mechanical, run by the
+#     harness (published = "none" triggers this check);
+# (b) envelope: exact true p must sit at/below their neural bounds
+#     (PA 0.0553 / PW 0.0536, i.e. p_true <= 0.0536 for a plausibly-tight row).
+# Candidate mechanism for no-linear-SM: the progress counter is a ZERO-DRIFT
+# random walk (unreliable progress: advance or slip back with equal
+# probability), so the drift constraint forces the error-coefficient <= 0 and
+# indicating fails — every linear certificate is trivial (>= 1). Reflection at
+# i=0; success at i=10; fault 1/2000 per iteration. True p ~ 0.048 (chain gives
+# exact; E[T] from i=1 is ~99 effective steps).
+# Provenance label: reconstructed-per-description; parameters are candidates,
+# not pinned. Wave 1 iterates if the envelope or later evidence refutes.
+# WAVE-1 PROCUREMENT NOTE (2026-07-18): the CAV'25 Zenodo
+# artifact 15222907 was censused in full — it contains NONE of the
+# CONCUR'23 benchmarks (its set: becomingRichOnce/gamblersRuin/
+# reactivity/repeatedCoin), so no public artifact upgrade is available;
+# the provenance label stays reconstructed-per-description, now with a
+# NEGATIVE procurement receipt attached (the one known same-group
+# artifact was checked and does not carry these definitions).
+# WAVE-1 CERTIFICATION: certified bounds for THIS candidate
+# landed via exact-VI export + global-poly LP; receipts in
+# ../out/sec1/<name>/receipts{,-poly}.json.
+[benchmark]
+name = "faulty_unreliable"
+family = "unreliable_hardware"
+section = 1
+provenance = "reconstruction candidate (zero-drift progress walk); negative-fingerprint + envelope validated only"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "i >= 1"
+branches = [
+  {prob = "1/2000",    update = {error = "1"}},
+  {prob = "1999/4000", update = {i = "i + 1"}},
+  {prob = "1999/4000", update = {i = "i - 1"}},
+]
+
+[[benchmark.dynamics]]
+region = "i < 1"
+branches = [
+  {prob = "1/2000",    update = {error = "1"}},
+  {prob = "1999/4000", update = {i = "i + 1"}},
+  {prob = "1999/4000", update = {}},
+]
+
+[benchmark.farkas]
+published = "none"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Negative fingerprint expected: optimum >= 1 (zero drift kills the error-coefficient)."
+
+[benchmark.truth]
+method = "chain"

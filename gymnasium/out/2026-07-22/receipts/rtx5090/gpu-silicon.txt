@@ -1,0 +1,2 @@
+NVIDIA GeForce RTX 5090, 32607 MiB, 570.211.01, 3090 MHz
+Model name:                           AMD EPYC 9654 96-Core Processor

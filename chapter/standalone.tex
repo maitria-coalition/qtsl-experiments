@@ -1,0 +1,56 @@
+% standalone.tex --- typeset ONE section fragment of the Experiments
+% chapter on its own.  Invoked from inside chapter/ as:
+%
+%   lualatex -jobname=<name> \
+%     "\def\SectionInput{sections/<name>}\input{standalone.tex}"
+%
+% (the Makefile's per-section rule does exactly this, twice, into
+% build/sections/).  Run tables/gen_tables.ts first: the fragments
+% \input their tabulars from generated/.
+\documentclass[10pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}   % ragged p-columns in the generated dashboards
+\usepackage{xcolor}
+\usepackage{colortbl} % cell tints (sections/table-style.tex)
+\usepackage{url}      % also provides \path
+\usepackage{microtype}
+\usepackage{pgfplots}  % the scaling-law figures (loads tikz)
+\pgfplotsset{compat=1.18}
+\usepackage{hyperref}
+
+% the working-draft marker the book masters carry.
+\newcommand{\draftmark}{{\small\color{gray}\textsf{working draft ---
+tables re-derived from receipts at each preview}}}
+
+% \bookref{<book chapter label>}{<prose name>}: a cross-chapter
+% reference that degrades gracefully outside the book --- here it
+% renders just the prose name.  (The book's master defines it as
+% chapter~\ref{#1} instead; \Bookref is its sentence-start,
+% capitalized form there.)
+\newcommand{\bookref}[2]{#2}
+\newcommand{\Bookref}[2]{#2}
+
+% \bookcite{<book bib key>}{<prose fallback>}: \bookref's citation
+% twin --- inside the book it becomes \cite{<key>} against the book's
+% bibliography; here it renders the prose form (author--year in
+% parentheses, written out in the fragment).
+\newcommand{\bookcite}[2]{#2}
+
+% coverage-dashboard glyphs --- mirrors of the book's vocabulary; the
+% AUTHORITATIVE definitions (and the full glyph family) live in the
+% qtsl repository's book source, chapters/qtsl-rule-catalogue-preamble
+% ("---- dashboard ----" block).  The generated distribution dashboard
+% uses these three; outside the book, this master supplies them.
+\definecolor{MarkGreen}{RGB}{22,122,58}
+\definecolor{BadgeAmber}{RGB}{176,108,12}
+\definecolor{BadgeRed}{RGB}{176,32,32}
+\newcommand{\dok}{\textcolor{MarkGreen}{\ensuremath{\checkmark}}}
+\newcommand{\damber}{\textcolor{BadgeAmber}{\ensuremath{\sim}}}
+\newcommand{\dredx}{\textcolor{BadgeRed}{\ensuremath{\times}}}
+
+\begin{document}
+\input{sections/table-style.tex}
+\input{\SectionInput}
+\end{document}

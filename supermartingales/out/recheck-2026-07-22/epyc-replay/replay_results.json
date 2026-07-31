@@ -1,0 +1,454 @@
+{
+ "meta": {
+  "date": "2026-07-22T11:15:44.153469Z",
+  "box": "epyc-batch",
+  "nproc": 16,
+  "tips_binary": "/workspace/tips-src/fastcheck/target/release/fastcheck",
+  "old_binary": "/workspace/fastcheck-old-src/fastcheck/target/release/fastcheck",
+  "method": "batch fastcheck, nice -n 10, serial, min wall over repeats (3 small / 2 for >1000 files); per-file walls from fastcheck's own per-file output on tips repeat 1",
+  "unique_corpus_files": 28503,
+  "total_checks_this_run": 116670
+ },
+ "rows": {
+  "faulty_marbles": {
+   "n": 23,
+   "dir": "/workspace/verify/neural-supermartingales/out/sec1/faulty_marbles/bernfmt",
+   "walls_tips": [
+    0.0072,
+    0.0059,
+    0.0053
+   ],
+   "walls_old": [
+    0.0057,
+    0.0056,
+    0.0059
+   ],
+   "min_tips": 0.0053,
+   "min_old": 0.0056
+  },
+  "faulty_marbles__poly": {
+   "n": 3,
+   "dir": "/workspace/verify/neural-supermartingales/out/sec1/faulty_marbles/bernfmt-poly",
+   "walls_tips": [
+    0.0054,
+    0.0058,
+    0.0057
+   ],
+   "walls_old": [
+    0.0059,
+    0.0052,
+    0.0054
+   ],
+   "min_tips": 0.0054,
+   "min_old": 0.0052
+  },
+  "faulty_unreliable": {
+   "n": 29,
+   "dir": "/workspace/verify/neural-supermartingales/out/sec1/faulty_unreliable/bernfmt",
+   "walls_tips": [
+    0.006,
+    0.0064,
+    0.0062
+   ],
+   "walls_old": [
+    0.0061,
+    0.0062,
+    0.0059
+   ],
+   "min_tips": 0.006,
+   "min_old": 0.0059
+  },
+  "faulty_unreliable__poly": {
+   "n": 3,
+   "dir": "/workspace/verify/neural-supermartingales/out/sec1/faulty_unreliable/bernfmt-poly",
+   "walls_tips": [
+    0.0059,
+    0.0056,
+    0.0055
+   ],
+   "walls_old": [
+    0.0049,
+    0.0055,
+    0.0052
+   ],
+   "min_tips": 0.0055,
+   "min_old": 0.0049
+  },
+  "faulty_regions": {
+   "n": 29,
+   "dir": "/workspace/verify/neural-supermartingales/out/sec1/faulty_regions/bernfmt",
+   "walls_tips": [
+    0.0066,
+    0.0061,
+    0.006
+   ],
+   "walls_old": [
+    0.0065,
+    0.0065,
+    0.0061
+   ],
+   "min_tips": 0.006,
+   "min_old": 0.0061
+  },
+  "faulty_regions__poly": {
+   "n": 5,
+   "dir": "/workspace/verify/neural-supermartingales/out/sec1/faulty_regions/bernfmt-poly",
+   "walls_tips": [
+    0.02,
+    0.0207,
+    0.0201
+   ],
+   "walls_old": [
+    0.0204,
+    0.02,
+    0.0209
+   ],
+   "min_tips": 0.02,
+   "min_old": 0.02
+  },
+  "cliff_crossing": {
+   "n": 1105,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/cliff_crossing",
+   "walls_tips": [
+    0.0829,
+    0.0778
+   ],
+   "walls_old": [
+    0.0786,
+    0.079
+   ],
+   "min_tips": 0.0778,
+   "min_old": 0.0786
+  },
+  "repulse100": {
+   "n": 207,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/repulse100",
+   "walls_tips": [
+    0.0113,
+    0.0107,
+    0.0116
+   ],
+   "walls_old": [
+    0.0104,
+    0.0108,
+    0.0109
+   ],
+   "min_tips": 0.0107,
+   "min_old": 0.0104
+  },
+  "repulse100_uniform": {
+   "n": 205,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/repulse100_uniform",
+   "walls_tips": [
+    0.0619,
+    0.0596,
+    0.0602
+   ],
+   "walls_old": [
+    0.0615,
+    0.061,
+    0.061
+   ],
+   "min_tips": 0.0596,
+   "min_old": 0.061
+  },
+  "repulse100_uniform__discrete": {
+   "n": 207,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/repulse100_uniform__discrete",
+   "walls_tips": [
+    0.013,
+    0.0119,
+    0.0124
+   ],
+   "walls_old": [
+    0.0122,
+    0.0117,
+    0.012
+   ],
+   "min_tips": 0.0119,
+   "min_old": 0.0117
+  },
+  "repulse100_2d": {
+   "n": 2267,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/repulse100_2d",
+   "walls_tips": [
+    0.1837,
+    0.1773
+   ],
+   "walls_old": [
+    0.176,
+    0.1778
+   ],
+   "min_tips": 0.1773,
+   "min_old": 0.176
+  },
+  "faulty_concave": {
+   "n": 38,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/faulty_concave",
+   "walls_tips": [
+    0.0052,
+    0.0049,
+    0.0044
+   ],
+   "walls_old": [
+    0.0046,
+    0.0046,
+    0.0043
+   ],
+   "min_tips": 0.0044,
+   "min_old": 0.0043
+  },
+  "faulty_varying": {
+   "n": 38,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/faulty_varying",
+   "walls_tips": [
+    0.0048,
+    0.0052,
+    0.0047
+   ],
+   "walls_old": [
+    0.0047,
+    0.0054,
+    0.0046
+   ],
+   "min_tips": 0.0047,
+   "min_old": 0.0046
+  },
+  "faulty_varying__last_step": {
+   "n": 38,
+   "dir": "/workspace/rerun-sm/replay-out/sec2-certs/faulty_varying__last_step",
+   "walls_tips": [
+    0.005,
+    0.0045,
+    0.0049
+   ],
+   "walls_old": [
+    0.0053,
+    0.0048,
+    0.0051
+   ],
+   "min_tips": 0.0045,
+   "min_old": 0.0048
+  },
+  "fixed_loop": {
+   "n": 22,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/fixed_loop",
+   "walls_tips": [
+    0.0035,
+    0.0033,
+    0.0036
+   ],
+   "walls_old": [
+    0.0035,
+    0.0037,
+    0.0036
+   ],
+   "min_tips": 0.0033,
+   "min_old": 0.0035
+  },
+  "faulty_loop": {
+   "n": 22,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_loop",
+   "walls_tips": [
+    0.0037,
+    0.0035,
+    0.0041
+   ],
+   "walls_old": [
+    0.0038,
+    0.0039,
+    0.0038
+   ],
+   "min_tips": 0.0035,
+   "min_old": 0.0038
+  },
+  "faulty_loop__as_listed": {
+   "n": 22,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_loop__as_listed",
+   "walls_tips": [
+    0.0038,
+    0.0037,
+    0.0037
+   ],
+   "walls_old": [
+    0.0044,
+    0.0037,
+    0.0038
+   ],
+   "min_tips": 0.0037,
+   "min_old": 0.0037
+  },
+  "faulty_uniform": {
+   "n": 30,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_uniform",
+   "walls_tips": [
+    0.0063,
+    0.0064,
+    0.0065
+   ],
+   "walls_old": [
+    0.0061,
+    0.0066,
+    0.0062
+   ],
+   "min_tips": 0.0063,
+   "min_old": 0.0061
+  },
+  "faulty_rare": {
+   "n": 22,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_rare",
+   "walls_tips": [
+    0.0037,
+    0.0038,
+    0.0035
+   ],
+   "walls_old": [
+    0.0035,
+    0.0038,
+    0.0037
+   ],
+   "min_tips": 0.0035,
+   "min_old": 0.0035
+  },
+  "faulty_easy1": {
+   "n": 84,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_easy1",
+   "walls_tips": [
+    0.0092,
+    0.0091,
+    0.0092
+   ],
+   "walls_old": [
+    0.0093,
+    0.0092,
+    0.0102
+   ],
+   "min_tips": 0.0091,
+   "min_old": 0.0092
+  },
+  "faulty_ndecr": {
+   "n": 60,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_ndecr",
+   "walls_tips": [
+    0.0071,
+    0.007,
+    0.0068
+   ],
+   "walls_old": [
+    0.0072,
+    0.0065,
+    0.0068
+   ],
+   "min_tips": 0.0068,
+   "min_old": 0.0065
+  },
+  "faulty_walk": {
+   "n": 16,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_walk",
+   "walls_tips": [
+    0.0034,
+    0.0035,
+    0.0031
+   ],
+   "walls_old": [
+    0.0038,
+    0.0031,
+    0.0029
+   ],
+   "min_tips": 0.0031,
+   "min_old": 0.0029
+  },
+  "faulty_walk__det12": {
+   "n": 28,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_walk__det12",
+   "walls_tips": [
+    0.0041,
+    0.0038,
+    0.0039
+   ],
+   "walls_old": [
+    0.0038,
+    0.004,
+    0.0036
+   ],
+   "min_tips": 0.0038,
+   "min_old": 0.0036
+  },
+  "faulty_concave__waveA": {
+   "n": 22,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_concave",
+   "walls_tips": [
+    0.0036,
+    0.0034,
+    0.0034
+   ],
+   "walls_old": [
+    0.0035,
+    0.0034,
+    0.0034
+   ],
+   "min_tips": 0.0034,
+   "min_old": 0.0034
+  },
+  "faulty_varying__waveA": {
+   "n": 22,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_varying",
+   "walls_tips": [
+    0.0035,
+    0.0041,
+    0.0036
+   ],
+   "walls_old": [
+    0.0036,
+    0.0036,
+    0.0036
+   ],
+   "min_tips": 0.0035,
+   "min_old": 0.0036
+  },
+  "faulty_varying__last_step__waveA": {
+   "n": 22,
+   "dir": "/workspace/verify/neural-supermartingales/out/wave1a/certs/faulty_varying__last_step",
+   "walls_tips": [
+    0.0037,
+    0.0032,
+    0.0035
+   ],
+   "walls_old": [
+    0.0034,
+    0.0036,
+    0.0036
+   ],
+   "min_tips": 0.0032,
+   "min_old": 0.0034
+  },
+  "persist_2d__uniform": {
+   "n": 4800,
+   "dir": "/workspace/verify/neural-supermartingales/out/persist2d/uniform/bernfmt",
+   "walls_tips": [
+    149.9856,
+    150.1271
+   ],
+   "walls_old": [
+    151.8995,
+    151.6392
+   ],
+   "min_tips": 149.9856,
+   "min_old": 151.6392
+  },
+  "persist_2d__gaussian": {
+   "n": 19200,
+   "dir": "/workspace/verify/neural-supermartingales/out/persist2d/gaussian/bernfmt",
+   "walls_tips": [
+    7.0958,
+    7.0094
+   ],
+   "walls_old": [
+    7.0597,
+    7.0711
+   ],
+   "min_tips": 7.0094,
+   "min_old": 7.0597
+  }
+ }
+}

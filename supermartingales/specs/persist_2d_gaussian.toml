@@ -1,0 +1,88 @@
+# persist_2d — GAUSSIAN-noise twin candidate .
+#
+# PROVENANCE: reconstructed-per-description; the GAUSSIAN twin of the
+# shared skeleton. See specs/persist_2d_uniform.toml for the full
+# dynamics justification (TACAS'16 add-sys #2 linear part + room-
+# controller additive-noise shape, both quoted there); this header
+# carries only the gaussian-specific evidence and consequences.
+#
+# WHY GAUSSIAN IS THE GRAMMAR-FAVORED READING:
+# - The CONCUR'23 distribution grammar names exactly two distributions
+#   plus an ellipsis: "P ::= Bernoulli(E) | Gaussian(E, E) | ..." (v7
+#   main.tex l.161-162). Gaussian is the only named continuous one.
+# - Structural corroboration (this candidate's own geometry): with
+#   unbounded noise the reachable set is all of R^2, so any affine
+#   V >= 0 globally is constant, hence any affine certificate is vacuous
+#   — matching their Farkas column "-" for this row STRUCTURALLY, not
+#   just by template failure. (The uniform twin also defeats affine
+#   certificates, but by hazard-geometry convexity rather than by
+#   unboundedness; both match "-". Recorded in both receipts.)
+# - TACAS'16's own 2D persistence exemplars ship in both classes
+#   (U(-0.01,0.01) vs N(0,0.25) room controller; N(-1,1), N(0,1),
+#   U(-1,1) rows in the additional-systems table) — the lineage itself
+#   refuses to pin the class, hence twins.
+#
+# CALIBRATION: sigma = 1.3 (sigma^2 = 169/100, exact rational), frozen
+# from the MC sweep (out/persist2d/mc_sweep.json + probes); one-decimal
+# constant in the same plausibility band as the uniform twin. sigma^2 =
+# 7/4 sits AT the envelope boundary (MC 0.1018 vs 0.1026, within ~2 SE
+# at 1e6 — too close to pass or fail decisively; recorded); sigma^2 =
+# 9/5 VIOLATES (0.1117). Note near-variance-match with the uniform twin
+# (u^2/3 = 1.92 vs sigma^2 = 1.69) arrived without being imposed: the
+# two classes land in the same p-band at similar variance because the
+# reach is drift-dominated at these scales, not tail-dominated.
+#
+# ENVELOPE: MC p_hat = 0.09025 (pooled 12e6 chains, 3 seeds, SE 8.3e-5,
+# bracket exact at horizon 512): 0.0902 <= 0.1026 PASS (~150 SE margin).
+# Their PA bound = 1.14x this p_hat — the most plausible tightness of
+# any candidate examined. Receipts: out/persist2d/mc_final.json.
+#
+# CERTIFICATE CONSEQUENCES (wave-1 requirement, sharpened): unbounded
+# support means NO bounded forward-invariant box exists; the house
+# certificate is a GLOBAL polynomial with (a) drift rows via EXACT
+# rational Gaussian moments (E[w^{2k}] = (169/100)^k (2k-1)!!; odd
+# moments 0) — NO truncation, NO tail-mass enclosures; (b) V >= 1 on the
+# unbounded hazard = BernCone rows on ring(5, L) + an exact 1D
+# tail-domination lemma for ||s||_inf >= L (pure top monomials dominate
+# the mixed/lower block coefficient-wise; the psdcert/SOS route is the
+# named tightening successor if the crude lemma ever binds).
+#
+# Program (grammar-conformant pseudocode):
+#   x := 2; y := 2
+#   while !(-1 <= x && x <= 1 && -1 <= y && y <= 1) {
+#     wx ~ Gaussian(0, 169/100); wy ~ Gaussian(0, 169/100)
+#     x, y := (x + y)/2 + wx, (x - y)/2 + wy
+#     assert(-5 < x && x < 5 && -5 < y && y < 5)
+#   }
+
+[benchmark]
+name = "persist_2d__gaussian"
+family = "robot_motion"
+section = 1
+provenance = "reconstructed-per-description (noise class unpinned by paper; gaussian twin, grammar-favoured)"
+state = ["x", "y"]
+init = { x = 2, y = 2 }
+target_box = { x = ["-1", "1"], y = ["-1", "1"] }
+hazard = "max(|x|,|y|) >= 5"
+
+[benchmark.dynamics]
+map = "x' = (x + y)/2 + wx ; y' = (x - y)/2 + wy"
+matrix = [["1/2", "1/2"], ["1/2", "-1/2"]]
+noise = "wx, wy iid Gaussian(0, sigma^2)"
+sigma = "13/10"
+sigma_sq = "169/100"
+
+[benchmark.envelope]
+published_pa = "0.1026"
+published_pw = "0.1175"
+envelope = "0.1026"
+mc_p_hat = "0.09025"
+mc_receipts = "out/persist2d/mc_final.json"
+verdict = "PASS"
+
+[benchmark.farkas]
+published = "none"
+house = "vacuous-structurally: reachable set = R^2 (full-support noise); affine V >= 0 on R^2 forces V constant; also the corner convexity witness of the uniform twin applies verbatim"
+
+[benchmark.truth]
+method = "MC bracket (exact: horizon absorbs all chains); no finite-chain exact solve (continuous 2D state, unbounded support)"

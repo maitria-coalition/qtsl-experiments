@@ -1,0 +1,187 @@
+{
+  "checker": "glc-check (container + envelope integrity, then obligation ENUMERATION from the sealed rows — every QDeadlineTable rule node discharged through the exact-rational deadline-table walk: WF/B/S/C recomputed from the node's closure alone, absorbing self-loops determined from DState/absorbing marks, dyadic tables embedded exactly in Q; pass the mode flag --gym (a prerequisite-table assertion) plus --expect-claims from this manifest; zero-node containers REFUSE)",
+  "family": "gym-hit-v0",
+  "format": ".glc — sealed geolog commit containers (single commit per certificate)",
+  "mode_flag": "--gym",
+  "mutants": [
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/m1_table_raised.glc",
+      "glc_sha256": "45f426cf7bdb01a9c01a6485a4c44bc97feaae8fa53da0fd823838976478e4be",
+      "locus": "V_0(init) raised one grain above the backward-induction value (step obligation)",
+      "mutant": "m1_table_raised"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/m2_claim_inflated.glc",
+      "glc_sha256": "c93142b2f07c4105250bc12b9f23cef0012dd7d681c560a8428a7f812d2227a2",
+      "locus": "claimed bound raised one grain above V_0(init) (claim obligation)",
+      "mutant": "m2_claim_inflated"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/m3_kernel_perturbed.glc",
+      "glc_sha256": "6180bc123efb031aced80deb83e41f7ae789cb2afd4747dc3525681da76e866c",
+      "locus": "first outcome probability rewritten to 1/4 (kernel group-sum obligation)",
+      "mutant": "m3_kernel_perturbed"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/m4_goal_dropped.glc",
+      "glc_sha256": "069b08a5a9323d179f32fd1181ac56f61318f162bbeab3f17b5674ee364c86c0",
+      "locus": "goal region emptied (lower atom raised past the upper); boundary obligation at the true goal",
+      "mutant": "m4_goal_dropped"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/m5_policy_unresolved.glc",
+      "glc_sha256": "ef61d7b6459733baa3879b19e51e4c1c3edfcd419e04f612a128b426e5e8f7b9",
+      "locus": "first choice row's step index moved to the horizon; no choice at its (state, 0) slot",
+      "mutant": "m5_policy_unresolved"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "FAIL",
+      "file": "mutants/m6_boundary.glc",
+      "glc_sha256": "84e1e1f7126405cd113d923f996d10c9add897282354d649d5521cdaa2fa642e",
+      "locus": "V_T(14) raised from 0 to 1 (boundary obligation at a non-goal state)",
+      "mutant": "m6_boundary"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "ACCEPT_BY_DESIGN",
+      "file": "mutants/m7_kernel_forged_coherent.glc",
+      "glc_sha256": "ead797440e1ce2d64e645c0193010d8a7b3c6ad3224ddebdef8b92e101fef108",
+      "locus": "success rate moved 1/3 -> 2/5 with table and claim recomputed — a true statement about a different system",
+      "mutant": "m7_kernel_forged_coherent",
+      "reach_note": "in-lane the walk verifies internal system/spec/proof consistency only; binding the kernel to the named environment is provenance, and the falsifier with that reach is regeneration byte-identity against the pinned corpus (the positives' sha256 lines + the producer's cbor gate)"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/m8_body_byte.glc",
+      "glc_sha256": "aeb4dbfbea78cfbf997959f8d6056b60a12ab20f3c7e817423375b4f9ffc58cd",
+      "locus": "one body byte flipped (body-hash binding)",
+      "mutant": "m8_body_byte"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/m9_sig_byte.glc",
+      "glc_sha256": "bb69552836e2e87a610272c06943d81a06e0b53cf7c32acd0b645b708e7d944e",
+      "locus": "one signature byte flipped (signature verification)",
+      "mutant": "m9_sig_byte"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/m10_truncated.glc",
+      "glc_sha256": "882dc70a6a3578dd2084ccd3d9f2ac208cef202aa8f253d129ca2c97c8dd8310",
+      "locus": "container truncated 40 bytes short (grammar)",
+      "mutant": "m10_truncated"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/m11_magic.glc",
+      "glc_sha256": "f9d1e831aa2bbcfb87e4b379f946740c32b06897094f4448db8fa293b234f618",
+      "locus": "magic corrupted (not a geolog commit container)",
+      "mutant": "m11_magic"
+    },
+    {
+      "base": "exact_T10",
+      "expected": "REFUSE",
+      "file": "mutants/m12_version.glc",
+      "glc_sha256": "3585fd3d40524fd3bf71cb887536f6b1e5b08f727bac92802617d3d4deb77826",
+      "locus": "container version bumped to 2 (unsupported by this reader)",
+      "mutant": "m12_version"
+    },
+    {
+      "base": "exact_T5",
+      "expected": "FAIL",
+      "file": "mutants/m13_le_v0_raised.glc",
+      "glc_sha256": "4b62f25a7387eaaa17babd572f60245c4b36df993ebffacd98cf2ae05b449898",
+      "locus": "V_0(init) raised from 0 to 1 on the LE-face certificate — the super-solution table survives the raise, and the mixture above the claimed upper bound q = 0 is the single falsifier (claim obligation)",
+      "mutant": "m13_le_v0_raised"
+    }
+  ],
+  "positives": [
+    {
+      "claim": "0",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T5.glc",
+      "glc_sha256": "0717878ccedfb7acdb2786e6c8e4dbabed352168423366f9403171e1e1e583f9",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T5.cbor"
+    },
+    {
+      "claim": "815/19683",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T10.glc",
+      "glc_sha256": "bb9ad433716111c8df75d84eb8a58eca718cb12b05fa4c767c44c0a16f1163af",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T10.cbor"
+    },
+    {
+      "claim": "235376447737/847288609443",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T25.glc",
+      "glc_sha256": "ef9a188793a3a6014b5327d63151518763c9f5baab11b066b719883185272c20",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T25.cbor"
+    },
+    {
+      "claim": "391906732315215288151579/717897987691852588770249",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T50.glc",
+      "glc_sha256": "3d20798e5f28a6452d1363bb3934a1efe9e03f2c8078ecf8e05a810f54aed0ff",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T50.cbor"
+    },
+    {
+      "claim": "127846315164763240597097944751513986598202943912/171792506910670443678820376588540424234035840667",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "exact_T100.glc",
+      "glc_sha256": "07bf3f777e81e3c2dacb07986e4d05f94b30edab583bc76173e1351e9eddd295",
+      "source_cert": "gymnasium/out/frozenlake-4x4/exact_T100.cbor"
+    },
+    {
+      "claim": "48757/65536",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k16_T100.glc",
+      "glc_sha256": "f9c19ad7098f211ef34659bb0ac8e414aa9a79e7c2655eea2af9e3a425520bc0",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k16_T100.cbor"
+    },
+    {
+      "claim": "12485427/16777216",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k24_T100.glc",
+      "glc_sha256": "c83579c1a48fadc5c2fe4c671c5d39fb8c8f58aa85b19466ea86f387bb46e7eb",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k24_T100.cbor"
+    },
+    {
+      "claim": "3196272933/4294967296",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k32_T100.glc",
+      "glc_sha256": "1dcba9f3107c29fd67644e37c651b611ebd40fd96ef6bb0d94f90d719d90d653",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k32_T100.cbor"
+    },
+    {
+      "claim": "209470943935025/281474976710656",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "dyadic_k48_T100.glc",
+      "glc_sha256": "d54a4843f5849ad9d72b871b7fc0a3cbc8cae8dd705f35ac516cd932e857601b",
+      "source_cert": "gymnasium/out/frozenlake-4x4/dyadic_k48_T100.cbor"
+    }
+  ]
+}

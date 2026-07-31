@@ -1,0 +1,24 @@
+{
+"claim": "certs/montezuma-door-T1548/claim.cbor",
+"game": "montezuma",
+"species": "file:door_k00_r400.txt",
+"horizon": 1548,
+"init_set": [
+0,
+0
+],
+"returns": [
+400
+],
+"min_return": 400,
+"python_reward_crosscheck": "identical (records 1..k+T-1, all lanes)",
+"total_wall_s": 24.2,
+"lanes": [
+{
+"k": 0,
+"return": 400,
+"sim_line": "HOTSPOTS (cart accesses in $1FE0-$1FF7): 1fe0:1994 1fe3:3608 1fe4:1615 1fe9:1616 1fed:1615 1ff2:3076 1ff6:3075",
+"wall_s": 24.19
+}
+]
+}

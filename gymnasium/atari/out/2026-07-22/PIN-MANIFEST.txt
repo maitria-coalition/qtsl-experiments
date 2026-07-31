@@ -1,0 +1,35 @@
+# Atari section re-run — pin manifest (2026-07-22)
+# Frontier pins: mtk 184fa3014389050289a6ec4af055aa517eec0af6,
+# geolog-alpha 8c2c14a54da2e205a562ee96743d1571174c006e,
+# qtsl c0099c932aa49ba8295c49a84245ce741d2dc8cb, kernels b0143fa3a27ec60bfefe2c992b5be0c8be7b0bd5.
+# FINDING (pins): the atari replay lane depends on NONE of the four pinned repos.
+# The checker (replaycheck) is a standalone crate (ciborium/serde/sha2/flate2 only);
+# the producer side is verilator + yosys + the vendored core. "Latest tips" for this
+# section = the upstream producer tree (private; not in this repository), whose
+# artifact generations are pinned below by content hash.
+
+# AIG generations (the netlist IS the env — posture 1)
+old (the export-pinned generation):
+  pong.aig    sha256 9b1f84c6105afe045ecabd14dca4c275cc9997a067e40cae0aa89c667a7f548a  (aig 21906 52 1454 19 20400)
+  freeway.aig sha256 5af75c42177a35477cec7ba974637acbc31f5d91234ebff4f31b0e5a2f582c84  (aig 21883 52 1454 19 20377)
+new (the latest-tips generation, VIDEO_OUT on):
+  pong.aig    sha256 0adaab67cc9d356d5a8b9a1281a1f1fd090651c0da5bb5d922c0a029d526f781  (aig 22364 52 1491 26 20821)
+  freeway.aig sha256 7bb93d891613352d4ae5950cab2c157990e999f13ec9ee629c96c972c584abcd  (aig 22341 52 1491 26 20798)
+
+# Claim generations
+lane (a) committed-pin replay: this repo's certs/{pong-noop-T1000,freeway-up-T1000}/claim.cbor as committed (pinned OLD aigs)
+lane (b) latest tips: upstream certs of the same names (pin NEW aigs; same policy/boot/inputs/returns)
+trace witnesses: upstream certs traces/ (31 per row; pinned by sha256 inside both claim generations)
+# 2026-07-22 republication: the committed claims/receipts/mutants now state
+# the lane (b) generation; see delta-ledger.md "Republication at tips".
+
+# Toolchain
+gb10 (GB10 Grace aarch64): verilator 5.020 (Debian 5.020-1); rustc stable; ale-py 0.12.0+0706845
+epyc (GCP n2d-highmem-16, EPYC 7B13, x86_64): same replaycheck source, cargo release build
+published synth toolchain: yosys 0.67 (oss-cad-suite) — synth NOT re-run here (see delta ledger)
+
+# ROM identity (fidelity lane)
+pong.bin    md5 60e0ea3cbe0913d39803477945e9e5ec  == ale-py 0.12.0 bundled pong.bin (bit-identical)
+freeway.bin md5 8e0ab801b1705a740b476b7f588c6d16  == ale-py 0.12.0 bundled freeway.bin (bit-identical)
+# ROM-derived artifacts (roms/, out/*.aig, traces) remain out of this repository per license law;
+# referenced here by content hash only.

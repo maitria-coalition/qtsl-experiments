@@ -1,0 +1,26 @@
+% sections-list.tex --- the CANONICAL section order of the Experiments
+% chapter. This file is the single source of truth for what the chapter
+% contains and in what order; both consumers input it rather than
+% keeping their own copies (the drift between hand-maintained copies
+% once shipped a book whose section order contradicted the chapter's
+% own cross-references):
+%
+%   - chapter-standalone.tex (this repository's `make chapter`), with
+%     the working directory at chapter/;
+%   - the book master chapters/experiments.tex in the qtsl repository,
+%     which resolves these paths through TEXINPUTS (its build adds
+%     <this repo>/chapter to the search path).
+%
+% Note the order is load-bearing: the Atari section calls itself "the
+% fourth campaign" and closes a loop between the Gymnasium and
+% hardware-circuits sections, so it must follow both.
+\input{sections/table-style}
+\input{sections/claims}
+\input{sections/conventions}
+\input{sections/supermartingales}
+\input{sections/gymnasium}
+\input{sections/circuits}
+\input{sections/atari}
+\input{sections/semicon}
+\input{sections/lean-route}
+\input{sections/reproduction}

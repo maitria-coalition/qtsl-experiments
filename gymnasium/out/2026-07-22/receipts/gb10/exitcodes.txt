@@ -1,0 +1,12 @@
+run_checks tips-gb10 exit=0
+run_tt_checks tips-gb10 exit=0
+run_checks pinned-gb10 exit=0
+run_tt_checks pinned-gb10 exit=0
+box2d ll/ll_u4_min_a100 tips exit=0
+box2d ll/ll_u4_fixture_n20k tips exit=0
+box2d llc/llc_u4_min_a100 tips exit=0
+box2d llc/llc_u4_fixture_n20k tips exit=0
+box2d ll/ll_u4_min_a100 pinned exit=0
+box2d ll/ll_u4_fixture_n20k pinned exit=0
+box2d llc/llc_u4_min_a100 pinned exit=0
+box2d llc/llc_u4_fixture_n20k pinned exit=0

@@ -1,0 +1,205 @@
+{
+ "machine": "GB10 workstation (aarch64)",
+ "schema": "fluid-drift-cover-v1",
+ "producer": "joint_lp_producer.py (rung 2.5)",
+ "minifab": {
+  "joint_eps_by_week": {
+   "84": 0.000277777777777778,
+   "90": 0.00013888888888888921,
+   "94": 4.629629629629657e-05,
+   "95": 2.3148148148148476e-05
+  },
+  "rung1_receipts": {
+   "84": "1/3600",
+   "90": "1/7200",
+   "94": "1/21600",
+   "95": "1/43200"
+  },
+  "ceiling_bracket_lots_per_week": [
+   95.99993896484375,
+   96.0
+  ],
+  "certified_rows": [
+   {
+    "name": "lbfs_core_191_2wk",
+    "cells": 63,
+    "eps_emitted": "1157/100000000",
+    "eps_max_exact_at_w": "1/86400",
+    "eps_float": 1.157e-05,
+    "w_denominator_cap": 10000000,
+    "dual_paths": {
+     "vacuous-pinned": 41,
+     "support": 22
+    },
+    "sha256": "045f510cbf734215c3fcdb3190bb0b92c24be83284fc94be7e45fa349a8f20ef",
+    "checker": "ACCEPT modes=63 obligations=819 eps=1157/100000000 model=\"Kempf Mini-Fab core skeleton, LBFS, release 191/2 lots/wk (fluid capacity 96); FULL sign-split tree cover (= v0 walk); joint-LP weights (rung 2.5)\" decode_us=1062 verify_us=1953 bench_n=5 verify_min_ns=1783039 verify_median_ns=1801439",
+    "cert": "semicon/out/minifab/lbfs_core_191_2wk.cbor",
+    "release_lots_per_week": "191/2"
+   },
+   {
+    "name": "lbfs_core_959_10wk",
+    "cells": 63,
+    "eps_emitted": "231/100000000",
+    "eps_max_exact_at_w": "1/432000",
+    "eps_float": 2.31e-06,
+    "w_denominator_cap": 10000000,
+    "dual_paths": {
+     "vacuous-pinned": 41,
+     "support": 22
+    },
+    "sha256": "19c988ab12642da2c0f92b86d1d9cb0947f610359566a6edd3c439d98d7bbb24",
+    "checker": "ACCEPT modes=63 obligations=819 eps=231/100000000 model=\"Kempf Mini-Fab core skeleton, LBFS, release 959/10 lots/wk (fluid capacity 96); FULL sign-split tree cover (= v0 walk); joint-LP weights (rung 2.5)\" decode_us=1077 verify_us=1952 bench_n=5 verify_min_ns=1817455 verify_median_ns=1843487",
+    "cert": "semicon/out/minifab/lbfs_core_959_10wk.cbor",
+    "release_lots_per_week": "959/10"
+   }
+  ]
+ },
+ "wall_seconds": 0.4,
+ "mimac7_station_top_validation": {
+  "claim": "joint LP must match, never beat, the proven-optimal remaining-work ray on the station-top cover (COVER-CERT.md ceiling-optimality argument)",
+  "replications": [
+   "aarch64 (2 runs)",
+   "x86_64 (1 run)"
+  ],
+  "core": {
+   "analytic_theta_star": "1000000/7563387",
+   "joint_eps_at_0.999x": 0.001001,
+   "joint_eps_at_1.001x": -0.000999,
+   "joint_eps_th125_wlam": 0.05772718,
+   "remaining_work_eps_th125_wlam": 0.05772718
+  },
+  "avail": {
+   "analytic_theta_star_float": 0.115776,
+   "joint_eps_at_0.999x": 0.001001,
+   "joint_eps_at_1.001x": -0.000999
+  }
+ },
+ "mimac7_tree_core": {
+  "units": "theta = fraction of nominal release; ceilings are 8-step bisection brackets on the float joint LP (labeled findings, not certificates)",
+  "spine_tree_ceiling": {
+   "cells": 172,
+   "note": "two independent bisection replications, one per machine; same cell count as station-top; brackets sit at ~1.63-1.67x its proven ceiling 0.132216",
+   "aarch64": [
+    0.2157,
+    0.2215
+   ],
+   "x86_64": [
+    0.2209,
+    0.2267
+   ]
+  },
+  "graft_tree_checkpoint": "802-cell graft tree, resumable workshop checkpoint (not shipped in this repository)",
+  "certified_rows": [
+   {
+    "name": "tree_core_th150",
+    "cells": 244,
+    "theta": "1964/9903",
+    "theta_float": 0.19832,
+    "vs_station_top": 1.5,
+    "eps_wlam": "5750631/50000000",
+    "checker": "ACCEPT modes=244 obligations=84180 verify_us=1383463 (local aarch64 re-verify)",
+    "cert": "semicon/out/mimac7/tree_core_th150.cbor"
+   },
+   {
+    "name": "tree_core_thc90",
+    "cells": 244,
+    "theta": "1865/9509",
+    "theta_float": 0.19613,
+    "vs_station_top": 1.48,
+    "eps_wlam": "794413/6250000",
+    "checker": "ACCEPT modes=244 obligations=84180 verify_us=240945 (local aarch64 re-verify)",
+    "cert": "semicon/out/mimac7/tree_core_thc90.cbor"
+   }
+  ],
+  "mutants": [
+   {
+    "name": "eps_inflated",
+    "expect_locus": "drift-bound",
+    "verdict": "REFUSE locus=drift-bound detail=cell 0: dual value exceeds -eps - <w,lambda>",
+    "ok": true,
+    "file": "semicon/out/mimac7/mutants/tree_eps_inflated.cbor"
+   },
+   {
+    "name": "neg_y",
+    "expect_locus": "dual-sign",
+    "verdict": "REFUSE locus=dual-sign detail=cell 0: y[343] < 0",
+    "ok": true,
+    "file": "semicon/out/mimac7/mutants/tree_neg_y.cbor"
+   },
+   {
+    "name": "tamper_w",
+    "expect_locus": "identity",
+    "verdict": "REFUSE locus=identity detail=cell 0: column 2 combination != objective",
+    "ok": true,
+    "file": "semicon/out/mimac7/mutants/tree_tamper_w.cbor"
+   },
+   {
+    "name": "drop_dual",
+    "expect_locus": "wf",
+    "verdict": "REFUSE locus=wf detail=cover has 244 cells but certificate carries 243 duals",
+    "ok": true,
+    "file": "semicon/out/mimac7/mutants/tree_drop_dual.cbor"
+   },
+   {
+    "name": "tree_child_reused",
+    "expect_locus": "wf-cover",
+    "verdict": "REFUSE locus=wf-cover detail=tree node 1 reached twice",
+    "ok": true,
+    "file": "semicon/out/mimac7/mutants/tree_child_reused.cbor"
+   },
+   {
+    "name": "unsorted_y",
+    "expect_locus": "shape",
+    "verdict": "REFUSE locus=shape detail=cell 1: y indices not strictly ascending at 357",
+    "ok": true,
+    "file": "semicon/out/mimac7/mutants/tree_unsorted_y.cbor"
+   }
+  ],
+  "honest_partial": "the producer run was stopped early by schedule: the exact-dual row on the 802-cell graft-1 tree was mid-solve and graft round 2 (1295 cells) was mid-bisection when iteration stopped; the graft-tree checkpoint is resumable, so the certified 244-cell rows are a floor, not the species ceiling",
+  "single_split_curve_aarch64": [
+   {
+    "round": 0,
+    "cells": 172,
+    "ceiling": [
+     0.2157,
+     0.2215
+    ]
+   },
+   {
+    "round": 1,
+    "cells": 210,
+    "ceiling": [
+     0.2168,
+     0.2223
+    ]
+   },
+   {
+    "round": 2,
+    "cells": 244,
+    "ceiling": [
+     0.2179,
+     0.2233
+    ]
+   }
+  ],
+  "graft_curve_x86_64": [
+   {
+    "round": 0,
+    "cells": 172,
+    "ceiling": [
+     0.2209,
+     0.2267
+    ]
+   },
+   {
+    "round": 1,
+    "cells": 802,
+    "ceiling": [
+     0.2273,
+     0.2327
+    ]
+   }
+  ]
+ },
+ "provenance_note": "Public copy of the joint sparse-LP producer run receipts (2026-07-20). Relative to the production-run originals: machine identifiers are generalized (aarch64 = the GB10 workstation, x86_64 = a 16-thread EPYC-class build server), absolute artifact paths are rewritten repo-relative, and the tree-flagship mutant files are prefixed tree_ to disambiguate them from the station-top mutant battery in the same directory. All verdict lines, exact rationals, and sha256s are verbatim. See semicon/mimac/JOINT-LP-CERT.md for the narrative."
+}

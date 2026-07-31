@@ -1,0 +1,179 @@
+% generated from the toolkit workshop's distribution-generator census
+% --- do not hand-edit; the status column re-derives at each preview
+% and moves in lock-step with the census (regenerate with the
+% workshop's census tool). Family numbering: Crooks, Field Guide to
+% Continuous Probability Distributions (the census key).
+% census of record at workshop revision 9ba7d538c (July 27, 2026)
+\providecommand{\distdashcensusdate}{}\renewcommand{\distdashcensusdate}{July 27, 2026}
+
+\noindent {\small Each row carries a mark in the same vocabulary as the QTSL rule catalogue's coverage dashboard: \dok{} certified, \damber{} routed (construction and verification class fixed, no table yet), \dredx{} out of scope; \dok\,\damber{} marks a row certified for its named part with the residue routed.}\medskip
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{Shared infrastructure (roots, wrappers, constants).}
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{7.9cm} c >{\raggedright\arraybackslash}p{5.8cm}@{}}
+\toprule
+object & & status \\
+\midrule
+exponential quantile root (the registered standard exponential) & \dok & certified --- $\varepsilon \le 4.3\times10^{-8}$ \\
+error-function forward enclosure (mechanized; soundness stated against the Gaussian integral, standard axioms only) & \dok & certified \\
+probit quantile root (the registered standard normal) & \dok & certified --- $\varepsilon \le 2.9\times10^{-8}$ \\
+rational-power wrapper (reciprocal and square root included) & \dok & certified --- per-instance $\varepsilon \le 2^{-24}$ \\
+logarithm wrapper (verified through the exponential's forward enclosure --- no logarithm enclosure exists or is needed) & \dok & certified --- $\varepsilon \le 2\times10^{-9}$ \\
+exponential wrapper (sinh, cosh derived exactly) & \dok & certified --- relative-error native \\
+certified constants ($\ln 2$, $\pi$, $2/\sqrt{\pi}$) & \dok & certified --- relative half-width $\le 2^{-55}$ \\
+composition algebra: exact budget arithmetic per arrow, with a route audit that refuses any dropped term & \dok & certified \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{Zero shape parameters (Field Guide ch.\ 1--4).}
+\begin{center}\small
+\begin{tabular}{@{}l >{\raggedright\arraybackslash}p{4.7cm} >{\raggedright\arraybackslash}p{2.3cm} c >{\raggedright\arraybackslash}p{5.3cm}@{}}
+\toprule
+\S{} & family & route & & status \\
+\midrule
+1.1 & uniform (half uniform; degenerate point mass) & exact (V0) & \dok & certified --- exact \\
+1.--- & unbounded uniform & --- & \dredx & out of scope --- improper (not normalizable), so no quantile function exists; set-valued premises cover the intended uses \\
+2.1 & exponential (anchored, standard) & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$ \\
+3.1 & Laplace & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$ \\
+4.1 & normal & composition (V2) & \dok & certified --- $\varepsilon \le 2.9\times10^{-8}$ at unit scale (exact affine scaling) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\medskip
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{One shape parameter (ch.\ 5--9).}
+\begin{center}\small
+\begin{tabular}{@{}l >{\raggedright\arraybackslash}p{4.7cm} >{\raggedright\arraybackslash}p{2.3cm} c >{\raggedright\arraybackslash}p{5.3cm}@{}}
+\toprule
+\S{} & family & route & & status \\
+\midrule
+5.1 & power function (generalized Pareto, $q$-exponential reparametrizations) & composition (V1) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+5.4 & wedge (ascending, descending) & exact (V0) & \dok & certified --- exact \\
+5.5 & Pareto (Lomax 5.6 = shifted) & composition (V1) & \dok & certified --- $\varepsilon \le 2^{-23}$ (moderate core; the wide core is deep-tail-dominated and its excluded mass is declared) \\
+5.7 & exponential ratio (uniform-prime 5.8; Lomax(1)) & composition (V1) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+6.1 & log-normal (Gibrat) & composition (V2) & \dok & certified --- relative $\varepsilon \le 2^{-23}$ \\
+7.1a & gamma, integer shape (Erlang) & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$ (three-port pin; per-port tables pre-tightened so sums stay under target) \\
+7.1b & gamma, half-integer shape & exact (V2) & \dok & certified --- declared per alias --- the squared-clamp amplification is stated at its measured value (e.g.\ $3.5\times10^{-7}$ at one degree of freedom) \\
+7.1c & gamma, general rational shape & enclosure (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ at the pinned fractional shapes (measured $2^{-27}$-class) \\
+7.3 & chi-square (scaled; Porter--Thomas) & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$ at even $k$; odd $k$ declared per alias \\
+8.1 & gamma-exponential (chi-square-exponential; generalized Gumbel) & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (integer shapes); half-integer members inherit the squared-clamp declaration \\
+8.5 & Gumbel & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-26}$ \\
+8.7 & BHP & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ at the irrational shape $\pi/2$ (a bracketed-shape pin plus an exact shape-transfer argument) \\
+8.8 & Moyal & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+9.1 & Pearson VII, half-integer $m$ (Student $t$, integer $\nu$; Breit--Wigner) & composition (V2) & \dok & certified --- declared per floor --- the heavy tail's excluded-event mass is priced exactly, and the sup concentrates in near-floor tail events \\
+9.4 & Student $t_3$ (the odd-$\nu$ pattern) & own table (V2) & \dok & certified --- $\varepsilon \le 2^{-26}$ \\
+9.6 & Cauchy (Lorentzian; $t_1$) & own table (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\medskip
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{Two shape parameters (ch.\ 10--12).}
+\begin{center}\small
+\begin{tabular}{@{}l >{\raggedright\arraybackslash}p{4.7cm} >{\raggedright\arraybackslash}p{2.3cm} c >{\raggedright\arraybackslash}p{5.3cm}@{}}
+\toprule
+\S{} & family & route & & status \\
+\midrule
+10.1 & unit gamma & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (relative $\le 2^{-38}$ at the standard pins); half-integer members declare their relative error \\
+10.2 & uniform product & exact (V0) & \dok & certified --- exact \\
+11.1 & Amoroso (Stacy = anchored) & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (integer and half-integer pins; both signs of the power parameter --- the inverse-Amoroso branch included) \\
+11.7 & half-normal & exact (V2) & \dok & certified --- $\varepsilon \le 2.9\times10^{-8}$ at unit scale; no clipped mass at the support edge \\
+11.8 & chi (Rayleigh, Maxwell, Nakagami) & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+11.13 & inverse-Amoroso block: inverse gamma and exponential, L\'evy, scaled/inverse chi and chi-square, inverse Rayleigh, Maxwell, half-normal, Nakagami (11.13--11.23) & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (clean pins); the heavy members (L\'evy and kin) are declared per alias at every floor \\
+11.24 & Fisher--Tippett block: Weibull, reversed Weibull, Fr\'echet, and their generalized forms (11.24--11.29) & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (Weibull pins); the heavy-tailed Fr\'echet members declare their clip masses \\
+12.1a & beta, integer shapes (PERT; Pearson XII) & exact (V0) & \dok & certified --- exact \\
+12.1b & beta, half-integer shapes & composition (V2) & \dok & certified --- declared per pin --- the ratio route states its amplification (it cannot reach the working target at any floor); correctness rests on exact anchors, and tight-absolute consumers take the incomplete-beta root at the same shapes \\
+12.1c & beta, general rational shapes & enclosure (V3) & \dok & certified --- $\varepsilon \le 2^{-30}$ at the five full-depth pins (vs the $2^{-23}$ target), $\delta = 2^{-31}$ per side \\
+12.5 & central beta & exact (V0) & \dok & certified --- exact \\
+12.6 & arcsine (centered arcsine) & own table (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$; exact end cells, no clipped mass \\
+12.8 & semicircle & own table (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$; exact end cells, no clipped mass \\
+12.9 & Epanechnikov, biweight, triweight (12.9--12.11) & exact (V0/V1) & \dok & certified --- exact \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\medskip
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{Two shape parameters (ch.\ 13--16).}
+\begin{center}\small
+\begin{tabular}{@{}l >{\raggedright\arraybackslash}p{4.7cm} >{\raggedright\arraybackslash}p{2.3cm} c >{\raggedright\arraybackslash}p{5.3cm}@{}}
+\toprule
+\S{} & family & route & & status \\
+\midrule
+13.1 & beta prime (inverse Lomax; 13.1--13.4) & exact + composition (V1 int / V2 half-int) & \dok & certified --- $\varepsilon \le 2^{-23}$ (integer shapes; the $\gamma{=}1$ heavy tail declares its clip mass); half-integer members declare per floor, cross-anchored against the integer route \\
+13.3 & $F(k_1,k_2)$ & composition (V1 even / V2 odd) & \dok & certified --- $\varepsilon \le 2^{-23}$ (even degrees of freedom); odd-parity members declare per floor (mixed parity with an even denominator is measurably tightest) \\
+14.1 & beta-exponential (hyperbolic-sine; Nadarajah--Kotz) & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-31}$ \\
+14.2 & exponentiated exponential & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+15.1 & beta-logistic (Fisher $z$) & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (integer shapes --- the logit-chain identity is distribution-level exact); half-integer members declare their chain budgets \\
+15.2 & Burr II (reversed Burr II) & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+15.4 & central logistic & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$ (= the logistic pin's exactly: order-statistic gates are 1-Lipschitz in the sup norm) \\
+15.5 & logistic & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-24}$ \\
+15.6 & hyperbolic secant & own table (V2) & \dok & certified --- $\varepsilon \le 2^{-26}$ \\
+16.1 & Pearson IV & quadrature (V2q) & \dok & certified --- the composed sup error is stated per pin with the tangent-stage Lipschitz amplifier explicit; heavy polynomial tails make deep clamps expensive and the two-floor presentation applies (both floors stated) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\medskip
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{Three and more shape parameters (ch.\ 17--20).}
+\begin{center}\small
+\begin{tabular}{@{}l >{\raggedright\arraybackslash}p{4.7cm} >{\raggedright\arraybackslash}p{2.3cm} c >{\raggedright\arraybackslash}p{5.3cm}@{}}
+\toprule
+\S{} & family & route & & status \\
+\midrule
+17.1 & generalized beta & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-39}$ (standard pins); the $\beta{=}1$ member degenerates to its source exactly \\
+17.2 & Kumaraswamy & composition (V1) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+18.1 & generalized beta prime (transformed beta) & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-35}$ (standard pins) \\
+18.3 & Burr block: Burr XII (Singh--Maddala), Dagum, paralogistic (18.3--18.6) & composition (V1) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+18.7 & log-logistic (Fisk) & composition (V1) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+18.8 & half-Pearson VII (half-Cauchy 18.9) & composition / own table (V2) & \dok & certified --- the algebraic member $m{=}\tfrac32$ at $\varepsilon \le 2^{-23}$ (provably the only polynomial-route shape); half-Cauchy takes the exact tangent-table fold ($\varepsilon \le 2^{-23}$, zero low-side clip); general half-integer $m$ as a half-normal $\times$ chi-ladder product net, declared per member (heavy-ratio tail geometry) \\
+18.10 & half generalized Pearson VII; half-Laha & member routes & \dok & certified --- heavy-tailed per the Pearson VII geometry: the inverse gamma chain's clamp mass is the declared tail mass and the product amplification by the clamp value is stated per pin \\
+19.1 & Pearson family & dispatch & \dok & certified --- exact --- a classification, not a table: parameters dispatch to a member family at registration time, in exact rational (and quadratic-extension) arithmetic \\
+19.2 & $q$-Gaussian & dispatch & \dok & certified --- exact --- a reparametrization, not a table: $q>1$ dispatches to Student $t$, $q<1$ to central beta, $q\to1$ to normal \\
+20.--- & grand-unified block: Halphen, Sichel, Libby--Novick, Gauss- and confluent-hypergeometric, Perks, Appell beta, Laha, and kin (20.2, 20.5--20.18) & quadrature (V2q) & \dok & certified --- $\varepsilon \le 2^{-23}$-class per member at declared cores ($2^{-24}$--$2^{-28}$ for the quadrature members; normalization constants --- Bessel-$K$ and hypergeometric values --- pinned by bracketed quadrature to $10^{-13}$--$10^{-15}$ width, no special function ever named; the generalized members cross-anchored two ways, direct quadrature vs.\ power-wrapper pushforward, at $4.5\times10^{-9}$ sup gap); heavy-tailed members declare a core-depth frontier ($2^{-23}$-class at moderate cores, deeper-core cost stated); the Perks family is certified across its full rational-shape domain (all four discriminant regimes; $2^{-29.9}$--$2^{-30.7}$ at the full-depth pins) \\
+20.3 & inverse Gaussian (reciprocal inverse Gaussian 20.4) & own table (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\medskip
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{Miscellanea (ch.\ 21).}
+\begin{center}\small
+\begin{tabular}{@{}l >{\raggedright\arraybackslash}p{4.7cm} >{\raggedright\arraybackslash}p{2.3cm} c >{\raggedright\arraybackslash}p{5.3cm}@{}}
+\toprule
+\S{} & family & route & & status \\
+\midrule
+21.1 & Bates (Irwin--Hall 21.9; triangular 21.22; uniform difference 21.23) & exact (V0/V1) & \dok & certified --- exact \\
+21.2 & beta-Fisher--Tippett (exponentiated Weibull) & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+21.3 & Birnbaum--Saunders (fatigue-life) & composition (V1+V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+21.4 & exponential power, general $\beta$ (Box--Tiao; Subbotin) & enclosure (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (the classical members anchor: $\beta{=}1$ Laplace exactly, $\beta{=}2$ normal against the error function) \\
+21.6 & generalized Pearson VII & member routes & \dok & certified --- as 18.10 (the symmetric double: sign cell-mixture takes the max of two mirror branches, so the half core's declaration carries over) \\
+21.8 & K (generalized K 21.5) & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (integer shapes); half-integer members inherit the squared-clamp declaration \\
+21.10 & Johnson SU (SB, SL variants) & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+21.12 & log-Cauchy & composition (V2) & \dok & certified --- relative $\varepsilon \le 2^{-23}$ (the log-normal precedent); a family with no moments of any order --- only the relative bound is claimed, the astronomical absolute error is stated, and the excluded tail mass is declared per side \\
+21.13 & Meridian & exact (V1 (+cell)) & \dok & certified --- $\varepsilon \le 2^{-23}$ (moderate core) \\
+21.15 & noncentral chi-square block: noncentral chi 21.14, Rice 21.18, noncentral $F$ 21.16 & exact + composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ \\
+21.17 & pseudo-Voigt & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (the mixture takes the larger component budget, inheriting its Cauchy component's declaration exactly) \\
+21.19 & slash & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (moderate core); the full heavy core's error is declared at its measured value \\
+21.20 & stable (Holtsmark 21.7; Landau 21.11) & composition (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ at the certified pins (Holtsmark $2^{-24.3}$; Landau $2^{-23.6}$ --- the $\alpha = 1$ seam member); the angular tables are direct mid-slack residual rows, one transcendental bracket per pin \\
+21.21 & Suzuki & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ (small shapes); wide-support members declare the log-normal scale amplification \\
+21.24 & Voigt & exact (V2) & \dok & certified --- $\varepsilon \le 2^{-23}$ at the half-scale witness pin; the unit pin states its summed budget (component errors add across the convolution sum) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\medskip
+

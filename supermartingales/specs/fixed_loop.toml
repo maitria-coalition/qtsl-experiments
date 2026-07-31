@@ -1,0 +1,35 @@
+# RECONSTRUCTION (no listing). "fixed" vs "faulty": deterministic advance (no
+# q-coin) — the advance-probability reading is pinned by the Farkas fingerprint:
+# 9 * (1/1000) / (999/1000) = 1/111 = 0.009009... -> ceil 0.0091 = published.
+# (With the q-coin the LP would give 2/111 -> 0.0181 = faulty_loop's value.)
+# Init i=1 per the family-wide Y-frame adjudication (note workshop-side);
+# envelope check: their neural bounds (0.0095/0.0094) are below the i=0 chain's
+# true p (1-0.999^10 = 0.009955) and above the i=1 chain's (1-0.999^9 = 0.008956),
+# independently forcing i=1.
+[benchmark]
+name = "fixed_loop"
+family = "unreliable_hardware"
+section = 3
+provenance = "reconstruction; advance-determinism + init pinned by Farkas fingerprint + neural envelope"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/1000", update = {i = "i + 1"}},
+]
+
+[benchmark.farkas]
+published = "0.0091"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame. Expected optimum 1/111."
+
+[benchmark.truth]
+method = "chain"

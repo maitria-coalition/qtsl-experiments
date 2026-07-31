@@ -1,0 +1,17 @@
+{
+  "checker": "glc-check (container + envelope integrity, then obligation ENUMERATION from the sealed rows — every QDeadlineTable rule node discharged through the exact-rational deadline-table walk: WF/B/S/C recomputed from the node's closure alone, absorbing self-loops determined from DState/absorbing marks, dyadic tables embedded exactly in Q; pass the mode flag --gym (a prerequisite-table assertion) plus --expect-claims from this manifest; zero-node containers REFUSE)",
+  "family": "gym-hit-v0",
+  "format": ".glc — sealed geolog commit containers (single commit per certificate)",
+  "mode_flag": "--gym",
+  "mutants": [],
+  "positives": [
+    {
+      "claim": "1",
+      "expect_claims": "qtsl_deadline_table=1",
+      "expected": "ACCEPT",
+      "file": "hitting_exact_T13.glc",
+      "glc_sha256": "5def0a337ad77604b373e757638d78c536f382f32ba00f2fb3ae004d084d1eff",
+      "source_cert": "gymnasium/out/cliffwalking-det/hitting_exact_T13.cbor"
+    }
+  ]
+}

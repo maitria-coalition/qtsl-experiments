@@ -1,0 +1,60 @@
+\section{Reproduction}
+\label{sec:exp-repro}
+
+Every campaign in this chapter ships its evidence in the coalition's
+experiments repository
+(\path{maitria-coalition/qtsl-experiments}): the certificates
+themselves, committed byte-for-byte; their mutant batteries; the
+machine-readable receipts (JSON) from which this chapter's tables are
+re-derived mechanically; and the independent checkers, imported from
+the \path{qtsl} repository at pinned revisions. One make target per
+family re-verifies the stored certificates and mutants through the
+checkers and regenerates the tables.
+
+The certificate vocabulary itself is committed, as data: the
+\path{qtsl} repository ships the theory pair
+\path{theories/BernsteinLogic.geolog} --- the Bernstein Logic proof
+tower, exactly the fragment the certified checker consumes --- and
+\path{theories/Qtsl.geolog} --- the omnibus theory extending it with
+systems, specifications, and the judgments connecting them --- and a
+certificate is ordinary rows of these theories; there is no bespoke
+certificate file format. That unified schema is the standing
+discipline for everything this chapter reports: one certificate
+vocabulary for every campaign, a pinned toolkit producer emitting
+against it, the database engine as the fast-path checker, and an
+extraction tool reducing a full-QTSL certificate to its Bernstein
+Logic obligations for the certified checker. The shipped form is the
+sealed container --- one signed geolog commit per certificate,
+re-verified from the bytes alone, with obligation and claim counts
+demanded exactly: deleting a proof node leaves every surviving
+obligation true, so the count gate is load-bearing, and a container
+that claims nothing is refused rather than vacuously accepted.
+
+The campaigns of this chapter predate that unification, and the
+transition is in flight, not finished. Certificates produced on the
+earlier staged vocabularies remain the evidence behind the tables:
+they stand as the record of the campaign that produced them, still
+re-checked by the make targets, and nothing in them is presented
+un-checked. Re-emissions on the unified schema have landed for the
+first families --- the fluid-drift, published-table-sweep,
+Lean-ladder, and Gymnasium lanes, with the SPDE family's noise
+spectra re-homed first under its split-container design; each
+re-emission's content deltas are disclosed per container in its
+family's manifest. The uniform re-conduct of every campaign through
+the pinned producer is the successor work the tables track: as
+re-conducted receipts land, the numbers re-derive from them, and the
+superseded certificates retire to an archive rather than being
+silently rewritten.
+
+A producer is never part of any trust story, so the audit path is the
+same on either side of the transition: read a checker, run it against
+the shipped certificates and their mutants, and only then decide what
+the tables mean. The published-table sweep's certificates are
+additionally stored as plain-text listings of database object rows
+--- the geolog encoding, human- and checker-readable alike --- each
+pinned by hash in a manifest, and its containers prove content
+identity against those listings at production, so the certificate a
+checker reads is the certificate a reviewer can read. Per the preview
+note at the front of this volume, artefacts migrate to the public
+repositories as they graduate; until a cited artefact appears there,
+treat its mention as a statement of what exists, not yet a link.

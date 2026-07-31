@@ -1,0 +1,45 @@
+{
+ "claim": "certs/mutants/base-freeway/claim.cbor",
+ "game": "freeway",
+ "species": "up",
+ "horizon": 60,
+ "init_set": [
+  0,
+  3
+ ],
+ "returns": [
+  0,
+  0,
+  0,
+  0
+ ],
+ "min_return": 0,
+ "python_reward_crosscheck": "identical (records 1..k+T-1, all lanes)",
+ "total_wall_s": 3.62,
+ "lanes": [
+  {
+   "k": 0,
+   "return": 0,
+   "sim_line": "OK frames=60 clks=4774800 clks/frame=79580.0",
+   "wall_s": 0.92
+  },
+  {
+   "k": 1,
+   "return": 0,
+   "sim_line": "OK frames=61 clks=4854380 clks/frame=79580.0",
+   "wall_s": 0.87
+  },
+  {
+   "k": 2,
+   "return": 0,
+   "sim_line": "OK frames=62 clks=4933960 clks/frame=79580.0",
+   "wall_s": 0.9
+  },
+  {
+   "k": 3,
+   "return": 0,
+   "sim_line": "OK frames=63 clks=5013540 clks/frame=79580.0",
+   "wall_s": 0.89
+  }
+ ]
+}

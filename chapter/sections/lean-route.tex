@@ -1,0 +1,378 @@
+\input{generated/lean-route-fit.tex}
+
+\section{The Lean route: how much Lean?}
+\label{sec:exp-lean-route}
+
+The toolkit's third checking path --- the last of the three checking
+routes whose division of labor the front matter states
+(\bookref{ch:exec-summary}{the Executive Summary}) --- loads the same
+sealed certificate container that every other checker consumes into
+Lean, reconstructs the claim, and lets Lean accept it as a theorem. The route's decode,
+reconstruction, and validity elaboration are ordinary Lean definitions;
+its acceptance theorem says that anything the route accepts is
+semantically valid --- valid, that is, under every admissible
+valuation of the hypernet the certificate declares: the same
+Bernstein Logic valuation semantics the toolkit's other checkers
+answer to --- and the proof is one line, because the accepted
+value carries the validity proof built during elaboration. The same
+definitions are consumed two ways: \emph{compiled}, as a native
+executable produced by the Lean compiler, and \emph{kernel}, where a
+generated receipt module asks the kernel itself to evaluate the entire
+pipeline over the embedded bytes (\texttt{decide}) --- no compiler, no
+extraction, just the trusted evaluator. The route exists to make a
+measured statement, not a rhetorical one: the expectation has always
+been that the kernel path is far too slow for machine-scale
+certificates, and this section measures how far.
+
+\subsection{The ladder}
+
+The measurement corpus is a size ladder of fifteen production
+certificates --- sealed containers from the working producer stack,
+spanning $603$ bytes to $126{,}216$ bytes ($\times 209$) across seven
+certificate families, each rung accepted by the independent reference
+checker before any Lean timing was attempted. The ladder is committed
+byte-for-byte in \path{lean-route/fixtures/}; as elsewhere in this
+repository, the certificates stand on their own, and no producer is
+part of the trust story. All timings in this section were taken on one
+otherwise-idle machine (\LeanRouteHost), single job at a time, with a
+\LeanRouteBudgetMin-minute budget per certificate per route;
+Table~\ref{tab:lean-route-ladder} shows the ladder. An em-dash marks a
+certificate whose run exceeded the budget; \emph{o.o.m.}\ marks one
+that exhausted the machine's memory first; \emph{o.o.f.}\ (out of
+fragment) marks the scope boundary discussed below --- the route
+declines any certificate outside its accepted fragment rather than
+guess at it, a refusal that costs completeness and never soundness ---
+and kernel peaks for non-completing runs are reported as floors (the
+resident size when the run was cut).
+
+\begin{table}[htbp]
+\centering\footnotesize
+\input{generated/lean-route-table.tex}
+\caption{The ladder. ``compiled'' is the median end-to-end wall clock
+of repeated passes of the compiled route; ``kernel'' is the wall clock
+of one kernel (\texttt{decide}) evaluation of the same bytes. Em-dashes
+are runs cut at the \LeanRouteBudgetMin-minute budget; \emph{n.a.}\
+marks kernel runs not attempted because every in-fragment kernel
+attempt at smaller sizes had already ended cut or out of memory.}
+\label{tab:lean-route-ladder}
+\end{table}
+
+\subsection{The scaling law}
+
+Across the \LeanRoutePointCount{} rungs the compiled route completes
+within budget, end-to-end time follows a power law in container bytes:
+$t \propto B^{\LeanRouteExponent}$ (95\% CI $[\LeanRouteExponentLo,
+\LeanRouteExponentHi]$, $r^2 = \LeanRouteRSquared$ on log--log least
+squares). Container bytes is the best of the three natural size units as a
+regressor ($r^2 = \LeanRouteRSqBytes$, against \LeanRouteRSqRows{} for
+certificate rows and \LeanRouteRSqNodes{} for proof nodes) --- expected,
+since the dominant cost is the reader: list-based CBOR decoding and
+seam assembly in a purely functional style, chosen so that the same
+definitions remain evaluable by the kernel. Nothing about the
+certificate format requires a superlinear reader, as the linear-time
+imported checkers on the same bytes demonstrate --- and as the
+fast-path route's own fitted exponent on this same ladder now
+measures (\GlcRouteExponent, its confidence interval containing
+linear). Figure~\ref{fig:lean-route-scaling}
+shows the measured points, the fitted law, and the budget line ---
+and, since the trichotomy's claim is comparative, the same ladder
+through the toolkit's other two checking routes, measured per
+certificate on the Arm host
+(section~\ref{sec:exp-lean-route-comparison} carries the
+hardware and scope contract).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\colorlet{routeEngine}{blue!70!black}
+\colorlet{routeCertified}{green!45!black}
+\colorlet{routeLean}{red!80!black}
+\begin{loglogaxis}[
+    width=0.82\linewidth, height=0.62\linewidth,
+    xlabel={sealed container bytes},
+    ylabel={end-to-end wall clock (s)},
+    ymin=5e-4, ymax=5e3,
+    grid=major, grid style={black!12},
+    legend cell align=left, legend columns=2,
+    legend style={draw=black!30, font=\small,
+      at={(0.5,-0.20)}, anchor=north, /tikz/every even column/.append style={column sep=1em}},
+    tick label style={font=\small},
+]
+\addplot[routeLean!55, thick, domain=\LeanRouteFitDomainLo:130000, samples=2]
+    {exp(\LeanRouteFitA)*x^\LeanRouteFitB};
+\addlegendentry{Lean fit $t \propto B^{\LeanRouteExponent}$}
+\addplot[routeEngine!55, thick, domain=\GlcRouteFitDomainLo:\GlcRouteFitDomainHi, samples=2]
+    {exp(\GlcRouteFitA)*x^\GlcRouteFitB};
+\addlegendentry{\texttt{geolog-alpha} fit $t \propto B^{\GlcRouteExponent}$}
+\addplot[routeCertified!55, thick, domain=\QtslabRouteFitDomainLo:\QtslabRouteFitDomainHi, samples=2]
+    {exp(\QtslabRouteFitA)*x^\QtslabRouteFitB};
+\addlegendentry{\texttt{qtslab} fit $t \propto B^{\QtslabRouteExponent}$}
+\addplot[dashed, black!60, domain=550:140000, samples=2] {600};
+\addlegendentry{\LeanRouteBudgetMin-minute budget}
+\addplot[only marks, mark=square*, mark size=1.8pt, routeEngine]
+    table {generated/lean-route-glc-points.dat};
+\addlegendentry{\texttt{geolog-alpha} (fast path)}
+\addplot[only marks, mark=diamond*, mark size=2.4pt, routeCertified]
+    table {generated/lean-route-qtslab-points.dat};
+\addlegendentry{\texttt{qtslab} (certified)}
+\ifnum\LeanRouteQtslabCensoredCount>0
+\addplot[only marks, mark=diamond, mark size=2.8pt, routeCertified]
+    table {generated/lean-route-qtslab-censored.dat};
+\addlegendentry{\texttt{qtslab}, cut at budget}
+\fi
+\addplot[only marks, mark=*, mark size=1.7pt, routeLean]
+    table {generated/lean-route-points.dat};
+\addlegendentry{Lean (compiled reflection)}
+\ifnum\LeanRouteCensoredCount>0
+\addplot[only marks, mark=o, mark size=2.2pt, routeLean]
+    table {generated/lean-route-censored.dat};
+\addlegendentry{Lean, cut at budget}
+\fi
+\end{loglogaxis}
+\end{tikzpicture}
+\caption{One ladder, three checking routes: the fast-path engine
+(\texttt{geolog-alpha}, blue squares, on the staged-chain sealed
+containers), the certified checker (\texttt{qtslab}, green diamonds,
+on the same certificates re-marked content-resolved --- a
+container-table transform under which every certificate row is
+byte-identical), and the compiled Lean reflection route (red circles)
+with its fitted law. Blue and green medians are one process, end to
+end, pinned to one core of the Arm host; the red points are this
+section's own protocol on its dedicated machine (the footnote of
+section~\ref{sec:exp-lean-route-comparison} carries both). Open marks
+of either color sit \emph{at} the dashed
+budget line: each true time lies above its mark. A rung with no mark
+on some route is a scope datum, not a failure --- that route classes
+the certificate outside its accepted fragment and declines it (the
+caption of Table~\ref{tab:lean-route-ladder} and
+section~\ref{sec:exp-lean-route-comparison}'s footnote carry the
+per-route scope and hardware contract). The Lean fit uses only
+uncensored red points; where it crosses the budget ---
+$\approx\LeanRouteThresholdKB$\,KB of sealed container --- is the
+admission threshold of Table~\ref{tab:lean-route-admission}. Each
+solid line is the same log--log fit to its route's accepted medians:
+\texttt{geolog-alpha} at exponent \GlcRouteExponent{} (95\% CI
+$[\GlcRouteExponentLo,\GlcRouteExponentHi]$, containing linear;
+$r^2=\GlcRouteRSquared$), \texttt{qtslab} at \QtslabRouteExponent{}
+($[\QtslabRouteExponentLo,\QtslabRouteExponentHi]$,
+$r^2=\QtslabRouteRSquared$), Lean at \LeanRouteExponent{}
+($[\LeanRouteExponentLo,\LeanRouteExponentHi]$) --- one near-linear
+route and two superlinear ones, measured on the same certificates.}
+\label{fig:lean-route-scaling}
+\end{figure}
+
+The kernel mode needs no fitted curve to make its point. Its smallest
+full acceptance during the route's development --- the $919$-byte
+certificate, second rung of the ladder --- cost $965$ seconds and a
+$233$\,GiB peak on a $251$\,GiB development machine (the toolkit
+repository's route documentation carries that receipt); the memory is
+the kernel's reduction state, not the certificate. On this section's
+$126$\,GiB reference machine the same certificate exhausts neither
+budget nor patience but memory, and every in-fragment kernel attempt
+on the ladder ended cut at the budget, out of memory, or predictably
+unattempted (Table~\ref{tab:lean-route-ladder}). The failure mode is
+content-dependent, not size-monotone: the $919$-byte certificate took
+the whole machine's memory in under eight minutes, while certificates
+two to eight times its size ground past the budget inside a
+gigabyte --- a $\times 160$ spread in peak residency between
+neighboring rungs. What a given certificate makes the kernel's
+reduction state do is a property of its content (the working
+hypothesis is exact-rational arithmetic in kernel terms, untested
+here), not of its byte count. A certificate of under a kilobyte
+that the compiled route accepts in milliseconds is already past what
+the kernel evaluator will do inside a ten-minute, hundred-gigabyte
+envelope; that is the measured content of ``too slow at machine
+scale,'' stated with its numbers attached.
+
+\subsection{The fragment boundary}
+
+One ladder rung is not a timing datum but a scope datum: the smallest
+certificate ($603$ bytes, an interval-enclosure certificate whose
+obligations are discharged by \emph{primitive applications}) is out of
+fragment for the route --- the table's \emph{o.o.f.} --- and the route
+declines it: compiled and kernel agree, and the kernel's refusal is
+itself a theorem (\texttt{decide} proves the acceptance predicate
+false on those bytes). The same bytes are accepted by the reference
+checker, which settles the direction of the disagreement: the route's
+accepted fragment is the first-order pinned-vocabulary rule set,
+primitive applications lie outside it by design, and a checker asked
+about a certificate it cannot speak for declines it rather than
+guess. Every checker in this chapter draws some such boundary, always
+with the same sign --- an out-of-fragment refusal costs completeness,
+never soundness; the certified checker classes this same rung outside
+\emph{its} fragment too, naming the reason in its verdict
+(\texttt{fun\_outside\_fragment}), while the fast-path lane discharges
+it (Figure~\ref{fig:lean-route-scaling}). Admission to the Lean route
+is therefore a conjunction: small enough, \emph{and} inside the
+fragment. A species' first Lean attempt should be its smallest
+instance, which settles fragment membership in milliseconds before
+any batch of timings is scheduled.
+
+\subsection{The admission gate}
+
+Table~\ref{tab:lean-route-admission} applies the fitted law to the
+certificate species of this chapter's campaigns: per species, the
+byte range of its committed certificates (container overhead added),
+the predicted compiled-route time at the median and maximum, and the
+verdict against the \LeanRouteBudgetMin-minute budget. The table is the
+gate the re-run campaigns consume: a Lean-reflection timing column is
+attempted only for species that pass (or, at the runner's discretion,
+the passing fraction of a \emph{partial} species), and the kernel mode
+is attempted for none --- the measured points above place its envelope
+below every production species' floor.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\input{generated/lean-route-admission.tex}
+\caption{The admission gate. Predictions apply the fitted law to each
+species' certificate sizes in sealed-container bytes (census rows
+stated in committed-artifact bytes carry the measured container
+overhead as a declared correction); beyond the fitted range
+($\approx 25$\,KB) they are
+extrapolations --- one-sidedly corroborated by the budget-censored
+rungs up to $126$\,KB, order-of-magnitude statements past that.
+``Fragment'' marks measured membership only for the ladder's own
+species; \emph{untested} species settle theirs with a one-instance
+probe before any batch attempt.}
+\label{tab:lean-route-admission}
+\end{table}
+
+\subsection{The measurement before this one}
+\label{sec:exp-lean-route-history}
+
+This ladder is the route's second measurement, not its first. In July
+2026, on the toolkit's predecessor binary certificate format (since
+retired), the same question was measured by the other road into the
+kernel --- \emph{elaboration}: an emitter translated certificate bytes
+into generated Lean source ($\times 8$ expansion, byte-stable per-node
+templates across certificate kinds), and the elaborator produced
+kernel-checked object files (a further $\times 24$--$25$) closing with
+the same species of validity theorem. Three production certificates
+were taken to full kernel verdicts that way --- $197$, $377$, and
+$1{,}081$ proof nodes, at $3.4$, $9$--$13$, and $28$ minutes of
+elaboration respectively, against $3$--$10$ \emph{seconds} for the
+certified checker build of the same era on identical certificate
+content and comparable hardware: a measured factor of $\times 30$ to
+$\times 250$ at kilobyte scale, growing with size. The same campaign
+took a streaming census of a real machine-scale certificate --- a
+$43{,}285{,}639$-node, $1.24$\,GB closed-loop neural-network
+verification certificate, semantically re-checked by a reference
+checker in $2.4$ hours --- and projected the elaboration route on it:
+$\approx 7$\,GB of generated Lean source, $\approx 66$ million
+declarations in one namespace (about one hundred mathlibs),
+$\approx 176$\,GB of object files, and $1.4$--$2.7$ core-years of
+serial elaboration, with memory the first wall. The numbers, the
+census, and the projection's stated assumptions are recorded in
+\path{lean-route/HISTORY.md}. That projection is why the present route
+abandons source generation altogether: a fixed decoder and checker are
+defined once, certificates arrive as ordinary input bytes, and the
+measured question becomes the reader's scaling law above rather than
+gigabyte-scale generated source.
+
+\subsection{The route beside the other two}
+\label{sec:exp-lean-route-comparison}
+
+The trichotomy's claim is comparative, so the honest summary is
+too.\footnote{Hardware, per the conventions: the certified checker is
+timed on one core of an Arm host --- the ISA its soundness theorem
+grounds in --- with its own cross-machine spread measured under
+$\times 1.15$; in Figure~\ref{fig:lean-route-scaling} the two
+production routes' ladder points are one process per certificate,
+pinned to one performance core of one Arm box (\LeanRouteArmHost),
+while the red points remain this section's reflection timings
+(\LeanRouteHost); the elaboration-era numbers are as recorded in
+\path{lean-route/HISTORY.md}. Every contrast quoted here is two or
+more orders of magnitude, and the measured cross-machine factor on the
+compiled route is a factor of a few --- hardware choice cannot close
+any of them. Container forms, per route: the fast path consumes the
+staged-chain re-seals (\path{lean-route/GLC-CERT.md}), the certified
+checker the content-resolved mints
+(\path{lean-route/tools/mint-qtslab-vintage.py} states the
+container-table-only transform), and both carry the same certificate
+rows byte-for-byte as the committed fixtures the Lean route reads.
+Scope, shared by all three routes on this corpus: these
+certificates natively encode the Bernstein Logic fragment, which is
+the only fragment the certified checker consumes
+(\path{theories/BernsteinLogic.geolog}); the full QTSL theory is
+checked on the engine-side container lanes of
+section~\ref{sec:exp-repro}.} On this chapter's stored supermartingale corpus ---
+$4{,}105$ sealed containers, each one verification condition's
+Bernstein Logic discharge at roughly one to fifty kilobytes --- the
+certified checker's current build replays every container at a
+pooled median of $30$\,ms, maximum $117$\,ms, on one Arm core
+(Table~\ref{tab:exp-certified-checker}), and the fast-path engine's
+sealed-container lane re-checks the whole corpus in wall-clock seconds
+(\path{supermartingales/GLC-CERT.md}). The compiled reflection route
+has not been batch-run on that corpus; the admission gate prices it
+(Table~\ref{tab:lean-route-admission}): verdict \emph{partial}, with a
+predicted median near $0.1$\,s and a predicted maximum near $84$
+minutes, so only the passing fraction would ever be attempted.
+Figure~\ref{fig:lean-route-scaling} makes the comparison direct on
+the ladder itself, every route in its current build on identical
+certificate content: the fast path near-linear in bytes (exponent
+\GlcRouteExponent), the reflection reader at $B^{\LeanRouteExponent}$,
+and the certified build accepting \LeanRouteQtslabAcceptCount{} rungs
+and cut at the budget on \LeanRouteQtslabCensoredCount. Within the
+ladder the certified wall grows as $B^{\QtslabRouteExponent}$
+($r^2=\QtslabRouteRSquared$) --- statistically indistinguishable from
+the reflection reader's exponent, while the fast path's confidence
+interval excludes both --- and across corpora content dominates
+bytes: the stored corpus above tops out at $117$\,ms per certificate
+at sizes where the ladder's composite certificates cost minutes,
+which is how a $30$\,ms pooled median there and these walls here are
+both true. A
+species aiming certificates at the certified route should therefore
+run the same one-instance probe the admission gate prescribes for
+Lean: fragment membership and cost are both content-properties,
+settled cheaply on the smallest instance. The historical cross-check
+stands beside the figure: on the composite small-gain rung
+($1{,}081$ proof nodes, $46$\,KB sealed), the certified checker of
+the elaboration era took about ten seconds on the same content in its
+own format's bytes (today's build, reading the unified sealed
+container, is cut at the budget on that rung), against past the
+ten-minute budget through the compiled reflection route and
+twenty-eight minutes through the retired elaboration route.
+
+The conclusion the measurements support, stated as the front matter's
+expectation deserves: \emph{confirmed, with its boundary measured}.
+For the kernel evaluator the confirmation is categorical --- a
+certificate under a kilobyte already costs sixteen minutes and a
+quarter-terabyte of reduction state, and nothing larger completes at
+all --- and for the compiled route it is a statement about scaling
+rather than about the route: below a few kilobytes the compiled
+reflection path is genuinely fast (the $919$-byte rung's $2.4$\,ms is
+\emph{under} the certified build's corpus median, on different
+certificates of the same format), but at $\times B^{3.6}$ against the
+production checkers' linear-with-content growth, the ratio passes two
+orders of magnitude by fifty kilobytes and machine scale is out of
+reach by shape, not by constant factors. The route earns its keep on
+the other side of the ledger: full kernel verdicts on small
+certificates tie the certificate semantics to a proof kernel
+scrutinized by a community that owes this toolkit nothing --- and the
+measured boundary is precisely why the certified binary, not the
+kernel, walks the forty-million-node instances.
+
+\paragraph{What is not claimed.} The law is a property of this route's
+current reader on one machine class, not of Lean, whose kernel and
+compiler are here being used far outside their engineered envelope on
+purpose; an index-structured reader would move the compiled curve
+substantially, and nothing in the trichotomy's argument depends on it
+not moving. Cross-machine transfer of the constants is measured to be
+worth a factor of a few (the $2{,}184$-byte rung runs $27.6$\,ms on the
+development machine cited above and $\approx 120$\,ms here); the
+exponent, not the coefficient, is the portable content. Species
+predictions inherit a byte-basis caveat until each campaign banks
+per-instance container sizes, and the admission table regenerates from
+those receipts by the same make target that produced it. The
+elaboration-era numbers of \path{lean-route/HISTORY.md} are
+development-record measurements on a retired format, quoted for the
+route's history with their measured/projected distinctions preserved;
+they are not re-derivable from this repository, and no other number in
+this chapter rests on them. Finally, the ladder's timings were taken
+against the committed fixtures; the same certificate content
+re-sealed on the unified certificate schema is already committed
+beside them (\path{lean-route/out/glc-baked/}, with the
+content-identity argument stated in \path{lean-route/GLC-CERT.md}),
+and when the ladder re-runs on those containers this section's
+numbers move with them, per the reproduction discipline of
+section~\ref{sec:exp-repro}.

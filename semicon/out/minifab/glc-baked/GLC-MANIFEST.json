@@ -1,0 +1,203 @@
+{
+  "checker": "glc-check baked-cert lane (container + envelope integrity, then per-mode claim discharge through the exact-rational ground provider; per-positive --expect-claims from this manifest)",
+  "format": ".glc — sealed geolog commit containers (single commit per certificate)",
+  "mutants": [
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "FAIL",
+      "file": "mutants/m1_eps_scaled.glc",
+      "glc_sha256": "4da6d290c14ed88bd64a4baa3e0000785a733881e69d68331cc02a6a17aa4604",
+      "mutant": "m1_eps_scaled"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "FAIL",
+      "file": "mutants/m2_lambda_negated.glc",
+      "glc_sha256": "72be07898d84fc5901e60be450b8fedd43c60f1159dd5b96f93b8e42f00d4315",
+      "mutant": "m2_lambda_negated"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "FAIL",
+      "file": "mutants/m3_lambda_scaled.glc",
+      "glc_sha256": "4a05ea1327be9914cdfb7f0250a7778660d15e1ed2edd58c1a8e88522c4dba24",
+      "mutant": "m3_lambda_scaled"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "FAIL",
+      "file": "mutants/m4_mode_dropped.glc",
+      "glc_sha256": "e94909d0a3de02de0529bdc8e5fa03c0f86ec82057ea4156e20b2418941c72c8",
+      "mutant": "m4_mode_dropped"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "REFUSE",
+      "file": "mutants/m5_body_byte.glc",
+      "glc_sha256": "4535eb43189603b784abce2d00fd8f31a3e23be036d64f903d1e5d78b18fb0d3",
+      "mutant": "m5_body_byte"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "REFUSE",
+      "file": "mutants/m6_sig_byte.glc",
+      "glc_sha256": "02598ab998b6357e59a3ff6175cba4b86dad9abcb2c6e0ac92925c58966ab547",
+      "mutant": "m6_sig_byte"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "REFUSE",
+      "file": "mutants/m7_truncated.glc",
+      "glc_sha256": "5ae47f51df1f3ccab800e8643792874375c904a2c34eda38bbe408a8825b7678",
+      "mutant": "m7_truncated"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "REFUSE",
+      "file": "mutants/m8_magic.glc",
+      "glc_sha256": "f2877dbbab0654aa16bc1a758fa7505ad4c476471270c7079ffd2ff8efa209de",
+      "mutant": "m8_magic"
+    },
+    {
+      "base": "lbfs_core_84wk",
+      "base_modes": 63,
+      "expected": "REFUSE",
+      "file": "mutants/m9_version.glc",
+      "glc_sha256": "1eb00ed56596c1f9d92bc1cca0461840d250474fb184737f8f6642bc8814daa9",
+      "mutant": "m9_version"
+    }
+  ],
+  "positives": [
+    {
+      "cert": "fbfs_core_84wk",
+      "commit_address_blake3": "2b3540d55557fbb63a0528ddbc9fd66441e48736af08af043db3af18d141c737",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "fbfs_core_84wk.glc",
+      "glc_bytes": 89584,
+      "glc_sha256": "42af85ef98298f4ec3bc919ff5b43fa35bca430eba0f36000a0201e810e87e21",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=84/wk",
+      "modes": 63,
+      "ops": 56402,
+      "producer_wall_ms": 174
+    },
+    {
+      "cert": "fbfs_core_95wk",
+      "commit_address_blake3": "b812f9336fe0676e2942a51ff697be272cb538beae89535450485aca1b836d9b",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "fbfs_core_95wk.glc",
+      "glc_bytes": 73974,
+      "glc_sha256": "e8dcd936e97183c917054ae904c66d0f200b09bb0ac614dad9171ec700b73d59",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=95/wk",
+      "modes": 63,
+      "ops": 50554,
+      "producer_wall_ms": 118
+    },
+    {
+      "cert": "fbfs_setupadv_78wk",
+      "commit_address_blake3": "00e0017c7b5d60a16f6e4fcc3a57d1b669f7f82c3189ac90b75c84a462a04879",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "fbfs_setupadv_78wk.glc",
+      "glc_bytes": 74494,
+      "glc_sha256": "4fdbb85f037a044c84331ad6822745d5110644aefea32aa27a2282385f6b05d0",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=FBFS; release=78/wk",
+      "modes": 63,
+      "ops": 51178,
+      "producer_wall_ms": 115
+    },
+    {
+      "cert": "lbfs_core_84wk",
+      "commit_address_blake3": "be1e0b052df444af01425cfcf482d51f932c3dcaeb173067869e7d9552bd0c61",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "lbfs_core_84wk.glc",
+      "glc_bytes": 74459,
+      "glc_sha256": "2cc6b79f122f4b9496d1e28c61e487843a94eed33e12c1e91f8b9320b943b767",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=84/wk",
+      "modes": 63,
+      "ops": 51354,
+      "producer_wall_ms": 114
+    },
+    {
+      "cert": "lbfs_core_90wk",
+      "commit_address_blake3": "ebf7a11f9bad7f36eb115196ef1655d40d51376c2a64d2e274daa3777fc531eb",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "lbfs_core_90wk.glc",
+      "glc_bytes": 74501,
+      "glc_sha256": "202aae87a80f28437cfa1877d28ab3a4d6803c27c0041f72c865a64cb15dcfd0",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=90/wk",
+      "modes": 63,
+      "ops": 51354,
+      "producer_wall_ms": 114
+    },
+    {
+      "cert": "lbfs_core_94wk",
+      "commit_address_blake3": "b25b4f6f6a816d505e6f24567c326b9af4170afd7181d626a8ed8d80f0702bf5",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "lbfs_core_94wk.glc",
+      "glc_bytes": 74623,
+      "glc_sha256": "06b47e625953b078010dd42d53d5f0f8bb8b832308435aa72fd50c900f0fa6e2",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=94/wk",
+      "modes": 63,
+      "ops": 51354,
+      "producer_wall_ms": 114
+    },
+    {
+      "cert": "lbfs_core_95wk",
+      "commit_address_blake3": "11e6bdb35399597e9647c99bc3faf1145ee9ae6fe82f1f75108a8d7a02cac575",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "lbfs_core_95wk.glc",
+      "glc_bytes": 74665,
+      "glc_sha256": "6e09a5260f4791695a90df759232311ee66751dd54a95886887e7ef31b6211da",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=95/wk",
+      "modes": 63,
+      "ops": 51354,
+      "producer_wall_ms": 114
+    },
+    {
+      "cert": "lbfs_setupadv_72wk",
+      "commit_address_blake3": "0c3d66657c637381cf909c1ed64487ced5ab592bc4fbb5d2826d58d94a6140ca",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "lbfs_setupadv_72wk.glc",
+      "glc_bytes": 78751,
+      "glc_sha256": "0fbd5e89df69ea6b7662b180745e9a95e459638442d38746a8f4bf8679009e8e",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=72/wk",
+      "modes": 63,
+      "ops": 53658,
+      "producer_wall_ms": 121
+    },
+    {
+      "cert": "lbfs_setupadv_76wk",
+      "commit_address_blake3": "89759b45b650466bf83b36fa715b5edbdba2dee5e4633f3d4f1c8c03daa36d8c",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "lbfs_setupadv_76wk.glc",
+      "glc_bytes": 79069,
+      "glc_sha256": "6af46b184d8e44ed3d67a23d70a9d065b0ebd24b2b30f005e6490f73f1345e2c",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=76/wk",
+      "modes": 63,
+      "ops": 53658,
+      "producer_wall_ms": 121
+    },
+    {
+      "cert": "lbfs_setupadv_78wk",
+      "commit_address_blake3": "ade4be45e380b57a9fc62f17fc1d4d3d1160c3e0fad03bcbf2defb8542391855",
+      "expect_claims": "farkasCombinationValid=63,constExactEvalTrue=63,syzygyCombinationValid=63,syzygyConclusionFormRel=63",
+      "file": "lbfs_setupadv_78wk.glc",
+      "glc_bytes": 79057,
+      "glc_sha256": "2d917d900a377dcd892e417f2dae893388b7111c7b1525ed43885ac2b3be6cc1",
+      "model": "Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=78/wk",
+      "modes": 63,
+      "ops": 53658,
+      "producer_wall_ms": 121
+    }
+  ],
+  "producer": "mtk (catalogue row construction; sealed with the public v0 reproduction seed; deterministic — double-emit byte-identity asserted at production)",
+  "vocabulary": "baked qc closure (BernsteinLogic + Qtsl, minted chain; index derived from chain bytes at check time)",
+  "vocabulary_rev": "6862edc88ff1d788550d196078a28cb2fe971f10d478a5e32800f2892a7292b9"
+}

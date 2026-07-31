@@ -1,0 +1,362 @@
+# benchmark manifest — arXiv 2301.06136 (Abate–Edwards–Giacobbe–Punchihewa–Roy,
+# "Quantitative Verification with Neural Networks", LMCS 22(2), 2026; v7 e-print 2026-04-14)
+#
+# TRANSCRIPTION PROVENANCE: extracted from the fetched TeX source
+# (sources/2301.06136/main.tex) — Table 1 = \label{tab:results} (bounds/success/arch),
+# Table 2 = \label{tab:timings-main} (timings, seconds). Extraction method: awk range
+# over the table env + sed cell split (scratchpad t1.txt/t2.txt), hand-merged here, then
+# self-checked by re-diffing this file's rows against the mechanical extraction (row
+# count 17=17 both tables; name order identical; all cells byte-compared).
+# NOTE the campaign brief said "Table 2": in the published LMCS numbering Table 2 is the TIMINGS
+# table; the campaign gloss ("their bound, their timing") spans both tables over the
+# SAME 17-row benchmark set, so this manifest carries the union, keyed by benchmark.
+#
+# SOURCE ANOMALY (transcribed as-is): faulty_loop and faulty_rare both list
+# program-agnostic learn time 25.52 s in their source — suspicious duplicate in the
+# upstream LaTeX, not a transcription error here.
+#
+# Fields per row:
+#   farkas_bound            — their linear-template (Farkas' Lemma) upper bound p; "none" = no linear SM exists
+#   pa_bound / pa_success   — program-agnostic neural bound (avg over successes) + success ratio (of 10)
+#   pw_bound / pw_success   — program-aware neural bound + success ratio
+#   arch                    — hidden-layer widths of their neural certificate
+#   farkas_time_s, pa_learn_s, pa_verify_s, pw_learn_s, pw_verify_s — Table 2 timings (A40 GPU + Z3)
+#   family                  — their taxonomy: unreliable_hardware | robot_motion
+#   section                 — their Table-1 grouping: 1 = Farkas inapplicable, 2 = Farkas beaten, 3 = comparable
+#   definition_status       — listed_verbatim (in-paper lstlisting) | reconstruct (no public source; see PLAN)
+#   dynamics_class          — recon's model-class read (verify in wave 0)
+#   noise                   — randomness constructs used
+#
+# All 17 rows are DISCRETE-TIME. No continuous-time rows exist in this table.
+
+[meta]
+arxiv = "2301.06136"
+version_fetched = "v7 (2026-04-14, LMCS 22(2))"
+also_fetched = "v4 (2024-12-23, LIPIcs/CONCUR-derived) — same tables, same 17 rows, no extra benchmark appendix"
+public_artifact = "NONE FOUND (GitHub code search on benchmark names: 0 hits; DROPS page: no artefact; Zenodo: no CONCUR'23 record). Fallback probe: CAV'25 successor artefact zenodo.org/records/15222907 (1.2 GB, likely the omega-regular tool, different example family)"
+their_hardware = "Nvidia A40 GPU; SMT verifier = Z3; 10 repeats per benchmark"
+certificate_conditions = "V >= 0; V >= 1 on A (indicating); E[V∘f] <= V off A (non-increasing); then V(s0) >= P[reach A] unbounded-horizon (their Thm 4.1 = house Ville/reach_avoid shape)"
+
+[[benchmark]]
+name = "persist_2d"
+family = "robot_motion"
+section = 1
+farkas_bound = "none"
+pa_bound = 0.1026
+pa_success = 0.9
+pw_bound = 0.1175
+pw_success = 0.9
+arch = [3, 1]
+farkas_time_s = "none"
+pa_learn_s = 169.14
+pa_verify_s = 85.31
+pw_learn_s = 44.96
+pw_verify_s = 74.90
+definition_status = "reconstruct"
+dynamics_class = "2D piecewise-affine walk (ChakarovS13 persistence lineage)"
+noise = "unknown (possibly continuous/uniform) — REPRESENTATIONAL RISK, see PLAN risk R2"
+
+[[benchmark]]
+name = "faulty_marbles"
+family = "unreliable_hardware"
+section = 1
+farkas_bound = "none"
+pa_bound = 0.0739
+pa_success = 0.9
+pw_bound = 0.0649
+pw_success = 0.8
+arch = [3]
+farkas_time_s = "none"
+pa_learn_s = 114.24
+pa_verify_s = 29.23
+pw_learn_s = 15.86
+pw_verify_s = 28.68
+definition_status = "reconstruct"
+dynamics_class = "counter loop w/ fault, state-dependent structure (no linear SM exists)"
+noise = "Bernoulli (assumed)"
+
+[[benchmark]]
+name = "faulty_unreliable"
+family = "unreliable_hardware"
+section = 1
+farkas_bound = "none"
+pa_bound = 0.0553
+pa_success = 0.9
+pw_bound = 0.0536
+pw_success = 1.0
+arch = [3]
+farkas_time_s = "none"
+pa_learn_s = 123.85
+pa_verify_s = 45.48
+pw_learn_s = 18.34
+pw_verify_s = 33.97
+definition_status = "reconstruct"
+dynamics_class = "counter loop w/ fault, state-dependent structure"
+noise = "Bernoulli (assumed)"
+
+[[benchmark]]
+name = "faulty_regions"
+family = "unreliable_hardware"
+section = 1
+farkas_bound = "none"
+pa_bound = 0.0473
+pa_success = 0.9
+pw_bound = 0.0411
+pw_success = 0.9
+arch = [3, 1]
+farkas_time_s = "none"
+pa_learn_s = 17.92
+pa_verify_s = 35.85
+pw_learn_s = 17.55
+pw_verify_s = 32.38
+definition_status = "reconstruct"
+dynamics_class = "fault probability varies by state-space region (piecewise) — inherently piecewise reach-prob, no linear SM"
+noise = "Bernoulli, region-dependent parameter (assumed)"
+
+[[benchmark]]
+name = "cliff_crossing"
+family = "robot_motion"
+section = 2
+farkas_bound = 0.4546
+pa_bound = 0.0553
+pa_success = 0.9
+pw_bound = 0.0591
+pw_success = 0.8
+arch = [4]
+farkas_time_s = 0.11
+pa_learn_s = 134.61
+pa_verify_s = 19.02
+pw_learn_s = 21.27
+pw_verify_s = 29.07
+definition_status = "listed_verbatim"
+dynamics_class = "2D integer lattice: x 0->51 deterministic +1; y +/-1 Bernoulli(0.9) w/ floor at 0; A = {y >= 11 while x <= 50}; init (0,0)"
+noise = "Bernoulli(0.9)"
+
+[[benchmark]]
+name = "repulse100"
+family = "robot_motion"
+section = 2
+farkas_bound = 0.0991
+pa_bound = 0.0288
+pa_success = 1.0
+pw_bound = 0.0268
+pw_success = 1.0
+arch = [3]
+farkas_time_s = 0.19
+pa_learn_s = 16.65
+pa_verify_s = 5.00
+pw_learn_s = 6.49
+pw_verify_s = 3.74
+definition_status = "listed_verbatim"
+dynamics_class = "1D lattice walk from x=10: -2 w.p. 1/2, +1 w.p. 1/2; safe exit x<0, A = {x > 100}; guard 0<=x<=100"
+noise = "Bernoulli(0.5)"
+fingerprint = "Farkas 0.0991 = 10/101, i.e. optimal linear V(x)=x/101 — REPRODUCED BY HAND in recon; the fingerprint method's proof-of-concept"
+
+[[benchmark]]
+name = "repulse100_uniform"
+family = "robot_motion"
+section = 2
+farkas_bound = 0.0991
+pa_bound = 0.0344
+pa_success = 1.0
+pw_bound = "none"
+pw_success = "none"
+arch = [2]
+farkas_time_s = 0.19
+pa_learn_s = 21.28
+pa_verify_s = 14.18
+pw_learn_s = "none"
+pw_verify_s = "none"
+definition_status = "reconstruct"
+dynamics_class = "repulse100 with uniform step noise (consistent w/ x += U[-2,1]: same Farkas 0.0991 = mean drift -1/2, max jump +1). Their program-aware route FAILED here (indicator functions in post-expectation, non-smooth for their optimizer) — house exact integration has no such obstacle"
+noise = "uniform (continuous)"
+
+[[benchmark]]
+name = "repulse100_2d"
+family = "robot_motion"
+section = 2
+farkas_bound = 0.0991
+pa_bound = 0.0568
+pa_success = 1.0
+pw_bound = 0.0541
+pw_success = 1.0
+arch = [3]
+farkas_time_s = 0.12
+pa_learn_s = 122.92
+pa_verify_s = 64.54
+pw_learn_s = 15.75
+pw_verify_s = 47.70
+definition_status = "reconstruct"
+dynamics_class = "2D repulse variant; Farkas bound identical to 1D (0.0991) => optimal linear certificate depends on one coordinate only — strong reconstruction constraint"
+noise = "Bernoulli (assumed)"
+
+[[benchmark]]
+name = "faulty_varying"
+family = "unreliable_hardware"
+section = 2
+farkas_bound = 0.1819
+pa_bound = 0.0864
+pa_success = 1.0
+pw_bound = 0.0865
+pw_success = 1.0
+arch = [2]
+farkas_time_s = 0.36
+pa_learn_s = 21.74
+pa_verify_s = 5.06
+pw_learn_s = 4.71
+pw_verify_s = 3.28
+definition_status = "reconstruct"
+dynamics_class = "faulty loop with varying fault rate (state-dependent Bernoulli parameter); Farkas 0.1819 shared with faulty_concave => same worst-case linear envelope (worst rate 0.01 over 9-advance race, cf. concave listing)"
+noise = "Bernoulli, state-dependent parameter"
+
+[[benchmark]]
+name = "faulty_concave"
+family = "unreliable_hardware"
+section = 2
+farkas_bound = 0.1819
+pa_bound = 0.1399
+pa_success = 1.0
+pw_bound = 0.1356
+pw_success = 0.9
+arch = [3, 1]
+farkas_time_s = 0.39
+pa_learn_s = 49.12
+pa_verify_s = 13.37
+pw_learn_s = 13.49
+pw_verify_s = 7.82
+definition_status = "listed_verbatim"
+dynamics_class = "counter i=1..9->10, advance w.p. q*(1/2) where fault-free q = 0.999 (i<4) / 0.99 (i>=4); fault sets error, A = {error=1, i<10}; init i=1"
+noise = "Bernoulli(0.999/0.99) x Bernoulli(0.5)"
+
+[[benchmark]]
+name = "fixed_loop"
+family = "unreliable_hardware"
+section = 3
+farkas_bound = 0.0091
+pa_bound = 0.0095
+pa_success = 1.0
+pw_bound = 0.0094
+pw_success = 1.0
+arch = [1]
+farkas_time_s = 0.15
+pa_learn_s = 14.16
+pa_verify_s = 3.14
+pw_learn_s = 3.34
+pw_verify_s = 2.43
+definition_status = "reconstruct"
+dynamics_class = "deterministic-advance counter loop w/ per-iteration fault ~0.001; Farkas 0.0091 ~ 9 x 0.001/0.999 — consistent w/ i=1 init, 9 iterations"
+noise = "Bernoulli(0.999)"
+
+[[benchmark]]
+name = "faulty_loop"
+family = "unreliable_hardware"
+section = 3
+farkas_bound = 0.0181
+pa_bound = 0.0195
+pa_success = 1.0
+pw_bound = 0.0184
+pw_success = 1.0
+arch = [1]
+farkas_time_s = 0.16
+pa_learn_s = 25.52
+pa_verify_s = 3.81
+pw_learn_s = 3.73
+pw_verify_s = 2.66
+definition_status = "listed_verbatim"
+dynamics_class = "counter loop: fault w.p. 0.001/iter, advance w.p. 0.999*0.5, else stay; A = {error=1, i<10}. LISTING says init i=0 (=> 10 advances, true p ~ 0.0198 > their Farkas 0.0181, which would be unsound) — recon's race analysis says the BENCHMARKED instance must start i=1 (true p ~ 0.0178 <= 0.0181, consistent, and matches faulty_concave/fixed_loop's i=1). Wave-0 LP fingerprint adjudicates i in {0,1} mechanically. DEFINITION-AMBIGUITY SPECIMEN — the reason fingerprint validation is mandatory for every reconstructed row"
+noise = "Bernoulli(0.999) x Bernoulli(0.5)"
+
+[[benchmark]]
+name = "faulty_uniform"
+family = "unreliable_hardware"
+section = 3
+farkas_bound = 0.0181
+pa_bound = 0.0233
+pa_success = 1.0
+pw_bound = 0.0221
+pw_success = 1.0
+arch = [1]
+farkas_time_s = 0.34
+pa_learn_s = 20.20
+pa_verify_s = 1.91
+pw_learn_s = 6.75
+pw_verify_s = 1.33
+definition_status = "reconstruct"
+dynamics_class = "faulty_loop with uniform advance noise (Farkas bound identical 0.0181 => same linear envelope: mean advance 1/2, fault 0.001)"
+noise = "uniform + Bernoulli"
+
+[[benchmark]]
+name = "faulty_rare"
+family = "unreliable_hardware"
+section = 3
+farkas_bound = 0.0019
+pa_bound = 0.0022
+pa_success = 1.0
+pw_bound = 0.0022
+pw_success = 1.0
+arch = [1]
+farkas_time_s = 0.27
+pa_learn_s = 25.52
+pa_verify_s = 4.27
+pw_learn_s = 3.71
+pw_verify_s = 2.96
+definition_status = "reconstruct"
+dynamics_class = "faulty_loop with rarer fault (~0.0001/iter: 9 x 0.0001/(0.4995+0.0001) x race ~ 0.0018, Farkas LP ~ 0.0019 plausible)"
+noise = "Bernoulli(0.9999) x Bernoulli(0.5) (assumed)"
+
+[[benchmark]]
+name = "faulty_easy1"
+family = "unreliable_hardware"
+section = 3
+farkas_bound = 0.0801
+pa_bound = 0.1007
+pa_success = 1.0
+pw_bound = 0.0865
+pw_success = 1.0
+arch = [1]
+farkas_time_s = 0.31
+pa_learn_s = 104.20
+pa_verify_s = 12.78
+pw_learn_s = 4.95
+pw_verify_s = 7.51
+definition_status = "reconstruct"
+dynamics_class = "faulty variant of easy1 (Alias-Darte-Feautrier-Gonnord SAS'10 termination suite, their cite [mdranking])"
+noise = "Bernoulli (assumed)"
+
+[[benchmark]]
+name = "faulty_ndecr"
+family = "unreliable_hardware"
+section = 3
+farkas_bound = 0.0561
+pa_bound = 0.0723
+pa_success = 1.0
+pw_bound = 0.0630
+pw_success = 1.0
+arch = [1]
+farkas_time_s = 0.33
+pa_learn_s = 104.89
+pa_verify_s = 9.06
+pw_learn_s = 5.37
+pw_verify_s = 4.66
+definition_status = "reconstruct"
+dynamics_class = "faulty variant of ndecr (SAS'10 suite: nested/n-step decrement loop)"
+noise = "Bernoulli (assumed)"
+
+[[benchmark]]
+name = "faulty_walk"
+family = "unreliable_hardware"
+section = 3
+farkas_bound = 0.0121
+pa_bound = 0.0173
+pa_success = 1.0
+pw_bound = 0.0166
+pw_success = 1.0
+arch = [1]
+farkas_time_s = 0.32
+pa_learn_s = 15.08
+pa_verify_s = 4.00
+pw_learn_s = 6.97
+pw_verify_s = 3.33
+definition_status = "reconstruct"
+dynamics_class = "faulty random-walk loop (SAS'10 'walk' lineage)"
+noise = "Bernoulli (assumed)"

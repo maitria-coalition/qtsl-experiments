@@ -1,0 +1,176 @@
+{
+  "format": ".glc \u2014 sealed geolog commit containers (single commit per certificate)",
+  "family": "petri-invariant-v0",
+  "vocabulary_rev": "6d6169747269612d70657472692d696e7661722d766f6361622d763000000000",
+  "note": "Expected artifact identities for the Petri P-invariant family. The model files and everything derived from their structure (the containers themselves included) are not redistributed in this repository pending license clarification with the Model Checking Contest organizers; this manifest pins their sha256s and expected obligation counts so a materialized or regenerated copy verifies bit-for-bit. See petri/README.md for the re-derivation path.",
+  "positives": [
+    {
+      "file": "angiogenesis-01.glc",
+      "net": "Angiogenesis-PT-01",
+      "fixture_sha256": "777245b1c8771b91cb3b11de8ecc51ce47b73f4d07dec2aa02751ae97cd2b346",
+      "places": 39,
+      "transitions": 64,
+      "basis_rank": 8,
+      "invariants_certified": 5,
+      "uncertified_basis_vectors": 3,
+      "expect_claims": "constExactEvalTrue=325",
+      "ops": 260,
+      "glc_bytes": 2109,
+      "glc_sha256": "c5692a601527d4599d0622de7363484acba7c0c0714ff09ddac5bb96d41341bf",
+      "commit_address_blake3": "642e8e36524de2b5060db749b7dc921c5c8ac9c6e6fcc71206fdc520c60a8b20"
+    },
+    {
+      "file": "circadian_clock-000001.glc",
+      "net": "CircadianClock-PT-000001",
+      "fixture_sha256": "b1b47268ea7dda9491b3ade247c56f5c1eab88cf87e3800f4983fc13e25d2bcb",
+      "places": 14,
+      "transitions": 16,
+      "basis_rank": 7,
+      "invariants_certified": 5,
+      "uncertified_basis_vectors": 2,
+      "expect_claims": "constExactEvalTrue=85",
+      "ops": 99,
+      "glc_bytes": 1207,
+      "glc_sha256": "f06fddb7fc2f91cdf251bc4aa728d89e0da8ea6dffda41769986db31acd44599",
+      "commit_address_blake3": "06ce9f07614a8849d8306de086bc8e8d81db83e27a190e6d43fa93460eaea0b9"
+    },
+    {
+      "file": "SwimmingPool-1.glc",
+      "net": "SwimmingPool-PT-01",
+      "fixture_sha256": "62feeb02b1b770e8a6211e9dce5d9a663072eb494573165527f8279bc53a774a",
+      "places": 9,
+      "transitions": 7,
+      "basis_rank": 3,
+      "invariants_certified": 3,
+      "uncertified_basis_vectors": 0,
+      "expect_claims": "constExactEvalTrue=24",
+      "ops": 55,
+      "glc_bytes": 974,
+      "glc_sha256": "38c45b087915a8eb5e578d9751824eb2a4c80b60c827111b5ef5809648467872",
+      "commit_address_blake3": "58eb31dcd0570c02d74748c006a04c9cb1785b1c0b88a42546fe5194827f11a4"
+    },
+    {
+      "file": "TwoPhaseLocking-nC00004-D.glc",
+      "net": "TwoPhaseLocking-PT-nC00004vD",
+      "fixture_sha256": "c2c1966971576a48887f303b1c40fc6a31570e2f435cc976d1cd958dd33c1957",
+      "places": 8,
+      "transitions": 6,
+      "basis_rank": 3,
+      "invariants_certified": 3,
+      "uncertified_basis_vectors": 0,
+      "expect_claims": "constExactEvalTrue=21",
+      "ops": 51,
+      "glc_bytes": 966,
+      "glc_sha256": "c00fac58308064d3a9277474e40cba3f863a5cc8977009c405b349562ddb1b24",
+      "commit_address_blake3": "832c7e833d40b7a4df8f1cd67c2e90b39b9a1788de49d3b6f3eaf87437942bb3"
+    }
+  ],
+  "mutants": [
+    {
+      "mutant": "m1_coeff_forged",
+      "file": "mutants/m1_coeff_forged.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "759a7e6fc89f22568b0535cc7c22edd8622d07d4ade127dc79478d291fb191b2",
+      "expected": "FAIL"
+    },
+    {
+      "mutant": "m2_flow_forged",
+      "file": "mutants/m2_flow_forged.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "af243f7ad36aecc6c5546bdb63ff3465c86c70c7110d36ba20ceefc95413013a",
+      "expected": "FAIL"
+    },
+    {
+      "mutant": "m3_charge_lie",
+      "file": "mutants/m3_charge_lie.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "f18b4a88d78bf2a2e4d165ab66e4aee3eef3856acc276b9e8f35ad32d14ecfb7",
+      "expected": "FAIL"
+    },
+    {
+      "mutant": "m4_inv_dropped",
+      "file": "mutants/m4_inv_dropped.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "b6f68ee455a832eb7058a04024fdf12f258c1c43549149ba8fd574836734b9ed",
+      "expected": "ACCEPT_UNDERCOUNT"
+    },
+    {
+      "mutant": "m5_dims_shrunk",
+      "file": "mutants/m5_dims_shrunk.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "919a0066563728c9cd605155d1969dab10e30bde38e6ff89474681aad4440a47",
+      "expected": "ACCEPT_UNDERCOUNT"
+    },
+    {
+      "mutant": "m6_zero_vector",
+      "file": "mutants/m6_zero_vector.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "685e0bdae3e551bd06738c42908b499df6b565cfd5d5b17fa75768b616b9622c",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "m7_phantom_place",
+      "file": "mutants/m7_phantom_place.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "a385c2200e6c791e527d0c4fafe814d16924de7a0b86e8e1770dc2cc0c3ba5f4",
+      "expected": "ACCEPT_FORGED"
+    },
+    {
+      "mutant": "m8_body_byte",
+      "file": "mutants/m8_body_byte.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "70e9360221c4a95c620b0692ec7417ecdd4c05d437e708321ae3c03ce58798c1",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "m9_sig_byte",
+      "file": "mutants/m9_sig_byte.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "6deb4b225b10327e8ad617ac706c2876ef5b3d2bd7464824058591a04eae1f82",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "m10_truncated",
+      "file": "mutants/m10_truncated.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "3fd145b32f8d67a268ca3f907cb71673a5587da2fc3519fc78b2b5a9680df32c",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "m11_magic",
+      "file": "mutants/m11_magic.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "86dbac83748243a6b51ffffb4ec1f14c3e958e6c0c1960ec62b66e9c20e90f9e",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "m12_version",
+      "file": "mutants/m12_version.glc",
+      "base": "SwimmingPool-1",
+      "base_expect_claims": "constExactEvalTrue=24",
+      "glc_sha256": "968333340ee709c12395185e8c22230f3b13c2ecf504c20b4ae45f4c18c6a6d9",
+      "expected": "REFUSE"
+    }
+  ],
+  "vacuities": [
+    {
+      "net": "CryptoMiner-PT-D03N000",
+      "fixture_sha256": "c4b068c7799208563344291c3ba9cc89560415447a350beb67eaf11860ae50e2",
+      "places": 8,
+      "transitions": 8,
+      "basis_rank": 0,
+      "note": "trivial left nullspace: no P-invariants exist to witness; the nonexistence claim itself is a universal statement outside this species' reach (workshop mod-p rank receipt, not a sealed cert)"
+    }
+  ]
+}

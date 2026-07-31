@@ -1,0 +1,45 @@
+# RECONSTRUCTION (no listing), AMBIGUOUS-WITH-CANDIDATES. "varying fault rate";
+# shares Farkas 0.1819 with faulty_concave => the LP's worst-region envelope
+# (fault 1/100, advance 99/200) must appear somewhere in the state space, while
+# the true reach probability must sit at/below their neural bounds
+# (PA 0.0864 / PW 0.0865 — well under concave's ~0.118+). PRIMARY candidate:
+# concave's listing with the regions swapped (high rate 1/100 EARLY, i<4;
+# low 1/1000 for i>=4) — same skeleton, same worst region, true p ~ 0.070,
+# envelope-consistent, and gives the complementary reach-prob shape the two
+# names suggest. Alternate (__last_step): high rate only at i=9. Both frozen.
+[benchmark]
+name = "faulty_varying"
+family = "unreliable_hardware"
+section = 2
+provenance = "reconstruction candidate (regions-swapped concave); worst-region pinned by shared Farkas value"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "i < 4"
+branches = [
+  {prob = "1/100",  update = {error = "1"}},
+  {prob = "99/200", update = {i = "i + 1"}},
+  {prob = "99/200", update = {}},
+]
+
+[[benchmark.dynamics]]
+region = "i >= 4"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/2000", update = {i = "i + 1"}},
+  {prob = "999/2000", update = {}},
+]
+
+[benchmark.farkas]
+published = "0.1819"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame; worst-region (1/100, 99/200) governs the drift constraint. Expected optimum 2/11."
+
+[benchmark.truth]
+method = "chain"

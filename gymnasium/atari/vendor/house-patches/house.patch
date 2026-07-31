@@ -1,0 +1,148 @@
+--- a/tiny-atari-2600/src/atari2600.v
++++ b/tiny-atari-2600/src/atari2600.v
+@@ -1,6 +1,13 @@
+ /*
+  * Copyright (c) 2024 Renaldas Zioma
+  * SPDX-License-Identifier: Apache-2.0
++ *
++ * HOUSE PATCHES :
++ *   P1 — input_joystick_1 wired to the PIA's new buttons1 port (see PIA.v);
++ *        upstream declared the port but tied it into _unused_ok.
++ *   P0 — `ifdef ATARI_SIM_DEBUG: RAM peek (flattened 1024-bit output) and
++ *        RAM init write port, simulation-only; synthesis without the define
++ *        is unaffected (identical to upstream modulo P1).
+  */
+ 
+ `default_nettype none
+@@ -30,8 +37,16 @@
+   output wire         vblank,
+ 
+   output wire  [4:0]  audio
++
++`ifdef ATARI_SIM_DEBUG
++  ,
++  output wire [1023:0] debug_ram_flat,
++  input  wire          debug_ram_we,
++  input  wire  [6:0]   debug_ram_waddr,
++  input  wire  [7:0]   debug_ram_wdata
++`endif
+ );
+-  wire _unused_ok = &{input_joystick_1, input_paddle_0, input_paddle_1, input_paddle_2, input_paddle_3};
++  wire _unused_ok = 1'b1; // all paddle inputs in use since HOUSE PATCH P2
+ 
+   assign video = tia_video_out;
+   assign audio = tia_audio_l + tia_audio_r;
+@@ -119,6 +134,9 @@
+     .dat_o(tia_data_out),
+     .buttons(input_joystick_0),
+     .pot(input_paddle_0),
++    .pot1(input_paddle_1), // HOUSE PATCH P2
++    .pot2(input_paddle_2), // HOUSE PATCH P2
++    .pot3(input_paddle_3), // HOUSE PATCH P2
+     .audio_left(tia_audio_l),
+     .audio_right(tia_audio_r),
+     .stall_cpu(stall_cpu),
+@@ -146,6 +164,7 @@
+     .dat_i(pia_data_in),
+     .dat_o(pia_data_out),
+     .buttons(input_joystick_0),
++    .buttons1(input_joystick_1), // HOUSE PATCH P1
+     .sw(input_switches)
+   );
+ 
+@@ -191,6 +210,21 @@
+     if (rom_cs) data_in <= rom_data;
+     if (tia_cs) data_in <= tia_data_out;
+     if (pia_cs) data_in <= pia_data_out;
++
++`ifdef ATARI_SIM_DEBUG
++    // HOUSE PATCH P0: RAM init write port (used only while reset is held)
++    if (debug_ram_we) ram[debug_ram_waddr] <= debug_ram_wdata;
++`endif
+   end
+ 
++`ifdef ATARI_SIM_DEBUG
++  // HOUSE PATCH P0: flattened RAM peek for the Verilator harness
++  genvar gi;
++  generate
++    for (gi = 0; gi < 128; gi = gi + 1) begin : g_ram_peek
++      assign debug_ram_flat[gi*8 +: 8] = ram[gi];
++    end
++  endgenerate
++`endif
++
+ endmodule
+--- a/tiny-atari-2600/src/PIA.v
++++ b/tiny-atari-2600/src/PIA.v
+@@ -2,6 +2,11 @@
+  * Simple Atari 2600 PIA module.
+  * Original source from: https://github.com/lawrie/ulx3s_atari_2600/blob/main/src/pia.v
+  *
++ * HOUSE PATCH P1 : two-player SWCHA.
++ * Upstream duplicated joystick 0 into both SWCHA nibbles
++ * (`{buttons[6:3], buttons[6:3]}`), which feeds player A's directions to
++ * player B as well — a real-hardware divergence (SWCHA low nibble is the
++ * right-port joystick). Added `buttons1` and split the nibbles.
+  */
+ 
+ `default_nettype none
+@@ -18,6 +23,7 @@
+   output reg [7:0]                dat_o,
+ 
+   input [6:0]                     buttons,
++  input [6:0]                     buttons1,
+   input [3:0]                     sw,
+   output [7:0]                    diag
+ );
+@@ -53,7 +59,7 @@
+ 
+       if (valid_read_cmd) begin
+         case (adr_i) 
+-          7'h00: begin dat_o <= {buttons[6:3], buttons[6:3]}; end// SWCHA
++          7'h00: begin dat_o <= {buttons[6:3], buttons1[6:3]}; end// SWCHA (P1: high nibble = left port, low nibble = right port)
+           7'h01: dat_o <= swa_dir; // SWACNT
+           7'h02: dat_o <= {~sw[0], ~sw[1], 2'b11, sw[2], 1'b1, buttons[SELECT], buttons[RESET]}; // SWCHB
+           7'h03: dat_o <= {2'b0, swb_dir[5:4], 1'b0, swb_dir[2], 2'b0}; // SWBCNT
+--- a/tiny-atari-2600/src/TIA.v
++++ b/tiny-atari-2600/src/TIA.v
+@@ -24,6 +24,9 @@
+   // buttons
+   input [6:0]                     buttons,
+   input [7:0]                     pot,
++  input [7:0]                     pot1, // HOUSE PATCH P2
++  input [7:0]                     pot2, // HOUSE PATCH P2
++  input [7:0]                     pot3, // HOUSE PATCH P2
+ 
+   input                           pal,
+ 
+@@ -146,10 +149,13 @@
+           'h5: dat_o <= cx[4:3] << 6;           // CXM1FB
+           'h6: dat_o <= cx[2] << 7;             // CXBLPF
+           'h7: dat_o <= cx[1:0] << 6;           // CXPPMM
+-          'h8: dat_o <= ypos > pot ? 8'h80 : 8'h00;                     // INPT0
+-          'h9: dat_o <= 0;                      // INPT1
+-          'ha: dat_o <= 0;                      // INPT2
+-          'hb: dat_o <= 0;                      // INPT3
++          // HOUSE PATCH P2 : INPT1-3 get the same scanline-
++          // threshold transduction as upstream's INPT0 (upstream hardwired
++          // them to 0 = never-charged, pegging paddles B-D at max).
++          'h8: dat_o <= ypos > pot  ? 8'h80 : 8'h00;                    // INPT0
++          'h9: dat_o <= ypos > pot1 ? 8'h80 : 8'h00;                    // INPT1
++          'ha: dat_o <= ypos > pot2 ? 8'h80 : 8'h00;                    // INPT2
++          'hb: dat_o <= ypos > pot3 ? 8'h80 : 8'h00;                    // INPT3
+           'hc: dat_o <= {buttons[FIRE], 7'b0};  // INPT4
+           'hd: dat_o <= {buttons[FIRE], 7'b0};  // INPT5
+         endcase
+--- a/tiny-atari-2600/test/conftest.py
++++ b/tiny-atari-2600/test/conftest.py
+@@ -0,0 +1,10 @@
++# House patch (4): guard upstream cocotb HDL tests against collection in
++# environments without a cocotb simulator stack. These are the vendor's own
++# hardware testbench drivers (cocotb + icarus/verilator), not house tests —
++# the house differential harness lives in ../../harness/ (atrcdiff + ale_trace).
++# See CORE-LEDGER.md, house patches.
++collect_ignore = []
++try:
++    import cocotb  # noqa: F401
++except ImportError:
++    collect_ignore = ["test.py", "test_record.py", "zealot.py"]

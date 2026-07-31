@@ -1,0 +1,112 @@
+{
+ "benchmark": "faulty_regions",
+ "route": "poly-lp",
+ "degree": 6,
+ "eta": "1/1000000",
+ "all_rows_certified": true,
+ "coverage_complete": true,
+ "invariance_ok": true,
+ "p_true": "141450445114201068363597250530666/3479461559586789736608522537275833",
+ "certified_bound": {
+  "exact": "4932001167108106024368855876538277125647876751711529823151/87666965594140753478727164213849518107782852400292566771040",
+  "float": 0.05625837661521317,
+  "ceil4": "563/10000",
+  "sound(p_bar>=p_true)": true
+ },
+ "vs_published": {
+  "pw": "411/10000",
+  "beats_pw_neural": false,
+  "vs_linear": "no linear SM exists (negative fingerprint); this degree-6 polynomial certifies 0.056258"
+ },
+ "P_coeffs": {
+  "(0,)": "59784863/604123243",
+  "(1,)": "535369/673899487",
+  "(2,)": "-515997/270114784",
+  "(3,)": "970995/990006263",
+  "(4,)": "-174019/694089355",
+  "(5,)": "21277/883527419",
+  "(6,)": "-309/387360745"
+ },
+ "rows": [
+  {
+   "kind": "nonneg",
+   "cell": [
+    "0",
+    "10"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "786560523662236923463852686960960419624111747/4383348279707037673936358210692475905389142620014628338552",
+   "checker": "ACCEPT",
+   "note": ""
+  },
+  {
+   "kind": "floor",
+   "cell": [
+    "0",
+    "10"
+   ],
+   "status": "certified",
+   "leaves": 0,
+   "min_tau": null,
+   "checker": "trivial(=0)",
+   "note": "identically zero"
+  },
+  {
+   "kind": "drift",
+   "cell": [
+    "0",
+    "1/2"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "0",
+   "checker": "ACCEPT",
+   "note": ""
+  },
+  {
+   "kind": "drift",
+   "cell": [
+    "1",
+    "3"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "0",
+   "checker": "ACCEPT",
+   "note": ""
+  },
+  {
+   "kind": "drift",
+   "cell": [
+    "4",
+    "6"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "0",
+   "checker": "ACCEPT",
+   "note": ""
+  },
+  {
+   "kind": "drift",
+   "cell": [
+    "7",
+    "9"
+   ],
+   "status": "certified",
+   "leaves": 2,
+   "min_tau": "0",
+   "checker": "ACCEPT",
+   "note": ""
+  }
+ ],
+ "bernfmt": [
+  "faulty_regions_poly_nonneg_00.bernfmt",
+  "faulty_regions_poly_drift_02.bernfmt",
+  "faulty_regions_poly_drift_03.bernfmt",
+  "faulty_regions_poly_drift_04.bernfmt",
+  "faulty_regions_poly_drift_05.bernfmt"
+ ],
+ "verdict": "CERTIFIED"
+}

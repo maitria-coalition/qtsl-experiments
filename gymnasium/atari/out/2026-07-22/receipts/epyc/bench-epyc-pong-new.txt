@@ -1,0 +1,2 @@
+bench: >= 2000000 clks (reset-hold) + boot attempt in 255.18 s -> 0.01 Mclk/s upper-ish estimate
+note: bench includes a post-hold boot attempt; use a small --clks delta to difference it out.

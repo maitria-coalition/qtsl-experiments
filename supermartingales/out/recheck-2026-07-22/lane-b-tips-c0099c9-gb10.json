@@ -1,0 +1,260 @@
+{
+ "meta": {
+  "date": "2026-07-22T11:01:33.553Z",
+  "checker": "qtsl checkers/supermartingales rows lane — read_rows.ts + bl_check.ts (pinned by the Makefile)"
+ },
+ "sets": {
+  "faulty_marbles": {
+   "n": 23,
+   "expect": "accept",
+   "accepts": 23,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.144,
+   "detail": []
+  },
+  "faulty_marbles__poly": {
+   "n": 3,
+   "expect": "accept",
+   "accepts": 3,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.136,
+   "detail": []
+  },
+  "faulty_regions": {
+   "n": 29,
+   "expect": "accept",
+   "accepts": 29,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.156,
+   "detail": []
+  },
+  "faulty_regions__poly": {
+   "n": 5,
+   "expect": "accept",
+   "accepts": 5,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.327,
+   "detail": []
+  },
+  "faulty_unreliable": {
+   "n": 29,
+   "expect": "accept",
+   "accepts": 29,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.137,
+   "detail": []
+  },
+  "faulty_unreliable__poly": {
+   "n": 3,
+   "expect": "accept",
+   "accepts": 3,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.134,
+   "detail": []
+  },
+  "faulty_concave": {
+   "n": 22,
+   "expect": "accept",
+   "accepts": 22,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.121,
+   "detail": []
+  },
+  "faulty_easy1": {
+   "n": 84,
+   "expect": "accept",
+   "accepts": 84,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.152,
+   "detail": []
+  },
+  "faulty_loop": {
+   "n": 22,
+   "expect": "accept",
+   "accepts": 22,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.12,
+   "detail": []
+  },
+  "faulty_loop__as_listed": {
+   "n": 22,
+   "expect": "accept",
+   "accepts": 22,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.113,
+   "detail": []
+  },
+  "faulty_ndecr": {
+   "n": 60,
+   "expect": "accept",
+   "accepts": 60,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.124,
+   "detail": []
+  },
+  "faulty_rare": {
+   "n": 22,
+   "expect": "accept",
+   "accepts": 22,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.115,
+   "detail": []
+  },
+  "faulty_uniform": {
+   "n": 30,
+   "expect": "accept",
+   "accepts": 30,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.137,
+   "detail": []
+  },
+  "faulty_varying": {
+   "n": 22,
+   "expect": "accept",
+   "accepts": 22,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.114,
+   "detail": []
+  },
+  "faulty_varying__last_step": {
+   "n": 22,
+   "expect": "accept",
+   "accepts": 22,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.112,
+   "detail": []
+  },
+  "faulty_walk": {
+   "n": 16,
+   "expect": "accept",
+   "accepts": 16,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.113,
+   "detail": []
+  },
+  "faulty_walk__det12": {
+   "n": 28,
+   "expect": "accept",
+   "accepts": 28,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.124,
+   "detail": []
+  },
+  "fixed_loop": {
+   "n": 22,
+   "expect": "accept",
+   "accepts": 22,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.115,
+   "detail": []
+  },
+  "sec3-mutants": {
+   "n": 23,
+   "expect": "refuse",
+   "accepts": 0,
+   "refusals": 23,
+   "errors": 0,
+   "wall_s": 0.115,
+   "detail": []
+  },
+  "sec3-mutants-recorded-only": {
+   "n": 2,
+   "expect": "recorded",
+   "accepts": 2,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.11,
+   "detail": []
+  },
+  "sec2/cliff_crossing": {
+   "n": 1105,
+   "expect": "accept",
+   "accepts": 1105,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.888,
+   "detail": []
+  },
+  "sec2/faulty_concave": {
+   "n": 38,
+   "expect": "accept",
+   "accepts": 38,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.135,
+   "detail": []
+  },
+  "sec2/faulty_varying": {
+   "n": 38,
+   "expect": "accept",
+   "accepts": 38,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.136,
+   "detail": []
+  },
+  "sec2/faulty_varying__last_step": {
+   "n": 38,
+   "expect": "accept",
+   "accepts": 38,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.125,
+   "detail": []
+  },
+  "sec2/repulse100": {
+   "n": 207,
+   "expect": "accept",
+   "accepts": 207,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.179,
+   "detail": []
+  },
+  "sec2/repulse100_2d": {
+   "n": 2267,
+   "expect": "accept",
+   "accepts": 2267,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 1.784,
+   "detail": []
+  },
+  "sec2/repulse100_uniform": {
+   "n": 205,
+   "expect": "accept",
+   "accepts": 205,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.722,
+   "detail": []
+  },
+  "sec2/repulse100_uniform__discrete": {
+   "n": 207,
+   "expect": "accept",
+   "accepts": 207,
+   "refusals": 0,
+   "errors": 0,
+   "wall_s": 0.196,
+   "detail": []
+  }
+ }
+}

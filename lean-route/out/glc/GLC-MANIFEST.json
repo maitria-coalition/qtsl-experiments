@@ -1,0 +1,369 @@
+{
+  "container": "geologfl v1 (.glc), single commit, staged BLstack+BLCert prereqs",
+  "mutants": [
+    {
+      "base": "cartpole_dp_core_decrease",
+      "class": "m1_cone_pred_bound_absurd",
+      "expect": "FAIL",
+      "file": "mutants/cartpole_dp_core_decrease__m1_cone_pred_bound_absurd.glc",
+      "note": "predicate bound op[2869] -> absurd (the TConst is shared: all 18 cone sweeps AND all 18 farkas combinations on this rung die — whole-family kill, disclosed; m2/m3 are the single-locus twins)",
+      "sha256": "4a025e1b4e1c0173c2d18f190c4655eb6ccd24087700ab293512cb6d693d106b"
+    },
+    {
+      "base": "cartpole_dp_core_decrease",
+      "class": "m2_cone_degree_lie",
+      "expect": "FAIL",
+      "file": "mutants/cartpole_dp_core_decrease__m2_cone_degree_lie.glc",
+      "note": "PBernCone/degree op[5281] := 0",
+      "sha256": "c0bfe8aaf220ec72548c764ed7859739f558b3626c30dceb348ba56fb6c7b1e9"
+    },
+    {
+      "base": "acasx4_init_s0000",
+      "class": "m3_farkas_lambda_bump",
+      "expect": "FAIL",
+      "file": "mutants/acasx4_init_s0000__m3_farkas_lambda_bump.glc",
+      "note": "PFarkas node L6507 chain entry 0 lambda += 1",
+      "sha256": "351ecbb3107da1009416090f511c1bf8f029c1943b6f54680caee2858f097617"
+    },
+    {
+      "base": "micro2_stable",
+      "class": "m4_syzygy_coherent_forge",
+      "expect": "FAIL",
+      "file": "mutants/micro2_stable__m4_syzygy_coherent_forge.glc",
+      "note": "PSyzygy node L421: all 4 lambdas x2 AND conclusion := 2*conclusion — combination self-consistent (HOLDS), dies at the conclusion-form tie to the judgment post",
+      "sha256": "77cfc44b9518f57e0145fd8f71433fd5ef735a9e4d19ae66434b8ef6f420bf44"
+    },
+    {
+      "base": "enclosure_v1_golden_cos6",
+      "class": "m5_enclosure_cap_tightened",
+      "expect": "FAIL",
+      "file": "mutants/enclosure_v1_golden_cos6__m5_enclosure_cap_tightened.glc",
+      "note": "EncJudgment/cap halved (below the exact tail bound)",
+      "sha256": "c833138c0705abadb08180c6892802f64763abd6dba82dd81b4088323c9a71ac"
+    },
+    {
+      "base": "enclosure_v1_golden_cos6",
+      "class": "m6_enclosure_coherent_reforge_control",
+      "expect": "ACCEPT_CLAIMSWAP",
+      "file": "mutants/enclosure_v1_golden_cos6__m6_enclosure_coherent_reforge_control.glc",
+      "note": "n := 8, cap := exact tail(8, r) — self-consistent TRUE statement of a DIFFERENT claim; in-lane ACCEPT by design, caught by the production-time byte-identity gate",
+      "sha256": "f61a579baf807ff5e62cf0e41708fd3b028e19bfa977ab1384ffd56aaccd385d"
+    },
+    {
+      "base": "lti_sampled_flow",
+      "class": "m7_promise_contract_swap",
+      "expect": "FAIL",
+      "file": "mutants/lti_sampled_flow__m7_promise_contract_swap.glc",
+      "note": "PPromise/contract := root judgment pre (wires far outside the declared interface)",
+      "sha256": "e10b7b5215579c244045333eb48a922678abf8d2016dbf9901318b90d0d5ca12"
+    },
+    {
+      "base": "ctmc_fk_mid",
+      "class": "m8_cone_anchor_dropped",
+      "expect": "ACCEPT_UNDERCOUNT",
+      "file": "mutants/ctmc_fk_mid__m8_cone_anchor_dropped.glc",
+      "note": "PBernCone/simplex op[727] removed (count-gate witness)",
+      "sha256": "93159b564f96eaba77cd452d90788b1e1893842bdf4c87e47a7ca6a06a49ba90"
+    },
+    {
+      "base": "micro2_stable",
+      "class": "m9_syzygy_anchor_dropped",
+      "expect": "ACCEPT_UNDERCOUNT",
+      "file": "mutants/micro2_stable__m9_syzygy_anchor_dropped.glc",
+      "note": "PSyzygy/combinationCoeffs row for L421 removed (per-relation count-gate witness, both syzygy relations undercount)",
+      "sha256": "1c5fff1afc50f05876b92461126bb329345ef859e5fc85ae57ef159549b3bfa6"
+    },
+    {
+      "base": "cartpole_dp_core_decrease",
+      "class": "m10_body_byte_flip",
+      "expect": "REFUSE",
+      "file": "mutants/cartpole_dp_core_decrease__m10_body_byte_flip.glc",
+      "note": "last body byte ^1 (body_hash)",
+      "sha256": "55fff3c0981549eb206d6235e9c851afb81a0e91f5e5097af27c321b9089a634"
+    },
+    {
+      "base": "cartpole_dp_core_decrease",
+      "class": "m11_sig_byte_flip",
+      "expect": "REFUSE",
+      "file": "mutants/cartpole_dp_core_decrease__m11_sig_byte_flip.glc",
+      "note": "signature byte at 94 ^1",
+      "sha256": "8c3bc98ed3d666b6e8636d1c5f40370111a1c48fce82920e994c3053009bb1e6"
+    },
+    {
+      "base": "cartpole_dp_core_decrease",
+      "class": "m12_truncated",
+      "expect": "REFUSE",
+      "file": "mutants/cartpole_dp_core_decrease__m12_truncated.glc",
+      "note": "last 7 bytes dropped",
+      "sha256": "c628023c335bb4bb7a35c73e7a3708f452933cedb6d28a4c7206f67256fe7391"
+    },
+    {
+      "base": "cartpole_dp_core_decrease",
+      "class": "m13_bad_magic",
+      "expect": "REFUSE",
+      "file": "mutants/cartpole_dp_core_decrease__m13_bad_magic.glc",
+      "note": "magic byte 0 ^0x20",
+      "sha256": "d9d52466560bf378586ca2f76cd399bb5b72faaa07c625a59d56ad6fe70eb0b8"
+    },
+    {
+      "base": "cartpole_dp_core_decrease",
+      "class": "m14_bad_version",
+      "expect": "REFUSE",
+      "file": "mutants/cartpole_dp_core_decrease__m14_bad_version.glc",
+      "note": "container version = 2",
+      "sha256": "d6f25cdf966416325940cd299f07feb88c3ea8603118e362143ab1d6594e1c7f"
+    }
+  ],
+  "obligation_roster": [
+    "farkasCombinationValid",
+    "syzygyCombinationValid",
+    "syzygyConclusionFormRel",
+    "enclosureWitnessValid",
+    "promiseContractConfined",
+    "promiseWiresSeparated",
+    "allForwardDiffBernCoeffsSatisfyP"
+  ],
+  "positives": [
+    {
+      "commit": "ab2fd08edcf179c93d55c97b56f1f88c8653099483fc87be34518dea66572fec",
+      "file": "acasx4_init_s0000.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 48,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 48,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "cc01bd1c06e4a45dbcd036e6c1e9885714b6fb9fa3f03ab8b9dfd1ebd026e947",
+      "source": "lean-route/fixtures/acasx4_init_s0000.rows.txt",
+      "source_sha256": "2a5aff587572f22022861072e00a7c9c8648c627360cc342ff296699afaa4991"
+    },
+    {
+      "commit": "19a1447c9feb953a3886dc12f2d8ece467ed2dbda98360b7694ce7b894dbf796",
+      "file": "acasx4_promise_closedloop.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 96,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 96,
+        "promiseContractConfined": 1,
+        "promiseWiresSeparated": 1,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "477624f897b550505d4fe27829ae5dd1fe0c9d1a4d751dd6349d950a26e6d2ee",
+      "source": "lean-route/fixtures/acasx4_promise_closedloop.rows.txt",
+      "source_sha256": "299d1b86c9187a575ccfac56eb6c4d5ecfd88ccd2c6ad4b714a571adf12163a4"
+    },
+    {
+      "commit": "39fe5de2559d97a76ee757b08686f2661d935d88813c95b61b6ebcebb8677cc9",
+      "file": "cartpole_core_decrease_s0001.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 6,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 6,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "942f10be329864bf8c37c2d4840c6cee34d0349e49cda87b3b23274211da10ae",
+      "source": "lean-route/fixtures/cartpole_core_decrease_s0001.rows.txt",
+      "source_sha256": "6b205de68f7f96a01f472a8ca727fc1e9a860646665e62b8c56edb38527125b1"
+    },
+    {
+      "commit": "745925f2ce608bd8340033c1dfac71978039da7db58717f6b977568234e36998",
+      "file": "cartpole_dp_core_decrease.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 18,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 18,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "e4fc2dddf35ee66d6d43835968d7dff74744095d3d7e058bd14f68996c98265e",
+      "source": "lean-route/fixtures/cartpole_dp_core_decrease.rows.txt",
+      "source_sha256": "fbcf2303e18a6f9bfb47276d1c5b481a0976825c572188d16f810c9891af516a"
+    },
+    {
+      "commit": "cd71f6179ab71fc99b54412f98e22d75bbf3ad9a809db706142f5f9e365b9667",
+      "file": "ctmc_fk_mid.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 9,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "1fb836c961373a497fcadc496695a8ea826c30a0522089ae747407bb8907630d",
+      "source": "lean-route/fixtures/ctmc_fk_mid.rows.txt",
+      "source_sha256": "c58804af7e0087af418b354904bd6bb8ecd66e4972eaeb71c5d4ba0ea79e4754"
+    },
+    {
+      "commit": "a1e6af412cf3470832ce1a4c7067f3d54c484eda4f2e2b7db1b664b25a5fb066",
+      "file": "ctmc_sis_gen.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 1,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "00e0fee70fa9b60469e7087de13a03ce75425553cc1c690f512922bec330da62",
+      "source": "lean-route/fixtures/ctmc_sis_gen.rows.txt",
+      "source_sha256": "0ea88365a93beee055f02d008dcad27fa7e9459101997c96deefe0358c8bc069"
+    },
+    {
+      "commit": "519e4fb6916648c5e2e9972a201a673127fda69a37156ae718c3dd83db3f950a",
+      "file": "dp_composite_eigenrate.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 72,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 72,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 1,
+        "syzygyConclusionFormRel": 1
+      },
+      "sha256": "89fb51cc9fc5426372faf9b65a178f5197a25fc53d3da6ac17a99dbb7d09e753",
+      "source": "lean-route/fixtures/dp_composite_eigenrate.rows.txt",
+      "source_sha256": "151c3e941641f1fd8a95685a14b14ed253f83a1e62c64738997056bff0f0baf1"
+    },
+    {
+      "commit": "6e90c0513d147f9ecc987943618e878a5e52b157dd86e8027ad88b15d4f6ac39",
+      "file": "dp_composite_smallgain.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 120,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 122,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 1,
+        "syzygyConclusionFormRel": 1
+      },
+      "sha256": "596a40ec363b08903c4495ab318faa4ff4bcad91af71d9fd0fa249f39be38a5d",
+      "source": "lean-route/fixtures/dp_composite_smallgain.rows.txt",
+      "source_sha256": "a3f4a8d6a86690b84b4a1abe7937b0fd54ad8ffda7ff91a65fb978228fb03a80"
+    },
+    {
+      "commit": "e6d42e940c226f70f95814f39da6fa39720ace631188137fb4f47a1ef6944f06",
+      "file": "dp_composite_syzygy.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 42,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 42,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 1,
+        "syzygyConclusionFormRel": 1
+      },
+      "sha256": "157406d0a4f3a4e995003035ee6ee06df860cb3e3123ede41e8af6a5994c0dd4",
+      "source": "lean-route/fixtures/dp_composite_syzygy.rows.txt",
+      "source_sha256": "a4185231e78ccc2b6ac6ba7066edf2c27369884f416a20b2881ca73e612ab280"
+    },
+    {
+      "commit": "c8d018c76a5dcfe525927a29599ae983ed356165148ded8b281a5c1d9d7727ba",
+      "file": "enclosure_v1_golden_cos6.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 0,
+        "enclosureWitnessValid": 1,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "aee1f0684a686381240b4d4c5a1d628aaeede2e133dd17fab26f417284f4e0f4",
+      "source": "lean-route/fixtures/enclosure_v1_golden_cos6.rows.txt",
+      "source_sha256": "cdb46e00a080b967bb0c749fd5b5622d83f20d823806d6262748d38976aaa431"
+    },
+    {
+      "commit": "cf03cdcb19701523759be461d62e15ae402e4517f2d823ee6efea277ebd7dd77",
+      "file": "lti_sampled_flow.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 86,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 1,
+        "promiseWiresSeparated": 1,
+        "syzygyCombinationValid": 86,
+        "syzygyConclusionFormRel": 86
+      },
+      "sha256": "8e79351407b507d82340fb1be7c404a41b306027e8f4d4aef59e698e95d476c4",
+      "source": "lean-route/fixtures/lti_sampled_flow.rows.txt",
+      "source_sha256": "11610deea75f2eed72928dfb5979642a987d44ee42af4de221ec17bae795460d"
+    },
+    {
+      "commit": "cd1cc9bebf26389c9866307cee8587cdbb8e717fb2fcd62b8e0ad5bac85564ab",
+      "file": "micro2_stable.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 0,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 3,
+        "syzygyConclusionFormRel": 3
+      },
+      "sha256": "005be3b50ff22d1daaf898499ccd810d741f239b4241852efd3e9806eb3fc0a5",
+      "source": "lean-route/fixtures/micro2_stable.rows.txt",
+      "source_sha256": "6a9a0a6ec19f3863ccc0e3ac36527ca8d8df0aeee28ac00056115d4b0feb2d48"
+    },
+    {
+      "commit": "b34568b9f2457b6b3642b609f8508282d1c8b81f29a8a5f6707748f4fd8a45ed",
+      "file": "rode_hold_flow.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 290,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 1,
+        "promiseWiresSeparated": 1,
+        "syzygyCombinationValid": 290,
+        "syzygyConclusionFormRel": 290
+      },
+      "sha256": "065e2e805f9aa157b77cfbc5cc205582528e8e26b3e42f58fcde3cef6a87a7a7",
+      "source": "lean-route/fixtures/rode_hold_flow.rows.txt",
+      "source_sha256": "5a6a387fb701b11d83d7363347ec1358c0b64b6155c8f88941631fdab1b137f9"
+    },
+    {
+      "commit": "53d21a08e1e342a72b32f0fecd9131c1ed79c937385eb2f840b67b5aaf935ab5",
+      "file": "rode_nest_shell.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 290,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 2,
+        "promiseWiresSeparated": 2,
+        "syzygyCombinationValid": 291,
+        "syzygyConclusionFormRel": 291
+      },
+      "sha256": "4818f7dd6ed7d1197c10a43a214b9d85960dfe765c212a0df4bb3451c23e7bad",
+      "source": "lean-route/fixtures/rode_nest_shell.rows.txt",
+      "source_sha256": "1c3c0e5ad24df830e01cf953a90c961fc66a384c9b34da7645857ebcba1f1433"
+    },
+    {
+      "commit": "dc2da1578376f7d7f1729758f0ad51df91bcd9177ddc043198a1fbb9ddc64055",
+      "file": "rode_uniform_decrease.glc",
+      "obligations": {
+        "allForwardDiffBernCoeffsSatisfyP": 36,
+        "enclosureWitnessValid": 0,
+        "farkasCombinationValid": 0,
+        "promiseContractConfined": 0,
+        "promiseWiresSeparated": 0,
+        "syzygyCombinationValid": 0,
+        "syzygyConclusionFormRel": 0
+      },
+      "sha256": "81db9d032d4d58b5d0541f5e2e9c524f0812cba0de0fb3b252e5bce3f50431ef",
+      "source": "lean-route/fixtures/rode_uniform_decrease.rows.txt",
+      "source_sha256": "693484311a97e86b8e1e827b9593c6178bbe3b3169fe72f5fb868529822352fa"
+    }
+  ],
+  "sealer": "mtk-glc repro_v0 (public reproduction seed, ts 0, deterministic)"
+}

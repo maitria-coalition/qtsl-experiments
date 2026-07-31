@@ -1,0 +1,16 @@
+{
+ "env_id": "LunarLanderContinuous-v3",
+ "n": 1000000,
+ "wall_s": 561.9,
+ "workers": 8,
+ "steps_total": 200702374,
+ "steps_per_s": 357193,
+ "mean": 282.97029356502713,
+ "std": 24.03695473712014,
+ "min": -333.2871792694955,
+ "max": 327.75989029228674,
+ "frac_landed": 0.997719,
+ "frac_truncated": 0.000965,
+ "frac_ge_200": 0.997631,
+ "machine": "GB10 workstation (aarch64), nice -n 15"
+}

@@ -1,0 +1,37 @@
+% chapter-standalone.tex --- typeset the WHOLE Experiments chapter from
+% this repository alone (no book).  Invoked from inside chapter/ as:
+%
+%   lualatex -jobname=experiments "\input{chapter-standalone.tex}"
+%
+% (the Makefile's `chapter` target does this, twice, into build/).
+% Run tables/gen_tables.ts first: the fragments \input their tabulars
+% from generated/.
+\documentclass[10pt,a4paper]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}   % ragged p-columns in the generated dashboards
+\usepackage{xcolor}
+\usepackage{colortbl} % cell tints (sections/table-style.tex)
+\usepackage{url}      % also provides \path
+\usepackage{microtype}
+\usepackage{pgfplots}  % the scaling-law figures (loads tikz)
+\pgfplotsset{compat=1.18}
+\usepackage{hyperref}
+
+\newcommand{\draftmark}{{\small\color{gray}\textsf{working draft ---
+tables re-derived from receipts at each preview}}}
+\newcommand{\bookref}[2]{#2}
+\newcommand{\Bookref}[2]{#2}
+\newcommand{\bookcite}[2]{#2}
+
+\begin{document}
+
+\chapter{Experiments}
+\label{ch:experiments}
+
+\noindent\draftmark\medskip
+
+\input{sections-list.tex}
+
+\end{document}

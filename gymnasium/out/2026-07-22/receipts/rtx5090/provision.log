@@ -1,0 +1,53 @@
++ cd /workspace
++ command -v cargo
++ curl -sSf https://sh.rustup.rs
++ sh -s -- -y --profile minimal
+info: downloading installer
+warn: It looks like you have an existing rustup settings file at:
+warn: /root/.rustup/settings.toml
+warn: Rustup will install the default toolchain as specified in the settings file,
+warn: instead of the one inferred from the default host triple.
+info: profile set to minimal
+info: default host triple is x86_64-unknown-linux-gnu
+warn: Updating existing toolchain, profile choice will be ignored
+info: syncing channel updates for stable-x86_64-unknown-linux-gnu
+info: default toolchain set to stable-x86_64-unknown-linux-gnu
+
+  stable-x86_64-unknown-linux-gnu unchanged - rustc 1.97.1 (8bab26f4f 2026-07-14)
+
+
+Rust is installed now. Great!
+
+To get started you may need to restart your current shell.
+This would reload your PATH environment variable to include
+Cargo's bin directory ($HOME/.cargo/bin).
+
+To configure your current shell, you need to source
+the corresponding env file under $HOME/.cargo.
+
+This is usually done by running one of the following (note the leading DOT):
+. "$HOME/.cargo/env"            # For sh/bash/zsh/ash/dash/pdksh
+source "$HOME/.cargo/env.fish"  # For fish
+source "~/.cargo/env.nu"  # For nushell
+source "$HOME/.cargo/env.tcsh"  # For tcsh
+. "$HOME/.cargo/env.ps1"        # For pwsh
+source "$HOME/.cargo/env.xsh"   # For xonsh
++ source /root/.cargo/env
+++ case ":${PATH}:" in
+++ export PATH=/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++ '[' -d mtk ']'
++ cd mtk
++ git checkout 184fa3014389050289a6ec4af055aa517eec0af6
+HEAD is now at 184fa30 merge: multi-frontier v0 — single-parent fork tree (causal stamps + fork cuts), per-frontier lazy ViewEngine replay, fork/adopt/kill semantics, conservation + crosscheck per-frontier; 25 tests + differential + 3/3 mutants, debug green; geolog-alpha untouched (read-only pin c5aea09)
++ cargo build --release -p mtk --bin gymdp
++ tail -2
+   Compiling mtk v0.1.0 (/workspace/mtk/crates/mtk)
+    Finished `release` profile [optimized] target(s) in 14.08s
++ nvidia-smi --query-gpu=name,memory.total,driver_version,clocks.max.sm --format=csv,noheader
++ lscpu
++ grep 'Model name'
++ ./target/release/gymdp gpu-bench --repeat 15
++ echo 'gpu-bench exit=0'
++ echo SHED-COMPLETE
+SHED-COMPLETE

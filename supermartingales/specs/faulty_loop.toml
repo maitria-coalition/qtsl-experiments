@@ -1,0 +1,37 @@
+# PRIMARY spec: the instance their published numbers are jointly coherent for.
+# Listing (v7 main.tex l.1068-1083, lst:faulty) prints `i = 0`; the mechanical
+# adjudication (note workshop-side) selects init i=1 as the
+# benchmarked instance: (a) the Farkas LP reproduces 0.0181 exactly at i=1 under
+# the same invariant frame that fits faulty_concave's verbatim listing, and
+# (b) their neural bounds (0.0195/0.0184) are below the exact true probability
+# of the i=0 chain (0.0198...) — impossible for their sound Z3 check — while
+# sound for i=1 (true p = 0.01783...). The as-listed i=0 instance is frozen in
+# faulty_loop__as_listed.toml and both appear in the sweep table.
+[benchmark]
+name = "faulty_loop"
+family = "unreliable_hardware"
+section = 3
+provenance = "listing (v7 l.1068-1083); init adjudicated i=1 (fingerprint-LP adjudication; note workshop-side)"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/2000", update = {i = "i + 1"}},
+  {prob = "999/2000", update = {}},
+]
+
+[benchmark.farkas]
+published = "0.0181"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame: invariant extends to i=10 (closure of strict guard), A = {error>=1} within it. Exactly LP-equivalent to X-frame (invariant/A to 9) at init 0 by i-translation; the degeneracy and its tie-break are the adjudication doc's subject. Expected optimum 2/111."
+
+[benchmark.truth]
+method = "chain"

@@ -1,0 +1,138 @@
+{
+  "comment": "Certificate-species census for the Lean-route admission table. Each row carries bytes_definition: 'artifact_proxy' (bytes are the committed artifacts' sizes; the generator adds the ~420 B fixed container overhead measured across the ladder fixtures) or 'sealed_container' (bytes are real sealed-container sizes from campaign receipts; used as-is, no correction). Never mix definitions within a row. When a campaign banks per-instance sealed-container bytes, update the row's stats AND flip its bytes_definition; make lean-route recomputes the verdicts with no other change.",
+  "budget_s": 600,
+  "species": [
+    {
+      "name": "hardware liveness (circuits)",
+      "section": "circuits",
+      "n": 245,
+      "bytes_min": 410,
+      "bytes_med": 829,
+      "bytes_max": 2627,
+      "bytes_basis": "circuits/fixtures/*.cbor (committed certificates)",
+      "fragment": "untested",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "Atari certified replay",
+      "section": "atari",
+      "n": 15,
+      "bytes_min": 1181,
+      "bytes_med": 1189,
+      "bytes_max": 5113,
+      "bytes_basis": "gymnasium/atari/certs/**/claim.cbor",
+      "fragment": "untested",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "FrozenLake 4x4 (det + slippery + sr34)",
+      "section": "gymnasium",
+      "n": 20,
+      "bytes_min": 1775,
+      "bytes_med": 9400,
+      "bytes_max": 52015,
+      "bytes_basis": "gymnasium/out/frozenlake-4x4*/",
+      "fragment": "expected-in (DP certificate rule mix shared with the accepted cartpole/dp_composite rungs)",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "CliffWalking",
+      "section": "gymnasium",
+      "n": 10,
+      "bytes_min": 5954,
+      "bytes_med": 30000,
+      "bytes_max": 71872,
+      "bytes_basis": "gymnasium/out/cliffwalking-*/",
+      "fragment": "expected-in (same DP rule mix)",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "FrozenLake 8x8",
+      "section": "gymnasium",
+      "n": 8,
+      "bytes_min": 20649,
+      "bytes_med": 73345,
+      "bytes_max": 500289,
+      "bytes_basis": "gymnasium/out/frozenlake-8x8/",
+      "fragment": "expected-in (same DP rule mix)",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "Blackjack",
+      "section": "gymnasium",
+      "n": 4,
+      "bytes_min": 63732,
+      "bytes_med": 87549,
+      "bytes_max": 115779,
+      "bytes_basis": "gymnasium/out/blackjack/",
+      "fragment": "expected-in (same DP rule mix)",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "Taxi (all weather/passenger variants)",
+      "section": "gymnasium",
+      "n": 13,
+      "bytes_min": 431939,
+      "bytes_med": 1000000,
+      "bytes_max": 3102602,
+      "bytes_basis": "gymnasium/out/taxi-*/",
+      "fragment": "expected-in (same DP rule mix)",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "LunarLander / LunarLanderContinuous (statistical tier)",
+      "section": "gymnasium",
+      "n": 6,
+      "bytes_min": 180824,
+      "bytes_med": 9000000,
+      "bytes_max": 12226428,
+      "bytes_basis": "gymnasium/out/ll*/",
+      "fragment": "untested",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "published-table supermartingale corpus",
+      "section": "supermartingales",
+      "n": 28569,
+      "bytes_min": 500,
+      "bytes_med": 2000,
+      "bytes_max": 50000,
+      "bytes_basis": "corpus size stats provisional (widest-distribution corpus; per-instance bytes land with the campaign's receipts and refine this row)",
+      "fragment": "expected-in (ctmc/micro2 rungs of the ladder are this species' shape and accept)",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "semiconductor fluid ladder (minifab)",
+      "section": "semicon",
+      "n": 17,
+      "bytes_min": 14013,
+      "bytes_med": 14500,
+      "bytes_max": 18451,
+      "bytes_basis": "semicon/out/minifab*/",
+      "fragment": "untested",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "semiconductor fluid ladder (mimac)",
+      "section": "semicon",
+      "n": 12,
+      "bytes_min": 359560,
+      "bytes_med": 361625,
+      "bytes_max": 401455,
+      "bytes_basis": "semicon/out/mimac7*/",
+      "fragment": "untested",
+      "bytes_definition": "artifact_proxy"
+    },
+    {
+      "name": "interval-enclosure certificates (primitive applications)",
+      "section": "(cross-cutting)",
+      "n": 1,
+      "bytes_min": 603,
+      "bytes_med": 603,
+      "bytes_max": 603,
+      "bytes_basis": "lean-route/fixtures/enclosure_v1_golden_cos6.geolog",
+      "fragment": "out (measured: the route refuses primitive applications; the reference checker accepts the same bytes \u2014 the fragment boundary, not invalidity)",
+      "bytes_definition": "artifact_proxy"
+    }
+  ]
+}

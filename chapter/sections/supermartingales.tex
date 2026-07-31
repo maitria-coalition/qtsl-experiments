@@ -1,0 +1,293 @@
+\section{Warm-up: re-certifying a published table}
+\label{sec:exp-sweep}
+
+The first campaign took an existing results table from the formal
+verification literature --- Abate, Edwards, Giacobbe, Punchihewa, and
+Roy, \emph{Quantitative Verification with Neural Networks} (LMCS 22(2),
+2026; arXiv 2301.06136), seventeen published benchmark rows of
+reach-probability bounds obtained by training neural certificates and
+checking them with an SMT solver --- and asked whether every row could
+be strictly improved \emph{and} carried by an exact certificate.
+
+The outcome: on all seventeen rows, the toolkit's certified
+exact-$\mathbb{Q}$ upper bound is below the best bound published for
+that row (taking, per row, the minimum over all of the paper's sound
+columns). The margins split by benchmark character: on bounded-counter
+benchmarks the published numbers were already close to truth and the
+improvement is $1.01\times$--$1.24\times$; on the random-walk
+benchmarks the gap is between $7$ and $58$ \emph{orders of magnitude}
+--- the published bounds were astronomically conservative relative to
+the true reach probabilities. Table~\ref{tab:exp-sweep} carries every
+row of the paper, with per-row receipts in the repository; the
+\altrow-marked subrows are the campaign's frozen \emph{alternate
+readings} of benchmarks whose published definitions are ambiguous ---
+each a finding about the benchmark, not a redundancy.
+
+\begin{table}[htbp]
+\centering\small
+\input{generated/sweep-table.tex}
+
+\smallskip
+\begin{minipage}{0.96\linewidth}\footnotesize
+Ratio-cell tints are the win-tint ladder of
+section~\ref{sec:exp-conventions} (\swx{winA}~$<1$ order of magnitude
+up to \swx{winE}~$45+$); the printed ratio always carries the same
+information. An \altrow-row's published cell is the row above's. The
+as-printed \texttt{faulty\_loop} reading has no improvement ratio: the
+certified exact truth of the printed program exceeds every published
+column for that row. One alternate reconstruction has no row here yet:
+the \texttt{persist\_2d} gaussian twin, which passes the
+published-bound envelope, was certified in the campaign's
+pre-unification workshop --- an exact-$\mathbb{Q}$ upper bound of
+$0.09753$ (rounded up; below both published numbers for the row),
+its Gaussian integrals discharged through certified enclosures of
+the error function and exponential in exact interval arithmetic,
+full drift battery certified, mutant battery (kernel
+tail-truncation included) refused --- but that certificate predates
+the unified schema of section~\ref{sec:exp-repro}, so the row
+enters this table with the campaign's uniform re-conduct, not
+before.
+\end{minipage}
+\caption{The published-table sweep, all rows. ``Best published'' is,
+per row, the minimum over the paper's sound columns; our bounds are
+certified exact-$\mathbb{Q}$ upper bounds on reach probability,
+rounded up at the displayed digit.}
+\label{tab:exp-sweep}
+\end{table}
+
+\paragraph{Wall-clock, every pipeline stage.}
+Table~\ref{tab:exp-sweep-times} sets, beside each row of
+Table~\ref{tab:exp-sweep}, the wall-clock of the published pipeline
+and of each stage of ours: the paper's time for the route that attains
+the row's best sound bound; the producer wall; the geolog
+fast-path checker over the row's sealed containers; and the certified
+checker over the row's stored corpus. With the producer wall
+reported, the produce and geolog columns read together are the
+like-for-like counterpart of the published column: both pipelines
+start from the benchmark and end with a checked certificate ---
+theirs by training a neural certificate on a GPU and verifying it
+with an SMT solver (or by its linear-programming baseline, where that
+route attains the row's best sound bound), ours by exact synthesis
+with the check in the production loop. For the re-conducted rows the
+produce column is hardware-fair at the GPU-model level: the toolkit
+producer's synthesis --- float-proposing on the GPU, exactly
+certifying every solve --- ran on the same GPU model the published
+pipeline reports (an Nvidia A40), ten repeats per benchmark mirroring
+the published protocol, and every repeat's output is byte-identical
+to the committed corpus. The systems still differ beyond the GPU
+model, so the table prints no cross-column ratio and the comparison
+stays qualitative, per section~\ref{sec:exp-conventions}; the raw
+walls are the witnesses. On every row with a recorded producer wall,
+the whole produce-and-check pipeline now completes inside the
+published wall, and usually well inside it
+(\texttt{cliff\_crossing}: $2.58 + 1.01$\,s against a published
+$153.6$\,s; \texttt{repulse100\_2d} --- the row that ran the other
+way before the re-conduct, at a $222.0$\,s campaign producer wall ---
+$6.38 + 3.03$\,s against a published $63.5$\,s). That campaign wall
+was dominated by the leg's exact ground-truth value computation
+rather than by certification; the computation now rides the
+producer's float-propose / exact-certify tier like every other
+solve, and the row's whole checked production is $6.38$\,s. Beyond
+that comparison, the table establishes the headline economics of the
+certificate genre: re-verifying a row costs milliseconds to seconds
+at every trust tier, which is what makes re-verification a
+regression test rather than an event.
+
+\begin{table}[htbp]
+\centering\small
+\input{generated/sweep-times-table.tex}
+
+\smallskip
+\begin{minipage}{0.96\linewidth}\footnotesize
+\renewcommand{\thempfootnote}{\fnsymbol{mpfootnote}}% hole marks own a--d
+\emph{Columns.} ``VCs'' counts the row's verification conditions as
+committed: drift and nonnegativity-class proof obligations, one
+sealed file per condition per piece or step of the state space, each
+discharged as a Bernstein Logic proof. Under the unified certificate
+schema of section~\ref{sec:exp-repro} these become proof nodes inside
+one sealed certificate per \emph{claim} (a row's corpus may certify
+more than one claim --- e.g.\ both readings of a noise model the
+benchmark's definition leaves unpinned), so the column counts proof
+obligations, not certificates.
+``Best published'' is seconds as published (learning on an
+Nvidia A40 GPU plus Z3 verification; the Farkas column is their linear
+baseline's LP), for the route attaining the row's best sound bound ---
+the same selection rule as Table~\ref{tab:exp-sweep}; transcription
+provenance rides the repository's manifest. ``Produce'' is, for the
+re-conducted rows, the toolkit producer's
+checked-production wall --- fresh exact synthesis (float-proposing,
+exactly certifying, with iterative refinement and continued-fraction
+reconstruction), listing generation, emission through the geolog
+engine with the in-loop check, and the deterministic seal --- as the
+median of ten repeats on the \texttt{a40} machine of the
+repository's machine registry (\path{MACHINES.md}), the output
+byte-identical to the
+committed corpus on every repeat, in both the GPU- and CPU-proposing
+lanes; rows not yet re-conducted keep their campaign legs' synthesis
+wall as receipted (single CPU box), and their cells flip the same
+way as their re-conducts land (section~\ref{sec:exp-repro}).
+``Geolog'' is the geolog fast-path
+checker's total wall over the row's sealed containers, serial, one
+process at a time (machine, load, and checker-binary hash in each
+timing receipt). For the re-conducted rows the wall is over the
+row's \emph{one} shared-subtree container --- a proof hypernet:
+structurally shared subtrees stored once, element in-degree above
+one, with per-container tree and stored-node counts in the committed
+manifest --- where the pre-migration cells time per-obligation
+container sets; ``VCs'' counts proof obligations either way.
+``Qtslab'' is the sum of the
+certified checker build's per-VC walls from the replay census
+of section~\ref{sec:exp-certified-checker} (Arm cores; four families
+ran concurrently, so these walls carry mild concurrency inflation at
+most).\footnote{The certified checker checks the Bernstein Logic
+fragment of QTSL only --- exactly the proof tower committed as
+\path{theories/BernsteinLogic.geolog} in the toolkit repository, so
+the fragment boundary is a file boundary, not a convention --- and
+that is the fragment this campaign's VC files natively encode, so
+the walls shown are complete for the rows they cover. The full QTSL
+theory (\path{theories/Qtsl.geolog}, extending that tower) is checked
+in geolog, on the sealed-container lanes of
+section~\ref{sec:exp-repro}. The reproduction spine's design also
+names a certificate-extraction pathway, from a full QTSL certificate
+down to its Bernstein Logic obligations --- the same claim-reducing
+role the route's other reducers play --- and that tool's wall-clock
+joins this column when it lands. The replay census also predates the
+shared-subtree vintage: its walls time the stored per-obligation
+wave-B corpus, and the shared vintage's certified re-check joins
+this column when the checker build's pin vintage advances.}
+\emph{Holes.}
+$^{\text{a}}$~the \texttt{persist\_2d} VC bundle ($4{,}800$
+files) has not migrated into this repository; the re-check record that
+does exist (the fast-path lane, $130.66$\,s over the full bundle ---
+large-denominator rational arithmetic, the campaign's one heavy
+re-check) is in the repository's re-check receipts.
+$^{\text{b}}$~producer wall not recorded in that leg's receipts.
+$^{\text{c}}$~row not in the certified-checker replay's stored corpus
+(the replay to date covers the stored wave-B corpus; the remaining
+rows' containers enter at its next replay).
+$^{\text{d}}$~the replay covers the row's stored wave-B subset ---
+fewer files than the VCs column.
+$^{\text{e}}$~\texttt{repulse100\_uniform}'s certificate is a
+different synthesis genus (a continuous-noise, piecewise-polynomial
+profile) not yet ported into the toolkit producer; its produce wall
+is its campaign leg's, as receipted.
+\end{minipage}
+\caption{Wall-clock comparison over the same row set: the published
+pipeline beside each stage of the house pipeline (producer, geolog
+fast-path checker, certified checker). All columns in seconds.}
+\label{tab:exp-sweep-times}
+\end{table}
+
+Two findings from this campaign shaped everything after it. First, the
+exact computation \emph{refuted} one published number: the paper's
+manually-constructed Farkas bound of $0.0181$ for
+\texttt{faulty\_uniform} lies strictly below the true reach probability,
+which the campaign localized to the two-sided interval
+$[0.0184458, 0.0185556]$ --- a published ``sound'' bound that is not
+sound, detectable only because the replacement pipeline is exact.
+Second, re-verification is cheap enough to be a regression test. A
+row's proof is not one file: it decomposes into per-obligation
+verification conditions (VCs) --- drift and nonnegativity-class
+obligations, one file
+per condition per piece or step of the state space --- so the
+seventeen rows fan out to $28{,}569$ VC files, alternate
+reconstructions and duplicate certifications included. $24{,}000$ of
+these sit behind the one continuous-state row, certified piecewise on
+rational lattices under both readings of a noise model the paper
+leaves unpinned. The full corpus has been replayed through three
+successive checker builds to date --- every file through every build,
+zero refusals, no bound moved --- so the campaign's results are
+re-established, not merely remembered, at each toolkit revision.
+
+\paragraph{What is not claimed.} Table~\ref{tab:exp-sweep-times}
+prints no speedup ratio: the pipelines are compared job-for-job, and
+the machines now match at the GPU-model level on the re-conducted
+produce cells --- the same GPU model, not the same host, driver
+stack, or whole system --- while the geolog and qtslab walls remain
+CPU walls on the machines named in the repository's timing receipts;
+so any ratio a reader forms still carries a hardware caveat, and the
+chapter's own statements stay qualitative, per
+section~\ref{sec:exp-conventions}. The comparison covers thirteen of
+the seventeen published rows: three legs recorded no producer wall,
+and the \texttt{persist\_2d} bundle has not migrated
+(holes~$^{\text{b}}$ and~$^{\text{a}}$ in the table); one
+re-conducted row's produce wall is still its campaign leg's
+(note~$^{\text{e}}$). Nor is every house wall small: the campaign's
+one heavy re-check is \texttt{persist\_2d}'s stored fast-path record
+of $130.66$\,s over the row's $4{,}800$-file bundle ---
+large-denominator rational arithmetic, with a cheaper re-emission
+identified in the repository.
+
+\subsection{The stored corpus through the certified checker build}
+\label{sec:exp-certified-checker}
+
+The replays above all ride the toolkit's engineering-grade lanes ---
+the reference checker and its fast-path twin. The Executive Summary
+names a third consumer of the same bytes with a far smaller trust
+footprint: \emph{qtslab}, the certified checker, whose standing as a
+whole is stated there once --- a demonstrated route, assembling now
+--- and is not upgraded by anything in this subsection. What this
+subsection adds is a measured fact about that route's current build.
+
+On July 23, 2026, the campaign's stored corpus --- the $4{,}105$
+VC files behind eight rows of Table~\ref{tab:exp-sweep} (six
+published benchmarks and two alternate readings), each pinned by
+hash in the repository's manifest --- was replayed through the
+current certified-checker build: a standalone Arm binary emitted
+inside HOL4 through the CakeML verified compiler, carrying a
+machine-code theorem, re-proven at this same emission, that a run of
+the emitted code printing \textsc{accept} with a sequent implies the
+checker function \emph{defined in the logic} accepts those bytes with
+that sequent. (That theorem is the route's lower half --- the machine
+code can no longer misrepresent the checker it implements; the upper
+half, from logical acceptance to semantic truth, is the part still
+assembling. The truth in question is validity of the accepted sequent
+under every admissible valuation of the hypernet the certificate
+itself declares --- the Bernstein Logic fragment, which is all this
+checker's input format carries. The boundary is the checker's, not
+the vocabulary's: a claim that a System satisfies a Spec is
+representable today --- the full QTSL theory of
+section~\ref{sec:exp-repro}, whose rows the engine-side container
+lanes check --- but it lies outside the certified checker's fragment,
+and a certificate reaching beyond that fragment is refused, never
+silently accepted.)
+The build accepted $4{,}105$ of $4{,}105$ --- zero
+divergence from the fast-path twin, which accepts the same $4{,}105$
+--- at a pooled median of $30$\,ms per VC file on one Arm core
+(min $14$\,ms, $p_{90}$ $37$\,ms, max $117$\,ms).
+Table~\ref{tab:exp-certified-checker} gives the per-family split; the
+verdict-by-verdict census, the twin verdicts, and the artefact hashes
+are committed beside the corpus
+(\path{supermartingales/out/sec2/certified-checker/}).
+
+\begin{table}[htbp]
+\centering\small
+\input{generated/certified-checker-table.tex}
+\caption{The stored corpus of VC files replayed through the certified
+checker build (July 23, 2026). ``Accepted'' is the certified binary's
+accepts over the family's stored VC files; ``diverging'' counts
+VC files on which the certified build's verdict differs from the
+untrusted fast-path twin's --- zero everywhere, which \emph{is} the
+finding. Walls are single-shot, one single-threaded checker process
+per VC file, four families run concurrently; a serial spot sample
+ran $10$--$50$\,ms, so the concurrency inflates the walls mildly at
+most.}
+\label{tab:exp-certified-checker}
+\end{table}
+
+\paragraph{What is not claimed.} This table reports verification
+results about committed artefacts; it is not the claim that the
+finished certified checker exists --- the front matter's one-sentence
+standing governs, and the numbers here neither strengthen nor
+presuppose it. The corpus is the eight table rows whose VC
+files have migrated into this repository, not the full row set. The
+walls are
+measured under the mild concurrency stated in the caption, on the
+machine named in the receipts, and will drift with hardware like any
+wall-clock. Finally, the certified build itself and the tool that
+seals row listings into its signed-commit input form have not yet
+migrated into the public trees: today the table re-derives
+mechanically from the committed receipts, and re-running the binary
+replay itself becomes a repository make target when those artefacts
+land (per the migration rule stated in
+section~\ref{sec:exp-repro}).

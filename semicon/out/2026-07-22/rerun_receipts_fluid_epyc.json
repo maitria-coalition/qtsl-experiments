@@ -1,0 +1,265 @@
+{
+  "machine": "epyc-batch",
+  "grid": [
+    {
+      "policy": "LBFS",
+      "variant": "core",
+      "lots_per_week": 84,
+      "produce_s": 0.4,
+      "result": "ACCEPT",
+      "file": "lbfs_core_84wk.cbor",
+      "eps": "1/3600",
+      "eps_float_proposal": 0.00027777777777777805,
+      "w": [
+        "7/30",
+        "7/30",
+        "7/30",
+        "7/60",
+        "7/60",
+        "1/15"
+      ],
+      "drain_min_per_lotweight": "3600",
+      "checker": "ACCEPT modes=63 obligations=819 eps=1/3600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=84/wk\" decode_us=2248 verify_us=2810 bench_n=20 verify_min_ns=2447420 verify_median_ns=2477980"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "core",
+      "lots_per_week": 90,
+      "produce_s": 0.38,
+      "result": "ACCEPT",
+      "file": "lbfs_core_90wk.cbor",
+      "eps": "1/7200",
+      "eps_float_proposal": 0.00013888888888888921,
+      "w": [
+        "7/30",
+        "7/30",
+        "7/30",
+        "7/60",
+        "7/60",
+        "1/15"
+      ],
+      "drain_min_per_lotweight": "7200",
+      "checker": "ACCEPT modes=63 obligations=819 eps=1/7200 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=90/wk\" decode_us=2262 verify_us=2596 bench_n=20 verify_min_ns=2429000 verify_median_ns=2483950"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "core",
+      "lots_per_week": 94,
+      "produce_s": 0.39,
+      "result": "ACCEPT",
+      "file": "lbfs_core_94wk.cbor",
+      "eps": "1/21600",
+      "eps_float_proposal": 4.629629629629653e-05,
+      "w": [
+        "7/30",
+        "7/30",
+        "7/30",
+        "7/60",
+        "7/60",
+        "1/15"
+      ],
+      "drain_min_per_lotweight": "21600",
+      "checker": "ACCEPT modes=63 obligations=819 eps=1/21600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=94/wk\" decode_us=2331 verify_us=2703 bench_n=20 verify_min_ns=2525050 verify_median_ns=2573150"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "core",
+      "lots_per_week": 95,
+      "produce_s": 0.38,
+      "result": "ACCEPT",
+      "file": "lbfs_core_95wk.cbor",
+      "eps": "1/43200",
+      "eps_float_proposal": 2.3148148148148472e-05,
+      "w": [
+        "7/30",
+        "7/30",
+        "7/30",
+        "7/60",
+        "7/60",
+        "1/15"
+      ],
+      "drain_min_per_lotweight": "43200",
+      "checker": "ACCEPT modes=63 obligations=819 eps=1/43200 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=LBFS; release=95/wk\" decode_us=2275 verify_us=2617 bench_n=20 verify_min_ns=2467230 verify_median_ns=2518060"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "core",
+      "lots_per_week": 96,
+      "produce_s": 0.05,
+      "result": "no-certificate (robust LP infeasible or eps <= 0)",
+      "expected": false
+    },
+    {
+      "policy": "FBFS",
+      "variant": "core",
+      "lots_per_week": 84,
+      "produce_s": 0.36,
+      "result": "ACCEPT",
+      "file": "fbfs_core_84wk.cbor",
+      "eps": "6923209477/24747380706600",
+      "eps_float_proposal": 0.0002797575434623328,
+      "w": [
+        "635/2427",
+        "109/432",
+        "190/783",
+        "302/3427",
+        "302/3427",
+        "179/2666"
+      ],
+      "drain_min_per_lotweight": "24747380706600/6923209477",
+      "checker": "ACCEPT modes=63 obligations=819 eps=6923209477/24747380706600 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=84/wk\" decode_us=2612 verify_us=5139 bench_n=20 verify_min_ns=4917590 verify_median_ns=5089660"
+    },
+    {
+      "policy": "FBFS",
+      "variant": "core",
+      "lots_per_week": 95,
+      "produce_s": 0.42,
+      "result": "ACCEPT",
+      "file": "fbfs_core_95wk.cbor",
+      "eps": "1/38880",
+      "eps_float_proposal": 2.5720164609053413e-05,
+      "w": [
+        "7/27",
+        "7/27",
+        "7/27",
+        "2/27",
+        "2/27",
+        "2/27"
+      ],
+      "drain_min_per_lotweight": "38880",
+      "checker": "ACCEPT modes=63 obligations=819 eps=1/38880 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=core; policy=FBFS; release=95/wk\" decode_us=2318 verify_us=2974 bench_n=20 verify_min_ns=2845700 verify_median_ns=2861260"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "setup-adversarial",
+      "lots_per_week": 72,
+      "produce_s": 0.39,
+      "result": "ACCEPT",
+      "file": "lbfs_setupadv_72wk.cbor",
+      "eps": "11/74760",
+      "eps_float_proposal": 0.00014713750668806855,
+      "w": [
+        "43/178",
+        "43/178",
+        "43/178",
+        "35/356",
+        "35/356",
+        "7/89"
+      ],
+      "drain_min_per_lotweight": "74760/11",
+      "checker": "ACCEPT modes=63 obligations=819 eps=11/74760 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=72/wk\" decode_us=2343 verify_us=3051 bench_n=20 verify_min_ns=2902800 verify_median_ns=2954650"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "setup-adversarial",
+      "lots_per_week": 76,
+      "produce_s": 0.4,
+      "result": "ACCEPT",
+      "file": "lbfs_setupadv_76wk.cbor",
+      "eps": "23/448560",
+      "eps_float_proposal": 5.1275191724630136e-05,
+      "w": [
+        "43/178",
+        "43/178",
+        "43/178",
+        "35/356",
+        "35/356",
+        "7/89"
+      ],
+      "drain_min_per_lotweight": "448560/23",
+      "checker": "ACCEPT modes=63 obligations=819 eps=23/448560 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=76/wk\" decode_us=2319 verify_us=3049 bench_n=20 verify_min_ns=2946770 verify_median_ns=2985700"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "setup-adversarial",
+      "lots_per_week": 78,
+      "produce_s": 0.4,
+      "result": "ACCEPT",
+      "file": "lbfs_setupadv_78wk.cbor",
+      "eps": "1/299040",
+      "eps_float_proposal": 3.344034242910558e-06,
+      "w": [
+        "43/178",
+        "43/178",
+        "43/178",
+        "35/356",
+        "35/356",
+        "7/89"
+      ],
+      "drain_min_per_lotweight": "299040",
+      "checker": "ACCEPT modes=63 obligations=819 eps=1/299040 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=LBFS; release=78/wk\" decode_us=2370 verify_us=3095 bench_n=20 verify_min_ns=2934120 verify_median_ns=2956780"
+    },
+    {
+      "policy": "LBFS",
+      "variant": "setup-adversarial",
+      "lots_per_week": 79,
+      "produce_s": 0.05,
+      "result": "no-certificate (robust LP infeasible or eps <= 0)",
+      "expected": false
+    },
+    {
+      "policy": "FBFS",
+      "variant": "setup-adversarial",
+      "lots_per_week": 78,
+      "produce_s": 0.42,
+      "result": "ACCEPT",
+      "file": "fbfs_setupadv_78wk.cbor",
+      "eps": "1/287280",
+      "eps_float_proposal": 3.4809245335558704e-06,
+      "w": [
+        "43/171",
+        "43/171",
+        "43/171",
+        "14/171",
+        "14/171",
+        "14/171"
+      ],
+      "drain_min_per_lotweight": "287280",
+      "checker": "ACCEPT modes=63 obligations=819 eps=1/287280 model=\"Kempf-1994 Intel Mini-Fab deterministic-core fluid skeleton (minifab/KEMPF-SPEC.md); variant=setup-adversarial; policy=FBFS; release=78/wk\" decode_us=2322 verify_us=2974 bench_n=20 verify_min_ns=2844279 verify_median_ns=2859150"
+    }
+  ],
+  "mutants": [
+    {
+      "name": "M1_eps_inflated",
+      "expect_locus": "drift-bound",
+      "verdict": "REFUSE locus=drift-bound detail=mode 4: dual value exceeds -eps - <w,lambda>",
+      "ok": true
+    },
+    {
+      "name": "M2_w_zeroed",
+      "expect_locus": "wf",
+      "verdict": "REFUSE locus=wf detail=w[6] <= 0",
+      "ok": true
+    },
+    {
+      "name": "M3_dual_negated",
+      "expect_locus": "dual-sign",
+      "verdict": "REFUSE locus=dual-sign detail=mode 1: y[2] < 0",
+      "ok": true
+    },
+    {
+      "name": "M4_identity_broken",
+      "expect_locus": "identity",
+      "verdict": "REFUSE locus=identity detail=mode 3: column 1 combination != objective",
+      "ok": true
+    },
+    {
+      "name": "M5_mode_dropped",
+      "expect_locus": "wf",
+      "verdict": "REFUSE locus=wf detail=expected 63 modes, got 62",
+      "ok": true
+    },
+    {
+      "name": "M6_modes_swapped",
+      "expect_locus": "wf",
+      "verdict": "REFUSE locus=wf detail=mode 1 out of canonical order (mask 2)",
+      "ok": true
+    },
+    {
+      "name": "M7_overcapacity_release",
+      "expect_locus": "drift-bound|identity",
+      "verdict": "REFUSE locus=drift-bound detail=mode 4: dual value exceeds -eps - <w,lambda>",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# ALTERNATE candidate for faulty_walk: deterministic advance, D = 12.
+# LP value 12 * (1/1000)/(999/1000) = 12/999 — identical to the race-D6 primary
+# (fingerprint-degenerate). See faulty_walk.toml header.
+[benchmark]
+name = "faulty_walk__det12"
+family = "unreliable_hardware"
+section = 3
+provenance = "reconstruction alternate (fingerprint-degenerate twin of faulty_walk)"
+state = ["i", "error"]
+init = {i = 1, error = 0}
+guard = "i < 13"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/1000", update = {i = "i + 1"}},
+]
+
+[benchmark.farkas]
+published = "0.0121"
+grid = {i = [0, 13], error = [0, 1]}
+invariant = "0 <= i && i <= 13"
+target = "error >= 1"
+objective = {i = 1, error = 0}
+note = "Y-frame. Expected optimum 12/999."
+
+[benchmark.truth]
+method = "chain"

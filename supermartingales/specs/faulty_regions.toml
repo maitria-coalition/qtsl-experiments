@@ -1,0 +1,75 @@
+# RECONSTRUCTION CANDIDATE (no listing, no Farkas fingerprint — "-" row),
+# third iteration of wave 0's candidate loop (receipts: the iteration list
+# below):
+#   it.1 mid-band hazard {2..4}, T=10, y0=9: REFUTED by envelope (p = 0.1133 >
+#        PW 0.0411);
+#   it.2 band {1..3}: envelope OK (p = 21/512) but REFUTED by the negative
+#        fingerprint — the LP found a loose linear certificate (6/7 < 1) via an
+#        x-slope rescue of the ceiling-reflection row, so their "-" would be
+#        unexplained;
+#   it.3 (FROZEN): the manifest's own dynamics_class realized directly — a
+#        ZERO-DRIFT progress walk whose FAULT RATE VARIES BY REGION: rate 1/500
+#        in the middle region 4 <= i <= 6, rate 1/5000 elsewhere, reflect-stay
+#        at 0, success at i=10, init i=7 (progress can slip back through the
+#        hazardous phase). Zero drift makes the negative fingerprint a theorem
+#        (drift rows force the error-coefficient <= 0, killing indicating —
+#        LP optimum = 1, verified mechanically for every swept config), and the
+#        region structure makes the reach probability non-monotone in i,
+#        matching their 2-layer (3,1) architecture.
+# Exact p = 0.040653... vs PW bound 0.0411 (98.9% tight). Structure is the
+# hypothesis; parameters are fitted by exact sweep against the envelope.
+# Provenance label: reconstructed-per-description, weakest of the 17.
+# WAVE-1 PROCUREMENT NOTE (2026-07-18): the CAV'25 Zenodo
+# artifact 15222907 was censused in full — it contains NONE of the
+# CONCUR'23 benchmarks (its set: becomingRichOnce/gamblersRuin/
+# reactivity/repeatedCoin), so no public artifact upgrade is available;
+# the provenance label stays reconstructed-per-description, now with a
+# NEGATIVE procurement receipt attached (the one known same-group
+# artifact was checked and does not carry these definitions).
+# WAVE-1 CERTIFICATION: certified bounds for THIS candidate
+# landed via exact-VI export + global-poly LP; receipts in
+# ../out/sec1/<name>/receipts{,-poly}.json.
+[benchmark]
+name = "faulty_regions"
+family = "unreliable_hardware"
+section = 1
+provenance = "reconstruction candidate it.3 (zero-drift walk, region-dependent fault); negative-fingerprint + envelope validated only"
+state = ["i", "error"]
+init = {i = 7, error = 0}
+guard = "i < 10"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "4 <= i && i <= 6"
+branches = [
+  {prob = "1/500",   update = {error = "1"}},
+  {prob = "499/1000", update = {i = "i + 1"}},
+  {prob = "499/1000", update = {i = "i - 1"}},
+]
+
+[[benchmark.dynamics]]
+region = "i >= 1"
+branches = [
+  {prob = "1/5000",    update = {error = "1"}},
+  {prob = "4999/10000", update = {i = "i + 1"}},
+  {prob = "4999/10000", update = {i = "i - 1"}},
+]
+
+[[benchmark.dynamics]]
+region = "i < 1"
+branches = [
+  {prob = "1/5000",    update = {error = "1"}},
+  {prob = "4999/10000", update = {i = "i + 1"}},
+  {prob = "4999/10000", update = {}},
+]
+
+[benchmark.farkas]
+published = "none"
+grid = {i = [0, 10], error = [0, 1]}
+invariant = "0 <= i && i <= 10"
+target = "error >= 1"
+objective = {i = 7, error = 0}
+note = "Negative fingerprint expected AND mechanically guaranteed: zero drift forces the error-coefficient <= 0; LP optimum = 1."
+
+[benchmark.truth]
+method = "chain"

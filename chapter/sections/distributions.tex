@@ -1,0 +1,125 @@
+% This section's home in the book is the chapter ``Hypernets: Markov
+% Kernels'' (the qtsl repository's book inputs it from here); it is not
+% part of the Experiments chapter's masters. The source lives in this
+% repository because the generated table and its eventual make-target
+% regeneration belong to the reproduction spine; the per-section
+% standalone target still typesets it on its own.
+\section{Distribution generators: a coverage dashboard}
+\label{sec:exp-dist}
+
+The toolkit's stochastic vocabulary needs named random variates the way
+its deterministic vocabulary needs elementary functions, and it admits
+them under the same discipline: never as new primitives. A
+\emph{distribution generator} is a packaged symbol whose expansion is a
+certified piecewise-polynomial quantile table applied to uniform noise
+ports, so a model that draws from a named distribution elaborates ---
+before anything is checked --- into the same hypernet language every
+other certificate in this book speaks
+(\bookref{ch:qtsl-hypernets}{the hypernets chapter}). Checkers and
+certificate formats learn nothing new; being wrong in a table costs a
+rejected certificate, never a false verdict.
+
+Each generator registers with an explicit budget
+$(\varepsilon;\,\delta_{lo},\delta_{hi})$: quantile sup-error at most
+$\varepsilon$ on the core $[\delta_{lo},\,1-\delta_{hi}]$, in the
+family's standard scale, with the clipped tail mass declared per side.
+The working target is $\varepsilon \le 2^{-23}$ --- single-precision
+machine epsilon --- with default clips of $2^{-30}$; heavy-tailed
+families declare conspicuously larger honest clips rather than
+pretending to a tail no polynomial reaches, and multiplicative families
+state $\varepsilon$ relatively. Verification never encloses an inverse
+transcendental: each certificate drives the \emph{forward} CDF through
+polynomial enclosures, piece by piece in a rescaled frame, and closes
+with a residual row, a derivative-floor row, and one rational
+comparison. A verification class grades what forward material that
+takes: \textbf{V0} nothing (the construction is exact), \textbf{V1}
+polynomials only, \textbf{V2} the mechanized elementary enclosures
+(exponential, sine, cosine, the error function, and now the incomplete
+gamma), \textbf{V2q} certified quadrature, \textbf{V3} an enclosure
+family built specially for the row that needs it (to date one exists:
+the incomplete beta, whose tail lemma is its own). Every certified row also ships a refusal battery in the
+sense the Experiments chapter
+(\bookref{ch:experiments}{of this book's companion experiments
+repository}) makes precise: tampered coefficients, shaved residuals,
+dishonest tail declarations, partition gaps, and dropped
+budget-composition terms must each be refused by a named row.
+
+\paragraph{Enclosures are certified valid unconditionally.} The core
+range bounds where the \emph{tightness} claim lives, not where
+validity ends: a generator's certificate is a bundle of unconditional
+theorems, and no row's truth is scoped to the core. The enclosures
+are also certified to be \emph{tight} to single-precision machine
+epsilon within their core range (the working target; a row that
+declares a different $\varepsilon$ says so in the dashboard), and
+outside the core they degrade honestly, in two genre-specific ways,
+because the two kinds of table stand on different input axes. A
+quantile table's axis carries the probability measure itself, so the
+table is total on $[0,1]$: its end cells clamp to exact rational
+constants, and the clamp-honesty rows certify that the mass beyond
+each clamp is at most the declared $\delta$ --- a checked row, never
+trust. Monotonicity keeps even the off-core bracket better than
+trivial: beyond the core the true quantile stays pinned between the
+certified core-edge value and the support boundary, a certified
+inference wherever the monotonicity rows are claimed, so the
+generated law couples to the named law within $\varepsilon$ except on
+an event of probability at most $\delta_{lo} + \delta_{hi}$. A
+function table --- a certified polynomial approximant of a plain
+function on a declared domain, the wrappers among them --- stands on
+an axis that carries no measure, so there is no tail mass with which
+to pay for a clamp: off its declared domain such a table simply makes
+no claim, and an off-domain evaluation degrades to the trivial
+bracket --- nothing is known about this number --- which is still a
+valid statement, never an assertion of impossibility. Refusal, where
+it appears in this discipline, is a judgment about claims rather than
+about numbers, and it lives at production and certification time: a
+producer declines to emit a table it cannot cover, and a checker
+refuses a tightness claim over domain a table does not cover. The
+dashboard's \dredx{} against the unbounded uniform is different in
+kind from all of this: there the family itself admits no quantile
+function, an impossibility of the mathematics rather than a limit of
+a table's coverage.
+
+\paragraph{The census.} Coverage is measured against an external
+standard the toolkit does not own: Crooks' \emph{Field Guide to
+Continuous Probability Distributions}
+\bookcite{crooks22}{(Crooks 2022)}, whose
+numbering organizes some 170 named forms into on the order of a hundred
+sections related by an explicit lattice of limits, reparametrizations,
+and transforms. The Field Guide's own section numbers are the census:
+every numbered form appears in exactly one row below (block rows name
+the sections they cover; synonyms resolve to the section they cite ---
+Lorentzian to Cauchy, Fisk to log-logistic, fatigue-life to
+Birnbaum--Saunders). The \emph{route} column says how the family is
+reached --- \emph{exact} (arrow algebra over existing generators: order
+statistics, sums, products, mixtures, folds), \emph{composition}
+(certified wrappers over the two quantile roots), \emph{own table} (a
+directly-tabled quantile where that is cheaper than composition), or
+\emph{dispatch} (a parameter-time classification to a member family) ---
+with the verification class in parentheses. The \emph{status} column is
+the dashboard: \emph{certified} rows carry receipts as described above;
+\emph{routed} rows have a fixed construction and verification class but
+no table yet; \emph{out of scope} rows are deliberate, each with the
+honest reason, the priced alternative, and the condition that would
+reopen it. Two roots (the standard exponential and standard normal
+quantiles) and three wrappers (rational powers, logarithm, exponential)
+generate everything except the own-table rows; location--scale families
+register one standard table each, extended by exact affine arrows.
+
+\medskip
+\input{generated/dist-dashboard.tex}
+
+\paragraph{What the statuses rest on.} Status column as of \distdashcensusdate; it will move with each preview. Unlike the tables of the
+Experiments chapter, this section's rows are not yet re-derived by the
+experiments repository's make targets: the dashboard re-derives from
+the toolkit workshop's census of record, and the certificates behind
+the certified rows live at this date in the toolkit repository as
+ordinary test-suite artefacts (accept fixtures at the declared budgets
+plus their refusal batteries). Migrating them onto the experiments
+repository's reproduction spine --- regenerated as the same sealed
+containers that chapter's fluid-drift certificates already ride,
+re-verified by the blessed checkers, one make target for the family ---
+is named successor work, and this section's tables will then re-derive
+from committed receipts like every table of the Experiments chapter.
+Per the preview note at the front of this volume, until an artefact
+appears in the public repositories, treat its mention as a statement of
+what exists, not yet a link.

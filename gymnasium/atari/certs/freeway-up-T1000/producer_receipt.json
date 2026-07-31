@@ -1,0 +1,234 @@
+{
+ "claim": "certs/freeway-up-T1000/claim.cbor",
+ "game": "freeway",
+ "species": "up",
+ "horizon": 1000,
+ "init_set": [
+  0,
+  30
+ ],
+ "returns": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  4,
+  4,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  2,
+  2,
+  3,
+  3,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3
+ ],
+ "min_return": 2,
+ "python_reward_crosscheck": "identical (records 1..k+T-1, all lanes)",
+ "total_wall_s": 232.01,
+ "lanes": [
+  {
+   "k": 0,
+   "return": 3,
+   "sim_line": "OK frames=1000 clks=79580000 clks/frame=79580.0",
+   "wall_s": 7.63
+  },
+  {
+   "k": 1,
+   "return": 3,
+   "sim_line": "OK frames=1001 clks=79659580 clks/frame=79580.0",
+   "wall_s": 7.34
+  },
+  {
+   "k": 2,
+   "return": 3,
+   "sim_line": "OK frames=1002 clks=79739160 clks/frame=79580.0",
+   "wall_s": 8.01
+  },
+  {
+   "k": 3,
+   "return": 3,
+   "sim_line": "OK frames=1003 clks=79818740 clks/frame=79580.0",
+   "wall_s": 7.24
+  },
+  {
+   "k": 4,
+   "return": 3,
+   "sim_line": "OK frames=1004 clks=79898320 clks/frame=79580.0",
+   "wall_s": 7.25
+  },
+  {
+   "k": 5,
+   "return": 3,
+   "sim_line": "OK frames=1005 clks=79977900 clks/frame=79580.0",
+   "wall_s": 7.4
+  },
+  {
+   "k": 6,
+   "return": 4,
+   "sim_line": "OK frames=1006 clks=80057480 clks/frame=79580.0",
+   "wall_s": 7.4
+  },
+  {
+   "k": 7,
+   "return": 4,
+   "sim_line": "OK frames=1007 clks=80137060 clks/frame=79580.0",
+   "wall_s": 7.27
+  },
+  {
+   "k": 8,
+   "return": 3,
+   "sim_line": "OK frames=1008 clks=80216640 clks/frame=79580.0",
+   "wall_s": 7.75
+  },
+  {
+   "k": 9,
+   "return": 3,
+   "sim_line": "OK frames=1009 clks=80296220 clks/frame=79580.0",
+   "wall_s": 7.27
+  },
+  {
+   "k": 10,
+   "return": 3,
+   "sim_line": "OK frames=1010 clks=80375800 clks/frame=79580.0",
+   "wall_s": 7.7
+  },
+  {
+   "k": 11,
+   "return": 3,
+   "sim_line": "OK frames=1011 clks=80455380 clks/frame=79580.0",
+   "wall_s": 7.3
+  },
+  {
+   "k": 12,
+   "return": 3,
+   "sim_line": "OK frames=1012 clks=80534960 clks/frame=79580.0",
+   "wall_s": 7.3
+  },
+  {
+   "k": 13,
+   "return": 3,
+   "sim_line": "OK frames=1013 clks=80614540 clks/frame=79580.0",
+   "wall_s": 7.69
+  },
+  {
+   "k": 14,
+   "return": 2,
+   "sim_line": "OK frames=1014 clks=80694120 clks/frame=79580.0",
+   "wall_s": 7.34
+  },
+  {
+   "k": 15,
+   "return": 2,
+   "sim_line": "OK frames=1015 clks=80773700 clks/frame=79580.0",
+   "wall_s": 7.43
+  },
+  {
+   "k": 16,
+   "return": 3,
+   "sim_line": "OK frames=1016 clks=80853280 clks/frame=79580.0",
+   "wall_s": 7.3
+  },
+  {
+   "k": 17,
+   "return": 3,
+   "sim_line": "OK frames=1017 clks=80932860 clks/frame=79580.0",
+   "wall_s": 7.34
+  },
+  {
+   "k": 18,
+   "return": 2,
+   "sim_line": "OK frames=1018 clks=81012440 clks/frame=79580.0",
+   "wall_s": 7.42
+  },
+  {
+   "k": 19,
+   "return": 2,
+   "sim_line": "OK frames=1019 clks=81092020 clks/frame=79580.0",
+   "wall_s": 7.37
+  },
+  {
+   "k": 20,
+   "return": 2,
+   "sim_line": "OK frames=1020 clks=81171600 clks/frame=79580.0",
+   "wall_s": 7.82
+  },
+  {
+   "k": 21,
+   "return": 2,
+   "sim_line": "OK frames=1021 clks=81251180 clks/frame=79580.0",
+   "wall_s": 7.72
+  },
+  {
+   "k": 22,
+   "return": 2,
+   "sim_line": "OK frames=1022 clks=81330760 clks/frame=79580.0",
+   "wall_s": 7.38
+  },
+  {
+   "k": 23,
+   "return": 2,
+   "sim_line": "OK frames=1023 clks=81410340 clks/frame=79580.0",
+   "wall_s": 7.42
+  },
+  {
+   "k": 24,
+   "return": 2,
+   "sim_line": "OK frames=1024 clks=81489920 clks/frame=79580.0",
+   "wall_s": 7.53
+  },
+  {
+   "k": 25,
+   "return": 3,
+   "sim_line": "OK frames=1025 clks=81569500 clks/frame=79580.0",
+   "wall_s": 7.5
+  },
+  {
+   "k": 26,
+   "return": 3,
+   "sim_line": "OK frames=1026 clks=81649080 clks/frame=79580.0",
+   "wall_s": 7.56
+  },
+  {
+   "k": 27,
+   "return": 3,
+   "sim_line": "OK frames=1027 clks=81728660 clks/frame=79580.0",
+   "wall_s": 7.51
+  },
+  {
+   "k": 28,
+   "return": 3,
+   "sim_line": "OK frames=1028 clks=81808240 clks/frame=79580.0",
+   "wall_s": 7.51
+  },
+  {
+   "k": 29,
+   "return": 3,
+   "sim_line": "OK frames=1029 clks=81887820 clks/frame=79580.0",
+   "wall_s": 7.45
+  },
+  {
+   "k": 30,
+   "return": 3,
+   "sim_line": "OK frames=1030 clks=81967400 clks/frame=79580.0",
+   "wall_s": 7.82
+  }
+ ]
+}

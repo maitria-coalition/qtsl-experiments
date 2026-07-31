@@ -1,0 +1,45 @@
+instance_id	section	lane	config	outcome	t_produce_ms	t_check_ms	t_total_ms	timeout_s	silicon	cert_bytes	obligation_count	state_space_size	retrain_count	denominator_bits_max	rational_count	verify_kernel_median_ms_b200	decode_note
+fbfs_core_84wk	semicon	cpu	fbfs_core_84wk__v0-mask	solved	160.0	8.906	168.9	0	gb10	18451	819	63	0	56	2107	2.982	
+fbfs_core_95wk	semicon	cpu	fbfs_core_95wk__v0-mask	solved	190.0	5.904	195.9	0	gb10	14984	819	63	0	23	2107	1.758	
+fbfs_setupadv_78wk	semicon	cpu	fbfs_setupadv_78wk__v0-mask	solved	190.0	6.092	196.1	0	gb10	14971	819	63	0	23	2107	1.739	
+lbfs_core_84wk	semicon	cpu	lbfs_core_84wk__v0-mask	solved	190.0	5.57	195.6	0	gb10	14205	819	63	0	18	2107	1.466	
+lbfs_core_90wk	semicon	cpu	lbfs_core_90wk__v0-mask	solved	180.0	5.544	185.5	0	gb10	14244	819	63	0	21	2107	1.46	
+lbfs_core_94wk	semicon	cpu	lbfs_core_94wk__v0-mask	solved	170.0	5.707	175.7	0	gb10	14316	819	63	0	23	2107	1.518	
+lbfs_core_95wk	semicon	cpu	lbfs_core_95wk__v0-mask	solved	170.0	5.682	175.7	0	gb10	14353	819	63	0	25	2107	1.501	
+lbfs_setupadv_72wk	semicon	cpu	lbfs_setupadv_72wk__v0-mask	solved	180.0	4.008	184.0	0	gb10	14853	819	63	0	20	2107	1.729	
+lbfs_setupadv_76wk	semicon	cpu	lbfs_setupadv_76wk__v0-mask	solved	170.0	6.19	176.2	0	gb10	14964	819	63	0	25	2107	1.759	
+lbfs_setupadv_78wk	semicon	cpu	lbfs_setupadv_78wk__v0-mask	solved	180.0	6.181	186.2	0	gb10	14951	819	63	0	24	2107	1.758	
+fbfs_core_th125	semicon	cpu	fbfs_core_th125__station-top	solved		52.206		0	gb10	361096	59340	172	0	26	31526	16.604	
+lbfs_avail_th100	semicon	cpu	lbfs_avail_th100__station-top	solved		81.683		0	gb10	401451	59340	172	0	159	31526	26.669	
+lbfs_avail_th115	semicon	cpu	lbfs_avail_th115__station-top	solved		72.884		0	gb10	401455	59340	172	0	159	31526	26.509	
+lbfs_core_th100	semicon	cpu	lbfs_core_th100__station-top	solved		69.89		0	gb10	361622	59340	172	0	24	31526	16.613	
+lbfs_core_th125	semicon	cpu	lbfs_core_th125__station-top	solved		63.69		0	gb10	361622	59340	172	0	26	31526	16.653	
+lbfs_core_th132	semicon	cpu	lbfs_core_th132__station-top	solved		60.484		0	gb10	361626	59340	172	0	27	31526	16.662	
+tree_core_th150	semicon	cpu	tree_core_th150__tree-cover	solved		239.406		0	gb10	907363	84180	244	0	256	42082	174.336	
+tree_core_thc90	semicon	cpu	tree_core_thc90__tree-cover	solved		246.122		0	gb10	923835	84180	244	0	301	42348	177.524	
+lbfs_core_191_2wk	semicon	cpu	lbfs_core_191_2wk__tree-cover	solved		3.56		0	gb10	8387	819	63	0	27	662	0.859	
+lbfs_core_959_10wk	semicon	cpu	lbfs_core_959_10wk__tree-cover	solved		3.577		0	gb10	8368	819	63	0	27	662	0.982	
+fbfs_core_84wk	semicon	cpu	fbfs_core_84wk__v0-mask	solved	360.0	8.928	368.9	0	epyc	18451	819	63	0	56	2107	5.03	
+fbfs_core_95wk	semicon	cpu	fbfs_core_95wk__v0-mask	solved	420.0	6.333	426.3	0	epyc	14984	819	63	0	23	2107	2.88	
+fbfs_setupadv_78wk	semicon	cpu	fbfs_setupadv_78wk__v0-mask	solved	420.0	6.579	426.6	0	epyc	14971	819	63	0	23	2107	2.854	
+lbfs_core_84wk	semicon	cpu	lbfs_core_84wk__v0-mask	solved	400.0	5.938	405.9	0	epyc	14205	819	63	0	18	2107	2.494	
+lbfs_core_90wk	semicon	cpu	lbfs_core_90wk__v0-mask	solved	380.0	6.002	386.0	0	epyc	14244	819	63	0	21	2107	2.477	
+lbfs_core_94wk	semicon	cpu	lbfs_core_94wk__v0-mask	solved	390.0	6.084	396.1	0	epyc	14316	819	63	0	23	2107	2.555	
+lbfs_core_95wk	semicon	cpu	lbfs_core_95wk__v0-mask	solved	380.0	6.126	386.1	0	epyc	14353	819	63	0	25	2107	2.537	
+lbfs_setupadv_72wk	semicon	cpu	lbfs_setupadv_72wk__v0-mask	solved	390.0	6.631	396.6	0	epyc	14853	819	63	0	20	2107	2.94	
+lbfs_setupadv_76wk	semicon	cpu	lbfs_setupadv_76wk__v0-mask	solved	400.0	6.495	406.5	0	epyc	14964	819	63	0	25	2107	2.966	
+lbfs_setupadv_78wk	semicon	cpu	lbfs_setupadv_78wk__v0-mask	solved	400.0	6.487	406.5	0	epyc	14951	819	63	0	24	2107	2.974	
+fbfs_core_th125	semicon	cpu	fbfs_core_th125__station-top	solved		86.246		0	epyc	361096	59340	172	0	26	31526	28.407	
+lbfs_avail_th100	semicon	cpu	lbfs_avail_th100__station-top	solved		105.245		0	epyc	401451	59340	172	0	159	31526	44.241	
+lbfs_avail_th115	semicon	cpu	lbfs_avail_th115__station-top	solved		106.501		0	epyc	401455	59340	172	0	159	31526	43.974	
+lbfs_core_th100	semicon	cpu	lbfs_core_th100__station-top	solved		86.895		0	epyc	361622	59340	172	0	24	31526	28.308	
+lbfs_core_th125	semicon	cpu	lbfs_core_th125__station-top	solved		86.523		0	epyc	361622	59340	172	0	26	31526	28.507	
+lbfs_core_th132	semicon	cpu	lbfs_core_th132__station-top	solved		85.7		0	epyc	361626	59340	172	0	27	31526	28.85	
+tree_core_th150	semicon	cpu	tree_core_th150__tree-cover	solved		385.355		0	epyc	907363	84180	244	0	256	42082	274.705	
+tree_core_thc90	semicon	cpu	tree_core_thc90__tree-cover	solved		397.377		0	epyc	923835	84180	244	0	301	42348	283.149	
+lbfs_core_191_2wk	semicon	cpu	lbfs_core_191_2wk__tree-cover	solved		3.663		0	epyc	8387	819	63	0	27	662	1.464	
+lbfs_core_959_10wk	semicon	cpu	lbfs_core_959_10wk__tree-cover	solved		3.773		0	epyc	8368	819	63	0	27	662	1.437	
+lbfs_core_96wk_probe	semicon	cpu	lbfs_core_96wk_probe__probe	refused	20.0			0	gb10				0				no-certificate (robust LP infeasible) — correct
+lbfs_setupadv_79wk_probe	semicon	cpu	lbfs_setupadv_79wk_probe__probe	refused	20.0			0	gb10				0				no-certificate (robust LP infeasible) — correct
+lbfs_core_96wk_probe	semicon	cpu	lbfs_core_96wk_probe__probe	refused	50.0			0	epyc				0				no-certificate (robust LP infeasible) — correct
+lbfs_setupadv_79wk_probe	semicon	cpu	lbfs_setupadv_79wk_probe__probe	refused	50.0			0	epyc				0				no-certificate (robust LP infeasible) — correct

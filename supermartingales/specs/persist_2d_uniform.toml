@@ -1,0 +1,93 @@
+# persist_2d — UNIFORM-noise twin candidate .
+#
+# PROVENANCE: reconstructed-per-description. The CONCUR'23 paper (arXiv
+# 2301.06136) gives persist_2d no listing, no Farkas bound, and no noise
+# class; the twin candidates reconstruct the row from its lineage papers.
+# This file is the UNIFORM twin; specs/persist_2d_gaussian.toml is the
+# other. Shared skeleton, per-twin noise; the noise class is UNPINNED by
+# the paper (grammar names only Bernoulli and Gaussian + an ellipsis;
+# "uniform" appears in sibling benchmark NAMES: faulty_uniform,
+# repulse100_uniform — v7 main.tex l.161-162 and Table rows).
+#
+# DYNAMICS JUSTIFICATION (quotes with sources):
+# - Family: "Robot Motion ... The environment contains a target region
+#   and a hazardous region. The goal is to upper bound the probability
+#   that the robot enters the hazardous region." (2301.06136 v7 main.tex
+#   l.1011.) repulse100 (their worked example, same family) starts at a
+#   point away from a target region and may hit a far hazard first.
+# - Lineage: "Several of the programs are based on benchmarks used in
+#   prior work focusing on other types of supermartingales
+#   [mdranking, DBLP:conf/cav/ChakarovS13]" (l.1013). ChakarovS13's only
+#   2D exemplar is 2DWALK ("Random walk on R2", Table 1) with details in
+#   a dead-link TR; the same group's persistence paper (Chakarov-Voronin-
+#   Sankaranarayanan, TACAS'16, "Deductive Proofs of Almost Sure
+#   Persistence and Recurrence") carries the concrete 2D exemplars.
+# - Linear part: TACAS'16 additional-systems table, system 2 (verbatim):
+#   "x0 := 0.5(x + y) + 0.4u1 sqrt(x^2+y^2), y0 := 0.5(x - y) +
+#   0.4u2 sqrt(x^2+y^2)" — the map A = [[1/2,1/2],[1/2,-1/2]] (a scaled
+#   rotation-reflection, A^2 = I/2). We keep A verbatim and replace the
+#   state-scaled noise by ADDITIVE iid noise, because sqrt is outside the
+#   CONCUR'23 expression grammar (E ::= v | N | -E | E+E | E-E | E*E |
+#   ...) while additive per-coordinate iid noise is the TACAS'16
+#   room-controller shape ("x0_i := x_i + b_i(x0 - x_i) + a(x_j - x_i) +
+#   c_i(1 - sigma(x_i)) + nu_i ... nu_1, nu_2 are i.i.d." with variants
+#   U(-0.01,0.01) and N(0,0.25) — the SAME source gives both noise
+#   classes, which is why the reconstruction ships as twins).
+# - Property: persistence-flavored reach-avoid — the robot homes toward
+#   a dock (target box; loop exits) and the hazard is the arena wall;
+#   p = P[hit wall before dock]. The name persist_2d reads as "the
+#   persistence exemplar family, 2D, recast as the paper's
+#   assertion-violation benchmark shape".
+#
+# CALIBRATION (the reconstruction's genuine freedom, exercised openly):
+# geometry (target [-1,1]^2, wall at 5, init (2,2)) fixed round; noise
+# scale swept by MC (out/persist2d/mc_sweep.json) and frozen at the
+# one-decimal constant u = 2.4 = 12/5 landing p_true in the same band as
+# their bound (their sibling-row neural bounds run 96-99% tight; a
+# candidate with p_true far below 0.1026 would be implausible as their
+# generative instance). u = 5/2 VIOLATES the envelope (MC 0.1145 >
+# 0.1026) — recorded in the sweep as the disqualified neighbor.
+#
+# ENVELOPE (their Table: PA 0.1026 (0.9) / PW 0.1175 (0.9); envelope =
+# min): MC p_hat = 0.07940 (pooled 12e6 chains, 3 seeds, SE 7.8e-5,
+# bracket exact — 0 chains alive at horizon 512): 0.0794 <= 0.1026 PASS
+# with ~290 SE of margin. Receipts: out/persist2d/mc_final.json.
+#
+# Program (grammar-conformant pseudocode):
+#   x := 2; y := 2
+#   while !(-1 <= x && x <= 1 && -1 <= y && y <= 1) {
+#     wx ~ Uniform(-12/5, 12/5); wy ~ Uniform(-12/5, 12/5)
+#     x, y := (x + y)/2 + wx, (x - y)/2 + wy
+#     assert(-5 < x && x < 5 && -5 < y && y < 5)
+#   }
+
+[benchmark]
+name = "persist_2d__uniform"
+family = "robot_motion"
+section = 1
+provenance = "reconstructed-per-description (noise class unpinned by paper; uniform twin)"
+state = ["x", "y"]
+init = { x = 2, y = 2 }
+target_box = { x = ["-1", "1"], y = ["-1", "1"] }   # loop guard: run while outside
+hazard = "max(|x|,|y|) >= 5"
+
+[benchmark.dynamics]
+map = "x' = (x + y)/2 + wx ; y' = (x - y)/2 + wy"
+matrix = [["1/2", "1/2"], ["1/2", "-1/2"]]
+noise = "wx, wy iid Uniform(-u, u)"
+u = "12/5"
+
+[benchmark.envelope]
+published_pa = "0.1026"
+published_pw = "0.1175"
+envelope = "0.1026"
+mc_p_hat = "0.07940"
+mc_receipts = "out/persist2d/mc_final.json"
+verdict = "PASS"
+
+[benchmark.farkas]
+published = "none"
+house = "vacuous-by-convexity: any affine V >= 1 on A's corners (+-5,+-5) has V(2,2) >= 1 via the convex combination (2,2) = 7/10*(5,5) + 3/10*(-5,-5); exact witness in receipts"
+
+[benchmark.truth]
+method = "MC bracket (exact: horizon absorbs all chains); no finite-chain exact solve (continuous 2D state)"

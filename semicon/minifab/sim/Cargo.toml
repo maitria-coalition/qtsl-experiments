@@ -1,0 +1,15 @@
+[package]
+name = "minifab-sim"
+version = "0.1.0"
+edition = "2021"
+description = "Deterministic-core DES for the Kempf 1994 Mini-Fab — comprehension check for the declarative System rendering "
+
+[[bin]]
+name = "minifab"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.6", features = ["derive"] }
+
+[dev-dependencies]
+proptest = "1.11"

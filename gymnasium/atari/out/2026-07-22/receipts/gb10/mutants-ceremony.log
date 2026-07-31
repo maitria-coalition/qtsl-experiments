@@ -1,0 +1,14 @@
+ok  control-base-pong          expected ['ACCEPT'] observed ACCEPT            166.9s  
+ok  control-base-freeway       expected ['ACCEPT'] observed ACCEPT            168.3s  
+ok  m01-trace-stale-hash       expected ['trace-hash'] observed trace-hash          0.0s  REFUSE trace-hash: traces/k01.atrc.gz has sha256 9a934cd6d12b76b1756e8cd5ee8b50bf6a4a300c3199db4112d
+ok  m02-trace-ram-tamper       expected ['trace-ram'] observed trace-ram         127.3s  REFUSE trace-ram: lane 1 (k=1) frame 30 ram[77]: trace=0xff replay=0x00
+ok  m03-trace-reward-tamper    expected ['trace-reward'] observed trace-reward      113.8s  REFUSE trace-reward: lane 2 (k=2) frame 20: trace=1 replay=0
+ok  m04-off-by-one-frame       expected ['trace-ram'] observed trace-ram          87.1s  REFUSE trace-ram: lane 0 (k=0) frame 0 ram[8]: trace=0x45 replay=0x44
+ok  m05-trace-truncated        expected ['trace-length'] observed trace-length        0.0s  REFUSE trace-length: traces/k03.atrc.gz has 62 records, claim declares 63
+ok  m06-wrong-init             expected ['trace-ram'] observed trace-ram          90.0s  REFUSE trace-ram: lane 1 (k=1) frame 1 ram[4]: trace=0x0f replay=0x0e
+ok  m07-return-perturbed       expected ['return-mismatch'] observed return-mismatch   166.2s  REFUSE return-mismatch: lane 2 (k=2) computed 0, claim says 1
+ok  m08-bound-perturbed        expected ['bound'] observed bound             166.2s  REFUSE bound: min return 0 < claimed bound 1
+ok  m09-netlist-gate-flip      expected ['trace-ram', 'trace-reward', 'vsync-timeout', 'return-mismatch'] observed vsync-timeout     321.9s  REFUSE vsync-timeout: lane 0 (k=0) phase await-first-vsync frame 0 after 20000000 clks
+ok  m10-aig-tampered           expected ['aig-hash'] observed aig-hash            0.0s  REFUSE aig-hash: /tmp/atari-rerun-scratch/ac/certs/mutants/m10-aig-tampered/tampered.aig has sha256 6
+ok  m11-reward-decode-swap     expected ['trace-reward', 'return-mismatch'] observed trace-reward       88.3s  REFUSE trace-reward: lane 0 (k=0) frame 0: trace=0 replay=1
+CEREMONY PASS

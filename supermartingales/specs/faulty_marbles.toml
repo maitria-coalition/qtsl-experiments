@@ -1,0 +1,56 @@
+# RECONSTRUCTION CANDIDATE (no listing, no Farkas fingerprint — "-" row).
+# Story: collect N marbles; each iteration gains or loses one marble with equal
+# probability (loss floors at 0); hardware fault 1/1000 per iteration; done at
+# N = 8. Zero-drift collection => no linear supermartingale (same mechanism as
+# faulty_unreliable; negative fingerprint checked mechanically). Parameters
+# fitted by exact sweep against the envelope (wave-0 iteration receipts in the
+# log): init m=2 gives exact p = 0.062360 vs PW bound 0.0649 (96% tight;
+# the first candidate m=1 was REFUTED by the envelope at 0.066096 > 0.0649 —
+# the instrument works). Structure is the hypothesis; parameters are fitted.
+# Provenance label: reconstructed-per-description.
+# WAVE-1 PROCUREMENT NOTE (2026-07-18): the CAV'25 Zenodo
+# artifact 15222907 was censused in full — it contains NONE of the
+# CONCUR'23 benchmarks (its set: becomingRichOnce/gamblersRuin/
+# reactivity/repeatedCoin), so no public artifact upgrade is available;
+# the provenance label stays reconstructed-per-description, now with a
+# NEGATIVE procurement receipt attached (the one known same-group
+# artifact was checked and does not carry these definitions).
+# WAVE-1 CERTIFICATION: certified bounds for THIS candidate
+# landed via exact-VI export + global-poly LP; receipts in
+# ../out/sec1/<name>/receipts{,-poly}.json.
+[benchmark]
+name = "faulty_marbles"
+family = "unreliable_hardware"
+section = 1
+provenance = "reconstruction candidate (zero-drift marble collection, N=8); negative-fingerprint + envelope validated only"
+state = ["m", "error"]
+init = {m = 2, error = 0}
+guard = "m < 8"
+assertion = "error == 0"
+
+[[benchmark.dynamics]]
+region = "m >= 1"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/2000", update = {m = "m + 1"}},
+  {prob = "999/2000", update = {m = "m - 1"}},
+]
+
+[[benchmark.dynamics]]
+region = "m < 1"
+branches = [
+  {prob = "1/1000",   update = {error = "1"}},
+  {prob = "999/2000", update = {m = "m + 1"}},
+  {prob = "999/2000", update = {}},
+]
+
+[benchmark.farkas]
+published = "none"
+grid = {m = [0, 8], error = [0, 1]}
+invariant = "0 <= m && m <= 8"
+target = "error >= 1"
+objective = {m = 2, error = 0}
+note = "Negative fingerprint expected: optimum >= 1."
+
+[benchmark.truth]
+method = "chain"

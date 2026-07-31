@@ -1,0 +1,13 @@
+[package]
+name = "flcheck-cli"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "CLI wrapper: the flcheck certified-Gymnasium table checker, imported from the qtsl repository"
+
+[[bin]]
+name = "flcheck"
+path = "src/main.rs"
+
+[dependencies]
+flcheck = { git = "https://github.com/maitria-coalition/qtsl-dev", rev = "c94af1f735254b91298202aa8212a2b9004542b8" }

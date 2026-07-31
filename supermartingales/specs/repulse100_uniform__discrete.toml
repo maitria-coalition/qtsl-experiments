@@ -1,0 +1,33 @@
+# ALTERNATE candidate for repulse100_uniform: discrete uniform step on
+# {-2,-1,0,1} (mean -1/2). Reproduces the published Farkas 0.0991 with NO
+# shared-A caveat (integer overshoot corner x=101 is natural), but fails to
+# explain the program-aware indicator-failure story. See repulse100_uniform.toml.
+[benchmark]
+name = "repulse100_uniform__discrete"
+family = "robot_motion"
+section = 2
+provenance = "reconstruction alternate (discrete-uniform reading)"
+state = ["x"]
+init = {x = 10}
+guard = "x >= 0"
+assertion = "x <= 100"
+
+[[benchmark.dynamics]]
+region = "true"
+branches = [
+  {prob = "1/4", update = {x = "x - 2"}},
+  {prob = "1/4", update = {x = "x - 1"}},
+  {prob = "1/4", update = {}},
+  {prob = "1/4", update = {x = "x + 1"}},
+]
+
+[benchmark.farkas]
+published = "0.0991"
+grid = {x = [0, 101]}
+invariant = "0 <= x && x <= 100"
+target = "x >= 101"
+objective = {x = 10}
+note = "Expected optimum 10/101."
+
+[benchmark.truth]
+method = "chain"

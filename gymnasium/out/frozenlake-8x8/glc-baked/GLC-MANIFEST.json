@@ -1,0 +1,190 @@
+{
+  "checker": "glc-check --baked-cert (container + envelope integrity, then claim-row discharge against the DERIVED dc index: the qtsl_deadline_table claim row per node walks WF/B/S/C from the node's closure alone over the chain's dprob/dinit rows — absorbing states are explicit self-loop rows, no action/policy layer exists; pass --expect-claims from this manifest; zero-claim containers REFUSE)",
+  "exclusions": [
+    {
+      "obstructing_states": [
+        0,
+        8,
+        10,
+        13,
+        14,
+        16,
+        25
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T25.cbor",
+      "stem": "exact_T25"
+    },
+    {
+      "obstructing_states": [
+        0,
+        8,
+        9,
+        10,
+        13,
+        14,
+        16,
+        17,
+        25,
+        31,
+        56,
+        61
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T50.cbor",
+      "stem": "exact_T50"
+    },
+    {
+      "obstructing_states": [
+        0,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        16,
+        17,
+        23,
+        25,
+        26,
+        31,
+        56,
+        61
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T100.cbor",
+      "stem": "exact_T100"
+    },
+    {
+      "obstructing_states": [
+        0,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        23,
+        24,
+        25,
+        26,
+        31,
+        32,
+        56,
+        61
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/exact_T200.cbor",
+      "stem": "exact_T200"
+    },
+    {
+      "obstructing_states": [
+        0,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        23,
+        24,
+        25,
+        26,
+        31,
+        32,
+        56,
+        61
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k16_T200.cbor",
+      "stem": "dyadic_k16_T200"
+    },
+    {
+      "obstructing_states": [
+        0,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        23,
+        24,
+        25,
+        26,
+        31,
+        32,
+        56,
+        61
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k24_T200.cbor",
+      "stem": "dyadic_k24_T200"
+    },
+    {
+      "obstructing_states": [
+        0,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        23,
+        24,
+        25,
+        26,
+        31,
+        32,
+        56,
+        61
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k32_T200.cbor",
+      "stem": "dyadic_k32_T200"
+    },
+    {
+      "obstructing_states": [
+        0,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        23,
+        24,
+        25,
+        26,
+        31,
+        32,
+        56,
+        61
+      ],
+      "reason": "time-varying policy: no uniformly admissible action at the named states — not re-encodable at this state space; stays on the staged lane pending the decision-former species",
+      "source_cert": "gymnasium/out/frozenlake-8x8/dyadic_k48_T200.cbor",
+      "stem": "dyadic_k48_T200"
+    }
+  ],
+  "family": "gym-hit-baked-v1",
+  "format": ".glc — sealed geolog commit containers (single commit, single dc prereq)",
+  "mode_flag": "--baked-cert",
+  "mutants": [],
+  "positives": []
+}

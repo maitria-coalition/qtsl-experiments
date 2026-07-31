@@ -1,0 +1,23 @@
+/target
+/build
+**/__pycache__/
+
+# fetched pins (tools/fetch-pins.sh) — pinned upstream trees, never committed
+circuits/neuralmc-pin/*
+!circuits/neuralmc-pin/VENDOR-PIN.md
+gymnasium/atari/vendor/tiny-atari-2600/
+
+# gymnasium/atari: sim builds + ROM-derived artifacts (never committed —
+# netlists, ROM hex, and synth receipts embed or derive from ROM contents;
+# see the ROM note in gymnasium/atari/README.md)
+gymnasium/atari/sim/obj_dir*/
+gymnasium/atari/sim/atari_circuit_sim
+gymnasium/atari/sim/atari_circuit_sim_e0
+gymnasium/atari/roms/
+gymnasium/atari/receipts/
+gymnasium/atari/out/*.aig
+gymnasium/atari/out/*.btor2
+
+# petri: materialized containers (corpus-derived — never committed; petri/README.md)
+petri/out/
+petri/guard/out/

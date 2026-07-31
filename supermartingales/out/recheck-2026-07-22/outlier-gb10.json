@@ -1,0 +1,18 @@
+{
+ "row": "persist_2d__uniform",
+ "n": 4800,
+ "walls_s": [
+  131.96,
+  130.66
+ ],
+ "min_wall_s": 130.66,
+ "silicon": "gb10/GB10 aarch64 20c, nice -n 10",
+ "loadavg": [
+  4.70703125,
+  5.892578125,
+  6.28857421875
+ ],
+ "binary": "fastcheck (worktree build 2026-07-22)",
+ "published_s": 136,
+ "recheck_2026_07_20_new_s": 135.85
+}

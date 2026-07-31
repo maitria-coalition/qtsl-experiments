@@ -1,0 +1,108 @@
+{
+ "n": 1000000,
+ "u": 0.7009808922113865,
+ "lemma": {
+  "k_lo": "-190381",
+  "r_hi_ceil": "2854",
+  "shaping_lo": "-1899297379488815018691897/10000000000000000000",
+  "shaping1_lo": "-27329487897591223794897/10000000000000000000",
+  "theta_abs": "1572368695488815018691897/1000000000000000000000",
+  "y_abs": "30289/100",
+  "v_max": "1000001/10000",
+  "pi_hi": "1570796326794897/500000000000000",
+  "steps": "1001"
+ },
+ "rows": {
+  "min_a20": {
+   "bound_det": 236.57731657655677,
+   "bound_rand": 236.655844086461,
+   "empirical_mean_of_Y": 238.04098889584827,
+   "gap_det": 1.4636723192915042,
+   "build_s": 20.8,
+   "accept_line": "ACCEPT rows=16000000 bound=18743586084915840286107564507136/79228162514264337593543950336 lane=ref kernel_lane=neon decode_us=61914 verify_us=135640",
+   "cert": "ll_u4_min_a20.cbor"
+  },
+  "min_a100": {
+   "bound_det": 236.23075874778442,
+   "bound_rand": 236.30625145082013,
+   "empirical_mean_of_Y": 238.04098889584827,
+   "gap_det": 1.8102301480638516,
+   "build_s": 14.0,
+   "accept_line": "ACCEPT rows=16000000 bound=18716128944937423588132437098496/79228162514264337593543950336 lane=ref kernel_lane=neon decode_us=64774 verify_us=130294",
+   "cert": "ll_u4_min_a100.cbor"
+  },
+  "clip_a20": {
+   "bound_det": 237.56812206632526,
+   "bound_rand": 237.57609076599783,
+   "empirical_mean_of_Y": 238.0409888958483,
+   "gap_det": 0.47286682952304204,
+   "build_s": 20.4,
+   "accept_line": "ACCEPT rows=16000000 bound=18822085783279405914476175687680/79228162514264337593543950336 lane=ref kernel_lane=neon decode_us=62712 verify_us=93603",
+   "cert": "ll_u4_clip_a20.cbor"
+  },
+  "clip_a100": {
+   "bound_det": 237.5331412232042,
+   "bound_rand": 237.54072219884108,
+   "empirical_mean_of_Y": 238.0409888958483,
+   "gap_det": 0.5078476726440897,
+   "build_s": 13.0,
+   "accept_line": "ACCEPT rows=16000000 bound=18819314315355726726177845411840/79228162514264337593543950336 lane=ref kernel_lane=neon decode_us=63383 verify_us=94035",
+   "cert": "ll_u4_clip_a100.cbor"
+  }
+ },
+ "fixture": {
+  "n": 20000,
+  "accept_line": "ACCEPT rows=320000 bound=16083034807171798000576214597632/79228162514264337593543950336 lane=ref kernel_lane=neon decode_us=1229 verify_us=1400"
+ },
+ "mutants": [
+  {
+   "name": "m1_bump_m_det.cbor",
+   "expected_locus": "threshold-det",
+   "refused": true,
+   "line": "REFUSE locus=threshold-det detail=wealth 3995495817314140310239100832 < 7922816251426433759354395033600 at claimed m_det"
+  },
+  {
+   "name": "m2_range_violation.cbor",
+   "expected_locus": "range-witness",
+   "refused": true,
+   "line": "REFUSE locus=range-witness detail=return -191381 below k_lo=-190381: range lemma refuted by ledger"
+  },
+  {
+   "name": "m3_alpha_tighten.cbor",
+   "expected_locus": "threshold-det",
+   "refused": true,
+   "line": "REFUSE locus=threshold-det detail=wealth 261525521379425977124720352101939 < 79228162514264337593543950336000000 at claimed m_det"
+  },
+  {
+   "name": "m4_bad_u.cbor",
+   "expected_locus": "schema",
+   "refused": true,
+   "line": "REFUSE locus=schema detail=u 1.5 not in (0,1)"
+  },
+  {
+   "name": "m5_degenerate_scale.cbor",
+   "expected_locus": "schema",
+   "refused": true,
+   "line": "REFUSE locus=schema detail=scale [-190381, -190381]"
+  },
+  {
+   "name": "m6_nan_return.cbor",
+   "expected_locus": "ledger",
+   "refused": true,
+   "line": "REFUSE locus=ledger detail=return NaN not finite / out of guard range"
+  },
+  {
+   "name": "m7_truncated_ledger.cbor",
+   "expected_locus": "threshold-det",
+   "refused": true,
+   "line": "REFUSE locus=threshold-det detail=wealth 5365754074491841350051239959946 < 7922816251426433759354395033600 at claimed m_det"
+  },
+  {
+   "name": "m8_rand_below_det.cbor",
+   "expected_locus": "schema",
+   "refused": true,
+   "line": "REFUSE locus=schema detail=m_rand < m_det (randomized look can only improve)"
+  }
+ ],
+ "mutants_all_refused": true
+}

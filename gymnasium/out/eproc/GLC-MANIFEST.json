@@ -1,0 +1,183 @@
+{
+  "checker": "glc-check (container + envelope integrity, then claim-row discharge through the exact ground provider: the full betting-martingale mixture wealth walk recomputed in Q32.96 fixed point from the sealed protocol constants and the chunked exact-rational rollout ledger, every rounding directed down; min-cap range-lemma violations refuse with the violating entry as witness; the claimed raw-units bounds are tie-checked exactly; the 16-entry bet grid is hardcoded in the checker, so a grid tamper is unrepresentable in the container. Pass --gym-eproc plus --expect-claims from this manifest.)",
+  "family": "gym-eproc-v0",
+  "format": ".glc \u2014 sealed geolog commit containers (single commit per certificate)",
+  "mode_flag": "--gym-eproc",
+  "mutants": [
+    {
+      "base": "(synthetic: ll_u4_fixture_n20k + the corpus drawn u)",
+      "expected": "ACCEPT_BY_DESIGN",
+      "file": "mutants/base_rand.glc",
+      "glc_sha256": "1280aad4e3b823f6bb6c12b64138d1f0d8842e9eb7cd6107126db9f98973a1c7",
+      "locus": "honest look-bearing battery base: the fixture ledger with the corpus randomized draw (u = 0.7009808922113865) and its protocol sentence; the randomized boundary re-searched on this ledger. Sealed so the randomized-look mutants have a small base.",
+      "mutant": "base_rand",
+      "reach_note": "in-lane checks all hold and the incumbent-format twin is accepted; this container transcribes no committed certificate \u2014 its provenance is this battery"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "FAIL",
+      "file": "mutants/m01_mstar_past_boundary.glc",
+      "glc_sha256": "24e4d016085e7ab92aca0021f472617868f28a94eff5477a39e4a57d845d86ac",
+      "locus": "claimed boundary = the certified fixed-point boundary + 2^-96 (the minimal representable inflation); wealth misses the threshold by ~3.3e5 parts in 1.6e30",
+      "mutant": "m01_mstar_past_boundary"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "FAIL",
+      "file": "mutants/m02_ledger_entry_lowered.glc",
+      "glc_sha256": "91ef3409541615b71757f05df60bf08edbe84165743427e8cb7d56f56311c935",
+      "locus": "ledger entry 0 dropped to kLo: every wealth line shrinks below threshold",
+      "mutant": "m02_ledger_entry_lowered"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m03_range_violation.glc",
+      "glc_sha256": "c681c9590dab95ca083ecc24d2598f85dd6387060a35d2aad76336436777bae6",
+      "locus": "ledger entry 0 below kLo: the range lemma is refuted; the checker names chunk 0 entry 0 and the exact value as the witness",
+      "mutant": "m03_range_violation"
+    },
+    {
+      "base": "base_rand",
+      "expected": "FAIL",
+      "file": "mutants/m04_mrand_raised.glc",
+      "glc_sha256": "9f00c69794b5c466eab757106321585c137071bce5398ed91d5bdbd307d321a3",
+      "locus": "the randomized boundary raised halfway to 1: the randomized threshold misses while the deterministic claim still holds (1/1 + 0/1)",
+      "mutant": "m04_mrand_raised"
+    },
+    {
+      "base": "base_rand",
+      "expected": "FAIL",
+      "file": "mutants/m05_u_raised.glc",
+      "glc_sha256": "d0bc7b07837f3b5aca8bbcd435b20abac2448c99b6a82cc0cc95b30fcb1a6acb",
+      "locus": "the drawn u raised to 0.95: the randomized threshold rises past the searched boundary; the deterministic verdict is untouched",
+      "mutant": "m05_u_raised"
+    },
+    {
+      "base": "base_rand",
+      "expected": "REFUSE",
+      "file": "mutants/m06_u_out_of_range.glc",
+      "glc_sha256": "b411a5d674b8dccf15ebe0f99fd4f530b18e1a798286633943f18867c4318050",
+      "locus": "u = 3/2 breaches the (0,1) guard",
+      "mutant": "m06_u_out_of_range"
+    },
+    {
+      "base": "base_rand",
+      "expected": "REFUSE",
+      "file": "mutants/m07_rand_below_det.glc",
+      "glc_sha256": "4597424a1dbe7121f8c83b1f0b5d70ebd6164a574b5410f125934a4e9fe45c2f",
+      "locus": "the randomized boundary below the deterministic one (the randomized look can only improve)",
+      "mutant": "m07_rand_below_det"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m08_class_confusion.glc",
+      "glc_sha256": "2c0eeb7af0ebd030d6c8d137efe6ee3654e82380708f8ab1c6e8fdac54dac01c",
+      "locus": "clip-class constructor with a non-tight scale (clip lo = kLo + 1): the tight-scale rule refuses",
+      "mutant": "m08_class_confusion"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m09_episode_count_lie.glc",
+      "glc_sha256": "e29c0c9e40dee2aec7bc5e498ab6115467a93e783b05b59e6149bcbb7908c459",
+      "locus": "episodes row decremented with the ledger unchanged: the declared count and the chunked entries disagree (container-only row; the incumbent schema has no count field, so no twin exists)",
+      "mutant": "m09_episode_count_lie"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "FAIL",
+      "file": "mutants/m10_bound_tie_lie.glc",
+      "glc_sha256": "df671baad794cf3dcf201662eb3602f424bcbc87f1f97a40640965713d8ae353",
+      "locus": "claimed deterministic bound inflated by 1/2^96 over the derived value: the tie fails (container-only row; the incumbent checker derives its bound as output)",
+      "mutant": "m10_bound_tie_lie"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m11_body_byte.glc",
+      "glc_sha256": "a307d7769019404e367138723dd9a4760845bf3098b3fecc110d5b591b7a631b",
+      "locus": "final body byte flipped: body-hash binding refuses",
+      "mutant": "m11_body_byte"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m12_sig_byte.glc",
+      "glc_sha256": "9c14b42010b7eacf3b279b528f8791181415cb33f829285e28cdd16576ecb124",
+      "locus": "signature byte flipped: ed25519 verification refuses",
+      "mutant": "m12_sig_byte"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m13_truncated.glc",
+      "glc_sha256": "fcdef0ccf5b3a3243ef15b6fb5bed3236669650d51d8c40851ee77ca776b32aa",
+      "locus": "container truncated by one byte",
+      "mutant": "m13_truncated"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m14_magic.glc",
+      "glc_sha256": "6bb9c1874f09c7cd6e03814cbeb8395d553a9ed5b8701c0309346406cc1d538b",
+      "locus": "magic byte flipped: not a container",
+      "mutant": "m14_magic"
+    },
+    {
+      "base": "ll_u4_fixture_n20k",
+      "expected": "REFUSE",
+      "file": "mutants/m15_version.glc",
+      "glc_sha256": "06e032d67868f419d38f7c0af55c561b4f7c345b07c2971065a0a62095f666f1",
+      "locus": "container version 2: unsupported future format",
+      "mutant": "m15_version"
+    },
+    {
+      "base": "(synthetic constant ledger)",
+      "expected": "ACCEPT_BY_DESIGN",
+      "file": "mutants/m16_coherent_forgery.glc",
+      "glc_sha256": "43d80bcb14cc317e5a8a7cb968882f78774bf275224f8acf86fb6c783622d1e5",
+      "locus": "an internally TRUE certificate over a 4096-episode constant ledger no corpus contains: the boundary is honestly searched, the bounds tie, the incumbent-format twin is accepted",
+      "mutant": "m16_coherent_forgery",
+      "reach_note": "arithmetic cannot see it \u2014 every in-lane check holds because the certificate is true of ITS OWN ledger; the falsifier with the reach is provenance (its source_cert column names nothing; regeneration from the pinned corpus cannot produce these bytes)"
+    }
+  ],
+  "positives": [
+    {
+      "claim": "18716128944937423588132437098496/79228162514264337593543950336",
+      "claim_rand": "18722110093082488364824881266688/79228162514264337593543950336",
+      "expect_claims": "gymEprocDetValid=1,gymEprocRandValid=1",
+      "expected": "ACCEPT",
+      "file": "../ll/glc/ll_u4_min_a100.glc",
+      "glc_sha256": "b7cd9325df597466e27847f94a183da2eb78f3203821842da4361748e56b3a10",
+      "source_cert": "../../ll/ll_u4_min_a100.cbor"
+    },
+    {
+      "claim": "16083034807171798000576214597632/79228162514264337593543950336",
+      "expect_claims": "gymEprocDetValid=1",
+      "expected": "ACCEPT",
+      "file": "../ll/glc/ll_u4_fixture_n20k.glc",
+      "glc_sha256": "67db16cb01a1303bdce15c311e2e41b3d1bd35fd5f331e5a0f68c501b66d0ae0",
+      "source_cert": "../../ll/ll_u4_fixture_n20k.cbor"
+    },
+    {
+      "claim": "22277794896801307395173835079680/79228162514264337593543950336",
+      "claim_rand": "22283769014901259517296103129088/79228162514264337593543950336",
+      "expect_claims": "gymEprocDetValid=1,gymEprocRandValid=1",
+      "expected": "ACCEPT",
+      "file": "../llc/glc/llc_u4_min_a100.glc",
+      "glc_sha256": "1b0cf020455d0250dd88fa4737b7de51f7cf1118f0a6c9816542283ccb2343f7",
+      "source_cert": "../../llc/llc_u4_min_a100.cbor"
+    },
+    {
+      "claim": "19511345266886683149035013931008/79228162514264337593543950336",
+      "expect_claims": "gymEprocDetValid=1",
+      "expected": "ACCEPT",
+      "file": "../llc/glc/llc_u4_fixture_n20k.glc",
+      "glc_sha256": "2edc01a16124d48e36d1654099672888b614429356d550966f9b9b07e616daa2",
+      "source_cert": "../../llc/llc_u4_fixture_n20k.cbor"
+    }
+  ],
+  "size_note": "the two 1,000,000-episode containers seal at ~14.9 MB each (episode returns as exact rationals in 2048-entry inline tensor chunks); no expected-manifest fallback is needed \u2014 all positives are committed bytes"
+}
