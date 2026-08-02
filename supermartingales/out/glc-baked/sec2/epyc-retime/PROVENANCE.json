@@ -1,0 +1,98 @@
+{
+ "date": "2026-08-01T06:55:00Z",
+ "machine": "epyc (dedicated single-tenant instance of the registry's epyc class; no co-tenant load)",
+ "cpu": "AMD EPYC 7B13 (Milan), x86_64, 16 vCPU (8 cores x 2 threads), 1 socket, 32 MiB L3, 125 GiB RAM",
+ "toolchain": "rustc/cargo 1.97.1, gcc 13.3.0, node v22.23.1, CPython 3.12.3 (+ cbor2 5.6.2 for the circuits reference checker)",
+ "binaries": {
+  "onesys-driver": {
+   "path": "onesys-driver",
+   "sha256": "cd243a23af2041249a08c7a6e09078e3f846358eb62750253242c75fb0bf80a4"
+  },
+  "glc-check": {
+   "path": "glc-check",
+   "sha256": "2b8f59d99bf15544206fdf9bb0986e53ff2c1a11955f53c91fbfb5a68c88d138"
+  },
+  "flcheck": {
+   "path": "flcheck",
+   "sha256": "d2f1e69ef53807970042a959d9c60639ef479a4ac840d1f3021f5807f562a78c"
+  },
+  "ck_manifest.py": {
+   "path": "ck_manifest.py",
+   "sha256": "3b6f8d3a83177b229b9f84d5bc5f919f77c77bda4d28da7531d2ae6f5c940e5c"
+  }
+ },
+ "protocol": "10 repeats per benchmark (+1 flagged warmup on produce); serial, one timed process at a time; dedicated box, load average snapshotted before/after every cell block",
+ "pinning": {
+  "produce_and_geolog": "unpinned (the driver and checker own the box; matches the incumbent re-conduct protocol, which ran under a multi-vCPU quota rather than a single-core mask)",
+  "gym_and_circuits": "taskset core 15 (the registry epyc class's single-core wall protocol)",
+  "governor": "cpufreq not exposed on this virtualized platform (no scaling_governor file); scheduler defaults"
+ },
+ "loadavg": {
+  "produce_host": {
+   "before": [
+    0.4,
+    0.17,
+    0.38
+   ],
+   "after": [
+    0.95,
+    0.5,
+    0.48
+   ]
+  },
+  "geolog_shared": {
+   "before": [
+    0.25,
+    0.38,
+    0.44
+   ],
+   "after": [
+    0.65,
+    0.47,
+    0.47
+   ]
+  },
+  "gym_checks": {
+   "before": [
+    0.55,
+    0.46,
+    0.46
+   ],
+   "after": [
+    0.78,
+    0.58,
+    0.51
+   ]
+  },
+  "circuits_recheck": {
+   "before": [
+    0.42,
+    0.51,
+    0.49
+   ],
+   "after": [
+    0.51,
+    0.52,
+    0.49
+   ]
+  },
+  "staged_glc_timings": {
+   "before": [
+    0.29,
+    0.46,
+    0.47
+   ],
+   "after": [
+    0.35,
+    0.47,
+    0.47
+   ]
+  }
+ },
+ "sibling_receipts": {
+  "gymnasium": "gymnasium/out/checker_receipts.epyc.json + checker_receipts_tt.epyc.json \u2014 fresh single-core sweeps of both tiers; the top-level host field is added by the producing run (the underlying driver does not record a machine field); verdicts, row counts, and bounds identical to the committed sweeps",
+  "circuits": "circuits/out/recheck-times.epyc.json \u2014 reference-checker walls, batched per fixture class + whole-suite, 10 repeats",
+  "staged_lane": "supermartingales/out/glc/GLC-TIMINGS.epyc.json \u2014 the staged-corpus recheck's per-machine timing receipt (fully green run: 464/464 + 4105/4105 + designed mutants in class)"
+ },
+ "notes": "All produce repeats byte-identical to the committed containers (revision-event-5.1 vintage, MANIFEST.json hashes). Spread rule (max-min)/median > 0.25: one flag across all receipt sets - circuits class seven_seg at 0.275 (median 43.6 ms; absolute range 12 ms on an interpreter-startup-dominated cell); produce faulty_varying__last_step sits exactly at 0.250 (65 ms cell), boundary not exceeded. No GPU on this estate: no produce-gpu.json."
+}

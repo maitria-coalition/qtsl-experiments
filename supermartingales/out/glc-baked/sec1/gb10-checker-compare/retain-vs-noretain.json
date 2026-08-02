@@ -1,0 +1,82 @@
+{
+ "receipt_version": 1,
+ "schema": "maitria.supermart.checker-compare.v1",
+ "section": "sec1",
+ "machine": "gb10",
+ "protocol": "two full-roster checked-production campaigns (1 flagged warmup + 10 measured repeats per benchmark), identical but for --retain-containers; arm order retain-first then no-retain; outer wall is the monotonic process wall of the whole campaign invocation; retained copies land on the same filesystem as the repository and are deleted after measurement (byte-identical to the committed incumbents, re-verified by the runner's own gates on every row)",
+ "wall_semantics": "monotonic clock around child process spawn-to-exit (includes process startup)",
+ "checker_binary": {
+  "path": "glc-check",
+  "sha256": "6e2f21386ff7721dbc6782f769a2ff643929e0efc78675dce23b5c83dd009c40"
+ },
+ "qtsl_experiments_revision": "97a385cb444144e2229a6cd42663161cc376cf7d",
+ "environment_start": {
+  "loadavg": [
+   12.78466796875,
+   16.8544921875,
+   25.65869140625
+  ],
+  "nproc": 20,
+  "nice": 19,
+  "utc": "2026-08-02T08:47:10Z"
+ },
+ "runner_binary": {
+  "path": "supermart-sec1",
+  "sha256": "dd7ec47ca0e93090e46a62c22df045a4ca913335c6b1b454712334b7cffaba95"
+ },
+ "arms": {
+  "retain": {
+   "outer_wall_s": 4.099576825974509,
+   "retained_files": 33,
+   "retained_bytes": 164307,
+   "binary_sha256": "dd7ec47ca0e93090e46a62c22df045a4ca913335c6b1b454712334b7cffaba95",
+   "mtk_revision": "c30397c46c3831ad3f2f6dfc5a7190f881935a4f",
+   "rows": 33,
+   "measured_rows": 30,
+   "all_byte_identical": true,
+   "sum_row_wall_s": 1.976839155,
+   "sum_measured_row_wall_s": 1.797281066,
+   "median_wall_s_by_bench": {
+    "faulty_marbles": 0.042756436,
+    "faulty_regions": 0.07244154950000001,
+    "faulty_unreliable": 0.064045469
+   },
+   "median_check_s_by_bench": {
+    "faulty_marbles": 0.0073086955,
+    "faulty_regions": 0.014402197,
+    "faulty_unreliable": 0.0117745105
+   }
+  },
+  "no_retain": {
+   "outer_wall_s": 4.133584192954004,
+   "binary_sha256": "dd7ec47ca0e93090e46a62c22df045a4ca913335c6b1b454712334b7cffaba95",
+   "mtk_revision": "c30397c46c3831ad3f2f6dfc5a7190f881935a4f",
+   "rows": 33,
+   "measured_rows": 30,
+   "all_byte_identical": true,
+   "sum_row_wall_s": 2.000944743,
+   "sum_measured_row_wall_s": 1.819741008,
+   "median_wall_s_by_bench": {
+    "faulty_marbles": 0.043157135,
+    "faulty_regions": 0.07279808099999999,
+    "faulty_unreliable": 0.064650522
+   },
+   "median_check_s_by_bench": {
+    "faulty_marbles": 0.007404536,
+    "faulty_regions": 0.0143274445,
+    "faulty_unreliable": 0.0117253825
+   }
+  }
+ },
+ "outer_wall_delta_s": -0.03400736697949469,
+ "environment_end": {
+  "loadavg": [
+   12.7216796875,
+   16.7734375,
+   25.5849609375
+  ],
+  "nproc": 20,
+  "nice": 19,
+  "utc": "2026-08-02T08:47:19Z"
+ }
+}

@@ -5,10 +5,13 @@ tables — and for the book chapter they appear in. Everything here is
 one of four kinds of object:
 
 - **producers** synthesize certificates (untrusted by construction).
-  The python producers that built this repository's certificates are
-  migrating to TypeScript on the modelling toolkit's public API and
-  return with that migration; a producer is never part of any trust
-  story, so the certificates stand on their own in the meantime;
+  Producer coverage is family-scoped: the Section 1 and Section 2
+  published-table families have revision-pinned modelling-toolkit producer
+  receipts and checked-production artefacts, while several older families
+  currently ship only their certificates and replay paths. The remaining
+  campaign-specific producers are migrating to the modelling toolkit's
+  release API; a producer is never part of any trust story, so every
+  certificate stands on its own in the meantime;
 - **fixtures** are the certificates actually published, committed
   byte-for-byte;
 - **checkers** replay certificates in exact arithmetic and are the only
@@ -48,15 +51,19 @@ make gymnasium          # certified rows for the Gymnasium RL suite
 make circuits           # hardware liveness: 245 certificates over all 219 benchmark tasks
 make semicon            # fluid-stability certificates for semiconductor fab models
 make variadic           # transfer-theorem countermodel batteries (exact rationals)
-make chapter            # all of the above + the full typeset chapter PDF
+make timing-receipt-validator-test  # schema + mutant tests for timing receipts
+make timing-tables       # validate timing receipts and regenerate timing tables only
+make chapter            # all public replay targets + the full typeset chapter PDF
 ```
 
-Each target runs the full pipeline: `cargo build --release` (checkers,
-through the git-reference imports) → the stored certificates and their
-mutant batteries are re-verified through the independent checkers →
-the tables are re-derived from the receipt files
-(`tables/gen_tables.ts`) → `lualatex` typesets the section standalone
-into `build/sections/`.
+Each family target runs its shipped public reproduction spine: build the
+pinned checkers, re-verify the committed certificates and mutant batteries,
+validate and re-derive the tables from committed receipts, then typeset the
+section. It does not imply producer coverage for every family. The narrower
+`make timing-tables` target neither runs campaign producers nor fetches
+unrelated third-party pins; it validates the committed timing receipts and
+regenerates the timing-derived table fragments in place. `make chapter`
+performs the broader checker/replay/PDF build.
 
 Gymnasium family subtargets: `make gymnasium-text` (FrozenLake,
 CliffWalking, Taxi, Blackjack — re-check of the committed certificate
@@ -95,6 +102,21 @@ tools/             fetch-pins.sh (pinned third-party trees)
 
 ## Cloning and building
 
+The coalition's unsuffixed public repositories are the intended release
+URLs. During this private-preview phase they are not yet advertised as
+publicly available, and the current build pin is served from the private
+`qtsl-dev` rail. An authenticated preview clone therefore works as written;
+a release clone can override the companion URL without editing the
+Makefile:
+
+```
+make QTSL_REPO=https://github.com/maitria-coalition/qtsl
+```
+
+That override succeeds only when the pinned `QTSL_REV` is present on the
+release repository. This README does not claim that the private-to-public
+flip has happened.
+
 Requirements: Rust (stable), Node ≥ 22 (the drivers are TypeScript,
 zero npm packages), GNU make, git, `zstd`, and a TeX Live with
 `lualatex` for the PDF steps. One residue: Python ≥ 3.10 with `cbor2`
@@ -115,11 +137,11 @@ Two steps fetch from the companion repositories:
    guarded-specification lane included — are sealed at the current
    baked revision event and share the one pin.
 
-Public clones need no auth at all; private mirrors work through any
-GitHub auth your git already has (the `gh` CLI's credential helper, an
-SSH key, or a PAT). The committed `Cargo.lock` pins the exact revisions
-of the imported checker crates; bumping them is a deliberate act
-(`cargo update` + re-run), never a side effect.
+Private-preview clones work through any GitHub auth your git already has
+(the `gh` CLI's credential helper, an SSH key, or a PAT). After the public
+flip, release URLs require no authentication. The committed `Cargo.lock`
+pins the exact revisions of the imported checker crates; bumping them is a
+deliberate act (`cargo update` + re-run), never a side effect.
 
 ## The Atari ROM note
 
@@ -137,14 +159,40 @@ your own legally obtained ROM image (`gymnasium/atari/README.md`).
 The python trace/claim harness that produced the claim bundles is
 part of the producer migration described above and returns with it.
 
+## Producer campaign provenance
+
+Producer availability is recorded per family rather than by a blanket
+repository-wide claim. The published-table Section 1 re-conduct is the
+narrowest complete example: its
+[`PROVENANCE.json`](supermartingales/out/glc-baked/sec1/gb10-retime/PROVENANCE.json)
+pins the modelling-toolkit, QTSL, geolog, experiments, and closure revisions;
+the producer and checker binary digests; the one-warmup/ten-repeat protocol;
+and the exact invocation. The producer source is the `mtk` repository at
+revision `c30397c46c3831ad3f2f6dfc5a7190f881935a4f`; build it with:
+
+```
+git clone https://github.com/maitria-coalition/mtk
+cd mtk
+git checkout c30397c46c3831ad3f2f6dfc5a7190f881935a4f
+cargo build --release -p mtk-strategies --bin supermart-sec1
+```
+
+Then replace `<qtsl-experiments>` in the recorded command with the absolute
+path to this checkout. As with the companion checkout above, these release
+URLs become usable when the coalition flips the currently private release
+repositories; before that event, the committed recipe is human-sufficient
+provenance, not a claim of unauthenticated availability. Section 2's sibling
+machine directories record the same checked-production protocol and binary
+identities for that producer vintage.
+
 ## What is deliberately absent
 
-- **The producers, temporarily.** The python programs that synthesized
-  these certificates are migrating to TypeScript on the modelling
-  toolkit's public API and return with that migration. Everything the
-  trust story rests on ships now: the certificates byte-for-byte, the
-  independent checkers, the mutant batteries, the receipts, and the
-  mechanical receipt-to-table derivation.
+- **Producer coverage for some families.** The older Gymnasium, circuits,
+  semiconductor, Atari, and remaining campaign-specific producers are not
+  yet all distributed through this repository's public target surface.
+  Their committed certificates, independent checkers, mutant batteries,
+  receipts, and mechanical receipt-to-table derivation remain fully
+  replayable. Availability is stated in each family's README or target.
 - **Invention.** The method-authoring process behind the certificates
   is a record, not a rerunnable artefact; producers re-synthesize
   certificates, they do not re-discover methods.

@@ -1,0 +1,83 @@
+{
+ "receipt_version": 1,
+ "schema": "maitria.supermart.checker-compare.v1",
+ "section": "sec1",
+ "machine": "w2145",
+ "protocol": "two full-roster checked-production campaigns (1 flagged warmup + 10 measured repeats per benchmark), identical but for --retain-containers; arm order retain-first then no-retain; outer wall is the monotonic process wall of the whole campaign invocation; retained copies land on the same filesystem as the repository and are deleted after measurement (byte-identical to the committed incumbents, re-verified by the runner's own gates on every row)",
+ "wall_semantics": "monotonic clock around child process spawn-to-exit (includes process startup)",
+ "checker_binary": {
+  "path": "glc-check",
+  "sha256": "66dc37e61279d460dd81e2ed063b0c9ba51854664bf5c3e50ba923d08e7b8c6a"
+ },
+ "qtsl_experiments_revision": "f3b5f526c9bd9c52c9fcfe6e0e96d97a0eafeca2",
+ "environment_start": {
+  "loadavg": [
+   19.056640625,
+   20.40966796875,
+   20.31005859375
+  ],
+  "nproc": 16,
+  "nice": 19,
+  "utc": "2026-08-02T09:33:50Z"
+ },
+ "runner_binary": {
+  "path": "supermart-sec1",
+  "sha256": "b488f14a6d23d0c4b57d7412c38c1f3649fa047cc9a31b3c962a00d46f1b98dd"
+ },
+ "arms": {
+  "retain": {
+   "outer_wall_s": 14.685732932994142,
+   "retained_files": 33,
+   "retained_bytes": 164307,
+   "binary_sha256": "b488f14a6d23d0c4b57d7412c38c1f3649fa047cc9a31b3c962a00d46f1b98dd",
+   "mtk_revision": "6ccb1d863cc79f1cc8da5e87e62039bd20442e38",
+   "rows": 33,
+   "measured_rows": 30,
+   "all_byte_identical": true,
+   "sum_row_wall_s": 7.2578299699999995,
+   "sum_measured_row_wall_s": 6.59512408,
+   "median_wall_s_by_bench": {
+    "faulty_marbles": 0.15762618,
+    "faulty_regions": 0.266198036,
+    "faulty_unreliable": 0.23569984700000002
+   },
+   "median_check_s_by_bench": {
+    "faulty_marbles": 0.028216302999999998,
+    "faulty_regions": 0.053976166,
+    "faulty_unreliable": 0.043944766999999996
+   }
+  },
+  "no_retain": {
+   "outer_wall_s": 13.189415053930134,
+   "binary_sha256": "b488f14a6d23d0c4b57d7412c38c1f3649fa047cc9a31b3c962a00d46f1b98dd",
+   "mtk_revision": "6ccb1d863cc79f1cc8da5e87e62039bd20442e38",
+   "rows": 33,
+   "measured_rows": 30,
+   "all_byte_identical": true,
+   "sum_row_wall_s": 6.899554605,
+   "sum_measured_row_wall_s": 6.24327885,
+   "median_wall_s_by_bench": {
+    "faulty_marbles": 0.15580958649999999,
+    "faulty_regions": 0.2290449035,
+    "faulty_unreliable": 0.23030398800000002
+   },
+   "median_check_s_by_bench": {
+    "faulty_marbles": 0.027102136,
+    "faulty_regions": 0.046777896,
+    "faulty_unreliable": 0.042534540999999995
+   }
+  }
+ },
+ "outer_wall_delta_s": 1.4963178790640086,
+ "environment_end": {
+  "loadavg": [
+   22.06201171875,
+   20.9658203125,
+   20.494140625
+  ],
+  "nproc": 16,
+  "nice": 19,
+  "utc": "2026-08-02T09:34:18Z"
+ },
+ "INVALIDATED": "co-tenant overlap: a co-tenant Lean build job (arrival 2026-08-02T09:33:52Z) started during the retain arm; per the zero-co-tenant-window discipline this cell is invalidated and kept only as the overlap specimen (spurious +1.496 s delta where the clean-window cells on both machines read ~0). The cell was retired rather than re-taken: the version-2 campaign receipts measure the retained-copy cost inline (rows_retain_copy_s), superseding this outer-wall A/B protocol for its own question; the clean-window gb10 A/B cell cross-checks the ~0 verdict."
+}

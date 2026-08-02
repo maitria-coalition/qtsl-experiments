@@ -34,22 +34,32 @@
  *   supermartingales/out/sec3/receipts.json      house bounds, sec. 3 rows
  *   supermartingales/out/sec1/summary.json       house bounds, sec. 1 rows
  *   supermartingales/out/sec2/sweep_rows.json    house bounds, sec. 2 rows
- *   supermartingales/out/glc-baked/sec2/a40-retime/produce-gpu.json
- *                                                re-conducted rows' produce walls
- *   supermartingales/out/glc-baked/sec2/a40-retime/geolog-shared.json
- *                                                re-conducted rows' geolog walls
+ *   supermartingales/out/glc-baked/secN/<machine>-retime/
+ *                                                re-conducted rows' produce
+ *                                                and geolog walls, one
+ *                                                directory per machine:
+ *                                                produce-gpu.json,
+ *                                                produce-host.json,
+ *                                                geolog-shared.json
+ *   tables/sweep-timing-absences.json             declared timing holes
  *   supermartingales/out/gen-faulty-uniform-receipts.json  two-sided row
  *   supermartingales/out/sweep/SWEEP.md          persist_2d bound fraction
  *                                                (its per-file receipts have
  *                                                not yet migrated here)
  *   supermartingales/out/sec2/certified-checker/census.tsv
- *                                                certified-checker replay
+ *     + census.<machine>.tsv                     certified-checker replay,
+ *                                                per machine
  *   supermartingales/out/sec2/certified-checker/seal-twin-verdicts.tsv
  *                                                fast-path twin at seal
  *   gymnasium/out/producer_receipts.json         hitting-tier bounds
  *   gymnasium/out/producer_receipts_tt.json      toy-text bounds + gaps
  *   gymnasium/out/checker_receipts.json          hitting-tier check medians
  *   gymnasium/out/checker_receipts_tt.json       toy-text check medians
+ *     (+ checker_receipts.<machine>.json,
+ *        checker_receipts_tt.<machine>.json      per-machine re-times)
+ *   MACHINES.md                                  the machine registry: every
+ *                                                machine tag on a timing cell
+ *                                                resolves to one of its ids
  *   gymnasium/out/RESULTS.md                     registry thresholds (200)
  *   gymnasium/out/ll/ll_cert_receipts.json       LunarLander U5 bounds
  *   gymnasium/out/llc/llc_cert_receipts.json     LunarLanderContinuous U5
@@ -75,9 +85,21 @@
  *   - improvement ratios: 2 decimals (nearest) below 100, else scientific
  *     at 2 significant digits;
  *   - check wall-clocks: nearest microsecond below 1 ms in the us-styled
- *     rows; 2 significant digits in the ms-styled rows.
+ *     rows; 2 significant digits in the ms-styled rows;
+ *   - machine tags: a wall-clock cell derived from a receipt that names a
+ *     machine of the registry (MACHINES.md) carries that machine's id as
+ *     a superscript; where receipts exist on more than one machine (or,
+ *     for checked production, more than one proposer lane: <machine> is
+ *     the GPU-proposing lane, <machine>/host the CPU-proposing one), the
+ *     cell shows the best (minimum) median and the superscript names the
+ *     winner (ties break to the lexicographically first id).
  *
- * Usage:  node --experimental-strip-types tables/gen_tables.ts [--no-verify]
+ * Usage:  node --experimental-strip-types tables/gen_tables.ts
+ *           [--no-verify] [--strip-machine-marks]
+ *           [--test-retime-validator | --validate-retimes-only]
+ * --strip-machine-marks emits the tables without the machine-id
+ * superscripts (hole marks stay) — a regression aid for numeric diffs
+ * against table vintages that predate the machine tags.
  * Exit status: 0 on success (and verification pass), 2 on verification
  * divergence, 1 on missing receipts.
  */
@@ -337,6 +359,82 @@ function readText(rel: string): string {
 }
 
 // --------------------------------------------------------------------------
+// the machine registry, and best-of selection over per-machine receipts
+// --------------------------------------------------------------------------
+
+/** The machine ids pinned in MACHINES.md (the backticked `id` column of
+ * its table), read at runtime: a new machine lands with its receipts
+ * and its registry row, never as an edit here. */
+function machineIds(): Set<string> {
+  const ids = new Set<string>();
+  for (const line of readText("MACHINES.md").split("\n")) {
+    const m = /^\|\s*`([A-Za-z0-9_-]+)`\s*\|/.exec(line);
+    if (m !== null) ids.add(m[1]);
+  }
+  assert(ids.size > 0, "MACHINES.md: no machine ids parsed");
+  return ids;
+}
+
+const MACHINE_IDS = machineIds();
+
+/** A timing-receipt config id is a registry machine id, optionally with
+ * a lane annotation after a slash (MACHINES.md's tag syntax). */
+function assertMachine(config: string, where: string): void {
+  const base = config.split("/")[0];
+  assert(
+    MACHINE_IDS.has(base),
+    `${where}: machine id ${base} is not in MACHINES.md`,
+  );
+}
+
+/** A best-of timing value: the minimum median, and which machine
+ * config attained it. */
+type Timed = { s: number; config: string };
+
+/** Fold per-config maps (config id -> benchmark -> median) into the
+ * per-benchmark minimum; ties break to the lexicographically first
+ * config id (the fold visits configs in sorted order, strict <). */
+function bestOf(cands: Map<string, Record<string, number>>): Record<string, Timed> {
+  const out: Record<string, Timed> = {};
+  for (const config of [...cands.keys()].sort()) {
+    for (const [bench, s] of Object.entries(cands.get(config)!)) {
+      if (out[bench] === undefined || s < out[bench].s) {
+        out[bench] = { s, config };
+      }
+    }
+  }
+  return out;
+}
+
+/** A machine tag as its own trailing math segment (for cells whose
+ * math has already closed, e.g. `$15\,\mu$s`). */
+function superMark(m: string): string {
+  return String.raw`$^{\,\text{${m}}}$`;
+}
+
+/** Remove machine-id superscripts (keeping hole/footnote marks) from
+ * emitted table text — the --strip-machine-marks regression aid. */
+function stripMachineMarks(text: string): string {
+  const isMachineConfig = (tok: string): boolean =>
+    MACHINE_IDS.has(tok.split("/")[0]);
+  const filter = (content: string): string =>
+    content
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t !== "" && !isMachineConfig(t))
+      .join(", ");
+  return text
+    .replace(/\$\^\{\\,\\text\{([^{}]*)\}\}\$/g, (_all, c: string) => {
+      const f = filter(c);
+      return f === "" ? "" : `$^{\\,\\text{${f}}}$`;
+    })
+    .replace(/\^\{\\,\\text\{([^{}]*)\}\}/g, (_all, c: string) => {
+      const f = filter(c);
+      return f === "" ? "" : `^{\\,\\text{${f}}}`;
+    });
+}
+
+// --------------------------------------------------------------------------
 // Table 1: the published-table sweep
 // --------------------------------------------------------------------------
 
@@ -553,29 +651,33 @@ function buildSweepTable(): string {
  *     attains the row's best sound published bound (Farkas' lemma
  *     time, or learn + verify for the neural routes) — the same
  *     bound-selection rule as the bounds table, applied to times.
- *   produce — for rows re-conducted onto the shared-subtree vintage,
- *     out/glc-baked/sec2/a40-retime/produce-gpu.json: median over the
- *     non-warmup repeats of the checked-production total (produce +
- *     in-loop check + seal), GPU-proposing lane, output byte-identical
- *     to the committed container on every repeat; for the remaining
- *     rows, the campaign legs' producer walls:
+ *   checked production — for rows re-conducted onto the shared-subtree vintage,
+ *     out/glc-baked/secN/<machine>-retime/produce-{gpu,host}.json:
+ *     median over the non-warmup repeats of the checked-production
+ *     total (produce + in-loop check + seal), output byte-identical
+ *     to the committed container on every repeat, best machine and
+ *     proposer lane per benchmark (winner in the cell's machine tag);
+ *     for the remaining rows, the campaign legs' producer walls:
  *     out/sec2/sweep_rows.json ms_produce + out/sec3/receipts.json
  *     t_synth_s (summed where a row's corpus spans both legs).
  *   geolog check — for re-conducted rows,
- *     out/glc-baked/sec2/a40-retime/geolog-shared.json: median
- *     glc-check wall over the row's one shared-subtree container; for
- *     the remaining rows, out/glc/GLC-TIMINGS.json: the geolog
- *     fast-path checker (glc-check) over the row's sealed containers,
- *     total wall per row (machine + binary hash in each receipt).
- *   qtslab check — out/sec2/certified-checker/census.tsv: sum of the
+ *     out/glc-baked/secN/<machine>-retime/geolog-shared.json: median
+ *     glc-check wall over the row's one shared-subtree container,
+ *     best machine per benchmark; for the remaining rows,
+ *     out/glc/GLC-TIMINGS.<machine>.json (best machine per row) or,
+ *     while no per-machine receipt exists, the legacy untagged
+ *     out/glc/GLC-TIMINGS.json: the geolog fast-path checker
+ *     (glc-check) over the row's sealed containers, total wall per
+ *     row (machine + binary hash in each receipt).
+ *   qtslab check — out/sec2/certified-checker/census.tsv (and
+ *     census.<machine>.tsv, best machine per family): sum of the
  *     certified build's per-VC walls for the row's stored
  *     corpus (machine + protocol in provenance.json beside it).
  *
- * Missing-cell marks (the notes block in the section file states the
- * reasons in prose):
+ * Missing-cell marks are loaded from tables/sweep-timing-absences.json;
+ * the notes block in the section file renders their public explanation:
  *   a — the persist_2d VC bundle has not migrated into this
- *       repository (no house walls to report);
- *   b — producer wall not recorded in that leg's receipts;
+ *       repository (no toolkit walls to report);
  *   c — row not in the certified-checker replay's stored corpus;
  *   d — the certified-checker replay covers the row's stored sec-2
  *       subset (fewer files than the VCs column);
@@ -658,15 +760,88 @@ function bestPublishedRoute(
   return best;
 }
 
-/** Per-family accepted-wall sums from the certified-checker census. */
-function qtslabFamilySums(): Record<string, { n: number; wall_s: number }> {
-  const out: Record<string, { n: number; wall_s: number }> = {};
-  for (const line of readText(QTSLAB_DIR + "/census.tsv").trimEnd().split("\n")) {
-    const [famName, , , verdict, wall] = line.split("\t");
-    assert(verdict.startsWith("s QTSLAB ACCEPT"), `census non-accept: ${line}`);
-    const fam = (out[famName] ??= { n: 0, wall_s: 0 });
-    fam.n += 1;
-    fam.wall_s += parseFloat(wall);
+/** The certified-checker replay censuses: the committed census.tsv
+ * (machine id derived from the provenance record beside it) plus any
+ * census.<machine>.tsv beside it.  A suffixed census REPLACES the bare
+ * one when both name the same machine — a re-timed census for the
+ * incumbent machine supersedes the original run rather than competing
+ * with it. */
+function qtslabCensuses(): { machine: string; rel: string }[] {
+  const byMachine = new Map<string, string>();
+  for (const name of fs.readdirSync(path.join(ROOT, QTSLAB_DIR)).sort()) {
+    const m = /^census\.([A-Za-z0-9_-]+)\.tsv$/.exec(name);
+    if (m === null) continue;
+    assertMachine(m[1], `${QTSLAB_DIR}/${name}`);
+    byMachine.set(m[1], `${QTSLAB_DIR}/${name}`);
+  }
+  const incumbent = incumbentCensusMachine();
+  if (!byMachine.has(incumbent)) {
+    byMachine.set(incumbent, `${QTSLAB_DIR}/census.tsv`);
+  }
+  return [...byMachine.entries()]
+    .sort()
+    .map(([machine, rel]) => ({ machine, rel }));
+}
+
+/** The bare census.tsv's machine id: the unique registry id appearing,
+ * as a word, in its provenance record's machine string (the receipts'
+ * normalization convention writes hardware names there, so the id is
+ * recognized rather than transcribed). */
+function incumbentCensusMachine(): string {
+  const machine = String(
+    loadJson(`${QTSLAB_DIR}/provenance.json`).protocol.machine,
+  );
+  const hits = [...MACHINE_IDS]
+    .sort()
+    .filter((id) => new RegExp(`\\b${id}\\b`, "i").test(machine));
+  assert(
+    hits.length === 1,
+    `census provenance machine ${pyRepr(machine)} matches registry ids [${hits}]`,
+  );
+  return hits[0];
+}
+
+/** Per-family accepted-wall sums from each machine's census, folded to
+ * the per-family minimum (ties to the lexicographically first machine).
+ * Family sets and sizes must agree across machines: the replay corpus
+ * is pinned, so a size mismatch is a vintage mixup, not a slower
+ * machine. */
+function qtslabFamilyBest(): Record<
+  string,
+  { n: number; wall_s: number; config: string }
+> {
+  const perMachine: [string, Record<string, { n: number; wall_s: number }>][] =
+    [];
+  for (const { machine, rel } of qtslabCensuses()) {
+    const sums: Record<string, { n: number; wall_s: number }> = {};
+    for (const line of readText(rel).trimEnd().split("\n")) {
+      const [famName, , , verdict, wall] = line.split("\t");
+      assert(verdict.startsWith("s QTSLAB ACCEPT"), `${rel} non-accept: ${line}`);
+      const fam = (sums[famName] ??= { n: 0, wall_s: 0 });
+      fam.n += 1;
+      fam.wall_s += parseFloat(wall);
+    }
+    perMachine.push([machine, sums]);
+  }
+  const famNames = Object.keys(perMachine[0][1]).sort().join();
+  const out: Record<string, { n: number; wall_s: number; config: string }> = {};
+  for (const [machine, sums] of perMachine) {
+    assert(
+      Object.keys(sums).sort().join() === famNames,
+      `census ${machine}: family set differs from ${perMachine[0][0]}'s`,
+    );
+    for (const [famName, fam] of Object.entries(sums)) {
+      const cur = out[famName];
+      if (cur === undefined) {
+        out[famName] = { ...fam, config: machine };
+      } else {
+        assert(
+          cur.n === fam.n,
+          `census family size differs across machines for ${famName}`,
+        );
+        if (fam.wall_s < cur.wall_s) out[famName] = { ...fam, config: machine };
+      }
+    }
   }
   return out;
 }
@@ -681,60 +856,766 @@ function median(xs: number[]): number {
   return s.length % 2 === 1 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
 }
 
-// The sec-2 re-conduct's timing receipts, committed beside the
-// shared-subtree containers they time.
-const A40_DIR = "supermartingales/out/glc-baked/sec2/a40-retime";
+// Re-conduct timing receipts are committed beside the baked section
+// they time: one <machine>-retime/ directory per machine of the registry.
+// Sections are discovered from the tree so a newly baked section enters
+// this lookup without a source edit.
+const BAKED_ROOT = "supermartingales/out/glc-baked";
 
-/** Per-benchmark medians over the non-warmup repeats of an a40-retime
- * receipt file.  `check` guards what the wall is a wall OF: a produce
- * repeat must report byte-identity to the committed container, and a
- * check repeat must accept — a timing for a run that produced
- * different bytes (or refused) would time the wrong event. */
-function a40Medians(
-  rel: string,
+type RetimeKind = "produce" | "geolog";
+type RetimeContext = {
+  rel: string;
+  section: string;
+  machine: string;
+  kind: RetimeKind;
+  lane: "gpu" | "host" | "geolog";
+};
+
+type ManifestCertificate = { benchmark: string; sha256: string };
+
+const SHA256_RE = /^[0-9a-f]{64}$/;
+const LEGACY_RETIME_SECTION = "sec2";
+/** The version-2 accounting identity, pinned byte-for-byte to the runner's
+ * declaration: a v2 receipt that cannot state its own accounting is refused
+ * rather than reinterpreted. */
+const RETIME_V2_PROCESS_WALL_RELATIONSHIP =
+  "process_wall_s>=accounted_s; " +
+  "accounted_s=preflight_s+spec_read_s+rows_setup_s+rows_invoke_s+rows_validation_s+rows_retain_copy_s+monitor_join_s; " +
+  "residual_s=process_wall_s-accounted_s; invoke_s>=wall_s";
+const LEGACY_RETIME_BENCHMARKS: Record<RetimeKind, string[]> = {
+  produce: [
+    "cliff_crossing", "faulty_concave", "faulty_varying",
+    "faulty_varying__last_step", "repulse100", "repulse100_2d",
+    "repulse100_uniform__discrete",
+  ],
+  geolog: [
+    "cliff_crossing", "faulty_concave", "faulty_varying",
+    "faulty_varying__last_step", "repulse100", "repulse100_2d",
+    "repulse100_uniform", "repulse100_uniform__discrete",
+  ],
+};
+
+function finiteNonnegative(value: unknown, where: string): number {
+  assert(
+    typeof value === "number" && Number.isFinite(value) && value >= 0,
+    `${where}: expected a finite nonnegative number`,
+  );
+  return value;
+}
+
+function stableSha(value: unknown, where: string): string {
+  assert(typeof value === "string" && SHA256_RE.test(value), `${where}: bad sha256`);
+  return value;
+}
+
+function retimeManifest(section: string): Map<string, ManifestCertificate> {
+  const rel = `${BAKED_ROOT}/${section}/MANIFEST.json`;
+  const certs = loadJson(rel).certificates;
+  assert(Array.isArray(certs) && certs.length > 0, `${rel}: no certificates`);
+  const out = new Map<string, ManifestCertificate>();
+  for (const cert of certs) {
+    const bench = String(cert.benchmark);
+    assert(!out.has(bench), `${rel}: duplicate benchmark ${bench}`);
+    stableSha(cert.sha256, `${rel}: ${bench}`);
+    out.set(bench, cert);
+  }
+  return out;
+}
+
+function validateRetimeProvenance(provenance: any, ctx: RetimeContext, rel: string): string {
+  const machine = String(provenance.machine ?? "");
+  assert(
+    new RegExp(`^${ctx.machine}\\b`, "i").test(machine),
+    `${rel}: machine ${pyRepr(machine)} disagrees with directory ${ctx.machine}`,
+  );
+  const requiredBinaries = ctx.kind === "produce"
+    ? ["onesys-driver", "supermart-sec1"]
+    : ["glc-check"];
+  const requiredBinary = requiredBinaries.find(
+    (name) => provenance.binaries?.[name] !== undefined,
+  );
+  assert(
+    requiredBinary !== undefined,
+    `${rel}: missing ${requiredBinaries.join(" or ")} identity`,
+  );
+  return stableSha(
+    provenance.binaries[requiredBinary].sha256,
+    `${rel}: ${requiredBinary}`,
+  );
+}
+
+function retimeProvenance(ctx: RetimeContext): any {
+  const rel = `${BAKED_ROOT}/${ctx.section}/${ctx.machine}-retime/PROVENANCE.json`;
+  const provenance = loadJson(rel);
+  validateRetimeProvenance(provenance, ctx, rel);
+  return provenance;
+}
+
+/** Validate one re-conduct receipt before deriving a timing from it.  Version
+ * 1 is the original production schema for newly conducted sections; version 2
+ * (produce receipts only) additionally carries the monotonic process wall and
+ * the per-row/campaign attribution block, validated against its own declared
+ * accounting identity; version 3 (produce receipts only, accounting identity
+ * unchanged) additionally carries the host load context — declared quiet
+ * gate, start/end/max load averages, affinity and niceness read back from
+ * the process — with per-row before/after 1-minute load samples, so a
+ * quietness claim is checkable: a receipt whose recorded starting load
+ * exceeds its own declared gate refuses.  The unversioned compatibility
+ * schema is deliberately confined to the already-published section-2
+ * campaign: copying an old-shaped receipt into section 1 refuses. */
+function validateRetimeReceipt(
+  receipt: any,
+  ctx: RetimeContext,
+  testDeps?: { manifest: Map<string, ManifestCertificate>; provenance: any },
+): { rows: any[]; expectedWarmups: number } {
+  assert(receipt !== null && typeof receipt === "object", `${ctx.rel}: object`);
+  const legacy = receipt.receipt_version === undefined;
+  if (legacy) {
+    assert(
+      ctx.section === LEGACY_RETIME_SECTION,
+      `${ctx.rel}: unversioned retime receipts are accepted only for ${LEGACY_RETIME_SECTION}`,
+    );
+  } else {
+    assert(
+      receipt.receipt_version === 1 ||
+        receipt.receipt_version === 2 ||
+        receipt.receipt_version === 3,
+      `${ctx.rel}: unsupported receipt_version`,
+    );
+    assert(receipt.machine === ctx.machine, `${ctx.rel}: top-level machine mismatch`);
+    assert(receipt.section === ctx.section, `${ctx.rel}: top-level section mismatch`);
+    assert(receipt.lane === ctx.lane, `${ctx.rel}: top-level lane mismatch`);
+    assert(
+      receipt.wall_relationship ===
+        (ctx.kind === "produce" ? "wall_s>=produce_s+check_s+seal_s" : "wall_s=checker_elapsed"),
+      `${ctx.rel}: missing or wrong wall_relationship declaration`,
+    );
+    if (receipt.receipt_version >= 2) {
+      assert(
+        ctx.kind === "produce",
+        `${ctx.rel}: receipt_version ${receipt.receipt_version} is produce-only`,
+      );
+      assert(
+        receipt.process_wall_relationship === RETIME_V2_PROCESS_WALL_RELATIONSHIP,
+        `${ctx.rel}: missing or wrong process_wall_relationship declaration`,
+      );
+      assert(
+        typeof receipt.process_wall_scope === "string" && receipt.process_wall_scope.length > 0,
+        `${ctx.rel}: missing process_wall_scope`,
+      );
+    }
+  }
+
+  const manifest = testDeps?.manifest ?? retimeManifest(ctx.section);
+  const provenance = testDeps?.provenance ?? retimeProvenance(ctx);
+  const trustedBinarySha = validateRetimeProvenance(
+    provenance,
+    ctx,
+    testDeps === undefined
+      ? `${BAKED_ROOT}/${ctx.section}/${ctx.machine}-retime/PROVENANCE.json`
+      : `${ctx.rel}: provenance`,
+  );
+  if (!legacy) {
+    const receiptBinarySha = stableSha(receipt.binary_sha256, `${ctx.rel}: binary_sha256`);
+    assert(
+      receiptBinarySha === trustedBinarySha,
+      `${ctx.rel}: binary_sha256 differs from trusted provenance`,
+    );
+  }
+  assert(Array.isArray(receipt.rows) && receipt.rows.length > 0, `${ctx.rel}: no rows`);
+  const expected = legacy
+    ? LEGACY_RETIME_BENCHMARKS[ctx.kind]
+    : receipt.expected_benchmarks;
+  assert(
+    Array.isArray(expected) && expected.length > 0 &&
+      expected.every((bench: unknown) => typeof bench === "string"),
+    `${ctx.rel}: expected_benchmarks must be a nonempty string array`,
+  );
+  assert(new Set(expected).size === expected.length, `${ctx.rel}: duplicate expected benchmark`);
+  for (const bench of expected) {
+    assert(manifest.has(bench), `${ctx.rel}: benchmark ${bench} absent from manifest`);
+  }
+  if (!legacy) {
+    const declared = [...expected].sort().join("\0");
+    const trusted = [...manifest.keys()].sort().join("\0");
+    assert(declared === trusted, `${ctx.rel}: expected benchmark set differs from manifest`);
+  }
+
+  const expectedIndices = ctx.kind === "produce"
+    ? Array.from({ length: 11 }, (_, i) => i)
+    : Array.from({ length: 10 }, (_, i) => i);
+  const byBench = new Map<string, any[]>();
+  for (const row of receipt.rows) {
+    const bench = String(row.bench);
+    assert(expected.includes(bench), `${ctx.rel}: unexpected benchmark ${bench}`);
+    assert(Number.isInteger(row.repeat), `${ctx.rel}: ${bench} repeat is not an integer`);
+    const rows = byBench.get(bench) ?? [];
+    rows.push(row);
+    byBench.set(bench, rows);
+
+    if (ctx.kind === "produce") {
+      assert(row.lane === ctx.lane, `${ctx.rel}: ${bench} row lane mismatch`);
+      assert(row.warmup === (row.repeat === 0), `${ctx.rel}: ${bench} warmup must be repeat 0 only`);
+      const produce = finiteNonnegative(row.produce_s, `${ctx.rel}: ${bench} produce_s`);
+      const check = finiteNonnegative(row.check_s, `${ctx.rel}: ${bench} check_s`);
+      const seal = finiteNonnegative(row.seal_s, `${ctx.rel}: ${bench} seal_s`);
+      const wall = finiteNonnegative(row.wall_s, `${ctx.rel}: ${bench} wall_s`);
+      assert(wall + 1e-12 >= produce + check + seal, `${ctx.rel}: ${bench} wall relationship violated`);
+      if (receipt.receipt_version >= 2) {
+        finiteNonnegative(row.setup_s, `${ctx.rel}: ${bench} setup_s`);
+        finiteNonnegative(row.validation_s, `${ctx.rel}: ${bench} validation_s`);
+        finiteNonnegative(row.retain_copy_s, `${ctx.rel}: ${bench} retain_copy_s`);
+        const invoke = finiteNonnegative(row.invoke_s, `${ctx.rel}: ${bench} invoke_s`);
+        assert(invoke + 1e-9 >= wall, `${ctx.rel}: ${bench} invoke bracket below conductor wall`);
+      }
+      if (receipt.receipt_version >= 3) {
+        finiteNonnegative(row.loadavg_before_1min, `${ctx.rel}: ${bench} loadavg_before_1min`);
+        finiteNonnegative(row.loadavg_after_1min, `${ctx.rel}: ${bench} loadavg_after_1min`);
+      }
+      assert(row.byte_identical === true, `${ctx.rel}: ${bench} is not byte-identical`);
+      const sha = stableSha(row.sha256, `${ctx.rel}: ${bench}`);
+      assert(sha === manifest.get(bench)!.sha256, `${ctx.rel}: ${bench} sha256 differs from manifest`);
+    } else {
+      assert(row.warmup === undefined || row.warmup === false, `${ctx.rel}: geolog warmup forbidden`);
+      finiteNonnegative(row.wall_s, `${ctx.rel}: ${bench} wall_s`);
+      assert(row.accept === true, `${ctx.rel}: ${bench} geolog did not accept`);
+      if (!legacy) {
+        const sha = stableSha(row.container_sha256, `${ctx.rel}: ${bench}`);
+        assert(sha === manifest.get(bench)!.sha256, `${ctx.rel}: ${bench} container sha differs from manifest`);
+      }
+    }
+  }
+
+  assert(byBench.size === expected.length, `${ctx.rel}: missing expected benchmark`);
+  for (const bench of expected) {
+    const rows = byBench.get(bench) ?? [];
+    const indices = rows.map((row) => row.repeat).sort((a, b) => a - b);
+    assert(
+      indices.length === expectedIndices.length &&
+        indices.every((value, i) => value === expectedIndices[i]),
+      `${ctx.rel}: ${bench} repeat indices are [${indices}], expected [${expectedIndices}]`,
+    );
+  }
+  if (receipt.receipt_version >= 2) {
+    validateRetimeAttribution(receipt, ctx);
+  }
+  if (receipt.receipt_version >= 3) {
+    validateRetimeLoadContext(receipt, ctx);
+  }
+  return { rows: receipt.rows, expectedWarmups: ctx.kind === "produce" ? 1 : 0 };
+}
+
+/** The v3 load context must witness its own claims: a declared quiet gate
+ * that the recorded starting load actually passed, load-average triples
+ * that are well-formed, a max-observed value that re-derives from every
+ * sample in the receipt (start, end, and each row's before/after), and
+ * scheduler placement fields read back from the process. */
+function validateRetimeLoadContext(receipt: any, ctx: RetimeContext): void {
+  const lc = receipt.load_context;
+  assert(lc !== null && typeof lc === "object", `${ctx.rel}: missing load_context`);
+  const triple = (value: unknown, where: string): number[] => {
+    assert(
+      Array.isArray(value) && value.length === 3,
+      `${where}: expected a 1/5/15-minute load-average triple`,
+    );
+    return value.map((entry, i) => finiteNonnegative(entry, `${where}[${i}]`));
+  };
+  const start = triple(lc.loadavg_start, `${ctx.rel}: load_context loadavg_start`);
+  const end = triple(lc.loadavg_end, `${ctx.rel}: load_context loadavg_end`);
+  const gate = lc.gate_max_load_1min;
+  if (gate !== null && gate !== undefined) {
+    finiteNonnegative(gate, `${ctx.rel}: load_context gate_max_load_1min`);
+    assert(
+      start[0] <= gate + 1e-9,
+      `${ctx.rel}: recorded starting load ${start[0]} exceeds the declared quiet gate ${gate} — a receipt cannot claim a gate it did not pass`,
+    );
+  }
+  let recomputedMax = Math.max(start[0], end[0]);
+  for (const row of receipt.rows) {
+    recomputedMax = Math.max(recomputedMax, row.loadavg_before_1min, row.loadavg_after_1min);
+  }
+  const declaredMax = finiteNonnegative(
+    lc.loadavg_max_1min_observed,
+    `${ctx.rel}: load_context loadavg_max_1min_observed`,
+  );
+  assert(
+    Math.abs(declaredMax - recomputedMax) <= 1e-9,
+    `${ctx.rel}: loadavg_max_1min_observed disagrees with the receipt's own samples`,
+  );
+  assert(
+    typeof lc.cpus_allowed_list === "string" && lc.cpus_allowed_list.trim() !== "",
+    `${ctx.rel}: load_context cpus_allowed_list must be a nonempty string`,
+  );
+  assert(
+    Number.isInteger(lc.cpus_allowed_count) && lc.cpus_allowed_count >= 1,
+    `${ctx.rel}: load_context cpus_allowed_count must be a positive integer`,
+  );
+  assert(
+    Number.isInteger(lc.nice) && lc.nice >= -20 && lc.nice <= 19,
+    `${ctx.rel}: load_context nice must be an integer in [-20, 19]`,
+  );
+}
+
+/** The v2 attribution block must re-derive from its own rows: declared row
+ * sums match recomputed sums, accounted_s matches its parts, the process
+ * wall covers the accounted phases, and residual_s is exactly the declared
+ * difference (never meaningfully negative — disjoint sub-intervals of one
+ * monotonic clock cannot exceed their whole). */
+function validateRetimeAttribution(receipt: any, ctx: RetimeContext): void {
+  const a = receipt.attribution;
+  assert(a !== null && typeof a === "object", `${ctx.rel}: missing attribution`);
+  const preflight = finiteNonnegative(a.preflight_s, `${ctx.rel}: attribution preflight_s`);
+  const specRead = finiteNonnegative(a.spec_read_s, `${ctx.rel}: attribution spec_read_s`);
+  const monitorJoin = finiteNonnegative(a.monitor_join_s, `${ctx.rel}: attribution monitor_join_s`);
+  const sums: Record<string, number> = {
+    rows_setup_s: 0,
+    rows_invoke_s: 0,
+    rows_validation_s: 0,
+    rows_retain_copy_s: 0,
+  };
+  for (const row of receipt.rows) {
+    sums.rows_setup_s += finiteNonnegative(row.setup_s, `${ctx.rel}: ${row.bench} setup_s`);
+    sums.rows_invoke_s += finiteNonnegative(row.invoke_s, `${ctx.rel}: ${row.bench} invoke_s`);
+    sums.rows_validation_s += finiteNonnegative(
+      row.validation_s,
+      `${ctx.rel}: ${row.bench} validation_s`,
+    );
+    sums.rows_retain_copy_s += finiteNonnegative(
+      row.retain_copy_s,
+      `${ctx.rel}: ${row.bench} retain_copy_s`,
+    );
+  }
+  for (const [field, sum] of Object.entries(sums)) {
+    const declared = finiteNonnegative(a[field], `${ctx.rel}: attribution ${field}`);
+    assert(
+      Math.abs(declared - sum) <= 1e-6,
+      `${ctx.rel}: attribution ${field} disagrees with the row sum`,
+    );
+  }
+  const accounted = finiteNonnegative(a.accounted_s, `${ctx.rel}: attribution accounted_s`);
+  const recomputed = preflight + specRead + sums.rows_setup_s + sums.rows_invoke_s +
+    sums.rows_validation_s + sums.rows_retain_copy_s + monitorJoin;
+  assert(
+    Math.abs(accounted - recomputed) <= 1e-6,
+    `${ctx.rel}: accounted_s disagrees with its declared parts`,
+  );
+  const processWall = finiteNonnegative(receipt.process_wall_s, `${ctx.rel}: process_wall_s`);
+  assert(
+    typeof a.residual_s === "number" && Number.isFinite(a.residual_s) && a.residual_s >= -1e-3,
+    `${ctx.rel}: residual_s must be finite and not meaningfully negative`,
+  );
+  assert(
+    Math.abs(processWall - accounted - a.residual_s) <= 1e-6,
+    `${ctx.rel}: residual_s disagrees with process_wall_s - accounted_s`,
+  );
+}
+
+/** Per-benchmark medians over structurally validated repeats. */
+function retimeMedians(
+  receipt: any,
+  ctx: RetimeContext,
   value: (row: any) => number,
-  check: (row: any) => boolean,
 ): Record<string, number> {
+  const validated = validateRetimeReceipt(receipt, ctx);
   const byBench = new Map<string, number[]>();
-  for (const row of loadJson(`${A40_DIR}/${rel}`).rows) {
-    if (row.warmup === true) continue;
-    assert(check(row), `${rel}: bad repeat ${row.bench}#${row.repeat}`);
+  const warmups = new Map<string, number>();
+  for (const row of validated.rows) {
+    if (row.warmup === true) {
+      warmups.set(row.bench, (warmups.get(row.bench) ?? 0) + 1);
+      continue;
+    }
     const xs = byBench.get(row.bench) ?? [];
-    xs.push(value(row));
+    xs.push(finiteNonnegative(value(row), `${ctx.rel}: ${row.bench} timing value`));
     byBench.set(row.bench, xs);
   }
   const out: Record<string, number> = {};
   for (const [bench, xs] of byBench) {
-    assert(xs.length === 10, `${rel}: ${bench} has ${xs.length} repeats`);
+    assert(xs.length === 10, `${ctx.rel}: ${bench} has ${xs.length} measured repeats`);
+    assert(
+      (warmups.get(bench) ?? 0) === validated.expectedWarmups,
+      `${ctx.rel}: ${bench} has ${warmups.get(bench) ?? 0} flagged warmups`,
+    );
     out[bench] = median(xs);
   }
   return out;
 }
 
+function runRetimeValidatorTests(): void {
+  const shaA = "a".repeat(64);
+  const shaB = "b".repeat(64);
+  const manifest = new Map<string, ManifestCertificate>([
+    ["alpha", { benchmark: "alpha", sha256: shaA }],
+    ["beta", { benchmark: "beta", sha256: shaB }],
+  ]);
+  const provenance = {
+    machine: "gb10 (fixture)",
+    binaries: {
+      "onesys-driver": { sha256: "c".repeat(64) },
+      "glc-check": { sha256: "d".repeat(64) },
+    },
+  };
+  const produceCtx: RetimeContext = {
+    rel: "fixture/sec1/gb10-retime/produce-host.json",
+    section: "sec1",
+    machine: "gb10",
+    kind: "produce",
+    lane: "host",
+  };
+  const geologCtx: RetimeContext = {
+    ...produceCtx,
+    rel: "fixture/sec1/gb10-retime/geolog-shared.json",
+    kind: "geolog",
+    lane: "geolog",
+  };
+  const produceRows = [...manifest].flatMap(([bench, cert]) =>
+    Array.from({ length: 11 }, (_, repeat) => ({
+      bench, repeat, warmup: repeat === 0, lane: "host",
+      produce_s: 1, check_s: 2, seal_s: 3, wall_s: 6,
+      byte_identical: true, sha256: cert.sha256,
+    })),
+  );
+  const geologRows = [...manifest].flatMap(([bench, cert]) =>
+    Array.from({ length: 10 }, (_, repeat) => ({
+      bench, repeat, wall_s: 1, accept: true, container_sha256: cert.sha256,
+    })),
+  );
+  const produce = {
+    receipt_version: 1, machine: "gb10", section: "sec1", lane: "host",
+    wall_relationship: "wall_s>=produce_s+check_s+seal_s",
+    binary_sha256: "c".repeat(64),
+    expected_benchmarks: ["alpha", "beta"], rows: produceRows,
+  };
+  const geolog = {
+    receipt_version: 1, machine: "gb10", section: "sec1", lane: "geolog",
+    wall_relationship: "wall_s=checker_elapsed",
+    binary_sha256: "d".repeat(64),
+    expected_benchmarks: ["alpha", "beta"], rows: geologRows,
+  };
+  // Version-2 fixture: same benches, plus the attribution block. The row
+  // phase values are chosen so every declared sum re-derives (22 rows):
+  // setup 22*0.1, invoke 22*6.5, validation 22*0.2, retain 22*0.05.
+  const produce2Rows = [...manifest].flatMap(([bench, cert]) =>
+    Array.from({ length: 11 }, (_, repeat) => ({
+      bench, repeat, warmup: repeat === 0, lane: "host",
+      produce_s: 1, check_s: 2, seal_s: 3, wall_s: 6,
+      setup_s: 0.1, invoke_s: 6.5, validation_s: 0.2, retain_copy_s: 0.05,
+      byte_identical: true, sha256: cert.sha256,
+    })),
+  );
+  const produce2 = {
+    receipt_version: 2, machine: "gb10", section: "sec1", lane: "host",
+    wall_relationship: "wall_s>=produce_s+check_s+seal_s",
+    process_wall_relationship: RETIME_V2_PROCESS_WALL_RELATIONSHIP,
+    process_wall_scope: "fixture scope note",
+    process_wall_s: 152.5,
+    attribution: {
+      preflight_s: 1.0, spec_read_s: 0.1,
+      rows_setup_s: 2.2, rows_invoke_s: 143.0,
+      rows_validation_s: 4.4, rows_retain_copy_s: 1.1,
+      monitor_join_s: 0.2, accounted_s: 152.0, residual_s: 0.5,
+    },
+    binary_sha256: "c".repeat(64),
+    expected_benchmarks: ["alpha", "beta"], rows: produce2Rows,
+  };
+  // Version-3 fixture: version 2 plus the load context. Row samples run
+  // 1.5/2.0, start 1.2, end 2.5 => max observed 2.5; gate 4.0 admits the
+  // 1.2 start.
+  const produce3Rows = produce2Rows.map((row) => ({
+    ...structuredClone(row),
+    loadavg_before_1min: 1.5,
+    loadavg_after_1min: 2.0,
+  }));
+  const produce3 = {
+    ...structuredClone(produce2),
+    receipt_version: 3,
+    rows: produce3Rows,
+    load_context: {
+      gate_max_load_1min: 4.0,
+      loadavg_start: [1.2, 1.4, 1.6],
+      loadavg_end: [2.5, 1.8, 1.7],
+      loadavg_max_1min_observed: 2.5,
+      cpus_allowed_list: "5-9,15,16",
+      cpus_allowed_count: 7,
+      nice: 19,
+    },
+  };
+  const deps = { manifest, provenance };
+  validateRetimeReceipt(structuredClone(produce), produceCtx, deps);
+  validateRetimeReceipt(structuredClone(geolog), geologCtx, deps);
+  validateRetimeReceipt(structuredClone(produce2), produceCtx, deps);
+  validateRetimeReceipt(structuredClone(produce3), produceCtx, deps);
+  // An ungated (load-uncontrolled) v3 receipt is valid: the gate is a
+  // declaration, not a requirement of the schema.
+  const produce3Ungated = structuredClone(produce3);
+  produce3Ungated.load_context.gate_max_load_1min = null;
+  validateRetimeReceipt(produce3Ungated, produceCtx, deps);
+
+  let rejected = 0;
+  const reject = (name: string, mutate: (receipt: any, dep: any) => void,
+                  base: any = produce, ctx: RetimeContext = produceCtx): void => {
+    const rec = structuredClone(base);
+    const localDeps = structuredClone({
+      provenance,
+      manifest: Object.fromEntries(manifest),
+    });
+    const mapped = new Map<string, ManifestCertificate>(Object.entries(localDeps.manifest));
+    const ds = { manifest: mapped, provenance: localDeps.provenance };
+    mutate(rec, ds);
+    let refused = false;
+    try { validateRetimeReceipt(rec, ctx, ds); } catch { refused = true; }
+    assert(refused, `validator mutant survived: ${name}`);
+    rejected += 1;
+  };
+  reject("duplicate repeat", (r) => { r.rows[1].repeat = 0; });
+  reject("wrong warmup index", (r) => { r.rows[0].warmup = false; r.rows[1].warmup = true; });
+  reject("wrong row lane", (r) => { r.rows[0].lane = "gpu"; });
+  reject("wrong top-level lane", (r) => { r.lane = "gpu"; });
+  reject("wrong sha", (r) => { r.rows[0].sha256 = "e".repeat(64); });
+  reject("syntactically invalid sha", (r) => { r.rows[0].sha256 = "stable-false"; });
+  for (const [name, value] of [["negative", -1], ["string", "1"], ["null", null]]) {
+    reject(`${name} phase`, (r) => { r.rows[0].check_s = value; });
+  }
+  reject("wall mismatch", (r) => { r.rows[0].wall_s = 5.99; });
+  reject("missing benchmark", (r) => { r.rows = r.rows.filter((x: any) => x.bench !== "beta"); });
+  reject("wrong machine", (r) => { r.machine = "a40"; });
+  reject("wrong provenance machine", (_r, d) => { d.provenance.machine = "a40"; });
+  reject("missing binary", (_r, d) => { delete d.provenance.binaries["onesys-driver"]; });
+  reject("wrong binary identity", (r) => {
+    r.binary_sha256 = "e".repeat(64);
+  });
+  reject("wrong geolog sha", (r) => { r.rows[0].container_sha256 = "e".repeat(64); }, geolog, geologCtx);
+  reject("geolog refusal", (r) => { r.rows[0].accept = false; }, geolog, geologCtx);
+  reject("new section legacy receipt", (r) => { delete r.receipt_version; });
+  reject("unsupported receipt_version", (r) => { r.receipt_version = 4; }, produce3);
+  reject("v2 on the geolog kind", (r) => { r.receipt_version = 2; }, geolog, geologCtx);
+  reject("v3 on the geolog kind", (r) => { r.receipt_version = 3; }, geolog, geologCtx);
+  reject("v2 missing attribution", (r) => { delete r.attribution; }, produce2);
+  reject("v2 missing process wall declaration", (r) => {
+    delete r.process_wall_relationship;
+  }, produce2);
+  reject("v2 wrong process wall declaration", (r) => {
+    r.process_wall_relationship = "the wall is probably fine";
+  }, produce2);
+  reject("v2 empty process wall scope", (r) => { r.process_wall_scope = ""; }, produce2);
+  reject("v2 negative row setup", (r) => { r.rows[0].setup_s = -1; }, produce2);
+  // Isolate the invoke>=wall gate: keep the attribution sums consistent with
+  // the mutated row so ONLY the bracket relationship refuses.
+  reject("v2 invoke bracket below conductor wall", (r) => {
+    r.rows[0].invoke_s = 5;
+    r.attribution.rows_invoke_s = 141.5;
+    r.attribution.accounted_s = 150.5;
+    r.process_wall_s = 151.0;
+  }, produce2);
+  reject("v2 attribution row-sum drift", (r) => {
+    r.attribution.rows_setup_s = 3.0;
+  }, produce2);
+  reject("v2 accounted below its parts", (r) => {
+    r.attribution.accounted_s = 100.0;
+  }, produce2);
+  reject("v2 process wall below accounted", (r) => { r.process_wall_s = 100.0; }, produce2);
+  reject("v2 residual books cooked", (r) => { r.attribution.residual_s = 0.4; }, produce2);
+  reject("v2 meaningfully negative residual", (r) => {
+    r.process_wall_s = 151.9;
+    r.attribution.residual_s = -0.1;
+  }, produce2);
+  reject("v3 missing load context", (r) => { delete r.load_context; }, produce3);
+  reject("v3 gate claimed but not passed", (r) => {
+    r.load_context.gate_max_load_1min = 1.0; // recorded start load is 1.2
+  }, produce3);
+  reject("v3 missing row load sample", (r) => {
+    delete r.rows[0].loadavg_after_1min;
+  }, produce3);
+  reject("v3 negative row load sample", (r) => {
+    r.rows[0].loadavg_before_1min = -1;
+  }, produce3);
+  reject("v3 max observed books cooked", (r) => {
+    r.load_context.loadavg_max_1min_observed = 0.1;
+  }, produce3);
+  reject("v3 max observed hides a row spike", (r) => {
+    // A row saw load 9.9 but the top-level max still claims 2.5.
+    r.rows[0].loadavg_after_1min = 9.9;
+  }, produce3);
+  reject("v3 malformed loadavg triple", (r) => {
+    r.load_context.loadavg_start = [1.2, 1.4];
+  }, produce3);
+  reject("v3 empty cpus list", (r) => { r.load_context.cpus_allowed_list = ""; }, produce3);
+  reject("v3 nonpositive cpu count", (r) => { r.load_context.cpus_allowed_count = 0; }, produce3);
+  reject("v3 non-integer nice", (r) => { r.load_context.nice = 3.5; }, produce3);
+  console.log(
+    `retime validator: ${rejected} mutants refused; valid produce/geolog/attribution fixtures accepted`,
+  );
+}
+
+/** Scan the <machine>-retime directories and select, per benchmark and
+ * per column, the best (minimum) median across machines — and, for the
+ * produce column, across proposer lanes: produce-gpu.json enters under
+ * the plain machine id, produce-host.json under <machine>/host.  A
+ * machine without a GPU simply commits no produce-gpu.json. */
+function retimeBestOf(): {
+  produce: Record<string, Timed>;
+  geolog: Record<string, Timed>;
+} {
+  const produceCands = new Map<string, Record<string, number>>();
+  const geologCands = new Map<string, Record<string, number>>();
+  // Versioned receipts (1, 2, and 3) carry the authoritative whole checked-
+  // production wall per row; only the legacy unversioned sec2 shape derives
+  // its wall from the phase sum.
+  const productionWall = (receipt: any) => (r: any): number =>
+    receipt.receipt_version !== undefined
+      ? r.wall_s
+      : r.produce_s + r.check_s + r.seal_s;
+  const add = (
+    cands: Map<string, Record<string, number>>,
+    config: string,
+    values: Record<string, number>,
+    rel: string,
+  ): void => {
+    const merged = { ...(cands.get(config) ?? {}) };
+    for (const [bench, value] of Object.entries(values)) {
+      assert(
+        merged[bench] === undefined,
+        `${rel}: duplicate retime for ${config}/${bench} across baked sections`,
+      );
+      merged[bench] = value;
+    }
+    cands.set(config, merged);
+  };
+  const base = path.join(ROOT, BAKED_ROOT);
+  for (const section of fs.readdirSync(base).sort()) {
+    const sectionBase = path.join(base, section);
+    if (!/^sec[0-9]+$/.test(section) || !fs.statSync(sectionBase).isDirectory()) {
+      continue;
+    }
+    const sectionRel = `${BAKED_ROOT}/${section}`;
+    for (const name of fs.readdirSync(sectionBase).sort()) {
+      const m = /^([A-Za-z0-9_-]+)-retime$/.exec(name);
+      if (m === null || !fs.statSync(path.join(sectionBase, name)).isDirectory()) {
+        continue;
+      }
+      const machine = m[1];
+      const rel = `${sectionRel}/${name}`;
+      assertMachine(machine, rel);
+      let receipts = 0;
+      if (fs.existsSync(path.join(sectionBase, name, "produce-gpu.json"))) {
+        add(
+          produceCands,
+          machine,
+          retimeMedians(
+            loadJson(`${rel}/produce-gpu.json`),
+            { rel: `${rel}/produce-gpu.json`, section, machine, kind: "produce", lane: "gpu" },
+            productionWall(loadJson(`${rel}/produce-gpu.json`)),
+          ),
+          rel,
+        );
+        receipts += 1;
+      }
+      if (fs.existsSync(path.join(sectionBase, name, "produce-host.json"))) {
+        add(
+          produceCands,
+          `${machine}/host`,
+          retimeMedians(
+            loadJson(`${rel}/produce-host.json`),
+            { rel: `${rel}/produce-host.json`, section, machine, kind: "produce", lane: "host" },
+            productionWall(loadJson(`${rel}/produce-host.json`)),
+          ),
+          rel,
+        );
+        receipts += 1;
+      }
+      if (fs.existsSync(path.join(sectionBase, name, "geolog-shared.json"))) {
+        add(
+          geologCands,
+          machine,
+          retimeMedians(
+            loadJson(`${rel}/geolog-shared.json`),
+            { rel: `${rel}/geolog-shared.json`, section, machine, kind: "geolog", lane: "geolog" },
+            (r) => r.wall_s,
+          ),
+          rel,
+        );
+        receipts += 1;
+      }
+      assert(receipts > 0, `${rel}: retime directory with no timing receipts`);
+    }
+  }
+  return { produce: bestOf(produceCands), geolog: bestOf(geologCands) };
+}
+
+/** The geolog fast-path timing receipts for the staged corpus: any
+ * GLC-TIMINGS.<machine>.json beside the bare incumbent enters best-of
+ * selection under its id; the bare receipt — which predates the
+ * machine registry and records no id — is consumed, untagged, ONLY
+ * while no per-machine receipt exists (the legacy fallback: a
+ * pre-registry tree renders byte-identically).  Group VC counts are
+ * content, not timing, and must agree across machines. */
+function glcTimings(): {
+  n: Record<string, number>; // per-group VC counts (content)
+  wall: Record<string, { s: number; config: string | null }>;
+} {
+  const dir = "supermartingales/out/glc";
+  const perMachine = new Map<string, string>();
+  for (const name of fs.readdirSync(path.join(ROOT, dir)).sort()) {
+    const m = /^GLC-TIMINGS\.([A-Za-z0-9_-]+)\.json$/.exec(name);
+    if (m === null) continue;
+    assertMachine(m[1], `${dir}/${name}`);
+    perMachine.set(m[1], `${dir}/${name}`);
+  }
+  const n: Record<string, number> = {};
+  const wall: Record<string, { s: number; config: string | null }> = {};
+  if (perMachine.size === 0) {
+    for (const [k, v] of Object.entries<any>(
+      loadJson(`${dir}/GLC-TIMINGS.json`).groups,
+    )) {
+      n[k] = v.n;
+      wall[k] = { s: v.wall_s, config: null };
+    }
+    return { n, wall };
+  }
+  const cands = new Map<string, Record<string, number>>();
+  let groupSet: string | null = null;
+  for (const [machine, rel] of [...perMachine.entries()].sort()) {
+    const rec = loadJson(rel);
+    const recId = rec.machine?.id;
+    assert(
+      recId === undefined || String(recId) === machine,
+      `${rel}: machine.id ${recId} disagrees with the file's machine id`,
+    );
+    const keys = Object.keys(rec.groups).sort().join();
+    if (groupSet === null) groupSet = keys;
+    else {
+      assert(keys === groupSet, `${rel}: group set differs across machines`);
+    }
+    const walls: Record<string, number> = {};
+    for (const [k, v] of Object.entries<any>(rec.groups)) {
+      if (n[k] === undefined) n[k] = v.n;
+      else {
+        assert(n[k] === v.n, `GLC group VC count differs across machines: ${k}`);
+      }
+      walls[k] = v.wall_s;
+    }
+    cands.set(machine, walls);
+  }
+  for (const [k, t] of Object.entries(bestOf(cands))) {
+    wall[k] = { s: t.s, config: t.config };
+  }
+  return { n, wall };
+}
+
 function buildSweepTimesTable(): string {
   const mbs = manifestBenchmarks();
   const rows = collectSweepRows(); // for the bounds cross-check below
-  const glc = loadJson("supermartingales/out/glc/GLC-TIMINGS.json").groups as
-    Record<string, { n: number; wall_s: number }>;
-  const qtslab = qtslabFamilySums();
+  const glc = glcTimings();
+  const qtslab = qtslabFamilyBest();
   const sec3 = loadJson("supermartingales/out/sec3/receipts.json").benchmarks;
   const sec2: Record<string, any> = {};
   for (const r of loadJson("supermartingales/out/sec2/sweep_rows.json")) {
     sec2[r.benchmark] = r;
   }
-  // the sec-2 re-conduct (the a40-retime receipts): checked-production
-  // medians (produce + in-loop check + seal, GPU-proposing lane) and
-  // shared-container check medians
-  const a40Produce = a40Medians(
-    "produce-gpu.json",
-    (r) => r.produce_s + r.check_s + r.seal_s,
-    (r) => r.byte_identical === true,
-  );
-  const a40Geolog = a40Medians(
-    "geolog-shared.json",
-    (r) => r.wall_s,
-    (r) => r.accept === true,
-  );
+  // section re-conducts (the <machine>-retime receipts):
+  // checked-production medians (produce + in-loop check + seal, best
+  // proposer lane per benchmark) and shared-container check medians,
+  // each folded to the best machine per benchmark
+  const retime = retimeBestOf();
 
   // superscript marks: appended INSIDE a closing math cell (a bare
   // `$...$$^{..}$` would tokenize its middle `$$` unpredictably)
@@ -743,14 +1624,32 @@ function buildSweepTimesTable(): string {
     return mathCell.slice(0, -1) + String.raw`^{\,\text{${m}}}$`;
   };
   const hole = (m: string): string => "---" + String.raw`$^{\,\text{${m}}}$`;
+  type AbsenceColumn = "vcs" | "produce" | "geolog" | "qtslab";
+  type Absence = { marker: string; reason: string };
+  const absences = loadJson("tables/sweep-timing-absences.json") as Record<
+    string,
+    Partial<Record<AbsenceColumn, Absence>>
+  >;
+  const absent = (name: string, column: AbsenceColumn): string => {
+    const declared = absences[name]?.[column];
+    assert(
+      declared !== undefined,
+      `sweep-times-table: ${name} ${column} has neither a timing nor a declared reason`,
+    );
+    assert(
+      /^[a-z]$/.test(declared.marker) && declared.reason.trim() !== "",
+      `tables/sweep-timing-absences.json: malformed ${name}.${column}`,
+    );
+    return hole(declared.marker);
+  };
 
   const body: string[][] = [];
   for (const spec of SWEEP_ORDER) {
     const name = spec.key;
     const cells: string[] = [sweepLabel(spec)];
 
-    const g = glc[name];
-    cells.push(g !== undefined ? `$${g.n}$` : hole("a"));
+    const gN = glc.n[name];
+    cells.push(gN !== undefined ? `$${gN}$` : absent(name, "vcs"));
 
     if (spec.parent !== undefined) {
       cells.push(""); // the parent row's published cells apply
@@ -770,43 +1669,52 @@ function buildSweepTimesTable(): string {
       cells.push(`$${fmtSecsCenti(cs)}$`);
     }
 
-    const rp = a40Produce[name];
+    const rp = retime.produce[name];
     if (rp !== undefined) {
-      cells.push(`$${fmtSecs(rp)}$`);
+      cells.push(markMath(`$${fmtSecs(rp.s)}$`, rp.config));
     } else {
       let produce = 0;
       if (sec2[name]?.ms_produce != null) produce += sec2[name].ms_produce / 1000;
       if (sec3[name]?.t_synth_s != null) produce += sec3[name].t_synth_s;
       if (produce === 0) {
-        cells.push(hole(name === "persist_2d" ? "a" : "b"));
+        cells.push(absent(name, "produce"));
       } else {
         const cell = `$${fmtSecs(produce)}$`;
         // in the re-conduct's check set but not its produce set: a
-        // synthesis genus the producer does not cover yet (mark e)
-        cells.push(a40Geolog[name] !== undefined ? markMath(cell, "e") : cell);
+        // synthesis genus the producer does not cover yet (mark e).
+        // campaign-leg walls carry no registry machine id in their
+        // receipts, so these cells stay untagged.
+        cells.push(
+          retime.geolog[name] !== undefined ? markMath(cell, "e") : cell,
+        );
       }
     }
 
-    const rg = a40Geolog[name];
+    const rg = retime.geolog[name];
+    const gw = glc.wall[name];
     cells.push(
       rg !== undefined
-        ? `$${fmtSecs(rg)}$`
-        : g !== undefined
-          ? `$${fmtSecs(g.wall_s)}$`
-          : hole("a"),
+        ? markMath(`$${fmtSecs(rg.s)}$`, rg.config)
+        : gw !== undefined
+          ? gw.config === null
+            ? `$${fmtSecs(gw.s)}$` // legacy receipt: no registry id
+            : markMath(`$${fmtSecs(gw.s)}$`, gw.config)
+          : absent(name, "geolog"),
     );
 
     const q = qtslab[name];
     if (q === undefined) {
-      cells.push(hole(name === "persist_2d" ? "a" : "c"));
+      cells.push(absent(name, "qtslab"));
     } else {
-      const cell = `$${fmtSecs(q.wall_s)}$`;
-      cells.push(g !== undefined && q.n < g.n ? markMath(cell, "d") : cell);
+      const marks: string[] = [];
+      if (gN !== undefined && q.n < gN) marks.push("d");
+      marks.push(q.config);
+      cells.push(markMath(`$${fmtSecs(q.wall_s)}$`, marks.join(", ")));
     }
     body.push(cells);
   }
 
-  const header = String.raw`benchmark & VCs & best published (s) & produce (s) & geolog (s) & qtslab (s) \\`;
+  const header = String.raw`benchmark & VCs & best published (s) & checked production (s) & geolog replay (s) & qtslab replay (s) \\`;
   return tabular("l r r r r r", header, body);
 }
 
@@ -830,17 +1738,67 @@ const GYM_ROWS: [string, string, string, string, string, number, string, string]
   [String.raw`Blackjack (S\&B rules)`,        "U3", "tt", "blackjack",            "22",  10, String.raw`\ge`, "ms"],
 ];
 
+/** One Gymnasium tier's checker-receipt sources: the committed
+ * incumbent plus any checker_receipts<tier>.<machine>.json beside it
+ * (the suffixed file REPLACES the bare one when both name the same
+ * machine).  The incumbents predate the machine registry and carry no
+ * host field; their protocol machine is pinned here (the dated
+ * re-run's ledger: GB10, single core, median of 200).  Re-timed
+ * receipts name their machine in the file name, and a `host` field,
+ * when present, must agree with it. */
+const GYM_INCUMBENT_MACHINE = "gb10";
+
+function gymCheckerSources(
+  tier: "" | "_tt",
+): { machine: string; certs: any }[] {
+  const byMachine = new Map<string, string>();
+  const re = new RegExp(`^checker_receipts${tier}\\.([A-Za-z0-9_-]+)\\.json$`);
+  for (const name of fs.readdirSync(path.join(ROOT, "gymnasium/out")).sort()) {
+    const m = re.exec(name);
+    if (m === null) continue;
+    assertMachine(m[1], `gymnasium/out/${name}`);
+    byMachine.set(m[1], `gymnasium/out/${name}`);
+  }
+  const bare = `gymnasium/out/checker_receipts${tier}.json`;
+  const bareMachine = String(loadJson(bare).host ?? GYM_INCUMBENT_MACHINE);
+  assertMachine(bareMachine, bare);
+  if (!byMachine.has(bareMachine)) byMachine.set(bareMachine, bare);
+  const out: { machine: string; certs: any }[] = [];
+  for (const [machine, rel] of [...byMachine.entries()].sort()) {
+    const rec = loadJson(rel);
+    assert(
+      rec.host === undefined || String(rec.host) === machine,
+      `${rel}: host field ${rec.host} disagrees with machine id ${machine}`,
+    );
+    out.push({ machine, certs: rec.certs });
+  }
+  return out;
+}
+
+/** Best (minimum) verify median per certificate across machines. */
+function gymCheckBest(tier: "" | "_tt"): Record<string, Timed> {
+  const cands = new Map<string, Record<string, number>>();
+  for (const { machine, certs } of gymCheckerSources(tier)) {
+    const meds: Record<string, number> = {};
+    for (const [cert, row] of Object.entries<any>(certs)) {
+      meds[cert] = row.verify_median_ns;
+    }
+    cands.set(machine, meds);
+  }
+  return bestOf(cands);
+}
+
 function buildGymTable(): string {
   const prodFl = loadJson("gymnasium/out/producer_receipts.json").rows;
   const prodTt = loadJson("gymnasium/out/producer_receipts_tt.json").rows;
-  const chkFl = loadJson("gymnasium/out/checker_receipts.json").certs;
-  const chkTt = loadJson("gymnasium/out/checker_receipts_tt.json").certs;
+  const chkFl = gymCheckBest("");
+  const chkTt = gymCheckBest("_tt");
 
   const body: string[][] = [];
   for (const [label, claim, fam, key, T, dec, rel, style] of GYM_ROWS) {
     let gap: number;
     let bound: Frac;
-    let med: number;
+    let med: Timed;
     if (fam === "fl") {
       // hitting tier: the exact full-deadline certificate is the
       // optimum of the truncated env (finite-horizon optimal DP,
@@ -848,7 +1806,8 @@ function buildGymTable(): string {
       bound = frac(prodFl[key].exact[T].bound);
       gap = 0.0;
       const cert = `${key}/dyadic_k48_T${T}.cbor`;
-      med = chkFl[cert].verify_median_ns;
+      assert(chkFl[cert] !== undefined, `no checker receipt for ${cert}`);
+      med = chkFl[cert];
     } else {
       const row = prodTt[key];
       const lanes: [number, Frac][] = []; // (gap, bound) over full-claim certificates
@@ -872,7 +1831,8 @@ function buildGymTable(): string {
         bound = frac(row.optimum.fraction);
       }
       const cert = `${key}/rwdyadic_k48_T${T}.cbor`;
-      med = chkTt[cert].verify_median_ns;
+      assert(chkTt[cert] !== undefined, `no checker receipt for ${cert}`);
+      med = chkTt[cert];
     }
 
     const term = terminating(bound);
@@ -889,9 +1849,9 @@ function buildGymTable(): string {
     }
     let check: string;
     if (style === "us") {
-      check = String.raw`$${fmtUs(med)}\,\mu$s`;
+      check = String.raw`$${fmtUs(med.s)}\,\mu$s` + superMark(med.config);
     } else {
-      check = String.raw`$${fmtMs2sig(med)}$\,ms`;
+      check = String.raw`$${fmtMs2sig(med.s)}$\,ms` + superMark(med.config);
     }
     body.push([label, claim, boundCell, vs, check]);
   }
@@ -1211,59 +2171,109 @@ function buildCertifiedCheckerTable(): string {
     twins.set(stem, verdict);
   }
   type Fam = { n: number; accept: number; diverge: number; walls: number[] };
-  const fams = new Map<string, Fam>();
-  const pooled: Fam = { n: 0, accept: 0, diverge: 0, walls: [] };
-  for (const line of readText(QTSLAB_DIR + "/census.tsv")
-    .trimEnd()
-    .split("\n")) {
-    const [famName, stem, rc, verdict, wall] = line.split("\t");
-    assert(wall !== undefined, `short census row: ${line}`);
-    let fam = fams.get(famName);
-    if (!fam) {
-      fam = { n: 0, accept: 0, diverge: 0, walls: [] };
-      fams.set(famName, fam);
+  type Census = { machine: string; fams: Map<string, Fam>; pooled: Fam };
+  const censuses: Census[] = [];
+  for (const { machine, rel } of qtslabCensuses()) {
+    const fams = new Map<string, Fam>();
+    const pooled: Fam = { n: 0, accept: 0, diverge: 0, walls: [] };
+    for (const line of readText(rel).trimEnd().split("\n")) {
+      const [famName, stem, rc, verdict, wall] = line.split("\t");
+      assert(wall !== undefined, `short census row: ${line}`);
+      let fam = fams.get(famName);
+      if (!fam) {
+        fam = { n: 0, accept: 0, diverge: 0, walls: [] };
+        fams.set(famName, fam);
+      }
+      fam.n += 1;
+      pooled.n += 1;
+      const twin = twins.get(stem);
+      assert(twin !== undefined, `census stem missing from seal twins: ${stem}`);
+      const twinAccept = twin === "accept";
+      const certAccept = verdict.startsWith("s QTSLAB ACCEPT");
+      if (twinAccept !== certAccept) {
+        fam.diverge += 1;
+        pooled.diverge += 1;
+      }
+      if (certAccept) {
+        assert(rc === "0", `ACCEPT with nonzero exit: ${stem}`);
+        fam.accept += 1;
+        pooled.accept += 1;
+        const w = parseFloat(wall);
+        assert(Number.isFinite(w), `bad wall for ${stem}`);
+        fam.walls.push(w);
+        pooled.walls.push(w);
+      }
     }
-    fam.n += 1;
-    pooled.n += 1;
-    const twin = twins.get(stem);
-    assert(twin !== undefined, `census stem missing from seal twins: ${stem}`);
-    const twinAccept = twin === "accept";
-    const certAccept = verdict.startsWith("s QTSLAB ACCEPT");
-    if (twinAccept !== certAccept) {
-      fam.diverge += 1;
-      pooled.diverge += 1;
-    }
-    if (certAccept) {
-      assert(rc === "0", `ACCEPT with nonzero exit: ${stem}`);
-      fam.accept += 1;
-      pooled.accept += 1;
-      const w = parseFloat(wall);
-      assert(Number.isFinite(w), `bad wall for ${stem}`);
-      fam.walls.push(w);
-      pooled.walls.push(w);
+    assert(
+      twins.size === pooled.n,
+      `${rel}: seal-twin rows do not cover the census 1:1`,
+    );
+    censuses.push({ machine, fams, pooled });
+  }
+  // verdicts are content, walls are timing: the counts must agree
+  // across machines (the replay corpus is pinned), while walls
+  // legitimately differ — the fold below picks each row's fastest
+  // machine.
+  const ref = censuses[0];
+  const famNames = [...ref.fams.keys()].sort();
+  for (const c of censuses.slice(1)) {
+    assert(
+      [...c.fams.keys()].sort().join() === famNames.join(),
+      `census ${c.machine}: family set differs from ${ref.machine}'s`,
+    );
+    for (const [famName, fam] of c.fams) {
+      const r = ref.fams.get(famName)!;
+      assert(
+        fam.n === r.n && fam.accept === r.accept && fam.diverge === r.diverge,
+        `census content differs across machines for ${famName}`,
+      );
     }
   }
-  assert(twins.size === pooled.n, "seal-twin rows do not cover the census 1:1");
+  // whole-row winner: the machine with the smallest displayed median
+  // wall supplies the entire row, so min/med/p90/max stay one
+  // machine's coherent order statistics; the winner's id rides the
+  // wall cell's superscript (a fifth column would spend width on what
+  // one tag carries).  Ties break to the lexicographically first
+  // machine (censuses are visited in sorted order, strict <).
+  const winner = (pick: (c: Census) => Fam): { fam: Fam; machine: string } => {
+    let best: { fam: Fam; machine: string; med: number } | null = null;
+    for (const c of censuses) {
+      const f = pick(c);
+      const med = wallQ(
+        [...f.walls].sort((a, b) => a - b),
+        0.5,
+      );
+      if (best === null || med < best.med) {
+        best = { fam: f, machine: c.machine, med };
+      }
+    }
+    assert(best !== null);
+    return best;
+  };
   // The columns state what is semantically distinct: how many of the
   // family's VC files the certified build accepted (as a fraction
   // of the family's size), and on how many VC files the certified
   // build's verdict differs from the fast-path twin's — the zero
   // divergence is the finding, stated once, instead of as three
   // numerically identical count columns.
-  const cellsFor = (d: Fam): string[] => [
+  const cellsFor = (d: Fam, machine: string): string[] => [
     (d.accept === d.n ? String.raw`\cellcolor{exacttint}` : "") +
       String.raw`$${d.accept}/${d.n}$`,
     `$${d.diverge}$`,
-    fmtWallsMs(d.walls),
+    fmtWallsMs(d.walls) + superMark(machine),
   ];
   const body: string[][] = [];
-  for (const famName of [...fams.keys()].sort()) {
-    body.push([texttt(famName), ...cellsFor(fams.get(famName)!)]);
+  for (const famName of famNames) {
+    const w = winner((c) => c.fams.get(famName)!);
+    body.push([texttt(famName), ...cellsFor(w.fam, w.machine)]);
   }
   const header = String.raw`family & accepted, certified build & diverging vs.\ fast path & wall per VC file (ms), min/med/$p_{90}$/max \\`;
   const main = tabular("l r r r", header, body);
   // append the pooled row under its own rule, inside the tabular
-  const total = ["all families", ...cellsFor(pooled)].join(" & ") + String.raw` \\`;
+  const wp = winner((c) => c.pooled);
+  const total =
+    ["all families", ...cellsFor(wp.fam, wp.machine)].join(" & ") +
+    String.raw` \\`;
   return main.replace(
     "\\bottomrule",
     "\\midrule\n" + total + "\n\\bottomrule",
@@ -1328,43 +2338,62 @@ const REFERENCE: Record<string, string> = {
   // 2026-07-30 (the sec-2 re-conduct): produce cells for re-conducted
   // rows are the toolkit producer's checked-production medians and
   // geolog cells the shared-container check medians, both from the
-  // a40-retime receipts; repulse100_uniform's produce cell gains
+  // a40 retime receipts; repulse100_uniform's produce cell gains
   // mark e (campaign wall, synthesis genus not yet ported).
+  // Re-pinned 2026-08-01 (machine tags): every retime, census, and
+  // checker-receipt timing cell names its machine; produce cells
+  // select the fastest proposer lane per benchmark, and the
+  // CPU-proposing lane (a40/host) wins all seven section-2 re-conducted
+  // rows on the committed receipts, moving those seven values down by
+  // 4-6%. Re-pinned 2026-08-02: the landed Section-1 Rust conductor and
+  // standalone geolog campaigns fill the three former producer holes.
+  // Re-pinned 2026-08-02 (version-2 Section-1 receipt): the gb10 produce
+  // campaign re-conducted with the attribution-instrumented runner
+  // (byte-identical outputs; wall_s semantics unchanged); unreliable and
+  // regions medians moved to 0.064 and 0.076 on the load-uncontrolled
+  // shared box — the receipt's PROVENANCE records the load context.
   "sweep-times-table": String.raw`
+
 \texttt{persist\_2d} \tdemph{(uniform twin)} & ---$^{\,\text{a}}$ & $254.5$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ \\
-\texttt{faulty\_marbles} & $23$ & $44.5$ & ---$^{\,\text{b}}$ & $0.016$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_unreliable} & $29$ & $52.3$ & ---$^{\,\text{b}}$ & $0.015$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_regions} & $29$ & $49.9$ & ---$^{\,\text{b}}$ & $0.016$ & ---$^{\,\text{c}}$ \\
-\texttt{cliff\_crossing} & $1105$ & $153.6$ & $2.58$ & $1.01$ & $31.9$ \\
-\texttt{repulse100} & $207$ & $10.2$ & $0.15$ & $0.10$ & $4.60$ \\
-\texttt{repulse100\_uniform} & $205$ & $35.5$ & $4.44^{\,\text{e}}$ & $0.87$ & $13.6$ \\
-\altrow\tdemph{discrete-uniform reading} & $207$ &  & $0.23$ & $0.11$ & $4.57$ \\
-\texttt{repulse100\_2d} & $2267$ & $63.5$ & $6.38$ & $3.03$ & $71.8$ \\
-\texttt{faulty\_concave} & $60$ & $21.3$ & $0.053$ & $0.089$ & $1.09^{\,\text{d}}$ \\
-\texttt{faulty\_varying} & $60$ & $26.8$ & $0.054$ & $0.09$ & $1.13^{\,\text{d}}$ \\
-\altrow\tdemph{last-step reading} & $60$ &  & $0.054$ & $0.087$ & $1.12^{\,\text{d}}$ \\
-\texttt{fixed\_loop} & $22$ & $0.15$ & $0.0012$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_loop} & $22$ & $0.16$ & $0.0015$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\altrow\tdemph{as printed ($i_0{=}0$)} & $22$ &  & $0.0015$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_uniform} & $30$ & $8.08$ & $0.17$ & $0.031$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_rare} & $22$ & $0.27$ & $0.0016$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_easy1} & $84$ & $0.31$ & $0.0064$ & $0.027$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_ndecr} & $60$ & $0.33$ & $0.0044$ & $0.017$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_walk} & $16$ & $0.32$ & $0.0011$ & $0.009$ & ---$^{\,\text{c}}$ \\
-\altrow\tdemph{deterministic 12-step reading} & $28$ &  & $0.0015$ & $0.014$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_marbles} & $23$ & $44.5$ & $0.042^{\,\text{gb10-quiet/host}}$ & $0.052^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_unreliable} & $29$ & $52.3$ & $0.063^{\,\text{gb10-quiet/host}}$ & $0.054^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_regions} & $29$ & $49.9$ & $0.072^{\,\text{gb10-quiet/host}}$ & $0.056^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{cliff\_crossing} & $1105$ & $153.6$ & $1.53^{\,\text{gb10/host}}$ & $0.57^{\,\text{gb10}}$ & $22.9^{\,\text{gb10}}$ \\
+\texttt{repulse100} & $207$ & $10.2$ & $0.086^{\,\text{gb10/host}}$ & $0.066^{\,\text{gb10}}$ & $2.67^{\,\text{gb10}}$ \\
+\texttt{repulse100\_uniform} & $205$ & $35.5$ & $4.44^{\,\text{e}}$ & $0.45^{\,\text{gb10}}$ & $11.0^{\,\text{gb10}}$ \\
+\altrow\tdemph{discrete-uniform reading} & $207$ &  & $0.14^{\,\text{gb10/host}}$ & $0.074^{\,\text{gb10}}$ & $2.83^{\,\text{gb10}}$ \\
+\texttt{repulse100\_2d} & $2267$ & $63.5$ & $3.87^{\,\text{gb10}}$ & $1.73^{\,\text{gb10}}$ & $43.9^{\,\text{gb10}}$ \\
+\texttt{faulty\_concave} & $60$ & $21.3$ & $0.029^{\,\text{gb10/host}}$ & $0.059^{\,\text{gb10}}$ & $0.71^{\,\text{d, gb10}}$ \\
+\texttt{faulty\_varying} & $60$ & $26.8$ & $0.029^{\,\text{gb10/host}}$ & $0.059^{\,\text{gb10}}$ & $0.71^{\,\text{d, gb10}}$ \\
+\altrow\tdemph{last-step reading} & $60$ &  & $0.029^{\,\text{gb10/host}}$ & $0.06^{\,\text{axion}}$ & $0.71^{\,\text{d, gb10}}$ \\
+\texttt{fixed\_loop} & $22$ & $0.15$ & $0.0012$ & $0.008^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_loop} & $22$ & $0.16$ & $0.0015$ & $0.009^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\altrow\tdemph{as printed ($i_0{=}0$)} & $22$ &  & $0.0015$ & $0.009^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_uniform} & $30$ & $8.08$ & $0.17$ & $0.019^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_rare} & $22$ & $0.27$ & $0.0016$ & $0.009^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_easy1} & $84$ & $0.31$ & $0.0064$ & $0.037^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_ndecr} & $60$ & $0.33$ & $0.0044$ & $0.022^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_walk} & $16$ & $0.32$ & $0.0011$ & $0.007^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\altrow\tdemph{deterministic 12-step reading} & $28$ &  & $0.0015$ & $0.009^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
 `,
+  // timing-cell tag form updated 2026-08-01 (machine tags; the checks
+  // pinned here were measured on gb10), values left at the 2026-07-22
+  // pin: the committed checker receipts have since been regenerated
+  // and five cells drift against this pin (reported, not failed); the
+  // pin moves when the gym re-time lands with its receipts.
   "gym-table": String.raw`
-FrozenLake 4x4 (slippery) & U3 & $\ge 0.7441902$ & \cellcolor{exacttint}optimal, exactly & $15\,\mu$s \\
-FrozenLake 8x8 (slippery) & U3 & $\ge 0.9132201$ & \cellcolor{exacttint}optimal, exactly & $100\,\mu$s \\
-FrozenLake 4x4 (succ.\ $3/4$) & U3 & $\ge 0.8731132$ & \cellcolor{exacttint}optimal, exactly & $15\,\mu$s \\
-FrozenLake 4x4 (not slippery) & U3 & $= 1$ & \cellcolor{exacttint}optimal, exactly & $13\,\mu$s \\
-CliffWalking & U2 & $\ge -13$ & \cellcolor{exacttint}optimal, exactly & $24\,\mu$s \\
-CliffWalking (slippery) & U3 & $\ge -63.0133733$ & \cellcolor{exacttint}optimal, exactly & $35\,\mu$s \\
-Taxi & U2 & $\ge 7.93$ & \cellcolor{exacttint}optimal, exactly & $0.50$\,ms \\
-Taxi (rainy) & U3 & $\ge 3.9545745165$ & within $3{\times}10^{-14}$ & $0.70$\,ms \\
-Taxi (fickle passenger) & U3 & $\ge 8.38$ & \cellcolor{exacttint}optimal, exactly & $1.1$\,ms \\
-Taxi (rainy + fickle) & U3 & $\ge 4.5756463469$ & within $3{\times}10^{-14}$ & $1.5$\,ms \\
-Blackjack (S\&B rules) & U3 & $\ge -0.0431131055$ & \cellcolor{exacttint}optimal, exactly & $0.16$\,ms \\
+
+FrozenLake 4x4 (slippery) & U3 & $\ge 0.7441902$ & \cellcolor{exacttint}optimal, exactly & $15\,\mu$s$^{\,\text{gb10}}$ \\
+FrozenLake 8x8 (slippery) & U3 & $\ge 0.9132201$ & \cellcolor{exacttint}optimal, exactly & $100\,\mu$s$^{\,\text{gb10}}$ \\
+FrozenLake 4x4 (succ.\ $3/4$) & U3 & $\ge 0.8731132$ & \cellcolor{exacttint}optimal, exactly & $15\,\mu$s$^{\,\text{gb10}}$ \\
+FrozenLake 4x4 (not slippery) & U3 & $= 1$ & \cellcolor{exacttint}optimal, exactly & $13\,\mu$s$^{\,\text{gb10}}$ \\
+CliffWalking & U2 & $\ge -13$ & \cellcolor{exacttint}optimal, exactly & $24\,\mu$s$^{\,\text{gb10}}$ \\
+CliffWalking (slippery) & U3 & $\ge -63.0133733$ & \cellcolor{exacttint}optimal, exactly & $34\,\mu$s$^{\,\text{gb10}}$ \\
+Taxi & U2 & $\ge 7.93$ & \cellcolor{exacttint}optimal, exactly & $0.50$\,ms$^{\,\text{gb10}}$ \\
+Taxi (rainy) & U3 & $\ge 3.9545745165$ & within $3{\times}10^{-14}$ & $0.70$\,ms$^{\,\text{gb10}}$ \\
+Taxi (fickle passenger) & U3 & $\ge 8.38$ & \cellcolor{exacttint}optimal, exactly & $1.1$\,ms$^{\,\text{gb10}}$ \\
+Taxi (rainy + fickle) & U3 & $\ge 4.5756463469$ & within $3{\times}10^{-14}$ & $1.5$\,ms$^{\,\text{gb10}}$ \\
+Blackjack (S\&B rules) & U3 & $\ge -0.0431131055$ & \cellcolor{exacttint}optimal, exactly & $0.16$\,ms$^{\,\text{gb10}}$ \\
 `,
   "ll-table": String.raw`
 LunarLander-v3 & $\mathbb{E}[R] \ge$, $\alpha = 1/100$ & \cellcolor{winA}$236.2$ & $200$ \\
@@ -1384,17 +2413,29 @@ virtual best of all baselines & $207$ & $206$ & $204$ & $617$ & portfolio of ver
   // 2026-07-27 (column redesign: accepted-as-fraction + divergence
   // count replace the three numerically identical count columns):
   // counts are certified content; the wall column is timing
-  // (TIMING_COLS below).
+  // (TIMING_COLS below).  Machine tags added 2026-08-01: each row's
+  // order statistics come whole from its fastest machine's census.
   "certified-checker-table": String.raw`
-\texttt{cliff\_crossing} & \cellcolor{exacttint}$1105/1105$ & $0$ & $19$ / $29$ / $36$ / $53$\,ms \\
-\texttt{faulty\_concave} & \cellcolor{exacttint}$38/38$ & $0$ & $22$ / $30$ / $34$ / $37$\,ms \\
-\texttt{faulty\_varying} & \cellcolor{exacttint}$38/38$ & $0$ & $21$ / $30$ / $34$ / $36$\,ms \\
-\texttt{faulty\_varying\_\_last\_step} & \cellcolor{exacttint}$38/38$ & $0$ & $21$ / $30$ / $35$ / $38$\,ms \\
-\texttt{repulse100} & \cellcolor{exacttint}$207/207$ & $0$ & $14$ / $23$ / $26$ / $36$\,ms \\
-\texttt{repulse100\_2d} & \cellcolor{exacttint}$2267/2267$ & $0$ & $18$ / $31$ / $37$ / $117$\,ms \\
-\texttt{repulse100\_uniform} & \cellcolor{exacttint}$205/205$ & $0$ & $18$ / $64$ / $98$ / $117$\,ms \\
-\texttt{repulse100\_uniform\_\_discrete} & \cellcolor{exacttint}$207/207$ & $0$ & $15$ / $22$ / $26$ / $31$\,ms \\
-all families & \cellcolor{exacttint}$4105/4105$ & $0$ & $14$ / $30$ / $37$ / $117$\,ms \\
+
+\texttt{cliff\_crossing} & \cellcolor{exacttint}$1105/1105$ & $0$ & $17$ / $20$ / $25$ / $55$\,ms$^{\,\text{gb10}}$ \\
+\texttt{faulty\_concave} & \cellcolor{exacttint}$38/38$ & $0$ & $17$ / $19$ / $19$ / $20$\,ms$^{\,\text{gb10}}$ \\
+\texttt{faulty\_varying} & \cellcolor{exacttint}$38/38$ & $0$ & $18$ / $19$ / $19$ / $20$\,ms$^{\,\text{gb10}}$ \\
+\texttt{faulty\_varying\_\_last\_step} & \cellcolor{exacttint}$38/38$ & $0$ & $17$ / $19$ / $20$ / $20$\,ms$^{\,\text{gb10}}$ \\
+\texttt{repulse100} & \cellcolor{exacttint}$207/207$ & $0$ & $11$ / $13$ / $14$ / $16$\,ms$^{\,\text{gb10}}$ \\
+\texttt{repulse100\_2d} & \cellcolor{exacttint}$2267/2267$ & $0$ & $17$ / $19$ / $21$ / $51$\,ms$^{\,\text{gb10}}$ \\
+\texttt{repulse100\_uniform} & \cellcolor{exacttint}$205/205$ & $0$ & $13$ / $52$ / $85$ / $96$\,ms$^{\,\text{gb10}}$ \\
+\texttt{repulse100\_uniform\_\_discrete} & \cellcolor{exacttint}$207/207$ & $0$ & $12$ / $14$ / $15$ / $17$\,ms$^{\,\text{gb10}}$ \\
+all families & \cellcolor{exacttint}$4105/4105$ & $0$ & $11$ / $19$ / $23$ / $96$\,ms$^{\,\text{gb10}}$ \\
+`,
+  // pinned 2026-08-01 (first pin — the wall column joins the
+  // timing-pinned set so drift there is reported rather than silent):
+  // values at the committed replay receipts; those receipts record no
+  // machine, so the cells carry no machine tag yet.
+  "atari-table": String.raw`
+Pong & NOOP script & $1000$ & $k \in \{0..30\}$ & \cellcolor{exacttint}$-6$ & $1405$\,s \\
+Freeway & all-UP script & $1000$ & $k \in \{0..30\}$ & \cellcolor{exacttint}$2$ & $1410$\,s \\
+MontezumasRevenge & per-offset key scripts & $828$ & $k \in \{0..30\}$ & \cellcolor{exacttint}$100$ & $3943$\,s \\
+MontezumasRevenge & key+door script & $1548$ & $k = 0$ & \cellcolor{exacttint}$400$ & $6416$\,s \\
 `,
 };
 
@@ -1447,6 +2488,33 @@ const TIMING_COLS: Record<string, Set<number>> = {
   "certified-checker-table": new Set([3]),
   // produce / geolog / qtslab walls re-time at each receipt regeneration
   "sweep-times-table": new Set([3, 4, 5]),
+  "atari-table": new Set([5]),
+};
+
+// Where a pinned timing value came from — printed beside any drift
+// report, so a divergence reads against its pin's protocol rather
+// than as a bare pair of numbers.
+const REFERENCE_PROVENANCE: Record<string, string> = {
+  "sweep-times-table":
+    "timing pins 2026-08-01, the four-machine re-time at the " +
+    "revision-5.1 vintage: ten repeats per benchmark per machine, " +
+    "best measured configuration per cell, machine named in the tag; " +
+    "the three Section 1 checked-production cells re-pinned 2026-08-02 " +
+    "at the gb10-quiet conduct (load-gated, pinned, reniced — " +
+    "QUIET-PROTOCOL.md), which the minimum-median rule selects over " +
+    "the load-uncontrolled gb10 receipts committed beside it",
+  "gym-table":
+    "timing pins 2026-08-01, the four-machine re-time: single core, " +
+    "median of 200 passes, checker default lane, X925-pinned on " +
+    "gb10; machine named in the cell tag",
+  "certified-checker-table":
+    "wall pins 2026-08-01, the serial certified-checker re-times " +
+    "(one process at a time; the 2026-07-23 census's concurrency " +
+    "inflation removed); machine named in the row tag",
+  "atari-table":
+    "wall pins 2026-08-01 at the committed replay receipts' values " +
+    "(single replay per certificate; no machine recorded in those " +
+    "receipts)",
 };
 
 /** Diff generated data rows against the frozen hand-typed reference.
@@ -1456,6 +2524,7 @@ function verify(emitted: Record<string, string>): [number, number, number] {
   let drift = 0;
   let gaps = 0;
   for (const [name, ref] of Object.entries(REFERENCE)) {
+    if (!(name in emitted)) continue;
     const genRows = dataRows(emitted[name]);
     const refRows = dataRows(
       "\\begin{tabular}{}\n\\toprule\nh \\\\\n" + ref.trim() + "\n",
@@ -1504,6 +2573,12 @@ function verify(emitted: Record<string, string>): [number, number, number] {
         );
       }
     }
+    if (rowsDrift.length > 0) {
+      console.log(
+        `${tag}: pin provenance: ` +
+          (REFERENCE_PROVENANCE[name] ?? "see the pin comments in REFERENCE"),
+      );
+    }
     bad += rowsBad.length;
     drift += rowsDrift.length;
     gaps += rowsGap.length;
@@ -1512,23 +2587,53 @@ function verify(emitted: Record<string, string>): [number, number, number] {
 }
 
 function main(): number {
+  if (process.argv.includes("--test-retime-validator")) {
+    runRetimeValidatorTests();
+    return 0;
+  }
+  if (process.argv.includes("--validate-retimes-only")) {
+    retimeBestOf();
+    console.log("retime receipts: structurally valid");
+    return 0;
+  }
   const noVerify = process.argv.includes("--no-verify");
+  const stripMarks = process.argv.includes("--strip-machine-marks");
+  const timingOnly = process.argv.includes("--timing-tables-only");
   fs.mkdirSync(OUT, { recursive: true });
 
-  const emitted: Record<string, string> = {
-    "sweep-table": buildSweepTable(),
-    "sweep-times-table": buildSweepTimesTable(),
-    "gym-table": buildGymTable(),
-    "ll-table": buildLlTable(),
-    "nmc-table": buildNmcTable(),
-    "atari-table": buildAtariTable(),
-    "certified-checker-table": buildCertifiedCheckerTable(),
-  };
+  let emitted: Record<string, string> = timingOnly
+    ? {
+        "sweep-times-table": buildSweepTimesTable(),
+        "gym-table": buildGymTable(),
+        "atari-table": buildAtariTable(),
+        "certified-checker-table": buildCertifiedCheckerTable(),
+      }
+    : {
+        "sweep-table": buildSweepTable(),
+        "sweep-times-table": buildSweepTimesTable(),
+        "gym-table": buildGymTable(),
+        "ll-table": buildLlTable(),
+        "nmc-table": buildNmcTable(),
+        "atari-table": buildAtariTable(),
+        "certified-checker-table": buildCertifiedCheckerTable(),
+      };
+  if (stripMarks) {
+    emitted = Object.fromEntries(
+      Object.entries(emitted).map(([k, v]) => [k, stripMachineMarks(v)]),
+    );
+  }
   for (const [name, text] of Object.entries(emitted)) {
     fs.writeFileSync(path.join(OUT, `${name}.tex`), BANNER + text);
     console.log(`wrote chapter/generated/${name}.tex`);
   }
 
+  if (stripMarks && !noVerify) {
+    console.log(
+      "verify: skipped under --strip-machine-marks (the reference pins " +
+        "carry machine tags).",
+    );
+    return 0;
+  }
   if (noVerify) return 0;
   const [bad, drift, gaps] = verify(emitted);
   if (drift || gaps) {

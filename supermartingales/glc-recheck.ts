@@ -83,6 +83,37 @@ const MANIFEST = path.join(GLCDIR, "GLC-MANIFEST.json");
 const SEC2_TAR = path.join(GLCDIR, "sec2-glc.tar.zst");
 const SEC2_DIR = path.join(REPO, "build", "sec2-glc");
 
+/** The run's machine identity for the timing receipt.  GLC_MACHINE_ID
+ * names a row of the repository's machine registry (MACHINES.md) and
+ * routes the published receipt to that machine's committed path,
+ * out/glc/GLC-TIMINGS.<id>.json; unset, the identity is recorded as
+ * "unknown" and the receipt keeps the legacy bare path (which the
+ * table build consumes untagged, and only while no per-machine
+ * receipt exists).  The id is never guessed from the host: uname
+ * tells an architecture, not which registry row this box is.  A set
+ * but unregistered id fails HERE, at startup, rather than after an
+ * hour of checking (and rather than at the table build). */
+const MACHINE_ID = ((): string => {
+  const id = process.env.GLC_MACHINE_ID;
+  if (id === undefined || id === "") return "unknown";
+  const ids = new Set<string>();
+  for (const line of fs
+    .readFileSync(path.join(REPO, "MACHINES.md"), "utf8")
+    .split("\n")) {
+    const m = /^\|\s*`([A-Za-z0-9_-]+)`\s*\|/.exec(line);
+    if (m !== null) ids.add(m[1]);
+  }
+  if (!ids.has(id)) {
+    console.error(
+      `glc-recheck: GLC_MACHINE_ID=${id} is not a machine id in MACHINES.md; ` +
+        "add the machine's registry row first (or unset GLC_MACHINE_ID for " +
+        "an untagged scratch run).",
+    );
+    process.exit(2);
+  }
+  return id;
+})();
+
 const GLC_CHECK = process.env.GLC_CHECK;
 if (!GLC_CHECK) {
   console.error(
@@ -142,9 +173,11 @@ let ok = true;
 
 /** Per-benchmark wall-clock record — the receipt behind the chapter's
  * wall-clock comparison table's geolog-fast-path column.  Written to
- * the committed path out/glc/GLC-TIMINGS.json only under
- * GLC_PUBLISH_TIMINGS=1 (a run whose numbers the published tables
- * should carry); otherwise to the gitignored build/ area, so casual
+ * a committed path under out/glc/ only under GLC_PUBLISH_TIMINGS=1
+ * (a run whose numbers the published tables should carry) — the
+ * per-machine GLC-TIMINGS.<id>.json when GLC_MACHINE_ID names a
+ * registry machine, the legacy bare GLC-TIMINGS.json otherwise;
+ * without the publish flag, to the gitignored build/ area, so casual
  * verification runs leave the tree clean instead of overwriting the
  * published receipt with run-local noise (timestamp, load, walls).
  * Group key: the certificate set's benchmark
@@ -244,10 +277,11 @@ function writeTimings() {
       "per checker process), one group at a time, walls measured around " +
       "each group's batches",
     machine: {
+      id: MACHINE_ID,
       arch: os.arch(),
       cpu: os.cpus()[0]?.model ?? "unknown",
       loadavg_at_end: os.loadavg().map((x) => Math.round(x * 100) / 100),
-      note: "co-tenanted box; single checker process at a time",
+      note: "single checker process at a time",
     },
     checker_binary_sha256: crypto.createHash("sha256").update(binary).digest("hex"),
     groups: Object.fromEntries(
@@ -257,9 +291,16 @@ function writeTimings() {
     ),
   };
   const publish = process.env.GLC_PUBLISH_TIMINGS === "1";
+  // a registered machine id routes the receipt to its per-machine
+  // file name; "unknown" keeps the legacy bare name (and so can never
+  // shadow a per-machine committed receipt).
+  const fname =
+    MACHINE_ID === "unknown"
+      ? "GLC-TIMINGS.json"
+      : `GLC-TIMINGS.${MACHINE_ID}.json`;
   const p = publish
-    ? path.join(GLCDIR, "GLC-TIMINGS.json")
-    : path.join(REPO, "build", "supermartingales", "GLC-TIMINGS.json");
+    ? path.join(GLCDIR, fname)
+    : path.join(REPO, "build", "supermartingales", fname);
   fs.mkdirSync(path.dirname(p), { recursive: true });
   fs.writeFileSync(p, JSON.stringify(receipt, null, 1) + "\n");
   console.log(`wrote ${path.relative(REPO, p)}`);

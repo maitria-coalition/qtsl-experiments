@@ -1,14 +1,15 @@
-# qtsl-experiments — full reproduction, from `cargo build --release` to
-# `lualatex`. Each top-level target rebuilds one section of the
-# Experiments chapter: checkers are built from the qtsl/kernels
-# repositories (Cargo git references, pinned by Cargo.lock), the stored
-# certificates and their mutant batteries are re-verified through the
-# independent checkers, the tables are re-derived from the receipt
-# files, and the section is typeset standalone.
+# qtsl-experiments — public replay, receipt-to-table regeneration, and
+# typesetting. Each top-level family target rebuilds one section of the
+# Experiments chapter from the artefacts that family ships: checkers are
+# built from the qtsl/kernels repositories (Cargo git references, pinned by
+# Cargo.lock), stored certificates and mutant batteries are re-verified,
+# tables are re-derived from receipts, and the section is typeset standalone.
+# Producer re-conduction is family-scoped rather than implied by every target.
 #
 #   make gymnasium        # the Gymnasium campaign (+ per-family subtargets)
 #   make circuits         # hardware model checking (219/219 liveness sweep + mutants)
 #   make semicon          # the semiconductor fluid ladder
+#   make minifab-dispatch # the Mini-Fab dispatch-synthesis certificate family
 #   make supermartingales # the published-table re-certification campaign
 #   make chapter          # everything, plus the full-chapter PDF
 #
@@ -19,10 +20,9 @@
 # commits (tools/fetch-pins.sh — house modifications, if any, are
 # visible patch files applied after checkout).
 #
-# Public clones need no auth; private mirrors ride your own git
-# credentials both for Cargo (CARGO_NET_GIT_FETCH_WITH_CLI, exported
-# below) and for the pinned qtsl checkout; see README.md ("Cloning and
-# building").
+# The current private-preview pin is served from qtsl-dev. Release clones
+# override QTSL_REPO with the unsuffixed URL once that pin is present there;
+# see README.md ("Cloning and building").
 
 QTSL_REPO ?= https://github.com/maitria-coalition/qtsl-dev
 # The checker's baked roster carries only the current revision-event
@@ -48,7 +48,7 @@ NODE     := node --experimental-strip-types
 .PHONY: all chapter checkers tables fetch-pins clean \
         gymnasium gymnasium-text gymnasium-classic gymnasium-box2d gymnasium-glc \
         gymnasium-atari gymnasium-atari-replay gymnasium-mujoco circuits circuits-recheck \
-        semicon semicon-glc supermartingales variadic
+        semicon semicon-glc minifab-dispatch supermartingales variadic
 
 all: chapter
 
@@ -166,6 +166,66 @@ semicon-glc: $(QTSL_PIN)
 	GLC_CHECK=$(CURDIR)/$(QTSL_CO)/target/release/glc-check \
 	  $(NODE) semicon/glc-recheck.ts
 
+# The Mini-Fab dispatch-synthesis family (semicon/minifab-dispatch/
+# README.md): the discrete Mini-Fab net's sealed certificate
+# containers — the closed twelve-certificate baseline with its
+# worst-case deadline, the open system (one policy hole as data), the
+# synthesized supervisor with its certified 626N arrivals bound, and
+# the Simplex switching-envelope composite — re-checked from bytes
+# alone, integrity mutants refused, then the producer-tier batteries
+# (campaign re-derivation + exact-tier/encoder mutant kills) re-run
+# from the pinned mtk checkout. One verdict table for the family.
+#
+# These containers pin a newer theory-pair revision than the sibling
+# baked lanes above, so the family builds its checker from its own
+# qtsl pin in a second checkout; when the older corpora re-emit at
+# that revision the two pins converge and the second checkout
+# retires, exactly as the former gymnasium and guard pins did.
+MINIFAB_QTSL_REV ?= 3c04b54c559dbcc8c17505ec44c12c11c1b4b524
+MINIFAB_QTSL_CO  := $(BUILD)/qtsl-minifab
+MINIFAB_QTSL_PIN := $(MINIFAB_QTSL_CO)/.git/pin-$(MINIFAB_QTSL_REV)
+
+$(MINIFAB_QTSL_PIN):
+	@if [ ! -d $(MINIFAB_QTSL_CO)/.git ]; then \
+	  git clone --no-checkout $(QTSL_REPO) $(MINIFAB_QTSL_CO); \
+	fi
+	git -C $(MINIFAB_QTSL_CO) remote set-url origin $(QTSL_REPO)
+	@if ! git -C $(MINIFAB_QTSL_CO) cat-file -e $(MINIFAB_QTSL_REV)^{commit} 2>/dev/null; then \
+	  git -C $(MINIFAB_QTSL_CO) fetch origin; \
+	fi
+	git -C $(MINIFAB_QTSL_CO) checkout $(MINIFAB_QTSL_REV)
+	rm -f $(MINIFAB_QTSL_CO)/.git/pin-*
+	touch $@
+
+# The producer import for the family's battery leg: mtk, pinned the
+# same way the checkers are (imported, never vendored). The suite is
+# self-contained — pure exact-rational library tests, no external
+# stores.
+MTK_REPO ?= https://github.com/maitria-coalition/mtk-dev
+MTK_REV  ?= 7a4a8b51dfe3ad64e780eb5bfa335ea7c14c0f1c
+MTK_CO   := $(BUILD)/mtk
+MTK_PIN  := $(MTK_CO)/.git/pin-$(MTK_REV)
+
+$(MTK_PIN):
+	@if [ ! -d $(MTK_CO)/.git ]; then \
+	  git clone --no-checkout $(MTK_REPO) $(MTK_CO); \
+	fi
+	git -C $(MTK_CO) remote set-url origin $(MTK_REPO)
+	@if ! git -C $(MTK_CO) cat-file -e $(MTK_REV)^{commit} 2>/dev/null; then \
+	  git -C $(MTK_CO) fetch origin; \
+	fi
+	git -C $(MTK_CO) checkout $(MTK_REV)
+	rm -f $(MTK_CO)/.git/pin-*
+	touch $@
+
+.PHONY: minifab-dispatch
+minifab-dispatch: $(MINIFAB_QTSL_PIN) $(MTK_PIN)
+	cd $(MINIFAB_QTSL_CO)/crates/qtsl-geolog-provider && \
+	  cargo build --release --bin glc-check
+	GLC_CHECK=$(CURDIR)/$(MINIFAB_QTSL_CO)/target/release/glc-check \
+	  MTK_MANIFEST=$(CURDIR)/$(MTK_CO)/Cargo.toml \
+	  $(NODE) semicon/minifab-dispatch/recheck.ts
+
 # The sealed-container lane (spde/SPDE-CERT.md): the SPDE moment
 # certificates under the family's split-container design — witness
 # containers (moment core, synthetic vocabulary, checked with exact
@@ -190,6 +250,102 @@ supermartingales: $(QTSL_PIN) $(SECDIR)
 	  $(NODE) supermartingales/recheck.ts
 	$(MAKE) tables
 	$(MAKE) $(SECDIR)/supermartingales.pdf
+
+# ------------------------------------------- sec1 quiet-conditions retime
+# The preregistered quiet-load campaign (QUIET-PROTOCOL.md beside the
+# receipts): the runner itself refuses (exit 3, no receipt) when the
+# 1-minute load average exceeds the gate at campaign start, so quiet
+# cells are produced by protocol, never by rerunning until the numbers
+# look quiet. Requires SUPERMART_SEC1 = a supermart-sec1 binary built at
+# the mtk revision the receipts will pin (build recipe in the retime
+# directory README). Success installs receipts + derived PROVENANCE into
+# the gb10-quiet-retime directory and re-validates; refusals and
+# failures append to build/sec1-quiet-refusals.log and leave the
+# committed tree untouched (the campaign stages out of tree first).
+QUIET_GATE ?= 4.0
+QUIET_CPUS ?= 5-9,15,16
+QUIET_DIR   := supermartingales/out/glc-baked/sec1/gb10-quiet-retime
+QUIET_STAGE := $(BUILD)/sec1-quiet-stage
+.PHONY: sec1-quiet-retime
+sec1-quiet-retime:
+	@test -n "$(SUPERMART_SEC1)" || { \
+	  echo "sec1-quiet-retime: set SUPERMART_SEC1=/path/to/supermart-sec1 (see $(QUIET_DIR)/../QUIET-PROTOCOL.md)"; \
+	  exit 2; }
+	@mkdir -p $(QUIET_STAGE)/containers
+	bash -c 'renice 19 -p $$$$ >/dev/null; \
+	  exec taskset -c $(QUIET_CPUS) "$(SUPERMART_SEC1)" retime \
+	  --experiments $(CURDIR) --machine gb10-quiet --lane host \
+	  --warmups 1 --repeats 10 --max-load-1min $(QUIET_GATE) \
+	  --out $(QUIET_STAGE)/campaign.json \
+	  --compare $(CURDIR)/supermartingales/out/glc-baked/sec1/incumbents \
+	  --retain-containers $(QUIET_STAGE)/containers --pretty' \
+	  || { code=$$?; \
+	       echo "$$(date -u +%Y-%m-%dT%H:%M:%SZ) exit=$$code gate=$(QUIET_GATE) loadavg='$$(cat /proc/loadavg)'" \
+	         >> $(BUILD)/sec1-quiet-refusals.log; \
+	       exit $$code; }
+	$(NODE) supermartingales/quiet-provenance.ts \
+	  $(QUIET_STAGE)/campaign.json $(QUIET_STAGE)/PROVENANCE.json
+	mkdir -p $(QUIET_DIR)
+	cp $(QUIET_STAGE)/campaign.json $(QUIET_DIR)/campaign.json
+	cp $(QUIET_STAGE)/campaign.json $(QUIET_DIR)/produce-host.json
+	cp $(QUIET_STAGE)/PROVENANCE.json $(QUIET_DIR)/PROVENANCE.json
+	rm -rf $(QUIET_DIR)/containers
+	cp -r $(QUIET_STAGE)/containers $(QUIET_DIR)/containers
+	$(NODE) tables/gen_tables.ts --validate-retimes-only
+	@echo "sec1-quiet-retime: receipts installed in $(QUIET_DIR); run 'make timing-tables' next"
+
+# The cold-process-per-repeat calibration anchor, retaken at the
+# version-2+ runner vintage under the quiet-conditions conduct (gate,
+# affinity, niceness — QUIET-PROTOCOL.md): the version-1 gb10 cold
+# anchor's process walls carry the old runner's 1 s monitor sleep-join,
+# so cold anchors are comparable only within one runner vintage. The
+# receipt installs BESIDE the version-1 cell (cold-anchor-v2.json in the
+# checker-compare family — outside the tables scanner's pattern, so no
+# rendered cell can move). Requires SUPERMART_SEC1 built from mtk at a
+# version-3-receipt revision, and GLC_CHECK = a built glc-check binary.
+COLDV2_DIR   := supermartingales/out/glc-baked/sec1/gb10-checker-compare
+COLDV2_STAGE := $(BUILD)/sec1-cold-anchor-v2-stage
+.PHONY: sec1-cold-anchor-v2
+sec1-cold-anchor-v2:
+	@test -n "$(SUPERMART_SEC1)" -a -n "$(GLC_CHECK)" || { \
+	  echo "sec1-cold-anchor-v2: set SUPERMART_SEC1=/path/to/supermart-sec1 GLC_CHECK=/path/to/glc-check"; \
+	  exit 2; }
+	@mkdir -p $(COLDV2_STAGE)
+	bash -c 'renice 19 -p $$$$ >/dev/null; \
+	  exec taskset -c $(QUIET_CPUS) python3 supermartingales/checker-compare.py cold \
+	  --machine gb10-quiet --runner "$(SUPERMART_SEC1)" --glc-check "$(GLC_CHECK)" \
+	  $(if $(QTSL_REV),--qtsl-rev $(QTSL_REV),) \
+	  --max-load-1min $(QUIET_GATE) --out-dir $(COLDV2_STAGE)' \
+	  || { code=$$?; \
+	       echo "$$(date -u +%Y-%m-%dT%H:%M:%SZ) exit=$$code gate=$(QUIET_GATE) loadavg='$$(cat /proc/loadavg)'" \
+	         >> $(BUILD)/sec1-cold-anchor-v2-refusals.log; \
+	       exit $$code; }
+	cp $(COLDV2_STAGE)/cold-anchor.json $(COLDV2_DIR)/cold-anchor-v2.json
+	@echo "sec1-cold-anchor-v2: receipt installed at $(COLDV2_DIR)/cold-anchor-v2.json"
+
+# The order/interleave methods experiment (preregistration + findings in
+# the gb10-order-interleave directory): four arms under the quiet gate,
+# affinity, and niceness, varying roster structure only — three roster
+# rotations and one round-robin interleaved conduct. A methods
+# experiment, never a timing family: the receipts directory does not
+# match the tables scanner's ^<machine>-retime$ pattern, so no rendered
+# timing cell can move from these receipts. Each arm re-checks the gate;
+# completed arms stand on a mid-sequence refusal (see PREREG.md).
+OI_DIR   := supermartingales/out/glc-baked/sec1/gb10-order-interleave
+OI_STAGE := $(BUILD)/sec1-order-interleave-stage
+.PHONY: sec1-order-interleave
+sec1-order-interleave:
+	@test -n "$(SUPERMART_SEC1)" || { \
+	  echo "sec1-order-interleave: set SUPERMART_SEC1=/path/to/supermart-sec1 (see $(OI_DIR)/PREREG.md)"; \
+	  exit 2; }
+	@mkdir -p $(OI_STAGE)
+	bash supermartingales/order-interleave-arms.sh \
+	  "$(SUPERMART_SEC1)" "$(CURDIR)" "$(OI_STAGE)" "$(QUIET_GATE)" "$(QUIET_CPUS)" \
+	  || { code=$$?; \
+	       echo "$$(date -u +%Y-%m-%dT%H:%M:%SZ) exit=$$code gate=$(QUIET_GATE) loadavg='$$(cat /proc/loadavg)'" \
+	         >> $(BUILD)/sec1-order-interleave-refusals.log; \
+	       exit $$code; }
+	@echo "sec1-order-interleave: receipts installed in $(OI_DIR); analyze with supermartingales/order-interleave-analyze.py"
 
 # The sealed-container lane (supermartingales/GLC-CERT.md): the same
 # certificates as .glc containers through the geolog fast-path checker,
@@ -307,7 +463,7 @@ lean-route-mints:
 	python3 lean-route/tools/mint-qtslab-vintage.py --verify \
 	  lean-route/fixtures lean-route/out/qtslab
 
-.PHONY: lean-route lean-route-recheck
+.PHONY: lean-route lean-route-recheck timing-receipt-validator-test timing-tables
 lean-route-recheck: $(QTSL_PIN)
 	QC=$(CURDIR)/$(QTSL_CO)/checkers/supermartingales; \
 	$(NODE) $$QC/check_rows.ts --stack $$QC/theories/BLstack.rows.txt \
@@ -318,7 +474,20 @@ lean-route: lean-route-recheck lean-route-mints $(SECDIR)
 
 # ---------------------------------------------------------------- chapter
 
-tables: fetch-pins
+timing-receipt-validator-test:
+	$(NODE) tables/gen_tables.ts --test-retime-validator
+	$(NODE) tables/gen_tables.ts --validate-retimes-only
+
+# Narrow timing-table path: validates timing receipt schemas and mutant
+# refusals, then regenerates only tables whose values come from committed
+# timing receipts. It neither runs campaign producers nor fetches unrelated
+# benchmark pins.
+timing-tables: timing-receipt-validator-test
+	$(NODE) tables/gen_tables.ts --timing-tables-only
+
+# Full table generation retains the broader pin-fetching path needed by the
+# non-timing tables.
+tables: fetch-pins timing-receipt-validator-test
 	$(NODE) tables/gen_tables.ts
 	$(NODE) tables/gen_lean_route.ts
 

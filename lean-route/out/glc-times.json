@@ -6,10 +6,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 165.193,
+  "t_e2e_ms": 4.351,
   "verdict": "enclosure_v1_golden_cos6.glc ACCEPT commits=1 ops=12 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 s",
-  "maxrss_kb": 14884,
-  "load1": 26.4,
+  "maxrss_kb": 15668,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -20,11 +20,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "enclosure_v1_golden_cos6",
@@ -33,10 +33,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4.071,
+  "t_e2e_ms": 3.437,
   "verdict": "enclosure_v1_golden_cos6.glc ACCEPT commits=1 ops=12 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 s",
-  "maxrss_kb": 14896,
-  "load1": 26.4,
+  "maxrss_kb": 15680,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -47,11 +47,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "enclosure_v1_golden_cos6",
@@ -60,10 +60,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 2.361,
+  "t_e2e_ms": 3.339,
   "verdict": "enclosure_v1_golden_cos6.glc ACCEPT commits=1 ops=12 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 s",
-  "maxrss_kb": 14900,
-  "load1": 26.4,
+  "maxrss_kb": 15680,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -74,11 +74,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "enclosure_v1_golden_cos6",
@@ -87,10 +87,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 2.245,
+  "t_e2e_ms": 3.352,
   "verdict": "enclosure_v1_golden_cos6.glc ACCEPT commits=1 ops=12 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 s",
-  "maxrss_kb": 14904,
-  "load1": 26.4,
+  "maxrss_kb": 15684,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -101,11 +101,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "enclosure_v1_golden_cos6",
@@ -114,10 +114,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 2.361,
+  "t_e2e_ms": 3.282,
   "verdict": "enclosure_v1_golden_cos6.glc ACCEPT commits=1 ops=12 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 s",
-  "maxrss_kb": 14904,
-  "load1": 26.4,
+  "maxrss_kb": 15684,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -128,11 +128,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_sis_gen",
@@ -141,10 +141,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 3.436,
+  "t_e2e_ms": 3.311,
   "verdict": "ctmc_sis_gen.glc ACCEPT commits=1 ops=110 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclu",
-  "maxrss_kb": 14904,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -155,11 +155,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_sis_gen",
@@ -168,10 +168,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 3.316,
+  "t_e2e_ms": 3.562,
   "verdict": "ctmc_sis_gen.glc ACCEPT commits=1 ops=110 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclu",
-  "maxrss_kb": 14904,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -182,11 +182,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_sis_gen",
@@ -195,10 +195,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 2.198,
+  "t_e2e_ms": 3.203,
   "verdict": "ctmc_sis_gen.glc ACCEPT commits=1 ops=110 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclu",
-  "maxrss_kb": 14904,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -209,11 +209,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_sis_gen",
@@ -222,10 +222,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 3.314,
+  "t_e2e_ms": 3.421,
   "verdict": "ctmc_sis_gen.glc ACCEPT commits=1 ops=110 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclu",
-  "maxrss_kb": 14904,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -236,11 +236,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_sis_gen",
@@ -249,10 +249,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 2.25,
+  "t_e2e_ms": 3.304,
   "verdict": "ctmc_sis_gen.glc ACCEPT commits=1 ops=110 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclu",
-  "maxrss_kb": 14904,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -263,11 +263,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_fk_mid",
@@ -276,10 +276,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 80.739,
+  "t_e2e_ms": 40.313,
   "verdict": "ctmc_fk_mid.glc ACCEPT commits=1 ops=764 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclus",
-  "maxrss_kb": 14908,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -290,11 +290,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_fk_mid",
@@ -303,10 +303,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 44.238,
+  "t_e2e_ms": 42.623,
   "verdict": "ctmc_fk_mid.glc ACCEPT commits=1 ops=764 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclus",
-  "maxrss_kb": 14908,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -317,11 +317,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_fk_mid",
@@ -330,10 +330,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 41.764,
+  "t_e2e_ms": 41.038,
   "verdict": "ctmc_fk_mid.glc ACCEPT commits=1 ops=764 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclus",
-  "maxrss_kb": 14912,
-  "load1": 26.4,
+  "maxrss_kb": 15688,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -344,11 +344,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_fk_mid",
@@ -357,10 +357,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 41.87,
+  "t_e2e_ms": 41.572,
   "verdict": "ctmc_fk_mid.glc ACCEPT commits=1 ops=764 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclus",
-  "maxrss_kb": 14916,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -371,11 +371,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "ctmc_fk_mid",
@@ -384,10 +384,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 41.796,
+  "t_e2e_ms": 42.631,
   "verdict": "ctmc_fk_mid.glc ACCEPT commits=1 ops=764 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 syzygyConclus",
-  "maxrss_kb": 14916,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -398,11 +398,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "micro2_stable",
@@ -411,10 +411,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4.886,
+  "t_e2e_ms": 4.684,
   "verdict": "micro2_stable.glc ACCEPT commits=1 ops=1230 obligations farkasCombinationValid=0/0 syzygyCombinationValid=3/3 syzygyConc",
-  "maxrss_kb": 14916,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -425,11 +425,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "micro2_stable",
@@ -438,10 +438,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4.634,
+  "t_e2e_ms": 4.566,
   "verdict": "micro2_stable.glc ACCEPT commits=1 ops=1230 obligations farkasCombinationValid=0/0 syzygyCombinationValid=3/3 syzygyConc",
-  "maxrss_kb": 15132,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -452,11 +452,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "micro2_stable",
@@ -465,10 +465,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 3.499,
+  "t_e2e_ms": 4.5,
   "verdict": "micro2_stable.glc ACCEPT commits=1 ops=1230 obligations farkasCombinationValid=0/0 syzygyCombinationValid=3/3 syzygyConc",
-  "maxrss_kb": 14916,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -479,11 +479,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "micro2_stable",
@@ -492,10 +492,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4.413,
+  "t_e2e_ms": 4.535,
   "verdict": "micro2_stable.glc ACCEPT commits=1 ops=1230 obligations farkasCombinationValid=0/0 syzygyCombinationValid=3/3 syzygyConc",
-  "maxrss_kb": 14920,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -506,11 +506,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "micro2_stable",
@@ -519,10 +519,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4.996,
+  "t_e2e_ms": 4.2,
   "verdict": "micro2_stable.glc ACCEPT commits=1 ops=1230 obligations farkasCombinationValid=0/0 syzygyCombinationValid=3/3 syzygyConc",
-  "maxrss_kb": 14920,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -533,11 +533,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_core_decrease_s0001",
@@ -546,10 +546,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 295.891,
+  "t_e2e_ms": 164.897,
   "verdict": "cartpole_core_decrease_s0001.glc ACCEPT commits=1 ops=1863 obligations farkasCombinationValid=6/6 syzygyCombinationValid",
-  "maxrss_kb": 14920,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -560,11 +560,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_core_decrease_s0001",
@@ -573,10 +573,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 171.641,
+  "t_e2e_ms": 166.79,
   "verdict": "cartpole_core_decrease_s0001.glc ACCEPT commits=1 ops=1863 obligations farkasCombinationValid=6/6 syzygyCombinationValid",
-  "maxrss_kb": 15136,
-  "load1": 26.4,
+  "maxrss_kb": 15696,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -587,11 +587,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_core_decrease_s0001",
@@ -600,10 +600,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 176.623,
+  "t_e2e_ms": 166.973,
   "verdict": "cartpole_core_decrease_s0001.glc ACCEPT commits=1 ops=1863 obligations farkasCombinationValid=6/6 syzygyCombinationValid",
-  "maxrss_kb": 14920,
-  "load1": 26.4,
+  "maxrss_kb": 15700,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -614,11 +614,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_core_decrease_s0001",
@@ -627,10 +627,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 172.267,
+  "t_e2e_ms": 165.726,
   "verdict": "cartpole_core_decrease_s0001.glc ACCEPT commits=1 ops=1863 obligations farkasCombinationValid=6/6 syzygyCombinationValid",
-  "maxrss_kb": 14924,
-  "load1": 26.1,
+  "maxrss_kb": 15704,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -641,11 +641,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_core_decrease_s0001",
@@ -654,10 +654,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 168.53,
+  "t_e2e_ms": 165.279,
   "verdict": "cartpole_core_decrease_s0001.glc ACCEPT commits=1 ops=1863 obligations farkasCombinationValid=6/6 syzygyCombinationValid",
-  "maxrss_kb": 14928,
-  "load1": 26.1,
+  "maxrss_kb": 15704,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -668,11 +668,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_uniform_decrease",
@@ -681,10 +681,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 13.648,
+  "t_e2e_ms": 14.705,
   "verdict": "rode_uniform_decrease.glc ACCEPT commits=1 ops=5398 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 sy",
-  "maxrss_kb": 14932,
-  "load1": 26.1,
+  "maxrss_kb": 15708,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -695,11 +695,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_uniform_decrease",
@@ -708,10 +708,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 12.541,
+  "t_e2e_ms": 13.888,
   "verdict": "rode_uniform_decrease.glc ACCEPT commits=1 ops=5398 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 sy",
-  "maxrss_kb": 14932,
-  "load1": 26.1,
+  "maxrss_kb": 15708,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -722,11 +722,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_uniform_decrease",
@@ -735,10 +735,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 13.424,
+  "t_e2e_ms": 12.669,
   "verdict": "rode_uniform_decrease.glc ACCEPT commits=1 ops=5398 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 sy",
-  "maxrss_kb": 14936,
-  "load1": 26.1,
+  "maxrss_kb": 15716,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -749,11 +749,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_uniform_decrease",
@@ -762,10 +762,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 13.205,
+  "t_e2e_ms": 12.751,
   "verdict": "rode_uniform_decrease.glc ACCEPT commits=1 ops=5398 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 sy",
-  "maxrss_kb": 14936,
-  "load1": 26.1,
+  "maxrss_kb": 15716,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -776,11 +776,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_uniform_decrease",
@@ -789,10 +789,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 13.008,
+  "t_e2e_ms": 12.535,
   "verdict": "rode_uniform_decrease.glc ACCEPT commits=1 ops=5398 obligations farkasCombinationValid=0/0 syzygyCombinationValid=0/0 sy",
-  "maxrss_kb": 14940,
-  "load1": 26.1,
+  "maxrss_kb": 15716,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -803,11 +803,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_dp_core_decrease",
@@ -816,10 +816,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 517.772,
+  "t_e2e_ms": 510.723,
   "verdict": "cartpole_dp_core_decrease.glc ACCEPT commits=1 ops=5389 obligations farkasCombinationValid=18/18 syzygyCombinationValid=",
-  "maxrss_kb": 14940,
-  "load1": 26.1,
+  "maxrss_kb": 15716,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -830,11 +830,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_dp_core_decrease",
@@ -843,10 +843,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 675.648,
+  "t_e2e_ms": 516.094,
   "verdict": "cartpole_dp_core_decrease.glc ACCEPT commits=1 ops=5389 obligations farkasCombinationValid=18/18 syzygyCombinationValid=",
-  "maxrss_kb": 14940,
-  "load1": 26.1,
+  "maxrss_kb": 15720,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -857,11 +857,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_dp_core_decrease",
@@ -870,10 +870,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 515.109,
+  "t_e2e_ms": 512.262,
   "verdict": "cartpole_dp_core_decrease.glc ACCEPT commits=1 ops=5389 obligations farkasCombinationValid=18/18 syzygyCombinationValid=",
-  "maxrss_kb": 14940,
-  "load1": 26.1,
+  "maxrss_kb": 15720,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -884,11 +884,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_dp_core_decrease",
@@ -897,10 +897,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 513.378,
+  "t_e2e_ms": 514.427,
   "verdict": "cartpole_dp_core_decrease.glc ACCEPT commits=1 ops=5389 obligations farkasCombinationValid=18/18 syzygyCombinationValid=",
-  "maxrss_kb": 14940,
-  "load1": 26.1,
+  "maxrss_kb": 15724,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -911,11 +911,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "cartpole_dp_core_decrease",
@@ -924,10 +924,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 531.674,
+  "t_e2e_ms": 513.357,
   "verdict": "cartpole_dp_core_decrease.glc ACCEPT commits=1 ops=5389 obligations farkasCombinationValid=18/18 syzygyCombinationValid=",
-  "maxrss_kb": 15164,
-  "load1": 26.1,
+  "maxrss_kb": 15724,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -938,11 +938,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_syzygy",
@@ -951,10 +951,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 362.082,
+  "t_e2e_ms": 368.197,
   "verdict": "dp_composite_syzygy.glc ACCEPT commits=1 ops=11664 obligations farkasCombinationValid=42/42 syzygyCombinationValid=1/1 s",
-  "maxrss_kb": 14948,
-  "load1": 26.1,
+  "maxrss_kb": 15728,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -965,11 +965,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_syzygy",
@@ -978,10 +978,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 364.104,
+  "t_e2e_ms": 380.204,
   "verdict": "dp_composite_syzygy.glc ACCEPT commits=1 ops=11664 obligations farkasCombinationValid=42/42 syzygyCombinationValid=1/1 s",
-  "maxrss_kb": 14948,
-  "load1": 26.1,
+  "maxrss_kb": 15728,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -992,11 +992,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_syzygy",
@@ -1005,10 +1005,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 360.476,
+  "t_e2e_ms": 369.031,
   "verdict": "dp_composite_syzygy.glc ACCEPT commits=1 ops=11664 obligations farkasCombinationValid=42/42 syzygyCombinationValid=1/1 s",
-  "maxrss_kb": 14948,
-  "load1": 26.1,
+  "maxrss_kb": 15728,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1019,11 +1019,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_syzygy",
@@ -1032,10 +1032,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 363.281,
+  "t_e2e_ms": 367.949,
   "verdict": "dp_composite_syzygy.glc ACCEPT commits=1 ops=11664 obligations farkasCombinationValid=42/42 syzygyCombinationValid=1/1 s",
-  "maxrss_kb": 14948,
-  "load1": 26.1,
+  "maxrss_kb": 15732,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1046,11 +1046,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_syzygy",
@@ -1059,10 +1059,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 363.619,
+  "t_e2e_ms": 383.45,
   "verdict": "dp_composite_syzygy.glc ACCEPT commits=1 ops=11664 obligations farkasCombinationValid=42/42 syzygyCombinationValid=1/1 s",
-  "maxrss_kb": 14952,
-  "load1": 26.1,
+  "maxrss_kb": 15736,
+  "load1": 9.1,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1073,11 +1073,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_eigenrate",
@@ -1086,10 +1086,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 5160.485,
+  "t_e2e_ms": 5124.135,
   "verdict": "dp_composite_eigenrate.glc ACCEPT commits=1 ops=16346 obligations farkasCombinationValid=72/72 syzygyCombinationValid=1/",
-  "maxrss_kb": 18564,
-  "load1": 25.6,
+  "maxrss_kb": 18580,
+  "load1": 9.1,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1100,11 +1100,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_eigenrate",
@@ -1113,10 +1113,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 5262.291,
+  "t_e2e_ms": 5111.029,
   "verdict": "dp_composite_eigenrate.glc ACCEPT commits=1 ops=16346 obligations farkasCombinationValid=72/72 syzygyCombinationValid=1/",
-  "maxrss_kb": 18568,
-  "load1": 24.3,
+  "maxrss_kb": 18576,
+  "load1": 9.1,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1127,11 +1127,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_eigenrate",
@@ -1140,10 +1140,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 5175.378,
+  "t_e2e_ms": 5211.877,
   "verdict": "dp_composite_eigenrate.glc ACCEPT commits=1 ops=16346 obligations farkasCombinationValid=72/72 syzygyCombinationValid=1/",
-  "maxrss_kb": 18568,
-  "load1": 25.0,
+  "maxrss_kb": 18500,
+  "load1": 9.3,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1154,11 +1154,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_eigenrate",
@@ -1167,10 +1167,37 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 5160.809,
+  "t_e2e_ms": 5160.374,
+  "verdict": "dp_composite_eigenrate.glc ACCEPT commits=1 ops=16346 obligations farkasCombinationValid=72/72 syzygyCombinationValid=1/",
+  "maxrss_kb": 18576,
+  "load1": 9.6,
+  "pinned_cpu": 15,
+  "host": {
+   "host": "gb10",
+   "cpu": "Cortex-X925 + Cortex-A725",
+   "threads": 20,
+   "mem_gib": 121.6,
+   "arch": "aarch64"
+  },
+  "binary": {
+   "basename": "glc-check",
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
+  },
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
+ },
+ {
+  "name": "dp_composite_eigenrate",
+  "container_bytes": 21947,
+  "route": "glc",
+  "pass": 5,
+  "budget_s": 600.0,
+  "outcome": "accept",
+  "t_e2e_ms": 5111.084,
   "verdict": "dp_composite_eigenrate.glc ACCEPT commits=1 ops=16346 obligations farkasCombinationValid=72/72 syzygyCombinationValid=1/",
   "maxrss_kb": 18572,
-  "load1": 24.9,
+  "load1": 9.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1181,38 +1208,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
- },
- {
-  "name": "dp_composite_eigenrate",
-  "container_bytes": 21947,
-  "route": "glc",
-  "pass": 5,
-  "budget_s": 600.0,
-  "outcome": "accept",
-  "t_e2e_ms": 6982.496,
-  "verdict": "dp_composite_eigenrate.glc ACCEPT commits=1 ops=16346 obligations farkasCombinationValid=72/72 syzygyCombinationValid=1/",
-  "maxrss_kb": 18572,
-  "load1": 23.8,
-  "pinned_cpu": 15,
-  "host": {
-   "host": "gb10",
-   "cpu": "Cortex-X925 + Cortex-A725",
-   "threads": 20,
-   "mem_gib": 121.6,
-   "arch": "aarch64"
-  },
-  "binary": {
-   "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
-  },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "lti_sampled_flow",
@@ -1221,10 +1221,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4029.619,
+  "t_e2e_ms": 42.307,
   "verdict": "lti_sampled_flow.glc ACCEPT commits=1 ops=24046 obligations farkasCombinationValid=0/0 syzygyCombinationValid=86/86 syzy",
-  "maxrss_kb": 22692,
-  "load1": 27.9,
+  "maxrss_kb": 23092,
+  "load1": 9.7,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1235,11 +1235,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "lti_sampled_flow",
@@ -1248,10 +1248,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 356.506,
+  "t_e2e_ms": 45.242,
   "verdict": "lti_sampled_flow.glc ACCEPT commits=1 ops=24046 obligations farkasCombinationValid=0/0 syzygyCombinationValid=86/86 syzy",
-  "maxrss_kb": 22696,
-  "load1": 29.3,
+  "maxrss_kb": 23108,
+  "load1": 9.7,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1262,11 +1262,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "lti_sampled_flow",
@@ -1275,10 +1275,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 82.377,
+  "t_e2e_ms": 44.165,
   "verdict": "lti_sampled_flow.glc ACCEPT commits=1 ops=24046 obligations farkasCombinationValid=0/0 syzygyCombinationValid=86/86 syzy",
-  "maxrss_kb": 22760,
-  "load1": 29.3,
+  "maxrss_kb": 23112,
+  "load1": 9.7,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1289,11 +1289,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "lti_sampled_flow",
@@ -1302,10 +1302,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 54.988,
+  "t_e2e_ms": 41.165,
   "verdict": "lti_sampled_flow.glc ACCEPT commits=1 ops=24046 obligations farkasCombinationValid=0/0 syzygyCombinationValid=86/86 syzy",
-  "maxrss_kb": 22808,
-  "load1": 29.3,
+  "maxrss_kb": 23108,
+  "load1": 9.7,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1316,11 +1316,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "lti_sampled_flow",
@@ -1329,10 +1329,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 43.459,
+  "t_e2e_ms": 41.718,
   "verdict": "lti_sampled_flow.glc ACCEPT commits=1 ops=24046 obligations farkasCombinationValid=0/0 syzygyCombinationValid=86/86 syzy",
-  "maxrss_kb": 22808,
-  "load1": 29.3,
+  "maxrss_kb": 23108,
+  "load1": 9.7,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1343,11 +1343,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_init_s0000",
@@ -1356,10 +1356,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4327.789,
+  "t_e2e_ms": 4208.989,
   "verdict": "acasx4_init_s0000.glc ACCEPT commits=1 ops=21663 obligations farkasCombinationValid=48/48 syzygyCombinationValid=0/0 syz",
-  "maxrss_kb": 23572,
-  "load1": 29.3,
+  "maxrss_kb": 24104,
+  "load1": 9.7,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1370,11 +1370,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_init_s0000",
@@ -1383,10 +1383,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4258.639,
+  "t_e2e_ms": 4207.364,
   "verdict": "acasx4_init_s0000.glc ACCEPT commits=1 ops=21663 obligations farkasCombinationValid=48/48 syzygyCombinationValid=0/0 syz",
-  "maxrss_kb": 23432,
-  "load1": 27.9,
+  "maxrss_kb": 24096,
+  "load1": 9.3,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1397,11 +1397,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_init_s0000",
@@ -1410,10 +1410,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4459.869,
+  "t_e2e_ms": 4206.952,
   "verdict": "acasx4_init_s0000.glc ACCEPT commits=1 ops=21663 obligations farkasCombinationValid=48/48 syzygyCombinationValid=0/0 syz",
-  "maxrss_kb": 23404,
-  "load1": 27.5,
+  "maxrss_kb": 24104,
+  "load1": 9.0,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1424,11 +1424,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_init_s0000",
@@ -1437,10 +1437,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 4265.237,
+  "t_e2e_ms": 4158.656,
   "verdict": "acasx4_init_s0000.glc ACCEPT commits=1 ops=21663 obligations farkasCombinationValid=48/48 syzygyCombinationValid=0/0 syz",
-  "maxrss_kb": 23412,
-  "load1": 27.2,
+  "maxrss_kb": 24104,
+  "load1": 9.0,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1451,11 +1451,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_init_s0000",
@@ -1464,10 +1464,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 6779.383,
+  "t_e2e_ms": 4157.967,
   "verdict": "acasx4_init_s0000.glc ACCEPT commits=1 ops=21663 obligations farkasCombinationValid=48/48 syzygyCombinationValid=0/0 syz",
-  "maxrss_kb": 23480,
-  "load1": 27.2,
+  "maxrss_kb": 24104,
+  "load1": 8.8,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1478,11 +1478,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_smallgain",
@@ -1491,10 +1491,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 1301.989,
+  "t_e2e_ms": 1201.543,
   "verdict": "dp_composite_smallgain.glc ACCEPT commits=1 ops=32515 obligations farkasCombinationValid=122/122 syzygyCombinationValid=",
-  "maxrss_kb": 30576,
-  "load1": 26.9,
+  "maxrss_kb": 31260,
+  "load1": 8.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1505,11 +1505,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_smallgain",
@@ -1518,10 +1518,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 1363.591,
+  "t_e2e_ms": 1200.909,
   "verdict": "dp_composite_smallgain.glc ACCEPT commits=1 ops=32515 obligations farkasCombinationValid=122/122 syzygyCombinationValid=",
-  "maxrss_kb": 30584,
-  "load1": 26.9,
+  "maxrss_kb": 31268,
+  "load1": 8.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1532,11 +1532,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_smallgain",
@@ -1545,10 +1545,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 2208.152,
+  "t_e2e_ms": 1201.14,
   "verdict": "dp_composite_smallgain.glc ACCEPT commits=1 ops=32515 obligations farkasCombinationValid=122/122 syzygyCombinationValid=",
-  "maxrss_kb": 30580,
-  "load1": 26.9,
+  "maxrss_kb": 31260,
+  "load1": 8.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1559,11 +1559,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_smallgain",
@@ -1572,10 +1572,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 1287.789,
+  "t_e2e_ms": 1201.435,
   "verdict": "dp_composite_smallgain.glc ACCEPT commits=1 ops=32515 obligations farkasCombinationValid=122/122 syzygyCombinationValid=",
-  "maxrss_kb": 30580,
-  "load1": 28.2,
+  "maxrss_kb": 31264,
+  "load1": 8.3,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1586,11 +1586,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "dp_composite_smallgain",
@@ -1599,10 +1599,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 1562.54,
+  "t_e2e_ms": 1201.033,
   "verdict": "dp_composite_smallgain.glc ACCEPT commits=1 ops=32515 obligations farkasCombinationValid=122/122 syzygyCombinationValid=",
-  "maxrss_kb": 30708,
-  "load1": 28.2,
+  "maxrss_kb": 31264,
+  "load1": 8.3,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1613,11 +1613,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_promise_closedloop",
@@ -1626,10 +1626,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 13115.429,
+  "t_e2e_ms": 16446.452,
   "verdict": "acasx4_promise_closedloop.glc ACCEPT commits=1 ops=31130 obligations farkasCombinationValid=96/96 syzygyCombinationValid",
-  "maxrss_kb": 31116,
-  "load1": 28.2,
+  "maxrss_kb": 31984,
+  "load1": 8.3,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1640,11 +1640,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_promise_closedloop",
@@ -1653,10 +1653,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 13134.066,
+  "t_e2e_ms": 13978.266,
   "verdict": "acasx4_promise_closedloop.glc ACCEPT commits=1 ops=31130 obligations farkasCombinationValid=96/96 syzygyCombinationValid",
-  "maxrss_kb": 31108,
-  "load1": 27.1,
+  "maxrss_kb": 31980,
+  "load1": 9.2,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1667,11 +1667,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_promise_closedloop",
@@ -1680,10 +1680,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 14502.909,
+  "t_e2e_ms": 13529.646,
   "verdict": "acasx4_promise_closedloop.glc ACCEPT commits=1 ops=31130 obligations farkasCombinationValid=96/96 syzygyCombinationValid",
-  "maxrss_kb": 31156,
-  "load1": 24.4,
+  "maxrss_kb": 31984,
+  "load1": 8.9,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1694,11 +1694,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_promise_closedloop",
@@ -1707,10 +1707,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 27382.117,
+  "t_e2e_ms": 12730.343,
   "verdict": "acasx4_promise_closedloop.glc ACCEPT commits=1 ops=31130 obligations farkasCombinationValid=96/96 syzygyCombinationValid",
-  "maxrss_kb": 31164,
-  "load1": 24.1,
+  "maxrss_kb": 31972,
+  "load1": 9.3,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1721,11 +1721,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "acasx4_promise_closedloop",
@@ -1734,10 +1734,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 27167.763,
+  "t_e2e_ms": 16784.612,
   "verdict": "acasx4_promise_closedloop.glc ACCEPT commits=1 ops=31130 obligations farkasCombinationValid=96/96 syzygyCombinationValid",
-  "maxrss_kb": 31188,
-  "load1": 28.3,
+  "maxrss_kb": 31980,
+  "load1": 8.7,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1748,11 +1748,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_nest_shell",
@@ -1761,10 +1761,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 653.327,
+  "t_e2e_ms": 420.318,
   "verdict": "rode_nest_shell.glc ACCEPT commits=1 ops=100886 obligations farkasCombinationValid=0/0 syzygyCombinationValid=291/291 sy",
-  "maxrss_kb": 81888,
-  "load1": 38.6,
+  "maxrss_kb": 82732,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1775,11 +1775,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_nest_shell",
@@ -1788,10 +1788,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 426.893,
+  "t_e2e_ms": 413.903,
   "verdict": "rode_nest_shell.glc ACCEPT commits=1 ops=100886 obligations farkasCombinationValid=0/0 syzygyCombinationValid=291/291 sy",
-  "maxrss_kb": 81880,
-  "load1": 38.1,
+  "maxrss_kb": 82752,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1802,11 +1802,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_nest_shell",
@@ -1815,10 +1815,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 622.419,
+  "t_e2e_ms": 414.207,
   "verdict": "rode_nest_shell.glc ACCEPT commits=1 ops=100886 obligations farkasCombinationValid=0/0 syzygyCombinationValid=291/291 sy",
-  "maxrss_kb": 81880,
-  "load1": 38.1,
+  "maxrss_kb": 82752,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1829,11 +1829,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_nest_shell",
@@ -1842,10 +1842,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 549.352,
+  "t_e2e_ms": 411.701,
   "verdict": "rode_nest_shell.glc ACCEPT commits=1 ops=100886 obligations farkasCombinationValid=0/0 syzygyCombinationValid=291/291 sy",
-  "maxrss_kb": 81932,
-  "load1": 38.1,
+  "maxrss_kb": 82752,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1856,11 +1856,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_nest_shell",
@@ -1869,10 +1869,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 805.503,
+  "t_e2e_ms": 422.988,
   "verdict": "rode_nest_shell.glc ACCEPT commits=1 ops=100886 obligations farkasCombinationValid=0/0 syzygyCombinationValid=291/291 sy",
-  "maxrss_kb": 81868,
-  "load1": 38.1,
+  "maxrss_kb": 82752,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1883,11 +1883,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_hold_flow",
@@ -1896,10 +1896,10 @@
   "pass": 1,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 635.333,
+  "t_e2e_ms": 429.719,
   "verdict": "rode_hold_flow.glc ACCEPT commits=1 ops=111388 obligations farkasCombinationValid=0/0 syzygyCombinationValid=290/290 syz",
-  "maxrss_kb": 88148,
-  "load1": 38.1,
+  "maxrss_kb": 89016,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1910,11 +1910,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_hold_flow",
@@ -1923,10 +1923,10 @@
   "pass": 2,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 661.586,
+  "t_e2e_ms": 426.635,
   "verdict": "rode_hold_flow.glc ACCEPT commits=1 ops=111388 obligations farkasCombinationValid=0/0 syzygyCombinationValid=290/290 syz",
-  "maxrss_kb": 88200,
-  "load1": 38.1,
+  "maxrss_kb": 89012,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1937,11 +1937,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_hold_flow",
@@ -1950,10 +1950,10 @@
   "pass": 3,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 611.206,
+  "t_e2e_ms": 425.318,
   "verdict": "rode_hold_flow.glc ACCEPT commits=1 ops=111388 obligations farkasCombinationValid=0/0 syzygyCombinationValid=290/290 syz",
-  "maxrss_kb": 88200,
-  "load1": 38.1,
+  "maxrss_kb": 89016,
+  "load1": 9.5,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1964,11 +1964,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_hold_flow",
@@ -1977,10 +1977,10 @@
   "pass": 4,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 628.863,
+  "t_e2e_ms": 429.836,
   "verdict": "rode_hold_flow.glc ACCEPT commits=1 ops=111388 obligations farkasCombinationValid=0/0 syzygyCombinationValid=290/290 syz",
-  "maxrss_kb": 88200,
-  "load1": 38.1,
+  "maxrss_kb": 89016,
+  "load1": 9.4,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -1991,11 +1991,11 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  },
  {
   "name": "rode_hold_flow",
@@ -2004,10 +2004,10 @@
   "pass": 5,
   "budget_s": 600.0,
   "outcome": "accept",
-  "t_e2e_ms": 869.105,
+  "t_e2e_ms": 422.635,
   "verdict": "rode_hold_flow.glc ACCEPT commits=1 ops=111388 obligations farkasCombinationValid=0/0 syzygyCombinationValid=290/290 syz",
-  "maxrss_kb": 88200,
-  "load1": 36.9,
+  "maxrss_kb": 89012,
+  "load1": 9.4,
   "pinned_cpu": 15,
   "host": {
    "host": "gb10",
@@ -2018,10 +2018,10 @@
   },
   "binary": {
    "basename": "glc-check",
-   "md5": "bfd195e55a1d26c637dd7fc0132259f7",
-   "sha256": "c6ef5d986aa0dfaab386df885cbab8dce3ac8cda6512ad0b3b4fa7f2ab3f4f9a",
-   "bytes": 4240664
+   "md5": "c13e56c5a1734bdcd7975d7976b9cf3a",
+   "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+   "bytes": 4961424
   },
-  "note": "glc-check built at the Makefile QTSL_REV pin (622f0286) from the local qtsl mirror; staged-chain lane"
+  "note": "glc-check built at the Makefile QTSL_REV pin (43cd608) from the local qtsl mirror; staged-chain lane; R6 gb10 pass-2 refresh"
  }
 ]

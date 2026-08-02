@@ -1,0 +1,35 @@
+{
+ "date": "2026-08-02T09:32:44Z",
+ "machine": "w2145 (see MACHINES.md; Hetzner dedicated Xeon W-2145, 8c/16t, 251 GiB; x86_64)",
+ "purpose": "independent-machine + cross-architecture replication of the Section 1 checked-production cells (the published table cells remain the gb10 receipts; this directory is findings-grade evidence, deliberately outside the <machine>-retime best-of scan)",
+ "protocol": "serial host lane; exactly 1 flagged warmup and 10 measured repeats per benchmark; whole checked-production wall; version-2 receipt (process wall + attribution); a second full campaign (produce-host-run2.json) as a same-box stability replication",
+ "command": "supermart-sec1 retime --experiments <qtsl-experiments> --machine w2145 --out supermartingales/out/glc-baked/sec1/w2145-independent/produce-host.json --compare supermartingales/out/glc-baked/sec1/incumbents --lane host --warmups 1 --repeats 10 --retain-containers <scratch> --pretty",
+ "retained_containers": "retained to scratch to exercise the retain_copy_s phase at protocol parity with the gb10 campaign, verified by the runner's own byte gates, then deleted (not committed: the incumbents already bind the canonical bytes)",
+ "binaries": {
+  "supermart-sec1": {
+   "path": "supermart-sec1",
+   "sha256": "b488f14a6d23d0c4b57d7412c38c1f3649fa047cc9a31b3c962a00d46f1b98dd"
+  },
+  "glc-check": {
+   "path": "glc-check",
+   "sha256": "66dc37e61279d460dd81e2ed063b0c9ba51854664bf5c3e50ba923d08e7b8c6a"
+  }
+ },
+ "revisions": {
+  "mtk": "6ccb1d863cc79f1cc8da5e87e62039bd20442e38",
+  "qtsl": "a9b33d14587d1c08a6510ef6f0d42be08f132aca",
+  "qtsl-experiments": "f3b5f526c9bd9c52c9fcfe6e0e96d97a0eafeca2",
+  "closure": "ac5fdd9cd9148cefe6e00ee6551f9b276dcdb57e3db44bd9253d16e348515733",
+  "geolog-alpha": "83ebe88d5007b101112941f2b47ccb9cefd97fb9"
+ },
+ "toolchain": "cargo/rustc 1.97.1, release profile, --locked, built on the box",
+ "trusted_incumbents": "supermartingales/out/glc-baked/sec1/incumbents (digests bound by ../MANIFEST.json)",
+ "environment": {
+  "co_tenancy": "NOT a zero-co-tenant window: seventeen long-lived prover processes at nice 0 (~73% CPU each) plus one nice-10 grinder; load average ~19-20 of 16 threads throughout; the box\u2019s Lean job queue empty before and during all kept cells (a Lean job arriving 2026-08-02T09:33:52Z invalidated only the checker-compare retain A/B cell, which was retired rather than re-taken: the version-2 receipts measure the retained-copy cost inline via rows_retain_copy_s, superseding that protocol for its own question; the invalidated attempt is committed as the overlap specimen)",
+  "scheduler_calibration": "single-threaded spin probe at nice 19/10/0, 3 repeats each, run under the same load: wall/cpu inflation 1.000-1.013 in all 9 cells (the co-tenants' ~27% sleep fraction leaves idle cores); residual contamination is all-core-turbo frequency and cache pressure, not scheduler starvation",
+  "stability": "run 1 vs run 2 medians agree within ~1-2% on every phase of every benchmark"
+ },
+ "promotion_rule": "if any w2145 number is ever promoted into a rendered table, it must first be re-taken inside a true zero-co-tenant window per the MACHINES.md w2145 row; the numbers here are honest upper bounds for the box \u2014 concretely, under a declared admission gate in the style of ../QUIET-PROTOCOL.md, which landed after these cells were taken",
+ "progress": "runner monitor emitted progress once per second",
+ "receipt": "produce-host.json (+ produce-host-run2.json, stability replication)"
+}

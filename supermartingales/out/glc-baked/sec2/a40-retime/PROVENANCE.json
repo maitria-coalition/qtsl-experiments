@@ -1,22 +1,40 @@
 {
- "date": "2026-07-30T08:53:23Z",
+ "date": "2026-08-01T06:44:16Z",
  "machine": "a40 (rented; cgroup quota ~7.65 vCPU / 50 GB)",
- "gpu": "NVIDIA A40, 46068 MiB, 580.159.04",
+ "gpu": "NVIDIA A40, 46068 MiB, 570.195.03",
  "cpu": "Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz",
  "nproc_host": 96,
  "binaries": {
   "onesys-driver": {
    "path": "onesys-driver",
-   "sha256": "442975f694b98bb5fb89098d1565ffc61cc264facfa4ce59046f113176093f25"
+   "sha256": "45d8adcf8daf56cc13733a5cdcb4432f8d981245b5cbe58e9d9ff6b551867583"
   },
   "glc-check": {
    "path": "glc-check",
-   "sha256": "18d11182d6ef29d449504257063db6c6f19216b387c1babcb55c90bfc8217864"
+   "sha256": "395182090ded63b772555b1dcc7b54d7188129b2d8063359fc8b266c407bf5bf"
   },
   "qtsl2bl": {
    "path": "qtsl2bl",
-   "sha256": "ee6ebd5d9a19fd1098e58bf65d0ac93fd5a8cddc448f20c480f750d5daccc529"
+   "sha256": "5d41b1fec29d0461d818feb914d35a320c17cb21d953f576c67f584d1bd49416"
   }
  },
- "protocol": "10 repeats per benchmark (+1 flagged warmup on produce); serial, one process at a time"
+ "protocol": "10 repeats per benchmark (+1 flagged warmup on produce); serial, one process at a time; expand 1 pass per container",
+ "loadavg": {
+  "produce-gpu": {
+   "before": "12.69 9.30 8.39 2/5594 8854",
+   "after": "8.99 8.70 8.27 10/5622 8858"
+  },
+  "produce-host": {
+   "before": "9.91 8.91 8.34 13/5675 8873",
+   "after": "13.35 10.02 8.78 15/5807 8875"
+  },
+  "geolog": {
+   "before": "10.89 9.69 8.70 4/5669 8890",
+   "after": "8.03 9.16 8.58 5/5647 8972"
+  },
+  "expand": {
+   "before": "7.36 8.95 8.52 6/5649 8986",
+   "after": "7.84 8.87 8.51 4/5669 8996"
+  }
+ }
 }

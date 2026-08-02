@@ -1,0 +1,61 @@
+{
+ "what": "qtsl2bl --expand wall per shared container",
+ "rows": [
+  {
+   "bench": "cliff_crossing",
+   "repeat": 0,
+   "wall_s": 4.3857,
+   "trees": 1094,
+   "rc": 0
+  },
+  {
+   "bench": "faulty_concave",
+   "repeat": 0,
+   "wall_s": 0.0551,
+   "trees": 38,
+   "rc": 0
+  },
+  {
+   "bench": "faulty_varying",
+   "repeat": 0,
+   "wall_s": 0.0565,
+   "trees": 38,
+   "rc": 0
+  },
+  {
+   "bench": "faulty_varying__last_step",
+   "repeat": 0,
+   "wall_s": 0.0725,
+   "trees": 38,
+   "rc": 0
+  },
+  {
+   "bench": "repulse100",
+   "repeat": 0,
+   "wall_s": 0.1099,
+   "trees": 207,
+   "rc": 0
+  },
+  {
+   "bench": "repulse100_2d",
+   "repeat": 0,
+   "wall_s": 21.2956,
+   "trees": 2267,
+   "rc": 0
+  },
+  {
+   "bench": "repulse100_uniform",
+   "repeat": 0,
+   "wall_s": 0.1861,
+   "trees": 205,
+   "rc": 0
+  },
+  {
+   "bench": "repulse100_uniform__discrete",
+   "repeat": 0,
+   "wall_s": 0.0986,
+   "trees": 207,
+   "rc": 0
+  }
+ ]
+}

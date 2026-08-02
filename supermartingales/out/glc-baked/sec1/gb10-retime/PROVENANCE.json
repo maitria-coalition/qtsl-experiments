@@ -1,0 +1,28 @@
+{
+ "date": "2026-08-02T09:07:00Z",
+ "machine": "gb10 (see MACHINES.md; shared box; campaign process nice -n 19)",
+ "protocol": "serial host lane; exactly 1 flagged warmup and 10 measured repeats per benchmark; whole checked-production wall; load-uncontrolled shared box (1-minute load average ~20 from concurrent unrelated builds at campaign start)",
+ "command": "supermart-sec1 retime --experiments <qtsl-experiments> --machine gb10 --out supermartingales/out/glc-baked/sec1/gb10-retime/campaign.json --compare supermartingales/out/glc-baked/sec1/incumbents --lane host --warmups 1 --repeats 10 --retain-containers supermartingales/out/glc-baked/sec1/gb10-retime/containers --pretty",
+ "binaries": {
+  "supermart-sec1": {
+   "path": "supermart-sec1",
+   "sha256": "e328a54b404602130ec86b4283e95a303a70717e6b5aea2552bb823dcae6b26d"
+  },
+  "glc-check": {
+   "path": "glc-check",
+   "sha256": "6e2f21386ff7721dbc6782f769a2ff643929e0efc78675dce23b5c83dd009c40"
+  }
+ },
+ "revisions": {
+  "mtk": "6ccb1d863cc79f1cc8da5e87e62039bd20442e38",
+  "qtsl": "a9b33d14587d1c08a6510ef6f0d42be08f132aca",
+  "qtsl-experiments": "2d356ae9417764e814abc201423152addcfaa3d7",
+  "closure": "ac5fdd9cd9148cefe6e00ee6551f9b276dcdb57e3db44bd9253d16e348515733",
+  "geolog-alpha": "83ebe88d5007b101112941f2b47ccb9cefd97fb9"
+ },
+ "trusted_incumbents": "supermartingales/out/glc-baked/sec1/incumbents (digests bound by ../MANIFEST.json)",
+ "standalone_geolog": "not required: every one of the 30 measured rows and 3 flagged warmups embeds a clean geolog acceptance receipt and the same benchmark container SHA",
+ "receipt_history": "this version-2 receipt supersedes the version-1 receipt dated 2026-08-02T08:57:56Z (producer revision c30397c46c3831ad3f2f6dfc5a7190f881935a4f, binary sha256 af780ca2f9562feaceda883fbbd2d3fa58909b7c65c0fab632481632017caf36, retained in git history); outputs are byte-identical across both campaigns, and geolog-shared.json (checked with the glc-check binary above) is unchanged from that campaign",
+ "progress": "runner monitor emitted progress once per second",
+ "receipt": "campaign.json (produce-host.json is its byte-identical published twin)"
+}

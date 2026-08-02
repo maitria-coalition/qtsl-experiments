@@ -1,6 +1,6 @@
 {
  "container": "geologfl v1 (.glc), single commit per benchmark; shared Bernstein Logic subtrees (proof hypernet: element in-degree above one), baked closure prereqs",
- "closure": "qc revision 22fc4290567cf5d5f16797b980be2efcba00b9b48926470fea1ee2f72cd8808b",
+ "closure": "qc revision 6862edc88ff1d788550d196078a28cb2fe971f10d478a5e32800f2892a7292b9",
  "producer": "mtk supermartingale forest strategy (structural hash-consing across per-listing towers; duplicate listings collapse to one representative, ledgered in the emission unit's produce notes)",
  "per_tree_extraction": "qtsl2bl --expand <benchmark>.glc --store <baked store> --out-dir D duplicates shared subtrees back into one container per proof tree; tree-shaped checkers consume the expansion unchanged",
  "equivalence": "expansion row multisets are identical to the per-listing emission modulo local element renumbering (renaming-invariant digest match, all trees, all benchmarks; cliff_crossing carries 11 duplicate-content listing pairs, collapsed with ledger); the geolog checker ACCEPTs both forms at equal claim tallies",
@@ -8,7 +8,7 @@
   {
    "benchmark": "cliff_crossing",
    "file": "cliff_crossing.glc",
-   "sha256": "a0273499d13e5151d7ef40a3a11babe1021a58188942a6adb97047b53c507f15",
+   "sha256": "fcc1712bce53169fef607d2dc474197bdc7850639c32bf63d9cd0ae9ff0ab037",
    "bytes": 136033,
    "proof_trees": 1105,
    "distinct_trees": 1094,
@@ -18,7 +18,7 @@
   {
    "benchmark": "faulty_concave",
    "file": "faulty_concave.glc",
-   "sha256": "7b68924f735871aa5840e309b277662bb8756ff427085425e1278e4df911b13e",
+   "sha256": "a02557c11f3e271025144a4b5dc83e5b8f250c1e64d6f3b344fc195752c3c957",
    "bytes": 5042,
    "proof_trees": 38,
    "distinct_trees": 38,
@@ -28,7 +28,7 @@
   {
    "benchmark": "faulty_varying",
    "file": "faulty_varying.glc",
-   "sha256": "44c1016f89c09b38db94e4747f69c32aecd67d101a7367c0e179742129afc1fc",
+   "sha256": "8ea73f1a9de1174290c21c166f753f28ddbfbebea024a102274bd667f454d7a8",
    "bytes": 5066,
    "proof_trees": 38,
    "distinct_trees": 38,
@@ -38,7 +38,7 @@
   {
    "benchmark": "faulty_varying__last_step",
    "file": "faulty_varying__last_step.glc",
-   "sha256": "fff5220c321edf6609cd3249fdfd7e7ce847c93b345d8698f34e0aa9a4c79fb1",
+   "sha256": "8fccf943b471782968b56e33e794e392b7b95f85437211930c4c646c57abf628",
    "bytes": 5077,
    "proof_trees": 38,
    "distinct_trees": 38,
@@ -48,17 +48,17 @@
   {
    "benchmark": "repulse100",
    "file": "repulse100.glc",
-   "sha256": "a903f5821d8dfc5dc686257142650edfdaab5a0ef2a28f00277280d67be8c40e",
+   "sha256": "05f184b67b910d5d3d5e44e6e3dae616eb9afc5b12c277d33e1707f56b8e694e",
    "bytes": 9773,
    "proof_trees": 207,
    "distinct_trees": 207,
-   "claims": 414,
+   "claims": 207,
    "ops": 7593
   },
   {
    "benchmark": "repulse100_2d",
    "file": "repulse100_2d.glc",
-   "sha256": "3befe3db87c413716df582645323b37c2fac3ab9a9e78c2704fae14a6231c524",
+   "sha256": "fae157d9981897cc16269db7b71a36b3979174bd255c0686dacfd5a0d4000ff7",
    "bytes": 240974,
    "proof_trees": 2267,
    "distinct_trees": 2267,
@@ -68,21 +68,21 @@
   {
    "benchmark": "repulse100_uniform",
    "file": "repulse100_uniform.glc",
-   "sha256": "6f7d3e0a8c3eb0461287ee4bda092ec0c7e873cf60765f298d94e3b03e0081cd",
+   "sha256": "83366b2f00c2167875754f23aff85c90f72c0ee45afed70d7caf056cb749829a",
    "bytes": 90121,
    "proof_trees": 205,
    "distinct_trees": 205,
-   "claims": 410,
+   "claims": 205,
    "ops": 15808
   },
   {
    "benchmark": "repulse100_uniform__discrete",
    "file": "repulse100_uniform__discrete.glc",
-   "sha256": "9e53e40eedff60175da9ad3282e84d018feedf0ebd9191d58ff0483374b9962c",
+   "sha256": "6d1db972d23a86dc5d10a783765f2fed4f2af510662ee23c12c50efe961d9f05",
    "bytes": 12089,
    "proof_trees": 207,
    "distinct_trees": 207,
-   "claims": 414,
+   "claims": 207,
    "ops": 7593
   }
  ]

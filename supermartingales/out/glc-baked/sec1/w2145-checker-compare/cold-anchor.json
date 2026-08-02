@@ -1,0 +1,132 @@
+{
+ "receipt_version": 1,
+ "schema": "maitria.supermart.checker-compare.v1",
+ "section": "sec1",
+ "machine": "w2145",
+ "protocol": "10 fresh-process single-repeat productions of faulty_marbles (--warmups 0 --repeats 1): whole process wall (monotonic, spawn-to-exit) beside the receipt's one row wall; the cold-process-per-repeat calibration anchor",
+ "wall_semantics": "monotonic clock around child process spawn-to-exit (includes process startup)",
+ "checker_binary": {
+  "path": "glc-check",
+  "sha256": "66dc37e61279d460dd81e2ed063b0c9ba51854664bf5c3e50ba923d08e7b8c6a"
+ },
+ "qtsl_experiments_revision": "f3b5f526c9bd9c52c9fcfe6e0e96d97a0eafeca2",
+ "environment_start": {
+  "loadavg": [
+   19.15478515625,
+   20.47509765625,
+   20.330078125
+  ],
+  "nproc": 16,
+  "nice": 19,
+  "utc": "2026-08-02T09:33:42Z"
+ },
+ "runner_binary": {
+  "path": "supermart-sec1",
+  "sha256": "b488f14a6d23d0c4b57d7412c38c1f3649fa047cc9a31b3c962a00d46f1b98dd"
+ },
+ "bench": "faulty_marbles",
+ "rows": [
+  {
+   "repeat": 0,
+   "process_wall_s": 0.8134311051107943,
+   "row_wall_s": 0.157319427,
+   "produce_s": 0.089407884,
+   "check_s": 0.027920639,
+   "seal_s": 0.035824608,
+   "byte_identical": true
+  },
+  {
+   "repeat": 1,
+   "process_wall_s": 0.7524689461570233,
+   "row_wall_s": 0.157029543,
+   "produce_s": 0.088495024,
+   "check_s": 0.028559542,
+   "seal_s": 0.035662813,
+   "byte_identical": true
+  },
+  {
+   "repeat": 2,
+   "process_wall_s": 0.7342664438765496,
+   "row_wall_s": 0.16007435,
+   "produce_s": 0.090680663,
+   "check_s": 0.028762887,
+   "seal_s": 0.036102412,
+   "byte_identical": true
+  },
+  {
+   "repeat": 3,
+   "process_wall_s": 0.748886336106807,
+   "row_wall_s": 0.160284299,
+   "produce_s": 0.090454151,
+   "check_s": 0.029001685,
+   "seal_s": 0.036545427,
+   "byte_identical": true
+  },
+  {
+   "repeat": 4,
+   "process_wall_s": 0.7433060079347342,
+   "row_wall_s": 0.159076124,
+   "produce_s": 0.090491678,
+   "check_s": 0.028657003,
+   "seal_s": 0.035644021,
+   "byte_identical": true
+  },
+  {
+   "repeat": 5,
+   "process_wall_s": 0.7591134000103921,
+   "row_wall_s": 0.15920822,
+   "produce_s": 0.090615556,
+   "check_s": 0.028497365,
+   "seal_s": 0.035731453,
+   "byte_identical": true
+  },
+  {
+   "repeat": 6,
+   "process_wall_s": 0.7297013211064041,
+   "row_wall_s": 0.157705015,
+   "produce_s": 0.088939144,
+   "check_s": 0.029037233,
+   "seal_s": 0.035412641,
+   "byte_identical": true
+  },
+  {
+   "repeat": 7,
+   "process_wall_s": 0.732420562999323,
+   "row_wall_s": 0.157970913,
+   "produce_s": 0.089883868,
+   "check_s": 0.028735143,
+   "seal_s": 0.035050054,
+   "byte_identical": true
+  },
+  {
+   "repeat": 8,
+   "process_wall_s": 0.7392961380537599,
+   "row_wall_s": 0.159088098,
+   "produce_s": 0.089818958,
+   "check_s": 0.029108822,
+   "seal_s": 0.035767743,
+   "byte_identical": true
+  },
+  {
+   "repeat": 9,
+   "process_wall_s": 0.7418533230666071,
+   "row_wall_s": 0.159710377,
+   "produce_s": 0.089957131,
+   "check_s": 0.028671178,
+   "seal_s": 0.036706925,
+   "byte_identical": true
+  }
+ ],
+ "median_process_wall_s": 0.7425796655006707,
+ "median_row_wall_s": 0.15908211100000003,
+ "environment_end": {
+  "loadavg": [
+   19.056640625,
+   20.40966796875,
+   20.31005859375
+  ],
+  "nproc": 16,
+  "nice": 19,
+  "utc": "2026-08-02T09:33:50Z"
+ }
+}

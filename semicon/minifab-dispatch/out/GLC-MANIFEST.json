@@ -1,0 +1,112 @@
+{
+  "family": "minifab-dispatch",
+  "checker": "glc-check baked-cert lane (container + envelope integrity, then per-relation claim discharge through the exact-rational ground provider; per-positive --expect-claims from this manifest). Requires a qtsl pin whose baked roster carries the revision these containers pin; an older checker refuses them loudly (unknown_prereq), never vacuously.",
+  "format": ".glc — sealed geolog commit containers (single commit per certificate)",
+  "battery": {
+    "note": "producer-tier re-derivation + semantic mutant batteries: the pinned mtk checkout's semicon test suite re-builds every campaign in exact rational arithmetic and re-runs the committed mutant kills at the producer tiers (exact-tier sequents, encoder mirrors, strategy-tier replays) that sealed-container bytes cannot witness.",
+    "manifest_env": "MTK_MANIFEST",
+    "package": "mtk-strategies",
+    "filter": "semicon",
+    "min_tests": 42
+  },
+  "positives": [
+    {
+      "cert": "minifab",
+      "role": "closed baseline — the twelve-certificate family (work-potential ranking, lot count, six machine conservation bounds, congestion, ceiling, and the arrival-potential + step-budget deadline pair); worst-case arrivals deadline 638N-12 counting steps",
+      "file": "minifab.glc",
+      "ops": 2032,
+      "glc_sha256": "3b664cfab82066ff610430dd56da6cf58ff19db49cc12ded1a9185382c771d1f",
+      "expect_claims": "qtsl_hplate_flow=12,qtsl_hplate_footprint=36,qtsl_hplate_lowbound=5,qtsl_poly_canonical=40"
+    },
+    {
+      "cert": "minifab-gated",
+      "role": "open system — the plant as a comb with one policy hole (the stage-6 start gate), hole count decided at the checker; gated deadline dictionary T* = fold_D(m0) = 626N",
+      "file": "minifab-gated.glc",
+      "ops": 2161,
+      "glc_sha256": "0f4dff5f70ff0930731374d9e42091d75131da9b970c881c98a0e58ad129141e",
+      "expect_claims": "qtsl_hole_count=1,qtsl_hplate_flow=12,qtsl_hplate_footprint=36,qtsl_hplate_lowbound=5,qtsl_poly_canonical=40"
+    },
+    {
+      "cert": "minifab-supervised",
+      "role": "synthesized supervisor, closed composite — latest-safe unlock winner; certified completion + all arrivals by 626N (52584 at N=84, against the 53580 no-policy baseline)",
+      "file": "minifab-supervised.glc",
+      "ops": 2154,
+      "glc_sha256": "b98a0039745dba3b309338a56fa38e5aa839cfffbca357659e7866c4d98c15e3",
+      "expect_claims": "qtsl_hplate_flow=14,qtsl_hplate_footprint=36,qtsl_hplate_lowbound=6,qtsl_poly_canonical=40"
+    },
+    {
+      "cert": "minifab-simplex",
+      "role": "Simplex composite — demonic gate envelope filling the same hole: certified baseline + uncertified advanced policy behind a certified switching envelope; downside bound exact in event count",
+      "file": "minifab-simplex.glc",
+      "ops": 2216,
+      "glc_sha256": "26885f092f8b7ec33a3d742f7883f226cdfb6b40af6c45b35ea7eda909096171",
+      "expect_claims": "qtsl_hole_count=1,qtsl_hplate_flow=14,qtsl_hplate_footprint=36,qtsl_hplate_lowbound=6,qtsl_poly_canonical=40"
+    },
+    {
+      "cert": "minifab-carved",
+      "role": "closed baseline, carved-clock reseal — dwell exactly 1 on logistical transitions, timing owned by the clock semantics; the same checked rows now yield native wall-clock bounds (rounds-to-all-arrivals at most 638N-12)",
+      "file": "carved/minifab.glc",
+      "ops": 2032,
+      "glc_sha256": "64f55549096d3c6bc81612b45a3439d0a1c3b7b9e9e8498d0dc417d951ea4723",
+      "expect_claims": "qtsl_hplate_flow=12,qtsl_hplate_footprint=36,qtsl_hplate_lowbound=5,qtsl_poly_canonical=40"
+    },
+    {
+      "cert": "minifab-gated-carved",
+      "role": "open system, carved-clock reseal — one policy hole, wall-clock native; gated rounds-to-all-arrivals at most 626N",
+      "file": "carved/minifab-gated.glc",
+      "ops": 2161,
+      "glc_sha256": "968de5e46cc1afb763eac2061e1d9b2e43a9fc9026b5678d8b4c1078bac40bfd",
+      "expect_claims": "qtsl_hole_count=1,qtsl_hplate_flow=12,qtsl_hplate_footprint=36,qtsl_hplate_lowbound=5,qtsl_poly_canonical=40"
+    },
+    {
+      "cert": "minifab-supervised-carved",
+      "role": "synthesized supervisor, carved-clock reseal — certified completion and the 626N arrivals bound stated against the wall clock",
+      "file": "carved/minifab-supervised.glc",
+      "ops": 2154,
+      "glc_sha256": "72c94d64bec0c81b3241775cfa5d9afad745407eb3864a888a098beb301bc6be",
+      "expect_claims": "qtsl_hplate_flow=14,qtsl_hplate_footprint=36,qtsl_hplate_lowbound=6,qtsl_poly_canonical=40"
+    }
+  ],
+  "mutants": [
+    {
+      "mutant": "x1_body_byte",
+      "base": "minifab-supervised",
+      "corruption": "one byte flipped mid-body",
+      "file": "mutants/x1_body_byte.glc",
+      "glc_sha256": "57b531504ed620d8a3f81cce5017815611cd0f866eeda277fe4af1b706925181",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "x2_tail_byte",
+      "base": "minifab-supervised",
+      "corruption": "one byte flipped near the container tail",
+      "file": "mutants/x2_tail_byte.glc",
+      "glc_sha256": "612a3120b967ef014628e0041b994ffb515154e74d44c9c7317a7fde018a0e41",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "x3_truncated",
+      "base": "minifab-supervised",
+      "corruption": "final 64 bytes dropped",
+      "file": "mutants/x3_truncated.glc",
+      "glc_sha256": "77d410cd85ee03afbe31bbcb7b98809f6a1f958f827e7ba374262f2f108a92ff",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "x4_magic",
+      "base": "minifab-supervised",
+      "corruption": "magic header byte flipped",
+      "file": "mutants/x4_magic.glc",
+      "glc_sha256": "ad3216670e62980cc9b5b46191bcfcbcff6ec4e5f9627228c77b72d428ae6663",
+      "expected": "REFUSE"
+    },
+    {
+      "mutant": "x5_version",
+      "base": "minifab-supervised",
+      "corruption": "container version byte bumped past this reader",
+      "file": "mutants/x5_version.glc",
+      "glc_sha256": "dd64e212668a21675c260ecd755e912cac026fb9916b1c25f8aef84cd8e9957b",
+      "expected": "REFUSE"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-08-01T07:09:44Z",
+  "what": "SERIAL re-time of the stored certificate corpus through the certified checker on gb10 (replaces the 2026-07-23 census's mildly-concurrent walls for this machine); verdict identity gated row-by-row against the committed census.tsv",
+  "machine": "gb10 (see MACHINES.md): one single-threaded checker process per certificate, strictly serial, nice -n 19, taskset -c 7 (one Cortex-X925 core), shared box",
+  "checker": {
+    "emitted_assembly_md5": "e7f7497d260ce59aa922a87e3571a72b",
+    "native_binary_md5": "4d132d7b56dca4feaa8be8f89e97b612",
+    "native_binary_sha256": "6b88466eedfee7282c453f603672c7a7481ec69f072c0a3d14dcf900cd44fd7f",
+    "toolchain": "gcc 13.3 -O2, aarch64",
+    "note": "same emitted assembly as the committed census's provenance pin; binary md5 differs across builds via the ELF FILE symbol, identity is functional (4105/4105 verdict agreement, this file's gate)"
+  },
+  "protocol": {
+    "parallelism": "NONE - fully serial (the committed census ran four families concurrently; these walls carry no concurrency inflation)",
+    "timeout_s": 120,
+    "verdict_gate": "per row: exit code equal and verdict line prefix-equal to the committed census.tsv verdict column (which is capped at 120 chars by the incumbent apparatus; this file keeps the same cap)",
+    "result": "4105/4105 accepted, verdicts and exit codes identical to the committed census"
+  },
+  "pooled_walls_ms": { "min": 11.3, "median": 19.2, "p90": 22.6, "max": 96.1, "total_s": 85.4 },
+  "loadavg": { "before": "7.35 8.30 8.50 7/3229 1277515", "after": "5.33 7.43 8.17 3/3242 1291097" }
+}

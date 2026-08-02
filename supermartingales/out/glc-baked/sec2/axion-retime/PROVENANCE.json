@@ -1,0 +1,13 @@
+{
+ "date": "2026-08-01T07:20:00Z",
+ "machine": "axion (GCP c4a-standard-16 spot; dedicated box, sole tenant)",
+ "cpu": "Google Axion (Arm Neoverse-V2), aarch64, 16 vCPU, 64 GiB",
+ "nproc_host": 16,
+ "binaries": {
+  "glc-check": {
+   "path": "glc-check (release build from the repository's pinned qtsl checkout, crates/qtsl-geolog-provider)",
+   "sha256": "0605b50823a919967ac9c8dfbdad853cd76e6c5c3e02ec281e1d4bef5511c3ac"
+  }
+ },
+ "protocol": "10 repeats per benchmark, interleaved by repeat index; serial, one process at a time, pinned to one core (taskset); page cache pre-warmed by one untimed read of each container; containers are the revision-event-5.1 re-sealed shared vintage, sha256-verified against MANIFEST.json before the block, claim tallies asserted against the manifest on every repeat; load average 0.22 at block end (sole tenant)"
+}

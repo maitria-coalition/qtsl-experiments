@@ -1,0 +1,110 @@
+{
+ "date": "2026-08-01T07:05:31.912Z",
+ "what": "per-benchmark wall-clock of the geolog fast-path checker (glc-check) over this campaign's sealed containers; serial batches (<=400 files per checker process), one group at a time, walls measured around each group's batches",
+ "machine": {
+  "id": "gb10",
+  "arch": "arm64",
+  "cpu": "unknown",
+  "loadavg_at_end": [
+   6.09,
+   8.5,
+   8.58
+  ],
+  "note": "single checker process at a time"
+ },
+ "checker_binary_sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a",
+ "groups": {
+  "cliff_crossing": {
+   "n": 1105,
+   "wall_s": 0.341
+  },
+  "faulty_concave": {
+   "n": 60,
+   "wall_s": 0.03
+  },
+  "faulty_easy1": {
+   "n": 84,
+   "wall_s": 0.037
+  },
+  "faulty_loop": {
+   "n": 22,
+   "wall_s": 0.009
+  },
+  "faulty_loop__as_listed": {
+   "n": 22,
+   "wall_s": 0.011
+  },
+  "faulty_marbles": {
+   "n": 23,
+   "wall_s": 0.019
+  },
+  "faulty_marbles__poly": {
+   "n": 3,
+   "wall_s": 0.013
+  },
+  "faulty_ndecr": {
+   "n": 60,
+   "wall_s": 0.022
+  },
+  "faulty_rare": {
+   "n": 22,
+   "wall_s": 0.011
+  },
+  "faulty_regions": {
+   "n": 29,
+   "wall_s": 0.02
+  },
+  "faulty_regions__poly": {
+   "n": 5,
+   "wall_s": 0.204
+  },
+  "faulty_uniform": {
+   "n": 30,
+   "wall_s": 0.019
+  },
+  "faulty_unreliable": {
+   "n": 29,
+   "wall_s": 0.02
+  },
+  "faulty_unreliable__poly": {
+   "n": 3,
+   "wall_s": 0.018
+  },
+  "faulty_varying": {
+   "n": 60,
+   "wall_s": 0.026
+  },
+  "faulty_varying__last_step": {
+   "n": 60,
+   "wall_s": 0.023
+  },
+  "faulty_walk": {
+   "n": 16,
+   "wall_s": 0.007
+  },
+  "faulty_walk__det12": {
+   "n": 28,
+   "wall_s": 0.009
+  },
+  "fixed_loop": {
+   "n": 22,
+   "wall_s": 0.008
+  },
+  "repulse100": {
+   "n": 207,
+   "wall_s": 0.043
+  },
+  "repulse100_2d": {
+   "n": 2267,
+   "wall_s": 0.733
+  },
+  "repulse100_uniform": {
+   "n": 205,
+   "wall_s": 0.404
+  },
+  "repulse100_uniform__discrete": {
+   "n": 207,
+   "wall_s": 0.045
+  }
+ }
+}

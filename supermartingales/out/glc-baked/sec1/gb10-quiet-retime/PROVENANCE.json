@@ -1,0 +1,22 @@
+{
+ "date": "2026-08-02T10:01:20Z",
+ "machine": "gb10-quiet (see MACHINES.md; same GB10 hardware as gb10; quiet-conditions protocol per supermartingales/out/glc-baked/sec1/QUIET-PROTOCOL.md)",
+ "protocol": "1 flagged warmup + 10 measured repeats per benchmark; serial whole checked-production wall; quiet-load gate: campaign refused unless 1-minute load average <= 4 at start; admitted at 1-minute load average 3.66 (max 1-minute load observed at any sample during the campaign: 3.69); pinned to CPUs 5-9,15-16 (7 cores); nice 19",
+ "command": "make sec1-quiet-retime SUPERMART_SEC1=<supermart-sec1> — equivalently, from a shell reniced to absolute niceness 19 (renice, not a relative nice -n, so a priority-boosted parent cannot leak in): taskset -c 5-9,15-16 supermart-sec1 retime --experiments <qtsl-experiments> --machine gb10-quiet --lane host --warmups 1 --repeats 10 --max-load-1min 4 --out supermartingales/out/glc-baked/sec1/gb10-quiet-retime/campaign.json --compare supermartingales/out/glc-baked/sec1/incumbents --retain-containers supermartingales/out/glc-baked/sec1/gb10-quiet-retime/containers --pretty",
+ "binaries": {
+  "supermart-sec1": {
+   "path": "supermart-sec1",
+   "sha256": "0804b379237f3641e8f22ff0dc9ab20036d99b1988505c6fac88d1c6fcd73944"
+  }
+ },
+ "revisions": {
+  "mtk": "2c6c9c44982c703772fbd796edae9a6d04c4c705",
+  "qtsl": "a9b33d14587d1c08a6510ef6f0d42be08f132aca",
+  "qtsl-experiments": "7c38b42009b49544389ca7051483fad2066300ad",
+  "closure": "ac5fdd9cd9148cefe6e00ee6551f9b276dcdb57e3db44bd9253d16e348515733"
+ },
+ "trusted_incumbents": "supermartingales/out/glc-baked/sec1/incumbents (digests bound by ../MANIFEST.json)",
+ "standalone_geolog": "not required: every measured row and flagged warmup embeds a clean geolog acceptance receipt and the same benchmark container SHA",
+ "progress": "runner monitor emitted progress once per second",
+ "receipt": "campaign.json (produce-host.json is its byte-identical published twin)"
+}

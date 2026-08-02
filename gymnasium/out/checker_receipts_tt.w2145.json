@@ -1,0 +1,296 @@
+{
+ "certs": {
+  "blackjack/rwdyadic_k48_T22.cbor": {
+   "bench_n": 200,
+   "bound": "-26661166971776791/618400523833311232",
+   "decode_us": 2826,
+   "rows": 7277,
+   "verify_median_ns": 408413,
+   "verify_min_ns": 401002,
+   "verify_us": 496
+  },
+  "blackjack/rwslab_T22.cbor": {
+   "bench_n": 200,
+   "bound": "-3954908734551683826282634489/91733330193268616658399616009",
+   "decode_us": 3485,
+   "rows": 7277,
+   "verify_median_ns": 2572145,
+   "verify_min_ns": 2566237,
+   "verify_us": 2743
+  },
+  "cliffwalking-det/hitting_exact_T13.cbor": {
+   "bench_n": 200,
+   "bound": "1/1",
+   "decode_us": 542,
+   "rows": 852,
+   "verify_median_ns": 132897,
+   "verify_min_ns": 126681,
+   "verify_us": 146
+  },
+  "cliffwalking-det/rwdyadic_k48_T100.cbor": {
+   "bench_n": 200,
+   "bound": "-13/1",
+   "decode_us": 852,
+   "rows": 5042,
+   "verify_median_ns": 42804,
+   "verify_min_ns": 42686,
+   "verify_us": 50
+  },
+  "cliffwalking-det/rwslab_T100.cbor": {
+   "bench_n": 200,
+   "bound": "-13/1",
+   "decode_us": 4546,
+   "rows": 5042,
+   "verify_median_ns": 418294,
+   "verify_min_ns": 411954,
+   "verify_us": 1622
+  },
+  "cliffwalking-slippery/rwdyadic_k16_T100.cbor": {
+   "bench_n": 200,
+   "bound": "-4129665/65536",
+   "decode_us": 1027,
+   "rows": 5042,
+   "verify_median_ns": 57328,
+   "verify_min_ns": 57111,
+   "verify_us": 73
+  },
+  "cliffwalking-slippery/rwdyadic_k32_T100.cbor": {
+   "bench_n": 200,
+   "bound": "-16915023595/268435456",
+   "decode_us": 1011,
+   "rows": 5042,
+   "verify_median_ns": 57444,
+   "verify_min_ns": 57252,
+   "verify_us": 66
+  },
+  "cliffwalking-slippery/rwdyadic_k48_T100.cbor": {
+   "bench_n": 200,
+   "bound": "-4434171944943057/70368744177664",
+   "decode_us": 3572,
+   "rows": 5042,
+   "verify_median_ns": 117780,
+   "verify_min_ns": 79476,
+   "verify_us": 231
+  },
+  "cliffwalking-slippery/rwslab_T10.cbor": {
+   "bench_n": 200,
+   "bound": "-10/1",
+   "decode_us": 444,
+   "rows": 722,
+   "verify_median_ns": 75945,
+   "verify_min_ns": 75686,
+   "verify_us": 86
+  },
+  "cliffwalking-slippery/rwslab_T100.cbor": {
+   "bench_n": 200,
+   "bound": "-10825225366697995759498256828834801626574306838298/171792506910670443678820376588540424234035840667",
+   "decode_us": 1533,
+   "rows": 5042,
+   "verify_median_ns": 1108673,
+   "verify_min_ns": 1106029,
+   "verify_us": 1193
+  },
+  "cliffwalking-slippery/rwslab_T25.cbor": {
+   "bench_n": 200,
+   "bound": "-2352694164493/94143178827",
+   "decode_us": 2185,
+   "rows": 1442,
+   "verify_median_ns": 202638,
+   "verify_min_ns": 179763,
+   "verify_us": 715
+  },
+  "cliffwalking-slippery/rwslab_T50.cbor": {
+   "bench_n": 200,
+   "bound": "-11271532092177526198835782/239299329230617529590083",
+   "decode_us": 3209,
+   "rows": 2642,
+   "verify_median_ns": 435598,
+   "verify_min_ns": 432616,
+   "verify_us": 1692
+  },
+  "taxi-dry/rwdyadic_k48_T200.cbor": {
+   "bench_n": 50,
+   "bound": "793/100",
+   "decode_us": 17257,
+   "rows": 103502,
+   "verify_median_ns": 903240,
+   "verify_min_ns": 896183,
+   "verify_us": 1097
+  },
+  "taxi-dry/rwslab_T200.cbor": {
+   "bench_n": 50,
+   "bound": "793/100",
+   "decode_us": 25259,
+   "rows": 103502,
+   "verify_median_ns": 11046157,
+   "verify_min_ns": 10967969,
+   "verify_us": 11302
+  },
+  "taxi-fickle/rwdyadic_k48_T200.cbor": {
+   "bench_n": 10,
+   "bound": "707628091450589099/84442493013196800",
+   "decode_us": 31663,
+   "rows": 207002,
+   "verify_median_ns": 1804811,
+   "verify_min_ns": 1789290,
+   "verify_us": 2303
+  },
+  "taxi-fickle/rwslab_tail_T100.cbor": {
+   "bench_n": 50,
+   "bound": "419/50",
+   "decode_us": 51392,
+   "rows": 207002,
+   "verify_median_ns": 24955704,
+   "verify_min_ns": 24796900,
+   "verify_us": 25627
+  },
+  "taxi-rainy-fickle/rwdyadic_k16_T200.cbor": {
+   "bench_n": 50,
+   "bound": "22489573/4915200",
+   "decode_us": 34830,
+   "rows": 207002,
+   "verify_median_ns": 2477249,
+   "verify_min_ns": 2468893,
+   "verify_us": 2950
+  },
+  "taxi-rainy-fickle/rwdyadic_k48_T200.cbor": {
+   "bench_n": 10,
+   "bound": "128792994894189647/28147497671065600",
+   "decode_us": 35240,
+   "rows": 207002,
+   "verify_median_ns": 2594713,
+   "verify_min_ns": 2582263,
+   "verify_us": 3052
+  },
+  "taxi-rainy-fickle/rwslab_tail_T100.cbor": {
+   "bench_n": 10,
+   "bound": "42896684502587508712583768273673051745427586248160563447708844567044531167272340353063721581290501027/9375000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+   "decode_us": 56326,
+   "rows": 207002,
+   "verify_median_ns": 56670951,
+   "verify_min_ns": 56499734,
+   "verify_us": 57309
+  },
+  "taxi-rainy-fickle/rwslab_tail_T50.cbor": {
+   "bench_n": 10,
+   "bound": "857599542760193795724375008068868532926710594051843/187500000000000000000000000000000000000000000000000",
+   "decode_us": 55524,
+   "rows": 207002,
+   "verify_median_ns": 43627539,
+   "verify_min_ns": 43438485,
+   "verify_us": 43957
+  },
+  "taxi-rainy/rwdyadic_k16_T200.cbor": {
+   "bench_n": 50,
+   "bound": "77747417/19660800",
+   "decode_us": 17259,
+   "rows": 103502,
+   "verify_median_ns": 1177575,
+   "verify_min_ns": 1174756,
+   "verify_us": 1418
+  },
+  "taxi-rainy/rwdyadic_k48_T200.cbor": {
+   "bench_n": 50,
+   "bound": "10435441593250213/2638827906662400",
+   "decode_us": 17096,
+   "rows": 103502,
+   "verify_median_ns": 1176900,
+   "verify_min_ns": 1174196,
+   "verify_us": 1391
+  },
+  "taxi-rainy/rwslab_tail_T100.cbor": {
+   "bench_n": 10,
+   "bound": "231713350579145728773770303218562901932301857269784027573749885603471549555424453403047922872714093/58593750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+   "decode_us": 43295,
+   "rows": 103502,
+   "verify_median_ns": 24003559,
+   "verify_min_ns": 23919037,
+   "verify_us": 24296
+  },
+  "taxi-rainy/rwslab_tail_T25.cbor": {
+   "bench_n": 50,
+   "bound": "-162673978760740238092597/1953125000000000000000",
+   "decode_us": 26516,
+   "rows": 103502,
+   "verify_median_ns": 16007637,
+   "verify_min_ns": 15812012,
+   "verify_us": 16255
+  },
+  "taxi-rainy/rwslab_tail_T50.cbor": {
+   "bench_n": 50,
+   "bound": "144749614210281408141926492376220104097851031067/36621093750000000000000000000000000000000000000",
+   "decode_us": 26784,
+   "rows": 103502,
+   "verify_median_ns": 18191848,
+   "verify_min_ns": 18097150,
+   "verify_us": 18674
+  }
+ },
+ "flcheck": "target/release/flcheck",
+ "host": "w2145",
+ "mutants": [
+  {
+   "expected_locus": "claim",
+   "line": "REFUSE locus=claim detail=B > init mixture of w_0",
+   "locus": "claim",
+   "name": "slab_claim_inflated",
+   "refused": true
+  },
+  {
+   "expected_locus": "step",
+   "line": "REFUSE locus=step detail=w_1(36) too large",
+   "locus": "step",
+   "name": "slab_table_raised",
+   "refused": true
+  },
+  {
+   "expected_locus": "wf",
+   "line": "REFUSE locus=wf detail=group (0,_) sum != D",
+   "locus": "wf",
+   "name": "slab_kernel_perturbed",
+   "refused": true
+  },
+  {
+   "expected_locus": "boundary",
+   "line": "REFUSE locus=boundary detail=w_T(36) > 0",
+   "locus": "boundary",
+   "name": "slab_boundary",
+   "refused": true
+  },
+  {
+   "expected_locus": "policy",
+   "line": "REFUSE locus=policy detail=pi_0(36) = 9: no kernel group",
+   "locus": "policy",
+   "name": "slab_policy_range",
+   "refused": true
+  },
+  {
+   "expected_locus": "step",
+   "line": "REFUSE locus=step detail=w_0(36) too large",
+   "locus": "step",
+   "name": "slab_reward_deflated",
+   "refused": true
+  },
+  {
+   "expected_locus": "wf",
+   "line": "REFUSE locus=wf detail=init weight outside (0,I]",
+   "locus": "wf",
+   "name": "slab_init_sum",
+   "refused": true
+  },
+  {
+   "expected_locus": "step",
+   "line": "REFUSE locus=step detail=D*m_1(1) > sum",
+   "locus": "step",
+   "name": "dyadic_table_raised",
+   "refused": true
+  },
+  {
+   "expected_locus": "claim",
+   "line": "REFUSE locus=claim detail=B > init mixture of m_0",
+   "locus": "claim",
+   "name": "dyadic_claim_inflated",
+   "refused": true
+  }
+ ]
+}

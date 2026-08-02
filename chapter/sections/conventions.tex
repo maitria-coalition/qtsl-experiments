@@ -17,6 +17,16 @@ how empirical results in this area go wrong.
   larger, unverified, freely sloppy) cost of \emph{finding} the
   certificate. Cross-machine comparisons against published tool times
   are stated qualitatively and never as ratios.
+\item \textbf{Machine tags.} A wall-clock cell derived from a receipt
+  that names a machine of the repository's machine registry
+  (\path{MACHINES.md}) carries that machine's id as a superscript tag;
+  where receipts exist on more than one machine (or more than one
+  proposer lane, in the registry's \texttt{machine/lane} tag syntax),
+  the cell shows the fastest median and the tag names the winner.
+  Selection is per number, so neighboring cells may name different
+  machines --- except where a row's cells are order statistics of one
+  run, which come whole from a single machine. Cells from receipts
+  that predate the registry carry no tag.
 \item \textbf{Cell tints.} Two tint vocabularies recur across the
   chapter's tables, always as decoration on top of a printed value,
   never as the only carrier of a distinction. The \emph{win-tint

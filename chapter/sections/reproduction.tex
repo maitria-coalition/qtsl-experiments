@@ -20,10 +20,13 @@ systems, specifications, and the judgments connecting them --- and a
 certificate is ordinary rows of these theories; there is no bespoke
 certificate file format. That unified schema is the standing
 discipline for everything this chapter reports: one certificate
-vocabulary for every campaign, a pinned toolkit producer emitting
-against it, the database engine as the fast-path checker, and an
-extraction tool reducing a full-QTSL certificate to its Bernstein
-Logic obligations for the certified checker. The shipped form is the
+vocabulary for every campaign, revision-pinned modelling-toolkit producers
+used where each family has shipped producer coverage, the database engine as
+the fast-path checker, and an extraction tool reducing a full-QTSL
+certificate to its Bernstein Logic obligations for the certified checker.
+Families without a distributed producer retain a revision, invocation, and
+binary-digest provenance record rather than being described as runnable from
+a public clone. The shipped form is the
 sealed container --- one signed geolog commit per certificate,
 re-verified from the bytes alone, with obligation and claim counts
 demanded exactly: deleting a proof node leaves every surviving
@@ -40,11 +43,11 @@ first families --- the fluid-drift, published-table-sweep,
 Lean-ladder, and Gymnasium lanes, with the SPDE family's noise
 spectra re-homed first under its split-container design; each
 re-emission's content deltas are disclosed per container in its
-family's manifest. The uniform re-conduct of every campaign through
-the pinned producer is the successor work the tables track: as
-re-conducted receipts land, the numbers re-derive from them, and the
-superseded certificates retire to an archive rather than being
-silently rewritten.
+family's manifest. The uniform re-conduct of every campaign through its revision-pinned
+producer is the successor work the tables track: as family-scoped producer
+coverage and re-conducted receipts land, the numbers re-derive from them, and
+the superseded certificates retire to an archive rather than being silently
+rewritten.
 
 A producer is never part of any trust story, so the audit path is the
 same on either side of the transition: read a checker, run it against

@@ -1,0 +1,389 @@
+{
+ "receipt_version": 1,
+ "schema": "maitria.supermart.checker-compare.v1",
+ "section": "sec1",
+ "machine": "w2145",
+ "protocol": "per benchmark: 10 measured repeats at 1 file/invocation, then 10 measured repeats with the same shared container passed 10 times to one invocation; no warmup (matching the geolog-shared receipt's convention); serial, one child at a time",
+ "wall_semantics": "monotonic clock around child process spawn-to-exit (includes process startup)",
+ "checker_binary": {
+  "path": "glc-check",
+  "sha256": "66dc37e61279d460dd81e2ed063b0c9ba51854664bf5c3e50ba923d08e7b8c6a"
+ },
+ "qtsl_experiments_revision": "f3b5f526c9bd9c52c9fcfe6e0e96d97a0eafeca2",
+ "environment_start": {
+  "loadavg": [
+   18.998046875,
+   20.56884765625,
+   20.35546875
+  ],
+  "nproc": 16,
+  "nice": 19,
+  "utc": "2026-08-02T09:33:14Z"
+ },
+ "cells": [
+  {
+   "cell": "external-shared",
+   "bench": "faulty_marbles",
+   "container_sha256": "8fa8b39b411bc18c03918b3b87e74480a68b0a0a460a0a8ddbea1e0205eb8266",
+   "files_per_invocation": 1,
+   "rows": [
+    {
+     "repeat": 0,
+     "wall_s": 0.32094098906964064,
+     "accept": true
+    },
+    {
+     "repeat": 1,
+     "wall_s": 0.2442633081227541,
+     "accept": true
+    },
+    {
+     "repeat": 2,
+     "wall_s": 0.2433486368972808,
+     "accept": true
+    },
+    {
+     "repeat": 3,
+     "wall_s": 0.23841475695371628,
+     "accept": true
+    },
+    {
+     "repeat": 4,
+     "wall_s": 0.2403676479589194,
+     "accept": true
+    },
+    {
+     "repeat": 5,
+     "wall_s": 0.24238981818780303,
+     "accept": true
+    },
+    {
+     "repeat": 6,
+     "wall_s": 0.24322513514198363,
+     "accept": true
+    },
+    {
+     "repeat": 7,
+     "wall_s": 0.24716928298585117,
+     "accept": true
+    },
+    {
+     "repeat": 8,
+     "wall_s": 0.24135625991038978,
+     "accept": true
+    },
+    {
+     "repeat": 9,
+     "wall_s": 0.24471315718255937,
+     "accept": true
+    }
+   ],
+   "median_wall_s": 0.24328688601963222
+  },
+  {
+   "cell": "external-shared",
+   "bench": "faulty_marbles",
+   "container_sha256": "8fa8b39b411bc18c03918b3b87e74480a68b0a0a460a0a8ddbea1e0205eb8266",
+   "files_per_invocation": 10,
+   "rows": [
+    {
+     "repeat": 0,
+     "wall_s": 0.46714828186668456,
+     "accept": true
+    },
+    {
+     "repeat": 1,
+     "wall_s": 0.4621315330732614,
+     "accept": true
+    },
+    {
+     "repeat": 2,
+     "wall_s": 0.4672540279570967,
+     "accept": true
+    },
+    {
+     "repeat": 3,
+     "wall_s": 0.4735262901522219,
+     "accept": true
+    },
+    {
+     "repeat": 4,
+     "wall_s": 0.4710323379840702,
+     "accept": true
+    },
+    {
+     "repeat": 5,
+     "wall_s": 0.4680329749826342,
+     "accept": true
+    },
+    {
+     "repeat": 6,
+     "wall_s": 0.47251882683485746,
+     "accept": true
+    },
+    {
+     "repeat": 7,
+     "wall_s": 0.4707203439902514,
+     "accept": true
+    },
+    {
+     "repeat": 8,
+     "wall_s": 0.485889206873253,
+     "accept": true
+    },
+    {
+     "repeat": 9,
+     "wall_s": 0.47882104897871614,
+     "accept": true
+    }
+   ],
+   "median_wall_s": 0.4708763409871608
+  },
+  {
+   "cell": "external-shared",
+   "bench": "faulty_regions",
+   "container_sha256": "6f6574e27f70d6c5ab937b05d14db859e2528e91f0e1f9da8003913a3d0532c5",
+   "files_per_invocation": 1,
+   "rows": [
+    {
+     "repeat": 0,
+     "wall_s": 0.26526911300607026,
+     "accept": true
+    },
+    {
+     "repeat": 1,
+     "wall_s": 0.2714985010679811,
+     "accept": true
+    },
+    {
+     "repeat": 2,
+     "wall_s": 0.263427552068606,
+     "accept": true
+    },
+    {
+     "repeat": 3,
+     "wall_s": 0.2635263598058373,
+     "accept": true
+    },
+    {
+     "repeat": 4,
+     "wall_s": 0.25809044879861176,
+     "accept": true
+    },
+    {
+     "repeat": 5,
+     "wall_s": 0.2547896991018206,
+     "accept": true
+    },
+    {
+     "repeat": 6,
+     "wall_s": 0.2593752599786967,
+     "accept": true
+    },
+    {
+     "repeat": 7,
+     "wall_s": 0.2600172988604754,
+     "accept": true
+    },
+    {
+     "repeat": 8,
+     "wall_s": 0.25724363094195724,
+     "accept": true
+    },
+    {
+     "repeat": 9,
+     "wall_s": 0.2600891110487282,
+     "accept": true
+    }
+   ],
+   "median_wall_s": 0.2600532049546018
+  },
+  {
+   "cell": "external-shared",
+   "bench": "faulty_regions",
+   "container_sha256": "6f6574e27f70d6c5ab937b05d14db859e2528e91f0e1f9da8003913a3d0532c5",
+   "files_per_invocation": 10,
+   "rows": [
+    {
+     "repeat": 0,
+     "wall_s": 0.6668595101218671,
+     "accept": true
+    },
+    {
+     "repeat": 1,
+     "wall_s": 0.6783218090422451,
+     "accept": true
+    },
+    {
+     "repeat": 2,
+     "wall_s": 0.6670611491426826,
+     "accept": true
+    },
+    {
+     "repeat": 3,
+     "wall_s": 0.6651629428379238,
+     "accept": true
+    },
+    {
+     "repeat": 4,
+     "wall_s": 0.6691980401519686,
+     "accept": true
+    },
+    {
+     "repeat": 5,
+     "wall_s": 0.6724507000762969,
+     "accept": true
+    },
+    {
+     "repeat": 6,
+     "wall_s": 0.65115238702856,
+     "accept": true
+    },
+    {
+     "repeat": 7,
+     "wall_s": 0.6641441509127617,
+     "accept": true
+    },
+    {
+     "repeat": 8,
+     "wall_s": 0.6630325319711119,
+     "accept": true
+    },
+    {
+     "repeat": 9,
+     "wall_s": 0.65841134195216,
+     "accept": true
+    }
+   ],
+   "median_wall_s": 0.6660112264798954
+  },
+  {
+   "cell": "external-shared",
+   "bench": "faulty_unreliable",
+   "container_sha256": "d6fec4dd519ab5ab9ac5a4da7c57a4a0bcd6a2435d4683117c6a605bcf8d2789",
+   "files_per_invocation": 1,
+   "rows": [
+    {
+     "repeat": 0,
+     "wall_s": 0.25092686899006367,
+     "accept": true
+    },
+    {
+     "repeat": 1,
+     "wall_s": 0.250895676901564,
+     "accept": true
+    },
+    {
+     "repeat": 2,
+     "wall_s": 0.2521961738821119,
+     "accept": true
+    },
+    {
+     "repeat": 3,
+     "wall_s": 0.2535389319527894,
+     "accept": true
+    },
+    {
+     "repeat": 4,
+     "wall_s": 0.259275987977162,
+     "accept": true
+    },
+    {
+     "repeat": 5,
+     "wall_s": 0.26150179491378367,
+     "accept": true
+    },
+    {
+     "repeat": 6,
+     "wall_s": 0.25927547505125403,
+     "accept": true
+    },
+    {
+     "repeat": 7,
+     "wall_s": 0.2592039748560637,
+     "accept": true
+    },
+    {
+     "repeat": 8,
+     "wall_s": 0.2559013299178332,
+     "accept": true
+    },
+    {
+     "repeat": 9,
+     "wall_s": 0.25024033710360527,
+     "accept": true
+    }
+   ],
+   "median_wall_s": 0.2547201309353113
+  },
+  {
+   "cell": "external-shared",
+   "bench": "faulty_unreliable",
+   "container_sha256": "d6fec4dd519ab5ab9ac5a4da7c57a4a0bcd6a2435d4683117c6a605bcf8d2789",
+   "files_per_invocation": 10,
+   "rows": [
+    {
+     "repeat": 0,
+     "wall_s": 0.5970889029558748,
+     "accept": true
+    },
+    {
+     "repeat": 1,
+     "wall_s": 0.5910510460380465,
+     "accept": true
+    },
+    {
+     "repeat": 2,
+     "wall_s": 0.6460455060005188,
+     "accept": true
+    },
+    {
+     "repeat": 3,
+     "wall_s": 0.5933318270836025,
+     "accept": true
+    },
+    {
+     "repeat": 4,
+     "wall_s": 0.5952996350824833,
+     "accept": true
+    },
+    {
+     "repeat": 5,
+     "wall_s": 0.5981180970557034,
+     "accept": true
+    },
+    {
+     "repeat": 6,
+     "wall_s": 0.5945510729216039,
+     "accept": true
+    },
+    {
+     "repeat": 7,
+     "wall_s": 0.6026560310274363,
+     "accept": true
+    },
+    {
+     "repeat": 8,
+     "wall_s": 0.5996341069694608,
+     "accept": true
+    },
+    {
+     "repeat": 9,
+     "wall_s": 0.5996902410406619,
+     "accept": true
+    }
+   ],
+   "median_wall_s": 0.5976035000057891
+  }
+ ],
+ "environment_end": {
+  "loadavg": [
+   19.15478515625,
+   20.47509765625,
+   20.330078125
+  ],
+  "nproc": 16,
+  "nice": 19,
+  "utc": "2026-08-02T09:33:39Z"
+ }
+}

@@ -1,0 +1,272 @@
+{
+ "binaries": {
+  "flcheck": {
+   "path": "flcheck",
+   "sha256": "d2f1e69ef53807970042a959d9c60639ef479a4ac840d1f3021f5807f562a78c"
+  },
+  "glc-check": {
+   "path": "glc-check",
+   "sha256": "2b8f59d99bf15544206fdf9bb0986e53ff2c1a11955f53c91fbfb5a68c88d138"
+  },
+  "onesys-driver": {
+   "path": "onesys-driver",
+   "sha256": "f96104b74343aeafca2e8a7320fdcc7083773646a4565ad3fb2287cd65cb1370"
+  }
+ },
+ "blocks": {
+  "circuits": {
+   "post": {
+    "loadavg": [
+     2.16,
+     8.61,
+     14.7
+    ],
+    "utc": "2026-08-01T09:43:34Z"
+   },
+   "pre": {
+    "loadavg": [
+     2.18,
+     8.83,
+     14.84
+    ],
+    "utc": "2026-08-01T09:43:24Z"
+   },
+   "verdict": "VALID"
+  },
+  "geolog-shared": {
+   "post": {
+    "loadavg": [
+     2.84,
+     11.24,
+     16.15
+    ],
+    "utc": "2026-08-01T09:41:54Z"
+   },
+   "pre": {
+    "loadavg": [
+     3.93,
+     12.93,
+     16.93
+    ],
+    "utc": "2026-08-01T09:41:04Z"
+   },
+   "verdict": "VALID"
+  },
+  "glc-timings": {
+   "post": {
+    "loadavg": [
+     2.14,
+     8.5,
+     14.63
+    ],
+    "utc": "2026-08-01T09:43:42Z"
+   },
+   "pre": {
+    "loadavg": [
+     2.16,
+     8.61,
+     14.7
+    ],
+    "utc": "2026-08-01T09:43:34Z"
+   },
+   "verdict": "VALID"
+  },
+  "gym-checks": {
+   "post": {
+    "loadavg": [
+     2.22,
+     9.07,
+     14.97
+    ],
+    "utc": "2026-08-01T09:43:17Z"
+   },
+   "pre": {
+    "loadavg": [
+     2.84,
+     11.24,
+     16.15
+    ],
+    "utc": "2026-08-01T09:41:54Z"
+   },
+   "verdict": "VALID"
+  },
+  "gym-tt-checks": {
+   "post": {
+    "loadavg": [
+     2.18,
+     8.83,
+     14.84
+    ],
+    "utc": "2026-08-01T09:43:24Z"
+   },
+   "pre": {
+    "loadavg": [
+     2.22,
+     9.07,
+     14.97
+    ],
+    "utc": "2026-08-01T09:43:17Z"
+   },
+   "verdict": "VALID"
+  },
+  "produce-cliff_crossing": {
+   "post": {
+    "loadavg": [
+     10.68,
+     16.77,
+     18.46
+    ],
+    "utc": "2026-08-01T09:39:33Z"
+   },
+   "pre": {
+    "loadavg": [
+     16.2,
+     18.32,
+     18.99
+    ],
+    "utc": "2026-08-01T09:39:03Z"
+   },
+   "verdict": "VALID"
+  },
+  "produce-faulty_concave": {
+   "post": {
+    "loadavg": [
+     10.68,
+     16.77,
+     18.46
+    ],
+    "utc": "2026-08-01T09:39:36Z"
+   },
+   "pre": {
+    "loadavg": [
+     10.68,
+     16.77,
+     18.46
+    ],
+    "utc": "2026-08-01T09:39:33Z"
+   },
+   "verdict": "VALID"
+  },
+  "produce-faulty_varying": {
+   "post": {
+    "loadavg": [
+     9.99,
+     16.53,
+     18.37
+    ],
+    "utc": "2026-08-01T09:39:39Z"
+   },
+   "pre": {
+    "loadavg": [
+     10.68,
+     16.77,
+     18.46
+    ],
+    "utc": "2026-08-01T09:39:36Z"
+   },
+   "verdict": "VALID"
+  },
+  "produce-faulty_varying__last_step": {
+   "post": {
+    "loadavg": [
+     9.99,
+     16.53,
+     18.37
+    ],
+    "utc": "2026-08-01T09:39:42Z"
+   },
+   "pre": {
+    "loadavg": [
+     9.99,
+     16.53,
+     18.37
+    ],
+    "utc": "2026-08-01T09:39:39Z"
+   },
+   "verdict": "VALID"
+  },
+  "produce-repulse100": {
+   "post": {
+    "loadavg": [
+     9.35,
+     16.29,
+     18.28
+    ],
+    "utc": "2026-08-01T09:39:46Z"
+   },
+   "pre": {
+    "loadavg": [
+     9.99,
+     16.53,
+     18.37
+    ],
+    "utc": "2026-08-01T09:39:42Z"
+   },
+   "verdict": "VALID"
+  },
+  "produce-repulse100_2d": {
+   "post": {
+    "loadavg": [
+     4.1,
+     13.11,
+     17.01
+    ],
+    "utc": "2026-08-01T09:40:59Z"
+   },
+   "pre": {
+    "loadavg": [
+     9.35,
+     16.29,
+     18.28
+    ],
+    "utc": "2026-08-01T09:39:46Z"
+   },
+   "verdict": "VALID"
+  },
+  "produce-repulse100_uniform__discrete": {
+   "post": {
+    "loadavg": [
+     3.93,
+     12.93,
+     16.93
+    ],
+    "utc": "2026-08-01T09:41:04Z"
+   },
+   "pre": {
+    "loadavg": [
+     4.1,
+     13.11,
+     17.01
+    ],
+    "utc": "2026-08-01T09:40:59Z"
+   },
+   "verdict": "VALID"
+  }
+ },
+ "cpu": "Intel(R) Xeon(R) W-2145 CPU @ 3.70GHz (Skylake-W, 8c/16t, max turbo 4.5 GHz)",
+ "date": "2026-08-01T09:44:00Z",
+ "kernel": "6.8.0-134-generic",
+ "machine": "w2145 (persistent co-tenant build host; timed cells inside verified zero-co-tenant windows)",
+ "nproc": 16,
+ "protocol": "10 repeats per benchmark (+1 flagged warmup on produce); serial, one timed process at a time, DEFAULT niceness \u2014 the verified-empty window, not niceness, is the isolation mechanism; produce runs invoked per-benchmark (one process per repeat block), semantics identical to the single-invocation form",
+ "quiet_window_mechanism": "the box's long-running co-tenant compute (17 resident prover sessions; plus, in window 1 only, one sibling batch job) was SIGSTOPPed for the window and SIGCONTed after, with pid+starttime-guarded signaling, verified resume (no stopped processes box-wide), and an independent unconditional SIGCONT watchdog armed as a transient systemd user unit before each window's first SIGSTOP",
+ "ram_gib": 251,
+ "runtimes": {
+  "node": "v22.23.1",
+  "python3": "3.12.3 (kit-local venv, cbor2 installed for the circuits reference checker)"
+ },
+ "spread_notes": "produce: no benchmark exceeds the 0.25 (max-min)/median gate on any wall. geolog-shared: faulty_concave 0.260 (an ~81 ms wall; spawn-jitter scale, window verified empty). circuits: 14/15 class walls flag at 0.30-0.56 on 36-69 ms invocations dominated by interpreter startup; the whole-suite wall (216 ms median) sits at 0.137 \u2014 the flags are startup jitter at millisecond scale, not co-tenancy (flagged per protocol regardless).",
+ "window_law": "per timed block: the box-wide job ledger of the resident build service must show no running job immediately before AND after the block, and no new service receipt may appear during it; violations discard the block for re-run in a later window. Block-level pre/post timestamps + load averages below; 5s-cadence load/process samples archived with the run logs.",
+ "windows": [
+  {
+   "n": 1,
+   "outcome": "aborted before any timed block (a resident-service job arrived 08:12:12Z); no receipts from this window",
+   "utc": "08:11-08:16Z"
+  },
+  {
+   "n": 2,
+   "outcome": "all 12 timed blocks VALID; ledger empty pre+post every block; zero receipt arrivals",
+   "utc": "09:38-09:44Z"
+  }
+ ]
+}

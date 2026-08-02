@@ -2,28 +2,28 @@
 % every number is re-derived from receipt files in this repository.
 \begin{tabular}{l r r r r r}
 \toprule
-benchmark & VCs & best published (s) & produce (s) & geolog (s) & qtslab (s) \\
+benchmark & VCs & best published (s) & checked production (s) & geolog replay (s) & qtslab replay (s) \\
 \midrule
 \texttt{persist\_2d} \tdemph{(uniform twin)} & ---$^{\,\text{a}}$ & $254.5$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ \\
-\texttt{faulty\_marbles} & $23$ & $44.5$ & ---$^{\,\text{b}}$ & $0.016$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_unreliable} & $29$ & $52.3$ & ---$^{\,\text{b}}$ & $0.015$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_regions} & $29$ & $49.9$ & ---$^{\,\text{b}}$ & $0.016$ & ---$^{\,\text{c}}$ \\
-\texttt{cliff\_crossing} & $1105$ & $153.6$ & $2.58$ & $1.01$ & $31.9$ \\
-\texttt{repulse100} & $207$ & $10.2$ & $0.15$ & $0.10$ & $4.60$ \\
-\texttt{repulse100\_uniform} & $205$ & $35.5$ & $4.44^{\,\text{e}}$ & $0.87$ & $13.6$ \\
-\altrow\tdemph{discrete-uniform reading} & $207$ &  & $0.23$ & $0.11$ & $4.57$ \\
-\texttt{repulse100\_2d} & $2267$ & $63.5$ & $6.38$ & $3.03$ & $71.8$ \\
-\texttt{faulty\_concave} & $60$ & $21.3$ & $0.053$ & $0.089$ & $1.09^{\,\text{d}}$ \\
-\texttt{faulty\_varying} & $60$ & $26.8$ & $0.054$ & $0.09$ & $1.13^{\,\text{d}}$ \\
-\altrow\tdemph{last-step reading} & $60$ &  & $0.054$ & $0.087$ & $1.12^{\,\text{d}}$ \\
-\texttt{fixed\_loop} & $22$ & $0.15$ & $0.0012$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_loop} & $22$ & $0.16$ & $0.0015$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\altrow\tdemph{as printed ($i_0{=}0$)} & $22$ &  & $0.0015$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_uniform} & $30$ & $8.08$ & $0.17$ & $0.031$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_rare} & $22$ & $0.27$ & $0.0016$ & $0.006$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_easy1} & $84$ & $0.31$ & $0.0064$ & $0.027$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_ndecr} & $60$ & $0.33$ & $0.0044$ & $0.017$ & ---$^{\,\text{c}}$ \\
-\texttt{faulty\_walk} & $16$ & $0.32$ & $0.0011$ & $0.009$ & ---$^{\,\text{c}}$ \\
-\altrow\tdemph{deterministic 12-step reading} & $28$ &  & $0.0015$ & $0.014$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_marbles} & $23$ & $44.5$ & $0.042^{\,\text{gb10-quiet/host}}$ & $0.052^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_unreliable} & $29$ & $52.3$ & $0.063^{\,\text{gb10-quiet/host}}$ & $0.054^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_regions} & $29$ & $49.9$ & $0.072^{\,\text{gb10-quiet/host}}$ & $0.056^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{cliff\_crossing} & $1105$ & $153.6$ & $1.53^{\,\text{gb10/host}}$ & $0.57^{\,\text{gb10}}$ & $22.9^{\,\text{gb10}}$ \\
+\texttt{repulse100} & $207$ & $10.2$ & $0.086^{\,\text{gb10/host}}$ & $0.066^{\,\text{gb10}}$ & $2.67^{\,\text{gb10}}$ \\
+\texttt{repulse100\_uniform} & $205$ & $35.5$ & $4.44^{\,\text{e}}$ & $0.45^{\,\text{gb10}}$ & $11.0^{\,\text{gb10}}$ \\
+\altrow\tdemph{discrete-uniform reading} & $207$ &  & $0.14^{\,\text{gb10/host}}$ & $0.074^{\,\text{gb10}}$ & $2.83^{\,\text{gb10}}$ \\
+\texttt{repulse100\_2d} & $2267$ & $63.5$ & $3.87^{\,\text{gb10}}$ & $1.73^{\,\text{gb10}}$ & $43.9^{\,\text{gb10}}$ \\
+\texttt{faulty\_concave} & $60$ & $21.3$ & $0.029^{\,\text{gb10/host}}$ & $0.059^{\,\text{gb10}}$ & $0.71^{\,\text{d, gb10}}$ \\
+\texttt{faulty\_varying} & $60$ & $26.8$ & $0.029^{\,\text{gb10/host}}$ & $0.059^{\,\text{gb10}}$ & $0.71^{\,\text{d, gb10}}$ \\
+\altrow\tdemph{last-step reading} & $60$ &  & $0.029^{\,\text{gb10/host}}$ & $0.06^{\,\text{axion}}$ & $0.71^{\,\text{d, gb10}}$ \\
+\texttt{fixed\_loop} & $22$ & $0.15$ & $0.0012$ & $0.008^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_loop} & $22$ & $0.16$ & $0.0015$ & $0.009^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\altrow\tdemph{as printed ($i_0{=}0$)} & $22$ &  & $0.0015$ & $0.009^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_uniform} & $30$ & $8.08$ & $0.17$ & $0.019^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_rare} & $22$ & $0.27$ & $0.0016$ & $0.009^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_easy1} & $84$ & $0.31$ & $0.0064$ & $0.037^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_ndecr} & $60$ & $0.33$ & $0.0044$ & $0.022^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\texttt{faulty\_walk} & $16$ & $0.32$ & $0.0011$ & $0.007^{\,\text{axion}}$ & ---$^{\,\text{c}}$ \\
+\altrow\tdemph{deterministic 12-step reading} & $28$ &  & $0.0015$ & $0.009^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
 \bottomrule
 \end{tabular}

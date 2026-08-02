@@ -1,0 +1,36 @@
+{
+ "container": "geologfl v1 (.glc), one checked-production shared proof hypernet per benchmark",
+ "closure": "qc revision 6862edc88ff1d788550d196078a28cb2fe971f10d478a5e32800f2892a7292b9",
+ "producer": "MTK SupermartSynthStrategy in Section1 mode through the real one-system Conductor and QtslQcProvider",
+ "source_vintage": "supermartingales/out/sec1, independently pinned by the MTK Section-1 VINTAGE.sha256 (81 listing files)",
+ "byte_identity": "supermart-sec1 retime reproduces each benchmark through the same checked-production path and refuses unless its output is byte-identical to this incumbent",
+ "certificates": [
+  {
+   "benchmark": "faulty_marbles",
+   "file": "incumbents/faulty_marbles/faulty_marbles.glc",
+   "sha256": "8fa8b39b411bc18c03918b3b87e74480a68b0a0a460a0a8ddbea1e0205eb8266",
+   "bytes": 4109,
+   "proof_trees": 23,
+   "claims": 38,
+   "ops": 2241
+  },
+  {
+   "benchmark": "faulty_regions",
+   "file": "incumbents/faulty_regions/faulty_regions.glc",
+   "sha256": "6f6574e27f70d6c5ab937b05d14db859e2528e91f0e1f9da8003913a3d0532c5",
+   "bytes": 5673,
+   "proof_trees": 29,
+   "claims": 48,
+   "ops": 2841
+  },
+  {
+   "benchmark": "faulty_unreliable",
+   "file": "incumbents/faulty_unreliable/faulty_unreliable.glc",
+   "sha256": "d6fec4dd519ab5ab9ac5a4da7c57a4a0bcd6a2435d4683117c6a605bcf8d2789",
+   "bytes": 5155,
+   "proof_trees": 29,
+   "claims": 48,
+   "ops": 2797
+  }
+ ]
+}

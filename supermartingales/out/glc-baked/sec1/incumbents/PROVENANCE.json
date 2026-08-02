@@ -1,0 +1,38 @@
+{
+ "date": "2026-08-02",
+ "purpose": "trusted mint provenance for the Section-1 benchmark-level incumbents; this is not a timing receipt",
+ "source_vintage": {
+  "repository": "qtsl-experiments",
+  "path": "supermartingales/out/sec1",
+  "files": 81,
+  "claim_groups": {
+   "faulty_marbles": 23,
+   "faulty_regions": 29,
+   "faulty_unreliable": 29
+  }
+ },
+ "production": {
+  "mtk_revision": "541a06f488967215a08473ed048340c28b2ed8b7",
+  "qtsl_revision": "a9b33d14587d1c08a6510ef6f0d42be08f132aca",
+  "geolog_alpha_revision": "83ebe88d5007b101112941f2b47ccb9cefd97fb9",
+  "path": "SupermartSynthStrategy(Section1) -> Conductor::run_direct -> QtslQcProvider -> canonical .glc seal",
+  "prohibited_shortcuts": "No row-container concatenation and no unchecked replay-listing assembly were used."
+ },
+ "verification": {
+  "checker": "qtsl-geolog-provider glc-check --baked-cert --expect-claims",
+  "expected_claims": {
+   "faulty_marbles": 38,
+   "faulty_regions": 48,
+   "faulty_unreliable": 48
+  },
+  "manifest": "../MANIFEST.json"
+ },
+ "mint_binaries": {
+  "supermart-sec1": {
+   "sha256": "184b254a746db32bdd4f851ff92e0e3d5660ee4f2ee25dcca1339bea0f60e1ae"
+  },
+  "glc-check": {
+   "sha256": "6e2f21386ff7721dbc6782f769a2ff643929e0efc78675dce23b5c83dd009c40"
+  }
+ }
+}

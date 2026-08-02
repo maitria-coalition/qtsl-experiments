@@ -1,0 +1,110 @@
+{
+ "date": "2026-08-01T06:41:12.192Z",
+ "what": "per-benchmark wall-clock of the geolog fast-path checker (glc-check) over this campaign's sealed containers; serial batches (<=400 files per checker process), one group at a time, walls measured around each group's batches",
+ "machine": {
+  "id": "epyc",
+  "arch": "x64",
+  "cpu": "AMD EPYC 7B13",
+  "loadavg_at_end": [
+   0.35,
+   0.47,
+   0.47
+  ],
+  "note": "single checker process at a time"
+ },
+ "checker_binary_sha256": "2b8f59d99bf15544206fdf9bb0986e53ff2c1a11955f53c91fbfb5a68c88d138",
+ "groups": {
+  "cliff_crossing": {
+   "n": 1105,
+   "wall_s": 0.663
+  },
+  "faulty_concave": {
+   "n": 60,
+   "wall_s": 0.038
+  },
+  "faulty_easy1": {
+   "n": 84,
+   "wall_s": 0.052
+  },
+  "faulty_loop": {
+   "n": 22,
+   "wall_s": 0.013
+  },
+  "faulty_loop__as_listed": {
+   "n": 22,
+   "wall_s": 0.013
+  },
+  "faulty_marbles": {
+   "n": 23,
+   "wall_s": 0.023
+  },
+  "faulty_marbles__poly": {
+   "n": 3,
+   "wall_s": 0.02
+  },
+  "faulty_ndecr": {
+   "n": 60,
+   "wall_s": 0.033
+  },
+  "faulty_rare": {
+   "n": 22,
+   "wall_s": 0.013
+  },
+  "faulty_regions": {
+   "n": 29,
+   "wall_s": 0.032
+  },
+  "faulty_regions__poly": {
+   "n": 5,
+   "wall_s": 0.342
+  },
+  "faulty_uniform": {
+   "n": 30,
+   "wall_s": 0.031
+  },
+  "faulty_unreliable": {
+   "n": 29,
+   "wall_s": 0.029
+  },
+  "faulty_unreliable__poly": {
+   "n": 3,
+   "wall_s": 0.021
+  },
+  "faulty_varying": {
+   "n": 60,
+   "wall_s": 0.037
+  },
+  "faulty_varying__last_step": {
+   "n": 60,
+   "wall_s": 0.036
+  },
+  "faulty_walk": {
+   "n": 16,
+   "wall_s": 0.009
+  },
+  "faulty_walk__det12": {
+   "n": 28,
+   "wall_s": 0.015
+  },
+  "fixed_loop": {
+   "n": 22,
+   "wall_s": 0.012
+  },
+  "repulse100": {
+   "n": 207,
+   "wall_s": 0.075
+  },
+  "repulse100_2d": {
+   "n": 2267,
+   "wall_s": 1.394
+  },
+  "repulse100_uniform": {
+   "n": 205,
+   "wall_s": 0.694
+  },
+  "repulse100_uniform__discrete": {
+   "n": 207,
+   "wall_s": 0.084
+  }
+ }
+}

@@ -58,36 +58,47 @@ rounded up at the displayed digit.}
 \paragraph{Wall-clock, every pipeline stage.}
 Table~\ref{tab:exp-sweep-times} sets, beside each row of
 Table~\ref{tab:exp-sweep}, the wall-clock of the published pipeline
-and of each stage of ours: the paper's time for the route that attains
-the row's best sound bound; the producer wall; the geolog
-fast-path checker over the row's sealed containers; and the certified
-checker over the row's stored corpus. With the producer wall
-reported, the produce and geolog columns read together are the
-like-for-like counterpart of the published column: both pipelines
-start from the benchmark and end with a checked certificate ---
-theirs by training a neural certificate on a GPU and verifying it
-with an SMT solver (or by its linear-programming baseline, where that
-route attains the row's best sound bound), ours by exact synthesis
-with the check in the production loop. For the re-conducted rows the
-produce column is hardware-fair at the GPU-model level: the toolkit
-producer's synthesis --- float-proposing on the GPU, exactly
-certifying every solve --- ran on the same GPU model the published
-pipeline reports (an Nvidia A40), ten repeats per benchmark mirroring
-the published protocol, and every repeat's output is byte-identical
-to the committed corpus. The systems still differ beyond the GPU
-model, so the table prints no cross-column ratio and the comparison
+and of three toolkit paths: the paper's time for the route that attains
+the row's best sound bound; whole checked production; an independent
+geolog fast-path replay over the row's sealed containers; and a
+certified-checker replay over the row's stored corpus. The checked-production
+column alone is the closest job-for-job counterpart of the published column:
+both start from the benchmark and end with a checked certificate --- theirs
+by training a neural certificate on a GPU and verifying it with an SMT solver
+(or by its linear-programming baseline, where that route attains the row's
+best sound bound), ours by exact synthesis with the check inside the measured
+production wall. The geolog and qtslab columns are additional independent
+replays, not costs that must be added to checked production. For the
+re-conducted rows the toolkit producer's synthesis --- float-proposing,
+exactly certifying every solve --- ran the published protocol (ten repeats
+per benchmark) on each of the repository's timing machines, in both the GPU-
+and CPU-proposing lanes where the machine carries a GPU, and every repeat's
+output, on every machine and either lane, is byte-identical to the committed
+corpus. Each produce cell shows the fastest measured
+configuration's median, with the winner named in the cell's machine
+tag (section~\ref{sec:exp-conventions}). Hardware-fairness at the
+GPU-model level is preserved by the receipts rather than by the
+column: one of the timing machines carries the same GPU model the
+published pipeline reports (an Nvidia A40), its receipts are
+committed beside the winners', and on that machine the whole checked
+production of every re-conducted row still completes inside the
+published wall --- with the CPU-proposing lane winning six of the seven
+Section 2 rows within the A40 receipt set and the seventh within a tenth of a
+percent. Thus the toolkit's A40-parity wall does not require its GPU proposer
+where the published route uses that GPU model. The systems still differ
+beyond the GPU model, so the table prints no cross-column ratio and the comparison
 stays qualitative, per section~\ref{sec:exp-conventions}; the raw
-walls are the witnesses. On every row with a recorded producer wall,
-the whole produce-and-check pipeline now completes inside the
-published wall, and usually well inside it
-(\texttt{cliff\_crossing}: $2.58 + 1.01$\,s against a published
-$153.6$\,s; \texttt{repulse100\_2d} --- the row that ran the other
-way before the re-conduct, at a $222.0$\,s campaign producer wall ---
-$6.38 + 3.03$\,s against a published $63.5$\,s). That campaign wall
-was dominated by the leg's exact ground-truth value computation
+walls are the witnesses. On every row with a recorded checked-production
+wall, that whole production now completes inside the published wall, and
+usually well inside it (\texttt{cliff\_crossing}: $1.53$\,s against a
+published $153.6$\,s; \texttt{repulse100\_2d} --- the row that ran the
+other way before the re-conduct, at a $222.0$\,s campaign production wall ---
+$3.87$\,s against a published $63.5$\,s, and $6.41$\,s checked production
+on the published pipeline's own GPU model). That campaign
+wall was dominated by the leg's exact ground-truth value computation
 rather than by certification; the computation now rides the
 producer's float-propose / exact-certify tier like every other
-solve, and the row's whole checked production is $6.38$\,s. Beyond
+solve, and the row's whole checked production is $3.87$\,s. Beyond
 that comparison, the table establishes the headline economics of the
 certificate genre: re-verifying a row costs milliseconds to seconds
 at every trust tier, which is what makes re-verification a
@@ -113,19 +124,33 @@ obligations, not certificates.
 Nvidia A40 GPU plus Z3 verification; the Farkas column is their linear
 baseline's LP), for the route attaining the row's best sound bound ---
 the same selection rule as Table~\ref{tab:exp-sweep}; transcription
-provenance rides the repository's manifest. ``Produce'' is, for the
-re-conducted rows, the toolkit producer's
-checked-production wall --- fresh exact synthesis (float-proposing,
+provenance rides the repository's manifest. ``Checked production'' is, for the re-conducted rows, the toolkit
+producer's whole elapsed wall --- fresh exact synthesis (float-proposing,
 exactly certifying, with iterative refinement and continued-fraction
-reconstruction), listing generation, emission through the geolog
-engine with the in-loop check, and the deterministic seal --- as the
-median of ten repeats on the \texttt{a40} machine of the
-repository's machine registry (\path{MACHINES.md}), the output
-byte-identical to the
-committed corpus on every repeat, in both the GPU- and CPU-proposing
-lanes; rows not yet re-conducted keep their campaign legs' synthesis
-wall as receipted (single CPU box), and their cells flip the same
-way as their re-conducts land (section~\ref{sec:exp-repro}).
+reconstruction), listing generation, emission through the geolog engine with
+the in-loop check, deterministic sealing, and orchestration overhead. For
+each benchmark, \path{tables/gen_tables.ts} selects the minimum median across
+all committed machine/proposer-lane receipt sets; the cell tag names the
+winning machine and lane. The A40 receipts remain separately committed for
+the GPU-model-parity comparison. Every measured repeat must emit bytes
+identical to the committed corpus. Versioned Section 1 receipts use their
+authoritative measured \texttt{wall\_s}; legacy Section 2 receipts use the sum
+of their disjoint \texttt{produce\_s}, \texttt{check\_s}, and
+\texttt{seal\_s} subphases. The \texttt{gb10-quiet} tag is the same GB10
+hardware under a quiet-conditions protocol, preregistered before its first
+campaign ran (the protocol file is committed beside the receipts): the runner
+itself refuses to start unless the box's 1-minute load average is at or below
+a declared gate, the campaign is pinned to performance cores at a fixed
+absolute niceness, and its version-3 receipt records the gate, per-row load
+averages, and the affinity and niceness read back from the process, so the
+admission claim is checkable from the receipt alone --- the receipt validator
+refuses a receipt whose recorded starting load exceeds its own declared gate.
+The load-uncontrolled \texttt{gb10} receipts remain committed beside the
+quiet family; where both exist, the minimum-median rule above selects the
+quieter conduct, and the two are protocol variants of one machine, not
+different hardware. Rows not yet re-conducted keep their campaign
+legs' synthesis wall as receipted (single CPU box), and their cells flip the
+same way as their re-conducts land (section~\ref{sec:exp-repro}).
 ``Geolog'' is the geolog fast-path
 checker's total wall over the row's sealed containers, serial, one
 process at a time (machine, load, and checker-binary hash in each
@@ -135,13 +160,33 @@ structurally shared subtrees stored once, element in-degree above
 one, with per-container tree and stored-node counts in the committed
 manifest --- where the pre-migration cells time per-obligation
 container sets; ``VCs'' counts proof obligations either way.
+The two vintages also amortize process overhead differently: a
+shared-container cell is the median of single-container invocations,
+each paying the checker's whole per-process vocabulary derivation,
+where a pre-migration cell spreads one process start across its whole
+batch. On the shared containers the marginal re-check inside a warm
+checker process is $5$--$9$\,ms on the cells' machine --- the same
+magnitude as the production loop's in-process check --- with most of
+the balance being the per-process vocabulary derivation (the checker's
+own timing decomposition measures it directly at $44$--$54$\,ms there,
+the remainder being generic process start); one process checking all
+three shared containers as a batch clears the whole roster in
+$\approx 81$\,ms, against $\approx 224$\,ms summed per-invocation. The
+checker-protocol comparability receipts beside the retiming receipts
+measure both effects with the same checker binary on both container
+vintages, and an independent-machine replication on a second
+architecture reproduces the marginal-vs-derivation relationship (and
+byte-identical containers) while every absolute wall scales with the
+box, so these milliseconds carry their machine tag rather than
+traveling as platform constants. Geolog cells are therefore read each
+under its own protocol, never ratioed across vintages.
 ``Qtslab'' is the sum of the
 certified checker build's per-VC walls from the replay census
 of section~\ref{sec:exp-certified-checker} (Arm cores; four families
 ran concurrently, so these walls carry mild concurrency inflation at
 most).\footnote{The certified checker checks the Bernstein Logic
 fragment of QTSL only --- exactly the proof tower committed as
-\path{theories/BernsteinLogic.geolog} in the toolkit repository, so
+\path{theories/BernsteinLogic.geolog} in the pinned \path{qtsl} repository, so
 the fragment boundary is a file boundary, not a convention --- and
 that is the fragment this campaign's VC files natively encode, so
 the walls shown are complete for the rows they cover. The full QTSL
@@ -161,7 +206,6 @@ files) has not migrated into this repository; the re-check record that
 does exist (the fast-path lane, $130.66$\,s over the full bundle ---
 large-denominator rational arithmetic, the campaign's one heavy
 re-check) is in the repository's re-check receipts.
-$^{\text{b}}$~producer wall not recorded in that leg's receipts.
 $^{\text{c}}$~row not in the certified-checker replay's stored corpus
 (the replay to date covers the stored wave-B corpus; the remaining
 rows' containers enter at its next replay).
@@ -173,8 +217,9 @@ profile) not yet ported into the toolkit producer; its produce wall
 is its campaign leg's, as receipted.
 \end{minipage}
 \caption{Wall-clock comparison over the same row set: the published
-pipeline beside each stage of the house pipeline (producer, geolog
-fast-path checker, certified checker). All columns in seconds.}
+pipeline beside the toolkit's whole checked production and two independent
+replay tiers (geolog fast-path checker and certified checker). All columns in
+seconds.}
 \label{tab:exp-sweep-times}
 \end{table}
 
@@ -201,18 +246,18 @@ re-established, not merely remembered, at each toolkit revision.
 
 \paragraph{What is not claimed.} Table~\ref{tab:exp-sweep-times}
 prints no speedup ratio: the pipelines are compared job-for-job, and
-the machines now match at the GPU-model level on the re-conducted
-produce cells --- the same GPU model, not the same host, driver
-stack, or whole system --- while the geolog and qtslab walls remain
-CPU walls on the machines named in the repository's timing receipts;
+the produce, geolog, and qtslab cells each carry the best measured
+configuration across the repository's timing machines (the machine
+named in the cell's tag), while the GPU-model-parity receipts --- the
+same GPU model as the published pipeline's, not the same host, driver
+stack, or whole system --- are committed beside them;
 so any ratio a reader forms still carries a hardware caveat, and the
 chapter's own statements stay qualitative, per
-section~\ref{sec:exp-conventions}. The comparison covers thirteen of
-the seventeen published rows: three legs recorded no producer wall,
-and the \texttt{persist\_2d} bundle has not migrated
-(holes~$^{\text{b}}$ and~$^{\text{a}}$ in the table); one
-re-conducted row's produce wall is still its campaign leg's
-(note~$^{\text{e}}$). Nor is every house wall small: the campaign's
+section~\ref{sec:exp-conventions}. The comparison covers all seventeen
+published rows except the \texttt{persist\_2d} bundle, which has not
+migrated (holes~$^{\text{a}}$ in the table); one re-conducted row's
+produce wall is still its campaign leg's
+(note~$^{\text{e}}$). Nor is every toolkit wall small: the campaign's
 one heavy re-check is \texttt{persist\_2d}'s stored fast-path record
 of $130.66$\,s over the row's $4{,}800$-file bundle ---
 large-denominator rational arithmetic, with a cheaper re-emission

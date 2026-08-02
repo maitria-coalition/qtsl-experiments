@@ -1,0 +1,806 @@
+{
+ "machine": "w2145",
+ "notes": "reference-checker (ck_manifest.py) batched wall per fixture class and for the whole 245-fixture suite (class __suite__), 10 repeats, all-ACCEPT gated per invocation; zero-co-tenant windows on the shared build host; aggregation-cited evidence for the prose walls \u2014 no generated table consumes this file.",
+ "rows": [
+  {
+   "class": "__suite__",
+   "repeat": 0,
+   "wall_s": 0.2284
+  },
+  {
+   "class": "PWM",
+   "repeat": 0,
+   "wall_s": 0.0555
+  },
+  {
+   "class": "blink",
+   "repeat": 0,
+   "wall_s": 0.0669
+  },
+  {
+   "class": "delay",
+   "repeat": 0,
+   "wall_s": 0.0425
+  },
+  {
+   "class": "delay2",
+   "repeat": 0,
+   "wall_s": 0.0362
+  },
+  {
+   "class": "gray",
+   "repeat": 0,
+   "wall_s": 0.0379
+  },
+  {
+   "class": "gray2",
+   "repeat": 0,
+   "wall_s": 0.0274
+  },
+  {
+   "class": "gray3",
+   "repeat": 0,
+   "wall_s": 0.0394
+  },
+  {
+   "class": "i2c",
+   "repeat": 0,
+   "wall_s": 0.067
+  },
+  {
+   "class": "lcd",
+   "repeat": 0,
+   "wall_s": 0.0568
+  },
+  {
+   "class": "load_store",
+   "repeat": 0,
+   "wall_s": 0.0466
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 0,
+   "wall_s": 0.0407
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 0,
+   "wall_s": 0.0462
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 0,
+   "wall_s": 0.0368
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 0,
+   "wall_s": 0.045
+  },
+  {
+   "class": "vga",
+   "repeat": 0,
+   "wall_s": 0.0525
+  },
+  {
+   "class": "__suite__",
+   "repeat": 1,
+   "wall_s": 0.2
+  },
+  {
+   "class": "PWM",
+   "repeat": 1,
+   "wall_s": 0.0571
+  },
+  {
+   "class": "blink",
+   "repeat": 1,
+   "wall_s": 0.0673
+  },
+  {
+   "class": "delay",
+   "repeat": 1,
+   "wall_s": 0.04
+  },
+  {
+   "class": "delay2",
+   "repeat": 1,
+   "wall_s": 0.0295
+  },
+  {
+   "class": "gray",
+   "repeat": 1,
+   "wall_s": 0.0462
+  },
+  {
+   "class": "gray2",
+   "repeat": 1,
+   "wall_s": 0.0375
+  },
+  {
+   "class": "gray3",
+   "repeat": 1,
+   "wall_s": 0.0295
+  },
+  {
+   "class": "i2c",
+   "repeat": 1,
+   "wall_s": 0.0766
+  },
+  {
+   "class": "lcd",
+   "repeat": 1,
+   "wall_s": 0.0612
+  },
+  {
+   "class": "load_store",
+   "repeat": 1,
+   "wall_s": 0.0551
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 1,
+   "wall_s": 0.0409
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 1,
+   "wall_s": 0.0374
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 1,
+   "wall_s": 0.0448
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 1,
+   "wall_s": 0.0467
+  },
+  {
+   "class": "vga",
+   "repeat": 1,
+   "wall_s": 0.0494
+  },
+  {
+   "class": "__suite__",
+   "repeat": 2,
+   "wall_s": 0.1988
+  },
+  {
+   "class": "PWM",
+   "repeat": 2,
+   "wall_s": 0.055
+  },
+  {
+   "class": "blink",
+   "repeat": 2,
+   "wall_s": 0.065
+  },
+  {
+   "class": "delay",
+   "repeat": 2,
+   "wall_s": 0.0421
+  },
+  {
+   "class": "delay2",
+   "repeat": 2,
+   "wall_s": 0.0279
+  },
+  {
+   "class": "gray",
+   "repeat": 2,
+   "wall_s": 0.0344
+  },
+  {
+   "class": "gray2",
+   "repeat": 2,
+   "wall_s": 0.0345
+  },
+  {
+   "class": "gray3",
+   "repeat": 2,
+   "wall_s": 0.0289
+  },
+  {
+   "class": "i2c",
+   "repeat": 2,
+   "wall_s": 0.0685
+  },
+  {
+   "class": "lcd",
+   "repeat": 2,
+   "wall_s": 0.0487
+  },
+  {
+   "class": "load_store",
+   "repeat": 2,
+   "wall_s": 0.0358
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 2,
+   "wall_s": 0.0306
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 2,
+   "wall_s": 0.0435
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 2,
+   "wall_s": 0.0485
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 2,
+   "wall_s": 0.0282
+  },
+  {
+   "class": "vga",
+   "repeat": 2,
+   "wall_s": 0.0613
+  },
+  {
+   "class": "__suite__",
+   "repeat": 3,
+   "wall_s": 0.2207
+  },
+  {
+   "class": "PWM",
+   "repeat": 3,
+   "wall_s": 0.0555
+  },
+  {
+   "class": "blink",
+   "repeat": 3,
+   "wall_s": 0.056
+  },
+  {
+   "class": "delay",
+   "repeat": 3,
+   "wall_s": 0.0398
+  },
+  {
+   "class": "delay2",
+   "repeat": 3,
+   "wall_s": 0.0462
+  },
+  {
+   "class": "gray",
+   "repeat": 3,
+   "wall_s": 0.0403
+  },
+  {
+   "class": "gray2",
+   "repeat": 3,
+   "wall_s": 0.0351
+  },
+  {
+   "class": "gray3",
+   "repeat": 3,
+   "wall_s": 0.047
+  },
+  {
+   "class": "i2c",
+   "repeat": 3,
+   "wall_s": 0.0701
+  },
+  {
+   "class": "lcd",
+   "repeat": 3,
+   "wall_s": 0.0525
+  },
+  {
+   "class": "load_store",
+   "repeat": 3,
+   "wall_s": 0.0365
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 3,
+   "wall_s": 0.0354
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 3,
+   "wall_s": 0.0465
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 3,
+   "wall_s": 0.0484
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 3,
+   "wall_s": 0.0372
+  },
+  {
+   "class": "vga",
+   "repeat": 3,
+   "wall_s": 0.056
+  },
+  {
+   "class": "__suite__",
+   "repeat": 4,
+   "wall_s": 0.212
+  },
+  {
+   "class": "PWM",
+   "repeat": 4,
+   "wall_s": 0.0565
+  },
+  {
+   "class": "blink",
+   "repeat": 4,
+   "wall_s": 0.0466
+  },
+  {
+   "class": "delay",
+   "repeat": 4,
+   "wall_s": 0.0285
+  },
+  {
+   "class": "delay2",
+   "repeat": 4,
+   "wall_s": 0.045
+  },
+  {
+   "class": "gray",
+   "repeat": 4,
+   "wall_s": 0.0375
+  },
+  {
+   "class": "gray2",
+   "repeat": 4,
+   "wall_s": 0.0353
+  },
+  {
+   "class": "gray3",
+   "repeat": 4,
+   "wall_s": 0.0403
+  },
+  {
+   "class": "i2c",
+   "repeat": 4,
+   "wall_s": 0.0587
+  },
+  {
+   "class": "lcd",
+   "repeat": 4,
+   "wall_s": 0.0525
+  },
+  {
+   "class": "load_store",
+   "repeat": 4,
+   "wall_s": 0.0541
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 4,
+   "wall_s": 0.038
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 4,
+   "wall_s": 0.0423
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 4,
+   "wall_s": 0.0378
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 4,
+   "wall_s": 0.0351
+  },
+  {
+   "class": "vga",
+   "repeat": 4,
+   "wall_s": 0.0613
+  },
+  {
+   "class": "__suite__",
+   "repeat": 5,
+   "wall_s": 0.2015
+  },
+  {
+   "class": "PWM",
+   "repeat": 5,
+   "wall_s": 0.0741
+  },
+  {
+   "class": "blink",
+   "repeat": 5,
+   "wall_s": 0.0468
+  },
+  {
+   "class": "delay",
+   "repeat": 5,
+   "wall_s": 0.028
+  },
+  {
+   "class": "delay2",
+   "repeat": 5,
+   "wall_s": 0.0278
+  },
+  {
+   "class": "gray",
+   "repeat": 5,
+   "wall_s": 0.0484
+  },
+  {
+   "class": "gray2",
+   "repeat": 5,
+   "wall_s": 0.0476
+  },
+  {
+   "class": "gray3",
+   "repeat": 5,
+   "wall_s": 0.029
+  },
+  {
+   "class": "i2c",
+   "repeat": 5,
+   "wall_s": 0.0764
+  },
+  {
+   "class": "lcd",
+   "repeat": 5,
+   "wall_s": 0.0636
+  },
+  {
+   "class": "load_store",
+   "repeat": 5,
+   "wall_s": 0.052
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 5,
+   "wall_s": 0.0306
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 5,
+   "wall_s": 0.0548
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 5,
+   "wall_s": 0.0562
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 5,
+   "wall_s": 0.0479
+  },
+  {
+   "class": "vga",
+   "repeat": 5,
+   "wall_s": 0.0658
+  },
+  {
+   "class": "__suite__",
+   "repeat": 6,
+   "wall_s": 0.2263
+  },
+  {
+   "class": "PWM",
+   "repeat": 6,
+   "wall_s": 0.0563
+  },
+  {
+   "class": "blink",
+   "repeat": 6,
+   "wall_s": 0.0474
+  },
+  {
+   "class": "delay",
+   "repeat": 6,
+   "wall_s": 0.0484
+  },
+  {
+   "class": "delay2",
+   "repeat": 6,
+   "wall_s": 0.0492
+  },
+  {
+   "class": "gray",
+   "repeat": 6,
+   "wall_s": 0.0479
+  },
+  {
+   "class": "gray2",
+   "repeat": 6,
+   "wall_s": 0.0447
+  },
+  {
+   "class": "gray3",
+   "repeat": 6,
+   "wall_s": 0.041
+  },
+  {
+   "class": "i2c",
+   "repeat": 6,
+   "wall_s": 0.0794
+  },
+  {
+   "class": "lcd",
+   "repeat": 6,
+   "wall_s": 0.0442
+  },
+  {
+   "class": "load_store",
+   "repeat": 6,
+   "wall_s": 0.0545
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 6,
+   "wall_s": 0.0444
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 6,
+   "wall_s": 0.0553
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 6,
+   "wall_s": 0.0508
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 6,
+   "wall_s": 0.0289
+  },
+  {
+   "class": "vga",
+   "repeat": 6,
+   "wall_s": 0.0492
+  },
+  {
+   "class": "__suite__",
+   "repeat": 7,
+   "wall_s": 0.2209
+  },
+  {
+   "class": "PWM",
+   "repeat": 7,
+   "wall_s": 0.0777
+  },
+  {
+   "class": "blink",
+   "repeat": 7,
+   "wall_s": 0.0565
+  },
+  {
+   "class": "delay",
+   "repeat": 7,
+   "wall_s": 0.0482
+  },
+  {
+   "class": "delay2",
+   "repeat": 7,
+   "wall_s": 0.0489
+  },
+  {
+   "class": "gray",
+   "repeat": 7,
+   "wall_s": 0.0369
+  },
+  {
+   "class": "gray2",
+   "repeat": 7,
+   "wall_s": 0.0291
+  },
+  {
+   "class": "gray3",
+   "repeat": 7,
+   "wall_s": 0.0293
+  },
+  {
+   "class": "i2c",
+   "repeat": 7,
+   "wall_s": 0.0645
+  },
+  {
+   "class": "lcd",
+   "repeat": 7,
+   "wall_s": 0.0507
+  },
+  {
+   "class": "load_store",
+   "repeat": 7,
+   "wall_s": 0.0361
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 7,
+   "wall_s": 0.0487
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 7,
+   "wall_s": 0.047
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 7,
+   "wall_s": 0.0574
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 7,
+   "wall_s": 0.0412
+  },
+  {
+   "class": "vga",
+   "repeat": 7,
+   "wall_s": 0.0712
+  },
+  {
+   "class": "__suite__",
+   "repeat": 8,
+   "wall_s": 0.2076
+  },
+  {
+   "class": "PWM",
+   "repeat": 8,
+   "wall_s": 0.0605
+  },
+  {
+   "class": "blink",
+   "repeat": 8,
+   "wall_s": 0.0466
+  },
+  {
+   "class": "delay",
+   "repeat": 8,
+   "wall_s": 0.0463
+  },
+  {
+   "class": "delay2",
+   "repeat": 8,
+   "wall_s": 0.0393
+  },
+  {
+   "class": "gray",
+   "repeat": 8,
+   "wall_s": 0.0483
+  },
+  {
+   "class": "gray2",
+   "repeat": 8,
+   "wall_s": 0.0405
+  },
+  {
+   "class": "gray3",
+   "repeat": 8,
+   "wall_s": 0.0486
+  },
+  {
+   "class": "i2c",
+   "repeat": 8,
+   "wall_s": 0.069
+  },
+  {
+   "class": "lcd",
+   "repeat": 8,
+   "wall_s": 0.0422
+  },
+  {
+   "class": "load_store",
+   "repeat": 8,
+   "wall_s": 0.0548
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 8,
+   "wall_s": 0.0474
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 8,
+   "wall_s": 0.0357
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 8,
+   "wall_s": 0.0545
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 8,
+   "wall_s": 0.0488
+  },
+  {
+   "class": "vga",
+   "repeat": 8,
+   "wall_s": 0.0487
+  },
+  {
+   "class": "__suite__",
+   "repeat": 9,
+   "wall_s": 0.2201
+  },
+  {
+   "class": "PWM",
+   "repeat": 9,
+   "wall_s": 0.0673
+  },
+  {
+   "class": "blink",
+   "repeat": 9,
+   "wall_s": 0.0464
+  },
+  {
+   "class": "delay",
+   "repeat": 9,
+   "wall_s": 0.0487
+  },
+  {
+   "class": "delay2",
+   "repeat": 9,
+   "wall_s": 0.0438
+  },
+  {
+   "class": "gray",
+   "repeat": 9,
+   "wall_s": 0.0283
+  },
+  {
+   "class": "gray2",
+   "repeat": 9,
+   "wall_s": 0.0475
+  },
+  {
+   "class": "gray3",
+   "repeat": 9,
+   "wall_s": 0.0419
+  },
+  {
+   "class": "i2c",
+   "repeat": 9,
+   "wall_s": 0.0588
+  },
+  {
+   "class": "lcd",
+   "repeat": 9,
+   "wall_s": 0.0434
+  },
+  {
+   "class": "load_store",
+   "repeat": 9,
+   "wall_s": 0.0549
+  },
+  {
+   "class": "seven_seg",
+   "repeat": 9,
+   "wall_s": 0.0386
+  },
+  {
+   "class": "seven_seg2",
+   "repeat": 9,
+   "wall_s": 0.0366
+  },
+  {
+   "class": "thermocouple",
+   "repeat": 9,
+   "wall_s": 0.0443
+  },
+  {
+   "class": "uart_transmit",
+   "repeat": 9,
+   "wall_s": 0.0358
+  },
+  {
+   "class": "vga",
+   "repeat": 9,
+   "wall_s": 0.0603
+  }
+ ]
+}

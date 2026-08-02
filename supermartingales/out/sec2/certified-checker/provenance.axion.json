@@ -1,0 +1,31 @@
+{
+ "date": "2026-08-01",
+ "what": "serial re-timing of the certified-checker census on a second aarch64 machine: the same 4105 sealed containers replayed through the same emitted assembly, one process at a time",
+ "corpus": {
+  "families": 8,
+  "certificates": 4105,
+  "source": "the same sealed input containers as census.tsv (see provenance.json beside this file); replayed in the incumbent census's row order",
+  "identity": "verdict identity re-established against census.tsv row-wise: family, certificate stem, exit code, and stored verdict line agree byte-for-byte on all 4105 rows; only the wall column differs"
+ },
+ "checker": {
+  "name": "qtslab (the certified checker; see the book's front matter for its overall standing)",
+  "emitted_assembly_md5": "e7f7497d260ce59aa922a87e3571a72b",
+  "native_binary_md5": "c4090976be11cd9474a739653d6c0f56",
+  "native_binary_sha256": "df38f3bde0705f38defb07ef9e15b53c0a2469c5f36df9bdd3c150d90313eb9c",
+  "toolchain": "gcc 13.3 -O2, aarch64 (compiled on this machine from the same emitted assembly and the audit pack's FFI basis file)",
+  "theorem_note": "the machine-code theorem binds the emitted assembly, which is byte-identical to the incumbent census's emission (md5 above); see provenance.json"
+ },
+ "agreement": {
+  "verdict_identity": "4105/4105 rows agree with census.tsv on every column but the wall; accept 4105, diverge 0, matching the incumbent and the seal-twin lane"
+ },
+ "protocol": {
+  "machine": "axion (see MACHINES.md): GCP c4a-standard-16 spot, Google Axion, Arm Neoverse-V2, aarch64, 16 vCPU, 64 GiB; dedicated box, sole tenant",
+  "parallelism": "fully serial: one single-threaded checker process at a time, pinned to a single core with taskset; no concurrent families",
+  "timeout_s": 120,
+  "walls": "single-shot per certificate, wall clock measured around the checker process alone; load average 0.00/0.02/0.08 at start of the block (sole tenant), total block wall 96.8 s",
+  "verdict_field": "first stdout line truncated to 120 characters, matching the incumbent census's column convention"
+ },
+ "files": {
+  "census.axion.tsv": "one row per certificate: family, certificate stem, exit code, first verdict line (120-character prefix), wall-clock seconds"
+ }
+}

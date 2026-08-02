@@ -1,0 +1,92 @@
+{
+  "persist_2d": {
+    "vcs": {
+      "marker": "a",
+      "reason": "uncertified pre-re-conduct; stated in prose"
+    },
+    "produce": {
+      "marker": "a",
+      "reason": "uncertified pre-re-conduct; stated in prose"
+    },
+    "geolog": {
+      "marker": "a",
+      "reason": "uncertified pre-re-conduct; stated in prose"
+    },
+    "qtslab": {
+      "marker": "a",
+      "reason": "uncertified pre-re-conduct; stated in prose"
+    }
+  },
+  "faulty_marbles": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_unreliable": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_regions": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "fixed_loop": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_loop": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_loop__as_listed": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_uniform": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_rare": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_easy1": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_ndecr": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_walk": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  },
+  "faulty_walk__det12": {
+    "qtslab": {
+      "marker": "c",
+      "reason": "not present in the certified-checker replay corpus"
+    }
+  }
+}

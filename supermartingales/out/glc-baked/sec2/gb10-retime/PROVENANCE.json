@@ -1,0 +1,40 @@
+{
+ "date": "2026-08-01T07:20:30Z",
+ "machine": "gb10 (see MACHINES.md; shared box - co-tenant organs run throughout: STT/TTS/embedding/recall services resident on the GPU and CPUs; all timed cells nice -n 19)",
+ "gpu": "NVIDIA GB10 (compute_121, 121.6 GiB unified), co-tenant GPU residency ~43 GiB during runs",
+ "cpu": "10x Cortex-X925 3.9 GHz + 10x Cortex-A725 2.808 GHz (aarch64)",
+ "nproc_host": 20,
+ "pinning": {
+  "produce_lanes": "taskset -c 5-9,15,16 (seven Cortex-X925 cores; multi-threaded pipeline)",
+  "single_core_cells": "taskset -c 7 (one Cortex-X925 core): geolog-shared, expand, staged-GLC recheck, certified-checker census, gym receipts, circuits recheck",
+  "lean_route_glc": "driver-pinned cpu 15 (Cortex-X925), matching the incumbent receipt's protocol"
+ },
+ "binaries": {
+  "onesys-driver": { "path": "onesys-driver", "sha256": "5cea1adce4f3ecbaa2bfe1cd658415ae0307d26dfdf184dc559df2ac446d24e7" },
+  "glc-check": { "path": "glc-check", "sha256": "7b06ced7d446f6b793ea94b34096d7cd1570a5bd0ec49b9611aa1cf9ed065f9a", "note": "built from a pinned checkout at QTSL_REV 43cd608130c2c805a5fbd5e416303daf025eb7dc; byte-identical to the RESEAL-5.1.md provenance pin" },
+  "qtsl2bl": { "path": "qtsl2bl", "sha256": "531d7f15d3fe858c0a04b896cf17380432759d82b6196c58b092e8109c260300" },
+  "flcheck": { "path": "target/release/flcheck", "sha256": "f73b195f1956eef922be05145f8d2015289ef535de361654bace1a0da158f972", "note": "gym receipts; built in this branch's tree" },
+  "qtslab": { "path": "qtslab", "sha256": "6b88466eedfee7282c453f603672c7a7481ec69f072c0a3d14dcf900cd44fd7f", "note": "certified checker; census.gb10.tsv sidecar provenance.gb10.json carries its full identity" }
+ },
+ "protocol": "10 repeats per benchmark (+1 flagged warmup on produce); serial, one timed process at a time; expand 1 pass per container; GPU device init OOM'd twice under co-tenant load (CUDA_ERROR_OUT_OF_MEMORY at init, attempts ~10 min apart) and succeeded on the third attempt - produce-gpu.json is that successful full run",
+ "loadavg": {
+  "produce-gpu": { "before": "8.24 7.80 7.84 17/3288 1325925", "after": "5.51 7.22 7.65 2/3280 1330952" },
+  "produce-host": { "before": "10.94 10.52 8.76 18/3197 1240207", "after": "10.99 10.61 8.94 13/3204 1243668" },
+  "geolog": { "before": "8.61 9.98 8.97 8/3225 1254376", "after": "8.44 9.80 8.94 7/3229 1256206" },
+  "expand": { "before": "7.50 9.24 8.81 5/3229 1262019", "after": "6.34 8.80 8.68 5/3228 1263234" },
+  "staged-glc": { "before": "6.18 8.56 8.60 6/3241 1265638", "after": "6.09 8.50 8.58 5/3234 1266211" },
+  "census": { "before": "7.35 8.30 8.50 7/3229 1277515", "after": "5.33 7.43 8.17 3/3242 1291097" },
+  "gym-x925": { "before": "3.71 6.74 7.91 4/3253 1293308", "after": "3.92 6.26 7.67 5/3195 1296239" },
+  "gym-a725-diagnostic": { "before": "4.60 6.30 7.66 4/3212 1296845", "after": "5.33 6.07 7.42 12/3221 1304296" },
+  "lean-route-glc": { "before": "8.94 7.14 7.67 11/3205 1310890", "after": "9.42 7.92 7.89 7/3210 1321798" },
+  "circuits": { "before": "7.33 7.64 7.79 2/3285 1324694", "after": "7.06 7.58 7.77 2/3283 1325111" }
+ },
+ "sibling_receipts": [
+  "supermartingales/out/glc/GLC-TIMINGS.gb10.json",
+  "supermartingales/out/sec2/certified-checker/census.gb10.tsv (+ provenance.gb10.json)",
+  "gymnasium/out/checker_receipts.gb10.json + checker_receipts_tt.gb10.json",
+  "lean-route/out/glc-times.json (in-place refresh)",
+  "circuits/out/recheck-times.gb10.json"
+ ],
+ "spread_rule": "(max-min)/median > 0.25 flagged; geolog-shared flagged 3 sub-80ms cells (faulty_varying 0.31, faulty_varying__last_step 0.35, repulse100 0.38); one quiet-moment re-run was attempted and came back noisier (worst 2.9, a co-tenant burst), so the FIRST set shipped - medians agree within ~5% across both sets; no other cell flagged"
+}
