@@ -32,6 +32,22 @@
     {
       "file": "beauquier3-u1000.glc",
       "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "coupon-collector5-u80.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "israeli-jalfon4-u31.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "israeli-jalfon4-u101.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "3d-asym-rw-u60.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
     }
   ],
   "mutants": [
@@ -190,6 +206,88 @@
       "locus": "count gate: one more posterior claim expected than present",
       "expected": "FAIL",
       "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=3"
+    },
+    {
+      "file": "mut-cc5-tighter.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "absorb hi tightened below canonical (the exact 1 = class mass + residual)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-cc5-widened.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "absorb bracket widened outward to [0, 1] (positive control)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-cc5-byteflip.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "one body byte flipped (container integrity)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "coupon-collector5-u80.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "count gate: one more absorb claim expected than present",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-ij4-tighter.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "absorb hi tightened below canonical (residual dropped)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-ij4-widened.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "absorb bracket widened outward to [0, 1] (positive control)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-ij4-byteflip.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "one body byte flipped (container integrity)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "israeli-jalfon4-u31.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "count gate: one more absorb claim expected than present",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-3d-tighter.glc",
+      "base": "3d-asym-rw-u60",
+      "locus": "absorb hi tightened below canonical (the exact 1 = class mass + residual)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-3d-widened.glc",
+      "base": "3d-asym-rw-u60",
+      "locus": "absorb bracket widened outward to [0, 1] (positive control)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "mut-3d-byteflip.glc",
+      "base": "3d-asym-rw-u60",
+      "locus": "one byte flipped in the sealed container (integrity)",
+      "expected": "REFUSE",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "3d-asym-rw-u60.glc",
+      "base": "3d-asym-rw-u60",
+      "locus": "count gate: one more posterior claim expected than present",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=2"
     }
   ]
 }

@@ -1,21 +1,29 @@
-# The three comparison programs: sources, encodings, ground truth
+# The comparison programs: sources, encodings, ground truth
 
-The comparison set is the three-program table the Diabolo paper (POPL
-2025, §evaluation, "comparison with GuBPI") uses to compare its
+The comparison set began as the three-program table the Diabolo paper
+(POPL 2025, §evaluation, "comparison with GuBPI") uses to compare its
 residual-mass semantics against GuBPI, both tools "configured to
-produce the same bounds." Sources are vendored verbatim from the
-Diabolo repository (MIT), which carries both tools' versions of each
-program (byte-identical to the Zenodo artifact, 10.5281/zenodo.14169507
-— all six files diffed). The comparison configurations are the Zenodo
-artifact's actual commands — unrolling **100 / 14 / 6** at default
-limit, i.e. Diabolo dialed down to match GuBPI's bound quality ("same
-bounds" is a quality match, with the repository's `comparison.sh`
-carrying different, tighter settings than the published table used);
-the GuBPI configurations are embedded in the `.spcf` twins' headers.
-One upstream caveat, recorded by the artifact's own README: GuBPI does
-not successfully normalize `die_paradox.spcf` (its normalized bounds
-are vacuous), so the die-paradox tightness comparison follows the
-artifact's practice of comparing unnormalized lower bounds for GuBPI.
+produce the same bounds," and has since grown case by case: the PSI
+burglar alarm and the Beauquier–Gradinariu–Johnen token ring from the
+GuBPI suite, and the coupon-collector, Israeli–Jalfon, and 3-D
+asymmetric-random-walk EV cases from the Diabolo suite. Sources are
+vendored verbatim from each baseline's repository (both MIT; the
+original trio byte-identical to the Zenodo artifact,
+10.5281/zenodo.14169507 — all six files diffed). For the original
+trio the comparison configurations are the Zenodo artifact's actual
+commands — unrolling **100 / 14 / 6** at default limit, i.e. Diabolo
+dialed down to match GuBPI's bound quality ("same bounds" is a quality
+match, with the repository's `comparison.sh` carrying different,
+tighter settings than the published table used); the GuBPI
+configurations are embedded in the `.spcf` twins' headers. Later cases
+run each baseline at its own artifact configuration (the `flags(...)`
+headers in the vendored `.sgcl` files, the depth headers in the `.spcf`
+files); per-case configurations are recorded beside the numbers in
+`out/comparison.json`. One upstream caveat, recorded by the GuBPI
+artifact's own README: GuBPI does not successfully normalize
+`die_paradox.spcf` (its normalized bounds are vacuous), so the
+die-paradox tightness comparison follows the artifact's practice of
+comparing unnormalized lower bounds for GuBPI.
 
 ## 1. Geometric counter (`geo`)
 
@@ -61,7 +69,38 @@ a score, so every stored row remains a probability row.
 Ground truth: $P[T{=}n \mid \text{acc}] = (2/3)(1/3)^{n-1}$,
 $\mathbb{E} = 3/2$, evidence $Z = 1/4$.
 
-## beauquier-etal-3, query Q1 (`beauquier-3`)
+## 4. PSI burglar alarm (`burglarAlarm`)
+
+Source: GuBPI repository `benchmarks/Discrete/burglarAlarm/`
+(`burglarAlarm.spcf` with its `.psi` original beside it; GuBPI vendors
+it from the PSI repository; MIT). Not in Diabolo's benchmark suite —
+the Diabolo column for this case is honestly n/a. A finite Bayes net
+with hard conditioning:
+
+```
+earthquake ~ flip(1/10000);  burglary ~ flip(1/1000);
+alarm = earthquake || burglary;
+phoneWorking ~ earthquake ? flip(7/10) : flip(99/100);
+maryWakes ~ alarm ? (earthquake ? flip(8/10) : flip(6/10)) : flip(2/10);
+observe(maryWakes && phoneWorking);  return burglary
+```
+
+Chain encoding: layered, one sampled variable per layer (start →
+earthquake → +burglary → +phoneWorking), with the final layer folding
+the maryWakes sample into the observe test: `mw && pw` absorbs into
+class `burglary`, everything else rejects. The program is finite, so
+horizon 4 is **full unrolling**: the alive frontier is empty, the
+residual is exactly zero, and both posterior brackets are exact
+points — the class-uniform width $R/(S+R)$ degenerates to $0$.
+
+Ground truth (PSI's exact inference, recorded in the vendored source's
+own comment): $P[\text{burglary} \mid \text{called}] =
+2969983/992160802 \approx 0.0029934$. The producer's DP reproduces it
+bit-exactly, and an independent 16-assignment enumeration oracle in
+the tests re-derives every class and reject mass without the chain
+machinery.
+
+## 5. beauquier-etal-3, query Q1 (`beauquier-3`)
 
 Source: the GuBPI benchmark suite's
 `benchmarks/ProbEstimation/beauquier-etal-3/beauquier-etal-3-Q1.spcf`
@@ -106,6 +145,83 @@ chain rows' action, all 32 alive configs), and the cross-program tooth
 neighbor bits) emits an internally-green certificate and is refused by
 the Monte-Carlo translation differential at 4-sigma, which is exactly
 why the differential is part of the battery.
+
+## 6. Coupon collector, five coupons (`coupon-collector5`)
+
+Source (Diabolo `benchmarks/ours/coupon-collector5.sgcl`, vendored
+verbatim): draw uniformly among five coupons until every coupon has
+been seen; return the number of draws. The compared query is the
+first moment of the return value (the baseline's EV objective).
+
+Chain encoding: **time-homogeneous**; the five coupon flags are
+exchangeable, so the chain state is the count $k$ of distinct coupons
+collected ($k \in 0..4$ alive; collecting the fifth is the single
+terminal class) — from $k$: a new coupon w.p. $(5-k)/5$, a repeat
+w.p. $k/5$ (self-loop). The exchangeability lump is a translation
+step, discharged by the five-explicit-flags source-semantics
+differential and the inclusion–exclusion oracle. The EV certificate
+is the survival-form assembly: exact partial sums from the DP plus a
+geometric tail from the generator-form template rows at
+$\gamma = 4/5$ — exactly the alive spectral radius, so every
+transfer inequality holds with equality and the certified tail is
+asymptotically the true tail.
+
+Ground truth: $\mathbb{E} = 5 H_5 = 137/12$ exactly; tail rate
+exactly $4/5$.
+
+## 7. Israeli–Jalfon self-stabilization, ring of four (`israeli-jalfon4`)
+
+Source (Diabolo `benchmarks/ours/israeli-jalfon4.sgcl`, vendored
+verbatim): four token flags sampled iid fair; while more than one
+token remains, one loop iteration snapshots the flags and walks the
+four if-blocks IN ORDER — a block whose old flag is set clears its
+own flag and sets a uniformly-chosen neighbor's (predecessor on
+heads, successor on tails); `count` increments once per iteration.
+The compared query is the first moment of `count` (the expected
+self-stabilization time). The sequential-update semantics is
+load-bearing, and the one-step direct-transcription oracle plus the
+cross-program synchronous-slip tooth pin exactly it.
+
+Chain encoding: **time-homogeneous**; states are the 16 flag
+bit-vectors plus a START state carrying the Bernoulli$(1/2)^4$
+prologue as one 16-outcome row; configurations with token count
+$\le 1$ classify into the single stabilized terminal class (closed
+— no re-entry). With the prologue, the chain absorption time is
+$T = \mathit{count} + 1$ on every path, so the EV certificate
+carries **anchor-offset 1** and the checker recomputes the
+prologue's determinism from the stored rows rather than trusting an
+out-of-band subtraction.
+
+Ground truth: $\mathbb{E}[\mathit{count}] = 373/256 = 1.45703125$ by
+the exact linear-solve oracle over the 11 alive configurations —
+the sequential block order breaks the ring's rotational symmetry
+(the 3-token expectations differ by configuration), so class-lumped
+analyses over token counts are wrong, and the mechanical oracle
+chain is the record. Alive spectral radius exactly $1/2$.
+
+## 8. 3-D asymmetric random walk (`3d-asym-rw`)
+
+Source (Diabolo `benchmarks/ours/3d-asym-rw.sgcl`, vendored
+verbatim): $(x,y,z) := (1,1,1)$; while any coordinate is nonzero:
+choose an axis uniformly (the source spells it `flip(1/3)` then
+`flip(1/2)`), move it $+1$ w.p. $1/4$ else decrement with MONUS at
+zero (SGCL variables are naturals — the vendored tool's own
+decrement saturates); count every step. The compared query is the
+first moment of the count (the absorption time into the origin).
+
+Chain encoding: **time-homogeneous with an infinite alive-reachable
+set** — the certificate presents the chain as a pattern (dimension
+and up-probability as species data) with stored rows on a finite
+window; the mass bracket rides the absorption DP at a finite
+horizon, and the EV tail rides the product-profile template rows
+(per-coordinate profile ratios ramping from $1$ up to a geometric
+rate — a pure per-coordinate geometric weight provably cannot
+contract this walk), collapsed to finitely many exact-rational
+inequalities by the class-collapse side condition.
+
+Ground truth: no closed form; the float linear-solve oracle gives
+$\approx 16.69099$, the $10^6$-path differential agrees, and the
+exact bracket at horizon 200 is $[16.690028724,\ 16.702938972]$.
 
 ## Translation validity
 

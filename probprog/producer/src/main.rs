@@ -8,8 +8,8 @@ use std::time::Instant;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let usage = "usage: probprog-produce <eval|spec> <geo-counter|asym-rw|die-paradox|burglar-alarm|beauquier-3> <horizon> [--classes N]\n  eval: print brackets + producer wall\n  spec: print the certificate spec JSON (for the emitter binary) on stdout";
-    if args.len() < 4 || (args[1] != "eval" && args[1] != "spec") {
+    let usage = "usage: probprog-produce <eval|spec|evcert> <geo-counter|asym-rw|die-paradox|burglar-alarm|beauquier-3|coupon-collector5|israeli-jalfon4|3d-asym-rw> <horizon> [--classes N] [--spec-file F]\n  eval: print brackets + producer wall\n  spec: print the certificate spec JSON (for the emitter binary) on stdout\n  evcert: print the EV-bracket certificate (dev-oracle lane; requires --spec-file, the exact spec bytes the container was sealed from)";
+    if args.len() < 4 || (args[1] != "eval" && args[1] != "spec" && args[1] != "evcert") {
         eprintln!("{usage}");
         std::process::exit(2);
     }
@@ -26,6 +26,9 @@ fn main() {
         "die-paradox" => Box::new(DieParadox),
         "burglar-alarm" => Box::new(BurglarAlarm),
         "beauquier-3" => Box::new(Beauquier3),
+        "coupon-collector5" => Box::new(CouponCollector5),
+        "israeli-jalfon4" => Box::new(IsraeliJalfon4),
+        "3d-asym-rw" => Box::new(AsymRw3d),
         other => {
             eprintln!("unknown program {other}; {usage}");
             std::process::exit(2);
@@ -34,10 +37,45 @@ fn main() {
 
     if args[1] == "spec" {
         let t0 = Instant::now();
-        let json = probprog_producer::spec::emit_spec(chain.as_ref(), horizon);
+        // the 3d walk's alive set is infinite: its spec is the stored
+        // WINDOW (rows to max coordinate box+1); everything else takes
+        // the reachable-closure emitter
+        let json = if args[2] == "3d-asym-rw" {
+            probprog_producer::spec::emit_spec_3d_window(
+                horizon,
+                probprog_producer::ev3d::EV3D_BOX + 1,
+            )
+        } else {
+            probprog_producer::spec::emit_spec(chain.as_ref(), horizon)
+        };
         let dt = t0.elapsed();
         print!("{json}");
         eprintln!("spec_wall_s={:.6}", dt.as_secs_f64());
+        return;
+    }
+
+    if args[1] == "evcert" {
+        let spec_path = args
+            .iter()
+            .position(|a| a == "--spec-file")
+            .map(|i| args[i + 1].clone())
+            .unwrap_or_else(|| {
+                eprintln!("evcert requires --spec-file <sealed spec.json>; {usage}");
+                std::process::exit(2);
+            });
+        let spec_bytes = std::fs::read(&spec_path).unwrap_or_else(|e| {
+            eprintln!("evcert: cannot read {spec_path}: {e}");
+            std::process::exit(2);
+        });
+        let t0 = Instant::now();
+        let cert = if args[2] == "3d-asym-rw" {
+            probprog_producer::ev3d::emit_evcert_3d(horizon, &spec_bytes)
+        } else {
+            probprog_producer::ev::emit_evcert(chain.as_ref(), horizon, &spec_bytes)
+        };
+        let dt = t0.elapsed();
+        print!("{cert}");
+        eprintln!("evcert_wall_s={:.6}", dt.as_secs_f64());
         return;
     }
 

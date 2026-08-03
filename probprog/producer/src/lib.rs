@@ -474,6 +474,276 @@ impl Chain for Beauquier3 {
     }
 }
 
+/// Coupon collector, five coupons (`coupon-collector5`, vendored from
+/// the Diabolo benchmark suite, `benchmarks/ours/coupon-collector5.sgcl`):
+/// draw uniformly among five coupons until every coupon has been seen,
+/// returning the number of draws. The compared query is the first
+/// moment of the return value (the baseline's EV objective); truth
+/// $\mathbb{E} = 5 H_5 = 137/12$, tail rate exactly $4/5$ (the alive
+/// substochastic block is triangular with diagonal $k/5$).
+///
+/// Chain encoding, TIME-HOMOGENEOUS: the five coupon flags are
+/// exchangeable, so the chain state is the count $k$ of distinct
+/// coupons collected ($k \in 0..4$ alive; collecting the fifth is the
+/// single terminal class). From $k$: a new coupon w.p. $(5-k)/5$
+/// ($k{+}1$, or class 0 at $k = 4$), a repeat w.p. $k/5$ (self-loop;
+/// at $k = 0$ the repeat weight is zero and no row is stored). The
+/// exchangeability lump is a translation step, discharged by the
+/// source-semantics differential (five explicit flags) and the
+/// inclusion-exclusion oracle. Absorption time = the program's count.
+///
+/// The time-homogeneous form is LOAD-BEARING for the EV certificate,
+/// not an optimization: the contraction-tail premise quantifies over
+/// the chain's law at every future step, so the stored rows must BE
+/// the total law on the alive-reachable set. A per-layer truncated
+/// row set has no sound EV reading (rowless frontier states hold
+/// their mass forever, so survival would not decay) — mass brackets
+/// tolerate truncation, first moments do not.
+pub struct CouponCollector5;
+
+impl Chain for CouponCollector5 {
+    fn init(&self) -> u64 {
+        0
+    }
+    fn succ(&self, x: u64, _t: u32) -> Vec<(Dst, Q)> {
+        debug_assert!(x <= 4, "alive states are counts 0..4");
+        let k = x as i64;
+        let advance = if x == 4 {
+            Dst::Done(0)
+        } else {
+            Dst::Alive(x + 1)
+        };
+        if x == 0 {
+            vec![(advance, Q::one())]
+        } else {
+            vec![(advance, q(5 - k, 5)), (Dst::Alive(x), q(k, 5))]
+        }
+    }
+    fn name(&self) -> &'static str {
+        "coupon-collector5"
+    }
+    fn time_homogeneous(&self) -> bool {
+        true
+    }
+}
+
+/// Israeli–Jalfon randomized self-stabilization on the ring
+/// $\mathbb{Z}_4$ (`israeli-jalfon4`, vendored from the Diabolo
+/// benchmark suite, `benchmarks/ours/israeli-jalfon4.sgcl`):
+/// four token flags sampled iid fair; while more than one token
+/// remains, one loop iteration snapshots the flags and walks the four
+/// if-blocks IN ORDER — a block whose OLD flag is set clears its own
+/// flag (current state) and sets a uniformly-chosen neighbor's flag
+/// (predecessor on heads, successor on tails, per the source's
+/// branches); `count` increments once per iteration; return count.
+/// The compared query is the first moment of the return value (the
+/// expected self-stabilization time).
+///
+/// The sequential-update semantics is load-bearing: a later block
+/// clears its own bit even if an earlier block's move just set it
+/// (the pass-through merge), and sets survive only if no later block
+/// clears them. The one-step direct-transcription oracle and the
+/// cross-program synchronous-slip tooth in `differential.rs` pin
+/// exactly this.
+///
+/// Chain encoding, TIME-HOMOGENEOUS: states 0..15 are the flag
+/// bit-vectors (bit $i$ = process $i{+}1$), state 16 = START (the
+/// Bernoulli$(1/2)^4$ prologue as one 16-outcome row); configurations
+/// with token count $\le 1$ (five) classify into the single terminal
+/// class `done_0` (stabilized); the 11 multi-token configurations
+/// carry their exact one-iteration rows ($2^{|s|}$ coin outcomes,
+/// coalesced by the emitter). Token count never increases and the
+/// last-firing block always leaves a token, so the stabilized class
+/// is closed (no re-entry) and the alive region loses no mass to
+/// truncation surprises. With the prologue, the chain's absorption
+/// time is $T = \mathit{count} + 1$ on every path — the EV
+/// certificate carries anchor-offset 1 (see `ev.rs`).
+///
+/// Ground truth (exact linear-solve oracle over the 11 alive
+/// configurations, `israeli_jalfon4_linear_solve_oracle` below):
+/// $\mathbb{E}[\mathit{count}] = 373/256 = 1.45703125$; alive spectral
+/// radius exactly $1/2$. NOTE the sequential block order BREAKS the
+/// ring's rotational symmetry — the 3-token expectations differ by
+/// configuration ($E_{\{1,2,4\}} = 2$ but $E_{\{1,3,4\}} = 5/2$), so
+/// any class-lumped analysis over token counts is wrong (a
+/// pre-registered hand-lumped derivation of this leg died exactly
+/// there; the mechanical oracles are the record).
+pub struct IsraeliJalfon4;
+
+pub const IJ4_START: u64 = 16; // one past the 0..15 configs
+
+/// One loop iteration of the source program: `old` is the snapshot,
+/// `coins` supplies one bit per firing block in block order (bit 0 =
+/// the lowest-numbered old token). Heads (bit 1) sends to the
+/// predecessor (process1 -> process4), tails to the successor
+/// (process1 -> process2), matching the source's branch arms.
+pub fn ij4_step(old: u64, coins: u64) -> u64 {
+    debug_assert!(old < 16);
+    let mut cur = old;
+    let mut bit = 0u32;
+    for i in 0..4u64 {
+        if (old >> i) & 1 == 1 {
+            cur &= !(1 << i);
+            let heads = (coins >> bit) & 1 == 1;
+            bit += 1;
+            let dst = if heads { (i + 3) % 4 } else { (i + 1) % 4 };
+            cur |= 1 << dst;
+        }
+    }
+    cur
+}
+
+pub fn ij4_tokens(cfg: u64) -> u32 {
+    (cfg & 0xF).count_ones()
+}
+
+impl Chain for IsraeliJalfon4 {
+    fn init(&self) -> u64 {
+        IJ4_START
+    }
+    fn succ(&self, x: u64, _t: u32) -> Vec<(Dst, Q)> {
+        if x == IJ4_START {
+            // Bernoulli(1/2)^4 prologue: sixteen configurations at
+            // 1/16 each; already-stabilized ones are count = 0.
+            return (0..16u64)
+                .map(|cfg| {
+                    let dst = if ij4_tokens(cfg) <= 1 {
+                        Dst::Done(0)
+                    } else {
+                        Dst::Alive(cfg)
+                    };
+                    (dst, q(1, 16))
+                })
+                .collect();
+        }
+        debug_assert!(
+            x < 16 && ij4_tokens(x) >= 2,
+            "alive configs hold >= 2 tokens"
+        );
+        let k = ij4_tokens(x);
+        let w = q(1, 1 << k);
+        (0..(1u64 << k))
+            .map(|coins| {
+                let ncfg = ij4_step(x, coins);
+                let dst = if ij4_tokens(ncfg) <= 1 {
+                    Dst::Done(0)
+                } else {
+                    Dst::Alive(ncfg)
+                };
+                (dst, w.clone())
+            })
+            .collect()
+    }
+    fn name(&self) -> &'static str {
+        "israeli-jalfon4"
+    }
+    fn time_homogeneous(&self) -> bool {
+        true
+    }
+}
+
+/// 3-D asymmetric random walk (`3d-asym-rw`, vendored from the
+/// Diabolo benchmark suite, `benchmarks/ours/3d-asym-rw.sgcl`):
+/// $(x,y,z) := (1,1,1)$; while $(x,y,z) \ne (0,0,0)$: choose an axis
+/// uniformly ($1/3$ each — the source spells it flip(1/3) then
+/// flip(1/2)), move it $+1$ w.p. $1/4$ else $-1$ with MONUS at zero
+/// (SGCL variables are naturals: the vendored tool's decrement is
+/// `saturating_sub` in its support transform and a sum-into-index-0
+/// `shift_left` on its mass bounds), count the step. Return the count
+/// = the absorption time. The alive-reachable set is INFINITE (no
+/// closed-form truth; the pattern face in `ev3d` carries the
+/// certificate machinery — this Chain impl is the generic ORACLE the
+/// fast DP is differentially tested against).
+///
+/// Chain encoding, TIME-HOMOGENEOUS: coordinates are exchangeable
+/// (the axis choice is uniform and the move law identical), so the
+/// state is the SORTED triple $a \le b \le c$, packed
+/// $a\,|\,b{\ll}12\,|\,c{\ll}24$. The exchangeability lump is a
+/// translation step, discharged by the source-semantics differential
+/// (three explicit coordinates, literal flips) and the one-step
+/// tuple-vs-lump oracle test.
+pub struct AsymRw3d;
+
+impl Chain for AsymRw3d {
+    fn init(&self) -> u64 {
+        ev3d::t3_pack(1, 1, 1)
+    }
+    fn succ(&self, x: u64, _t: u32) -> Vec<(Dst, Q)> {
+        let (alive, absorbed) = ev3d::pattern_row(ev3d::t3_unpack(x), 1, 12);
+        let mut out: Vec<(Dst, Q)> = alive
+            .into_iter()
+            .map(|(d, w)| (Dst::Alive(d), q(w as i64, 12)))
+            .collect();
+        if absorbed > 0 {
+            out.push((Dst::Done(0), q(absorbed as i64, 12)));
+        }
+        out
+    }
+    fn name(&self) -> &'static str {
+        "3d-asym-rw"
+    }
+    fn time_homogeneous(&self) -> bool {
+        true
+    }
+}
+
+/// Window materialization of the 3-D walk for the CONTAINER lane:
+/// true rows for states with max coordinate <= `rstore`, a mass-
+/// holding self-loop everywhere beyond (the stored-row spec leaves
+/// those states rowless; the container checker's rowless-is-absorbing
+/// evaluation and this self-loop agree exactly, and the parked mass
+/// accrues to the residual — truncation soundly WIDENS the absorb
+/// bracket, per the module-level soundness posture).
+pub struct AsymRw3dWindow {
+    pub rstore: u64,
+}
+
+impl Chain for AsymRw3dWindow {
+    fn init(&self) -> u64 {
+        AsymRw3d.init()
+    }
+    fn succ(&self, x: u64, t: u32) -> Vec<(Dst, Q)> {
+        let (_, _, c) = ev3d::t3_unpack(x);
+        if c <= self.rstore {
+            AsymRw3d.succ(x, t)
+        } else {
+            vec![(Dst::Alive(x), Q::one())]
+        }
+    }
+    fn name(&self) -> &'static str {
+        "3d-asym-rw-window"
+    }
+    fn time_homogeneous(&self) -> bool {
+        true
+    }
+}
+
+/// Exact survival masses $P[T > n]$ for $n = 0..=\mathrm{horizon}$,
+/// where $T$ is the time of leaving the alive set (absorption into any
+/// class or rejection). This is the unrolled exact partial-moment
+/// ingredient of the EV certificates: the first moment in survival
+/// form is $\mathbb{E}[T] = \sum_{n \ge 0} P[T > n]$. Same forward DP
+/// as `evaluate`, recording the alive total per step.
+pub fn survival_masses(chain: &dyn Chain, horizon: u32) -> Vec<Q> {
+    let mut alive: BTreeMap<u64, Q> = BTreeMap::new();
+    alive.insert(chain.init(), Q::one());
+    let mut out = Vec::with_capacity(horizon as usize + 1);
+    out.push(alive.values().fold(Q::zero(), |a, b| a + b.clone()));
+    for t in 0..horizon {
+        let mut next: BTreeMap<u64, Q> = BTreeMap::new();
+        for (&x, m) in &alive {
+            for (dst, w) in chain.succ(x, t) {
+                if let Dst::Alive(y) = dst {
+                    *next.entry(y).or_insert_with(Q::zero) += m * w;
+                }
+            }
+        }
+        alive = next;
+        out.push(alive.values().fold(Q::zero(), |a, b| a + b.clone()));
+    }
+    out
+}
+
 // ---------------------------------------------------------- truths
 
 /// Exact closed-form posterior mass per class, for containment tests.
@@ -503,8 +773,36 @@ pub fn truth(name: &str, n: u32) -> Q {
             0 | 1 => q(1, 2),
             _ => Q::zero(),
         },
+        // single terminal class (all five coupons collected), reached
+        // almost surely: limit mass 1.
+        "coupon-collector5" => match n {
+            0 => Q::one(),
+            _ => Q::zero(),
+        },
+        // single terminal class (stabilized), reached almost surely.
+        "israeli-jalfon4" => match n {
+            0 => Q::one(),
+            _ => Q::zero(),
+        },
         _ => panic!("no closed form registered for {name}"),
     }
+}
+
+/// Inclusion–exclusion closed form for the five-coupon collector:
+/// $P[T \le n] = \sum_{j=0}^{5} (-1)^j \binom{5}{j} ((5-j)/5)^n$ —
+/// the independent analytic oracle for the chain DP.
+pub fn cc5_absorbed_by(n: u32) -> Q {
+    let binom = [1i64, 5, 10, 10, 5, 1];
+    let mut acc = Q::zero();
+    for (j, b) in binom.iter().enumerate() {
+        let term = q(*b, 1) * q(5 - j as i64, 5).pow(n as i32);
+        if j % 2 == 0 {
+            acc += term;
+        } else {
+            acc -= term;
+        }
+    }
+    acc
 }
 
 trait QPow {
@@ -743,7 +1041,257 @@ mod tests {
             assert_eq!(direct, chain, "one-step divergence at config {x:06b}");
         }
     }
+
+    /// Independent analytic oracle: the chain DP's absorbed-by-n mass
+    /// equals the inclusion–exclusion closed form, exactly in Q.
+    #[test]
+    fn coupon_collector5_inclusion_exclusion_oracle() {
+        let surv = survival_masses(&CouponCollector5, 80);
+        for n in [0u32, 1, 4, 5, 6, 10, 20, 40, 80] {
+            let absorbed = Q::one() - surv[n as usize].clone();
+            assert_eq!(
+                absorbed,
+                cc5_absorbed_by(n),
+                "inclusion-exclusion divergence at n = {n}"
+            );
+        }
+        // survival and evaluate agree on the residual at the horizon
+        let tr = evaluate(&CouponCollector5, 80);
+        assert_eq!(tr.residual, surv[80]);
+        assert!(tr.reject_mass.is_zero());
+        assert_eq!(tr.class_mass.len(), 1);
+    }
+
+    /// The certificate weights (1, 4/5, 3/5, 2/5, 1/5) are the exact
+    /// left eigenvector of the alive block at eigenvalue 4/5: every
+    /// weighted transfer inequality holds with equality, and the
+    /// weighted alive mass at N is exactly (4/5)^N.
+    #[test]
+    fn coupon_collector5_weights_eigenvector() {
+        let w = |x: u64| q(5 - x as i64, 5);
+        let c = q(4, 5);
+        for x in 0..5u64 {
+            let lhs = CouponCollector5
+                .succ(x, 0)
+                .iter()
+                .fold(Q::zero(), |a, (dst, p)| match dst {
+                    Dst::Alive(y) => a + p * w(*y),
+                    _ => a, // absorbed weight 0
+                });
+            assert_eq!(lhs, c.clone() * w(x), "transfer inequality at k = {x}");
+        }
+        let tr = evaluate(&CouponCollector5, 80);
+        let wn = tr
+            .alive_support
+            .iter()
+            .fold(Q::zero(), |a, (x, m)| a + m * w(*x));
+        assert_eq!(wn, c.pow(80), "weighted alive mass at 80");
+    }
+
+    /// The certificate weights for israeli-jalfon4: the minimal
+    /// eigen-tight solution of the transfer system at gamma = 1/2
+    /// (every row an equality), with the unit floor on the alive
+    /// region (min over alive = 1 — the alive-mass face, kappa = 1).
+    /// Per-state, NOT class-lumped: the sequential block order breaks
+    /// the ring symmetry.
+    fn ij4_weight(x: u64) -> Q {
+        match x {
+            IJ4_START => q(99, 64),
+            7 => q(5, 4),    // {1,2,3}
+            11 => Q::one(),  // {1,2,4}
+            13 => q(3, 2),   // {1,3,4}
+            14 => q(21, 16), // {2,3,4}
+            15 => q(21, 16), // {1,2,3,4}
+            _ => Q::one(),   // the six 2-token configurations
+        }
+    }
+
+    /// Independent exact oracle: solve (I - Q_A) E = 1 over the 11
+    /// alive configurations by rational Gaussian elimination (no DP,
+    /// no survival machinery) and check the per-state values and the
+    /// initial-distribution expectation E[count] = 373/256.
+    #[test]
+    fn israeli_jalfon4_linear_solve_oracle() {
+        let alive: Vec<u64> = (0..16u64).filter(|&c| ij4_tokens(c) >= 2).collect();
+        assert_eq!(alive.len(), 11);
+        let idx = |c: u64| alive.iter().position(|&a| a == c).unwrap();
+        // build A = I - Q_A and rhs = 1
+        let n = alive.len();
+        let mut m: Vec<Vec<Q>> = vec![vec![Q::zero(); n + 1]; n];
+        for (i, &x) in alive.iter().enumerate() {
+            m[i][i] += Q::one();
+            for (dst, w) in IsraeliJalfon4.succ(x, 0) {
+                if let Dst::Alive(y) = dst {
+                    let j = idx(y);
+                    m[i][j] -= w;
+                }
+            }
+            m[i][n] = Q::one();
+        }
+        // Gaussian elimination, exact
+        for col in 0..n {
+            let piv = (col..n)
+                .find(|&r| !m[r][col].is_zero())
+                .expect("singular system");
+            m.swap(col, piv);
+            let p = m[col][col].clone();
+            for k in col..=n {
+                m[col][k] = m[col][k].clone() / p.clone();
+            }
+            for r in 0..n {
+                if r != col && !m[r][col].is_zero() {
+                    let f = m[r][col].clone();
+                    for k in col..=n {
+                        m[r][k] = m[r][k].clone() - f.clone() * m[col][k].clone();
+                    }
+                }
+            }
+        }
+        let e = |c: u64| m[idx(c)][n].clone();
+        // per-state values (symmetry-broken by the sequential blocks):
+        // 2 on every 2-token configuration AND on {1,2,4}; 9/4 on
+        // {1,2,3}; 5/2 on {1,3,4}; 73/32 on {2,3,4} and the full
+        // configuration.
+        for &x in &alive {
+            let expected = match x {
+                7 => q(9, 4),
+                11 => q(2, 1),
+                13 => q(5, 2),
+                14 | 15 => q(73, 32),
+                _ => q(2, 1),
+            };
+            assert_eq!(e(x), expected, "E at config {x:04b}");
+        }
+        // E[count] over the Bernoulli(1/2)^4 initial distribution
+        let mut ev = Q::zero();
+        for cfg in 0..16u64 {
+            if ij4_tokens(cfg) >= 2 {
+                ev += q(1, 16) * e(cfg);
+            }
+        }
+        assert_eq!(ev, q(373, 256), "E[count] = 373/256");
+    }
+
+    /// Every weighted transfer row holds with EQUALITY at gamma = 1/2
+    /// (the weights are eigen-tight on every row, so 1/2 is exactly
+    /// the alive spectral radius and W(n) = (99/64) 2^-n exactly).
+    #[test]
+    fn israeli_jalfon4_weights_all_rows_tight() {
+        let c = q(1, 2);
+        let mut states: Vec<u64> = (0..16u64).filter(|&x| ij4_tokens(x) >= 2).collect();
+        states.push(IJ4_START);
+        for &x in &states {
+            let lhs = IsraeliJalfon4
+                .succ(x, 0)
+                .iter()
+                .fold(Q::zero(), |a, (dst, p)| match dst {
+                    Dst::Alive(y) => a + p * ij4_weight(*y),
+                    _ => a, // absorbed weight 0
+                });
+            assert_eq!(lhs, c.clone() * ij4_weight(x), "transfer row at {x}");
+        }
+        // eigen-equality of the weighted alive mass at the horizon
+        let tr = evaluate(&IsraeliJalfon4, 31);
+        let wn = tr
+            .alive_support
+            .iter()
+            .fold(Q::zero(), |a, (x, m)| a + m * ij4_weight(*x));
+        let mut expect = q(99, 64);
+        for _ in 0..31 {
+            expect = expect * q(1, 2);
+        }
+        assert_eq!(wn, expect, "W(31) = (99/64) 2^-31");
+    }
+
+    /// Structural teeth: token count never increases (the stabilized
+    /// class is closed — the R18 no-re-entry recompute's ground), the
+    /// last-firing block always leaves a token (alive rows never reach
+    /// the empty configuration), and alive rows are total probability
+    /// rows.
+    #[test]
+    fn israeli_jalfon4_no_reentry_structure() {
+        for x in (0..16u64).filter(|&x| ij4_tokens(x) >= 2) {
+            let row = IsraeliJalfon4.succ(x, 0);
+            let total = row.iter().fold(Q::zero(), |a, (_, w)| a + w.clone());
+            assert!(total.is_one(), "row at {x} sums to {total}");
+            for (dst, _) in &row {
+                match dst {
+                    Dst::Alive(y) => {
+                        assert!(ij4_tokens(*y) <= ij4_tokens(x), "{x:04b} -> {y:04b}");
+                        assert!(ij4_tokens(*y) >= 2);
+                    }
+                    Dst::Done(0) => {}
+                    other => panic!("unexpected dst {other:?}"),
+                }
+            }
+            // never the empty configuration among successors
+            for coins in 0..(1u64 << ij4_tokens(x)) {
+                assert!(ij4_step(x, coins) != 0, "empty config from {x:04b}");
+            }
+        }
+    }
+
+    /// EV bracket containment at the matched-depth horizon: with the
+    /// offset-1 partial survival sum L (the prologue transition is
+    /// deterministic overhead: T = count + 1) and the alive-mass-face
+    /// tail (kappa = 1, gamma = 1/2), the bracket contains the exact
+    /// truth E[count] = 373/256 and its width is ~1.44e-9 — and the
+    /// upper endpoint EQUALS the truth exactly: the states with
+    /// weight above the unit floor are all transient within the
+    /// first three iterations (the >= 3-token subgraph is
+    /// {1,2,3,4} -> {2,3,4}/{1,2,3} -> {1,2,4} -> only 2-token), so
+    /// P[T > t] = W(t) exactly for every t past the transient and the
+    /// geometric tail bound is achieved, not just sound.
+    #[test]
+    fn israeli_jalfon4_ev_bracket_contains_truth() {
+        let n = 31u32;
+        let surv = survival_masses(&IsraeliJalfon4, n);
+        assert!(surv[0].is_one(), "deterministic prologue: P[T > 0] = 1");
+        assert_eq!(surv[1], q(11, 16), "P[T > 1] = P[count > 0] = 11/16");
+        let l = surv[1..n as usize]
+            .iter()
+            .fold(Q::zero(), |a, b| a + b.clone());
+        let mut wn = q(99, 64);
+        for _ in 0..n {
+            wn = wn * q(1, 2);
+        }
+        let tail = q(2, 1) * wn; // kappa = 1, 1/(1 - gamma) = 2
+        let truth_ev = q(373, 256);
+        assert!(l <= truth_ev, "lower {l} vs 373/256");
+        assert_eq!(
+            l.clone() + tail.clone(),
+            truth_ev,
+            "the upper endpoint is exactly the truth (achieved tail)"
+        );
+        use num_traits::ToPrimitive;
+        let width = tail.to_f64().unwrap();
+        assert!(width < 2e-9, "width {width}");
+    }
+
+    /// EV bracket containment: with L the exact partial survival sum
+    /// at N = 80 and the tail bounded by kappa * W(N) / (1 - gamma)
+    /// (kappa = 5, gamma = 4/5), the bracket contains the exact truth
+    /// E[T] = 5 * H_5 = 137/12.
+    #[test]
+    fn coupon_collector5_ev_bracket_contains_truth() {
+        let n = 80u32;
+        let surv = survival_masses(&CouponCollector5, n);
+        let l = surv[..n as usize]
+            .iter()
+            .fold(Q::zero(), |a, b| a + b.clone());
+        let wn = q(4, 5).pow(n as i32); // eigenvector equality, tested above
+        let tail = q(5, 1) * wn * q(5, 1); // kappa * W(N) * 1/(1 - gamma)
+        let truth_ev = q(137, 12);
+        assert!(l <= truth_ev, "lower {l} vs 137/12");
+        assert!(truth_ev <= l.clone() + tail.clone(), "upper");
+        // the bracket is tight: width = tail is ~4.4e-7
+        use num_traits::ToPrimitive;
+        let width = tail.to_f64().unwrap();
+        assert!(width < 5e-7, "width {width}");
+    }
 }
 
 pub mod differential;
+pub mod ev;
+pub mod ev3d;
 pub mod spec;

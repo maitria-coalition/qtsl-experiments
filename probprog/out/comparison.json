@@ -10,90 +10,366 @@
       "case": "geometric counter",
       "query": "posterior masses P[Y=n], comparison configuration (quality-matched set)",
       "rows": [
-        { "tool": "gubpi", "config": "geo.spcf, depth 500",
+        {
+          "tool": "gubpi",
+          "config": "geo.spcf, depth 500",
           "bound_width": "1.1e-15 on Z; per-bin at the matched quality",
           "width_metric": "Z-interval width (per-bin bounds in raw .bounds receipts)",
-          "wall_median_s": 0.880, "runs": 5, "internal_time_s": 0.701,
-          "check_wall_s": null, "checker": null,
-          "provenance": "same-box baseline harness receipts (raw geo-*.bounds outputs)" },
-        { "tool": "diabolo-residual", "config": "residual geo.sgcl -u 100 (artifact comparison command)",
+          "wall_median_s": 0.88,
+          "runs": 5,
+          "internal_time_s": 0.701,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box baseline harness receipts (raw geo-*.bounds outputs)"
+        },
+        {
+          "tool": "diabolo-residual",
+          "config": "residual geo.sgcl -u 100 (artifact comparison command)",
           "bound_width": "7.89e-31",
           "width_metric": "residual mass bound (p(n) upper minus exact lower, uniform)",
-          "wall_median_s": 0.00267, "runs": 5, "internal_time_s": 0.00156,
-          "check_wall_s": null, "checker": null,
-          "provenance": "same-box baseline harness receipts (raw dres-geo-* outputs)" },
-        { "tool": "house", "config": "probprog-produce spec geo-counter 100 -> dabs-emit -> glc-check",
+          "wall_median_s": 0.00267,
+          "runs": 5,
+          "internal_time_s": 0.00156,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box baseline harness receipts (raw dres-geo-* outputs)"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec geo-counter 100 -> dabs-emit -> glc-check",
           "bound_width": "7.889e-31 (exact: 2^-100 over evidence+residual)",
           "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
-          "wall_median_s": 0.265, "runs": 5, "internal_time_s": null,
-          "check_wall_s": 0.051, "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef…; 201 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/geo-compare + out/glc/geo-u100.glc" }
+          "wall_median_s": 0.265,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 0.051,
+          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef…; 201 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/geo-compare + out/glc/geo-u100.glc"
+        }
       ]
     },
     {
       "case": "asymmetric random walk",
       "query": "posterior masses P[C=n], comparison configuration (quality-matched set)",
       "rows": [
-        { "tool": "gubpi", "config": "asym_rw.spcf, depth 100",
+        {
+          "tool": "gubpi",
+          "config": "asym_rw.spcf, depth 100",
           "bound_width": "0.639 on Z ([0.9927, 1.6314])",
           "width_metric": "Z-interval width (per-bin bounds in raw .bounds receipts)",
-          "wall_median_s": 51.62, "runs": 5, "internal_time_s": 51.40,
-          "check_wall_s": null, "checker": null,
-          "provenance": "same-box baseline harness receipts (raw asym_rw-*.bounds outputs)" },
-        { "tool": "diabolo-residual", "config": "residual asym_rw.sgcl -u 14 (artifact comparison command)",
+          "wall_median_s": 51.62,
+          "runs": 5,
+          "internal_time_s": 51.4,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box baseline harness receipts (raw asym_rw-*.bounds outputs)"
+        },
+        {
+          "tool": "diabolo-residual",
+          "config": "residual asym_rw.sgcl -u 14 (artifact comparison command)",
           "bound_width": "7.40e-3",
           "width_metric": "residual mass bound (float, outward-rounded)",
-          "wall_median_s": 0.00176, "runs": 5, "internal_time_s": 0.00074,
-          "check_wall_s": null, "checker": null,
-          "provenance": "same-box baseline harness receipts (raw dres-asym-* outputs)" },
-        { "tool": "house", "config": "probprog-produce spec asym-rw 14 -> dabs-emit -> glc-check",
+          "wall_median_s": 0.00176,
+          "runs": 5,
+          "internal_time_s": 0.00074,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box baseline harness receipts (raw dres-asym-* outputs)"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec asym-rw 14 -> dabs-emit -> glc-check",
           "bound_width": "7.342e-3 (exact: 123181/16777216 over evidence+residual)",
           "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
-          "wall_median_s": 0.0998, "runs": 5, "internal_time_s": null,
-          "check_wall_s": 0.051, "checker": "glc-check --staged-chain (staged closure; 15 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/asym-compare + out/glc/asym-rw-u14.glc" }
+          "wall_median_s": 0.0998,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 0.051,
+          "checker": "glc-check --staged-chain (staged closure; 15 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/asym-compare + out/glc/asym-rw-u14.glc"
+        }
       ]
     },
     {
       "case": "die paradox",
       "query": "posterior masses P[T=n | even throws], comparison configuration; GuBPI column is unnormalized-lower-only per its own artifact README",
       "rows": [
-        { "tool": "gubpi", "config": "die_paradox.spcf, polytopes, depth 80",
+        {
+          "tool": "gubpi",
+          "config": "die_paradox.spcf, polytopes, depth 80",
           "bound_width": "unbounded (Z upper = NaN; normalized bounds vacuous — upstream-documented); unnormalized lower bounds usable",
           "width_metric": "n/a (baseline defect, its artifact's own caveat)",
-          "wall_median_s": 74.76, "runs": 5, "internal_time_s": 74.56,
-          "check_wall_s": null, "checker": null,
-          "provenance": "same-box baseline harness receipts (raw die_paradox-*.bounds outputs)" },
-        { "tool": "diabolo-residual", "config": "residual die_paradox.sgcl -u 6 (artifact comparison command)",
+          "wall_median_s": 74.76,
+          "runs": 5,
+          "internal_time_s": 74.56,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box baseline harness receipts (raw die_paradox-*.bounds outputs)"
+        },
+        {
+          "tool": "diabolo-residual",
+          "config": "residual die_paradox.sgcl -u 6 (artifact comparison command)",
           "bound_width": "1.65e-2 (normalized total-mass interval [0.9837, 1.0165])",
           "width_metric": "normalized residual bound (interval-quotient assembly)",
-          "wall_median_s": 0.00118, "runs": 5, "internal_time_s": 0.00028,
-          "check_wall_s": null, "checker": null,
-          "provenance": "same-box baseline harness receipts (raw dres-die-* outputs)" },
-        { "tool": "house", "config": "probprog-produce spec die-paradox 6 -> dabs-emit -> glc-check",
+          "wall_median_s": 0.00118,
+          "runs": 5,
+          "internal_time_s": 0.00028,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box baseline harness receipts (raw dres-die-* outputs)"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec die-paradox 6 -> dabs-emit -> glc-check",
           "bound_width": "5.464e-3 (exact: 1/183; correlated-ratio form, 3.0x tighter than the interval quotient at the same truncation)",
           "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
-          "wall_median_s": 0.0981, "runs": 5, "internal_time_s": null,
-          "check_wall_s": 0.051, "checker": "glc-check --staged-chain (staged closure; 13 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/die-compare + out/glc/die-paradox-u6.glc" }
+          "wall_median_s": 0.0981,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 0.051,
+          "checker": "glc-check --staged-chain (staged closure; 13 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/die-compare + out/glc/die-paradox-u6.glc"
+        }
       ]
     },
     {
       "case": "tightness rows (same wall class, deeper truncation — house only; no baseline ran these configs in the comparison)",
       "query": "posterior masses at deeper horizons",
       "rows": [
-        { "tool": "house", "config": "asym-rw horizon 70",
+        {
+          "tool": "house",
+          "config": "asym-rw horizon 70",
           "bound_width": "3.012e-7",
           "width_metric": "posterior bracket width, exact rational",
-          "wall_median_s": 0.6437, "runs": 5, "internal_time_s": null,
-          "check_wall_s": null, "checker": "glc-check --staged-chain (71 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/asym-tight + out/glc/asym-rw-u70.glc" },
-        { "tool": "house", "config": "die-paradox horizon 40",
+          "wall_median_s": 0.6437,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": null,
+          "checker": "glc-check --staged-chain (71 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/asym-tight + out/glc/asym-rw-u70.glc"
+        },
+        {
+          "tool": "house",
+          "config": "die-paradox horizon 40",
           "bound_width": "3.290e-19",
           "width_metric": "posterior bracket width, exact rational",
-          "wall_median_s": 0.1164, "runs": 5, "internal_time_s": null,
-          "check_wall_s": null, "checker": "glc-check --staged-chain (81 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/die-tight + out/glc/die-paradox-u40.glc" }
+          "wall_median_s": 0.1164,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": null,
+          "checker": "glc-check --staged-chain (81 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/die-tight + out/glc/die-paradox-u40.glc"
+        }
+      ]
+    },
+    {
+      "case": "burglar alarm (PSI discrete suite)",
+      "query": "posterior P[burglary | called] (hard conditioning); Diabolo: n/a — the case is not in its benchmark suite",
+      "rows": [
+        {
+          "tool": "gubpi",
+          "config": "burglarAlarm.spcf, depth 200 (header config)",
+          "bound_width": "0 at the .bounds print precision (validated float; the Z interval it derives from has width 6.8e-16)",
+          "width_metric": "normalized bin bounds for burglary in {0,1} (validated-float intervals)",
+          "wall_median_s": 0.26,
+          "runs": 5,
+          "internal_time_s": 0.08,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box baseline harness receipts (raw gubpi-ba-run{1..5}.{out,time}, burglarAlarm-{norm,unnorm}.bounds outputs)"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec burglar-alarm 4 -> dabs-emit -> glc-check (full unrolling of the finite program)",
+          "bound_width": "exactly 0 (R = 0; posterior = 2969983/992160802 for burglary=1, the PSI exact result, as a point interval in Q)",
+          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
+          "wall_median_s": 0.0992,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 0.0496,
+          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef…, pre-mint — row re-emits against the baked closure at the species' revision event; 5 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/ba-full + out/glc/burglar-alarm-u4.glc"
+        }
+      ]
+    },
+    {
+      "case": "Beauquier-Gradinariu-Johnen token ring, 3 processes",
+      "query": "P[count < 1] (score-free; truth exactly 1/2); Diabolo: n/a — the case is a GuBPI-suite member with no published Diabolo row (absence stated, not interpolated). Honest near-miss note: GuBPI's score-free Z=1 printout is an exact float point, so the house tightness row trails it by the sound residual (2.5e-101 at horizon 1000); the per-class reachability sharpening staged for the species' revision event closes this to width 0 with strictly weaker hypotheses.",
+      "rows": [
+        {
+          "tool": "gubpi",
+          "config": "beauquier-etal-3-Q1.spcf, depth 50 (artifact config; method Polytopes, splits 10000)",
+          "bound_width": "0 at the printed precision — [0.5, 0.5] normalized and unnormalized (exact-point floats leaning on score-free Z = 1)",
+          "width_metric": "printed bounds for the count<1 bucket (validated-float intervals)",
+          "wall_median_s": 7.87,
+          "runs": 5,
+          "internal_time_s": 7.67,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "probprog/out/receipts.json beauquier3/gubpi-q1-internal (note field carries the e2e walls + printed bounds); same-box baseline harness receipts (raw stdouts)"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec beauquier-3 51 -> dabs-emit -> glc-check (matched-depth class; time-homogeneous stored rows: 35 states / 91 rows at any horizon)",
+          "bound_width": "4.53e-6 — [1/2, 1/2 + R_51] exact rational, R_51 the exact alive mass at the horizon",
+          "width_metric": "class-0 bracket width, exact rational",
+          "wall_median_s": 0.237,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 0.128,
+          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef…, pre-mint — row re-emits against the baked closure at the species' revision event; 5 claims)",
+          "provenance": "probprog/out/receipts.json beauquier3/house-e2e-u51 + out/glc/beauquier3-u51.glc"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec beauquier-3 1000 -> dabs-emit -> glc-check (tight row, same 91 stored rows)",
+          "bound_width": "2.5e-101 — [1/2, 1/2 + R_1000] exact rational",
+          "width_metric": "class-0 bracket width, exact rational",
+          "wall_median_s": 1.6,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 1.418,
+          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef…, pre-mint; 5 claims)",
+          "provenance": "probprog/out/receipts.json beauquier3/house-e2e-u1000 + out/glc/beauquier3-u1000.glc"
+        }
+      ]
+    },
+    {
+      "case": "coupon collector, 5 coupons (EV query)",
+      "query": "first moment of the return value (number of draws to collect all five; exact truth 137/12) + tail asymptotics",
+      "rows": [
+        {
+          "tool": "diabolo-geobound-ev",
+          "config": "geobound coupon-collector5.sgcl --objective ev -u 80 --optimizer ipopt --optimizer linear (the source file's own flag header; the bench harness drops its -u 30 default when the header overrides)",
+          "bound_width": "1.426e-1 (EV in [11.416659157566642, 11.55925880204251]; matches the published [11.41, 11.56]; IPOPT returned its initial solution in every run on this box, recorded in the raw stdout — the resulting bound equals the published one)",
+          "width_metric": "EV bracket width, float",
+          "wall_median_s": 12.65,
+          "runs": 5,
+          "internal_time_s": 12.64,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box measurement-protocol records (1 warmup + 5 measured, taskset to one performance core, absolute renice 19 with /proc read-back, /usr/bin/time -v, load averages recorded); bounds byte-stable across all 5 runs"
+        },
+        {
+          "tool": "diabolo-geobound-tail",
+          "config": "geobound coupon-collector5.sgcl --objective tail -u 1 (tail-objective context cell, bench-harness default flags)",
+          "bound_width": "tail envelope 4409806508.567278 * 0.8001525531256914^n for n >= 2 (matches the published O(0.8002^n) row)",
+          "width_metric": "tail asymptotics (coefficient * rate^n)",
+          "wall_median_s": 14.95,
+          "runs": 5,
+          "internal_time_s": 14.94,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same protocol as the EV cell; separate tail-objective run because the EV run's own asymptotics line carries a weaker rate (0.9086)"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec coupon-collector5 80 -> dabs-emit -> glc-check (absorption rows) + evcert -> probprog-evcheck (EV rows, dev-oracle lane)",
+          "bound_width": "4.417e-7 (EV in [11.41666622..., 11.41666666...], exact rationals; contains 137/12; 3.2e5 x tighter than the baseline at the matched config). Tail envelope exactly 5 * (4/5)^n for n >= 80 — the rate is the chain's spectral radius, so no smaller rate exists; strictly tighter than both baseline tail lines in rate and coefficient",
+          "width_metric": "EV bracket width, exact rational (decimal rendering)",
+          "wall_median_s": 0.1107,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 0.0596,
+          "checker": "glc-check --staged-chain (wf=1, absorb=1, posterior=1) + probprog-evcheck dev-oracle for the draft strengthened generator-form seam (partial=1, ev=1, tail=1) — EV verdicts PENDING that seam's theory revision event; spec-sha256 binds both artifacts to the same stored rows",
+          "provenance": "probprog/out/receipts.json producer/cc5-full + house-e2e/cc5-full + house-e2e/cc5-check-only; out/glc/coupon-collector5-u80.glc; out/ev/coupon-collector5-u80.evc"
+        }
+      ]
+    },
+    {
+      "case": "Israeli-Jalfon self-stabilization, ring of 4 (EV query)",
+      "query": "first moment of the return value (loop iterations to reach <= 1 token; exact truth 373/256 by in-crate linear-solve oracle) + tail asymptotics; GuBPI: case not in its suite (checked: no israeli-jalfon file under its benchmarks tree) - absence stated, never interpolated",
+      "rows": [
+        {
+          "tool": "diabolo-geobound-ev",
+          "config": "geobound israeli-jalfon4.sgcl -u 30 --objective ev --optimizer ipopt --optimizer linear (bench default unroll 30 + the source file's flags(geobound) header)",
+          "bound_width": "3.983e-4 (EV in [1.4570312269497663, 1.457429486540848]; the published table's [1.457, 1.458] at 4 digits; contains the exact truth 373/256 = 1.45703125)",
+          "width_metric": "EV bracket width, float",
+          "wall_median_s": 19.14,
+          "runs": 5,
+          "internal_time_s": 19.13,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box measurement-protocol records (1 warmup + 5 measured, taskset -c 16, absolute renice 19 with /proc read-back, /usr/bin/time -v, load averages recorded); bounds byte-stable across all 5 runs; published wall 121.04 s on unstated hardware (context only)"
+        },
+        {
+          "tool": "diabolo-geobound-tail",
+          "config": "geobound israeli-jalfon4.sgcl -u 1 --objective tail --optimizer ipopt --optimizer linear (the paper's tail protocol: unrolling limit 1)",
+          "bound_width": "tail envelope 41187393.48318438 * 0.5010816216979803^n for n >= 2 (matches the published O(0.5011^n) row); the EV objective's own asymptotics line carries only 0.7288",
+          "width_metric": "tail asymptotics (coefficient * rate^n)",
+          "wall_median_s": 0.21,
+          "runs": 5,
+          "internal_time_s": 0.21,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same protocol as the EV cell; published tail wall 0.44 s (context only)"
+        },
+        {
+          "tool": "house",
+          "config": "probprog-produce spec israeli-jalfon4 31 -> dabs-emit -> glc-check (absorption rows) + evcert -> probprog-evcheck (EV rows with anchor-offset 1, dev-oracle lane)",
+          "bound_width": "1.441e-9 (EV in [1.4570312471..., 373/256], exact rationals; the upper endpoint IS the exact truth — the >= 3-token states are transient in three iterations, so the geometric tail bound is achieved; 2.8e5 x tighter than the baseline at matched depth). Tail envelope exactly (99/64) * (1/2)^n for n >= 31 — the rate is the chain's spectral radius, strictly tighter than the baseline tail cell in rate (0.5 < 0.50108) and coefficient (1.5 vs 4.1e7)",
+          "width_metric": "EV bracket width, exact rational (decimal rendering)",
+          "wall_median_s": 0.1027,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 0.0502,
+          "checker": "glc-check --staged-chain (wf=1, absorb=1, posterior=1) + probprog-evcheck dev-oracle for the draft strengthened generator-form seam (partial=1, ev=1, tail=1) - EV verdicts PENDING that seam's theory revision event; spec-sha256 binds both artifacts to the same stored rows",
+          "provenance": "probprog/out/receipts.json producer/ij4-full + house-e2e/ij4-full + house-e2e/ij4-check-only; out/glc/israeli-jalfon4-u31.glc; out/ev/israeli-jalfon4-u31.evc"
+        }
+      ]
+    },
+    {
+      "case": "3-D asymmetric random walk (EV query; the baseline suite's slowest solved row)",
+      "query": "raw first moment of the return value (steps until (x,y,z) = (0,0,0) from (1,1,1); axis uniform 1/3, +1 w.p. 1/4 else monus-decrement) + tail asymptotics + termination mass",
+      "rows": [
+        {
+          "tool": "diabolo-geobound-ev",
+          "config": "geobound 3d-asym-rw.sgcl --objective ev -u 30 -d 3 --optimizer adam-barrier --optimizer linear (the source file's flag header + bench default unroll 30)",
+          "bound_width": "1.192e6 (1st raw moment in [9.443844608015025, 1191688.869263926], byte-stable across all 5 runs; the published row reads [9.443, 6.85e5] at the same config, hardware unstated — the optimizer landed a looser polytope on this box)",
+          "width_metric": "EV (raw first moment) bracket width, float",
+          "wall_median_s": 151.41,
+          "runs": 5,
+          "internal_time_s": 151.22,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same-box measurement-protocol records (1 warmup + 5 measured, taskset to one performance core, absolute renice 19 with /proc read-back, /usr/bin/time -v, load averages recorded); workshop measurement records diabolo-3dasymrw-ev-*.{out,time}, retained off-repo"
+        },
+        {
+          "tool": "diabolo-geobound-tail",
+          "config": "geobound 3d-asym-rw.sgcl --objective tail -u 3 -d 3 (the source file's tail flags)",
+          "bound_width": "tail envelope 396.12864306866237 * 0.9814846813716037^n for n >= 4 (published row: O(0.9812^n)); same cell's 0-th raw moment (termination mass) in [0.09375, 20228.1]",
+          "width_metric": "tail asymptotics (coefficient * rate^n) on the return-value density",
+          "wall_median_s": 7.08,
+          "runs": 5,
+          "internal_time_s": 7.08,
+          "check_wall_s": null,
+          "checker": null,
+          "provenance": "same protocol; workshop measurement records diabolo-3dasymrw-tail-*.{out,time}, retained off-repo"
+        },
+        {
+          "tool": "house (u200 flagship)",
+          "config": "probprog-produce spec 3d-asym-rw 60 -> dabs-emit -> glc-check (container: stored window max<=11, absorb/Z rows) + evcert 3d-asym-rw 200 -> probprog-evcheck (EV rows: pattern DP horizon 200 + product-profile contraction template, dev-oracle lane)",
+          "bound_width": "1.291e-2 (EV in [16.690028724..., 16.702938972...], exact rationals; 9.2e7 x tighter than the baseline's same-box face). Tail envelope 0.5617 * 0.965^n for n >= 200 on the SURVIVAL mass P[T > n] (which dominates the density): rate 0.965 vs the baseline's 0.98148 — TIGHTEN, coefficient 396 -> 0.56. Termination mass certified exactly 1 (c < 1 forces P[T = infinity] = 0) vs the baseline's [0.094, 20228]",
+          "width_metric": "EV bracket width, exact rational (decimal rendering)",
+          "wall_median_s": 3.9,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 2.34,
+          "checker": "glc-check --staged-chain (wf=1, absorb=1, posterior=1; 0.89 s) + probprog-evcheck dev-oracle for the draft strengthened generator-form seam, pattern/window face (partial=1, ev=1, tail=1; 1.45 s) — EV verdicts PENDING that seam's theory revision event; spec-sha256 binds both artifacts to the same stored window bytes",
+          "provenance": "probprog/out/receipts.json house-e2e/3d-u200-full + house-check rows; out/glc/3d-asym-rw-u60.glc; out/ev/3d-asym-rw-u200.evc"
+        },
+        {
+          "tool": "house (u150, fast cell)",
+          "config": "same pipeline, evcert horizon 150",
+          "bound_width": "1.117e-1 (EV in [16.681534894..., 16.793210510...], exact rationals; 1.1e7 x tighter); same tail row family at coefficient 0.818",
+          "width_metric": "EV bracket width, exact rational (decimal rendering)",
+          "wall_median_s": 1.79,
+          "runs": 5,
+          "internal_time_s": null,
+          "check_wall_s": 1.29,
+          "checker": "same two-checker pipeline (glc 0.89 s + evcheck 0.40 s)",
+          "provenance": "probprog/out/receipts.json house-e2e/3d-u150-full + house-check rows; out/ev/3d-asym-rw-u150.evc"
+        }
       ]
     }
   ]

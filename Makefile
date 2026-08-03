@@ -253,7 +253,30 @@ probprog:
 	./target/release/probprog-produce eval geo-counter 100 --classes 8
 	./target/release/probprog-produce eval asym-rw 14 --classes 8
 	./target/release/probprog-produce eval die-paradox 6 --classes 8
+	./target/release/probprog-produce eval burglar-alarm 4
+	./target/release/probprog-produce eval beauquier-3 51
+	./target/release/probprog-produce eval coupon-collector5 80 --classes 1
+	./target/release/probprog-produce eval israeli-jalfon4 31 --classes 1
+	./target/release/probprog-produce eval 3d-asym-rw 100 --classes 1
 	$(NODE) probprog/gen-table.ts
+
+# Discrete-sweep reproduction, one verb: re-verify every committed
+# probprog certificate through both lanes (containers via the staged
+# closure — set QTSL_STAGED_CO; EV rows via the dev-oracle pending the
+# generator-form seam's revision event), re-derive the producer-side
+# oracles and differentials, then rebuild the comparison table from
+# the committed receipts and require it to re-derive byte-identically.
+# Measurement receipts (comparison.json walls/bounds) are committed by
+# the measurement protocol on a load-quiet box, never regenerated
+# here — this target proves the committed numbers' derivation chain,
+# not their wall clocks.
+.PHONY: probprog-discrete
+probprog-discrete:
+	cargo test --release -p probprog-producer
+	$(MAKE) probprog-ev
+	$(MAKE) probprog-glc
+	$(NODE) probprog/gen-table.ts
+	git diff --exit-code -- probprog/out/TABLE.md
 
 # Container recheck, staged-closure lane: until the certificate
 # species' theory revision seals and QTSL_REV advances past it, the
@@ -270,6 +293,18 @@ probprog-glc:
 	GLC_CHECK=$(QTSL_STAGED_CO)/target/release/glc-check \
 	STAGED_CHAIN=$(QTSL_STAGED_CO)/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc \
 	  $(NODE) probprog/glc-recheck.ts
+
+# EV-bracket recheck, dev-oracle lane: the EV rows (weighted transfer
+# contraction + geometric template tail + moment assembly) belong to
+# the draft strengthened generator-form seam; until its theory
+# revision seals, the checker is probprog-evcheck from this workspace
+# and verdicts are labeled pending that revision (manifest `lane`
+# field). At the seal this lane folds into the container path above.
+.PHONY: probprog-ev
+probprog-ev:
+	cargo build --release -p probprog-producer
+	EVCHECK=$(CURDIR)/target/release/probprog-evcheck \
+	  $(NODE) probprog/ev-recheck.ts
 
 # ------------------------------------------------------- supermartingales
 

@@ -317,6 +317,321 @@
       },
       "at": "2026-08-03T17:20:00Z",
       "note": "stage medians: spec 45 ms, emit 102 ms, check 1418 ms (exact-Q DP over 1000 steps at the checker)"
+    },
+    {
+      "label": "producer/ba-full",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval burglar-alarm 4",
+      "runs": 5,
+      "walls_s": [
+        0.003669067,
+        0.002439234,
+        0.003126999,
+        0.00270002,
+        0.002733396
+      ],
+      "median_s": 0.002733396,
+      "nice_readback": 19,
+      "loadavg_before": "2.15 2.64 2.97",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T16:58:20.668Z"
+    },
+    {
+      "label": "house-e2e/ba-full",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec burglar-alarm 4 2>/dev/null | $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $TMPDIR/m-ba.glc >/dev/null && $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert $TMPDIR/m-ba.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.100593156,
+        0.101592635,
+        0.099015289,
+        0.09920185,
+        0.098567061
+      ],
+      "median_s": 0.09920185,
+      "nice_readback": 19,
+      "loadavg_before": "2.15 2.64 2.97",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T16:58:21.329Z"
+    },
+    {
+      "label": "house-e2e/ba-check-only",
+      "cmd": "taskset -c 16 $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert probprog/out/glc/burglar-alarm-u4.glc",
+      "runs": 5,
+      "walls_s": [
+        0.049307002,
+        0.051138249,
+        0.051246233,
+        0.049589549,
+        0.049105577
+      ],
+      "median_s": 0.049589549,
+      "nice_readback": 19,
+      "loadavg_before": "2.15 2.64 2.97",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T16:58:21.696Z"
+    },
+    {
+      "label": "producer/cc5-full",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval coupon-collector5 80 --classes 1",
+      "runs": 5,
+      "walls_s": [
+        0.002588722,
+        0.002703171,
+        0.002445106,
+        0.003428456,
+        0.002827781
+      ],
+      "median_s": 0.002703171,
+      "nice_readback": 19,
+      "loadavg_before": "4.43 5.12 4.17",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T17:44:36.541Z"
+    },
+    {
+      "label": "house-e2e/cc5-full",
+      "cmd": "taskset -c 16 bash -c T=$(mktemp -d) && ./target/release/probprog-produce spec coupon-collector5 80 2>/dev/null > $T/spec.json && ../qtsl/target/release/dabs-emit --staged-chain ../qtsl/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $T/cc5.glc $T/spec.json >/dev/null && ./target/release/probprog-produce evcert coupon-collector5 80 --spec-file $T/spec.json 2>/dev/null > $T/cc5.evc && ../qtsl/target/release/glc-check --staged-chain ../qtsl/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1 $T/cc5.glc >/dev/null && ./target/release/probprog-evcheck --spec $T/spec.json $T/cc5.evc >/dev/null && rm -rf $T",
+      "runs": 5,
+      "walls_s": [
+        0.110369689,
+        0.111780899,
+        0.110720891,
+        0.108830494,
+        0.111266479
+      ],
+      "median_s": 0.110720891,
+      "nice_readback": 19,
+      "loadavg_before": "4.43 5.12 4.17",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T17:44:37.279Z"
+    },
+    {
+      "label": "house-e2e/cc5-check-only",
+      "cmd": "taskset -c 16 bash -c ../qtsl/target/release/glc-check --staged-chain ../qtsl/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1 probprog/out/glc/coupon-collector5-u80.glc >/dev/null && ./target/release/probprog-evcheck --spec probprog/out/ev/coupon-collector5-u80.spec.json probprog/out/ev/coupon-collector5-u80.evc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.057451453,
+        0.059768589,
+        0.0595867,
+        0.059706941,
+        0.058744838
+      ],
+      "median_s": 0.0595867,
+      "nice_readback": 19,
+      "loadavg_before": "4.43 5.12 4.17",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T17:44:37.701Z"
+    },
+    {
+      "label": "producer/ij4-full",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval israeli-jalfon4 31 --classes 1",
+      "runs": 5,
+      "walls_s": [
+        0.003003655,
+        0.002719204,
+        0.0021636,
+        0.003171047,
+        0.002611315
+      ],
+      "median_s": 0.002719204,
+      "nice_readback": 19,
+      "loadavg_before": "4.22 3.30 3.48",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T18:37:09.532Z"
+    },
+    {
+      "label": "house-e2e/ij4-full",
+      "cmd": "taskset -c 16 bash -c T=$(mktemp -d) && ./target/release/probprog-produce spec israeli-jalfon4 31 2>/dev/null > $T/spec.json && ../qtsl/target/release/dabs-emit --staged-chain ../qtsl/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $T/ij4.glc $T/spec.json >/dev/null && ./target/release/probprog-produce evcert israeli-jalfon4 31 --spec-file $T/spec.json 2>/dev/null > $T/ij4.evc && ../qtsl/target/release/glc-check --staged-chain ../qtsl/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1 $T/ij4.glc >/dev/null && ./target/release/probprog-evcheck --spec $T/spec.json $T/ij4.evc >/dev/null && rm -rf $T",
+      "runs": 5,
+      "walls_s": [
+        0.100206433,
+        0.102703764,
+        0.104897732,
+        0.105747578,
+        0.095452143
+      ],
+      "median_s": 0.102703764,
+      "nice_readback": 19,
+      "loadavg_before": "4.22 3.30 3.48",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T18:37:10.197Z"
+    },
+    {
+      "label": "house-e2e/ij4-check-only",
+      "cmd": "taskset -c 16 bash -c ../qtsl/target/release/glc-check --staged-chain ../qtsl/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1 probprog/out/glc/israeli-jalfon4-u31.glc >/dev/null && ./target/release/probprog-evcheck --spec probprog/out/ev/israeli-jalfon4-u31.spec.json probprog/out/ev/israeli-jalfon4-u31.evc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.048992537,
+        0.049008857,
+        0.050221089,
+        0.052520882,
+        0.092779035
+      ],
+      "median_s": 0.050221089,
+      "nice_readback": 19,
+      "loadavg_before": "4.22 3.30 3.48",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T18:37:10.602Z"
+    },
+    {
+      "label": "house-e2e/3d-u150-full",
+      "cmd": "taskset -c 16 bash -c 'spec 3d-asym-rw 60 -> dabs-emit -> evcert 3d-asym-rw 150 -> glc-check --staged-chain (expect wf=1,absorb=1,posterior=1) -> probprog-evcheck' (one composed pipeline per run)",
+      "runs": 5,
+      "walls_s": [
+        1.83,
+        1.79,
+        1.79,
+        1.79,
+        1.8
+      ],
+      "median_s": 1.79,
+      "nice_readback": 19,
+      "loadavg_before": "1.59 2.92 3.60",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T19:22:22.000Z"
+    },
+    {
+      "label": "house-e2e/3d-u200-full",
+      "cmd": "taskset -c 16 bash -c 'spec 3d-asym-rw 60 -> dabs-emit -> evcert 3d-asym-rw 200 -> glc-check --staged-chain (expect wf=1,absorb=1,posterior=1) -> probprog-evcheck' (one composed pipeline per run)",
+      "runs": 5,
+      "walls_s": [
+        3.89,
+        3.91,
+        3.91,
+        3.86,
+        3.9
+      ],
+      "median_s": 3.9,
+      "nice_readback": 19,
+      "loadavg_before": "1.59 2.92 3.60",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T19:22:22.000Z"
+    },
+    {
+      "label": "house-check/3d-glc-u60",
+      "cmd": "taskset -c 16 glc-check --staged-chain dabs-staged.glc --staged-cert 3d-asym-rw-u60.glc",
+      "runs": 5,
+      "walls_s": [
+        0.88,
+        0.89,
+        0.89,
+        0.89,
+        0.89
+      ],
+      "median_s": 0.89,
+      "nice_readback": 19,
+      "loadavg_before": "1.90 3.64 3.91",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T19:22:22.000Z"
+    },
+    {
+      "label": "house-check/3d-evcheck-u200",
+      "cmd": "taskset -c 16 probprog-evcheck --spec 3d-asym-rw-u60.spec.json 3d-asym-rw-u200.evc",
+      "runs": 5,
+      "walls_s": [
+        1.46,
+        1.46,
+        1.45,
+        1.45,
+        1.45
+      ],
+      "median_s": 1.45,
+      "nice_readback": 19,
+      "loadavg_before": "1.90 3.64 3.91",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T19:22:22.000Z"
+    },
+    {
+      "label": "house-check/3d-evcheck-u150",
+      "cmd": "taskset -c 16 probprog-evcheck --spec 3d-asym-rw-u60.spec.json 3d-asym-rw-u150.evc",
+      "runs": 5,
+      "walls_s": [
+        0.4,
+        0.41,
+        0.4,
+        0.41,
+        0.4
+      ],
+      "median_s": 0.4,
+      "nice_readback": 19,
+      "loadavg_before": "1.90 3.64 3.91",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T19:22:22.000Z"
+    },
+    {
+      "label": "producer/3d-evcert-u200",
+      "cmd": "taskset -c 16 probprog-produce evcert 3d-asym-rw 200 --spec-file <sealed spec> (pattern DP + template solve + claims)",
+      "runs": 5,
+      "walls_s": [
+        1.45,
+        1.46,
+        1.46,
+        1.46,
+        1.46
+      ],
+      "median_s": 1.46,
+      "nice_readback": 19,
+      "loadavg_before": "1.90 3.64 3.91",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T19:22:22.000Z"
     }
   ]
 }

@@ -268,6 +268,64 @@ fn render_spec(
     out
 }
 
+/// Window spec for the 3-D walk's container lane: stored rows for
+/// every alive sorted triple with max coordinate <= `rstore`; the
+/// max = rstore+1 shell is listed rowless (the container evaluation's
+/// rowless-is-absorbing convention parks boundary mass in the
+/// residual — the truncation widens, never lies). Claims are the
+/// window-materialized chain's canonical absorb/posterior brackets,
+/// which the container checker recomputes under the same convention.
+/// State names carry the triple legibly (`s<a>_<b>_<c>`) — the EV
+/// certificate's pattern checker decodes them.
+pub fn emit_spec_3d_window(horizon: u32, rstore: u64) -> String {
+    use crate::ev3d::{pattern_row, t3_unpack};
+    use crate::q;
+    let name3 = |t: (u64, u64, u64)| format!("s{}_{}_{}", t.0, t.1, t.2);
+
+    let mut states: Vec<String> = Vec::new();
+    let mut rows: Vec<(String, String, Q)> = Vec::new();
+    let mut boundary: std::collections::BTreeSet<(u64, u64, u64)> = Default::default();
+    for a in 0..=rstore {
+        for b in a..=rstore {
+            for c in b..=rstore {
+                if (a, b, c) == (0, 0, 0) {
+                    continue;
+                }
+                let src = name3((a, b, c));
+                states.push(src.clone());
+                let (alive, absorbed) = pattern_row((a, b, c), 1, 12);
+                for (d, w) in alive {
+                    let t = t3_unpack(d);
+                    if t.2 > rstore {
+                        boundary.insert(t);
+                    }
+                    rows.push((src.clone(), name3(t), q(w as i64, 12)));
+                }
+                if absorbed > 0 {
+                    rows.push((src.clone(), "done_0".into(), q(absorbed as i64, 12)));
+                }
+            }
+        }
+    }
+    states.extend(boundary.into_iter().map(name3));
+    states.push("done_0".into());
+    states.sort();
+    states.dedup();
+
+    let tr = evaluate(&crate::AsymRw3dWindow { rstore }, horizon);
+    let mut class_states = BTreeMap::new();
+    class_states.insert(0u32, "done_0".to_string());
+    render_spec(
+        &states,
+        &name3((1, 1, 1)),
+        rows,
+        &class_states,
+        false,
+        horizon,
+        &tr,
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

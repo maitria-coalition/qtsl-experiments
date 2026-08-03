@@ -68,12 +68,15 @@ by training a neural certificate on a GPU and verifying it with an SMT solver
 best sound bound), ours by exact synthesis with the check inside the measured
 production wall. The geolog and qtslab columns are additional independent
 replays, not costs that must be added to checked production. For the
-re-conducted rows the toolkit producer's synthesis --- float-proposing,
-exactly certifying every solve --- ran the published protocol (ten repeats
-per benchmark) on each of the repository's timing machines, in both the GPU-
-and CPU-proposing lanes where the machine carries a GPU, and every repeat's
-output, on every machine and either lane, is byte-identical to the committed
-corpus. Each produce cell shows the fastest measured
+synthesis-ported re-conducted rows the toolkit producer's synthesis ---
+float-proposing, exactly certifying every solve --- ran the published
+protocol (ten repeats per benchmark) on each of the repository's timing
+machines, in both the GPU- and CPU-proposing lanes where the machine carries
+a GPU, and every repeat's output, on every machine and either lane, is
+byte-identical to the committed corpus; the \texttt{persist\_2d} twins'
+produce cells ride the same repeat protocol but time the row's re-conduct
+rather than a synthesis (mark~$^{\text{a}}$ in
+Table~\ref{tab:exp-sweep-times}). Each produce cell shows the fastest measured
 configuration's median, with the winner named in the cell's machine
 tag (section~\ref{sec:exp-conventions}). Hardware-fairness at the
 GPU-model level is preserved by the receipts rather than by the
@@ -88,7 +91,8 @@ where the published route uses that GPU model. The systems still differ
 beyond the GPU model, so the table prints no cross-column ratio and the comparison
 stays qualitative, per section~\ref{sec:exp-conventions}; the raw
 walls are the witnesses. On every row with a recorded checked-production
-wall, that whole production now completes inside the published wall, and
+wall (the mark-$^{\text{a}}$ re-conduct cells aside --- they time a
+different job), that whole production now completes inside the published wall, and
 usually well inside it (\texttt{cliff\_crossing}: $1.53$\,s against a
 published $153.6$\,s; \texttt{repulse100\_2d} --- the row that ran the
 other way before the re-conduct, at a $222.0$\,s campaign production wall ---
@@ -99,9 +103,10 @@ rather than by certification; the computation now rides the
 producer's float-propose / exact-certify tier like every other
 solve, and the row's whole checked production is $3.87$\,s. Beyond
 that comparison, the table establishes the headline economics of the
-certificate genre: re-verifying a row costs milliseconds to seconds
-at every trust tier, which is what makes re-verification a
-regression test rather than an event.
+certificate genre: re-verifying a row costs between milliseconds and
+about a minute at every trust tier --- the far end being the
+$19{,}200$-obligation gaussian twin's fast-path replay --- which is
+what makes re-verification a regression test rather than an event.
 
 \begin{table}[htbp]
 \centering\small
@@ -109,8 +114,25 @@ regression test rather than an event.
 
 \smallskip
 \begin{minipage}{0.96\linewidth}\footnotesize
-\renewcommand{\thempfootnote}{\fnsymbol{mpfootnote}}% hole marks own a--d
-\emph{Columns.} ``VCs'' counts the row's verification conditions as
+\emph{Marks} (column definitions and protocol: the ``Timing protocol''
+discussion in the text).
+$^{\text{a}}$~produce cell times the toolkit re-conduct of the row's
+committed certificate corpus, not fresh synthesis.
+$^{\text{c}}$~row not in the certified-checker replay's stored corpus.
+$^{\text{d}}$~the replay covers the row's stored wave-B subset (fewer
+files than the VCs column).
+$^{\text{e}}$~produce wall is the row's campaign leg's, as receipted: a
+synthesis genus not yet in the toolkit producer.
+Machine tags name the winning machine and lane
+(section~\ref{sec:exp-conventions}).
+\end{minipage}
+\caption{Wall-clock walls, published pipeline vs.\ toolkit production
+and replay tiers (seconds).}
+\label{tab:exp-sweep-times}
+\end{table}
+
+\paragraph{Timing protocol.}
+``VCs'' counts the row's verification conditions as
 committed: drift and nonnegativity-class proof obligations, one
 sealed file per condition per piece or step of the state space, each
 discharged as a Bernstein Logic proof. Under the unified certificate
@@ -118,7 +140,11 @@ schema of section~\ref{sec:exp-repro} these become proof nodes inside
 one sealed certificate per \emph{claim} (a row's corpus may certify
 more than one claim --- e.g.\ both readings of a noise model the
 benchmark's definition leaves unpinned), so the column counts proof
-obligations, not certificates.
+obligations, not certificates. For the \texttt{persist\_2d} twins the
+count is the committed containers' summed tree totals ($4{,}800$
+uniform; $19{,}200$ gaussian): that row's corpus lives in the
+re-conduct lane's sealed containers rather than the staged per-file
+corpus.
 ``Best published'' is seconds as published (learning on an
 Nvidia A40 GPU plus Z3 verification; the Farkas column is their linear
 baseline's LP), for the route attaining the row's best sound bound ---
@@ -150,14 +176,34 @@ quieter conduct, and the two are protocol variants of one machine, not
 different hardware. Rows not yet re-conducted keep their campaign
 legs' synthesis wall as receipted (single CPU box), and their cells flip the
 same way as their re-conducts land (section~\ref{sec:exp-repro}).
+
+The \texttt{persist\_2d} produce cells (mark~$^{\text{a}}$) are the one
+deliberate exception to the fresh-synthesis reading: the twins'
+certificates are a synthesis genus the toolkit producer does not yet
+cover (the same gap note~$^{\text{e}}$ records for
+\texttt{repulse100\_uniform}), and no synthesis wall is receipted in
+this repository, so those cells time the toolkit's \emph{re-conduct} of
+the row's committed corpus --- shared-subtree forest merge, the in-loop
+check, and deterministic sealing, byte-identical to the committed
+containers on every repeat --- under the same repeat protocol as the
+other produce cells (one flagged warmup plus ten measured repeats,
+serial, medians, at recorded scheduler niceness read back from the
+process). They are production-tier walls for the stored row, not
+job-for-job counterparts of the published column, and the chapter draws
+no such comparison for that row.
+
 ``Geolog'' is the geolog fast-path
 checker's total wall over the row's sealed containers, serial, one
 process at a time (machine, load, and checker-binary hash in each
 timing receipt). For the re-conducted rows the wall is over the
-row's \emph{one} shared-subtree container --- a proof hypernet:
-structurally shared subtrees stored once, element in-degree above
-one, with per-container tree and stored-node counts in the committed
-manifest --- where the pre-migration cells time per-obligation
+row's shared-subtree containers --- proof hypernets: structurally
+shared subtrees stored once, element in-degree above one, with
+per-container tree and stored-node counts in the committed manifest ---
+one container per row, except that \texttt{persist\_2d}'s gaussian twin
+ships as four sorted-quarter containers (its merged forest exceeds the
+envelope's per-commit body cap) and its cell is the serial total of the
+four per-container medians, its uniform twin one whole-twin container;
+the pre-migration cells time per-obligation
 container sets; ``VCs'' counts proof obligations either way.
 The two vintages also amortize process overhead differently: a
 shared-container cell is the median of single-container invocations,
@@ -183,7 +229,7 @@ under its own protocol, never ratioed across vintages.
 certified checker build's per-VC walls from the replay census
 of section~\ref{sec:exp-certified-checker} (Arm cores; four families
 ran concurrently, so these walls carry mild concurrency inflation at
-most).\footnote{The certified checker checks the Bernstein Logic
+most). The certified checker checks the Bernstein Logic
 fragment of QTSL only --- exactly the proof tower committed as
 \path{theories/BernsteinLogic.geolog} in the pinned \path{qtsl} repository, so
 the fragment boundary is a file boundary, not a convention --- and
@@ -198,34 +244,16 @@ role the route's other reducers play --- and that tool's wall-clock
 joins this column when it lands. The replay census also predates the
 shared-subtree vintage: its walls time the stored per-obligation
 wave-B corpus, and the shared vintage's certified re-check joins
-this column when the checker build's pin vintage advances.}
-\emph{Holes.}
-$^{\text{a}}$~the \texttt{persist\_2d} twins' verification conditions
-($4{,}800$ uniform $+$ $19{,}200$ gaussian) live in this repository as
-sealed shared-subtree containers since the row's uniform re-conduct
-(\texttt{out/glc-baked/persist2d}, committed listings beside them);
-their cells in this table await the standard retime protocol's
-receipts. The pre-re-conduct fast-path record that does exist
-($130.66$\,s over the original per-file uniform bundle ---
-large-denominator rational arithmetic, the campaign's one heavy
-re-check; the stored re-conduct rides the dyadic re-emission that
-retired those denominators) is in the repository's re-check receipts.
-$^{\text{c}}$~row not in the certified-checker replay's stored corpus
-(the replay to date covers the stored wave-B corpus; the remaining
-rows' containers enter at its next replay).
-$^{\text{d}}$~the replay covers the row's stored wave-B subset ---
-fewer files than the VCs column.
-$^{\text{e}}$~\texttt{repulse100\_uniform}'s certificate is a
-different synthesis genus (a continuous-noise, piecewise-polynomial
-profile) not yet ported into the toolkit producer; its produce wall
-is its campaign leg's, as receipted.
-\end{minipage}
-\caption{Wall-clock comparison over the same row set: the published
-pipeline beside the toolkit's whole checked production and two independent
-replay tiers (geolog fast-path checker and certified checker). All columns in
-seconds.}
-\label{tab:exp-sweep-times}
-\end{table}
+this column when the checker build's pin vintage advances. Rows whose
+containers entered this repository after that census's corpus was
+pinned --- the \texttt{persist\_2d} twins among them --- carry
+mark~$^{\text{c}}$ (not in the replay's stored corpus; they enter at
+its next replay), and mark~$^{\text{d}}$ rows' replays cover their
+stored wave-B subsets, fewer files than the VCs column.
+Mark~$^{\text{e}}$, in full: \texttt{repulse100\_uniform}'s certificate
+is a different synthesis genus (a continuous-noise,
+piecewise-polynomial profile) not yet ported into the toolkit producer,
+so its produce wall is its campaign leg's, as receipted.
 
 Two findings from this campaign shaped everything after it. First, the
 exact computation \emph{refuted} one published number: the paper's
@@ -258,16 +286,21 @@ stack, or whole system --- are committed beside them;
 so any ratio a reader forms still carries a hardware caveat, and the
 chapter's own statements stay qualitative, per
 section~\ref{sec:exp-conventions}. The comparison covers all seventeen
-published rows except the \texttt{persist\_2d} timing cells, whose
-containers entered the repository at the row's uniform re-conduct but
-whose protocol receipts are pending (holes~$^{\text{a}}$ in the
-table); one re-conducted row's produce wall is still its campaign
-leg's (note~$^{\text{e}}$). Nor is every toolkit wall small: the
-campaign's one heavy re-check was \texttt{persist\_2d}'s stored
-fast-path record of $130.66$\,s over the row's original
+published rows, with two cell-level caveats. The \texttt{persist\_2d}
+produce cells time the row's re-conduct, not a fresh synthesis
+(mark~$^{\text{a}}$: that synthesis genus is not yet in the toolkit
+producer and no synthesis wall is receipted in this repository, so no
+job-for-job produce comparison is made for that row), and its
+certified-checker cells await the replay census's next corpus pin
+(mark~$^{\text{c}}$); one re-conducted row's produce wall is still its
+campaign leg's (note~$^{\text{e}}$). Nor was every toolkit wall always
+small: the campaign's one heavy re-check was \texttt{persist\_2d}'s
+pre-re-conduct fast-path record of $130.66$\,s over the row's original
 $4{,}800$-file uniform bundle --- large-denominator rational
 arithmetic; the stored re-conduct rides the dyadic re-emission that
-retired those denominators, bound bit-identical.
+retired those denominators, bound bit-identical, and the row's
+shared-container replay walls now sit in the table like every other
+row's.
 
 \subsection{The stored corpus through the certified checker build}
 \label{sec:exp-certified-checker}

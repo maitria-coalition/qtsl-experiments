@@ -35,7 +35,7 @@
  *   supermartingales/out/sec1/summary.json       house bounds, sec. 1 rows
  *   supermartingales/out/sec2/sweep_rows.json    house bounds, sec. 2 rows
  *   supermartingales/out/glc-baked/secN/<machine>-retime/
- *                                                re-conducted rows' produce
+ *     + glc-baked/persist2d/<machine>-retime/    re-conducted rows' produce
  *                                                and geolog walls, one
  *                                                directory per machine:
  *                                                produce-gpu.json,
@@ -686,8 +686,10 @@ function buildSweepTable(): string {
  *
  * Missing-cell marks are loaded from tables/sweep-timing-absences.json;
  * the notes block in the section file renders their public explanation:
- *   a — the persist_2d VC bundle has not migrated into this
- *       repository (no toolkit walls to report);
+ *   a — (on a number, not a hole) the persist_2d produce cells time
+ *       the re-conduct of the row's committed certificate corpus
+ *       (merge + in-loop check + seal), not fresh synthesis: that
+ *       genus is not yet in the toolkit producer;
  *   c — row not in the certified-checker replay's stored corpus;
  *   d — the certified-checker replay covers the row's stored sec-2
  *       subset (fewer files than the VCs column);
@@ -933,7 +935,20 @@ function stableSha(value: unknown, where: string): string {
 
 function retimeManifest(section: string): Map<string, ManifestCertificate> {
   const rel = `${BAKED_ROOT}/${section}/MANIFEST.json`;
-  const certs = loadJson(rel).certificates;
+  const man = loadJson(rel);
+  // Two committed manifest shapes: the sec-2 re-conduct manifest keys its
+  // `certificates` by benchmark; the baked-lane manifests (persist2d)
+  // carry `positives` keyed by container file — there the benchmark name
+  // of a timing row is the container stem.
+  const certs =
+    man.certificates ??
+    (Array.isArray(man.positives)
+      ? man.positives.map((p: any) => ({
+          benchmark: String(p.file).replace(/\.glc$/, ""),
+          sha256: p.sha256,
+          prior_sha256s: p.prior_sha256s,
+        }))
+      : undefined);
   assert(Array.isArray(certs) && certs.length > 0, `${rel}: no certificates`);
   const out = new Map<string, ManifestCertificate>();
   for (const cert of certs) {
@@ -1475,6 +1490,47 @@ function runRetimeValidatorTests(): void {
   );
 }
 
+/** The persist_2d re-conduct lane's container roster, per table row
+ * (out/glc-baked/persist2d/MANIFEST.json `split` note).  These two rows'
+ * timing cells are serial totals over the row's containers; their
+ * produce cells time the re-conduct of the committed corpus — forest
+ * merge, in-loop check, seal — not fresh synthesis (that genus is not
+ * yet in the toolkit producer), which the table marks with note a. */
+const PERSIST2D_ROW_CONTAINERS: Record<string, string[]> = {
+  persist_2d: ["persist_2d__uniform"],
+  persist_2d__gaussian: [
+    "persist_2d__gaussian_p0",
+    "persist_2d__gaussian_p1",
+    "persist_2d__gaussian_p2",
+    "persist_2d__gaussian_p3",
+  ],
+};
+
+/** Proof-obligation counts for the persist_2d rows: their corpus lives
+ * in the baked re-conduct lane (no staged-corpus GLC-TIMINGS group), so
+ * the VCs column derives from the committed manifest's per-container
+ * tree counts, summed per row. */
+function persist2dVcs(): Record<string, number> {
+  const rel = `${BAKED_ROOT}/persist2d/MANIFEST.json`;
+  if (!fs.existsSync(path.join(ROOT, rel))) return {};
+  const out: Record<string, number> = {};
+  const stems = new Map<string, string>(); // container stem -> row
+  for (const [row, parts] of Object.entries(PERSIST2D_ROW_CONTAINERS)) {
+    for (const p of parts) stems.set(p, row);
+  }
+  for (const pos of loadJson(rel).positives) {
+    const stem = String(pos.file).replace(/\.glc$/, "");
+    const row = stems.get(stem);
+    assert(row !== undefined, `${rel}: unexpected container ${stem}`);
+    assert(
+      Number.isInteger(pos.trees) && pos.trees > 0,
+      `${rel}: ${stem} trees`,
+    );
+    out[row] = (out[row] ?? 0) + pos.trees;
+  }
+  return out;
+}
+
 /** Scan the <machine>-retime directories and select, per benchmark and
  * per column, the best (minimum) median across machines — and, for the
  * produce column, across proposer lanes: produce-gpu.json enters under
@@ -1512,7 +1568,12 @@ function retimeBestOf(): {
   const base = path.join(ROOT, BAKED_ROOT);
   for (const section of fs.readdirSync(base).sort()) {
     const sectionBase = path.join(base, section);
-    if (!/^sec[0-9]+$/.test(section) || !fs.statSync(sectionBase).isDirectory()) {
+    // sec[0-9]+ are the campaign sections; persist2d is the persist_2d
+    // re-conduct lane (its own baked directory, same retime contract).
+    if (
+      !/^(sec[0-9]+|persist2d)$/.test(section) ||
+      !fs.statSync(sectionBase).isDirectory()
+    ) {
       continue;
     }
     const sectionRel = `${BAKED_ROOT}/${section}`;
@@ -1565,6 +1626,25 @@ function retimeBestOf(): {
         receipts += 1;
       }
       assert(receipts > 0, `${rel}: retime directory with no timing receipts`);
+    }
+  }
+  // The persist_2d twins are stored as one whole-twin container (uniform)
+  // and four sorted-quarter containers (gaussian — the manifest's `split`
+  // note: the merged forest exceeds the envelope's per-commit body cap).
+  // The sweep tables' rows are the twins, so fold the per-container
+  // medians into per-row serial totals within each machine/lane
+  // configuration BEFORE best-of selection: a row's cell never mixes
+  // machines or lanes across its containers.
+  for (const cands of [produceCands, geologCands]) {
+    for (const [config, values] of cands) {
+      for (const [row, parts] of Object.entries(PERSIST2D_ROW_CONTAINERS)) {
+        if (!parts.every((p) => values[p] !== undefined)) continue;
+        assert(
+          values[row] === undefined,
+          `retime aggregation: ${config}/${row} already present`,
+        );
+        values[row] = parts.reduce((s, p) => s + values[p], 0);
+      }
     }
   }
   return { produce: bestOf(produceCands), geolog: bestOf(geologCands) };
@@ -1634,6 +1714,7 @@ function buildSweepTimesTable(): string {
   const mbs = manifestBenchmarks();
   const rows = collectSweepRows(); // for the bounds cross-check below
   const glc = glcTimings();
+  const bakedVcs = persist2dVcs();
   const qtslab = qtslabFamilyBest();
   const sec3 = loadJson("supermartingales/out/sec3/receipts.json").benchmarks;
   const sec2: Record<string, any> = {};
@@ -1677,7 +1758,7 @@ function buildSweepTimesTable(): string {
     const name = spec.key;
     const cells: string[] = [sweepLabel(spec)];
 
-    const gN = glc.n[name];
+    const gN = glc.n[name] ?? bakedVcs[name];
     cells.push(gN !== undefined ? `$${gN}$` : absent(name, "vcs"));
 
     if (spec.parent !== undefined) {
@@ -1700,7 +1781,12 @@ function buildSweepTimesTable(): string {
 
     const rp = retime.produce[name];
     if (rp !== undefined) {
-      cells.push(markMath(`$${fmtSecs(rp.s)}$`, rp.config));
+      // the persist_2d rows' produce cells time the re-conduct of the
+      // row's committed corpus, not fresh synthesis (mark a; see
+      // PERSIST2D_ROW_CONTAINERS).
+      const marks =
+        name in PERSIST2D_ROW_CONTAINERS ? ["a", rp.config] : [rp.config];
+      cells.push(markMath(`$${fmtSecs(rp.s)}$`, marks.join(", ")));
     } else {
       let produce = 0;
       if (sec2[name]?.ms_produce != null) produce += sec2[name].ms_produce / 1000;
@@ -2382,10 +2468,18 @@ const REFERENCE: Record<string, string> = {
   // (byte-identical outputs; wall_s semantics unchanged); unreliable and
   // regions medians moved to 0.064 and 0.076 on the load-uncontrolled
   // shared box — the receipt's PROVENANCE records the load context.
+  // persist_2d rows re-pinned 2026-08-03 (the row's retime lands): VCs
+  // from the committed manifest's tree counts (4,800 uniform / 19,200
+  // gaussian); produce cells are re-conduct walls (mark a — merge +
+  // in-loop check + seal, byte-identical every repeat; no fresh
+  // synthesis: genus not in the producer); geolog cells are shared-
+  // container check medians (gaussian = serial total over its four
+  // sorted-quarter containers); qtslab flips to the sibling mark c
+  // (containers postdate the replay census's corpus pin).
   "sweep-times-table": String.raw`
 
-\texttt{persist\_2d} \tdemph{(uniform twin)} & ---$^{\,\text{a}}$ & $254.5$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ \\
-\altrow\tdemph{gaussian twin} & ---$^{\,\text{a}}$ &  & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ \\
+\texttt{persist\_2d} \tdemph{(uniform twin)} & $4800$ & $254.5$ & $13.4^{\,\text{a, gb10/host}}$ & $9.08^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
+\altrow\tdemph{gaussian twin} & $19200$ &  & $87.7^{\,\text{a, gb10/host}}$ & $64.7^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
 \texttt{faulty\_marbles} & $23$ & $44.5$ & $0.042^{\,\text{gb10-quiet/host}}$ & $0.052^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
 \texttt{faulty\_unreliable} & $29$ & $52.3$ & $0.063^{\,\text{gb10-quiet/host}}$ & $0.054^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
 \texttt{faulty\_regions} & $29$ & $49.9$ & $0.072^{\,\text{gb10-quiet/host}}$ & $0.056^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\

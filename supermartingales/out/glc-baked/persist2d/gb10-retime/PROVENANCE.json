@@ -1,0 +1,35 @@
+{
+ "date": "2026-08-03T20:00:07Z",
+ "machine": "gb10 (see MACHINES.md; shared box - co-tenant organs run throughout: STT/TTS/embedding/recall services resident on the GPU and CPUs; all timed cells at scheduler niceness 19)",
+ "gpu": "NVIDIA GB10 (co-tenant GPU residency; no GPU lane in this campaign - the re-conduct pipeline is CPU-only)",
+ "cpu": "10x Cortex-X925 3.9 GHz + 10x Cortex-A725 2.808 GHz (aarch64)",
+ "nproc_host": 20,
+ "niceness": {
+  "declared": 19,
+  "set_via": "os.setpriority on the runner process (absolute, inherited by every timed child)",
+  "readback_proc_self_stat": 19
+ },
+ "pinning": {
+  "produce_lane": "taskset -c 5-9,15,16 (seven Cortex-X925 cores; multi-threaded pipeline) - the sec2 produce-lane mask",
+  "geolog_cells": "taskset -c 7 (one Cortex-X925 core)"
+ },
+ "binaries": {
+  "onesys-driver": {
+   "path": "onesys-driver",
+   "sha256": "19d16e6629654d11946371f0624a5f0b6b8cb7545d652c488aefddcacaacbab3",
+   "note": "shared-subtree producer through the one-system conductor with the qtsl ground provider in-loop; producer pins as stamped in ../MANIFEST.json (mtk main@09dccea1b, qtsl provider f0ecbf32d03a, geolog 83ebe88d5007)"
+  },
+  "glc-check": {
+   "path": "glc-check",
+   "sha256": "6fd5d3ea9c66d59387876d384140942f56e77346e0ab3165b50c77a538f2d862",
+   "note": "built from the pinned checkout at QTSL_REV f0ecbf32d03af43921a11ee7e0aee7a35d51822d (exactly what `make supermartingales-glc` builds)"
+  }
+ },
+ "protocol": "produce: 1 flagged warmup + 10 measured repeats per container, serial, whole re-conduct wall per invocation (committed reference listings through forest merge + in-loop check + deterministic seal), emitted container byte-identical to the committed sha on every repeat, --split-budget-ops 1000000 (the manifest's stated production knob); geolog: 10 accepted serial single-container checker repeats per container, no warmup, exact per-relation claim tally gated (allForwardDiffBernCoeffsSatisfyP=4800); page cache warm-by-protocol (shared box, no cache dropping, no cold-cache claim)",
+ "loadavg": {
+  "produce": { "before": "2.65 4.24 4.07 2/3213 869910", "after": "5.14 5.75 5.51 4/3238 982072" },
+  "geolog": { "before": "5.14 5.75 5.51 4/3238 982072", "after": "5.47 6.42 6.27 3/3253 1035848" }
+ },
+ "per_row_load_samples": "1-minute load average recorded immediately before and after every produce row (the receipt rows' loadavg_before_1min / loadavg_after_1min fields); range observed across the campaign 2.35-7.21",
+ "spread_rule": "(max-min)/median > 0.25 flagged; no cell flagged (produce worst: persist_2d__uniform 0.203; geolog worst: persist_2d__gaussian_p1 0.062)"
+}
