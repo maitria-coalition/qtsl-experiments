@@ -1,0 +1,149 @@
+{
+ "container": "geologfl v1 (.glc), forest lane: single commit per container; shared Bernstein Logic subtrees (proof hypernet: element in-degree above one), baked qc closure prereqs",
+ "closure": "qc revision 9952506dd2491e880a6107471a1ca92f66a4a33a64a8cc250833d00402e3b0e6",
+ "producer": "mtk supermartingale forest strategy (structural hash-consing across per-listing towers) through the one-system conductor with the qtsl ground provider in-loop; producer pins: mtk main@09dccea1b (revision event 7 vintage), qtsl provider f0ecbf32d03a (the repository pin), geolog 83ebe88d5007; campaign receipts banked in the workshop record",
+ "benchmark": "persist_2d — reconstructed-per-description TWINS; the noise class is UNPINNED by the published paper (grammar names only Bernoulli and Gaussian; lineage exemplars ship in both classes). Neither twin claims the published row noise class; see specs/persist_2d_uniform.toml + specs/persist_2d_gaussian.toml.",
+ "sources": "supermartingales/out/persist2d/rows-persist2d.tar.zst — committed reference listings, five group directories. The uniform group transcribes the dyadic re-emission of the certified uniform-twin certificates (one shared power-of-two denominator; bound bit-identical to the published exact fraction 58920851522213/588624739134464); the gaussian groups transcribe the certified gaussian-twin certificates (bound 6701869649/68719476736 = 0.0975251 rounded up).",
+ "sources_sha256": "9006b50ec6440b23c41db7cba62607dd0a0635062e1c2fca75ebefd1769c376b",
+ "split": "persist_2d__gaussian ships as four sorted-quarter containers (p0: drift_00000-04799 / p1: 04800-09599 / p2: 09600-14399 / p3: 14400-19199): the whole twin merges to ~1.94M lowered ops, over the envelope per-commit body cap (2^20); the spde split-family precedent. persist_2d__uniform is one whole-twin container.",
+ "equivalence": "qtsl2bl --expand of the shared container byte-compares per-tree against the unshared per-listing emission: uniform + gaussian_p0 SEMANTICALLY IDENTICAL (row multisets equal modulo local renumbering, renaming-invariant digest match; expanded stems are tree-ordinal named, so the byte tier pairs partially and the digest tier is the verdict). Double-run container bytes are identical across independent conductor runs (all five).",
+ "positives": [
+  {
+   "file": "persist_2d__uniform.glc",
+   "sha256": "e65641c3772c03e9972ac7df6b4e98f9df071d996b32dee0b76bf17a7b3c1916",
+   "commit": "f46d5e2cb5790f03dd67bb7ff831806b7770378b68e6a4ede710f00ac54eb17d",
+   "ops": 510674,
+   "trees": 4800,
+   "claims": {
+    "allForwardDiffBernCoeffsSatisfyP": 4800
+   },
+   "source": "rows-persist2d.tar.zst::persist_2d__uniform"
+  },
+  {
+   "file": "persist_2d__gaussian_p0.glc",
+   "sha256": "973543e990e7b2c5f5bb599cf83556326a132dd1f598ed88b7e6e1186371b21e",
+   "commit": "ad3605d0becb43c76cc43fb2d1dad35a205eab0ff18e8b098be31c71e64fb05a",
+   "ops": 518724,
+   "trees": 4800,
+   "claims": {
+    "allForwardDiffBernCoeffsSatisfyP": 4800
+   },
+   "source": "rows-persist2d.tar.zst::persist_2d__gaussian_p0"
+  },
+  {
+   "file": "persist_2d__gaussian_p1.glc",
+   "sha256": "25dec40445673d50fee14630870df5635d7ae4c40092807c95b871a6ce2d8673",
+   "commit": "d836d2f43a5350e9bf795e5f3d077e257e3102765df4406df3fccfdc7f0d64fb",
+   "ops": 518460,
+   "trees": 4800,
+   "claims": {
+    "allForwardDiffBernCoeffsSatisfyP": 4800
+   },
+   "source": "rows-persist2d.tar.zst::persist_2d__gaussian_p1"
+  },
+  {
+   "file": "persist_2d__gaussian_p2.glc",
+   "sha256": "de287cf8d062786894903bfad83fce096931d624da978b218dc49f98506bab60",
+   "commit": "6b547f7a6325b71876c5d1766ca1889b76372bcd5c77bf43e0483016b8bd0799",
+   "ops": 518392,
+   "trees": 4800,
+   "claims": {
+    "allForwardDiffBernCoeffsSatisfyP": 4800
+   },
+   "source": "rows-persist2d.tar.zst::persist_2d__gaussian_p2"
+  },
+  {
+   "file": "persist_2d__gaussian_p3.glc",
+   "sha256": "d1d86e94b631d2f44b29b79afc911fe3aa385f0fb501a5acdb6ac752129866ae",
+   "commit": "25bffde000a152b64e52bd2fc4abad86d2d08cfed7d098a93070200373db1ce4",
+   "ops": 518584,
+   "trees": 4800,
+   "claims": {
+    "allForwardDiffBernCoeffsSatisfyP": 4800
+   },
+   "source": "rows-persist2d.tar.zst::persist_2d__gaussian_p3"
+  }
+ ],
+ "mutants": [
+  {
+   "file": "mutants/persist_2d__uniform__m1_pred_bound_absurd.glc",
+   "sha256": "95709ef46f5578483e38100b6eabf9ac665f7f0a9a0a1343cb0e2daf395624fe",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "m1_pred_bound_absurd",
+   "expect": "FAIL",
+   "note": "predicate-bound TConst op[161] of tree 0 -> -1e9 (recompiled semantic mutant)"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__m2_degree_lie.glc",
+   "sha256": "4d4961c2f29c15e76e98dc5b0b5f7fd49304c3a01e576b329878340122d513c7",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "m2_degree_lie",
+   "expect": "FAIL",
+   "note": "PBernCone/degree op[200] of tree 0 := 0 under a nonconstant polynomial"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__m3_poly_coeff_bump.glc",
+   "sha256": "6c4d1a216c9e1f4f3b8fcbf8c2b98a65ce63659ceb01c5136c87265135436d49",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "m3_poly_coeff_bump",
+   "expect": "FAIL",
+   "note": "polynomial-closure TConst op[73] of tree 0 bumped +1e6"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__m4_node_anchor_dropped.glc",
+   "sha256": "74113d433ed8bc1a7395dd8b6529c7f8d5ca2adbeb7c79b279b97ac964b87f42",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "m4_node_anchor_dropped",
+   "expect": "ACCEPT_UNDERCOUNT",
+   "note": "PBernCone/simplex anchor of tree 0 removed; 4799 claims all hold — the count gate is the witness"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__m5_claim_pop.glc",
+   "sha256": "bab962b4803fa2d571f1c1623446af9eb7dca87944115f8cc96b567e142070a7",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "m5_claim_pop",
+   "expect": "ACCEPT_UNDERCOUNT",
+   "note": "final claim row of tree 0 popped; 4799 claims all hold — the count gate is the witness"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__env_magic_flip.glc",
+   "sha256": "0af95920c5a27ae9161d5f18e418225984938ebce601ceabc8d7ee0b47b5475b",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "env_magic_flip",
+   "expect": "REFUSE",
+   "note": "container magic byte flipped"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__env_truncate_tail.glc",
+   "sha256": "865c68c3109b49103c577c72eac2074e3ec2cf124c108e442d30ab89d238986f",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "env_truncate_tail",
+   "expect": "REFUSE",
+   "note": "last byte dropped"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__env_trailing_byte.glc",
+   "sha256": "7787a8d708f3d9ba9d78eeb0c762a55b81ed730116e1100ce826866e00ba2beb",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "env_trailing_byte",
+   "expect": "REFUSE",
+   "note": "trailing garbage byte appended"
+  },
+  {
+   "file": "mutants/persist_2d__uniform__env_early_bit_flip.glc",
+   "sha256": "ee5afcabd4d3beeba3c45468bf01446ffb8aebe13cd7d39a55e75b2ba34ef1d5",
+   "base": "rows-persist2d.tar.zst::persist_2d__uniform",
+   "class": "env_early_bit_flip",
+   "expect": "REFUSE",
+   "note": "signature-territory bit flip"
+  },
+  {
+   "file": "mutants/persist_2d__gaussian_p0__env_truncate_tail.glc",
+   "sha256": "2a582b16d522c964d94388d8140445bf4dbaba094726fa532c7ccf13a86698c3",
+   "base": "rows-persist2d.tar.zst::persist_2d__gaussian_p0",
+   "class": "env_truncate_tail",
+   "expect": "REFUSE",
+   "note": "cross-container integrity witness on the gaussian quarter (content classes ride the representative uniform base, the committed-battery precedent)"
+  }
+ ]
+}

@@ -104,7 +104,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "expected": "FAIL",
       "file": "mutants/sp1_amp_noncanonical.glc",
-      "glc_sha256": "e506aeb88e623107394672640bc4ba85deae02b41f0511fdd92a37fa5733b8a3",
+      "glc_sha256": "f3a34f6ae0eb981b78c632451e66a72a5c6c6895602776832473659a4db177c7",
       "mutant": "sp1_amp_noncanonical",
       "note": ""
     },
@@ -113,7 +113,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "expected": "FAIL",
       "file": "mutants/sp2_amp_zero_coeff.glc",
-      "glc_sha256": "7c589b7f67f866914b12705eba3f7c57a5d78cbfeb5e5a636df794d48153fe28",
+      "glc_sha256": "52ddbe23781e6a62c1d4116a78995c5f3eb49b307da927c36838338b1d1a913b",
       "mutant": "sp2_amp_zero_coeff",
       "note": ""
     },
@@ -122,7 +122,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "expected": "ACCEPT",
       "file": "mutants/sp3_coeff_forged.glc",
-      "glc_sha256": "1b6b0cbdfdd1b424a6feb3ea823b9f868e2642bd6de8689d72963069f57d8129",
+      "glc_sha256": "3256f1bf9dcf8c0fd674344e7060577d8dd500f2db6404b63eee74a1e7d5dde6",
       "mutant": "sp3_coeff_forged",
       "note": "designed ACCEPT — the documented limitation: no baked spectrum-law claim exists pre-pipeline; the production gate refuses this content (witnessed in-crate)"
     },
@@ -131,7 +131,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "expected": "REFUSE",
       "file": "mutants/sp4_zero_claims.glc",
-      "glc_sha256": "ce7376bcd5da59e367e744a90c587715f6abe0387a68efbe13ab262e2dc8656d",
+      "glc_sha256": "4dfee9c66a351469d2cc3181ed2041edc89f20f4ade51f2d18c7bd83a6357074",
       "mutant": "sp4_zero_claims",
       "note": ""
     },
@@ -140,7 +140,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "expected": "REFUSE",
       "file": "mutants/sp5_prereq_mix.glc",
-      "glc_sha256": "c154daff7fe80f97795f347bc3d38f4c33e79f781adc0c317408be8cc5d0a48f",
+      "glc_sha256": "262840f33d037968c458ad7cf778f9523cd1c982908562e760ac60e1edfd7ec5",
       "mutant": "sp5_prereq_mix",
       "note": ""
     },
@@ -149,7 +149,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "expected": "REFUSE",
       "file": "mutants/sp6_body_byte.glc",
-      "glc_sha256": "f01af6c60509a8b905332f9b544435d6abcc4bc075f575a83f7b1b3791f85626",
+      "glc_sha256": "062545ae8f50ed36694b3ee7cc53fcb35fe9b775c719ab0f7aa668f244994923",
       "mutant": "sp6_body_byte",
       "note": ""
     },
@@ -158,7 +158,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "expected": "REFUSE",
       "file": "mutants/sp7_truncated.glc",
-      "glc_sha256": "a971fb8d1314d54b5c4da12cee9fd2e77a88f848d7a8d8178cb8ab9c941ec653",
+      "glc_sha256": "e3bfa6bba7e40c5c12536d2f918bb1d5595886d2b123f0548bda9a9ad3d31ac8",
       "mutant": "sp7_truncated",
       "note": ""
     }
@@ -174,7 +174,7 @@
       "glc_sha256": "703bbde6af48d5490edc741d042334197f278775f4f69acb2884c30f9392a720",
       "kit_floor_tied": true,
       "ops": 198,
-      "producer_wall_ms": 6,
+      "producer_wall_ms": 3,
       "source": "certificate_heat.json",
       "source_sha256": "6dc0d4fc2772f411bd573ff47f96198dfee77b511a50a3c53c783417310f79b9",
       "trace": "13/50"
@@ -204,7 +204,7 @@
       "glc_sha256": "004dd4ab54f081dd060b69ae4f4736f6f288508d00a1c7f7fc931bc6ec493af4",
       "kit_floor_tied": false,
       "ops": 198,
-      "producer_wall_ms": 1,
+      "producer_wall_ms": 0,
       "source": "certificate.json",
       "source_sha256": "666412ac62fb2db88e316c9fc6f05f44f5cc75328e385b8d620e8895fffedaea",
       "trace": "13/50"
@@ -216,7 +216,7 @@
     {
       "cert": "stoch-heat-1d-periodic",
       "claim_surface": "qtsl_poly_canonical per driver amp (amp well-formedness); spectrum LAW stays checked on the synthetic side + the production derived-q gate — the per-former SPDE pipeline is the named successor for a baked spectrum-law claim",
-      "commit_address_blake3": "19fa8866d29a9f2566064889eb5df72e18b8eb12043a1bf22244ecdd6d98280b",
+      "commit_address_blake3": "65d8f2d83428388695742f87510b64710c0fcecf96e840c2852ea0d7365a02e6",
       "drivers": [
         {
           "coeff": "1/5",
@@ -242,16 +242,16 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "file": "stoch-heat-1d-periodic-spectrum.glc",
       "glc_bytes": 889,
-      "glc_sha256": "ab53c4db8bfd81a405eb57a24cf3f0a2debb223880a3e87727de479f06b38dd9",
+      "glc_sha256": "b5504647c82cc2890f578d222bad4d27373f24632eeec9eddf0ddc469d3a510b",
       "ops": 83,
       "prereq": "baked qc closure revision",
-      "producer_wall_ms": 62,
+      "producer_wall_ms": 53,
       "witness_container_address": "52b647168b138801007e832273b1def521fa3c891736ee33b3f85157b8432bc5"
     },
     {
       "cert": "stoch-heat-1d-periodic-sharp",
       "claim_surface": "qtsl_poly_canonical per driver amp (amp well-formedness); spectrum LAW stays checked on the synthetic side + the production derived-q gate — the per-former SPDE pipeline is the named successor for a baked spectrum-law claim",
-      "commit_address_blake3": "3c40aaa69065b5b299fa2d74c31d4e32d3f5cb3ec7e292db22e2c5819e1c2cfa",
+      "commit_address_blake3": "01c989294df6ee4c92280de84388fe13b1ce6ad699c3b96c5c528394753d1b40",
       "drivers": [
         {
           "coeff": "1/5",
@@ -265,7 +265,7 @@
       "expect_claims": "qtsl_poly_canonical=2",
       "file": "stoch-heat-1d-periodic-sharp-spectrum.glc",
       "glc_bytes": 836,
-      "glc_sha256": "a716fab903f316f8ac4ea1f84cbf04faa456ef19e5f535caae673acfbf7e36c1",
+      "glc_sha256": "61868b183ece36f195d0801bae2ebd465c7caca96f1bcea049305a1bf9d169e3",
       "ops": 38,
       "prereq": "baked qc closure revision",
       "producer_wall_ms": 0,
@@ -274,7 +274,7 @@
     {
       "cert": "stoch-burgers-1d-periodic",
       "claim_surface": "qtsl_poly_canonical per driver amp (amp well-formedness); spectrum LAW stays checked on the synthetic side + the production derived-q gate — the per-former SPDE pipeline is the named successor for a baked spectrum-law claim",
-      "commit_address_blake3": "ff65ad3eed1ff328a4f71d641e962f8f2ba3badf7a67b8379dbf49fc4028a5fa",
+      "commit_address_blake3": "592c23c4f6f3bc9ac7dc9cc8bc9cf03e4b593dd59c8050fb77ca3d0b86a08d8a",
       "drivers": [
         {
           "coeff": "1/5",
@@ -300,7 +300,7 @@
       "expect_claims": "qtsl_poly_canonical=5",
       "file": "stoch-burgers-1d-periodic-spectrum.glc",
       "glc_bytes": 892,
-      "glc_sha256": "0e36b3a6129d0526e5bdbb0d6e94e1efb8546bc84fd23e3bbb2b559d09b7f8bb",
+      "glc_sha256": "bb858373eba102bf99ef1b4be4eccda00855cf1f3a82d9fd3901b5e3acf5d55c",
       "ops": 83,
       "prereq": "baked qc closure revision",
       "producer_wall_ms": 1,
@@ -308,6 +308,6 @@
     }
   ],
   "spectrum_lane": "per certificate, the noise spectrum re-homed onto the baked qc closure as its own container (mixed prereq tables are prereq_mix by checker design): baked-vocabulary rows (mkFourierTerm/mkDriver/mkNoiseSpectrum, tailZero), sum-of-rational-squares driver re-expression, qtsl_poly_canonical claims, checked via glc-check --baked-cert; cross-tied to the witness container by commit-address citation + the production derived-q equality gate",
-  "spectrum_vocabulary_rev_qc": "6862edc88ff1d788550d196078a28cb2fe971f10d478a5e32800f2892a7292b9",
+  "spectrum_vocabulary_rev_qc": "9952506dd2491e880a6107471a1ca92f66a4a33a64a8cc250833d00402e3b0e6",
   "vocabulary_rev": "6d6169747269612d737064652d6d6f6d656e742d766f6361622d763000000000"
 }

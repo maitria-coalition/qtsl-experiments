@@ -157,7 +157,7 @@ checksum = "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2"
 [[package]]
 name = "maitria-kernels"
 version = "0.1.0"
-source = "git+https://github.com/maitria-coalition/kernels-dev?rev=b0143fa3a27ec60bfefe2c992b5be0c8be7b0bd5#b0143fa3a27ec60bfefe2c992b5be0c8be7b0bd5"
+source = "git+https://github.com/maitria-coalition/kernels#a087c29b3a118e12938d889f2215b8597ab2d35a"
 
 [[package]]
 name = "num-bigint"
@@ -196,6 +196,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841"
 dependencies = [
  "autocfg",
+]
+
+[[package]]
+name = "probprog-producer"
+version = "0.1.0"
+dependencies = [
+ "num-bigint",
+ "num-rational",
+ "num-traits",
 ]
 
 [[package]]

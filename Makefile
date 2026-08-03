@@ -20,21 +20,23 @@
 # commits (tools/fetch-pins.sh — house modifications, if any, are
 # visible patch files applied after checkout).
 #
-# The current private-preview pin is served from qtsl-dev. Release clones
-# override QTSL_REPO with the unsuffixed URL once that pin is present there;
-# see README.md ("Cloning and building").
+# The qtsl pin is currently served from a repository that requires
+# access (qtsl is not yet published). Once it is public with the pin
+# present, override QTSL_REPO with the unsuffixed URL; see README.md
+# ("Cloning and building").
 
 QTSL_REPO ?= https://github.com/maitria-coalition/qtsl-dev
-# The checker's baked roster carries only the current revision-event
-# pair (no legacy generations), so every baked-container corpus
-# re-emits at each revision event and this pin advances with them.
+# The checker's baked roster leads with the current revision-event
+# pair (legacy generations ride an append-only roster until their
+# corpora re-conduct), so every baked-container corpus re-emits at
+# each revision event and this pin advances with them.
 # All the baked lanes this pin serves (gymnasium, spde spectrum,
 # lean-route, semicon minifab, supermartingales, petri guard) are
-# sealed at revision event 5.1 (qc closure 6862edc8…); the former
-# separate gymnasium and guard pins each converged here when their
-# corpora re-emitted at this event, exactly as their comments
-# predicted.
-QTSL_REV  ?= 43cd608130c2c805a5fbd5e416303daf025eb7dc
+# sealed at revision event 7 (qc closure 9952506d…, dc closure
+# bc30a5f3…); the former separate gymnasium and guard pins each
+# converged onto this shared pin at the event-5.1 re-emission,
+# exactly as their comments predicted.
+QTSL_REV  ?= f0ecbf32d03af43921a11ee7e0aee7a35d51822d
 
 export CARGO_NET_GIT_FETCH_WITH_CLI := true
 
@@ -176,26 +178,14 @@ semicon-glc: $(QTSL_PIN)
 # (campaign re-derivation + exact-tier/encoder mutant kills) re-run
 # from the pinned mtk checkout. One verdict table for the family.
 #
-# These containers pin a newer theory-pair revision than the sibling
-# baked lanes above, so the family builds its checker from its own
-# qtsl pin in a second checkout; when the older corpora re-emit at
-# that revision the two pins converge and the second checkout
-# retires, exactly as the former gymnasium and guard pins did.
-MINIFAB_QTSL_REV ?= 3c04b54c559dbcc8c17505ec44c12c11c1b4b524
-MINIFAB_QTSL_CO  := $(BUILD)/qtsl-minifab
-MINIFAB_QTSL_PIN := $(MINIFAB_QTSL_CO)/.git/pin-$(MINIFAB_QTSL_REV)
-
-$(MINIFAB_QTSL_PIN):
-	@if [ ! -d $(MINIFAB_QTSL_CO)/.git ]; then \
-	  git clone --no-checkout $(QTSL_REPO) $(MINIFAB_QTSL_CO); \
-	fi
-	git -C $(MINIFAB_QTSL_CO) remote set-url origin $(QTSL_REPO)
-	@if ! git -C $(MINIFAB_QTSL_CO) cat-file -e $(MINIFAB_QTSL_REV)^{commit} 2>/dev/null; then \
-	  git -C $(MINIFAB_QTSL_CO) fetch origin; \
-	fi
-	git -C $(MINIFAB_QTSL_CO) checkout $(MINIFAB_QTSL_REV)
-	rm -f $(MINIFAB_QTSL_CO)/.git/pin-*
-	touch $@
+# These containers sealed at revision event 6 and once built their
+# checker from their own newer pin in a second checkout; the sibling
+# corpora's event-7 re-emission carried the shared pin past them, and
+# the shared checker's append-only legacy roster keeps the event-6
+# closure resolving — so the second checkout retired into $(QTSL_PIN),
+# exactly as the former gymnasium and guard pins did. The family's own
+# re-emission at the current event (which lets the checker's event-6
+# legacy rows retire) rides the mtk producer campaign.
 
 # The producer import for the family's battery leg: mtk, pinned the
 # same way the checkers are (imported, never vendored). The suite is
@@ -219,10 +209,10 @@ $(MTK_PIN):
 	touch $@
 
 .PHONY: minifab-dispatch
-minifab-dispatch: $(MINIFAB_QTSL_PIN) $(MTK_PIN)
-	cd $(MINIFAB_QTSL_CO)/crates/qtsl-geolog-provider && \
+minifab-dispatch: $(QTSL_PIN) $(MTK_PIN)
+	cd $(QTSL_CO)/crates/qtsl-geolog-provider && \
 	  cargo build --release --bin glc-check
-	GLC_CHECK=$(CURDIR)/$(MINIFAB_QTSL_CO)/target/release/glc-check \
+	GLC_CHECK=$(CURDIR)/$(QTSL_CO)/target/release/glc-check \
 	  MTK_MANIFEST=$(CURDIR)/$(MTK_CO)/Cargo.toml \
 	  $(NODE) semicon/minifab-dispatch/recheck.ts
 
@@ -242,6 +232,44 @@ spde-glc: $(QTSL_PIN)
 	  cargo build --release --bin glc-check
 	GLC_CHECK=$(CURDIR)/$(QTSL_CO)/target/release/glc-check \
 	  $(NODE) spde/glc-recheck.ts
+
+# ------------------------------------------------------------- probprog
+# Guaranteed posterior bounds for probabilistic programs: the shared
+# three-program comparison against GuBPI and Diabolo (probprog/README.md).
+# `probprog` re-derives everything derivable without a quiet box: the
+# producer's exact-mass and closed-form-containment tests, the 1e6-path
+# Monte-Carlo translation differentials, and the bracket printout at the
+# comparison configurations. Wall-clock measurement is deliberately a
+# separate target (probprog-measure) — it requires a load-quiet box and
+# the baselines built same-box, and receipts are committed, never
+# regenerated silently. The container lane (probprog-glc) follows the
+# family pattern once the certificate species' theory revision is
+# sealed and the QTSL_REV pin advances past it; until then container
+# verdicts ride the staged-closure path recorded in the receipts.
+
+.PHONY: probprog probprog-measure probprog-glc
+probprog:
+	cargo test --release -p probprog-producer
+	./target/release/probprog-produce eval geo-counter 100 --classes 8
+	./target/release/probprog-produce eval asym-rw 14 --classes 8
+	./target/release/probprog-produce eval die-paradox 6 --classes 8
+	$(NODE) probprog/gen-table.ts
+
+# Container recheck, staged-closure lane: until the certificate
+# species' theory revision seals and QTSL_REV advances past it, the
+# checker and the staged chain container come from a qtsl checkout
+# that carries the staged lane — point QTSL_STAGED_CO at one. When the
+# revision seals, this target collapses into the standard $(QTSL_PIN)
+# shape and the STAGED_CHAIN requirement drops (manifest `closure`
+# field tracks it).
+probprog-glc:
+	@test -n "$(QTSL_STAGED_CO)" || { \
+	  echo "probprog-glc: set QTSL_STAGED_CO to a qtsl checkout carrying the staged DtmcAbsorb lane"; exit 2; }
+	cd $(QTSL_STAGED_CO)/crates/qtsl-geolog-provider && \
+	  cargo build --release --bin glc-check
+	GLC_CHECK=$(QTSL_STAGED_CO)/target/release/glc-check \
+	STAGED_CHAIN=$(QTSL_STAGED_CO)/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc \
+	  $(NODE) probprog/glc-recheck.ts
 
 # ------------------------------------------------------- supermartingales
 
@@ -349,11 +377,14 @@ sec1-order-interleave:
 
 # The sealed-container lane (supermartingales/GLC-CERT.md): the same
 # certificates as .glc containers through the geolog fast-path checker,
-# built from the pinned qtsl checkout — both committed lanes: the
-# synthetic-chain containers (out/glc/, kept checkable forever) and the
+# built from the pinned qtsl checkout — the committed lanes: the
+# synthetic-chain containers (out/glc/, kept checkable forever), the
 # baked-closure re-emission (out/glc-baked/: the full corpus plus the
 # committed falsifier listings sealed as containers, per-relation claim
-# counts via --expect-claims). Requires a QTSL_REV that carries the BL
+# counts via --expect-claims), and the persist_2d re-conduct lane
+# (out/glc-baked/persist2d/: both twins as shared-subtree forest
+# containers + designed mutants — GLC-CERT.md "the persist_2d
+# re-conduct lane"). Requires a QTSL_REV that carries the BL
 # reproduction vocabulary AND the reserved predicate-hole wire
 # classification the baked re-emission uses; at an older pin the baked
 # lane's cone claims refuse loudly rather than passing vacuously.
@@ -399,7 +430,7 @@ lean-route-glc: $(QTSL_PIN)
 # (out/<family>/glc-baked/, mode --baked-cert; gymnasium/GLC-CERT.md
 # "the baked lane") additionally requires a pin whose baked roster
 # carries the revision event the corpus is sealed at (currently
-# event 5.1) — QTSL_REV carries it since the sibling baked lanes'
+# event 7) — QTSL_REV carries it since the sibling baked lanes'
 # re-emissions converged the pins.
 .PHONY: gymnasium-glc
 gymnasium-glc: $(QTSL_PIN)
@@ -434,10 +465,10 @@ petri-glc: $(QTSL_PIN)
 # pins sha256s + exact per-relation claim counts; the driver verifies
 # a MATERIALIZED copy — GUARD_GLC_DIR, default petri/guard/out — and
 # skips honestly without one). Builds its checker from the shared
-# pin, QTSL_REV: the corpus is sealed at revision event 5.1 like its
-# sibling baked lanes (the lane's original event-4 pin converged here
-# at the re-emission, retiring the second checkout). Re-derivation
-# path: petri/guard/README.md.
+# pin, QTSL_REV: the corpus is sealed at revision event 7 like its
+# sibling baked lanes (the lane's original event-4 pin converged onto
+# the shared pin at the event-5.1 re-emission, retiring the second
+# checkout). Re-derivation path: petri/guard/README.md.
 .PHONY: petri-guard-glc
 petri-guard-glc: $(QTSL_PIN)
 	cd $(QTSL_CO)/crates/qtsl-geolog-provider && \

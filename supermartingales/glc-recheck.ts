@@ -82,6 +82,7 @@ const GLCDIR = path.join(HERE, "out", "glc");
 const MANIFEST = path.join(GLCDIR, "GLC-MANIFEST.json");
 const SEC2_TAR = path.join(GLCDIR, "sec2-glc.tar.zst");
 const SEC2_DIR = path.join(REPO, "build", "sec2-glc");
+const PERSIST2D_DIR = path.join(HERE, "out", "glc-baked", "persist2d");
 
 /** The run's machine identity for the timing receipt.  GLC_MACHINE_ID
  * names a row of the repository's machine registry (MACHINES.md) and
@@ -468,6 +469,16 @@ function main(): number {
   const bakedManifest = path.join(BAKED_DIR, "GLC-MANIFEST.json");
   if (fs.existsSync(bakedManifest)) {
     checkBakedManifest(BAKED_DIR, bakedManifest);
+  }
+  // The persist_2d re-conduct lane (out/glc-baked/persist2d): both
+  // twins as sealed shared-subtree containers — the uniform twin whole,
+  // the gaussian twin as four sorted-quarter containers (its merged
+  // forest exceeds the envelope's per-commit body cap; the manifest's
+  // `split` note carries the partition) — with the designed-mutant
+  // battery beside them. Same manifest schema, same checker contract.
+  const p2dManifest = path.join(PERSIST2D_DIR, "MANIFEST.json");
+  if (fs.existsSync(p2dManifest)) {
+    checkBakedManifest(PERSIST2D_DIR, p2dManifest);
   }
   if (ok) writeTimings();
   console.log(ok ? "OK" : "WRONG VERDICTS above");

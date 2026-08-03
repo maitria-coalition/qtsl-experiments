@@ -73,7 +73,7 @@
       "base": "exact_T10",
       "expected": "FAIL",
       "file": "mutants/b1_table_raised.glc",
-      "glc_sha256": "d2e0e46fbcd7da9f661279f6d4fbf4e4b55bb6cdf3c5e132a0bf948b0ffb0332",
+      "glc_sha256": "63b95cb7104b4c0764f4193b4fe28f139edbb9eea5aa8541d4e385ab4a0bfcce",
       "locus": "V_0(init) raised one grain above the backward-induction value (step obligation)",
       "mutant": "b1_table_raised"
     },
@@ -81,7 +81,7 @@
       "base": "exact_T10",
       "expected": "FAIL",
       "file": "mutants/b2_claim_inflated.glc",
-      "glc_sha256": "3eb4013b22a1db9d39048b750eb9b353b7cc2a1191c176e611e03bc16d656c88",
+      "glc_sha256": "50a95eff3bcd673301498211d779990ae40907432538155fb1002452144b722a",
       "locus": "claimed bound raised one grain above V_0(init) (claim obligation)",
       "mutant": "b2_claim_inflated"
     },
@@ -89,7 +89,7 @@
       "base": "exact_T10",
       "expected": "FAIL",
       "file": "mutants/b3_outcome_bumped.glc",
-      "glc_sha256": "ad08717ef26e4054a0cd1db468a95ac27793265c892b8a752ed883fcc9bdba78",
+      "glc_sha256": "c0166cfcc9b1b7d6ddcf6f3b35a060172dd10bdb2a09b3b71fb18c0330b67757",
       "locus": "first outcome probability bumped one grain (row-mass obligation)",
       "mutant": "b3_outcome_bumped"
     },
@@ -97,7 +97,7 @@
       "base": "exact_T10",
       "expected": "FAIL",
       "file": "mutants/b4_dinit_cut.glc",
-      "glc_sha256": "6d5c32ab04c26c52b8664d5a72a1db31b9f015e062012b98b13de33b162ec20f",
+      "glc_sha256": "f12ceb96f123cb74e7cd95b46f74870ea739477dc9742f62038b07884a087736",
       "locus": "the initial point mass rewritten to 1/2 (init-mass obligation)",
       "mutant": "b4_dinit_cut"
     },
@@ -105,7 +105,7 @@
       "base": "exact_T10",
       "expected": "FAIL",
       "file": "mutants/b5_goal_dropped.glc",
-      "glc_sha256": "42b92900abe9a33ca85f71b1d9750b3cfe2d8a67eef6840b57a0a087957b0633",
+      "glc_sha256": "775b2805b40734245c6778d00a0adbaf8cf9f79481897acc5e04a2e1d4146416",
       "locus": "goal region emptied (lower atom raised past the upper); boundary obligation at the true goal",
       "mutant": "b5_goal_dropped"
     },
@@ -113,7 +113,7 @@
       "base": "exact_T10",
       "expected": "FAIL",
       "file": "mutants/b6_boundary.glc",
-      "glc_sha256": "106c6a4072803e8f9edbce044cc691372674749aa32b32e9c4c92e8684b510df",
+      "glc_sha256": "b263c56862e6dc7bf72eceeb537d7d0cf7aa3d82261787bf6e3d87c5c51a683c",
       "locus": "V_T at a non-goal state raised from 0 to 1 (boundary obligation)",
       "mutant": "b6_boundary"
     },
@@ -121,7 +121,7 @@
       "base": "exact_T10",
       "expected": "REFUSE",
       "file": "mutants/b7_claim_dropped.glc",
-      "glc_sha256": "730b6580fb6985049c8ec25c96119801b3d071216a9f4d65932dbceb3f2aaea0",
+      "glc_sha256": "dcca67fc8923724f393ac0ae5c38fb3a0b98a8d7b59e192b13e47b18672f60d0",
       "locus": "the claim row popped (zero-claim containers refuse the vacuous accept)",
       "mutant": "b7_claim_dropped"
     },
@@ -129,7 +129,7 @@
       "base": "exact_T10",
       "expected": "REFUSE",
       "file": "mutants/b8_body_byte.glc",
-      "glc_sha256": "d45ee4e29df1c80c3fe7b116929fd3d83e7185800bf35c9743cb03e27409eae2",
+      "glc_sha256": "eb773eca40bd8681a80cfb49b18ad4666539f3a5d06077b46c0ce418aae4d4f9",
       "locus": "one body byte flipped (body-hash binding)",
       "mutant": "b8_body_byte"
     },
@@ -137,7 +137,7 @@
       "base": "exact_T10",
       "expected": "REFUSE",
       "file": "mutants/b9_sig_byte.glc",
-      "glc_sha256": "282d372009432392c0d0d1b766755985260a0e9ea4fb91b9ed661122f23e21c4",
+      "glc_sha256": "ced92f9cbd94552e7df7456aea796caf688621381e438274c7f084ee7163746f",
       "locus": "one signature byte flipped (signature verification)",
       "mutant": "b9_sig_byte"
     },
@@ -145,7 +145,7 @@
       "base": "exact_T10",
       "expected": "REFUSE",
       "file": "mutants/b10_truncated.glc",
-      "glc_sha256": "60e3095268747ebd4b12e20e7a069a9571a95db7cf599ce798465be05b7a74bd",
+      "glc_sha256": "cba9711748ca5c9e8de376ecf1dc05813f923b1a65b2910d9e80269210af0137",
       "locus": "container truncated 40 bytes short (grammar)",
       "mutant": "b10_truncated"
     },
@@ -153,7 +153,7 @@
       "base": "exact_T10",
       "expected": "REFUSE",
       "file": "mutants/b11_magic.glc",
-      "glc_sha256": "71e36650b03a28505d1ee0986878af2b036fdda5964f349420cca7853177d80d",
+      "glc_sha256": "f74bb9a40d31fa10d4addbe69a61eaa0a884c94d0bef1d0bfe907023b21ca819",
       "locus": "magic corrupted (not a geolog container)",
       "mutant": "b11_magic"
     },
@@ -161,7 +161,7 @@
       "base": "exact_T10",
       "expected": "REFUSE",
       "file": "mutants/b12_version.glc",
-      "glc_sha256": "0bacb5a7faced594f63ba033bfe80736063960c74b6b5e885fc974fe1d7dc057",
+      "glc_sha256": "0159bf87c88d68bdd15293437404c49db2a8567eec39aad4d49f8659967b7fba",
       "locus": "container version bumped to 2 (unsupported by this reader)",
       "mutant": "b12_version"
     },
@@ -169,7 +169,7 @@
       "base": "exact_T5",
       "expected": "FAIL",
       "file": "mutants/b13_le_v0_raised.glc",
-      "glc_sha256": "1e6a99bbd01a9903df1151519275a411a37ed66828d23d786401077a3652aef6",
+      "glc_sha256": "a469f3832383559bd539908dea6f8ecfc2c0d7b9ad057c4d8d7c5013e77cf87e",
       "locus": "V_0(init) raised on the LE-face certificate — the super-solution table survives the raise; the mixture above the claimed upper bound q = 0 is the single falsifier (claim obligation)",
       "mutant": "b13_le_v0_raised"
     }
@@ -181,7 +181,7 @@
       "expected": "ACCEPT",
       "face": "SProbLE",
       "file": "exact_T5.glc",
-      "glc_sha256": "329a75bd890b3a3af04ed6be4a7a913a97ce3e75f8e705be6f37dbccdf7b436d",
+      "glc_sha256": "0cff482e9ebf6da355e6b47f5162b2ea6a476ddbbff06fce6a228ab6b2da2f57",
       "selection": "0:0 1:0 2:0 3:0 4:0 5:loop 6:0 7:loop 8:0 9:0 10:0 11:loop 12:loop 13:0 14:0 15:loop",
       "source_cert": "gymnasium/out/frozenlake-4x4/exact_T5.cbor"
     },
@@ -191,7 +191,7 @@
       "expected": "ACCEPT",
       "face": "SProbGE",
       "file": "exact_T10.glc",
-      "glc_sha256": "fb8c45a806bc7d5ef1225a634749c94a2efd1204dab974e7335433091060161b",
+      "glc_sha256": "8f5a5702c9ca042dfdbe193934f3ecf04a601ab7d93505d3d6cd000c767376d1",
       "selection": "0:1 1:3 2:2 3:3 4:0 5:loop 6:0 7:loop 8:3 9:1 10:0 11:loop 12:loop 13:2 14:1 15:loop",
       "source_cert": "gymnasium/out/frozenlake-4x4/exact_T10.cbor"
     }

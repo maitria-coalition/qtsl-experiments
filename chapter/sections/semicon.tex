@@ -2,18 +2,26 @@
 \label{sec:exp-semicon}
 
 The final campaign leaves benchmarks-with-leaderboards entirely and
-instantiates the chapter's infinite-horizon species (U4 of
-section~\ref{sec:exp-claims}: long-run throughput and stability
-claims for queueing-network models) on a ladder of semiconductor-fab
-process models --- the application-domain family the toolkit's programme
-context cares about, and a domain where the certified claim is
-economically legible: \emph{this dispatch policy keeps the line
-stable at this load}. That claim has teeth because it is famously
-falsifiable: re-entrant lines destabilize under plausible dispatch
-policies strictly below nominal capacity (the Kumar--Seidman
-phenomenon), and the fluid-limit criteria of Dai and Dai--Weiss
-reduce stability to exactly the polyhedral drift inequalities the
-toolkit's checkers replay.
+runs on two tracks over a ladder of semiconductor-fab process models
+--- the application-domain family the toolkit's programme context
+cares about, and a domain where the certified claims are economically
+legible. The \emph{fluid} track instantiates the chapter's
+infinite-horizon species (U4 of section~\ref{sec:exp-claims}:
+long-run throughput and stability claims for queueing-network
+models): \emph{this dispatch policy keeps the line stable at this
+load}. That claim has teeth because it is famously falsifiable:
+re-entrant lines destabilize under plausible dispatch policies
+strictly below nominal capacity (the Kumar--Seidman phenomenon), and
+the fluid-limit criteria of Dai and Dai--Weiss reduce stability to
+exactly the polyhedral drift inequalities the toolkit's checkers
+replay. The \emph{discrete} track --- new at this preview, on the
+base rung --- instantiates the worst-case ranking species (U2,
+quantified here over every scheduler rather than every initial
+state): \emph{every dispatch of this line ships all lots by this
+deadline} --- and carries it past any of the chapter's other
+campaigns, to a claim class none of them produce: exact optimality,
+a certified floor over \emph{all} dispatch policies met exactly by a
+shipped one.
 
 \paragraph{The ladder, whole.} The campaign's target is a fixed
 progression of eleven public fab models in four stages --- the Intel
@@ -66,9 +74,12 @@ enough that every modelling decision can be witnessed line by line
 gives the model and this campaign's certificates a chapter-length
 reading --- yet it already carries the domain's hard structure
 (re-entrance, batching, sequence-dependent setups, shared personnel,
-failures), so certifying it means fluid-drift stability with the
-awkward layers priced by explicit adversarial rows, and
-work-in-progress and cycle-time moments as named successors. The
+failures), so the base rung certifies on both tracks: fluid-drift
+stability with the awkward layers priced by explicit adversarial
+rows (work-in-progress and cycle-time moments as named successors),
+and the discrete dispatch campaign, carried at this preview through
+policy synthesis, wall-clock optimality, and a certified envelope
+for untrusted policies. The
 MIMAC stage is the same claim species at real-fab scale, where the
 sign-mode census dies combinatorially: certifying it means aggregated
 covers with certified refinement paths, plus an extraction pipeline
@@ -83,7 +94,7 @@ network itself to the contended resources, and its reference
 simulator is closed-shape, so the declared model carries the
 semantics alone.
 
-\textbf{Certified today: the Mini-Fab.} The base rung's model --- the
+\textbf{Certified today: the Mini-Fab, fluid track.} The base rung's model --- the
 community's minimal re-entrant fab, whose batching, setup, personnel,
 and failure layers make five machines an honest miniature of the
 domain --- is described at reading depth in
@@ -109,6 +120,91 @@ below leans on, exercised first here. The certified drain rates also
 separate the two policies near capacity --- an exact
 policy-comparison number of the kind this claim species was chosen to
 produce.
+
+\textbf{Certified today: the Mini-Fab, discrete track --- dispatch
+synthesis, to exact optimality.} The same line, read as a discrete
+transition net (16 places, 19 transitions, 49 arcs; every logistical
+step one tick), carries a family of twelve certificates --- $150$
+footprint rows of a sealed certificate container: a work-potential
+ranking budgeting each lot's run at exactly $638$ firings, lot
+conservation, six machine conservation bounds, congestion, a
+ceiling, and an arrival-potential + step-budget pair yielding the
+worst-case deadline, \emph{all $N$ lots arrived within $638N - 12$
+steps}, over every scheduler interleaving. Nothing in the
+certificate scales with the lot count: $N$ enters only as three
+integers in the container's own data, so the same rows instantiate
+from $N = 7$ to $N = 10^{7}$ with the container growing six bytes
+across six orders of magnitude and the checker's wall time flat at
+$\sim\!2$\,ms per container --- at the top of that sweep the claims
+quantify over at least $2\times10^{38}$ reachable markings and
+$10^{2\times10^{7}}$ distinct maximal schedules, none of which the
+checker visits. Opening one supervisor seat (the plant re-stated as
+a comb with a single policy-shaped hole; the hole count is itself a
+checked claim) turns the deadline into a synthesis instrument: joint
+policy+certificate search returns a latest-safe-unlock supervisor
+with certified completion and all arrivals by $626N$ steps ---
+$52{,}584$ against the $53{,}580$ no-policy worst case at the weekly
+$N = 84$, a certified throughput-floor gain of $1.9\%$. The
+synthesis objective is lexicographic --- certified completion first,
+then the horizon --- and the order is load-bearing: a gate that
+never opens ties the arrival optimum and then deadlocks shipping
+nothing, and the search refuses it at the completion certificate
+with the starved queue named.
+
+The counting-time story transfers to the wall clock, and closes
+there. Under the theory's discrete clock semantics (every transition
+dwells exactly one tick) the same containers reseal with identical
+row tallies, and the counting bounds become tick bounds by a no-idle
+argument ($\le 626N$ gated, $\le 638N - 12$ open). Beneath them sits
+a floor over \emph{all} dispatch policies of any kind, supervisory
+or never-idle: no policy reaches all-arrivals in fewer than
+$255N + 375$ ticks for $N \ge 4$ --- a machine-contiguity argument
+proved in Lean~4 over mathlib, with adversarial mutants at
+preregistered loci refused by the kernel, lifting an arithmetic
+floor of $255N + 371$ (verified by exhaustive SMT search below
+$N = 8$, with witness schedules independently re-validated); the
+exact wall-clock optimum is $255N + 371 + d(N)$,
+$d = (0, 0, 2, 4, 4, \dots)$, closed from both sides at every $N$.
+An explicit supervisor family attains the lifted floor exactly at
+every tested lot count: $21{,}795$ ticks at $N = 84$, per-lot
+throughput $255$ ticks closed from both sides --- so the
+certified-optimality column of the dispatch grid reads $100.00\%$,
+earned rather than rounded: a Lean-checked floor meeting a
+container-replayed attainment at $255N + 375$ exactly. The grid
+around it separates the levers. The sixteen never-idle full-dispatch
+policies deliver $99.63$, $75.61$, $65.34$, and $54.35\%$ of
+certifiably-unbeatable performance, and only the diffusion-station
+pull preference ever moves a number; deliberate idling is necessary
+for the last stretch (the best work-conserving policy needs
+$255N + 455$ ticks, $80$ behind optimal); and the wall-clock value
+concentrates in the dispatch seat: an adversarial pull order costs
+$+83.5\%$, while the synthesized gate --- whose value is the
+certified worst-case floor, a guarantee over every schedule ---
+moves typical-case arrivals $0.0\%$. Optimality here is also the
+decision-theoretically right word: with deterministic closed
+dynamics, imprecise-decision-theoretic policy selection provably
+collapses to makespan minimization (machine-checked, with a
+refutation cell showing the collapse fails without determinism).
+
+The track's last exhibit prices the case nobody certifies: an
+\emph{uncertified} policy --- a lookahead heuristic standing in for
+a learned dispatcher --- filling the same seat behind a certified
+switching envelope (certified baseline, decision-budget bench,
+certified recovery region). The envelope's certificates never read
+the policy. In replay, the heuristic ran free and attained the
+envelope's arrival bound $638N - 11$ exactly at $N = 84$, so the
+bound is witnessed tight, not merely sound; a deliberate idler was
+benched at the budget boundary with recovery at exactly $1{,}009$
+firings; a rogue policy was benched after eight named in-loop
+refusals with the plant untouched; and after all runs the sealed
+container re-verified byte-identical. The whole discrete family ---
+closed baseline, open comb, synthesized supervisor, switching
+envelope, and the wall-clock reseals of baseline, comb, and
+supervisor --- re-checks from bytes alone by one reproduction target
+(section~\ref{sec:exp-repro}), with committed integrity mutants that
+must refuse and the producer-tier mutant batteries re-run beside it;
+\bookref{ch:qtsl-minifab}{the book's worked-example chapter} walks
+the model, the synthesis, and the grid at chapter length.
 
 \textbf{Certified today: MIMAC set 7, at the cover and one
 refinement in} (the smallest of the seven by tool count: one product,
@@ -138,14 +234,28 @@ fab scale, so pricing that species limit, and the implicit-cover
 species that removes it, is named successor work. The aggregation
 gap is a measured frontier, not fine print.
 
-\paragraph{What is not claimed.} These are claims about declared fluid
-models of the fabs, with batching, setups, and failures handled by
-explicit adversarial or interval rows where modelled at all --- the
-model gap to the discrete line rides a declared ledger, and the
-conversion from certified drain rates to work-in-progress and
-cycle-time bounds on the discrete line (via Foster--Lyapunov moment
-rows and Little's law) is named successor work. No claim is made
-about optimality of the dispatch policies, only their certified
-stability region. The ladder's remaining nine rungs --- MIMAC sets
-1--6, the SMT2020 pair, and SMAT2022 --- are census-scoped but carry
-no certificates at this preview.
+\paragraph{What is not claimed.} On the fluid track these are claims
+about declared fluid models of the fabs, with batching, setups, and
+failures handled by explicit adversarial or interval rows where
+modelled at all --- the model gap to the discrete line rides a
+declared ledger, and the conversion from certified drain rates to
+work-in-progress and cycle-time bounds on the discrete line (via
+Foster--Lyapunov moment rows and Little's law) is named successor
+work. On the discrete track the claims are exact, but the model sits
+deliberately in the unit-dwell deterministic corner: zero stochastic
+species instantiated, so a policy-filled closure has one trajectory
+per lot count, and the demonic quantifiers live at the family level
+(the all-policy floors; the envelope over an untrusted filler).
+Since every certificate quantifies over the full scheduling freedom,
+its claims dominate every rate-raced refinement of that freedom ---
+the stochastic layers, when they arrive on the higher rungs, resolve
+freedom the certificates have already priced. An earlier preview of
+this section stated that no claim was made about optimality of the
+dispatch policies, only their certified stability region; that
+sentence is now true of the fluid track alone --- on the discrete
+Mini-Fab the optimality question is closed, floor and attainment
+meeting at $255N + 375$ --- and the correction is recorded here
+rather than silently edited away, because the distance between the
+two previews is itself a result. The ladder's remaining nine rungs
+--- MIMAC sets 1--6, the SMT2020 pair, and SMAT2022 --- are
+census-scoped but carry no certificates at this preview.

@@ -2,19 +2,37 @@
   "persist_2d": {
     "vcs": {
       "marker": "a",
-      "reason": "uncertified pre-re-conduct; stated in prose"
+      "reason": "re-conducted (out/glc-baked/persist2d); this column keys on the fast-path timing receipts, which await the retime protocol"
     },
     "produce": {
       "marker": "a",
-      "reason": "uncertified pre-re-conduct; stated in prose"
+      "reason": "re-conducted; retime-protocol receipts pending"
     },
     "geolog": {
       "marker": "a",
-      "reason": "uncertified pre-re-conduct; stated in prose"
+      "reason": "re-conducted; retime-protocol receipts pending"
     },
     "qtslab": {
       "marker": "a",
-      "reason": "uncertified pre-re-conduct; stated in prose"
+      "reason": "re-conducted; retime-protocol receipts pending"
+    }
+  },
+  "persist_2d__gaussian": {
+    "vcs": {
+      "marker": "a",
+      "reason": "re-conducted (out/glc-baked/persist2d); this column keys on the fast-path timing receipts, which await the retime protocol"
+    },
+    "produce": {
+      "marker": "a",
+      "reason": "re-conducted; retime-protocol receipts pending"
+    },
+    "geolog": {
+      "marker": "a",
+      "reason": "re-conducted; retime-protocol receipts pending"
+    },
+    "qtslab": {
+      "marker": "a",
+      "reason": "re-conducted; retime-protocol receipts pending"
     }
   },
   "faulty_marbles": {

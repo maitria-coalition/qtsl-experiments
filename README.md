@@ -102,12 +102,12 @@ tools/             fetch-pins.sh (pinned third-party trees)
 
 ## Cloning and building
 
-The coalition's unsuffixed public repositories are the intended release
-URLs. During this private-preview phase they are not yet advertised as
-publicly available, and the current build pin is served from the private
-`qtsl-dev` rail. An authenticated preview clone therefore works as written;
-a release clone can override the companion URL without editing the
-Makefile:
+This repository and [`kernels`](https://github.com/maitria-coalition/kernels)
+are published; the `qtsl` checker crates are not yet, and their build pin
+is currently served from a repository that requires access. A clone with
+that access builds everything as written; a public clone builds the
+kernels-backed and scripted sections, and can override the companion URL
+without editing the Makefile once `qtsl` publishes:
 
 ```
 make QTSL_REPO=https://github.com/maitria-coalition/qtsl
@@ -134,14 +134,19 @@ Two steps fetch from the companion repositories:
    into `build/qtsl` at the revision pinned in the Makefile
    (`QTSL_REV`), for the reference checker lane and every
    sealed-container lane; all such corpora — the
-   guarded-specification lane included — are sealed at the current
-   baked revision event and share the one pin.
+   guarded-specification lane included — share the one pin. The
+   corpora re-emit at each baked revision event and the pin advances
+   with them (a corpus sealed at an earlier event keeps checking
+   through the checker's append-only legacy roster until its own
+   re-emission lands, which is how the Mini-Fab dispatch family rides
+   the same pin today).
 
-Private-preview clones work through any GitHub auth your git already has
-(the `gh` CLI's credential helper, an SSH key, or a PAT). After the public
-flip, release URLs require no authentication. The committed `Cargo.lock`
-pins the exact revisions of the imported checker crates; bumping them is a
-deliberate act (`cargo update` + re-run), never a side effect.
+Clones of the not-yet-published `qtsl` pin work through any GitHub auth
+your git already has (the `gh` CLI's credential helper, an SSH key, or a
+PAT); the published repositories require no authentication. The committed
+`Cargo.lock` pins the exact revisions of the imported checker crates;
+bumping them is a deliberate act (`cargo update` + re-run), never a side
+effect.
 
 ## The Atari ROM note
 

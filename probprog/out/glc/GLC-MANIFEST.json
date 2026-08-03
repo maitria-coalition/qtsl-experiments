@@ -1,0 +1,195 @@
+{
+  "closure": "staged revision 6f1b2c7ef562c437174dd3eabfcb9d7e487de3c841d63b85ff42017be5ff29d0 (BL+Qtsl+Dtmc+DtmcAbsorb, 12 theories, 747 axioms; double-mint determinism verified at production; chain container: qtsl checkout crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc)",
+  "positives": [
+    {
+      "file": "geo-u100.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=100,qtsl_dabs_posterior_bracket=100"
+    },
+    {
+      "file": "asym-rw-u14.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=7,qtsl_dabs_posterior_bracket=7"
+    },
+    {
+      "file": "die-paradox-u6.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=6,qtsl_dabs_posterior_bracket=6"
+    },
+    {
+      "file": "asym-rw-u70.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=35,qtsl_dabs_posterior_bracket=35"
+    },
+    {
+      "file": "die-paradox-u40.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=40,qtsl_dabs_posterior_bracket=40"
+    },
+    {
+      "file": "burglar-alarm-u4.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "beauquier3-u51.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "beauquier3-u1000.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    }
+  ],
+  "mutants": [
+    {
+      "file": "mut-tighter-hi.glc",
+      "base": "die-paradox-u6",
+      "locus": "posterior hi for one class tightened below canonical",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=6,qtsl_dabs_posterior_bracket=6"
+    },
+    {
+      "file": "mut-classed-leak.glc",
+      "base": "die-paradox-u6",
+      "locus": "classed state given an outgoing row (not stored-absorbing)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=6,qtsl_dabs_posterior_bracket=6"
+    },
+    {
+      "file": "mut-no-evidence.glc",
+      "base": "die-paradox-u6",
+      "locus": "class labeling emptied; posterior claims kept (S = 0)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-widened.glc",
+      "base": "die-paradox-u6",
+      "locus": "absorb hi widened outward (positive control)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=6,qtsl_dabs_posterior_bracket=6"
+    },
+    {
+      "file": "mut-byteflip.glc",
+      "base": "die-paradox-u6",
+      "locus": "one body byte flipped (container integrity)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "die-paradox-u6.glc",
+      "base": "die-paradox-u6",
+      "locus": "count gate: one more posterior claim expected than present",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=6,qtsl_dabs_posterior_bracket=7"
+    },
+    {
+      "file": "mut-ba-tighter.glc",
+      "base": "burglar-alarm-u4",
+      "locus": "class-1 posterior point shifted off the exact value (width-0 claim, PSI ground truth)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-ba-reject-as-class.glc",
+      "base": "burglar-alarm-u4",
+      "locus": "reject state relabeled as a third class: observe-failure mass counted as evidence (hard-conditioning locus)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-ba-reject-unlabeled.glc",
+      "base": "burglar-alarm-u4",
+      "locus": "reject dropped from the labeling: its mass accrues to the residual; width-0 claims must widen-fail",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-ba-widened.glc",
+      "base": "burglar-alarm-u4",
+      "locus": "absorb hi widened outward (positive control)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-ba-byteflip.glc",
+      "base": "burglar-alarm-u4",
+      "locus": "one body byte flipped (container integrity)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "burglar-alarm-u4.glc",
+      "base": "burglar-alarm-u4",
+      "locus": "count gate: one more posterior claim expected than present",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=3"
+    },
+    {
+      "file": "mut-bq3-classed-leak.glc",
+      "base": "beauquier3-u51",
+      "locus": "classed state given an outgoing row (not stored-absorbing)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-class-reject-overlap.glc",
+      "base": "beauquier3-u51",
+      "locus": "state both classed and rejected (the theory's own refuse tier)",
+      "expected": "REFUSE",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-tighter-lo.glc",
+      "base": "beauquier3-u51",
+      "locus": "absorb lo for class 0 raised above the recomputed mass (claims looser-never-tighter)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-lower-hi.glc",
+      "base": "beauquier3-u51",
+      "locus": "absorb hi for class 0 lowered below mass + residual",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-order.glc",
+      "base": "beauquier3-u51",
+      "locus": "interval inversion (lo > hi) \u2014 unsatisfiable by arithmetic",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-budget.glc",
+      "base": "beauquier3-u51",
+      "locus": "horizon raised beyond the work budget (refusal, never a verdict)",
+      "expected": "REFUSE",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-no-evidence.glc",
+      "base": "beauquier3-u51",
+      "locus": "class labeling emptied; posterior claims kept (S = 0)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-bq3-rowmass.glc",
+      "base": "beauquier3-u51",
+      "locus": "one stored row weight doubled (row mass 3/2); caught at bracket recomputation in the staged lane \u2014 the Dtmc grain's own row-mass demand is the named provider sibling",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-widened.glc",
+      "base": "beauquier3-u51",
+      "locus": "both bracket families widened outward (positive control)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-bq3-byteflip.glc",
+      "base": "beauquier3-u51",
+      "locus": "one body byte flipped (container integrity)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "beauquier3-u51.glc",
+      "base": "beauquier3-u51",
+      "locus": "count gate: one more posterior claim expected than present",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=3"
+    }
+  ]
+}

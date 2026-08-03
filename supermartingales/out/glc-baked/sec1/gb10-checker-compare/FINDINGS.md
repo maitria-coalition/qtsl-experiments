@@ -98,12 +98,25 @@ VINTAGE CAUTION (found by the independent-machine replication): this
 cell ran the version-1 runner, whose progress monitor slept out up to
 1 s at join — a fixed inflation that dominates a cold single-row
 process wall. Cold anchors are comparable only within one runner
-vintage; in particular the apparent w2145-faster-than-gb10 cold
-inversion (0.743 s vs 1.238 s) is runner vintage, not architecture. A
-same-vintage retake is one verb: `make sec1-cold-anchor-v2` (quiet
-conduct; installs `cold-anchor-v2.json` beside this cell; see
-`../RESIDUES-FINDINGS.md` for the pinned recipe and the
-preregistered expectation).
+vintage; the version-1 cell above is retained as history and must not
+be ratioed against any version-2 cell.
+
+RESOLVED at v2 (`cold-anchor-v2.json`, produced 2026-08-03 03:29:59Z by
+`make sec1-cold-anchor-v2` under the quiet conduct — gate 4.0 passed at
+load 3.16 on all 10 spawns, X925 affinity, read-back nice 19): median
+process wall **0.184 s** around an unchanged row wall of 0.0424 s,
+spread 0.1785–0.1867 s (±2%), 10/10 byte-identical. The vintage
+diagnosis is confirmed and quantified: the v1 1.238 s median carried
+~1.05 s of monitor sleep-join plus load fragility (v1 spread 1.11–4.91 s
+vs v2's ±2% under the gate). The cross-machine cold comparison is now
+same-vintage and the apparent w2145-faster-than-gb10 inversion is dead
+in the stronger direction: gb10 0.184 s vs w2145 0.743 s — gb10 is
+~4.0× faster cold at v2, consistent with the machines' warm-wall ratio.
+One preregistration miss, recorded as the finding it is (see
+`../RESIDUES-FINDINGS.md`): the expected band was 0.2–0.5 s; the
+observed 0.184 s sits just below it — the gb10 cold intercept
+(~0.14 s of process setup around the 44 ms row) is smaller than the
+w2145-shape extrapolation predicted.
 
 ## Comparability verdict
 

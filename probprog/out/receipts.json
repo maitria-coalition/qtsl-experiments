@@ -1,0 +1,322 @@
+{
+  "rows": [
+    {
+      "label": "producer/geo-compare",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval geo-counter 100",
+      "runs": 5,
+      "walls_s": [
+        0.003623409,
+        0.003903154,
+        0.00356504,
+        0.003364862,
+        0.003734081
+      ],
+      "median_s": 0.003623409,
+      "nice_readback": 19,
+      "loadavg_before": "8.51 8.53 7.76",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:09:27.633Z"
+    },
+    {
+      "label": "producer/asym-compare",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval asym-rw 14",
+      "runs": 5,
+      "walls_s": [
+        0.002141667,
+        0.002128643,
+        0.001905009,
+        0.002855962,
+        0.002347717
+      ],
+      "median_s": 0.002141667,
+      "nice_readback": 19,
+      "loadavg_before": "8.51 8.53 7.76",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:09:27.706Z"
+    },
+    {
+      "label": "producer/die-compare",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval die-paradox 6",
+      "runs": 5,
+      "walls_s": [
+        0.002362661,
+        0.002785513,
+        0.002134547,
+        0.002585831,
+        0.001891809
+      ],
+      "median_s": 0.002362661,
+      "nice_readback": 19,
+      "loadavg_before": "8.51 8.53 7.76",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:09:27.785Z"
+    },
+    {
+      "label": "producer/asym-tight",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval asym-rw 70",
+      "runs": 5,
+      "walls_s": [
+        0.00385861,
+        0.003794034,
+        0.003404094,
+        0.003315742,
+        0.002919226
+      ],
+      "median_s": 0.003404094,
+      "nice_readback": 19,
+      "loadavg_before": "8.51 8.53 7.76",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:09:27.866Z"
+    },
+    {
+      "label": "producer/die-tight",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval die-paradox 40",
+      "runs": 5,
+      "walls_s": [
+        0.003066795,
+        0.002855785,
+        0.003054684,
+        0.002660871,
+        0.002322357
+      ],
+      "median_s": 0.002855785,
+      "nice_readback": 19,
+      "loadavg_before": "8.51 8.53 7.76",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:09:27.944Z"
+    },
+    {
+      "label": "house-e2e/die-compare",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec die-paradox 6 2>/dev/null | $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $TMPDIR/m-die.glc >/dev/null && $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert $TMPDIR/m-die.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.099081086,
+        0.100617644,
+        0.098038196,
+        0.098068437,
+        0.095134907
+      ],
+      "median_s": 0.098068437,
+      "nice_readback": 19,
+      "loadavg_before": "2.56 3.41 4.63",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:50:13.923Z"
+    },
+    {
+      "label": "house-e2e/asym-compare",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec asym-rw 14 2>/dev/null | $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $TMPDIR/m-asym.glc >/dev/null && $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert $TMPDIR/m-asym.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.098078949,
+        0.099801972,
+        0.100332697,
+        0.099843093,
+        0.099737683
+      ],
+      "median_s": 0.099801972,
+      "nice_readback": 19,
+      "loadavg_before": "2.56 3.41 4.63",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:50:14.581Z"
+    },
+    {
+      "label": "house-e2e/die-check-only",
+      "cmd": "taskset -c 16 $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert $TMPDIR/m-die.glc",
+      "runs": 5,
+      "walls_s": [
+        0.0492229,
+        0.049138068,
+        0.050986276,
+        0.050713073,
+        0.051079141
+      ],
+      "median_s": 0.050713073,
+      "nice_readback": 19,
+      "loadavg_before": "2.18 3.25 4.54",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:50:36.891Z"
+    },
+    {
+      "label": "house-e2e/die-emit-only",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec die-paradox 6 2>/dev/null | $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $TMPDIR/m-die2.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.051703642,
+        0.049071251,
+        0.05125727,
+        0.048681551,
+        0.051130373
+      ],
+      "median_s": 0.051130373,
+      "nice_readback": 19,
+      "loadavg_before": "2.18 3.25 4.54",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:50:37.251Z"
+    },
+    {
+      "label": "house-e2e/geo-compare",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec geo-counter 100 2>/dev/null | $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $TMPDIR/m-geo-compare.glc >/dev/null && $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert $TMPDIR/m-geo-compare.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.26700531,
+        0.264042388,
+        0.26541232,
+        0.268032407,
+        0.265217966
+      ],
+      "median_s": 0.26541232,
+      "nice_readback": 19,
+      "loadavg_before": "7.98 5.62 5.19",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:54:09.567Z"
+    },
+    {
+      "label": "house-e2e/asym-tight",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec asym-rw 70 2>/dev/null | $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $TMPDIR/m-asym-tight.glc >/dev/null && $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert $TMPDIR/m-asym-tight.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.644861045,
+        0.643699643,
+        0.649749392,
+        0.638135882,
+        0.642761139
+      ],
+      "median_s": 0.643699643,
+      "nice_readback": 19,
+      "loadavg_before": "7.98 5.62 5.19",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:54:13.483Z"
+    },
+    {
+      "label": "house-e2e/die-tight",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec die-paradox 40 2>/dev/null | $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $TMPDIR/m-die-tight.glc >/dev/null && $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert $TMPDIR/m-die-tight.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.117365138,
+        0.113520656,
+        0.117682405,
+        0.116409449,
+        0.114620954
+      ],
+      "median_s": 0.116409449,
+      "nice_readback": 19,
+      "loadavg_before": "7.75 5.61 5.18",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-03T15:54:14.237Z"
+    },
+    {
+      "label": "beauquier3/gubpi-q1-internal",
+      "cmd": "taskset -c 16 GuBPI beauquier-etal-3-Q1.spcf (internal 'Total computation time')",
+      "runs": 5,
+      "walls_s": [
+        7.67,
+        10.535,
+        9.407,
+        7.652,
+        7.646
+      ],
+      "median_s": 7.67,
+      "nice_readback": 19,
+      "loadavg_before": "2.94 2.95 3.02",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "GB10 (NVIDIA Grace); measured core 16 = Cortex-X925 3.9GHz"
+      },
+      "at": "2026-08-03T17:20:00Z",
+      "note": "same-box GuBPI; printed norm bounds for the count<1 bucket: [0.5, 0.5] (exact-point floats, leaning on the score-free Z=1 normalization); e2e walls 7.87/10.82/9.75/7.86/7.86 s, median 7.87; published context 22.5 s"
+    },
+    {
+      "label": "beauquier3/house-e2e-u51",
+      "cmd": "spec beauquier-3 51 + dabs-emit + glc-check --staged-chain (pre-mint lane)",
+      "runs": 5,
+      "walls_s": [
+        0.236,
+        0.299,
+        0.237,
+        0.302,
+        0.226
+      ],
+      "median_s": 0.237,
+      "nice_readback": 19,
+      "loadavg_before": "3.16 3.00 3.04",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "GB10 (NVIDIA Grace); measured core 16 = Cortex-X925 3.9GHz"
+      },
+      "at": "2026-08-03T17:20:00Z",
+      "note": "stage medians: spec 5 ms, emit 105 ms, check 128 ms; staged-closure validation dominates (twice per pipeline; the baked lane removes most of it)"
+    },
+    {
+      "label": "beauquier3/house-e2e-u1000",
+      "cmd": "spec beauquier-3 1000 + dabs-emit + glc-check --staged-chain (pre-mint lane)",
+      "runs": 5,
+      "walls_s": [
+        1.565,
+        1.534,
+        1.606,
+        1.6,
+        1.64
+      ],
+      "median_s": 1.6,
+      "nice_readback": 19,
+      "loadavg_before": "3.16 3.00 3.04",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "GB10 (NVIDIA Grace); measured core 16 = Cortex-X925 3.9GHz"
+      },
+      "at": "2026-08-03T17:20:00Z",
+      "note": "stage medians: spec 45 ms, emit 102 ms, check 1418 ms (exact-Q DP over 1000 steps at the checker)"
+    }
+  ]
+}

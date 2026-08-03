@@ -1,0 +1,100 @@
+{
+  "box": {
+    "name": "GB10 (NVIDIA Grace)",
+    "arch": "aarch64",
+    "cpu": "Cortex-X925 (measured runs pinned to one X925 core @3.9 GHz, nice 19 with /proc read-back)",
+    "cpus": 20
+  },
+  "cases": [
+    {
+      "case": "geometric counter",
+      "query": "posterior masses P[Y=n], comparison configuration (quality-matched set)",
+      "rows": [
+        { "tool": "gubpi", "config": "geo.spcf, depth 500",
+          "bound_width": "1.1e-15 on Z; per-bin at the matched quality",
+          "width_metric": "Z-interval width (per-bin bounds in raw .bounds receipts)",
+          "wall_median_s": 0.880, "runs": 5, "internal_time_s": 0.701,
+          "check_wall_s": null, "checker": null,
+          "provenance": "same-box baseline harness receipts (raw geo-*.bounds outputs)" },
+        { "tool": "diabolo-residual", "config": "residual geo.sgcl -u 100 (artifact comparison command)",
+          "bound_width": "7.89e-31",
+          "width_metric": "residual mass bound (p(n) upper minus exact lower, uniform)",
+          "wall_median_s": 0.00267, "runs": 5, "internal_time_s": 0.00156,
+          "check_wall_s": null, "checker": null,
+          "provenance": "same-box baseline harness receipts (raw dres-geo-* outputs)" },
+        { "tool": "house", "config": "probprog-produce spec geo-counter 100 -> dabs-emit -> glc-check",
+          "bound_width": "7.889e-31 (exact: 2^-100 over evidence+residual)",
+          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
+          "wall_median_s": 0.265, "runs": 5, "internal_time_s": null,
+          "check_wall_s": 0.051, "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef…; 201 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/geo-compare + out/glc/geo-u100.glc" }
+      ]
+    },
+    {
+      "case": "asymmetric random walk",
+      "query": "posterior masses P[C=n], comparison configuration (quality-matched set)",
+      "rows": [
+        { "tool": "gubpi", "config": "asym_rw.spcf, depth 100",
+          "bound_width": "0.639 on Z ([0.9927, 1.6314])",
+          "width_metric": "Z-interval width (per-bin bounds in raw .bounds receipts)",
+          "wall_median_s": 51.62, "runs": 5, "internal_time_s": 51.40,
+          "check_wall_s": null, "checker": null,
+          "provenance": "same-box baseline harness receipts (raw asym_rw-*.bounds outputs)" },
+        { "tool": "diabolo-residual", "config": "residual asym_rw.sgcl -u 14 (artifact comparison command)",
+          "bound_width": "7.40e-3",
+          "width_metric": "residual mass bound (float, outward-rounded)",
+          "wall_median_s": 0.00176, "runs": 5, "internal_time_s": 0.00074,
+          "check_wall_s": null, "checker": null,
+          "provenance": "same-box baseline harness receipts (raw dres-asym-* outputs)" },
+        { "tool": "house", "config": "probprog-produce spec asym-rw 14 -> dabs-emit -> glc-check",
+          "bound_width": "7.342e-3 (exact: 123181/16777216 over evidence+residual)",
+          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
+          "wall_median_s": 0.0998, "runs": 5, "internal_time_s": null,
+          "check_wall_s": 0.051, "checker": "glc-check --staged-chain (staged closure; 15 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/asym-compare + out/glc/asym-rw-u14.glc" }
+      ]
+    },
+    {
+      "case": "die paradox",
+      "query": "posterior masses P[T=n | even throws], comparison configuration; GuBPI column is unnormalized-lower-only per its own artifact README",
+      "rows": [
+        { "tool": "gubpi", "config": "die_paradox.spcf, polytopes, depth 80",
+          "bound_width": "unbounded (Z upper = NaN; normalized bounds vacuous — upstream-documented); unnormalized lower bounds usable",
+          "width_metric": "n/a (baseline defect, its artifact's own caveat)",
+          "wall_median_s": 74.76, "runs": 5, "internal_time_s": 74.56,
+          "check_wall_s": null, "checker": null,
+          "provenance": "same-box baseline harness receipts (raw die_paradox-*.bounds outputs)" },
+        { "tool": "diabolo-residual", "config": "residual die_paradox.sgcl -u 6 (artifact comparison command)",
+          "bound_width": "1.65e-2 (normalized total-mass interval [0.9837, 1.0165])",
+          "width_metric": "normalized residual bound (interval-quotient assembly)",
+          "wall_median_s": 0.00118, "runs": 5, "internal_time_s": 0.00028,
+          "check_wall_s": null, "checker": null,
+          "provenance": "same-box baseline harness receipts (raw dres-die-* outputs)" },
+        { "tool": "house", "config": "probprog-produce spec die-paradox 6 -> dabs-emit -> glc-check",
+          "bound_width": "5.464e-3 (exact: 1/183; correlated-ratio form, 3.0x tighter than the interval quotient at the same truncation)",
+          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
+          "wall_median_s": 0.0981, "runs": 5, "internal_time_s": null,
+          "check_wall_s": 0.051, "checker": "glc-check --staged-chain (staged closure; 13 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/die-compare + out/glc/die-paradox-u6.glc" }
+      ]
+    },
+    {
+      "case": "tightness rows (same wall class, deeper truncation — house only; no baseline ran these configs in the comparison)",
+      "query": "posterior masses at deeper horizons",
+      "rows": [
+        { "tool": "house", "config": "asym-rw horizon 70",
+          "bound_width": "3.012e-7",
+          "width_metric": "posterior bracket width, exact rational",
+          "wall_median_s": 0.6437, "runs": 5, "internal_time_s": null,
+          "check_wall_s": null, "checker": "glc-check --staged-chain (71 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/asym-tight + out/glc/asym-rw-u70.glc" },
+        { "tool": "house", "config": "die-paradox horizon 40",
+          "bound_width": "3.290e-19",
+          "width_metric": "posterior bracket width, exact rational",
+          "wall_median_s": 0.1164, "runs": 5, "internal_time_s": null,
+          "check_wall_s": null, "checker": "glc-check --staged-chain (81 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/die-tight + out/glc/die-paradox-u40.glc" }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "format": ".glc — sealed geolog commit containers (single commit per certificate)",
   "family": "petri-guard",
-  "closure_rev": "6862edc88ff1d788550d196078a28cb2fe971f10d478a5e32800f2892a7292b9",
-  "derivation_id": "baf27e5f84ed4aaca2e5b1728ef71911f8717fd701b9aa1132af8a6226d9fe11",
+  "closure_rev": "9952506dd2491e880a6107471a1ca92f66a4a33a64a8cc250833d00402e3b0e6",
+  "derivation_id": "5a204658ad3a188ce08bc1f8017bca15f1db4c098953b1f5103af1d3cc30d7a5",
   "provider_name": "qtsl-ground",
-  "provider_semantic_digest": "04c62b81f9246a639a2788d97474090d1c009d8849c9c3fed796f9c255449c6f",
-  "note": "Expected artifact identities for the guarded-specification certificate family over Model Checking Contest 2026 nets. The model files and everything derived from their structure (the containers themselves included) are not redistributed in this repository pending license clarification with the contest organizers; this manifest pins their sha256s and exact per-relation claim counts so a materialized or regenerated copy verifies bit-for-bit. See petri/guard/README.md for the re-derivation path and petri/README.md for the licensing note.",
+  "provider_semantic_digest": "1a5489e74525ee8af43cd9e29d044b156bcec7594323f3ad4ad22646ee37fbcd",
+  "note": "Expected artifact identities for the guarded-specification certificate family over Model Checking Contest 2026 nets. The model files and everything derived from their structure (the containers themselves included) are not redistributed in this repository pending license clarification with the contest organizers; this manifest pins their sha256s and exact per-relation claim counts so a materialized or regenerated copy verifies bit-for-bit. See petri/guard/README.md for the re-derivation path and petri/README.md for the licensing note. The RootTieBreak specimen (ACCEPT_TIE_BLIND) retired at revision event 7's re-emission: the revision-event-6 QForallSat entity seam made the tie divergence it documented unrepresentable, and the producer's battery dropped the class with it — the claim walk's reach boundary it recorded is now enforced one stratum earlier, by the entity seam itself.",
   "positives": [
     {
       "file": "AutonomousCar-PT-01a-guard.glc",
@@ -13,8 +13,8 @@
       "transitions": 35,
       "expect_claims": "qtsl_bag_wf=1,qtsl_cert_claim_wf=1,qtsl_init_member=1,qtsl_massone=35,qtsl_spec_wf=1,qtsl_tr_content=35,qtsl_tr_endo=35,qtsl_tr_grain=35,qtsl_warrant_member=1",
       "ops": 10038,
-      "glc_bytes": 42917,
-      "glc_sha256": "3d26f370ea0b21a73753926e0e7677067593f1ede81dba52f4e8f69edadba0d7"
+      "glc_bytes": 42911,
+      "glc_sha256": "e6c8ea8f83bbc3cd36ac2bb3d6e486dc16ebf0dc4d15976c26a95e99211a850e"
     },
     {
       "file": "AutonomousCar-PT-02a-guard.glc",
@@ -22,8 +22,8 @@
       "transitions": 69,
       "expect_claims": "qtsl_bag_wf=1,qtsl_cert_claim_wf=1,qtsl_init_member=1,qtsl_massone=69,qtsl_spec_wf=1,qtsl_tr_content=69,qtsl_tr_endo=69,qtsl_tr_grain=69,qtsl_warrant_member=1",
       "ops": 25250,
-      "glc_bytes": 129581,
-      "glc_sha256": "d947e3ff59c89f5c2318404ab90dd8a2d981ab5ac95568a0bfcef397c78ce28c"
+      "glc_bytes": 129575,
+      "glc_sha256": "2169def662aa923cea85fd2b919c81adcd3f8b82208cbdb4b48a4bac89f8649f"
     },
     {
       "file": "CircadianClock-PT-000001-guard.glc",
@@ -31,8 +31,8 @@
       "transitions": 16,
       "expect_claims": "qtsl_bag_wf=1,qtsl_cert_claim_wf=1,qtsl_init_member=1,qtsl_massone=16,qtsl_spec_wf=1,qtsl_tr_content=16,qtsl_tr_endo=16,qtsl_tr_grain=16,qtsl_warrant_member=1",
       "ops": 2868,
-      "glc_bytes": 9520,
-      "glc_sha256": "d692a973ff4c47e6540814f9c50219e50786735aba0d06eb8aa44b145408f3a2"
+      "glc_bytes": 9513,
+      "glc_sha256": "76b7656b21f36a9f4a7ff10999a3f7990f3a7a715158c068bcd9386360213083"
     },
     {
       "file": "CircadianClock-PT-100000-guard.glc",
@@ -40,8 +40,8 @@
       "transitions": 16,
       "expect_claims": "qtsl_bag_wf=1,qtsl_cert_claim_wf=1,qtsl_init_member=1,qtsl_massone=16,qtsl_spec_wf=1,qtsl_tr_content=16,qtsl_tr_endo=16,qtsl_tr_grain=16,qtsl_warrant_member=1",
       "ops": 2868,
-      "glc_bytes": 9992,
-      "glc_sha256": "061b4e33c968547abafaaa32da1dd25d0a153e96170a2f08d91471ad868adeb4"
+      "glc_bytes": 9985,
+      "glc_sha256": "863a6d6311ac0b790affa13b4e8616007a769c6b42dd4935f24d424c2cbe4a11"
     },
     {
       "file": "DrinkVendingMachine-PT-02-guard.glc",
@@ -49,8 +49,8 @@
       "transitions": 72,
       "expect_claims": "qtsl_bag_wf=1,qtsl_cert_claim_wf=1,qtsl_init_member=1,qtsl_massone=72,qtsl_spec_wf=1,qtsl_tr_content=72,qtsl_tr_endo=72,qtsl_tr_grain=72,qtsl_warrant_member=1",
       "ops": 20054,
-      "glc_bytes": 90520,
-      "glc_sha256": "ca04918f5c62eeba5b87ebf51fcce179c3260e2f09cdd105519c6d7133bda103"
+      "glc_bytes": 90514,
+      "glc_sha256": "07b333b5ba2c98630338920b53eaeaf511e16079ecc96270885d71fad2b30ec5"
     },
     {
       "file": "EGFr-PT-02010-guard.glc",
@@ -58,8 +58,8 @@
       "transitions": 68,
       "expect_claims": "qtsl_bag_wf=1,qtsl_cert_claim_wf=1,qtsl_init_member=1,qtsl_massone=68,qtsl_spec_wf=1,qtsl_tr_content=68,qtsl_tr_endo=68,qtsl_tr_grain=68,qtsl_warrant_member=1",
       "ops": 29386,
-      "glc_bytes": 161053,
-      "glc_sha256": "0b864ae5a42914ee27634f13a66280263fa000df114368190fc5fe0449b843d5"
+      "glc_bytes": 161047,
+      "glc_sha256": "621dfbcc5458c9007f616cfc9d250b92d29b2fc6525780a43260221ca7e3c774"
     }
   ],
   "specimen_base": {
@@ -70,56 +70,49 @@
     {
       "file": "specimens/CircadianClock-PT-000001-Control.glc",
       "expected": "ACCEPT",
-      "glc_bytes": 9520,
-      "glc_sha256": "d692a973ff4c47e6540814f9c50219e50786735aba0d06eb8aa44b145408f3a2",
+      "glc_bytes": 9513,
+      "glc_sha256": "76b7656b21f36a9f4a7ff10999a3f7990f3a7a715158c068bcd9386360213083",
       "note": "the unmutated control — byte-identical to the green CircadianClock-PT-000001 container (same sha256)"
     },
     {
       "file": "specimens/CircadianClock-PT-000001-InitOutside.glc",
       "expected": "FAIL_AT",
       "fails_at": "qtsl_init_member",
-      "glc_bytes": 9521,
-      "glc_sha256": "8cdd2ea38b389a6a9b319510cac84bf56547a6e6e065ccd7864dd743b0993941",
+      "glc_bytes": 9514,
+      "glc_sha256": "250a29c89fed0089350e1cbd6f7f137f2ab4265226d5cb7bcd6d2c3c6210b423",
       "note": "guard violated: the region box is shifted off the initial marking — the membership evaluation leaf fails in exact rational interval arithmetic"
     },
     {
       "file": "specimens/CircadianClock-PT-000001-RegionMismatch.glc",
       "expected": "FAIL_AT",
       "fails_at": "qtsl_spec_wf",
-      "glc_bytes": 9659,
-      "glc_sha256": "520a492fbbe1eeb9ec2cf6a7ed046f95bacb60972bef28a523e2534cdd1beffa",
+      "glc_bytes": 9652,
+      "glc_sha256": "46efce6853c2c094b8f8d40bd6e14e709f921f1660053d031c28c7a2a8ed55f2",
       "note": "the specification's stored guard region disagrees with the warrant's region — the well-formedness agreement count refuses"
     },
     {
       "file": "specimens/CircadianClock-PT-000001-BothRoutes.glc",
       "expected": "FAIL_AT",
       "fails_at": "qtsl_cert_claim_wf",
-      "glc_bytes": 9526,
-      "glc_sha256": "4408327f9c3a3a3c0c990ee418bce0f631846223ce0c608844e72aad2d322a3e",
+      "glc_bytes": 9515,
+      "glc_sha256": "a0408625bea3369e9f45679766ab4aee44b8f7ac7686605963c3b18a0d400bdf",
       "note": "two warrant routes attached to one satisfaction claim — route exclusivity refuses"
     },
     {
       "file": "specimens/CircadianClock-PT-000001-AlienComponent.glc",
       "expected": "FAIL_AT",
       "fails_at": "qtsl_warrant_member",
-      "glc_bytes": 9529,
-      "glc_sha256": "596986578a9167b9514129871d90c2ca74871c72b8ac377b09c8d725c9d6f6d6",
+      "glc_bytes": 9519,
+      "glc_sha256": "0749c2f0ae989cf8997a2c3ecf8d9620b991c7e957c600e719ceaf0e96b72b0c",
       "note": "the warranted formula is not among the specification's consumed components — membership refuses"
     },
     {
       "file": "specimens/CircadianClock-PT-000001-MemberDrop.glc",
       "expected": "ACCEPT_BARE_FAIL_COUNTS",
       "fails_at": "qtsl_init_member",
-      "glc_bytes": 9516,
-      "glc_sha256": "dc838f9eed050ffda772b2bdf0e5dcba569908d2508d2c1888429a2170b4e923",
+      "glc_bytes": 9509,
+      "glc_sha256": "1fccb98cdeb72f0af61ef5bd17e60583a79f29c34dabad0ce91505d7a7b4fbdd",
       "note": "the membership claim row is omitted entirely: per-obligation discharge ACCEPTs the bare file (nothing left to fail), and the count gate catches the deletion — whole-row omission is exactly what --expect-claims exists for"
-    },
-    {
-      "file": "specimens/CircadianClock-PT-000001-RootTieBreak.glc",
-      "expected": "ACCEPT_TIE_BLIND",
-      "glc_bytes": 9543,
-      "glc_sha256": "3ab6b60c131631be184d7e98e6ec34390e3b604d09c92857d8e1b90cc2f9ff74",
-      "note": "the warrant's formula differs from the specification's root component: a theory-stratum equality the claim walk never sees, BY DESIGN — the engine's own chase refuses this specimen loudly (a named no-confusion rule); committed here so the claim walk's reach boundary stays documented and machine-checked"
     }
   ]
 }

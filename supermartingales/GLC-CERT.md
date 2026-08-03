@@ -135,3 +135,51 @@ Two reader notes, so the manifest's shape surprises nobody:
   fixtures (recorded with their sha256s), not part of the published
   tables; they ride the manifest because the designed mutants are
   derived from one of them.
+
+## the persist_2d re-conduct lane (`out/glc-baked/persist2d/`)
+
+The one continuous-state row's certificates — both twins of a noise
+model the paper leaves unpinned (see `specs/persist_2d_uniform.toml` +
+`specs/persist_2d_gaussian.toml` for the reconstruction provenance;
+neither twin claims the published row's noise class) — re-conducted
+onto the baked qc closure as **shared-subtree (proof hypernet) forest
+containers**, the sec2 lane's container form:
+
+- `persist_2d__uniform.glc` — the whole uniform twin, one container:
+  4,800 drift-triangle proof trees, hash-consed, 510,674 ops. The
+  committed listings transcribe the dyadic re-emission of the
+  certified uniform certificates (one shared power-of-two denominator;
+  bound bit-identical to the exact published fraction
+  $58920851522213/588624739134464$).
+- `persist_2d__gaussian_p{0..3}.glc` — the gaussian twin as four
+  sorted-quarter containers of 4,800 trees each (~518k ops each): the
+  whole twin's merged forest (~1.94M ops) exceeds the container
+  envelope's per-commit body cap ($2^{20}$ ops), so the twin ships
+  split, the spde split-family precedent. Quarters partition the
+  sorted listing order; the manifest's `split` note pins the ranges.
+  Certified exact bound $6701869649/68719476736$ (0.0975251 rounded
+  up), below both published numbers.
+
+Sources: `out/persist2d/rows-persist2d.tar.zst` — the committed
+reference listings, five group directories, sha256 pinned in the
+manifest. Produce receipts (conductor lock, closure revision,
+component pins, in-loop check tallies) sit in `receipts/` beside the
+containers; container bytes are deterministic (independent double-runs
+byte-identical, all five). The expansion inverse (`qtsl2bl --expand`)
+re-derives per-tree containers that match the unshared per-listing
+emission row-multiset-exactly (renaming-invariant digests; verified
+for the uniform twin and a gaussian quarter at production).
+
+`mutants/` carries the designed battery on the uniform base — the
+five semantic classes (recompiled at the source-graph level: absurd
+predicate bound, degree lie, coefficient bump, and the two
+count-gate witnesses, which ACCEPT bare with 4,799/4,799 and are
+caught exactly by the manifest's claim expectation) plus the four
+envelope integrity surgeries, and one cross-container envelope
+witness on a gaussian quarter. Content classes ride the
+representative uniform base per the committed-battery precedent
+above. The driver checks every mutant to its expected class.
+
+Timing cells for this row (the sweep-times table) remain holes until
+the standard retime protocol's receipts exist; the conductor walls in
+`receipts/` are production bookkeeping, not protocol timings.

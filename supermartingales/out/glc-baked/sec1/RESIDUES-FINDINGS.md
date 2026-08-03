@@ -49,7 +49,7 @@ leg's durable record.
   its absolute home-directory default (now required, with a clear refusal) —
   the committed driver no longer contains any private path.
 
-### Residue 1 — gb10 cold-anchor retake at v2+: MACHINERY LANDED, CAMPAIGN GATE-REFUSED (honest partial)
+### Residue 1 — gb10 cold-anchor retake at v2+: DONE (attempt 2 passed the gate, 2026-08-03; receipt `gb10-checker-compare/cold-anchor-v2.json`)
 
 What the retake needs, all landed on this branch:
 
@@ -99,7 +99,47 @@ other direction), i.e. roughly 0.2–0.5 s around the unchanged ~44 ms row
 wall. If it lands elsewhere under a passing gate, that is a finding, not
 grounds for a rerun.
 
-Comparison hygiene until the retake lands: the cross-machine cold
-comparison (w2145 0.743 s vs gb10 1.238 s) remains cross-VINTAGE and must
-not be ratioed — the vintage cautions in `gb10-checker-compare/FINDINGS.md`
-and `w2145-checker-compare/README.md` govern.
+Comparison hygiene while the retake was pending (now discharged below):
+the cross-machine cold comparison (w2145 0.743 s vs gb10 **v1** 1.238 s)
+was cross-VINTAGE and was not to be ratioed — the vintage cautions in
+`gb10-checker-compare/FINDINGS.md` and `w2145-checker-compare/README.md`
+governed; the v1 cell remains history-only under the same rule.
+
+Conduct record, gate attempt 2 (2026-08-03, the retake; the second and
+last licensed attempt):
+
+- The quiet window was waited out, not selected: the mtk post-merge full
+  suite (00:45:58Z–~03:22Z, previous-cycle duration 9614 s) held the
+  1-minute load at 5–18 all night; the launch poll armed only after its
+  unit went inactive. The concurrent qtsl post-merge cycle was in its
+  barn-routed (remote) Lean phase at launch — locally quiet by
+  construction. To close the observation→spawn gap that refused attempt 1
+  (3.82 observed → 4.28 at spawn), the poll and the launch ran in one
+  shell: 20-second load polling with the make invocation exec'd in the
+  same breath the threshold (≤3.2) was met.
+- Attempt 2 (03:29:59Z): launched at 1-minute load 3.16; all 10 fresh
+  spawns self-gated at 3.16 and none refused. Campaign wall ~2 s
+  end-to-end; receipt installed.
+
+Verdict against the preregistered expectation (likelihood-shaped):
+
+- **Vintage diagnosis: confirmed and quantified.** v2 median process wall
+  0.1836 s (spread 0.1785–0.1867, ±2%) vs v1's 1.238 s (spread
+  1.11–4.91 s under ambient load): the ~1.05 s delta is the monitor
+  sleep-join the v3 runner removed, and the two-orders-of-magnitude
+  spread collapse is the quiet conduct doing what the protocol claims.
+- **Row wall unmoved, as expected:** median 0.0424 s vs the anticipated
+  ~44 ms (v1: 0.0439 s) — the retake moved only the process envelope.
+  10/10 containers byte-identical.
+- **One miss, recorded as a finding, not grounds for a rerun:** the
+  preregistered band was 0.2–0.5 s; the observed 0.184 s sits just below
+  it. The gb10 v2 cold intercept (~0.14 s of setup around the row) is
+  smaller than the w2145-shape extrapolation predicted — the cross-machine
+  cold-intercept ratio lands at ~4.0–4.2× (w2145 0.743 s vs gb10
+  0.184 s), slightly above the anticipated 3.0–3.5× bracket and in line
+  with the machines' phase-by-phase warm scale (3.0–4.9×,
+  `w2145-independent/FINDINGS.md`).
+- The same-vintage cross-machine statement replacing the retired
+  inversion: **gb10 is ~4× faster cold than w2145 at v2** — the v1
+  "inversion" was runner vintage plus load, in the direction and roughly
+  the magnitude the diagnosis predicted.

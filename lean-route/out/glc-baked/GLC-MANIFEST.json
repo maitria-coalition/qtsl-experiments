@@ -7,7 +7,7 @@
       "expect": "FAIL",
       "file": "mutants/cartpole_dp_core_decrease__m1_cone_pred_bound_absurd.glc",
       "note": "predicate bound op[2869] -> absurd (the TConst is shared: all 18 cone sweeps AND all 18 farkas combinations on this rung die — whole-family kill, disclosed; m2/m3 are the single-locus twins)",
-      "sha256": "781b34126ba60ac860b9c625c3f38155ab94a58fcaca4af7824f9aa200c9a19d"
+      "sha256": "edb634b89e9b7ed20dca7a498fe52d5f1ff0d9f97ec2aa9af96896e0b8894296"
     },
     {
       "base": "cartpole_dp_core_decrease",
@@ -15,7 +15,7 @@
       "expect": "FAIL",
       "file": "mutants/cartpole_dp_core_decrease__m2_cone_degree_lie.glc",
       "note": "PBernCone/degree op[5281] := 0",
-      "sha256": "14a8375f49c7b1b96bf517b6596218a146123ce39d5457f9863f982573e2f0e8"
+      "sha256": "c7fcc6ea505610e54565d4f177577d345215dc7c6aa0a9e0656615819d195347"
     },
     {
       "base": "acasx4_init_s0000",
@@ -23,7 +23,7 @@
       "expect": "FAIL",
       "file": "mutants/acasx4_init_s0000__m3_farkas_lambda_bump.glc",
       "note": "PFarkas node L6507 chain entry 0 lambda += 1",
-      "sha256": "4ad8855b9ab74226f7cf140da82b65e60b043a8ea07a6b57b78f954fe42a58f2"
+      "sha256": "2846e10e9ee2e6228829bff794246ab6d7f5738e790b329fc2d51a4da2088c7b"
     },
     {
       "base": "micro2_stable",
@@ -31,7 +31,7 @@
       "expect": "FAIL",
       "file": "mutants/micro2_stable__m4_syzygy_coherent_forge.glc",
       "note": "PSyzygy node L421: all 4 lambdas x2 AND conclusion := 2*conclusion — combination self-consistent (HOLDS), dies at the conclusion-form tie to the judgment post",
-      "sha256": "837e5280670bb55ab3aa9cea932a8a72f7233a1c20f397a23792a06e9a210ca0"
+      "sha256": "f2915dea3c5dc8341600da785a5aa747a8477429dab40d8c5af09df9fb0b0cbd"
     },
     {
       "base": "enclosure_v1_golden_cos6",
@@ -39,7 +39,7 @@
       "expect": "FAIL",
       "file": "mutants/enclosure_v1_golden_cos6__m5_enclosure_cap_tightened.glc",
       "note": "EncJudgment/cap halved (below the exact tail bound)",
-      "sha256": "e181c8a75c45da9d711c1314cf1746583a43e1c5c9535b6b787f02fffc8948e8"
+      "sha256": "0bdd47f04b54da702962fbaf7edad276027bdccace403cfdf1efcbcd47abecd7"
     },
     {
       "base": "enclosure_v1_golden_cos6",
@@ -47,7 +47,7 @@
       "expect": "ACCEPT_CLAIMSWAP",
       "file": "mutants/enclosure_v1_golden_cos6__m6_enclosure_coherent_reforge_control.glc",
       "note": "n := 8, cap := exact tail(8, r) — self-consistent TRUE statement of a DIFFERENT claim; in-lane ACCEPT by design, caught by the production-time byte-identity gate",
-      "sha256": "f7917ffe36da47c932d5977e23861c0665fda73f1ba4c26b2995e21e42e33b58"
+      "sha256": "041743ce6076ca35c3b4955e3953ec5b400ef31d51fa0a76857d242a18a4d26c"
     },
     {
       "base": "lti_sampled_flow",
@@ -55,7 +55,7 @@
       "expect": "FAIL",
       "file": "mutants/lti_sampled_flow__m7_promise_contract_swap.glc",
       "note": "PPromise/contract := root judgment pre (wires far outside the declared interface)",
-      "sha256": "f20bedfe7f0d9ca5fda9b0c2516713d6799c524b45f98aaa8e46073b1247640f"
+      "sha256": "395d189509de5c70371e6cbd50724c4b7c49e42baaf336505eaf20c31e20da16"
     },
     {
       "base": "ctmc_fk_mid",
@@ -63,7 +63,7 @@
       "expect": "ACCEPT_UNDERCOUNT",
       "file": "mutants/ctmc_fk_mid__m8_cone_anchor_dropped.glc",
       "note": "PBernCone/simplex op[727] removed (count-gate witness)",
-      "sha256": "b75551998291199c2051f237e6da8989650c6fc93484f5f090aac4be557003f9"
+      "sha256": "2645a45a8ba92732625d4a54fcdf07b7bfc77680d6332d5f8d9bdf7e1478e4cb"
     },
     {
       "base": "micro2_stable",
@@ -71,7 +71,7 @@
       "expect": "ACCEPT_UNDERCOUNT",
       "file": "mutants/micro2_stable__m9_syzygy_anchor_dropped.glc",
       "note": "PSyzygy/combinationCoeffs row for L421 removed (per-relation count-gate witness, both syzygy relations undercount)",
-      "sha256": "1ea4dbe64efcda9cb948e222dfaf099b033e39506c776de1ba59d1e39a5c1d9c"
+      "sha256": "f1a074cb9b8b6704349b86d7d02aca13a15d401580a5fb16f4c09c90a61075a6"
     },
     {
       "base": "cartpole_dp_core_decrease",
@@ -79,7 +79,7 @@
       "expect": "REFUSE",
       "file": "mutants/cartpole_dp_core_decrease__m10_body_byte_flip.glc",
       "note": "last body byte ^1 (body_hash)",
-      "sha256": "b5b70a251d24e85768a3d2de646d51ff1e030e59b9cee6bd1f560f5ecece65fd"
+      "sha256": "7845d0fee76f1cb2109c389577c2661db86b7cb2848c93893de88e96de932656"
     },
     {
       "base": "cartpole_dp_core_decrease",
@@ -87,7 +87,7 @@
       "expect": "REFUSE",
       "file": "mutants/cartpole_dp_core_decrease__m11_sig_byte_flip.glc",
       "note": "signature byte at 59 ^1",
-      "sha256": "acd08feb58b058b4bd7af2bdfe9161922d13fd134201011ea16858329778ec79"
+      "sha256": "9ed4c6aa66ceac3c99c67032dc0447f2aa0499cd0af4ab94f3d4e97552239d71"
     },
     {
       "base": "cartpole_dp_core_decrease",
@@ -95,7 +95,7 @@
       "expect": "REFUSE",
       "file": "mutants/cartpole_dp_core_decrease__m12_truncated.glc",
       "note": "last 7 bytes dropped",
-      "sha256": "5571004eb29b1a0858d7ebe16bbe24369d45410271ba7cca1d86bf6c1f50ba47"
+      "sha256": "889eee67dee1f7833c8b5dba0c0cf9d0fc21bf8f8dcf6ba53a0837befd612548"
     },
     {
       "base": "cartpole_dp_core_decrease",
@@ -103,7 +103,7 @@
       "expect": "REFUSE",
       "file": "mutants/cartpole_dp_core_decrease__m13_bad_magic.glc",
       "note": "magic byte 0 ^0x20",
-      "sha256": "1aa54b04fb0256e3ef8a6d8f64df175492230a05b68c031ac9ed7ab2c5cc121b"
+      "sha256": "93d02bb20089bf2cbc29d83fa9282aacb1bb234c88f4ec623e069f15aaa9d45e"
     },
     {
       "base": "cartpole_dp_core_decrease",
@@ -111,7 +111,7 @@
       "expect": "REFUSE",
       "file": "mutants/cartpole_dp_core_decrease__m14_bad_version.glc",
       "note": "container version = 2",
-      "sha256": "b46250cbe62877b760e451d8e7ab60bbd47ac5f90cbde420a122cd41527eaae3"
+      "sha256": "463873ca2ec0182096fcb2bcf6a1b6652cd3ea53dc29aca1ae8858246dbb5584"
     }
   ],
   "obligation_roster": [
@@ -129,7 +129,7 @@
         "allForwardDiffBernCoeffsSatisfyP": 48,
         "farkasCombinationValid": 48
       },
-      "commit": "4789af8f866900d69939d162f6ded39c52a8228c2b547c07dfa2807332b7a1fb",
+      "commit": "3415ea1bbb9856cae6e46a72b5db27a51e102cd373a54c673153e69de4f16bbe",
       "file": "acasx4_init_s0000.glc",
       "head": {
         "axes": [],
@@ -152,7 +152,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "617ad650bfc9dcd0abe4f0498500dc32334693a27c1c9d280d34eafafa3b245a",
+      "sha256": "b5c8dbf51e6026e2e68daa47c136a0f7fb4b1ffdaf624b9c8f085d5d7cbf5748",
       "source": "fixtures/acasx4_init_s0000.rows.txt",
       "source_sha256": "2a5aff587572f22022861072e00a7c9c8648c627360cc342ff296699afaa4991",
       "transform": {
@@ -194,7 +194,7 @@
         "promiseContractConfined": 1,
         "promiseWiresSeparated": 1
       },
-      "commit": "525771722a52f0009f51c665660bc5e50c8776fd44330ba2a1dacb5e30e71c9f",
+      "commit": "524fcaab070799366a9816da0c031abdbaecb1e465b36139fe960a68d0c3ba92",
       "file": "acasx4_promise_closedloop.glc",
       "head": {
         "axes": [],
@@ -217,7 +217,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "4644e93f526252b122ad6c81829b45e0dd97f56ce7599d1ae1dcf0baecf34ac4",
+      "sha256": "2c1f4676da9c067f87acac4ad9593bf10db123aed724e88ca1d2c2ff64426dfb",
       "source": "fixtures/acasx4_promise_closedloop.rows.txt",
       "source_sha256": "299d1b86c9187a575ccfac56eb6c4d5ecfd88ccd2c6ad4b714a571adf12163a4",
       "transform": {
@@ -259,7 +259,7 @@
         "allForwardDiffBernCoeffsSatisfyP": 6,
         "farkasCombinationValid": 6
       },
-      "commit": "e5b6c0a187f0c8569f085b527f39fbf6082d13d1475e162a3cee64d69132fbf6",
+      "commit": "3b1faa2391177832f31a2431463b7d76047e62b6667e6faecbaa313e45def46b",
       "file": "cartpole_core_decrease_s0001.glc",
       "head": {
         "axes": [],
@@ -282,7 +282,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "e08fce3730ae8a07ab30362b553b7959d2f204b73bb6ef0c7f71aad9a306a7a5",
+      "sha256": "c65e7e3dcf270cff666bf83e60d7ead6b9ad76b2290c4f94fb8fd5fca6819a6a",
       "source": "fixtures/cartpole_core_decrease_s0001.rows.txt",
       "source_sha256": "6b205de68f7f96a01f472a8ca727fc1e9a860646665e62b8c56edb38527125b1",
       "transform": {
@@ -322,7 +322,7 @@
         "allForwardDiffBernCoeffsSatisfyP": 18,
         "farkasCombinationValid": 18
       },
-      "commit": "b326d83b86d2b4699b5b982f72c8d153faf8ec12f3c8274f46a334b0643c126e",
+      "commit": "f7e6871622b55415eb684cd0980e30402d69fd741ace5a0fa696d875af1db159",
       "file": "cartpole_dp_core_decrease.glc",
       "head": {
         "axes": [],
@@ -345,7 +345,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "df4da9bf50cb19c861d311ab3371407ee1a829d2ca4ac83aad32fd392229b605",
+      "sha256": "db5e49bf73dd3b81c70d5f3ba92bf4de83c06f45dced258e4f1b669a76034d88",
       "source": "fixtures/cartpole_dp_core_decrease.rows.txt",
       "source_sha256": "fbcf2303e18a6f9bfb47276d1c5b481a0976825c572188d16f810c9891af516a",
       "transform": {
@@ -384,7 +384,7 @@
       "claims": {
         "allForwardDiffBernCoeffsSatisfyP": 9
       },
-      "commit": "e2897feeffb48b0bd8ba9fe1eb16843ff85b68c301c6c82d8e3fcb40506b9e1f",
+      "commit": "d86d9e032115d96e333fc92dc098628883cc57d7e899dce9d17edb073ce81605",
       "file": "ctmc_fk_mid.glc",
       "head": {
         "axes": [],
@@ -407,7 +407,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "3cfe9d97da0e8da45701d72166d3fed5f2f24be7ab7e21205cc4e1847bfe10de",
+      "sha256": "1285c0de94a6f078cc44626ff81e5031e24a054c737fc39bb2c52a0732a9f77c",
       "source": "fixtures/ctmc_fk_mid.rows.txt",
       "source_sha256": "c58804af7e0087af418b354904bd6bb8ecd66e4972eaeb71c5d4ba0ea79e4754",
       "transform": {
@@ -445,7 +445,7 @@
       "claims": {
         "allForwardDiffBernCoeffsSatisfyP": 1
       },
-      "commit": "9462969f3668a284112f5e79de64aa2fad9fb41544489e6209e277ceec81e2a9",
+      "commit": "2d5e4a4aa641d6cf02d9f2d7b5109e50f9f80336240e72c0fbc360c76158f8ff",
       "file": "ctmc_sis_gen.glc",
       "head": {
         "axes": [],
@@ -468,7 +468,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "62e04701a73b6d7e31dd1333073300c388eed967cd72d7da27c11af8e9a4949d",
+      "sha256": "4ba9a9dc363baa21ea1de7910054d233246b1620229061780dd81f40d5057911",
       "source": "fixtures/ctmc_sis_gen.rows.txt",
       "source_sha256": "0ea88365a93beee055f02d008dcad27fa7e9459101997c96deefe0358c8bc069",
       "transform": {
@@ -509,7 +509,7 @@
         "syzygyCombinationValid": 1,
         "syzygyConclusionFormRel": 1
       },
-      "commit": "0ad26287f33df3e3fa3ae7e5817d7daa3ed0460a8f6d6c75ae915b011b69eb55",
+      "commit": "6f25c3ec27833f31ab7161c5e151c4dc707f625c6b96617edc26b6c8eff9f9a9",
       "file": "dp_composite_eigenrate.glc",
       "head": {
         "axes": [],
@@ -532,7 +532,7 @@
         "syzygyCombinationValid": 1,
         "syzygyConclusionFormRel": 1
       },
-      "sha256": "4594f416e6b0aa1036289b1a8d596a283b58c6ccaf38002dda84460def7ab6ad",
+      "sha256": "0e2ae7fdf72323bd057cf9c604164e762e9f2630ba900ac644b17df3a995e45b",
       "source": "fixtures/dp_composite_eigenrate.rows.txt",
       "source_sha256": "151c3e941641f1fd8a95685a14b14ed253f83a1e62c64738997056bff0f0baf1",
       "transform": {
@@ -576,7 +576,7 @@
         "syzygyCombinationValid": 1,
         "syzygyConclusionFormRel": 1
       },
-      "commit": "edcd82ecebc88219a42ee09a29cb0b61e85625127203cd6b1a67e70e216ae2d1",
+      "commit": "460d7474b24341ee66e39de5c67f063fa8a323fefbbe0bf5d8f26b471341937a",
       "file": "dp_composite_smallgain.glc",
       "head": {
         "axes": [],
@@ -599,7 +599,7 @@
         "syzygyCombinationValid": 1,
         "syzygyConclusionFormRel": 1
       },
-      "sha256": "190d45cb709b6ac06be0538b358a9ddc09d30d4e682916f20cf75cb2b8f72088",
+      "sha256": "8dcbeb6648d41d96ff90a2902344b5cc8875f4546ac5fbe171ead01febc93002",
       "source": "fixtures/dp_composite_smallgain.rows.txt",
       "source_sha256": "a3f4a8d6a86690b84b4a1abe7937b0fd54ad8ffda7ff91a65fb978228fb03a80",
       "transform": {
@@ -644,7 +644,7 @@
         "syzygyCombinationValid": 1,
         "syzygyConclusionFormRel": 1
       },
-      "commit": "2e06c8b354d7f34a7d37535155f686560cd73241baefe2a831b463386e8af476",
+      "commit": "61c9a877ae83567ec87c522ae0d6e9408b33ba5c81eb1a4cc532145682cc551e",
       "file": "dp_composite_syzygy.glc",
       "head": {
         "axes": [],
@@ -667,7 +667,7 @@
         "syzygyCombinationValid": 1,
         "syzygyConclusionFormRel": 1
       },
-      "sha256": "8de803415c6d84d98f89d925b875b0e05ba59f85a783206c065129ecf5ebd870",
+      "sha256": "d0905b728c232fb69cfd379a1c1769c994613605a4843dd1eaf98b5d8c75b4dc",
       "source": "fixtures/dp_composite_syzygy.rows.txt",
       "source_sha256": "a4185231e78ccc2b6ac6ba7066edf2c27369884f416a20b2881ca73e612ab280",
       "transform": {
@@ -708,7 +708,7 @@
       "claims": {
         "enclosureWitnessValid": 1
       },
-      "commit": "387da50c3e54d98223528c19fa3d83b3960fdd85f42eba4cc328f83db40e9e35",
+      "commit": "d16d34b8b710f663e2ea953cf9cf9c2e68f8790b709cafee655fa2645a8d1551",
       "file": "enclosure_v1_golden_cos6.glc",
       "head": {
         "axes": [],
@@ -731,7 +731,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "ba2c00bd73988d85f64d1e236ae6e854958e6fb00b728d6c288929b125e6bef2",
+      "sha256": "1aacd6b1ca748ff00271450dda5714dcd8cf09c078340d8701e59351cf6e3bcd",
       "source": "fixtures/enclosure_v1_golden_cos6.rows.txt",
       "source_sha256": "cdb46e00a080b967bb0c749fd5b5622d83f20d823806d6262748d38976aaa431",
       "transform": {
@@ -763,7 +763,7 @@
         "syzygyCombinationValid": 86,
         "syzygyConclusionFormRel": 86
       },
-      "commit": "beef0ba2b4abf07b940be1782cb5f5a70de0407bcd83cb3d4f1725fb2e40ed2d",
+      "commit": "41cf0647452afb58c6214672b18fcb709d7a411be1732041ae73702582bf5c3e",
       "file": "lti_sampled_flow.glc",
       "head": {
         "axes": [],
@@ -786,7 +786,7 @@
         "syzygyCombinationValid": 86,
         "syzygyConclusionFormRel": 86
       },
-      "sha256": "957d0bda725c41145fd6c417e70f979c3ae438afe77714d1eccb197a916b9e10",
+      "sha256": "70d4cac15f845e9de9986b5a5f3b75666dad4f795b01b0015df50a9cdcfc85f4",
       "source": "fixtures/lti_sampled_flow.rows.txt",
       "source_sha256": "11610deea75f2eed72928dfb5979642a987d44ee42af4de221ec17bae795460d",
       "transform": {
@@ -829,7 +829,7 @@
         "syzygyCombinationValid": 3,
         "syzygyConclusionFormRel": 3
       },
-      "commit": "8b9148469094ab9719029aa359fd6a283239a4acc29a5b4011668bc119429342",
+      "commit": "6546f1e395ea361cf5a99cb90c1773056d85d054df2d2b42a9f500c84bc815f2",
       "file": "micro2_stable.glc",
       "head": {
         "axes": [],
@@ -852,7 +852,7 @@
         "syzygyCombinationValid": 3,
         "syzygyConclusionFormRel": 3
       },
-      "sha256": "1888e8453b533c2b666c73a50664bddeaacff749118d9294cc39722421ac3541",
+      "sha256": "0affbbe10b2b18d0e44f98084bbad1e218159eac8d9dd12b5ed2e07177b8b262",
       "source": "fixtures/micro2_stable.rows.txt",
       "source_sha256": "6a9a0a6ec19f3863ccc0e3ac36527ca8d8df0aeee28ac00056115d4b0feb2d48",
       "transform": {
@@ -895,7 +895,7 @@
         "syzygyCombinationValid": 290,
         "syzygyConclusionFormRel": 290
       },
-      "commit": "6ff971d4836598a36ddc307a5df35192dadcc0ab7068a30ccbbe1357a4c0a3a0",
+      "commit": "bd8ebb274a699c59fe2b98373e007a8b0e9cd77ca20fddac78cf4eb9c45ead26",
       "file": "rode_hold_flow.glc",
       "head": {
         "axes": [],
@@ -918,7 +918,7 @@
         "syzygyCombinationValid": 290,
         "syzygyConclusionFormRel": 290
       },
-      "sha256": "128aa537a60ae2541f203646b9634c4d3544917bb5817a43530bb4bc6255efdc",
+      "sha256": "ca517e9cbb7b5c735014beb0b621f977c8fb6a6b04be6cd043ef363d442c43f2",
       "source": "fixtures/rode_hold_flow.rows.txt",
       "source_sha256": "5a6a387fb701b11d83d7363347ec1358c0b64b6155c8f88941631fdab1b137f9",
       "transform": {
@@ -964,7 +964,7 @@
         "syzygyCombinationValid": 291,
         "syzygyConclusionFormRel": 291
       },
-      "commit": "0c4c8d077450e014e5314cf3c7822703403555bfce091cef81b53b3a3cee1ce9",
+      "commit": "2fda84992335fb8772478f29589ef269650970e8dea2412b9fd5253750c3cde7",
       "file": "rode_nest_shell.glc",
       "head": {
         "axes": [],
@@ -987,7 +987,7 @@
         "syzygyCombinationValid": 291,
         "syzygyConclusionFormRel": 291
       },
-      "sha256": "945d0a5ca8daeddb9491fe6cb7e896eb273eca8547ff7ef3368019151b20882d",
+      "sha256": "0baeaaf9e0b6c6a3929a018964b14d6e2dbec4e0d70285287dd7f77c0add106f",
       "source": "fixtures/rode_nest_shell.rows.txt",
       "source_sha256": "1c3c0e5ad24df830e01cf953a90c961fc66a384c9b34da7645857ebcba1f1433",
       "transform": {
@@ -1029,7 +1029,7 @@
       "claims": {
         "allForwardDiffBernCoeffsSatisfyP": 36
       },
-      "commit": "6bf682f84d2f775bd0a653e4ece2676ea854d65250e7be4696667e35c89d6234",
+      "commit": "0dfa690015ad8b2a896753c4dc18f7f4254e0bf0f98f1a2e860a11dec204d581",
       "file": "rode_uniform_decrease.glc",
       "head": {
         "axes": [],
@@ -1052,7 +1052,7 @@
         "syzygyCombinationValid": 0,
         "syzygyConclusionFormRel": 0
       },
-      "sha256": "d4b0ec0d0df799727056f834e659498e5ad57f4dd782308fe9ab0f19987e9e26",
+      "sha256": "5a983a980af84cb4caf01e3a9684f12c402a50023d7a764e9845cf821a08d986",
       "source": "fixtures/rode_uniform_decrease.rows.txt",
       "source_sha256": "693484311a97e86b8e1e827b9593c6178bbe3b3169fe72f5fb868529822352fa",
       "transform": {

@@ -444,12 +444,16 @@ function stripMachineMarks(text: string): string {
 // for.  An alternate row's published cells apply to its parent (the
 // row above); `alt` carries the display label.  Parents and order are
 // the sweep record's; the row universe is pinned to the campaign's
-// master reconciliation table (SWEEP.md) — the one alternate WITHOUT
-// receipts here (the persist_2d gaussian twin, envelope-passed but
-// not yet certified) stays in prose, not in the table.
+// master reconciliation table (SWEEP.md).  The persist_2d gaussian
+// twin entered as an alternate row at the row's uniform re-conduct
+// (out/glc-baked/persist2d — both twins' certificates are sealed
+// containers in this repository, checked by the fast-path checker
+// with exact claim tallies).
 type SweepSpec = { key: string; alt?: string; parent?: string };
 const SWEEP_ORDER: SweepSpec[] = [
   { key: "persist_2d" },
+  { key: "persist_2d__gaussian", parent: "persist_2d",
+    alt: "gaussian twin" },
   { key: "faulty_marbles" },
   { key: "faulty_unreliable" },
   { key: "faulty_regions" },
@@ -514,15 +518,21 @@ function collectSweepRows(): Record<string, SweepRow> {
     offer(row.benchmark, frac(row.house_bound_exact));
   }
 
-  // persist_2d (uniform twin, the primary reading): its per-file receipt
-  // bundle has not migrated into this repository yet; the sweep record
-  // (supermartingales/out/sweep/SWEEP.md, discrepancy log item 7)
-  // carries the exact certified bound fraction, which we parse rather
-  // than transcribe.
+  // persist_2d twins: the certificate corpus lives in this repository
+  // since the uniform re-conduct (out/glc-baked/persist2d — sealed
+  // forest containers + committed listings, both twins); the exact
+  // certified bound FRACTIONS remain carried by the sweep record
+  // (supermartingales/out/sweep/SWEEP.md, discrepancy log items 7–8,
+  // re-verified there at fold-in), which we parse rather than
+  // transcribe.
   const sweepMd = readText("supermartingales/out/sweep/SWEEP.md");
   const m = /exact\s+bound\s+fraction\s*\$(\d+\/\d+)\$/.exec(sweepMd);
   if (m !== null) {
     offer("persist_2d", frac(m[1]));
+  }
+  const mg = /exact\s+bound\s*\$(\d+\/\d+)\$\s+reproduces\s+float\s+0\.09752504/.exec(sweepMd);
+  if (mg !== null) {
+    offer("persist_2d__gaussian", frac(mg[1]));
   }
 
   // the two-sided faulty_uniform row: certified upper AND lower bounds.
@@ -871,7 +881,20 @@ type RetimeContext = {
   lane: "gpu" | "host" | "geolog";
 };
 
-type ManifestCertificate = { benchmark: string; sha256: string };
+/** `prior_sha256s` (optional, append-only, oldest first): byte vintages of
+ * the SAME semantic content from earlier theory-revision re-keys — each
+ * re-key ships a RESEAL note beside the manifest with the cross-vintage
+ * semantic-identity receipts. A timing receipt is a frozen record of its
+ * own run, so it may cite the vintage it actually measured; anything
+ * matching neither the current sha nor a recorded prior vintage refuses
+ * exactly as before. */
+type ManifestCertificate = { benchmark: string; sha256: string; prior_sha256s?: string[] };
+
+/** The sha family a receipt may lawfully cite for one benchmark. */
+function manifestShaFamily(cert: ManifestCertificate): string[] {
+  const priors = Array.isArray(cert.prior_sha256s) ? cert.prior_sha256s : [];
+  return [cert.sha256, ...priors];
+}
 
 const SHA256_RE = /^[0-9a-f]{64}$/;
 const LEGACY_RETIME_SECTION = "sec2";
@@ -1074,14 +1097,20 @@ function validateRetimeReceipt(
       }
       assert(row.byte_identical === true, `${ctx.rel}: ${bench} is not byte-identical`);
       const sha = stableSha(row.sha256, `${ctx.rel}: ${bench}`);
-      assert(sha === manifest.get(bench)!.sha256, `${ctx.rel}: ${bench} sha256 differs from manifest`);
+      assert(
+        manifestShaFamily(manifest.get(bench)!).includes(sha),
+        `${ctx.rel}: ${bench} sha256 differs from manifest (current + prior vintages)`,
+      );
     } else {
       assert(row.warmup === undefined || row.warmup === false, `${ctx.rel}: geolog warmup forbidden`);
       finiteNonnegative(row.wall_s, `${ctx.rel}: ${bench} wall_s`);
       assert(row.accept === true, `${ctx.rel}: ${bench} geolog did not accept`);
       if (!legacy) {
         const sha = stableSha(row.container_sha256, `${ctx.rel}: ${bench}`);
-        assert(sha === manifest.get(bench)!.sha256, `${ctx.rel}: ${bench} container sha differs from manifest`);
+        assert(
+          manifestShaFamily(manifest.get(bench)!).includes(sha),
+          `${ctx.rel}: ${bench} container sha differs from manifest (current + prior vintages)`,
+        );
       }
     }
   }
@@ -2311,6 +2340,7 @@ const REFERENCE: Record<string, string> = {
   // win-tint ladder on the ratio column)
   "sweep-table": String.raw`
 \texttt{persist\_2d} \tdemph{(uniform twin)} & $0.1026$ & $\le 0.1000992$ & \cellcolor{winA}$1.02\times$ \\
+\altrow\tdemph{gaussian twin} &  & $\le 0.0975251$ & \cellcolor{winA}$1.05\times$ \\
 \texttt{faulty\_marbles} & $0.0649$ & $\le 0.0623604$ & \cellcolor{winA}$1.04\times$ \\
 \texttt{faulty\_unreliable} & $0.0536$ & $\le 0.0516561$ & \cellcolor{winA}$1.04\times$ \\
 \texttt{faulty\_regions} & $0.0411$ & $\le 0.0406530$ & \cellcolor{winA}$1.01\times$ \\
@@ -2355,6 +2385,7 @@ const REFERENCE: Record<string, string> = {
   "sweep-times-table": String.raw`
 
 \texttt{persist\_2d} \tdemph{(uniform twin)} & ---$^{\,\text{a}}$ & $254.5$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ \\
+\altrow\tdemph{gaussian twin} & ---$^{\,\text{a}}$ &  & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ & ---$^{\,\text{a}}$ \\
 \texttt{faulty\_marbles} & $23$ & $44.5$ & $0.042^{\,\text{gb10-quiet/host}}$ & $0.052^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
 \texttt{faulty\_unreliable} & $29$ & $52.3$ & $0.063^{\,\text{gb10-quiet/host}}$ & $0.054^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\
 \texttt{faulty\_regions} & $29$ & $49.9$ & $0.072^{\,\text{gb10-quiet/host}}$ & $0.056^{\,\text{gb10}}$ & ---$^{\,\text{c}}$ \\

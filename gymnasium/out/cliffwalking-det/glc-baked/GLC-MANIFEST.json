@@ -12,7 +12,7 @@
       "expected": "ACCEPT",
       "face": "SProbGE",
       "file": "hitting_exact_T13.glc",
-      "glc_sha256": "2bd0fc90e2baecd5de1f705a9dda26eb17c837b578439bfc643a520271741593",
+      "glc_sha256": "668b78a01d857c606cbcab2c88ad3f9eb9853a0c2ecf3b4102e5496c0ed7e65e",
       "selection": "0:0 1:1 2:1 3:1 4:1 5:1 6:1 7:1 8:1 9:1 10:1 11:2 12:1 13:1 14:1 15:1 16:1 17:1 18:1 19:1 20:1 21:1 22:1 23:2 24:1 25:1 26:1 27:1 28:1 29:1 30:1 31:1 32:1 33:1 34:1 35:2 36:0 37:0 38:0 39:0 40:0 41:0 42:0 43:0 44:0 45:0 46:1 47:loop",
       "source_cert": "gymnasium/out/cliffwalking-det/hitting_exact_T13.cbor"
     }

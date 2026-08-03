@@ -111,7 +111,15 @@ gate by the independent downstream checker:
 | BothRoutes | a second warrant route on the same claim | `qtsl_cert_claim_wf` — route exclusivity |
 | AlienComponent | warranted formula not among the specification's components | `qtsl_warrant_member` |
 | MemberDrop | membership claim row deleted outright | the count table (`--expect-claims`) — the bare file ACCEPTs, and the driver asserts **both** verdicts: per-obligation discharge alone cannot see whole-row deletion; the manifest's counts can |
-| RootTieBreak | warrant formula ≠ specification root component | **accepted by the claim walk, BY DESIGN** — see below |
+
+A seventh specimen, RootTieBreak (warrant formula ≠ specification root
+component, accepted by the claim walk BY DESIGN), documented the claim
+walk's reach boundary through revision event 6.1 and retired at the
+event-7 re-emission: the event-6 theory revision rekeyed the warrant
+onto an entity whose component attribute IS the citation, so the tie
+divergence the specimen exercised became unrepresentable — the boundary
+it recorded is now enforced one stratum earlier, by the vocabulary
+itself.
 
 ## Scope honesty
 
@@ -119,14 +127,13 @@ Two obligations of the guarded former live at the theory stratum, above
 this family's claim rows, and are stated rather than smuggled:
 
 - **the root tie** (the warrant's formula is the specification's
-  component, as a hash-consed-image equality) is checked by the theory
-  engine's own chase, which refuses the RootTieBreak specimen loudly
-  under a named no-confusion rule; mechanized countermodels for the
-  wrong-region and dropped-membership loci ride the upstream theory
-  repository's proof battery. The claim walk documents its blindness
-  here instead of approximating the check — the specimen is committed
-  (as a manifest row) precisely so the reach boundary stays
-  machine-checked;
+  component, as a hash-consed-image equality) is enforced by the
+  vocabulary since revision event 6 — the warrant entity's component
+  attribute IS the citation, so a divergent tie cannot be stated
+  (the retired RootTieBreak specimen, above, machine-checked this
+  boundary while it was still expressible); mechanized countermodels
+  for the wrong-region and dropped-membership loci ride the upstream
+  theory repository's proof battery;
 - **the warrant's semantic content** (φ holds throughout R) is a
   theory-stratum discharge. In this corpus it is honest by
   construction: R is the degenerate box at m₀ and φ is the invariant

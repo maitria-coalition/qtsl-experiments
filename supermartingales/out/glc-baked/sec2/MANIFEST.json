@@ -1,6 +1,6 @@
 {
  "container": "geologfl v1 (.glc), single commit per benchmark; shared Bernstein Logic subtrees (proof hypernet: element in-degree above one), baked closure prereqs",
- "closure": "qc revision 6862edc88ff1d788550d196078a28cb2fe971f10d478a5e32800f2892a7292b9",
+ "closure": "qc revision 9952506dd2491e880a6107471a1ca92f66a4a33a64a8cc250833d00402e3b0e6",
  "producer": "mtk supermartingale forest strategy (structural hash-consing across per-listing towers; duplicate listings collapse to one representative, ledgered in the emission unit's produce notes)",
  "per_tree_extraction": "qtsl2bl --expand <benchmark>.glc --store <baked store> --out-dir D duplicates shared subtrees back into one container per proof tree; tree-shaped checkers consume the expansion unchanged",
  "equivalence": "expansion row multisets are identical to the per-listing emission modulo local element renumbering (renaming-invariant digest match, all trees, all benchmarks; cliff_crossing carries 11 duplicate-content listing pairs, collapsed with ledger); the geolog checker ACCEPTs both forms at equal claim tallies",
@@ -8,82 +8,106 @@
   {
    "benchmark": "cliff_crossing",
    "file": "cliff_crossing.glc",
-   "sha256": "fcc1712bce53169fef607d2dc474197bdc7850639c32bf63d9cd0ae9ff0ab037",
+   "sha256": "17008933b4278aa0a541a9faa011cb14608037c01f978597cfd73776bc925a8d",
    "bytes": 136033,
    "proof_trees": 1105,
    "distinct_trees": 1094,
    "claims": 2188,
-   "ops": 113668
+   "ops": 113668,
+   "prior_sha256s": [
+    "fcc1712bce53169fef607d2dc474197bdc7850639c32bf63d9cd0ae9ff0ab037"
+   ]
   },
   {
    "benchmark": "faulty_concave",
    "file": "faulty_concave.glc",
-   "sha256": "a02557c11f3e271025144a4b5dc83e5b8f250c1e64d6f3b344fc195752c3c957",
+   "sha256": "fdc590b81031a6e65238812b3c4fef5760af17a837824289c59183c12ee09e65",
    "bytes": 5042,
    "proof_trees": 38,
    "distinct_trees": 38,
    "claims": 76,
-   "ops": 3906
+   "ops": 3906,
+   "prior_sha256s": [
+    "a02557c11f3e271025144a4b5dc83e5b8f250c1e64d6f3b344fc195752c3c957"
+   ]
   },
   {
    "benchmark": "faulty_varying",
    "file": "faulty_varying.glc",
-   "sha256": "8ea73f1a9de1174290c21c166f753f28ddbfbebea024a102274bd667f454d7a8",
+   "sha256": "5d1e97990f1a639b885ca5c9b486914afdf64cbeb2da41e7df76537ee7e45b66",
    "bytes": 5066,
    "proof_trees": 38,
    "distinct_trees": 38,
    "claims": 76,
-   "ops": 3906
+   "ops": 3906,
+   "prior_sha256s": [
+    "8ea73f1a9de1174290c21c166f753f28ddbfbebea024a102274bd667f454d7a8"
+   ]
   },
   {
    "benchmark": "faulty_varying__last_step",
    "file": "faulty_varying__last_step.glc",
-   "sha256": "8fccf943b471782968b56e33e794e392b7b95f85437211930c4c646c57abf628",
+   "sha256": "ecc0f278057a45e8254b40a4cec11b3bd9a3840b4e46702d86fe168c90e4f38d",
    "bytes": 5077,
    "proof_trees": 38,
    "distinct_trees": 38,
    "claims": 76,
-   "ops": 3906
+   "ops": 3906,
+   "prior_sha256s": [
+    "8fccf943b471782968b56e33e794e392b7b95f85437211930c4c646c57abf628"
+   ]
   },
   {
    "benchmark": "repulse100",
    "file": "repulse100.glc",
-   "sha256": "05f184b67b910d5d3d5e44e6e3dae616eb9afc5b12c277d33e1707f56b8e694e",
+   "sha256": "54b1fa33be3d9a380f26cc377ff0d7148e95c7bb300a8439f45c6da363b888a2",
    "bytes": 9773,
    "proof_trees": 207,
    "distinct_trees": 207,
    "claims": 207,
-   "ops": 7593
+   "ops": 7593,
+   "prior_sha256s": [
+    "05f184b67b910d5d3d5e44e6e3dae616eb9afc5b12c277d33e1707f56b8e694e"
+   ]
   },
   {
    "benchmark": "repulse100_2d",
    "file": "repulse100_2d.glc",
-   "sha256": "fae157d9981897cc16269db7b71a36b3979174bd255c0686dacfd5a0d4000ff7",
+   "sha256": "f4feda45d7d0526df7b5b29165fac00870c91330f842ae1692ad4096df785bfe",
    "bytes": 240974,
    "proof_trees": 2267,
    "distinct_trees": 2267,
    "claims": 4534,
-   "ops": 230684
+   "ops": 230684,
+   "prior_sha256s": [
+    "fae157d9981897cc16269db7b71a36b3979174bd255c0686dacfd5a0d4000ff7"
+   ]
   },
   {
    "benchmark": "repulse100_uniform",
    "file": "repulse100_uniform.glc",
-   "sha256": "83366b2f00c2167875754f23aff85c90f72c0ee45afed70d7caf056cb749829a",
+   "sha256": "22f563af52b1758339cc93f861c2a2f9ee146c62647fb74184fc3e99827653eb",
    "bytes": 90121,
    "proof_trees": 205,
    "distinct_trees": 205,
    "claims": 205,
-   "ops": 15808
+   "ops": 15808,
+   "prior_sha256s": [
+    "83366b2f00c2167875754f23aff85c90f72c0ee45afed70d7caf056cb749829a"
+   ]
   },
   {
    "benchmark": "repulse100_uniform__discrete",
    "file": "repulse100_uniform__discrete.glc",
-   "sha256": "6d1db972d23a86dc5d10a783765f2fed4f2af510662ee23c12c50efe961d9f05",
+   "sha256": "38d63c5444d96deb789f9e7f08c0060e5b8f142a52a63a22effe03226d7c172f",
    "bytes": 12089,
    "proof_trees": 207,
    "distinct_trees": 207,
    "claims": 207,
-   "ops": 7593
+   "ops": 7593,
+   "prior_sha256s": [
+    "6d1db972d23a86dc5d10a783765f2fed4f2af510662ee23c12c50efe961d9f05"
+   ]
   }
  ]
 }
