@@ -5,8 +5,10 @@ The comparison set began as the three-program table the Diabolo paper
 residual-mass semantics against GuBPI, both tools "configured to
 produce the same bounds," and has since grown case by case: the PSI
 burglar alarm and the Beauquier–Gradinariu–Johnen token ring from the
-GuBPI suite, and the coupon-collector, Israeli–Jalfon, and 3-D
-asymmetric-random-walk EV cases from the Diabolo suite. Sources are
+GuBPI suite, the coupon-collector, Israeli–Jalfon, and 3-D
+asymmetric-random-walk EV cases from the Diabolo suite, and Herman's
+3-process self-stabilization ring — the first case present in BOTH
+baselines' suites (Diabolo `psi/herman3`, GuBPI `herman-3`). Sources are
 vendored verbatim from each baseline's repository (both MIT; the
 original trio byte-identical to the Zenodo artifact,
 10.5281/zenodo.14169507 — all six files diffed). For the original
@@ -222,6 +224,49 @@ inequalities by the class-collapse side condition.
 Ground truth: no closed form; the float linear-solve oracle gives
 $\approx 16.69099$, the $10^6$-path differential agrees, and the
 exact bracket at horizon 200 is $[16.690028724,\ 16.702938972]$.
+
+## 9. Herman's self-stabilization, 3 processes (`herman3`)
+
+Source (Diabolo `benchmarks/psi/herman3.sgcl`, vendored verbatim,
+originally from the PSI benchmark collection; the SAME program is the
+GuBPI suite's Sankaranarayanan-18 member
+`benchmarks/ProbEstimation/herman-3/` — the comparison set's first
+case that BOTH baselines run): three bits sampled iid fair; while
+$p_1 + p_2 + p_3 \ne 1$, one synchronous round — process $i$ compares
+its own (still-old) value with the OLD snapshot of its ring
+predecessor ($1 \leftarrow 3$, $2 \leftarrow 1$, $3 \leftarrow 2$);
+equal $\Rightarrow$ resample fair, different $\Rightarrow$ copy the
+predecessor's old value — incrementing `count` per round; return
+count. Unlike israeli-jalfon4's sequential blocks, the round is
+genuinely synchronous BY THE SOURCE (every later block reads
+`oldprocess*` snapshots) — asserted by the one-step
+direct-transcription oracle, and the cross-program tooth is exactly
+the snapshot-DROPPING slip (blocks reading already-updated neighbor
+values), refused by the translation differential.
+
+Chain encoding: **time-homogeneous**; states are the 8 packed bit
+configurations plus a START state carrying the Bernoulli$(1/2)^3$
+prologue as one 8-outcome row (8 wire states, 24 stored rows). Two
+terminal classes, beauquier-style: class 0 = `count < 1` (absorption
+on the START transition — GuBPI's Q1 query), class 1 =
+`count >= 1`. Score-free; posterior brackets coincide with the
+unnormalized ones. With the prologue the chain absorption time is
+$T = \mathit{count} + 1$ on every path, so the EV certificate
+carries **anchor-offset 1**. The queries compared: the first moment
+of `count` against Diabolo's EV row, and $P[\mathit{count} < 1] =
+3/8$ against GuBPI's Q1.
+
+Ground truth: $\mathbb{E}[\mathit{count}] = 4/3$ by the exact
+linear-solve oracle over the 5 alive configurations (per-state:
+$2$ from each two-one configuration, $7/3$ from $000$ and $111$),
+matching the vendored source's own header comment;
+$P[\mathit{count} > n] = (3/4)(1/2)^n - (1/8)(1/4)^n$ exactly; alive
+spectral radius exactly $1/2$. The eigen-tight weights ($1$ on the
+two-one configurations, $3/2$ on $000$, $111$, and START) make every
+transfer row an equality — but, unlike israeli-jalfon4, the
+above-floor states RECUR, so the geometric tail bound is sound
+without being achieved and the EV upper endpoint exceeds the truth
+by exactly $(1/6)\,4^{-(N-1)}$ at horizon $N$.
 
 ## Translation validity
 

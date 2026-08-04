@@ -141,6 +141,34 @@ pub fn ev_template(name: &str) -> Option<EvTemplate> {
                 offset: 1,
             })
         }
+        // eigen-tight regional certificate with the unit floor for
+        // the synchronous 3-ring (the alive-mass face, kappa = 1):
+        // gamma = 1/2, the alive spectral radius; weights 1 on the
+        // three two-one configurations, 3/2 on the uniform-resample
+        // states 000 and 111, 3/2 on the START prologue state. Every
+        // transfer row holds with EQUALITY. Offset 1: the
+        // Bernoulli(1/2)^3 prologue is one deterministic transition,
+        // T = count + 1. UNLIKE ij4, the above-floor states RECUR, so
+        // the achieved tail sits strictly below the bound and the EV
+        // upper endpoint exceeds the truth — by exactly
+        // (1/6) 4^-(N-1) at horizon N.
+        "herman3" => {
+            let weights: Vec<(String, Q)> = [0u64, 3, 5, 6, 7, 8]
+                .iter()
+                .map(|&c| {
+                    let w = match c {
+                        0 | 7 | 8 => Q::new(3.into(), 2.into()),
+                        _ => Q::one(), // the two-one configurations
+                    };
+                    (format!("s{c}"), w)
+                })
+                .collect();
+            Some(EvTemplate {
+                weights,
+                gamma: Q::new(1.into(), 2.into()),
+                offset: 1,
+            })
+        }
         _ => None,
     }
 }
@@ -1055,6 +1083,132 @@ mod tests {
 
         // scale-doubled positive control: all weights doubled, claims
         // unchanged — kappa halves the doubled mass back, ACCEPT
+        let mut scaled = String::new();
+        for line in cert.lines() {
+            let toks: Vec<&str> = line.split_whitespace().collect();
+            match toks.as_slice() {
+                ["weight", s, w] => {
+                    let w = parse_q(w).unwrap() * Q::new(2.into(), 1.into());
+                    scaled.push_str(&format!("weight {s} {}/{}\n", w.numer(), w.denom()));
+                }
+                ["M", v] => {
+                    let v = parse_q(v).unwrap() * Q::new(2.into(), 1.into());
+                    scaled.push_str(&format!("M {}/{}\n", v.numer(), v.denom()));
+                }
+                _ => {
+                    scaled.push_str(line);
+                    scaled.push('\n');
+                }
+            }
+        }
+        assert_eq!(
+            check_evcert(&spec, &scaled),
+            Verdict::Accept { claims: (1, 1, 1) },
+            "scale-doubled must ACCEPT (kappa-normalized floor face)"
+        );
+    }
+
+    // ------------------------------------------------------- herman3
+
+    fn h3_spec_and_cert() -> (Vec<u8>, String) {
+        let spec = emit_spec(&crate::Herman3, 31).into_bytes();
+        let cert = emit_evcert(&crate::Herman3, 31, &spec);
+        (spec, cert)
+    }
+
+    #[test]
+    fn herman3_round_trip_accepts() {
+        let (spec, cert) = h3_spec_and_cert();
+        assert!(cert.contains("offset 1"), "offset line must be emitted");
+        assert!(
+            cert.contains("gamma 1/2"),
+            "gamma is the alive spectral radius"
+        );
+        assert_eq!(
+            check_evcert(&spec, &cert),
+            Verdict::Accept { claims: (1, 1, 1) }
+        );
+    }
+
+    #[test]
+    fn herman3_bracket_contains_truth_and_is_tight() {
+        let (_, cert) = h3_spec_and_cert();
+        let parsed = parse_cert(&cert).unwrap();
+        let truth = Q::new(4.into(), 3.into());
+        assert!(parsed.ev.0 <= truth && truth <= parsed.ev.1);
+        let width = (parsed.ev.1.clone() - parsed.ev.0.clone())
+            .to_f64()
+            .unwrap();
+        assert!(width < 1.4e-9, "width {width}");
+        // kappa = 1 (alive-mass face): M is the eigen-tight
+        // (3/2) 2^-31 and ev-upper minus partial equals 2 M
+        let two_m = Q::new(2.into(), 1.into()) * parsed.m.clone();
+        assert_eq!(parsed.ev.1.clone() - parsed.partial_lo.clone(), two_m);
+        // the DISANALOGY with ij4, preregistered: the upper endpoint
+        // sits STRICTLY above the truth (recurrent above-floor
+        // states), by exactly (1/6) 4^-30
+        let mut excess = Q::new(1.into(), 6.into());
+        for _ in 0..30 {
+            excess = excess * Q::new(1.into(), 4.into());
+        }
+        assert_eq!(parsed.ev.1.clone() - truth, excess);
+    }
+
+    /// The herman3 faces of the preregistered loci (the artifact
+    /// battery reruns the same loci through the committed files).
+    #[test]
+    fn herman3_mutant_loci_land_in_class() {
+        let (spec, cert) = h3_spec_and_cert();
+        let refused = |c: &str| matches!(check_evcert(&spec, c), Verdict::Refuse(_));
+        let failed = |c: &str| matches!(check_evcert(&spec, c), Verdict::Fail(_));
+
+        // offset-early: k = 2 claims a 2-step deterministic prologue,
+        // but P[T > 1] = 5/8
+        let early = cert.replace("offset 1", "offset 2");
+        assert!(refused(&early), "offset-early must REFUSE");
+
+        // offset-dropped: the warranted assembly gains the prologue's
+        // survival mass 1, so the kept ev-hi sits below it
+        let dropped = cert.replace("offset 1\n", "");
+        assert!(failed(&dropped), "offset-dropped must FAIL");
+
+        // template sign side-conditions
+        let gamma_neg = cert.replace("gamma 1/2", "gamma -1/2");
+        assert!(refused(&gamma_neg), "gamma-neg must REFUSE");
+
+        // contraction rate tightened past the spectral radius
+        let c_tight = cert.replace("gamma 1/2", "gamma 1/3");
+        assert!(failed(&c_tight), "c-tighter must FAIL");
+
+        // a reachable alive state's weight zeroed
+        let w_zero = cert.replace("weight s3 1/1", "weight s3 0/1");
+        assert!(refused(&w_zero), "w-zero must REFUSE");
+
+        // no-re-entry face: a stored row from the count >= 1 class
+        // back into the alive region, certificate re-bound so the
+        // shape check is what refuses
+        let spec_txt = String::from_utf8(spec.clone()).unwrap();
+        let marker = "\"rows\": [\n";
+        let reentry = spec_txt
+            .replacen(
+                marker,
+                &format!("{marker}      [\"done_1\", \"s3\", \"1/1\"],\n"),
+                1,
+            )
+            .into_bytes();
+        assert_ne!(reentry, spec, "mutant must change the spec bytes");
+        let rebound = emit_evcert(&crate::Herman3, 31, &reentry);
+        match check_evcert(&reentry, &rebound) {
+            Verdict::Refuse(msg) => {
+                assert!(
+                    msg.contains("outgoing rows"),
+                    "re-entry must refuse at the terminal-rows recompute, got: {msg}"
+                );
+            }
+            other => panic!("re-entry must REFUSE, got {other:?}"),
+        }
+
+        // scale-doubled positive control (kappa-normalized floor face)
         let mut scaled = String::new();
         for line in cert.lines() {
             let toks: Vec<&str> = line.split_whitespace().collect();

@@ -235,6 +235,68 @@ pub fn sim_israeli_jalfon4(rng: &mut SplitMix64, cap: u32) -> Outcome {
     }
 }
 
+/// herman3, source semantics: a LITERAL transcription of the vendored
+/// `.sgcl` — the nested or-condition blocks exactly as written (the
+/// oracles confirm the guards decode to "resample iff p_i equals the
+/// old predecessor value"; the transcription keeps the source's
+/// branch structure rather than the simplification so the
+/// differential binds to the TEXT). Every block reads `oldprocess*`
+/// snapshots, so the round is synchronous by the source. Cap counts
+/// CHAIN transitions: the initial three-bit sample is transition 1
+/// (sum == 1 there is count = 0), each loop round one further
+/// transition — the returned Class is the chain absorption time
+/// T = count + 1.
+pub fn sim_herman3(rng: &mut SplitMix64, cap: u32) -> Outcome {
+    let mut used = 0u32;
+    if used >= cap {
+        return Outcome::AliveAtCap;
+    }
+    let mut p1 = rng.below(2);
+    let mut p2 = rng.below(2);
+    let mut p3 = rng.below(2);
+    used += 1;
+    loop {
+        if p1 + p2 + p3 == 1 {
+            return Outcome::Class(used);
+        }
+        if used >= cap {
+            return Outcome::AliveAtCap;
+        }
+        let (o1, o2, o3) = (p1, p2, p3);
+        // `if process1 = 0 or oldprocess3 = 1 { if process1 = 1 or
+        // oldprocess3 = 0 { resample } else { := oldprocess3 } } else
+        // { := oldprocess3 }` — and cyclically for 2 <- 1, 3 <- 2.
+        p1 = if p1 == 0 || o3 == 1 {
+            if p1 == 1 || o3 == 0 {
+                rng.below(2)
+            } else {
+                o3
+            }
+        } else {
+            o3
+        };
+        p2 = if p2 == 0 || o1 == 1 {
+            if p2 == 1 || o1 == 0 {
+                rng.below(2)
+            } else {
+                o1
+            }
+        } else {
+            o1
+        };
+        p3 = if p3 == 0 || o2 == 1 {
+            if p3 == 1 || o2 == 0 {
+                rng.below(2)
+            } else {
+                o2
+            }
+        } else {
+            o2
+        };
+        used += 1;
+    }
+}
+
 /// 3d-asym-rw, source semantics: a LITERAL transcription of the
 /// vendored SGCL text — `if flip(1/3) {x} else if flip(1/2) {y} else
 /// {z}` as two exact Bernoulli draws, the move as `flip(1/4)` up else
@@ -833,6 +895,174 @@ mod tests {
             r.worst_sigma,
             r.rows
         );
+    }
+
+    // ------------------------------------------------------- herman3
+
+    #[test]
+    fn herman3_time_differential() {
+        let surv = survival_masses(&Herman3, 31);
+        let r = differential_times(sim_herman3, &surv, 1_000_000, 0xD1CE_5EED);
+        // T = 1 (count 0, mass 3/8) through the geometric bulk are
+        // inside the >=16-hits gate
+        assert!(
+            r.rows.iter().any(|(l, ..)| l == "time 1")
+                && r.rows.iter().any(|(l, ..)| l == "time 10"),
+            "return-distribution rows must be compared, rows {:?}",
+            r.rows
+        );
+        assert!(
+            r.worst_sigma < 4.0,
+            "worst sigma {} rows {:?}",
+            r.worst_sigma,
+            r.rows
+        );
+    }
+
+    /// One-step direct-transcription oracle: for every alive
+    /// configuration, evolve one synchronous round over NAMED
+    /// variables (p1, p2, p3, old snapshots — no bit packing, no
+    /// shared helper), the source's guard structure verbatim, for all
+    /// coin assignments, and compare the exact successor distribution
+    /// against the chain rows.
+    #[test]
+    fn herman3_one_step_matches_direct_transcription() {
+        type Cfg = (u64, u64, u64);
+        let step_direct = |old: Cfg| -> Vec<(Cfg, Q)> {
+            let (o1, o2, o3) = old;
+            // each process independently: resample (branch over both
+            // coin values) when the source's nested guards pass, else
+            // copy the old predecessor value
+            let arm = |cur: u64, pred: u64| -> Vec<(u64, Q)> {
+                let resamples = if cur == 0 || pred == 1 {
+                    cur == 1 || pred == 0
+                } else {
+                    false
+                };
+                if resamples {
+                    vec![(0, q(1, 2)), (1, q(1, 2))]
+                } else {
+                    vec![(pred, Q::one())]
+                }
+            };
+            let mut outs: Vec<(Cfg, Q)> = Vec::new();
+            for (n1, w1) in arm(o1, o3) {
+                for (n2, w2) in arm(o2, o1) {
+                    for (n3, w3) in arm(o3, o2) {
+                        outs.push(((n1, n2, n3), w1.clone() * w2.clone() * w3.clone()));
+                    }
+                }
+            }
+            outs
+        };
+        for x in (0..8u64).filter(|&x| h3_ones(x) != 1) {
+            let old = ((x >> 2) & 1, (x >> 1) & 1, x & 1);
+            let mut direct: BTreeMap<Option<u64>, Q> = BTreeMap::new();
+            for (c, w) in step_direct(old) {
+                let packed = (c.0 << 2) | (c.1 << 1) | c.2;
+                let key = if c.0 + c.1 + c.2 == 1 {
+                    None // absorbed (count >= 1)
+                } else {
+                    Some(packed)
+                };
+                *direct.entry(key).or_insert_with(Q::zero) += w;
+            }
+            let mut chain: BTreeMap<Option<u64>, Q> = BTreeMap::new();
+            for (dst, w) in Herman3.succ(x, 0) {
+                let key = match dst {
+                    Dst::Alive(y) => Some(y),
+                    Dst::Done(1) => None,
+                    other => panic!("unexpected dst {other:?}"),
+                };
+                *chain.entry(key).or_insert_with(Q::zero) += w;
+            }
+            assert_eq!(direct, chain, "one-step divergence at config {x:03b}");
+        }
+    }
+
+    /// The cross-program tooth for the 3-ring: the realistic
+    /// transcription slip of DROPPING THE SNAPSHOTS — each block
+    /// reading its predecessor's CURRENT (possibly already-updated)
+    /// value instead of `oldprocess*` — yields an internally-green
+    /// chain (probability rows, clean DP, its own eigen-tight
+    /// certificate would even exist) with different dynamics: from
+    /// 110 the true round reaches {001, 011} while the slipped one
+    /// reaches {000, 001}. The translation differential is the
+    /// instrument that refuses it.
+    struct Herman3SnapshotSlip;
+
+    impl Chain for Herman3SnapshotSlip {
+        fn init(&self) -> u64 {
+            H3_START
+        }
+        fn succ(&self, x: u64, _t: u32) -> Vec<(Dst, Q)> {
+            if x == H3_START {
+                return Herman3.succ(x, 0);
+            }
+            let (o1, o2, o3) = ((x >> 2) & 1, (x >> 1) & 1, x & 1);
+            // sequential, snapshots dropped: block i compares with
+            // the CURRENT predecessor value (block 1 still sees o3 —
+            // process3 not yet updated in a 1-2-3 pass over old p3;
+            // the slip bites at blocks 2 and 3)
+            let mut outs: Vec<((u64, u64, u64), Q)> = vec![((o1, o2, o3), Q::one())];
+            let step =
+                |outs: Vec<((u64, u64, u64), Q)>, which: usize| -> Vec<((u64, u64, u64), Q)> {
+                    outs.into_iter()
+                        .flat_map(|(c, w)| {
+                            let (cur, pred) = match which {
+                                1 => (c.0, c.2),
+                                2 => (c.1, c.0),
+                                _ => (c.2, c.1),
+                            };
+                            let set = |c: (u64, u64, u64), v: u64| match which {
+                                1 => (v, c.1, c.2),
+                                2 => (c.0, v, c.2),
+                                _ => (c.0, c.1, v),
+                            };
+                            if cur == pred {
+                                vec![(set(c, 0), w.clone() * q(1, 2)), (set(c, 1), w * q(1, 2))]
+                            } else {
+                                vec![(set(c, pred), w)]
+                            }
+                        })
+                        .collect()
+                };
+            let outs = step(outs, 1);
+            let outs = step(outs, 2);
+            let outs = step(outs, 3);
+            outs.into_iter()
+                .map(|(c, w)| {
+                    let packed = (c.0 << 2) | (c.1 << 1) | c.2;
+                    let dst = if c.0 + c.1 + c.2 == 1 {
+                        Dst::Done(1)
+                    } else {
+                        Dst::Alive(packed)
+                    };
+                    (dst, w)
+                })
+                .collect()
+        }
+        fn name(&self) -> &'static str {
+            "herman3-snapshot-slip"
+        }
+        fn time_homogeneous(&self) -> bool {
+            true
+        }
+    }
+
+    #[test]
+    fn herman3_cross_program_refused_by_differential() {
+        let surv = survival_masses(&Herman3SnapshotSlip, 31);
+        let r = differential_times(sim_herman3, &surv, 1_000_000, 0xD1CE_5EED);
+        assert!(
+            r.worst_sigma > 4.0,
+            "the snapshot-dropped chain must be REFUSED by the \
+             translation differential; worst sigma {} rows {:?}",
+            r.worst_sigma,
+            r.rows
+        );
+        // and the true chain passes the same test at the same horizon
+        // (herman3_time_differential above, same seed and paths)
     }
 
     #[test]

@@ -48,6 +48,14 @@
     {
       "file": "3d-asym-rw-u60.glc",
       "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+    },
+    {
+      "file": "herman3-u31.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "herman3-u101.glc",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
     }
   ],
   "mutants": [
@@ -288,6 +296,33 @@
       "locus": "count gate: one more posterior claim expected than present",
       "expected": "FAIL",
       "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-h3-tighter.glc",
+      "base": "herman3-u31",
+      "locus": "posterior hi for class 0 tightened below canonical (residual dropped)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-h3-widened.glc",
+      "base": "herman3-u31",
+      "locus": "absorb + posterior widened outward to [0, 1] (positive control)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+    },
+    {
+      "file": "mut-h3-byteflip.glc",
+      "base": "herman3-u31",
+      "locus": "one body byte flipped (container integrity)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "herman3-u31.glc",
+      "base": "herman3-u31",
+      "locus": "count gate: one more posterior claim expected than present",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=3"
     }
   ]
 }

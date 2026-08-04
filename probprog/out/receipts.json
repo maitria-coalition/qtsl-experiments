@@ -632,6 +632,69 @@
         "cpu": "unknown"
       },
       "at": "2026-08-03T19:22:22.000Z"
+    },
+    {
+      "label": "producer/herman3-full",
+      "cmd": "taskset -c 16 ./target/release/probprog-produce eval herman3 31 --classes 2",
+      "runs": 5,
+      "walls_s": [
+        0.222891852,
+        0.063546558,
+        0.003108558,
+        0.030901367,
+        0.003503041
+      ],
+      "median_s": 0.030901367,
+      "nice_readback": 19,
+      "loadavg_before": "15.82 16.91 15.33",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T00:44:41.975Z"
+    },
+    {
+      "label": "house-e2e/herman3-full",
+      "cmd": "taskset -c 16 bash -c T=$(mktemp -d) && ./target/release/probprog-produce spec herman3 31 2>/dev/null > $T/spec.json && $QTSL_STAGED_CO/target/release/dabs-emit --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc -o $T/herman3.glc $T/spec.json >/dev/null && ./target/release/probprog-produce evcert herman3 31 --spec-file $T/spec.json 2>/dev/null > $T/herman3.evc && $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2 $T/herman3.glc >/dev/null && ./target/release/probprog-evcheck --spec $T/spec.json $T/herman3.evc >/dev/null && rm -rf $T",
+      "runs": 5,
+      "walls_s": [
+        0.112207805,
+        0.109214753,
+        0.105026986,
+        0.105235819,
+        0.107376735
+      ],
+      "median_s": 0.107376735,
+      "nice_readback": 19,
+      "loadavg_before": "15.82 16.91 15.33",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T00:44:42.891Z"
+    },
+    {
+      "label": "house-e2e/herman3-check-only",
+      "cmd": "taskset -c 16 bash -c $QTSL_STAGED_CO/target/release/glc-check --staged-chain $QTSL_STAGED_CO/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc --staged-cert --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2 probprog/out/glc/herman3-u31.glc >/dev/null && ./target/release/probprog-evcheck --spec probprog/out/ev/herman3-u31.spec.json probprog/out/ev/herman3-u31.evc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.05667238,
+        0.055342751,
+        0.060102125,
+        0.055595474,
+        0.054197605
+      ],
+      "median_s": 0.055595474,
+      "nice_readback": 19,
+      "loadavg_before": "15.82 16.91 15.33",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T00:44:43.289Z"
     }
   ]
 }

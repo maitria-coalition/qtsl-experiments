@@ -20,12 +20,12 @@
 # commits (tools/fetch-pins.sh — house modifications, if any, are
 # visible patch files applied after checkout).
 #
-# The qtsl pin is currently served from a repository that requires
-# access (qtsl is not yet published). Once it is public with the pin
-# present, override QTSL_REPO with the unsuffixed URL; see README.md
-# ("Cloning and building").
+# The qtsl pin is served from the public release repository. Its
+# history is a release lineage (fresh snapshot roots), so QTSL_REV
+# advances by release revision, not by upstream development commit;
+# see README.md ("Cloning and building").
 
-QTSL_REPO ?= https://github.com/maitria-coalition/qtsl-dev
+QTSL_REPO ?= https://github.com/maitria-coalition/qtsl
 # The checker's baked roster leads with the current revision-event
 # pair (legacy generations ride an append-only roster until their
 # corpora re-conduct), so every baked-container corpus re-emits at
@@ -36,7 +36,9 @@ QTSL_REPO ?= https://github.com/maitria-coalition/qtsl-dev
 # bc30a5f3…); the former separate gymnasium and guard pins each
 # converged onto this shared pin at the event-5.1 re-emission,
 # exactly as their comments predicted.
-QTSL_REV  ?= f0ecbf32d03af43921a11ee7e0aee7a35d51822d
+# This revision is the first public release lineage commit carrying
+# the event-7 closures; it supersedes the pre-release development pin.
+QTSL_REV  ?= 9be789c3a3431dbf05c2aeb3bd1aa8133071cd6b
 
 export CARGO_NET_GIT_FETCH_WITH_CLI := true
 
@@ -191,8 +193,8 @@ semicon-glc: $(QTSL_PIN)
 # same way the checkers are (imported, never vendored). The suite is
 # self-contained — pure exact-rational library tests, no external
 # stores.
-MTK_REPO ?= https://github.com/maitria-coalition/mtk-dev
-MTK_REV  ?= 7a4a8b51dfe3ad64e780eb5bfa335ea7c14c0f1c
+MTK_REPO ?= https://github.com/maitria-coalition/mtk
+MTK_REV  ?= 89044676d0b31260cf76333fa35e9c5853254dcc
 MTK_CO   := $(BUILD)/mtk
 MTK_PIN  := $(MTK_CO)/.git/pin-$(MTK_REV)
 
@@ -257,6 +259,7 @@ probprog:
 	./target/release/probprog-produce eval beauquier-3 51
 	./target/release/probprog-produce eval coupon-collector5 80 --classes 1
 	./target/release/probprog-produce eval israeli-jalfon4 31 --classes 1
+	./target/release/probprog-produce eval herman3 31 --classes 2
 	./target/release/probprog-produce eval 3d-asym-rw 100 --classes 1
 	$(NODE) probprog/gen-table.ts
 

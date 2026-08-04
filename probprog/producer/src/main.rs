@@ -8,7 +8,7 @@ use std::time::Instant;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let usage = "usage: probprog-produce <eval|spec|evcert> <geo-counter|asym-rw|die-paradox|burglar-alarm|beauquier-3|coupon-collector5|israeli-jalfon4|3d-asym-rw> <horizon> [--classes N] [--spec-file F]\n  eval: print brackets + producer wall\n  spec: print the certificate spec JSON (for the emitter binary) on stdout\n  evcert: print the EV-bracket certificate (dev-oracle lane; requires --spec-file, the exact spec bytes the container was sealed from)";
+    let usage = "usage: probprog-produce <eval|spec|evcert> <geo-counter|asym-rw|die-paradox|burglar-alarm|beauquier-3|coupon-collector5|israeli-jalfon4|herman3|3d-asym-rw> <horizon> [--classes N] [--spec-file F]\n  eval: print brackets + producer wall\n  spec: print the certificate spec JSON (for the emitter binary) on stdout\n  evcert: print the EV-bracket certificate (dev-oracle lane; requires --spec-file, the exact spec bytes the container was sealed from)";
     if args.len() < 4 || (args[1] != "eval" && args[1] != "spec" && args[1] != "evcert") {
         eprintln!("{usage}");
         std::process::exit(2);
@@ -28,6 +28,7 @@ fn main() {
         "beauquier-3" => Box::new(Beauquier3),
         "coupon-collector5" => Box::new(CouponCollector5),
         "israeli-jalfon4" => Box::new(IsraeliJalfon4),
+        "herman3" => Box::new(Herman3),
         "3d-asym-rw" => Box::new(AsymRw3d),
         other => {
             eprintln!("unknown program {other}; {usage}");

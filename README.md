@@ -102,20 +102,26 @@ tools/             fetch-pins.sh (pinned third-party trees)
 
 ## Cloning and building
 
-This repository and [`kernels`](https://github.com/maitria-coalition/kernels)
-are published; the `qtsl` checker crates are not yet, and their build pin
-is currently served from a repository that requires access. A clone with
-that access builds everything as written; a public clone builds the
-kernels-backed and scripted sections, and can override the companion URL
-without editing the Makefile once `qtsl` publishes:
+This repository, [`kernels`](https://github.com/maitria-coalition/kernels),
+[`qtsl`](https://github.com/maitria-coalition/qtsl), and
+[`mtk`](https://github.com/maitria-coalition/mtk) are published, and the
+Makefile's default `QTSL_REPO`/`MTK_REPO` point at the public release
+repositories. Two pre-release residues remain. The legacy `flcheck`/
+`fluidcheck` checker CLIs still pin a pre-release revision served from a
+repository that requires access; their TypeScript replacement is in
+progress upstream. And the pinned companion checkouts' own Cargo
+dependencies reach their public homes at the companions' next release
+revisions — until then, the checker-build steps inside those checkouts
+require access, while the kernels-backed and scripted sections build
+from a public clone as written. The companion URLs and revisions remain
+overridable without editing the Makefile:
 
 ```
-make QTSL_REPO=https://github.com/maitria-coalition/qtsl
+make QTSL_REPO=<url> QTSL_REV=<revision>
 ```
 
-That override succeeds only when the pinned `QTSL_REV` is present on the
-release repository. This README does not claim that the private-to-public
-flip has happened.
+An override succeeds only when the given revision is present on the
+given repository.
 
 Requirements: Rust (stable), Node ≥ 22 (the drivers are TypeScript,
 zero npm packages), GNU make, git, `zstd`, and a TeX Live with
@@ -183,12 +189,14 @@ cargo build --release -p mtk-strategies --bin supermart-sec1
 ```
 
 Then replace `<qtsl-experiments>` in the recorded command with the absolute
-path to this checkout. As with the companion checkout above, these release
-URLs become usable when the coalition flips the currently private release
-repositories; before that event, the committed recipe is human-sufficient
-provenance, not a claim of unauthenticated availability. Section 2's sibling
-machine directories record the same checked-production protocol and binary
-identities for that producer vintage.
+path to this checkout. The release URL now resolves publicly, but this
+recorded producer vintage predates the public release lineage, so the
+checkout step still requires access to the pre-release history; the
+committed recipe is human-sufficient provenance for that vintage, and
+re-conducts made after publication record public-lineage revisions.
+Section 2's sibling machine directories record the same
+checked-production protocol and binary identities for that producer
+vintage.
 
 ## What is deliberately absent
 

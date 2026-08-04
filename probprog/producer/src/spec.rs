@@ -351,6 +351,24 @@ mod tests {
     }
 
     #[test]
+    fn herman3_spec_is_homogeneous() {
+        use crate::Herman3;
+        let s31 = emit_spec(&Herman3, 31);
+        let s101 = emit_spec(&Herman3, 101);
+        // states materialized once: anchor s8, no timestamped names
+        assert!(s31.contains("\"s8\""));
+        assert!(!s31.contains("\"a1_"));
+        assert!(s31.contains("\"done_0\"") && s31.contains("\"done_1\""));
+        assert!(!s31.contains("\"reject\""));
+        // the stored chain is horizon-independent; only the query's
+        // horizon and the claims move
+        let chain_of = |s: &str| s.split("\"query\"").next().unwrap().to_string();
+        assert_eq!(chain_of(&s31), chain_of(&s101));
+        // start row coalesced: class-0 mass 3/8 as a single stored row
+        assert!(s31.contains("[\"s8\", \"done_0\", \"3/8\"]"));
+    }
+
+    #[test]
     fn beauquier3_spec_is_homogeneous() {
         use crate::Beauquier3;
         let s51 = emit_spec(&Beauquier3, 51);

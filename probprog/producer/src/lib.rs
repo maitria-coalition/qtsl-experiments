@@ -642,6 +642,122 @@ impl Chain for IsraeliJalfon4 {
     }
 }
 
+/// Herman's randomized self-stabilization ring, 3 processes
+/// (`herman3`, vendored from the Diabolo benchmark suite,
+/// `benchmarks/psi/herman3.sgcl`, which takes it from the PSI
+/// collection; the SAME program is GuBPI's Sankaranarayanan-18 member
+/// `benchmarks/ProbEstimation/herman-3/` — the first comparison case
+/// BOTH baselines run): three bits sampled iid fair; while
+/// p1 + p2 + p3 != 1, one SYNCHRONOUS round — process i compares its
+/// own (still-old) value with the OLD snapshot of its ring
+/// predecessor (1 <- 3, 2 <- 1, 3 <- 2); equal => resample
+/// Bernoulli(1/2), different => copy the predecessor's old value —
+/// and `count` increments once per round; return count. Unlike
+/// israeli-jalfon4's sequential blocks, the round is genuinely
+/// synchronous BY THE SOURCE (every later block reads `oldprocess*`
+/// snapshots), so the {uniform, two-one} lumping is exact — asserted
+/// by the oracles below, never assumed (the ij4 precedent).
+///
+/// Chain encoding, TIME-HOMOGENEOUS: states 0..7 are the packed bits
+/// (bit 2 = process1, bit 1 = process2, bit 0 = process3), state 8 =
+/// START (the Bernoulli(1/2)^3 prologue as one 8-outcome row).
+/// Configurations with exactly one set bit are stable; TWO terminal
+/// classes, beauquier-style: class 0 = count < 1 (absorption on the
+/// START transition — GuBPI's Q1 query P[count < 1] = 3/8), class 1 =
+/// count >= 1. Alive states: 000, 011, 101, 110, 111 (five). With the
+/// prologue the chain's absorption time is T = count + 1 on every
+/// path — the EV certificate carries anchor-offset 1 (see `ev.rs`).
+///
+/// Ground truth (exact linear-solve oracle below; the vendored
+/// source's own header says 1.333...): E[count] = 4/3; per-state
+/// E = 2 from each two-one configuration (they cycle 110 -> 011 ->
+/// 101 -> 110, absorbing w.p. 1/2 per round) and E = 7/3 from 000 and
+/// 111 (full uniform-resample rows); alive spectral radius exactly
+/// 1/2; P[count > n] = (3/4)(1/2)^n - (1/8)(1/4)^n.
+pub struct Herman3;
+
+pub const H3_START: u64 = 8; // one past the 0..7 configs
+
+/// One synchronous round of the source program: `old` is the packed
+/// snapshot; `coins` supplies one fresh fair bit per resampling
+/// process, in process order. Process i resamples iff its old value
+/// equals its ring predecessor's old value, else copies it.
+pub fn h3_step(old: u64, coins: u64) -> u64 {
+    debug_assert!(old < 8);
+    let p1 = (old >> 2) & 1;
+    let p2 = (old >> 1) & 1;
+    let p3 = old & 1;
+    let mut bit = 0u32;
+    let mut draw = |enabled: bool, copy: u64| {
+        if enabled {
+            let v = (coins >> bit) & 1;
+            bit += 1;
+            v
+        } else {
+            copy
+        }
+    };
+    let n1 = draw(p1 == p3, p3);
+    let n2 = draw(p2 == p1, p1);
+    let n3 = draw(p3 == p2, p2);
+    (n1 << 2) | (n2 << 1) | n3
+}
+
+pub fn h3_ones(cfg: u64) -> u32 {
+    (cfg & 7).count_ones()
+}
+
+/// Number of resampling processes at a configuration (coins consumed
+/// by `h3_step`).
+pub fn h3_resamples(cfg: u64) -> u32 {
+    let p1 = (cfg >> 2) & 1;
+    let p2 = (cfg >> 1) & 1;
+    let p3 = cfg & 1;
+    (p1 == p3) as u32 + (p2 == p1) as u32 + (p3 == p2) as u32
+}
+
+impl Chain for Herman3 {
+    fn init(&self) -> u64 {
+        H3_START
+    }
+    fn succ(&self, x: u64, _t: u32) -> Vec<(Dst, Q)> {
+        if x == H3_START {
+            // Bernoulli(1/2)^3 prologue: eight configurations at 1/8
+            // each; already-stable ones are count = 0 (class 0).
+            return (0..8u64)
+                .map(|cfg| {
+                    let dst = if h3_ones(cfg) == 1 {
+                        Dst::Done(0)
+                    } else {
+                        Dst::Alive(cfg)
+                    };
+                    (dst, q(1, 8))
+                })
+                .collect();
+        }
+        debug_assert!(x < 8 && h3_ones(x) != 1, "alive configs are unstable");
+        let k = h3_resamples(x);
+        let w = q(1, 1 << k);
+        (0..(1u64 << k))
+            .map(|coins| {
+                let ncfg = h3_step(x, coins);
+                let dst = if h3_ones(ncfg) == 1 {
+                    Dst::Done(1)
+                } else {
+                    Dst::Alive(ncfg)
+                };
+                (dst, w.clone())
+            })
+            .collect()
+    }
+    fn name(&self) -> &'static str {
+        "herman3"
+    }
+    fn time_homogeneous(&self) -> bool {
+        true
+    }
+}
+
 /// 3-D asymmetric random walk (`3d-asym-rw`, vendored from the
 /// Diabolo benchmark suite, `benchmarks/ours/3d-asym-rw.sgcl`):
 /// $(x,y,z) := (1,1,1)$; while $(x,y,z) \ne (0,0,0)$: choose an axis
@@ -782,6 +898,14 @@ pub fn truth(name: &str, n: u32) -> Q {
         // single terminal class (stabilized), reached almost surely.
         "israeli-jalfon4" => match n {
             0 => Q::one(),
+            _ => Q::zero(),
+        },
+        // P[count < 1] = P[exactly one of three iid fair bits] = 3/8;
+        // the complement is absorbed a.s. (limit mass); score-free, so
+        // posterior = unnormalized.
+        "herman3" => match n {
+            0 => q(3, 8),
+            1 => q(5, 8),
             _ => Q::zero(),
         },
         _ => panic!("no closed form registered for {name}"),
@@ -1266,6 +1390,191 @@ mod tests {
         use num_traits::ToPrimitive;
         let width = tail.to_f64().unwrap();
         assert!(width < 2e-9, "width {width}");
+    }
+
+    // ------------------------------------------------------- herman3
+
+    /// The certificate weights for herman3: the minimal eigen-tight
+    /// solution of the transfer system at gamma = 1/2 (the alive
+    /// spectral radius), with the unit floor on the alive region
+    /// (kappa = 1, the alive-mass face): 1 on the three two-one
+    /// configurations, 3/2 on the uniform-resample states 000 and
+    /// 111, 3/2 on the START prologue state.
+    fn h3_weight(x: u64) -> Q {
+        match x {
+            H3_START | 0 | 7 => q(3, 2),
+            _ => Q::one(), // the three two-one configurations
+        }
+    }
+
+    /// Independent exact oracle: solve (I - Q_A) E = 1 over the 5
+    /// alive configurations by rational Gaussian elimination (no DP,
+    /// no survival machinery) and check the per-state values and the
+    /// initial-distribution expectation E[count] = 4/3 (the vendored
+    /// source's own header comment).
+    #[test]
+    fn herman3_linear_solve_oracle() {
+        let alive: Vec<u64> = (0..8u64).filter(|&c| h3_ones(c) != 1).collect();
+        assert_eq!(alive.len(), 5);
+        let idx = |c: u64| alive.iter().position(|&a| a == c).unwrap();
+        let n = alive.len();
+        let mut m: Vec<Vec<Q>> = vec![vec![Q::zero(); n + 1]; n];
+        for (i, &x) in alive.iter().enumerate() {
+            m[i][i] += Q::one();
+            for (dst, w) in Herman3.succ(x, 0) {
+                if let Dst::Alive(y) = dst {
+                    let j = idx(y);
+                    m[i][j] -= w;
+                }
+            }
+            m[i][n] = Q::one();
+        }
+        for col in 0..n {
+            let piv = (col..n)
+                .find(|&r| !m[r][col].is_zero())
+                .expect("singular system");
+            m.swap(col, piv);
+            let p = m[col][col].clone();
+            for k in col..=n {
+                m[col][k] = m[col][k].clone() / p.clone();
+            }
+            for r in 0..n {
+                if r != col && !m[r][col].is_zero() {
+                    let f = m[r][col].clone();
+                    for k in col..=n {
+                        m[r][k] = m[r][k].clone() - f.clone() * m[col][k].clone();
+                    }
+                }
+            }
+        }
+        let e = |c: u64| m[idx(c)][n].clone();
+        // per-state values: 2 on each two-one configuration, 7/3 on
+        // the uniform-resample states (prereg Expected statement 1).
+        for &x in &alive {
+            let expected = match x {
+                0 | 7 => q(7, 3),
+                _ => q(2, 1),
+            };
+            assert_eq!(e(x), expected, "E at config {x:03b}");
+        }
+        // E[count] over the Bernoulli(1/2)^3 initial distribution
+        let mut ev = Q::zero();
+        for cfg in 0..8u64 {
+            if h3_ones(cfg) != 1 {
+                ev += q(1, 8) * e(cfg);
+            }
+        }
+        assert_eq!(ev, q(4, 3), "E[count] = 4/3");
+    }
+
+    /// Every weighted transfer row holds with EQUALITY at gamma = 1/2
+    /// (the weights are eigen-tight on every row, so 1/2 is exactly
+    /// the alive spectral radius and W(n) = (3/2) 2^-n exactly).
+    #[test]
+    fn herman3_weights_all_rows_tight() {
+        let c = q(1, 2);
+        let mut states: Vec<u64> = (0..8u64).filter(|&x| h3_ones(x) != 1).collect();
+        states.push(H3_START);
+        for &x in &states {
+            let lhs = Herman3
+                .succ(x, 0)
+                .iter()
+                .fold(Q::zero(), |a, (dst, p)| match dst {
+                    Dst::Alive(y) => a + p * h3_weight(*y),
+                    _ => a, // absorbed weight 0
+                });
+            assert_eq!(lhs, c.clone() * h3_weight(x), "transfer row at {x}");
+        }
+        let tr = evaluate(&Herman3, 31);
+        let wn = tr
+            .alive_support
+            .iter()
+            .fold(Q::zero(), |a, (x, m)| a + m * h3_weight(*x));
+        let mut expect = q(3, 2);
+        for _ in 0..31 {
+            expect = expect * q(1, 2);
+        }
+        assert_eq!(wn, expect, "W(31) = (3/2) 2^-31");
+    }
+
+    /// Structural teeth: class 0 is fed ONLY by the START transition
+    /// (alive rows never absorb into count < 1 — the ground of the
+    /// per-class reachability sharpening staged as revision-event
+    /// cargo), alive rows are total probability rows, and alive
+    /// successors are unstable configurations.
+    #[test]
+    fn herman3_no_reentry_structure() {
+        for x in (0..8u64).filter(|&x| h3_ones(x) != 1) {
+            let row = Herman3.succ(x, 0);
+            let total = row.iter().fold(Q::zero(), |a, (_, w)| a + w.clone());
+            assert!(total.is_one(), "row at {x} sums to {total}");
+            for (dst, _) in &row {
+                match dst {
+                    Dst::Alive(y) => assert!(h3_ones(*y) != 1, "{x:03b} -> {y:03b}"),
+                    Dst::Done(1) => {}
+                    other => panic!("unexpected dst {other:?} (class 0 is START-only)"),
+                }
+            }
+        }
+    }
+
+    /// Exact class masses and residual at the emitted horizons: class
+    /// 0 is exactly 3/8 from the first transition on; the residual is
+    /// P[T > N] = (3/2) 2^-N - (1/2) 4^-N exactly (prereg Expected
+    /// statement 2); score-free, so posterior = unnormalized.
+    #[test]
+    fn herman3_class_masses_exact() {
+        for horizon in [31u32, 101] {
+            let tr = evaluate(&Herman3, horizon);
+            assert_eq!(tr.class_mass[&0], truth("herman3", 0));
+            assert!(tr.reject_mass.is_zero());
+            let expect_residual =
+                q(3, 2) * q(1, 2).pow(horizon as i32) - q(1, 2) * q(1, 4).pow(horizon as i32);
+            assert_eq!(tr.residual, expect_residual, "residual at {horizon}");
+            assert!(tr.evidence() + tr.residual.clone() == Q::one());
+            for c in 0..2u32 {
+                let (lo, hi) = tr.posterior_bracket(c).unwrap();
+                let t = truth("herman3", c);
+                assert!(lo <= t && t <= hi, "class {c}: [{lo}, {hi}] vs {t}");
+                let (alo, ahi) = tr.absorb_bracket(c);
+                assert_eq!((alo, ahi), (lo, hi), "score-free: posterior = absorb");
+            }
+        }
+    }
+
+    /// EV bracket containment at the matched-depth horizon: with the
+    /// offset-1 partial survival sum L (T = count + 1) and the
+    /// alive-mass-face tail (kappa = 1, gamma = 1/2), the bracket
+    /// contains the exact truth E[count] = 4/3 with width exactly
+    /// 3 * 2^-31 — and, the prereg's stated DISANALOGY with ij4, the
+    /// upper endpoint exceeds the truth by exactly (1/6) 4^-30: the
+    /// above-floor states 000 and 111 RECUR, so the geometric tail
+    /// bound is sound but not achieved.
+    #[test]
+    fn herman3_ev_bracket_contains_truth() {
+        let n = 31u32;
+        let surv = survival_masses(&Herman3, n);
+        assert!(surv[0].is_one(), "deterministic prologue: P[T > 0] = 1");
+        assert_eq!(surv[1], q(5, 8), "P[T > 1] = P[count > 0] = 5/8");
+        let l = surv[1..n as usize]
+            .iter()
+            .fold(Q::zero(), |a, b| a + b.clone());
+        let mut wn = q(3, 2);
+        for _ in 0..n {
+            wn = wn * q(1, 2);
+        }
+        let tail = q(2, 1) * wn; // kappa = 1, 1/(1 - gamma) = 2
+        let truth_ev = q(4, 3);
+        assert!(l <= truth_ev, "lower {l} vs 4/3");
+        assert!(truth_ev <= l.clone() + tail.clone(), "upper");
+        assert_eq!(
+            l + tail.clone() - truth_ev,
+            q(1, 6) * q(1, 4).pow(30),
+            "upper excess is exactly (1/6) 4^-30 (recurrent above-floor states)"
+        );
+        use num_traits::ToPrimitive;
+        let width = tail.to_f64().unwrap();
+        assert!(width < 1.4e-9, "width {width}");
     }
 
     /// EV bracket containment: with L the exact partial survival sum
