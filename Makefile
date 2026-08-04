@@ -37,7 +37,7 @@ QTSL_REPO ?= https://github.com/maitria-coalition/qtsl
 # (qc 9952506d…, dc bc30a5f3…) are unchanged and stay rostered, so
 # the older baked lanes (gymnasium, spde spectrum, lean-route,
 # semicon minifab, supermartingales, petri guard) check as before.
-QTSL_REV  ?= 23e0d2234c2c7bceb4b8ef7d5b2b6825e1221b25
+QTSL_REV  ?= a9bdb62a6fba2beafbdf8022bc581f0cf4f4d433
 
 export CARGO_NET_GIT_FETCH_WITH_CLI := true
 

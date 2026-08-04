@@ -108,12 +108,16 @@ This repository, [`kernels`](https://github.com/maitria-coalition/kernels),
 Makefile's default `QTSL_REPO`/`MTK_REPO` point at the public release
 repositories. Two pre-release residues remain. The legacy `flcheck`/
 `fluidcheck` checker CLIs still pin a pre-release revision served from a
-repository that requires access; their TypeScript replacement is in
-progress upstream. And the pinned companion checkouts' own Cargo
-dependencies reach their public homes at the companions' next release
-revisions — until then, the checker-build steps inside those checkouts
-require access, while the kernels-backed and scripted sections build
-from a public clone as written. The companion URLs and revisions remain
+repository that requires access; their certificate families are being
+regenerated upstream into the sealed-container format the standard
+checkers already cover, which retires these CLIs. And the pinned `mtk`
+checkout's own Cargo dependencies reach their public homes at its next
+release revision — until then, the Mini-Fab producer-battery steps
+inside that checkout require access. The pinned `qtsl` checkout's
+dependencies resolve from the published repositories at the current
+pin, so the reference and sealed-container checker lanes, the
+kernels-backed checkers, and the scripted sections build from a public
+clone as written. The companion URLs and revisions remain
 overridable without editing the Makefile:
 
 ```
@@ -147,9 +151,11 @@ Two steps fetch from the companion repositories:
    re-emission lands, which is how the Mini-Fab dispatch family rides
    the same pin today).
 
-Clones of the not-yet-published `qtsl` pin work through any GitHub auth
-your git already has (the `gh` CLI's credential helper, an SSH key, or a
-PAT); the published repositories require no authentication. The committed
+The published repositories require no authentication. The one revision
+that still needs access — the legacy checker CLIs' pre-release pin — is
+fetched by Cargo through your own git, so any GitHub auth your git
+already has works (the `gh` CLI's credential helper, an SSH key, or a
+PAT). The committed
 `Cargo.lock` pins the exact revisions of the imported checker crates;
 bumping them is a deliberate act (`cargo update` + re-run), never a side
 effect.
