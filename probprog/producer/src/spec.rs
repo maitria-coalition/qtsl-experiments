@@ -9,9 +9,11 @@
 //! convention that is exactly the truncation, sound by construction.
 //! Class states are one absorbing rowless state per terminal class;
 //! rejection is one rowless state. Claims are the canonical (tight)
-//! brackets from the exact evaluation; the checker recomputes and
-//! admits any claim containing the canonical interval, so canonical
-//! claims are the sharpest admissible.
+//! brackets from the exact evaluation — absorb upper sides carry the
+//! per-class reachability-sharpened residual (see the library-level
+//! soundness posture and `Truncated::absorb_bracket`); the checker
+//! recomputes and admits any claim containing the canonical interval,
+//! so canonical claims are the sharpest admissible.
 
 use crate::{evaluate, Chain, Dst, Q};
 use num_traits::One;
@@ -268,13 +270,41 @@ fn render_spec(
     out
 }
 
+/// Emit the certificate spec WITH the contraction witness block (the
+/// sealed DtmcContraction species): the base spec's chain, query, and
+/// bracket claims, plus the case's registered EV template rendered as
+/// the emitter's additive `contraction` block. The container then
+/// carries the absorption AND first-moment claims in one artifact,
+/// checked entirely by the fast-path checker against the dcc closure
+/// — the shape the dev-oracle EV lane's retirement promised. Panics
+/// when the case has no registered template (a loud wrong-case, never
+/// a silently contraction-free container).
+pub fn emit_spec_with_contraction(chain: &dyn Chain, horizon: u32) -> String {
+    let base = emit_spec(chain, horizon);
+    let block = crate::ev::contraction_block_json(chain, horizon)
+        .unwrap_or_else(|| panic!("no EV template registered for {}", chain.name()));
+    let tail = "  }\n}\n";
+    assert!(
+        base.ends_with(tail),
+        "spec tail shape changed under emit_spec"
+    );
+    let mut out = base[..base.len() - tail.len()].to_string();
+    out.push_str("  },\n");
+    out.push_str(&block);
+    out.push_str("}\n");
+    out
+}
+
 /// Window spec for the 3-D walk's container lane: stored rows for
 /// every alive sorted triple with max coordinate <= `rstore`; the
 /// max = rstore+1 shell is listed rowless (the container evaluation's
 /// rowless-is-absorbing convention parks boundary mass in the
-/// residual — the truncation widens, never lies). Claims are the
-/// window-materialized chain's canonical absorb/posterior brackets,
-/// which the container checker recomputes under the same convention.
+/// residual; under the reachability sharpening the parked mass is
+/// charged to no class's upper side, so the absorb claims bracket
+/// within-window absorption exactly — the lower sides remain sound
+/// source-level lower bounds). Claims are the window-materialized
+/// chain's canonical absorb/posterior brackets, which the container
+/// checker recomputes under the same convention.
 /// State names carry the triple legibly (`s<a>_<b>_<c>`) — the EV
 /// certificate's pattern checker decodes them.
 pub fn emit_spec_3d_window(horizon: u32, rstore: u64) -> String {

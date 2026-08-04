@@ -27,14 +27,19 @@ stored chain rows.
   Truncation is sound by construction: states without stored rows are
   treated as absorbing by the evaluation semantics, so an incomplete
   row set can only widen brackets, never falsify them.
-- The certificate species (`DtmcAbsorb`: finite-horizon absorption
-  brackets for stored-row chains) is checked by the geolog fast-path
-  checker (`glc-check`, built from the pinned qtsl checkout), which
-  recomputes every mass from the stored rows — derived quantities are
-  never stored, so forging an intermediate is unrepresentable.
-  **[argued]** The species is staged for the next theory revision
-  event; until that revision is sealed, container verdicts in this
-  family are reported against the staged closure and labeled as such.
+- The certificate species — `DtmcAbsorb` (finite-horizon absorption
+  brackets for stored-row chains) and `DtmcContraction` (regional
+  contraction witnesses: exact partial moment + geometric tail +
+  moment assembly) — are checked by the geolog fast-path checker
+  (`glc-check`, built from the pinned qtsl checkout), which recomputes
+  every mass from the stored rows — derived quantities are never
+  stored, so forging an intermediate is unrepresentable. Both species
+  sealed at theory revision event 8 (the dac and dcc closures);
+  container verdicts ride the checker's baked roster with no flags.
+  The 3-D walk's first-moment rows are the one exception: the pattern
+  face (finitely presented infinite chains) was descoped to its own
+  design leg, and those rows stay on a dev-oracle lane, labeled as
+  such, pending that face's own revision event.
 - Translation validity: each source program is vendored verbatim
   (MIT), and its published semantics is simulated directly against the
   chain encoding's exact masses (10^6 paths, 4-sigma binomial bands),

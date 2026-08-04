@@ -30,15 +30,14 @@ QTSL_REPO ?= https://github.com/maitria-coalition/qtsl
 # pair (legacy generations ride an append-only roster until their
 # corpora re-conduct), so every baked-container corpus re-emits at
 # each revision event and this pin advances with them.
-# All the baked lanes this pin serves (gymnasium, spde spectrum,
-# lean-route, semicon minifab, supermartingales, petri guard) are
-# sealed at revision event 7 (qc closure 9952506d…, dc closure
-# bc30a5f3…); the former separate gymnasium and guard pins each
-# converged onto this shared pin at the event-5.1 re-emission,
-# exactly as their comments predicted.
-# This revision is the first public release lineage commit carrying
-# the event-7 closures; it supersedes the pre-release development pin.
-QTSL_REV  ?= 9be789c3a3431dbf05c2aeb3bd1aa8133071cd6b
+# Revision event 8: the dac closure (BernsteinLogic + Qtsl + Dtmc +
+# DtmcAbsorb, revision 6f1b2c7e…) and the dcc closure (dac +
+# DtmcContraction, revision 70b31e69…) joined the roster — the
+# probprog container lane rides them flagless. The event-7 closures
+# (qc 9952506d…, dc bc30a5f3…) are unchanged and stay rostered, so
+# the older baked lanes (gymnasium, spde spectrum, lean-route,
+# semicon minifab, supermartingales, petri guard) check as before.
+QTSL_REV  ?= 23e0d2234c2c7bceb4b8ef7d5b2b6825e1221b25
 
 export CARGO_NET_GIT_FETCH_WITH_CLI := true
 
@@ -245,9 +244,9 @@ spde-glc: $(QTSL_PIN)
 # separate target (probprog-measure) — it requires a load-quiet box and
 # the baselines built same-box, and receipts are committed, never
 # regenerated silently. The container lane (probprog-glc) follows the
-# family pattern once the certificate species' theory revision is
-# sealed and the QTSL_REV pin advances past it; until then container
-# verdicts ride the staged-closure path recorded in the receipts.
+# family pattern: the certificate species sealed at revision event 8
+# (dac + dcc closures), the pin advanced past it, and container
+# verdicts ride the baked roster flagless.
 
 .PHONY: probprog probprog-measure probprog-glc
 probprog:
@@ -264,11 +263,12 @@ probprog:
 	$(NODE) probprog/gen-table.ts
 
 # Discrete-sweep reproduction, one verb: re-verify every committed
-# probprog certificate through both lanes (containers via the staged
-# closure — set QTSL_STAGED_CO; EV rows via the dev-oracle pending the
-# generator-form seam's revision event), re-derive the producer-side
-# oracles and differentials, then rebuild the comparison table from
-# the committed receipts and require it to re-derive byte-identically.
+# probprog certificate through both lanes (containers via the baked
+# event-8 roster; the remaining EV rows are the 3-D pattern face,
+# dev-oracle pending that face's own design leg and revision event),
+# re-derive the producer-side oracles and differentials, then rebuild
+# the comparison table from the committed receipts and require it to
+# re-derive byte-identically.
 # Measurement receipts (comparison.json walls/bounds) are committed by
 # the measurement protocol on a load-quiet box, never regenerated
 # here — this target proves the committed numbers' derivation chain,
@@ -281,28 +281,27 @@ probprog-discrete:
 	$(NODE) probprog/gen-table.ts
 	git diff --exit-code -- probprog/out/TABLE.md
 
-# Container recheck, staged-closure lane: until the certificate
-# species' theory revision seals and QTSL_REV advances past it, the
-# checker and the staged chain container come from a qtsl checkout
-# that carries the staged lane — point QTSL_STAGED_CO at one. When the
-# revision seals, this target collapses into the standard $(QTSL_PIN)
-# shape and the STAGED_CHAIN requirement drops (manifest `closure`
-# field tracks it).
-probprog-glc:
-	@test -n "$(QTSL_STAGED_CO)" || { \
-	  echo "probprog-glc: set QTSL_STAGED_CO to a qtsl checkout carrying the staged DtmcAbsorb lane"; exit 2; }
-	cd $(QTSL_STAGED_CO)/crates/qtsl-geolog-provider && \
+# Container recheck, baked lane: the DtmcAbsorb + DtmcContraction
+# species sealed at revision event 8 and the QTSL_REV pin advanced
+# past it, so this target rides the standard $(QTSL_PIN) shape — the
+# committed containers' prerequisite tables name the baked dac/dcc
+# revisions and the checker resolves them via its roster, no flags
+# (manifest `closure` field carries the revisions).
+probprog-glc: $(QTSL_PIN)
+	cd $(QTSL_CO)/crates/qtsl-geolog-provider && \
 	  cargo build --release --bin glc-check
-	GLC_CHECK=$(QTSL_STAGED_CO)/target/release/glc-check \
-	STAGED_CHAIN=$(QTSL_STAGED_CO)/crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc \
+	GLC_CHECK=$(CURDIR)/$(QTSL_CO)/target/release/glc-check \
 	  $(NODE) probprog/glc-recheck.ts
 
-# EV-bracket recheck, dev-oracle lane: the EV rows (weighted transfer
-# contraction + geometric template tail + moment assembly) belong to
-# the draft strengthened generator-form seam; until its theory
-# revision seals, the checker is probprog-evcheck from this workspace
-# and verdicts are labeled pending that revision (manifest `lane`
-# field). At the seal this lane folds into the container path above.
+# EV-bracket recheck, dev-oracle lane — 3-D pattern face only. The
+# finite-face EV rows (coupon-collector5, israeli-jalfon4, herman3)
+# folded into their containers when the generator-form seam sealed at
+# revision event 8 (the dcc closure); glc-check owns those verdicts
+# through probprog-glc above. The 3-D walk's rows are the PATTERN
+# face (finitely presented infinite chain), descoped from event 8 to
+# its own design leg: until that face's revision event, the checker
+# is probprog-evcheck from this workspace and verdicts are labeled
+# accordingly (manifest `lane` field).
 .PHONY: probprog-ev
 probprog-ev:
 	cargo build --release -p probprog-producer

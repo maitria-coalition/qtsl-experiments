@@ -764,6 +764,23 @@ pub fn check_evcert_3d(spec_bytes: &[u8], cert_text: &str) -> Verdict {
     if cert.boxb < 1 {
         return Verdict::Refuse("box must be >= 1 (the origin's neighbors need stored V)".into());
     }
+    // Reach demand (kernel-checked necessity): the template-collapse
+    // class inequalities cover exterior states only where every
+    // coordinate is past the ramp (r(v) = rinf exactly); a profile
+    // longer than box + 1 would leave ramp-resident exterior states
+    // (some coordinate still inside the ramp, max coordinate beyond
+    // the box) covered by NEITHER the per-row window checks NOR the
+    // class checks. The shipped certificate satisfies it with room
+    // (6 ratios, box 10).
+    if cert.ratios.len() as u64 > cert.boxb + 1 {
+        return Verdict::Refuse(format!(
+            "profile ratios beyond the stored box: {} ratios with box {} — \
+             ramp-resident exterior states would escape the class checks \
+             (need ratios <= box + 1)",
+            cert.ratios.len(),
+            cert.boxb
+        ));
+    }
 
     // scale: rows are numerators over 3 * denom(p_up); demand exact
     let pd = cert.p_up.denom().to_u64().unwrap_or(0);
@@ -1311,6 +1328,46 @@ mod tests {
             check_evcert_3d(&spec, &widened),
             Verdict::Accept { claims: (1, 1, 1) },
             "widened must ACCEPT"
+        );
+    }
+
+    /// The reach demand (kernel-checked necessity): the class checks
+    /// cover exterior states only past the ramp, so a profile longer
+    /// than box + 1 would leave ramp-resident exterior states covered
+    /// by neither the window rows nor the class inequalities — the
+    /// checker REFUSES it outright. The shipped certificate satisfies
+    /// the bound with room (6 ratios <= box + 1 = 11) and still
+    /// accepts (control).
+    #[test]
+    fn reach_demand_bounds_profile_length() {
+        let (spec, cert) = spec_and_cert(60);
+
+        // too-long profile: extend the ramp to box + 2 = 12 ratios
+        // (each >= 1, indices contiguous, so every earlier gate is
+        // passed and the reach demand is what refuses)
+        let last = cert
+            .lines()
+            .find(|l| l.starts_with("profile-ratio 5 "))
+            .unwrap()
+            .to_string();
+        let mut extended = last.clone();
+        for k in 6..12 {
+            extended.push_str(&format!("\nprofile-ratio {k} 7/4"));
+        }
+        let too_long = cert.replace(&last, &extended);
+        match check_evcert_3d(&spec, &too_long) {
+            Verdict::Refuse(msg) => assert!(
+                msg.contains("ramp-resident exterior states"),
+                "the reach demand must be the refusing gate, got: {msg}"
+            ),
+            other => panic!("too-long profile must REFUSE, got {other:?}"),
+        }
+
+        // control: the shipped certificate accepts unchanged
+        assert_eq!(
+            check_evcert_3d(&spec, &cert),
+            Verdict::Accept { claims: (1, 1, 1) },
+            "shipped cert must still ACCEPT under the reach demand"
         );
     }
 }

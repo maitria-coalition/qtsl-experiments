@@ -38,13 +38,13 @@
           "tool": "house",
           "config": "probprog-produce spec geo-counter 100 -> dabs-emit -> glc-check",
           "bound_width": "7.889e-31 (exact: 2^-100 over evidence+residual)",
-          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
-          "wall_median_s": 0.265,
+          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational (the absorb claims are exact points at event 8: layered frontier, per-class reachable residual identically zero)",
+          "wall_median_s": 0.2982,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.051,
-          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef\u2026; 201 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/geo-compare + out/glc/geo-u100.glc"
+          "check_wall_s": 0.2152,
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (201 claims; the per-class reachability recompute is the dominant check cost at 100 classes)",
+          "provenance": "probprog/out/receipts.json house-e2e/geo-compare-baked + house-check/geo-check-only-baked (2026-08-04) + out/glc/geo-u100.glc"
         }
       ]
     },
@@ -80,13 +80,13 @@
           "tool": "house",
           "config": "probprog-produce spec asym-rw 14 -> dabs-emit -> glc-check",
           "bound_width": "7.342e-3 (exact: 123181/16777216 over evidence+residual)",
-          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
-          "wall_median_s": 0.0998,
+          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational (absorb claims exact points at event 8, layered frontier)",
+          "wall_median_s": 0.1076,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.051,
-          "checker": "glc-check --staged-chain (staged closure; 15 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/asym-compare + out/glc/asym-rw-u14.glc"
+          "check_wall_s": 0.0542,
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (15 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/asym-compare-baked + house-check/asym-check-only-baked (2026-08-04) + out/glc/asym-rw-u14.glc"
         }
       ]
     },
@@ -122,13 +122,13 @@
           "tool": "house",
           "config": "probprog-produce spec die-paradox 6 -> dabs-emit -> glc-check",
           "bound_width": "5.464e-3 (exact: 1/183; correlated-ratio form, 3.0x tighter than the interval quotient at the same truncation)",
-          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
-          "wall_median_s": 0.0981,
+          "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational (absorb claims exact points at event 8, layered frontier)",
+          "wall_median_s": 0.1048,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.051,
-          "checker": "glc-check --staged-chain (staged closure; 13 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/die-compare + out/glc/die-paradox-u6.glc"
+          "check_wall_s": 0.0534,
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (13 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/die-compare-baked + house-check/die-check-only-baked (2026-08-04) + out/glc/die-paradox-u6.glc"
         }
       ]
     },
@@ -141,24 +141,24 @@
           "config": "asym-rw horizon 70",
           "bound_width": "3.012e-7",
           "width_metric": "posterior bracket width, exact rational",
-          "wall_median_s": 0.6437,
+          "wall_median_s": 0.6848,
           "runs": 5,
           "internal_time_s": null,
           "check_wall_s": null,
-          "checker": "glc-check --staged-chain (71 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/asym-tight + out/glc/asym-rw-u70.glc"
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (71 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/asym-tight-baked (2026-08-04) + out/glc/asym-rw-u70.glc"
         },
         {
           "tool": "house",
           "config": "die-paradox horizon 40",
           "bound_width": "3.290e-19",
           "width_metric": "posterior bracket width, exact rational",
-          "wall_median_s": 0.1164,
+          "wall_median_s": 0.1239,
           "runs": 5,
           "internal_time_s": null,
           "check_wall_s": null,
-          "checker": "glc-check --staged-chain (81 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/die-tight + out/glc/die-paradox-u40.glc"
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (81 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/die-tight-baked (2026-08-04) + out/glc/die-paradox-u40.glc"
         }
       ]
     },
@@ -183,18 +183,18 @@
           "config": "probprog-produce spec burglar-alarm 4 -> dabs-emit -> glc-check (full unrolling of the finite program)",
           "bound_width": "exactly 0 (R = 0; posterior = 2969983/992160802 for burglary=1, the PSI exact result, as a point interval in Q)",
           "width_metric": "posterior bracket width, class-uniform R/(S+R), exact rational",
-          "wall_median_s": 0.0992,
+          "wall_median_s": 0.1182,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.0496,
-          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef\u2026, pre-mint \u2014 row re-emits against the baked closure at the species' revision event; 5 claims)",
-          "provenance": "probprog/out/receipts.json house-e2e/ba-full + out/glc/burglar-alarm-u4.glc"
+          "check_wall_s": 0.07,
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (5 claims; the container crossed the event without re-emission \u2014 the baked dac revision is byte-identical to the staged one)",
+          "provenance": "probprog/out/receipts.json house-e2e/ba-full-baked + house-check/ba-check-only-baked (2026-08-04) + out/glc/burglar-alarm-u4.glc"
         }
       ]
     },
     {
       "case": "Beauquier-Gradinariu-Johnen token ring, 3 processes",
-      "query": "P[count < 1] (score-free; truth exactly 1/2); Diabolo: n/a \u2014 the case is a GuBPI-suite member with no published Diabolo row (absence stated, not interpolated). Honest near-miss note: GuBPI's score-free Z=1 printout is an exact float point, so the house tightness row trails it by the sound residual (2.5e-101 at horizon 1000); the per-class reachability sharpening staged for the species' revision event closes this to width 0 with strictly weaker hypotheses.",
+      "query": "P[count < 1] (score-free; truth exactly 1/2); Diabolo: n/a \u2014 the case is a GuBPI-suite member with no published Diabolo row (absence stated, not interpolated). Headline, event 8: the per-class reachability sharpening landed in the baked closure, and the house class-0 absorb bracket is EXACTLY [1/2, 1/2] \u2014 width 0 as an exact rational point, at every horizon, with strictly weaker hypotheses than the baseline row (no termination assumption; the sharpening is recomputed by the checker, not trusted from the producer) and a replayable certificate. The former near-miss (trailing GuBPI's score-free float-point printout by the sound residual) is closed to a tie-or-better.",
       "rows": [
         {
           "tool": "gubpi",
@@ -211,26 +211,26 @@
         {
           "tool": "house",
           "config": "probprog-produce spec beauquier-3 51 -> dabs-emit -> glc-check (matched-depth class; time-homogeneous stored rows: 35 states / 91 rows at any horizon)",
-          "bound_width": "4.53e-6 \u2014 [1/2, 1/2 + R_51] exact rational, R_51 the exact alive mass at the horizon",
-          "width_metric": "class-0 bracket width, exact rational",
-          "wall_median_s": 0.237,
+          "bound_width": "exactly 0 \u2014 class-0 absorb bracket [1/2, 1/2], exact rational point (event-8 reachability sharpening: class 0 is fed only by the start row, its co-reachable residual is zero; the normalized posterior form keeps the uniform residual on both sides of its shared normalizer by design)",
+          "width_metric": "class-0 absorb bracket width, exact rational",
+          "wall_median_s": 0.132,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.128,
-          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef\u2026, pre-mint \u2014 row re-emits against the baked closure at the species' revision event; 5 claims)",
-          "provenance": "probprog/out/receipts.json beauquier3/house-e2e-u51 + out/glc/beauquier3-u51.glc"
+          "check_wall_s": 0.0681,
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (5 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/bq3-u51-baked + house-check/bq3-u51-check-only-baked (2026-08-04) + out/glc/beauquier3-u51.glc"
         },
         {
           "tool": "house",
           "config": "probprog-produce spec beauquier-3 1000 -> dabs-emit -> glc-check (tight row, same 91 stored rows)",
-          "bound_width": "2.5e-101 \u2014 [1/2, 1/2 + R_1000] exact rational",
-          "width_metric": "class-0 bracket width, exact rational",
-          "wall_median_s": 1.6,
+          "bound_width": "exactly 0 \u2014 class-0 absorb bracket [1/2, 1/2] at horizon 1000, same exact point",
+          "width_metric": "class-0 absorb bracket width, exact rational",
+          "wall_median_s": 0.8034,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 1.418,
-          "checker": "glc-check --staged-chain (staged closure 6f1b2c7ef\u2026, pre-mint; 5 claims)",
-          "provenance": "probprog/out/receipts.json beauquier3/house-e2e-u1000 + out/glc/beauquier3-u1000.glc"
+          "check_wall_s": 0.7065,
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless (5 claims)",
+          "provenance": "probprog/out/receipts.json house-e2e/bq3-u1000-baked + house-check/bq3-u1000-check-only-baked (2026-08-04) + out/glc/beauquier3-u1000.glc"
         }
       ]
     },
@@ -264,15 +264,15 @@
         },
         {
           "tool": "house",
-          "config": "probprog-produce spec coupon-collector5 80 -> dabs-emit -> glc-check (absorption rows) + evcert -> probprog-evcheck (EV rows, dev-oracle lane)",
+          "config": "probprog-produce spec coupon-collector5 80 --with-contraction -> dabs-emit -> glc-check (ONE container: absorption + contraction/EV claims)",
           "bound_width": "4.417e-7 (EV in [11.41666622..., 11.41666666...], exact rationals; contains 137/12; 3.2e5 x tighter than the baseline at the matched config). Tail envelope exactly 5 * (4/5)^n for n >= 80 \u2014 the rate is the chain's spectral radius, so no smaller rate exists; strictly tighter than both baseline tail lines in rate and coefficient",
           "width_metric": "EV bracket width, exact rational (decimal rendering)",
-          "wall_median_s": 0.1107,
+          "wall_median_s": 0.14,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.0596,
-          "checker": "glc-check --staged-chain (wf=1, absorb=1, posterior=1) + probprog-evcheck dev-oracle for the draft strengthened generator-form seam (partial=1, ev=1, tail=1) \u2014 EV verdicts PENDING that seam's theory revision event; spec-sha256 binds both artifacts to the same stored rows",
-          "provenance": "probprog/out/receipts.json producer/cc5-full + house-e2e/cc5-full + house-e2e/cc5-check-only; out/glc/coupon-collector5-u80.glc; out/ev/coupon-collector5-u80.evc"
+          "check_wall_s": 0.0802,
+          "checker": "glc-check, baked event-8 roster (dcc revision 70b31e69\u2026: dac + DtmcContraction), flagless \u2014 wf=1, absorb=1, posterior=1, genform=1, partial-lo=1, ev=1, tail=1 in one verdict; the dev-oracle EV lane retired at event 8 (its data is container content now, recomputed by the fast-path checker)",
+          "provenance": "probprog/out/receipts.json house-e2e/cc5-full-baked + house-check/cc5-check-only-baked (2026-08-04); out/glc/coupon-collector5-u80.glc"
         }
       ]
     },
@@ -306,15 +306,15 @@
         },
         {
           "tool": "house",
-          "config": "probprog-produce spec israeli-jalfon4 31 -> dabs-emit -> glc-check (absorption rows) + evcert -> probprog-evcheck (EV rows with anchor-offset 1, dev-oracle lane)",
+          "config": "probprog-produce spec israeli-jalfon4 31 --with-contraction -> dabs-emit -> glc-check (ONE container: absorption + contraction/EV claims, anchor-offset 1)",
           "bound_width": "1.441e-9 (EV in [1.4570312471..., 373/256], exact rationals; the upper endpoint IS the exact truth \u2014 the >= 3-token states are transient in three iterations, so the geometric tail bound is achieved; 2.8e5 x tighter than the baseline at matched depth). Tail envelope exactly (99/64) * (1/2)^n for n >= 31 \u2014 the rate is the chain's spectral radius, strictly tighter than the baseline tail cell in rate (0.5 < 0.50108) and coefficient (1.5 vs 4.1e7)",
           "width_metric": "EV bracket width, exact rational (decimal rendering)",
-          "wall_median_s": 0.1027,
+          "wall_median_s": 0.1155,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.0502,
-          "checker": "glc-check --staged-chain (wf=1, absorb=1, posterior=1) + probprog-evcheck dev-oracle for the draft strengthened generator-form seam (partial=1, ev=1, tail=1) - EV verdicts PENDING that seam's theory revision event; spec-sha256 binds both artifacts to the same stored rows",
-          "provenance": "probprog/out/receipts.json producer/ij4-full + house-e2e/ij4-full + house-e2e/ij4-check-only; out/glc/israeli-jalfon4-u31.glc; out/ev/israeli-jalfon4-u31.evc"
+          "check_wall_s": 0.0548,
+          "checker": "glc-check, baked event-8 roster (dcc revision 70b31e69\u2026: dac + DtmcContraction), flagless \u2014 wf=1, absorb=1, posterior=1, genform=1, partial-lo=1, ev=1, tail=1 in one verdict; the dev-oracle EV lane retired at event 8",
+          "provenance": "probprog/out/receipts.json house-e2e/ij4-full-baked + house-check/ij4-check-only-baked (2026-08-04); out/glc/israeli-jalfon4-u31.glc"
         }
       ]
     },
@@ -351,24 +351,24 @@
           "config": "probprog-produce spec 3d-asym-rw 60 -> dabs-emit -> glc-check (container: stored window max<=11, absorb/Z rows) + evcert 3d-asym-rw 200 -> probprog-evcheck (EV rows: pattern DP horizon 200 + product-profile contraction template, dev-oracle lane)",
           "bound_width": "1.291e-2 (EV in [16.690028724..., 16.702938972...], exact rationals; 9.2e7 x tighter than the baseline's same-box face). Tail envelope 0.5617 * 0.965^n for n >= 200 on the SURVIVAL mass P[T > n] (which dominates the density): rate 0.965 vs the baseline's 0.98148 \u2014 TIGHTEN, coefficient 396 -> 0.56. Termination mass certified exactly 1 (c < 1 forces P[T = infinity] = 0) vs the baseline's [0.094, 20228]",
           "width_metric": "EV bracket width, exact rational (decimal rendering)",
-          "wall_median_s": 3.9,
+          "wall_median_s": 3.9441,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 2.34,
-          "checker": "glc-check --staged-chain (wf=1, absorb=1, posterior=1; 0.89 s) + probprog-evcheck dev-oracle for the draft strengthened generator-form seam, pattern/window face (partial=1, ev=1, tail=1; 1.45 s) \u2014 EV verdicts PENDING that seam's theory revision event; spec-sha256 binds both artifacts to the same stored window bytes",
-          "provenance": "probprog/out/receipts.json house-e2e/3d-u200-full + house-check rows; out/glc/3d-asym-rw-u60.glc; out/ev/3d-asym-rw-u200.evc"
+          "check_wall_s": 2.38,
+          "checker": "glc-check, baked event-8 roster (dac revision 6f1b2c7e\u2026), flagless for the container (wf=1, absorb=1, posterior=1; 0.93 s) + probprog-evcheck for the EV rows (partial=1, ev=1, tail=1; 1.45 s) \u2014 the 3-D rows are the PATTERN face (finitely presented infinite chain), descoped from event 8 to its own design leg and dev-oracle pending that face's own revision event; spec-sha256 binds both artifacts to the same stored rows",
+          "provenance": "probprog/out/receipts.json house-e2e/3d-u200-full-baked + house-check/3d-glc-u60-baked (2026-08-04) + house-check/3d-evcheck-u200; out/glc/3d-asym-rw-u60.glc; out/ev/3d-asym-rw-u200.evc"
         },
         {
           "tool": "house (u150, fast cell)",
           "config": "same pipeline, evcert horizon 150",
           "bound_width": "1.117e-1 (EV in [16.681534894..., 16.793210510...], exact rationals; 1.1e7 x tighter); same tail row family at coefficient 0.818",
           "width_metric": "EV bracket width, exact rational (decimal rendering)",
-          "wall_median_s": 1.79,
+          "wall_median_s": 1.8413,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 1.29,
-          "checker": "same two-checker pipeline (glc 0.89 s + evcheck 0.40 s)",
-          "provenance": "probprog/out/receipts.json house-e2e/3d-u150-full + house-check rows; out/ev/3d-asym-rw-u150.evc"
+          "check_wall_s": 1.33,
+          "checker": "same two-checker pipeline (glc baked 0.93 s + evcheck 0.40 s, pattern face dev-oracle pending its own event)",
+          "provenance": "probprog/out/receipts.json house-e2e/3d-u150-full-baked (2026-08-04) + house-check rows; out/ev/3d-asym-rw-u150.evc"
         }
       ]
     },
@@ -390,15 +390,15 @@
         },
         {
           "tool": "house",
-          "config": "probprog-produce spec/evcert herman3 31 -> dabs-emit -> glc-check + probprog-evcheck (matched depth: Diabolo unroll 30 + the prologue transition)",
+          "config": "probprog-produce spec herman3 31 --with-contraction -> dabs-emit -> glc-check (ONE container: absorption + contraction/EV claims, anchor-offset 1; matched depth: Diabolo unroll 30 + the prologue transition)",
           "bound_width": "1.397e-9 exact (claim ev [L, L + 3*2^-31], contains 4/3; upper exceeds truth by exactly (1/6)4^-30 \u2014 recurrent above-floor states, the sound-not-achieved tail)",
           "width_metric": "EV bracket width, exact Q",
-          "wall_median_s": 0.1074,
+          "wall_median_s": 0.1331,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.0556,
-          "checker": "glc-check --staged-chain (staged DtmcAbsorb closure 6f1b2c7ef..., PRE-MINT) + probprog-evcheck (dev oracle, draft QGenFormContraction seam)",
-          "provenance": "probprog/out/receipts.json rows producer/herman3-full + house-e2e/herman3-full + house-e2e/herman3-check-only"
+          "check_wall_s": 0.0539,
+          "checker": "glc-check, baked event-8 roster (dcc revision 70b31e69\u2026: dac + DtmcContraction), flagless \u2014 wf=1, absorb=2, posterior=2, genform=1, partial-lo=1, ev=1, tail=1 in one verdict; the dev-oracle EV lane retired at event 8",
+          "provenance": "probprog/out/receipts.json house-e2e/herman3-full-baked + house-check/herman3-check-only-baked (2026-08-04); out/glc/herman3-u31.glc"
         }
       ]
     },
@@ -421,14 +421,14 @@
         {
           "tool": "house",
           "config": "herman3-u31.glc class-0 absorb/posterior bracket (same container as the EV case's pipeline)",
-          "bound_width": "6.985e-10 exact ([3/8, 3/8 + R31], R31 = (3/2)2^-31 - (1/2)4^-31; class 0 is START-only, so the residual charge is the whole width \u2014 the per-class reachability sharpening staged for the mint closes it to exactly 0)",
-          "width_metric": "class-0 posterior bracket width, exact Q",
-          "wall_median_s": 0.1074,
+          "bound_width": "exactly 0 \u2014 class-0 absorb bracket [3/8, 3/8], exact rational point (event-8 reachability sharpening: class 0 is START-only, its co-reachable residual is zero \u2014 exactly the closure this cell predicted pre-mint; the normalized posterior form keeps the uniform residual, [3/8, 3/8 + R31], by design)",
+          "width_metric": "class-0 absorb bracket width, exact Q",
+          "wall_median_s": 0.1331,
           "runs": 5,
           "internal_time_s": null,
-          "check_wall_s": 0.0556,
-          "checker": "glc-check --staged-chain (staged DtmcAbsorb closure 6f1b2c7ef..., PRE-MINT)",
-          "provenance": "probprog/out/receipts.json rows house-e2e/herman3-full + house-e2e/herman3-check-only (one pipeline serves both queries)"
+          "check_wall_s": 0.0539,
+          "checker": "glc-check, baked event-8 roster (dcc revision 70b31e69\u2026: dac + DtmcContraction), flagless",
+          "provenance": "probprog/out/receipts.json house-e2e/herman3-full-baked + house-check/herman3-check-only-baked (2026-08-04; one pipeline serves both queries)"
         }
       ]
     }

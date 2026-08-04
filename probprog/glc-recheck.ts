@@ -1,18 +1,19 @@
-// glc-recheck.ts — re-verify the probprog absorption-bracket
-// certificates from their sealed containers (out/glc/*.glc) through
-// the geolog fast-path checker, positives and mutants both.
+// glc-recheck.ts — re-verify the probprog certificates from their
+// sealed containers (out/glc/*.glc) through the geolog fast-path
+// checker, positives and mutants both.
 //
-// STAGED-CLOSURE LANE, stated loudly: the certificate species
-// (absorption brackets for stored-row chains) is staged for the next
-// theory revision event and is in no baked closure yet. Every check
-// therefore rides the checker's --staged-chain lane: the closure chain
-// container (sealed from the staged theory set, double-mint
-// determinism verified at production) is loaded explicitly, and the
-// certificates' prerequisite tables name that staged revision. When
-// the revision event seals and the QTSL_REV pin advances past it, the
-// containers re-emit against the baked closure and this driver drops
-// the STAGED_CHAIN requirement — tracked in the manifest's `closure`
-// field so the flip is mechanical.
+// BAKED LANE: the certificate species (absorption brackets for
+// stored-row chains, and the contraction/EV witness family) sealed
+// at theory revision event 8 — the dac closure (BernsteinLogic +
+// Qtsl + Dtmc + DtmcAbsorb) and the dcc closure (dac +
+// DtmcContraction) are in the checker's baked roster. The
+// certificates' prerequisite tables name those revisions and the
+// checker resolves them by roster, no flags. (Historical note, as
+// the staged-lane paragraph that stood here promised: before the
+// event sealed, every check rode --staged-chain against the staged
+// closure extract; the baked dac revision is byte-identical to the
+// staged one, so the committed containers crossed the event without
+// re-emission — the flip was mechanical.)
 //
 //   positives: must ACCEPT (exit 0) with the manifest's exact
 //              per-relation claim counts;
@@ -24,15 +25,13 @@
 // the committed artifacts, invokes the checker, and tabulates
 // verdicts. The checker binary is the instrument.
 //
-// Contract: glc-check --staged-chain <chain.glc> --staged-cert
-// [--expect-claims name=N,...] <file.glc>; exit 0 = ACCEPT; one
-// verdict line per file on stdout. env GLC_CHECK names the checker
-// binary (built from the qtsl checkout that carries the staged lane:
-// cargo build --release --bin glc-check in
-// crates/qtsl-geolog-provider); env STAGED_CHAIN names the closure
-// chain container. Both unset is an honest refusal, never a skip.
+// Contract: glc-check [--expect-claims name=N,...] <file.glc>;
+// exit 0 = ACCEPT; one verdict line per file on stdout. env
+// GLC_CHECK names the checker binary (cargo build --release --bin
+// glc-check in crates/qtsl-geolog-provider of the pinned qtsl
+// checkout). Unset is an honest refusal, never a skip.
 //
-// Run: GLC_CHECK=... STAGED_CHAIN=... node --experimental-strip-types
+// Run: GLC_CHECK=... node --experimental-strip-types
 //      probprog/glc-recheck.ts
 
 import { spawnSync } from "node:child_process";
@@ -44,21 +43,16 @@ const GLCDIR = path.join(HERE, "out", "glc");
 const MANIFEST = path.join(GLCDIR, "GLC-MANIFEST.json");
 
 const GLC_CHECK = process.env.GLC_CHECK;
-const STAGED_CHAIN = process.env.STAGED_CHAIN;
-if (!GLC_CHECK || !STAGED_CHAIN) {
+if (!GLC_CHECK) {
   console.error(
-    "glc-recheck: GLC_CHECK and STAGED_CHAIN must both be set (checker binary " +
-      "from the qtsl checkout carrying the staged lane; the staged closure " +
-      "chain container). Unset is a refusal, never a silent skip.",
+    "glc-recheck: GLC_CHECK must be set (checker binary from the pinned " +
+      "qtsl checkout). Unset is a refusal, never a silent skip.",
   );
   process.exit(2);
 }
 
 function runChecker(certPath: string, expect: string | null): [number, string] {
   const args = [
-    "--staged-chain",
-    STAGED_CHAIN!,
-    "--staged-cert",
     ...(expect ? ["--expect-claims", expect] : []),
     certPath,
   ];
@@ -71,7 +65,7 @@ const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
 let bad = 0;
 
 console.log(
-  `== positives (staged closure: ${manifest.closure ?? "see manifest"}) ==`,
+  `== positives (baked closures: ${manifest.closure ?? "see manifest"}) ==`,
 );
 for (const pos of manifest.positives) {
   const [status, line] = runChecker(

@@ -1,6 +1,6 @@
 evcert v1
 program 3d-asym-rw
-spec-sha256 6eddaa20880da5d47006a4074fa45373c86c2aedd5cc72fa468fc6fcff0fa8ee
+spec-sha256 26c85342acef88a30308d35b98a2de59492d68876acf800e55e46f38aa5d3ab6
 horizon 200
 pattern walk3d-monus 3 1/4
 c 193/200

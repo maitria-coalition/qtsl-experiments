@@ -1,5 +1,5 @@
 {
-  "closure": "staged revision 6f1b2c7ef562c437174dd3eabfcb9d7e487de3c841d63b85ff42017be5ff29d0 (BL+Qtsl+Dtmc+DtmcAbsorb, 12 theories, 747 axioms; double-mint determinism verified at production; chain container: qtsl checkout crates/qtsl-geolog-provider/fixtures/staged/dabs-staged.glc)",
+  "closure": "baked event-8 roster: dac revision 6f1b2c7ef562c437174dd3eabfcb9d7e487de3c841d63b85ff42017be5ff29d0 (BernsteinLogic+Qtsl+Dtmc+DtmcAbsorb \u2014 byte-identical to the pre-mint staged revision, so containers crossed the event without re-emission; the corpus was then re-emitted once for the reachability-sharpened producer claims) + dcc revision 70b31e69b4891c03d4654fc5520234683e1829af59593cacb7cdc723a89d4d9d (dac + DtmcContraction \u2014 the coupon-collector5/israeli-jalfon4/herman3 containers carrying contraction witness blocks). Prerequisites resolve via the checker roster, no flags.",
   "positives": [
     {
       "file": "geo-u100.glc",
@@ -35,15 +35,15 @@
     },
     {
       "file": "coupon-collector5-u80.glc",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "israeli-jalfon4-u31.glc",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "israeli-jalfon4-u101.glc",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "3d-asym-rw-u60.glc",
@@ -51,11 +51,11 @@
     },
     {
       "file": "herman3-u31.glc",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "herman3-u101.glc",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     }
   ],
   "mutants": [
@@ -220,14 +220,14 @@
       "base": "coupon-collector5-u80",
       "locus": "absorb hi tightened below canonical (the exact 1 = class mass + residual)",
       "expected": "FAIL",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-cc5-widened.glc",
       "base": "coupon-collector5-u80",
       "locus": "absorb bracket widened outward to [0, 1] (positive control)",
       "expected": "ACCEPT",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-cc5-byteflip.glc",
@@ -240,21 +240,21 @@
       "base": "coupon-collector5-u80",
       "locus": "count gate: one more absorb claim expected than present",
       "expected": "FAIL",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-ij4-tighter.glc",
       "base": "israeli-jalfon4-u31",
       "locus": "absorb hi tightened below canonical (residual dropped)",
       "expected": "FAIL",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-ij4-widened.glc",
       "base": "israeli-jalfon4-u31",
       "locus": "absorb bracket widened outward to [0, 1] (positive control)",
       "expected": "ACCEPT",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-ij4-byteflip.glc",
@@ -267,7 +267,7 @@
       "base": "israeli-jalfon4-u31",
       "locus": "count gate: one more absorb claim expected than present",
       "expected": "FAIL",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=1"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-3d-tighter.glc",
@@ -302,14 +302,14 @@
       "base": "herman3-u31",
       "locus": "posterior hi for class 0 tightened below canonical (residual dropped)",
       "expected": "FAIL",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-h3-widened.glc",
       "base": "herman3-u31",
       "locus": "absorb + posterior widened outward to [0, 1] (positive control)",
       "expected": "ACCEPT",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     },
     {
       "file": "mut-h3-byteflip.glc",
@@ -322,7 +322,109 @@
       "base": "herman3-u31",
       "locus": "count gate: one more posterior claim expected than present",
       "expected": "FAIL",
-      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=3"
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=3,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
+    },
+    {
+      "file": "mut-cc5-reentry.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "a stored row from the stabilized class back into the alive region (the no-re-entry recompute; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-cc5-w-zero.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "a region state's weight zeroed: no weighted-to-bare conversion (the positive-minimum demand; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-cc5-ev-tighter.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "EV upper endpoint below the warranted assembly (ported from the retired EV lane)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
+    },
+    {
+      "file": "mut-cc5-ev-widened.glc",
+      "base": "coupon-collector5-u80",
+      "locus": "EV bracket widened outward (positive control; ported from the retired EV lane)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
+    },
+    {
+      "file": "mut-ij4-offset-early.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "anchor offset 2 claims a two-step deterministic prologue (the offset row's determinism recompute; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-ij4-offset-dropped.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "anchor offset dropped with the offset-1 claims kept (the offset is load-bearing: the warranted assembly gains the prologue's survival mass; ported from the retired EV lane)",
+      "expected": "FAIL"
+    },
+    {
+      "file": "mut-ij4-reentry.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "a stored row from the stabilized class back into the alive region (the no-re-entry recompute; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-ij4-w-zero.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "a region state's weight zeroed: no weighted-to-bare conversion (the positive-minimum demand; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-ij4-ev-tighter.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "EV upper endpoint below the warranted assembly (ported from the retired EV lane)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
+    },
+    {
+      "file": "mut-ij4-ev-widened.glc",
+      "base": "israeli-jalfon4-u31",
+      "locus": "EV bracket widened outward (positive control; ported from the retired EV lane)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
+    },
+    {
+      "file": "mut-h3-offset-early.glc",
+      "base": "herman3-u31",
+      "locus": "anchor offset 2 claims a two-step deterministic prologue (the offset row's determinism recompute; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-h3-offset-dropped.glc",
+      "base": "herman3-u31",
+      "locus": "anchor offset dropped with the offset-1 claims kept (the offset is load-bearing: the warranted assembly gains the prologue's survival mass; ported from the retired EV lane)",
+      "expected": "FAIL"
+    },
+    {
+      "file": "mut-h3-reentry.glc",
+      "base": "herman3-u31",
+      "locus": "a stored row from the stabilized class back into the alive region (the no-re-entry recompute; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-h3-w-zero.glc",
+      "base": "herman3-u31",
+      "locus": "a region state's weight zeroed: no weighted-to-bare conversion (the positive-minimum demand; ported from the retired EV lane)",
+      "expected": "REFUSE"
+    },
+    {
+      "file": "mut-h3-ev-tighter.glc",
+      "base": "herman3-u31",
+      "locus": "EV upper endpoint below the warranted assembly (ported from the retired EV lane)",
+      "expected": "FAIL",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
+    },
+    {
+      "file": "mut-h3-ev-widened.glc",
+      "base": "herman3-u31",
+      "locus": "EV bracket widened outward (positive control; ported from the retired EV lane)",
+      "expected": "ACCEPT",
+      "expect_claims": "qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0"
     }
   ]
 }

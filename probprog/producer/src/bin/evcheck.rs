@@ -1,12 +1,17 @@
 //! `probprog-evcheck` — the dev-oracle checker for EV-bracket
-//! certificates (weighted transfer contraction + geometric template
-//! tail + moment assembly, the draft strengthened generator-form
-//! seam). Status, mathematics, and verdict classes: the
-//! `probprog_producer::ev` module doc. Until the seam's theory
-//! revision seals, comparison rows checked here are labeled as
-//! dev-oracle verdicts; the same chain's absorption rows ride the
-//! fast-path checker via the sealed container, and the `spec-sha256`
-//! line binds the two artifacts to the same stored rows.
+//! certificates. The generator-form seam sealed for the FINITE face
+//! at theory revision event 8 (the dcc closure): those rows are
+//! container content now and glc-check owns their verdicts. What
+//! checks here is the 3-D walk's PATTERN face (finitely presented
+//! infinite chain), descoped from that event to its own design leg —
+//! plus the retained v0 finite-face checker as a library oracle.
+//! Status, mathematics, and verdict classes: the
+//! `probprog_producer::ev` and `ev3d` module docs. Until the pattern
+//! face's own revision event, comparison rows checked here are
+//! labeled as dev-oracle verdicts; the same chain's absorption rows
+//! ride the fast-path checker via the sealed container, and the
+//! `spec-sha256` line binds the two artifacts to the same stored
+//! rows.
 //!
 //! usage: probprog-evcheck --spec <spec.json> <cert.evc>
 //! exit: 0 ACCEPT · 3 FAIL (claim discharge) · 4 REFUSE (shape, side
@@ -65,7 +70,7 @@ fn main() {
         Verdict::Accept { claims: (p, e, t) } => {
             println!(
                 "{cert_path} ACCEPT claims partial={p} ev={e} tail={t} \
-                 (dev-oracle, draft strengthened gen-form seam)"
+                 (dev-oracle, pattern face pending its own revision event)"
             );
         }
         Verdict::Fail(m) => {

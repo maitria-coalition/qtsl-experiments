@@ -2,17 +2,23 @@
 // (out/ev/*.evc) through the dev-oracle checker, positives and
 // mutants both.
 //
-// DEV-ORACLE LANE, stated loudly: the EV rows (weighted transfer
-// contraction + geometric template tail + moment assembly) belong to
-// the draft strengthened generator-form seam, staged for a future
-// theory revision event and in no sealed closure yet. Until that
-// revision seals, `probprog-evcheck` (built from this workspace) is
-// the family's dev oracle for those rows — exact-rational,
-// recomputing every quantity from the stored chain rows named by the
-// certificate's spec-sha256 binding — and every verdict this driver
-// tabulates is labeled pending that revision in the comparison
-// receipts. The absorption rows of the SAME chains ride the fast-path
-// checker (glc-recheck.ts); the shared spec bytes are the bridge.
+// PATTERN-FACE DEV-ORACLE LANE, stated loudly: the generator-form
+// seam SEALED for the finite face at theory revision event 8 (the
+// dcc closure, DtmcContraction) — the coupon-collector5,
+// israeli-jalfon4, and herman3 EV rows re-emitted as container
+// content and the fast-path checker owns their verdicts
+// (glc-recheck.ts), exactly the retirement this header promised.
+// What remains here is the 3-D walk's PATTERN face (finitely
+// presented infinite chain: per-coordinate template profile, window
+// realization), which was descoped from that event to its own design
+// leg. Until that face's own revision event, `probprog-evcheck`
+// (built from this workspace) is its dev oracle — exact-rational,
+// recomputing every quantity from the stored window rows named by
+// the certificate's spec-sha256 binding — and every verdict this
+// driver tabulates is labeled accordingly in the comparison
+// receipts. The absorption rows of the SAME window chain ride the
+// fast-path checker (glc-recheck.ts); the shared spec bytes are the
+// bridge.
 //
 //   positives: must ACCEPT (exit 0) with the manifest's claim counts;
 //   mutants:   land in the manifest's expected class — REFUSE (shape,

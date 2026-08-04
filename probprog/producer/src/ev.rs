@@ -3,19 +3,20 @@
 //! partial moment (survival form) + a weighted-transfer contraction
 //! tail with a geometric template + the moment-assembly row.
 //!
-//! CHECKER STATUS, stated loudly: the contraction/template/assembly
-//! rows belong to the DRAFT strengthened generator-form seam of the
-//! certificate calculus (a revision-event passenger, not yet in any
-//! sealed theory revision). Until that revision seals, this module's
-//! checker is the family's DEV ORACLE for those rows: exact-rational,
-//! recomputing every quantity from the stored chain rows, verdict
-//! classes mirroring the fast-path checker (ACCEPT / FAIL on claim
-//! discharge / REFUSE on shape, side conditions, or binding) — and
-//! comparison rows checked this way are labeled pending that revision.
-//! The absorption/posterior rows of the SAME chain ride the fast-path
-//! checker via the sealed container; the binding between the two
-//! artifacts is the certificate's `spec-sha256` line (the exact spec
-//! bytes the container emitter sealed).
+//! CHECKER STATUS: the generator-form seam SEALED for this (finite)
+//! face at theory revision event 8 — the DtmcContraction species in
+//! the baked dcc closure. Production certificates carry these rows
+//! as container content (`contraction_block_json` below feeds the
+//! spec path) and the fast-path checker owns their verdicts; this
+//! module's checker remains as the library-level exact-rational
+//! oracle (in-crate loci, differentials), verdict classes mirroring
+//! the fast-path checker (ACCEPT / FAIL on claim discharge / REFUSE
+//! on shape, side conditions, or binding). The pattern face (`ev3d`)
+//! stays on the dev-oracle lane pending its own revision event. The
+//! absorption/posterior rows of the SAME chain ride the fast-path
+//! checker via the sealed container; where a spec-sha256 binding
+//! appears, it names the exact spec bytes the container emitter
+//! sealed.
 //!
 //! The mathematics being checked, in one paragraph: given weights
 //! $w \ge 0$ on the chain's states (absorbing states weight 0) and a
@@ -174,6 +175,91 @@ pub fn ev_template(name: &str) -> Option<EvTemplate> {
 }
 
 // ---------------------------------------------------------- emission
+
+/// The contraction witness block for the container spec (the sealed
+/// DtmcContraction species, revision event 8): the same template,
+/// exact partial sum, weighted alive mass, and tail assembly the EV
+/// certificate carried on the dev-oracle lane, rendered as the
+/// emitter's ADDITIVE `contraction` spec block. Claim set mirrors the
+/// retired `.evc` grammar exactly — `genform`, `partial_lo`, `ev`,
+/// `tail`; no `z_one` (the dev-oracle certificates never claimed it).
+/// `None` when the case has no registered template.
+pub fn contraction_block_json(chain: &dyn Chain, horizon: u32) -> Option<String> {
+    assert!(
+        chain.time_homogeneous(),
+        "contraction witnesses demand the time-homogeneous stored-row form"
+    );
+    let tpl = ev_template(chain.name())?;
+    let n = horizon;
+    assert!(
+        tpl.offset <= n,
+        "anchor offset {} beyond horizon {n}",
+        tpl.offset
+    );
+    let surv = survival_masses(chain, n);
+    if tpl.offset > 0 {
+        assert!(
+            surv[tpl.offset as usize - 1].is_one(),
+            "anchor offset {} claims a deterministic prologue but P[T > {}] < 1",
+            tpl.offset,
+            tpl.offset - 1
+        );
+    }
+    let l: Q = surv[tpl.offset as usize..n as usize]
+        .iter()
+        .fold(Q::zero(), |a, b| a + b.clone());
+    let tr = crate::evaluate(chain, n);
+    let wmap: BTreeMap<&str, &Q> = tpl.weights.iter().map(|(s, w)| (s.as_str(), w)).collect();
+    let wn = tr.alive_support.iter().fold(Q::zero(), |a, (x, m)| {
+        let name = format!("s{x}");
+        a + m
+            * (*wmap
+                .get(name.as_str())
+                .unwrap_or_else(|| panic!("no weight for reachable alive state {name}")))
+            .clone()
+    });
+    let wmin = tpl
+        .weights
+        .iter()
+        .map(|(_, w)| w.clone())
+        .min()
+        .expect("nonempty weights");
+    let kappa = Q::one() / wmin;
+    let tail = kappa.clone() * wn.clone() / (Q::one() - tpl.gamma.clone());
+    let tail_coeff = kappa * wn / qpow(&tpl.gamma, n);
+
+    let mut out = String::new();
+    out.push_str("  \"contraction\": {\n");
+    let _ = write!(out, "    \"anchor\": \"s{}\",\n", chain.init());
+    let _ = write!(out, "    \"horizon\": {n},\n");
+    if tpl.offset > 0 {
+        let _ = write!(out, "    \"offset\": {},\n", tpl.offset);
+    }
+    let _ = write!(out, "    \"c\": \"{}\",\n", rq(&tpl.gamma));
+    out.push_str("    \"weights\": [");
+    for (i, (s, w)) in tpl.weights.iter().enumerate() {
+        if i > 0 {
+            out.push_str(", ");
+        }
+        let _ = write!(out, "[\"{s}\", \"{}\"]", rq(w));
+    }
+    out.push_str("],\n    \"claims\": {\n      \"genform\": true,\n");
+    let _ = write!(out, "      \"partial_lo\": [\"{}\"],\n", rq(&l));
+    let _ = write!(
+        out,
+        "      \"ev\": [[\"{}\", \"{}\"]],\n",
+        rq(&l),
+        rq(&(l.clone() + tail))
+    );
+    let _ = write!(
+        out,
+        "      \"tail\": [[\"{}\", \"{}\"]]\n",
+        rq(&tail_coeff),
+        rq(&tpl.gamma)
+    );
+    out.push_str("    }\n  }\n");
+    Some(out)
+}
 
 /// Emit the EV certificate (deterministic text form) for a
 /// TIME-HOMOGENEOUS chain at `horizon`, binding it to the exact spec

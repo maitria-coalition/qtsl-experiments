@@ -695,6 +695,1014 @@
         "cpu": "unknown"
       },
       "at": "2026-08-04T00:44:43.289Z"
+    },
+    {
+      "label": "house-e2e/geo-compare-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec geo-counter 100  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-geo-counter-100.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-geo-counter-100.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        1.955616804,
+        0.390192203,
+        0.271025159,
+        0.904497977,
+        0.378377247
+      ],
+      "median_s": 0.390192203,
+      "nice_readback": 19,
+      "loadavg_before": "9.41 8.53 10.41",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:17.815Z"
+    },
+    {
+      "label": "house-e2e/asym-compare-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec asym-rw 14  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-asym-rw-14.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-asym-rw-14.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.107156311,
+        1.578619586,
+        1.091625551,
+        0.107658428,
+        0.105920779
+      ],
+      "median_s": 0.107658428,
+      "nice_readback": 19,
+      "loadavg_before": "10.58 8.78 10.49",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:20.992Z"
+    },
+    {
+      "label": "house-e2e/asym-tight-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec asym-rw 70  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-asym-rw-70.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-asym-rw-70.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.651362759,
+        0.668077649,
+        0.670363109,
+        0.665752988,
+        0.652482418
+      ],
+      "median_s": 0.665752988,
+      "nice_readback": 19,
+      "loadavg_before": "11.17 8.94 10.53",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:25.015Z"
+    },
+    {
+      "label": "house-e2e/die-compare-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec die-paradox 6  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-die-paradox-6.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-die-paradox-6.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.11245316,
+        0.123863344,
+        0.137651775,
+        0.102786751,
+        0.100304824
+      ],
+      "median_s": 0.11245316,
+      "nice_readback": 19,
+      "loadavg_before": "11.72 9.09 10.57",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:25.774Z"
+    },
+    {
+      "label": "house-e2e/die-tight-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec die-paradox 40  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-die-paradox-40.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-die-paradox-40.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.121031799,
+        0.119929964,
+        0.153595553,
+        0.171885049,
+        0.127037534
+      ],
+      "median_s": 0.127037534,
+      "nice_readback": 19,
+      "loadavg_before": "11.72 9.09 10.57",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:26.657Z"
+    },
+    {
+      "label": "house-e2e/ba-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec burglar-alarm 4  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-burglar-alarm-4.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-burglar-alarm-4.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.153865523,
+        0.155555107,
+        0.103217939,
+        0.102398667,
+        0.144185387
+      ],
+      "median_s": 0.144185387,
+      "nice_readback": 19,
+      "loadavg_before": "11.72 9.09 10.57",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:27.483Z"
+    },
+    {
+      "label": "house-e2e/bq3-u51-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec beauquier-3 51  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-beauquier-3-51.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-beauquier-3-51.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.10855882,
+        0.108280289,
+        0.14862306,
+        0.149366891,
+        0.130495709
+      ],
+      "median_s": 0.130495709,
+      "nice_readback": 19,
+      "loadavg_before": "11.72 9.09 10.57",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:28.362Z"
+    },
+    {
+      "label": "house-e2e/bq3-u1000-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec beauquier-3 1000  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-beauquier-3-1000.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-beauquier-3-1000.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.806928618,
+        0.791704815,
+        0.802838821,
+        0.766040371,
+        0.845514716
+      ],
+      "median_s": 0.802838821,
+      "nice_readback": 19,
+      "loadavg_before": "11.72 9.09 10.57",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:33.217Z"
+    },
+    {
+      "label": "house-e2e/cc5-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec coupon-collector5 80 --with-contraction 2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dcc-baked-e8.glc -o $TMPDIR/m-coupon-collector5-80.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-coupon-collector5-80.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.122725542,
+        0.149679437,
+        0.173872363,
+        0.127809844,
+        0.120035278
+      ],
+      "median_s": 0.127809844,
+      "nice_readback": 19,
+      "loadavg_before": "11.82 9.15 10.58",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:34.143Z"
+    },
+    {
+      "label": "house-e2e/ij4-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec israeli-jalfon4 31 --with-contraction 2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dcc-baked-e8.glc -o $TMPDIR/m-israeli-jalfon4-31.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-israeli-jalfon4-31.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.160651922,
+        0.140368504,
+        0.133626602,
+        0.110944362,
+        0.106668306
+      ],
+      "median_s": 0.133626602,
+      "nice_readback": 19,
+      "loadavg_before": "11.82 9.15 10.58",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:34.984Z"
+    },
+    {
+      "label": "house-e2e/herman3-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec herman3 31 --with-contraction 2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dcc-baked-e8.glc -o $TMPDIR/m-herman3-31.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-herman3-31.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.109243162,
+        0.129168081,
+        0.132636289,
+        0.139857059,
+        0.111862515
+      ],
+      "median_s": 0.129168081,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:35.782Z"
+    },
+    {
+      "label": "house-check/die-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/die-paradox-u6.glc",
+      "runs": 5,
+      "walls_s": [
+        0.051911788,
+        0.051685562,
+        0.055650575,
+        0.051710954,
+        0.051897292
+      ],
+      "median_s": 0.051897292,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:36.156Z"
+    },
+    {
+      "label": "house-check/ba-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/burglar-alarm-u4.glc",
+      "runs": 5,
+      "walls_s": [
+        0.067022647,
+        0.072900668,
+        0.06761934,
+        0.073733733,
+        0.050447775
+      ],
+      "median_s": 0.06761934,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:36.602Z"
+    },
+    {
+      "label": "house-check/bq3-u51-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/beauquier3-u51.glc",
+      "runs": 5,
+      "walls_s": [
+        0.078209998,
+        0.081279994,
+        0.075785863,
+        0.067425466,
+        0.057930068
+      ],
+      "median_s": 0.075785863,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:37.089Z"
+    },
+    {
+      "label": "house-check/cc5-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0 ./probprog/out/glc/coupon-collector5-u80.glc",
+      "runs": 5,
+      "walls_s": [
+        0.063079843,
+        0.070343541,
+        0.089940089,
+        0.084700313,
+        0.083604239
+      ],
+      "median_s": 0.083604239,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:37.604Z"
+    },
+    {
+      "label": "house-check/ij4-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0 ./probprog/out/glc/israeli-jalfon4-u31.glc",
+      "runs": 5,
+      "walls_s": [
+        0.0549246,
+        0.054868583,
+        0.06113992,
+        0.05569331,
+        0.056271636
+      ],
+      "median_s": 0.05569331,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:38.037Z"
+    },
+    {
+      "label": "house-check/herman3-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0 ./probprog/out/glc/herman3-u31.glc",
+      "runs": 5,
+      "walls_s": [
+        0.055034985,
+        0.068034832,
+        0.065915164,
+        0.058296023,
+        0.059495938
+      ],
+      "median_s": 0.059495938,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:38.461Z"
+    },
+    {
+      "label": "house-check/3d-glc-u60-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/3d-asym-rw-u60.glc",
+      "runs": 5,
+      "walls_s": [
+        0.914521942,
+        0.906720366,
+        0.912652485,
+        0.910041724,
+        0.931942949
+      ],
+      "median_s": 0.912652485,
+      "nice_readback": 19,
+      "loadavg_before": "11.91 9.22 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:44.033Z"
+    },
+    {
+      "label": "stage/bq3-u51-spec-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec beauquier-3 51 2>/dev/null > $TMPDIR/stage-bq3.spec.json",
+      "runs": 5,
+      "walls_s": [
+        0.004631114,
+        0.004680171,
+        0.004320888,
+        0.006370842,
+        0.005154351
+      ],
+      "median_s": 0.004680171,
+      "nice_readback": 19,
+      "loadavg_before": "11.76 9.23 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:44.128Z"
+    },
+    {
+      "label": "stage/bq3-u51-emit-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/stage-bq3.glc $TMPDIR/stage-bq3.spec.json",
+      "runs": 5,
+      "walls_s": [
+        0.063035122,
+        0.059851541,
+        0.063613144,
+        0.065430264,
+        0.069867281
+      ],
+      "median_s": 0.063613144,
+      "nice_readback": 19,
+      "loadavg_before": "11.76 9.23 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:44.595Z"
+    },
+    {
+      "label": "stage/bq3-u51-check-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check $TMPDIR/stage-bq3.glc",
+      "runs": 5,
+      "walls_s": [
+        0.083441485,
+        0.061377236,
+        0.058356615,
+        0.059768005,
+        0.05930304
+      ],
+      "median_s": 0.059768005,
+      "nice_readback": 19,
+      "loadavg_before": "11.70 9.26 10.59",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:46:45.075Z"
+    },
+    {
+      "label": "house-e2e/geo-compare-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec geo-counter 100  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-geo-counter-100.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-geo-counter-100.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.31556321,
+        0.272511168,
+        0.295714372,
+        0.298175882,
+        0.298316523
+      ],
+      "median_s": 0.298175882,
+      "nice_readback": 19,
+      "loadavg_before": "6.41 8.16 9.93",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:49:56.149Z"
+    },
+    {
+      "label": "house-e2e/asym-compare-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec asym-rw 14  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-asym-rw-14.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-asym-rw-14.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.105998859,
+        0.108319264,
+        0.103396499,
+        0.107637257,
+        0.108710675
+      ],
+      "median_s": 0.107637257,
+      "nice_readback": 19,
+      "loadavg_before": "6.70 8.19 9.93",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:49:56.857Z"
+    },
+    {
+      "label": "house-e2e/asym-tight-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec asym-rw 70  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-asym-rw-70.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-asym-rw-70.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.684814063,
+        0.649036887,
+        0.680273318,
+        0.713450341,
+        0.715295958
+      ],
+      "median_s": 0.684814063,
+      "nice_readback": 19,
+      "loadavg_before": "6.70 8.19 9.93",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:01.031Z"
+    },
+    {
+      "label": "house-e2e/die-compare-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec die-paradox 6  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-die-paradox-6.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-die-paradox-6.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.135440728,
+        0.10391012,
+        0.100169061,
+        0.104783296,
+        0.106600432
+      ],
+      "median_s": 0.104783296,
+      "nice_readback": 19,
+      "loadavg_before": "7.04 8.23 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:01.821Z"
+    },
+    {
+      "label": "house-e2e/die-tight-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec die-paradox 40  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-die-paradox-40.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-die-paradox-40.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.149907116,
+        0.164605172,
+        0.123894158,
+        0.118597214,
+        0.123167288
+      ],
+      "median_s": 0.123894158,
+      "nice_readback": 19,
+      "loadavg_before": "7.04 8.23 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:02.686Z"
+    },
+    {
+      "label": "house-e2e/ba-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec burglar-alarm 4  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-burglar-alarm-4.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-burglar-alarm-4.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.137429098,
+        0.136202959,
+        0.104961169,
+        0.106047404,
+        0.118244539
+      ],
+      "median_s": 0.118244539,
+      "nice_readback": 19,
+      "loadavg_before": "7.04 8.23 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:03.475Z"
+    },
+    {
+      "label": "house-e2e/bq3-u51-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec beauquier-3 51  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-beauquier-3-51.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-beauquier-3-51.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.132290619,
+        0.112154339,
+        0.116606348,
+        0.14180437,
+        0.132045337
+      ],
+      "median_s": 0.132045337,
+      "nice_readback": 19,
+      "loadavg_before": "7.04 8.23 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:04.351Z"
+    },
+    {
+      "label": "house-e2e/bq3-u1000-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec beauquier-3 1000  2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/m-beauquier-3-1000.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-beauquier-3-1000.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.813421273,
+        0.774478772,
+        0.786310897,
+        0.803350125,
+        0.818683545
+      ],
+      "median_s": 0.803350125,
+      "nice_readback": 19,
+      "loadavg_before": "7.04 8.23 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:09.211Z"
+    },
+    {
+      "label": "house-e2e/cc5-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec coupon-collector5 80 --with-contraction 2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dcc-baked-e8.glc -o $TMPDIR/m-coupon-collector5-80.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-coupon-collector5-80.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.119470294,
+        0.121441672,
+        0.140033123,
+        0.165325386,
+        0.167268236
+      ],
+      "median_s": 0.140033123,
+      "nice_readback": 19,
+      "loadavg_before": "7.52 8.31 9.95",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:10.134Z"
+    },
+    {
+      "label": "house-e2e/ij4-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec israeli-jalfon4 31 --with-contraction 2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dcc-baked-e8.glc -o $TMPDIR/m-israeli-jalfon4-31.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-israeli-jalfon4-31.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.102739677,
+        0.141449488,
+        0.169876628,
+        0.11548621,
+        0.108894581
+      ],
+      "median_s": 0.11548621,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:10.937Z"
+    },
+    {
+      "label": "house-e2e/herman3-full-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec herman3 31 --with-contraction 2>/dev/null | $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dcc-baked-e8.glc -o $TMPDIR/m-herman3-31.glc >/dev/null && $QTSL_CO/target/release/glc-check $TMPDIR/m-herman3-31.glc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        0.106254125,
+        0.129213599,
+        0.142708811,
+        0.133079523,
+        0.135265015
+      ],
+      "median_s": 0.133079523,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:11.869Z"
+    },
+    {
+      "label": "house-check/die-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/die-paradox-u6.glc",
+      "runs": 5,
+      "walls_s": [
+        0.053411225,
+        0.054122848,
+        0.051200309,
+        0.054429282,
+        0.051227717
+      ],
+      "median_s": 0.053411225,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:12.293Z"
+    },
+    {
+      "label": "house-check/ba-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/burglar-alarm-u4.glc",
+      "runs": 5,
+      "walls_s": [
+        0.074546827,
+        0.078454222,
+        0.064996819,
+        0.069955121,
+        0.063714183
+      ],
+      "median_s": 0.069955121,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:12.759Z"
+    },
+    {
+      "label": "house-check/bq3-u51-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/beauquier3-u51.glc",
+      "runs": 5,
+      "walls_s": [
+        0.057743729,
+        0.061107152,
+        0.068095551,
+        0.078959539,
+        0.165852367
+      ],
+      "median_s": 0.068095551,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:13.345Z"
+    },
+    {
+      "label": "house-check/cc5-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0 ./probprog/out/glc/coupon-collector5-u80.glc",
+      "runs": 5,
+      "walls_s": [
+        0.077724216,
+        0.080188446,
+        0.073097102,
+        0.133741401,
+        0.083638446
+      ],
+      "median_s": 0.080188446,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:13.955Z"
+    },
+    {
+      "label": "house-check/ij4-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=1,qtsl_dabs_posterior_bracket=1,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0 ./probprog/out/glc/israeli-jalfon4-u31.glc",
+      "runs": 5,
+      "walls_s": [
+        0.054635476,
+        0.05477735,
+        0.055150713,
+        0.054866342,
+        0.053447801
+      ],
+      "median_s": 0.05477735,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:14.342Z"
+    },
+    {
+      "label": "house-check/herman3-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check --expect-claims qtsl_dabs_wf=1,qtsl_dabs_absorb_bracket=2,qtsl_dabs_posterior_bracket=2,qtsl_dtmc_genform_contraction=1,qtsl_dgc_partial_lo=1,qtsl_dgc_ev_bracket=1,qtsl_dgc_survival_tail=1,qtsl_dgc_z_one=0 ./probprog/out/glc/herman3-u31.glc",
+      "runs": 5,
+      "walls_s": [
+        0.052256334,
+        0.053003382,
+        0.053912862,
+        0.068702021,
+        0.075193089
+      ],
+      "median_s": 0.053912862,
+      "nice_readback": 19,
+      "loadavg_before": "7.56 8.31 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:14.758Z"
+    },
+    {
+      "label": "house-check/3d-glc-u60-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/3d-asym-rw-u60.glc",
+      "runs": 5,
+      "walls_s": [
+        0.926835144,
+        0.906250571,
+        0.916233222,
+        0.926178273,
+        1.407919917
+      ],
+      "median_s": 0.926178273,
+      "nice_readback": 19,
+      "loadavg_before": "7.67 8.32 9.94",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:20.868Z"
+    },
+    {
+      "label": "stage/bq3-u51-spec-baked",
+      "cmd": "taskset -c 16 bash -c ./target/release/probprog-produce spec beauquier-3 51 2>/dev/null > $TMPDIR/stage-bq3.spec.json",
+      "runs": 5,
+      "walls_s": [
+        0.003454992,
+        0.003350686,
+        0.003766642,
+        0.004529338,
+        0.003305278
+      ],
+      "median_s": 0.003454992,
+      "nice_readback": 19,
+      "loadavg_before": "8.42 8.46 9.98",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:20.965Z"
+    },
+    {
+      "label": "stage/bq3-u51-emit-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $TMPDIR/stage-bq3.glc $TMPDIR/stage-bq3.spec.json",
+      "runs": 5,
+      "walls_s": [
+        0.085001882,
+        0.077854505,
+        0.063818696,
+        0.086830875,
+        0.084983211
+      ],
+      "median_s": 0.084983211,
+      "nice_readback": 19,
+      "loadavg_before": "8.42 8.46 9.98",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:21.525Z"
+    },
+    {
+      "label": "stage/bq3-u51-check-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check $TMPDIR/stage-bq3.glc",
+      "runs": 5,
+      "walls_s": [
+        0.056054978,
+        0.146361436,
+        0.087979494,
+        0.142729979,
+        0.287287831
+      ],
+      "median_s": 0.142729979,
+      "nice_readback": 19,
+      "loadavg_before": "8.42 8.46 9.98",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:50:22.387Z"
+    },
+    {
+      "label": "house-e2e/3d-u200-full-baked",
+      "cmd": "taskset -c 16 bash -c T=$TMPDIR && ./target/release/probprog-produce spec 3d-asym-rw 60 2>/dev/null > $T/m3d.spec.json && $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $T/m3d.glc $T/m3d.spec.json >/dev/null && ./target/release/probprog-produce evcert 3d-asym-rw 200 --spec-file $T/m3d.spec.json 2>/dev/null > $T/m3d.evc && $QTSL_CO/target/release/glc-check $T/m3d.glc >/dev/null && ./target/release/probprog-evcheck --spec $T/m3d.spec.json $T/m3d.evc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        3.933952104,
+        3.939943391,
+        3.96013764,
+        4.050163266,
+        3.944134246
+      ],
+      "median_s": 3.944134246,
+      "nice_readback": 19,
+      "loadavg_before": "7.84 8.43 9.85",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:52:04.513Z"
+    },
+    {
+      "label": "house-e2e/3d-u150-full-baked",
+      "cmd": "taskset -c 16 bash -c T=$TMPDIR && ./target/release/probprog-produce spec 3d-asym-rw 60 2>/dev/null > $T/m3d.spec.json && $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $T/m3d.glc $T/m3d.spec.json >/dev/null && ./target/release/probprog-produce evcert 3d-asym-rw 150 --spec-file $T/m3d.spec.json 2>/dev/null > $T/m3d.evc && $QTSL_CO/target/release/glc-check $T/m3d.glc >/dev/null && ./target/release/probprog-evcheck --spec $T/m3d.spec.json $T/m3d.evc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        8.455520055,
+        6.494906164,
+        7.561952753,
+        1.849492504,
+        3.025477722
+      ],
+      "median_s": 6.494906164,
+      "nice_readback": 19,
+      "loadavg_before": "7.89 8.38 9.79",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:52:33.801Z"
+    },
+    {
+      "label": "house-e2e/3d-u150-full-baked",
+      "cmd": "taskset -c 16 bash -c T=$TMPDIR && ./target/release/probprog-produce spec 3d-asym-rw 60 2>/dev/null > $T/m3d.spec.json && $QTSL_CO/target/release/dabs-emit --staged-chain $QTSL_CO/crates/qtsl-geolog-provider/fixtures/baked/dac-baked-e8.glc -o $T/m3d.glc $T/m3d.spec.json >/dev/null && ./target/release/probprog-produce evcert 3d-asym-rw 150 --spec-file $T/m3d.spec.json 2>/dev/null > $T/m3d.evc && $QTSL_CO/target/release/glc-check $T/m3d.glc >/dev/null && ./target/release/probprog-evcheck --spec $T/m3d.spec.json $T/m3d.evc >/dev/null",
+      "runs": 5,
+      "walls_s": [
+        1.849598185,
+        1.845183377,
+        1.830626027,
+        1.841292301,
+        1.835955517
+      ],
+      "median_s": 1.841292301,
+      "nice_readback": 19,
+      "loadavg_before": "7.37 11.52 11.26",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:58:18.351Z"
+    },
+    {
+      "label": "house-check/geo-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/geo-u100.glc",
+      "runs": 5,
+      "walls_s": [
+        0.216631167,
+        0.215863064,
+        0.215227043,
+        0.213201631,
+        0.213023742
+      ],
+      "median_s": 0.215227043,
+      "nice_readback": 19,
+      "loadavg_before": "5.91 10.64 10.97",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:58:48.632Z"
+    },
+    {
+      "label": "house-check/asym-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/asym-rw-u14.glc",
+      "runs": 5,
+      "walls_s": [
+        0.05400123,
+        0.056461109,
+        0.055140777,
+        0.05421792,
+        0.053718332
+      ],
+      "median_s": 0.05421792,
+      "nice_readback": 19,
+      "loadavg_before": "5.91 10.64 10.97",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:58:49.017Z"
+    },
+    {
+      "label": "house-check/bq3-u1000-check-only-baked",
+      "cmd": "taskset -c 16 $QTSL_CO/target/release/glc-check ./probprog/out/glc/beauquier3-u1000.glc",
+      "runs": 5,
+      "walls_s": [
+        0.710799659,
+        0.692081664,
+        0.706476483,
+        0.710268182,
+        0.682497703
+      ],
+      "median_s": 0.706476483,
+      "nice_readback": 19,
+      "loadavg_before": "5.91 10.64 10.97",
+      "box": {
+        "arch": "arm64",
+        "cpus": 20,
+        "cpu": "unknown"
+      },
+      "at": "2026-08-04T02:58:53.499Z"
     }
   ]
 }

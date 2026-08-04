@@ -8,7 +8,7 @@ use std::time::Instant;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let usage = "usage: probprog-produce <eval|spec|evcert> <geo-counter|asym-rw|die-paradox|burglar-alarm|beauquier-3|coupon-collector5|israeli-jalfon4|herman3|3d-asym-rw> <horizon> [--classes N] [--spec-file F]\n  eval: print brackets + producer wall\n  spec: print the certificate spec JSON (for the emitter binary) on stdout\n  evcert: print the EV-bracket certificate (dev-oracle lane; requires --spec-file, the exact spec bytes the container was sealed from)";
+    let usage = "usage: probprog-produce <eval|spec|evcert> <geo-counter|asym-rw|die-paradox|burglar-alarm|beauquier-3|coupon-collector5|israeli-jalfon4|herman3|3d-asym-rw> <horizon> [--classes N] [--spec-file F] [--with-contraction]\n  eval: print brackets + producer wall\n  spec: print the certificate spec JSON (for the emitter binary) on stdout; --with-contraction adds the case's contraction witness block (registered EV template, dcc-closure containers)\n  evcert: print the EV-bracket certificate (dev-oracle lane, 3-D pattern face; requires --spec-file, the exact spec bytes the container was sealed from)";
     if args.len() < 4 || (args[1] != "eval" && args[1] != "spec" && args[1] != "evcert") {
         eprintln!("{usage}");
         std::process::exit(2);
@@ -37,15 +37,25 @@ fn main() {
     };
 
     if args[1] == "spec" {
+        let with_contraction = args.iter().any(|a| a == "--with-contraction");
         let t0 = Instant::now();
         // the 3d walk's alive set is infinite: its spec is the stored
         // WINDOW (rows to max coordinate box+1); everything else takes
         // the reachable-closure emitter
         let json = if args[2] == "3d-asym-rw" {
+            if with_contraction {
+                eprintln!(
+                    "--with-contraction is the finite face's flag; the 3d walk's \
+                     first-moment rows are the pattern face (dev-oracle lane)"
+                );
+                std::process::exit(2);
+            }
             probprog_producer::spec::emit_spec_3d_window(
                 horizon,
                 probprog_producer::ev3d::EV3D_BOX + 1,
             )
+        } else if with_contraction {
+            probprog_producer::spec::emit_spec_with_contraction(chain.as_ref(), horizon)
         } else {
             probprog_producer::spec::emit_spec(chain.as_ref(), horizon)
         };

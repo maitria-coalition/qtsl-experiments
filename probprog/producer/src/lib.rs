@@ -12,19 +12,33 @@
 //!
 //! Soundness posture (design decision, stated once): states without
 //! stored outgoing rows are treated as absorbing by the evaluation
-//! semantics (self-loop completion). Under that convention a truncated
-//! row set can only WIDEN brackets — mass held at an unexpanded state
-//! counts toward the residual, never toward any class — so truncation
-//! completeness is a tightness concern, not a soundness obligation.
-//! Binding the stored rows to the source program is the translation
-//! obligation, discharged by vendored sources + Monte-Carlo
-//! differential + exact ground-truth containment where closed forms
-//! exist.
+//! semantics (self-loop completion). The absorb brackets are claims
+//! about that stored chain. Their lower side is the mass absorbed
+//! within the horizon; their upper side charges each class only the
+//! residual mass that can still reach it — alive mass at the horizon
+//! sitting at states with a strictly-positive stored-row path to the
+//! class (the per-class reachability sharpening; see
+//! [`Truncated::absorb_bracket`]). Mass the stored row set parks —
+//! rowless truncation frontiers, unit-self-loop window shells — can
+//! reach no class state, so it accrues to the residual but to no
+//! class's upper side. Truncating the row set therefore never
+//! corrupts a lower side, and each upper side is exact for the
+//! stored chain by construction. Binding the stored rows to the
+//! source program is the translation obligation, discharged by
+//! vendored sources + Monte-Carlo differential + exact ground-truth
+//! containment where closed forms exist; where the stored rows
+//! deliberately truncate the source (window materializations), the
+//! sharpened upper side reads at the source level as absorption
+//! that never leaves the stored rows, while classes the parked mass
+//! could not have reached in the source either (absorption-time
+//! classes, complete unrollings) keep their full source-level
+//! reading. The normalized posterior brackets deliberately do NOT
+//! take the per-class sharpening — see [`Truncated::posterior_bracket`].
 
 use num_bigint::BigInt;
 use num_rational::BigRational;
 use num_traits::{One, Signed, Zero};
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
 pub type Q = BigRational;
 
@@ -83,6 +97,17 @@ pub struct Truncated {
     /// Alive support at the horizon (state -> mass), diagnostics and
     /// tail-invariant feasibility fodder.
     pub alive_support: BTreeMap<u64, Q>,
+    /// Per-class residual for the upper side of [`Self::absorb_bracket`],
+    /// under the stored-row reachability sharpening: entry `c` is the
+    /// alive mass at the horizon sitting at states from which a
+    /// class-`c` state is reachable through strictly positive stored
+    /// rows. An absent entry means no alive mass can still reach the
+    /// class (its sharpened residual is zero). `None` means the
+    /// sharpening was not computed — the rows observed during
+    /// evaluation do not form the reachable closure (see [`evaluate`]) —
+    /// and [`Self::absorb_bracket`] falls back to the uniform residual,
+    /// which is always sound but not sharpest.
+    pub class_residual: Option<BTreeMap<u32, Q>>,
 }
 
 impl Truncated {
@@ -93,14 +118,39 @@ impl Truncated {
             .fold(Q::zero(), |a, b| a + b.clone())
     }
 
-    /// Unnormalized bracket for one class: [N_c, N_c + R].
+    /// Unnormalized bracket for one class: [N_c, N_c + R_c], where
+    /// R_c is the residual mass at the horizon restricted to states
+    /// from which some class-`class` state is reachable through
+    /// strictly positive stored rows (the reachability sharpening).
+    /// Alive mass that cannot reach the class — mass at rowless
+    /// truncation frontiers, at unit-self-loop window shells, or in
+    /// alive components with no positive path to the class — never
+    /// absorbs into it, so charging it to the upper side would be
+    /// pure slack; the sharpened upper side is exact for the stored
+    /// chain. Where the sharpening was not computed (see
+    /// [`Self::class_residual`]) the uniform residual R is charged
+    /// instead: a wider claim, still sound and still admissible.
     pub fn absorb_bracket(&self, class: u32) -> (Q, Q) {
         let n = self.class_mass.get(&class).cloned().unwrap_or_else(Q::zero);
-        (n.clone(), n + self.residual.clone())
+        let r = match &self.class_residual {
+            Some(m) => m.get(&class).cloned().unwrap_or_else(Q::zero),
+            None => self.residual.clone(),
+        };
+        (n.clone(), n + r)
     }
 
     /// Normalized (posterior) bracket for one class by the
-    /// correlated-ratio form: [N_c/(S+R), (N_c+R)/(S+R)].
+    /// correlated-ratio form: [N_c/(S+R), (N_c+R)/(S+R)], with the
+    /// UNIFORM residual R on both sides — deliberately exempt from
+    /// the per-class reachability sharpening. The pair is sound
+    /// because both ratio bounds share the single normalizer S + R:
+    /// the lower side must budget for residual mass that can still
+    /// enter the evidence through ANY class, and substituting a
+    /// per-class residual there is unsound (for a class with zero
+    /// co-reachable residual it would claim N_c/S while residual
+    /// mass bound for other classes still inflates the true
+    /// normalizer). Any sharpening of the normalized form is a
+    /// checker-rule design question, not a producer default.
     /// None when S = 0 (no positive evidence witness).
     pub fn posterior_bracket(&self, class: u32) -> Option<(Q, Q)> {
         let s = self.evidence();
@@ -132,16 +182,40 @@ fn lcm(a: &BigInt, b: &BigInt) -> BigInt {
 /// Integer-scaled forward DP: masses are big-integer numerators over a
 /// running denominator; each layer rescales by that layer's common row
 /// denominator, so no rational reduction happens in the loop.
+///
+/// Sharpened residual bookkeeping rides along:
+///
+/// - time-homogeneous chains: the rows observed during evaluation are
+///   recorded once per state; when they form the reachable closure
+///   (every alive-at-horizon state has its row and no positive row
+///   leaves the recorded set — exactly the state set the certificate
+///   emitter materializes), a backward walk from each class computes
+///   the per-class co-reachable residual. When the observed rows are
+///   NOT closed — the horizon is still discovering states, or the
+///   reachable closure is infinite (which is also exactly when no
+///   finite wire form exists) — `class_residual` is `None` and the
+///   brackets keep the uniform residual.
+/// - layered chains: the wire form materializes timestamped states
+///   and leaves the horizon frontier rowless, so no alive mass can
+///   still reach any class state; every class's sharpened residual
+///   is zero (an empty map).
 pub fn evaluate(chain: &dyn Chain, horizon: u32) -> Truncated {
     let mut alive: BTreeMap<u64, BigInt> = BTreeMap::new();
     alive.insert(chain.init(), BigInt::one());
     let mut denom = BigInt::one();
     let mut class_num: BTreeMap<u32, BigInt> = BTreeMap::new();
     let mut reject_num = BigInt::zero();
+    let homogeneous = chain.time_homogeneous();
+    let mut graph: BTreeMap<u64, Vec<(Dst, Q)>> = BTreeMap::new();
 
     for t in 0..horizon {
         let rows: Vec<(u64, Vec<(Dst, Q)>)> =
             alive.keys().map(|&x| (x, chain.succ(x, t))).collect();
+        if homogeneous {
+            for (x, row) in &rows {
+                graph.entry(*x).or_insert_with(|| row.clone());
+            }
+        }
         let mut layer_den = BigInt::one();
         for (_, row) in &rows {
             for (_, w) in row {
@@ -191,13 +265,80 @@ pub fn evaluate(chain: &dyn Chain, horizon: u32) -> Truncated {
         + residual.clone();
     assert!(total.is_one(), "mass conservation violated: {total}");
 
+    let class_residual = if homogeneous {
+        sharpened_class_residuals(&graph, &alive_support)
+    } else {
+        Some(BTreeMap::new())
+    };
+
     Truncated {
         horizon,
         class_mass,
         reject_mass,
         residual,
         alive_support,
+        class_residual,
     }
+}
+
+/// Per-class co-reachable residual over a recorded time-homogeneous
+/// row set: for each class `c` appearing among the rows, the alive
+/// mass at states with a strictly-positive stored-row path to a
+/// class-`c` state (backward walk from the class's direct
+/// predecessors; zero-weight row entries confer no reachability, and
+/// a unit-self-loop state reaches nothing but itself). Returns `None`
+/// unless the recorded rows form the reachable closure — every
+/// alive-support state has its row and no positive row leaves the
+/// recorded set — since only then does the walk agree with the one
+/// the checker runs over the materialized wire chain.
+fn sharpened_class_residuals(
+    graph: &BTreeMap<u64, Vec<(Dst, Q)>>,
+    alive_support: &BTreeMap<u64, Q>,
+) -> Option<BTreeMap<u32, Q>> {
+    if !alive_support.keys().all(|x| graph.contains_key(x)) {
+        return None;
+    }
+    // reverse adjacency over positive alive-to-alive rows, plus each
+    // class's direct predecessor set
+    let mut rev: BTreeMap<u64, Vec<u64>> = BTreeMap::new();
+    let mut class_preds: BTreeMap<u32, Vec<u64>> = BTreeMap::new();
+    for (&x, row) in graph {
+        for (dst, w) in row {
+            if !w.is_positive() {
+                continue;
+            }
+            match dst {
+                Dst::Alive(y) => {
+                    if !graph.contains_key(y) {
+                        // a positive row leaves the recorded set: the
+                        // observed rows are not the closure
+                        return None;
+                    }
+                    rev.entry(*y).or_default().push(x);
+                }
+                Dst::Done(c) => class_preds.entry(*c).or_default().push(x),
+                Dst::Reject => {}
+            }
+        }
+    }
+    let mut out = BTreeMap::new();
+    for (&c, seeds) in &class_preds {
+        let mut co: BTreeSet<u64> = BTreeSet::new();
+        let mut stack: Vec<u64> = seeds.clone();
+        while let Some(x) = stack.pop() {
+            if co.insert(x) {
+                if let Some(preds) = rev.get(&x) {
+                    stack.extend(preds.iter().copied());
+                }
+            }
+        }
+        let r = alive_support
+            .iter()
+            .filter(|(x, _)| co.contains(x))
+            .fold(Q::zero(), |a, (_, m)| a + m.clone());
+        out.insert(c, r);
+    }
+    Some(out)
 }
 
 // ------------------------------------------------------------ programs
@@ -807,9 +948,13 @@ impl Chain for AsymRw3d {
 /// true rows for states with max coordinate <= `rstore`, a mass-
 /// holding self-loop everywhere beyond (the stored-row spec leaves
 /// those states rowless; the container checker's rowless-is-absorbing
-/// evaluation and this self-loop agree exactly, and the parked mass
-/// accrues to the residual — truncation soundly WIDENS the absorb
-/// bracket, per the module-level soundness posture).
+/// evaluation and this self-loop agree exactly). The parked mass
+/// accrues to the residual but can reach no class — a unit self-loop
+/// reaches nothing but itself — so under the reachability sharpening
+/// it is charged to no class's upper side: the absorb bracket
+/// brackets within-window absorption exactly (its lower side remains
+/// a sound source-level lower bound), per the module-level soundness
+/// posture.
 pub struct AsymRw3dWindow {
     pub rstore: u64,
 }
@@ -1049,7 +1194,12 @@ mod tests {
     /// (it depends only on the initial p-bits), the chain is
     /// score-free (no rejection), alive support stays inside the
     /// p-sum >= 2 configs, and the residual is monotone in the
-    /// horizon.
+    /// horizon. Under the reachability sharpening, class 0 — fed only
+    /// by the start row, unreachable from every alive config — gets a
+    /// width-0 absorb bracket, while class 1 keeps the full residual.
+    /// (This test previously pinned the uniform width: absorb ==
+    /// posterior on the score-free chain. The sharpening deliberately
+    /// breaks that identity — the posterior keeps the uniform R.)
     #[test]
     fn beauquier3_class0_exact_half() {
         let tr = evaluate(&Beauquier3, 51);
@@ -1060,11 +1210,104 @@ mod tests {
         }
         let earlier = evaluate(&Beauquier3, 10);
         assert!(tr.residual < earlier.residual);
-        // score-free: evidence + residual = 1, so posterior = absorb
+        // score-free: evidence + residual = 1
         assert!(tr.evidence() + tr.residual.clone() == Q::one());
-        let (alo, ahi) = tr.absorb_bracket(0);
+
+        // sharpened absorb bracket for class 0: EXACTLY [1/2, 1/2],
+        // at the matched-depth horizon and at the tight-row horizon
+        for horizon in [51u32, 1000] {
+            let tr = evaluate(&Beauquier3, horizon);
+            assert_eq!(
+                tr.absorb_bracket(0),
+                (q(1, 2), q(1, 2)),
+                "class 0 width 0 at horizon {horizon}"
+            );
+            // class 1 is reachable from every alive config: it keeps
+            // the full residual
+            let (lo1, hi1) = tr.absorb_bracket(1);
+            assert_eq!(lo1, tr.class_mass[&1]);
+            assert_eq!(hi1 - lo1, tr.residual, "class 1 keeps R at {horizon}");
+        }
+
+        // the posterior deliberately keeps the uniform residual: on
+        // this score-free chain its class-0 width is R/(S+R) = R != 0
         let (plo, phi) = tr.posterior_bracket(0).unwrap();
-        assert_eq!((alo, ahi), (plo, phi));
+        assert_eq!(plo, q(1, 2));
+        assert_eq!(phi - plo, tr.residual);
+    }
+
+    /// Control for the sharpening: chains whose every alive state can
+    /// still reach the (single) terminal class keep the uniform form —
+    /// both forms computed, asserted equal.
+    #[test]
+    fn sharpening_control_all_classes_reachable() {
+        for (name, tr) in [
+            ("coupon-collector5", evaluate(&CouponCollector5, 80)),
+            ("israeli-jalfon4", evaluate(&IsraeliJalfon4, 31)),
+        ] {
+            let n = tr.class_mass[&0].clone();
+            let uniform = (n.clone(), n + tr.residual.clone());
+            assert_eq!(tr.absorb_bracket(0), uniform, "{name} invariant");
+        }
+    }
+
+    /// Layered chains: the wire form leaves the horizon frontier
+    /// rowless, so no alive mass can still reach any class state and
+    /// every absorb bracket collapses to the exact truncated class
+    /// mass. For these chains the classes record absorption time —
+    /// frontier mass lands only in classes beyond the horizon — so
+    /// the point claims are true of the source as well.
+    #[test]
+    fn layered_frontier_absorb_brackets_are_points() {
+        for tr in [evaluate(&DieParadox, 40), evaluate(&GeoCounter, 30)] {
+            assert_eq!(tr.class_residual, Some(BTreeMap::new()));
+            for (c, m) in &tr.class_mass {
+                assert_eq!(tr.absorb_bracket(*c), (m.clone(), m.clone()));
+            }
+        }
+        // the posterior is untouched: uniform width R/(S+R)
+        let tr = evaluate(&DieParadox, 40);
+        let (lo, hi) = tr.posterior_bracket(1).unwrap();
+        assert_eq!(hi - lo, tr.residual.clone() / (tr.evidence() + tr.residual));
+    }
+
+    /// Window materializations: parked boundary mass (unit self-loop)
+    /// can reach no class, so the sharpened upper side charges class 0
+    /// only the in-window alive mass.
+    #[test]
+    fn window_parked_mass_charges_no_class() {
+        let rstore = 4u64;
+        let tr = evaluate(&AsymRw3dWindow { rstore }, 60);
+        let parked = tr
+            .alive_support
+            .iter()
+            .filter(|(x, _)| ev3d::t3_unpack(**x).2 > rstore)
+            .fold(Q::zero(), |a, (_, m)| a + m.clone());
+        assert!(parked.is_positive(), "the test needs real parked mass");
+        let n = tr.class_mass[&0].clone();
+        let (lo, hi) = tr.absorb_bracket(0);
+        assert_eq!(lo, n.clone());
+        assert_eq!(hi, n + (tr.residual.clone() - parked));
+    }
+
+    /// The sharpening's own guard: while the horizon is still
+    /// discovering states the observed rows are not the closure, and
+    /// the brackets fall back to the uniform residual (sound, wider);
+    /// one more step closes the beauquier row set and the sharpened
+    /// width-0 bracket appears. The infinite-closure 3-D oracle can
+    /// never close, so it keeps the uniform form at every horizon.
+    #[test]
+    fn sharpening_falls_back_to_uniform_before_closure() {
+        let tr = evaluate(&Beauquier3, 1);
+        assert_eq!(tr.class_residual, None);
+        assert_eq!(
+            tr.absorb_bracket(0),
+            (q(1, 2), q(1, 2) + tr.residual.clone())
+        );
+        let tr = evaluate(&Beauquier3, 2);
+        assert_eq!(tr.absorb_bracket(0), (q(1, 2), q(1, 2)));
+        let tr = evaluate(&AsymRw3d, 12);
+        assert_eq!(tr.class_residual, None);
     }
 
     /// Truth containment at both emitted horizons, and the tight row
@@ -1521,7 +1764,13 @@ mod tests {
     /// Exact class masses and residual at the emitted horizons: class
     /// 0 is exactly 3/8 from the first transition on; the residual is
     /// P[T > N] = (3/2) 2^-N - (1/2) 4^-N exactly (prereg Expected
-    /// statement 2); score-free, so posterior = unnormalized.
+    /// statement 2). Under the reachability sharpening, class 0 — fed
+    /// only by the START prologue state, unreachable from every
+    /// recurrent alive config — gets a width-0 absorb bracket, while
+    /// class 1 keeps the full residual. (This test previously pinned
+    /// absorb == posterior on the score-free chain; the sharpening
+    /// deliberately breaks that identity for class 0 — the posterior
+    /// keeps the uniform R on both sides of its shared normalizer.)
     #[test]
     fn herman3_class_masses_exact() {
         for horizon in [31u32, 101] {
@@ -1532,12 +1781,25 @@ mod tests {
                 q(3, 2) * q(1, 2).pow(horizon as i32) - q(1, 2) * q(1, 4).pow(horizon as i32);
             assert_eq!(tr.residual, expect_residual, "residual at {horizon}");
             assert!(tr.evidence() + tr.residual.clone() == Q::one());
+            // sharpened absorb: class 0 is a point, class 1 keeps R
+            assert_eq!(
+                tr.absorb_bracket(0),
+                (truth("herman3", 0), truth("herman3", 0)),
+                "class 0 width 0 at horizon {horizon}"
+            );
+            let (lo1, hi1) = tr.absorb_bracket(1);
+            assert_eq!(lo1, tr.class_mass[&1]);
+            assert_eq!(
+                hi1 - lo1,
+                tr.residual,
+                "class 1 keeps R at horizon {horizon}"
+            );
+            // posterior: uniform residual, brackets contain the truth
             for c in 0..2u32 {
                 let (lo, hi) = tr.posterior_bracket(c).unwrap();
                 let t = truth("herman3", c);
                 assert!(lo <= t && t <= hi, "class {c}: [{lo}, {hi}] vs {t}");
-                let (alo, ahi) = tr.absorb_bracket(c);
-                assert_eq!((alo, ahi), (lo, hi), "score-free: posterior = absorb");
+                assert_eq!(hi - lo, tr.residual, "posterior width is uniform R");
             }
         }
     }

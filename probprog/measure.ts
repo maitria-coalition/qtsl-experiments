@@ -21,6 +21,7 @@
 import { spawnSync } from "node:child_process";
 import * as fs from "node:fs";
 import * as os from "node:os";
+import { parseSubst, sanitizeCmd, type Subst } from "./sanitize-cmd.ts";
 
 function fail(msg: string): never {
   console.error(`measure: ${msg}`);
@@ -47,6 +48,21 @@ const label = opt("label");
 const runs = parseInt(opt("runs", "5"), 10);
 const outPath = opt("out");
 const targetNice = parseInt(opt("nice", "19"), 10);
+
+// --subst NAME=/abs/prefix (repeatable): declared path prefixes rewrite
+// to $NAME in the recorded cmd. Receipts are committed, so the recorded
+// command carries the argument shape, never machine-local paths — see
+// sanitize-cmd.ts for the full normalization (cwd → `.`; any remaining
+// absolute path collapses to its final component).
+const substs: Subst[] = [];
+for (let i = 0; i < opts.length; i++) {
+  if (opts[i] === "--subst") {
+    const s = parseSubst(opts[i + 1] ?? "");
+    if (s === null) fail(`bad --subst ${opts[i + 1]} (want NAME=/abs/prefix)`);
+    substs.push(s);
+    i++;
+  }
+}
 
 // Absolute renice of this process; children inherit. Read back.
 try {
@@ -98,7 +114,7 @@ const cpuModel =
 
 const row = {
   label,
-  cmd: cmd.join(" "),
+  cmd: sanitizeCmd(cmd.join(" "), process.cwd(), substs),
   runs,
   walls_s: walls,
   median_s: median,
