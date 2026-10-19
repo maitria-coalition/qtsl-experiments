@@ -1,0 +1,14 @@
+diff --git a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+index 7012d52ad..bc094b76e 100644
+--- a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
++++ b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+@@ -91,9 +91,6 @@ structure MFSchedule (N : ℕ) where
+   /-- two step-1 services on the same machine are disjoint. -/
+   hcap11 : ∀ ⦃l l' : Fin N⦄, l ≠ l' → mach1 l = mach1 l' →
+     finish l 0 < start l' 0 ∨ finish l' 0 < start l 0
+-  /-- two step-5 services on the same machine are disjoint. -/
+-  hcap55 : ∀ ⦃l l' : Fin N⦄, l ≠ l' → mach5 l = mach5 l' →
+-    finish l 4 < start l' 4 ∨ finish l' 4 < start l 4
+ 
+ namespace MFSchedule
+ 

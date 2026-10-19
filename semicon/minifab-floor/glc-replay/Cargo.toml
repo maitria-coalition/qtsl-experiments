@@ -1,0 +1,19 @@
+[package]
+name = "minifab-glc-replay"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Decode the sealed carved Mini-Fab .glc container with the public checker's reader and replay the pi* firing table against the decoded net."
+
+# Standalone: detached from the root workspace (whose lock pins pre-release
+# repositories); only public pinned revisions here.
+[workspace]
+
+[dependencies]
+qtsl-geolog-provider = { git = "https://github.com/maitria-coalition/qtsl.git", rev = "a9bdb62a6fba2beafbdf8022bc581f0cf4f4d433" }
+geolog-envelope = { git = "https://github.com/maitria-coalition/geolog-alpha.git", rev = "dcafbd6e9fafe36bf4a133d5708b3ceaa6b35519", default-features = false }
+num-bigint = "0.5"
+sha2 = "0.10"
+
+[dev-dependencies]
+proptest = "1"

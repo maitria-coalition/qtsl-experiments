@@ -51,7 +51,7 @@ NODE     := node --experimental-strip-types
 .PHONY: all chapter checkers tables fetch-pins clean \
         gymnasium gymnasium-text gymnasium-classic gymnasium-box2d gymnasium-glc \
         gymnasium-atari gymnasium-atari-replay gymnasium-mujoco circuits circuits-recheck \
-        semicon semicon-glc minifab-dispatch supermartingales variadic
+        semicon semicon-glc minifab-dispatch minifab-floor-recheck supermartingales variadic
 
 all: chapter
 
@@ -608,3 +608,11 @@ variadic:
 
 clean:
 	rm -rf $(BUILD) target
+
+# Mini-Fab optimum (semicon/minifab-floor/README.md): model-R z3 search,
+# the original z3 instrument, CNF+LRAT/DRAT certificates (cake_lpr /
+# lrat-check / drat-trim), the Lean floor + axiom audit + mutants, the
+# decoded-container attainment replay, and the queue-order-free cross-check.
+# MAX_N bounds the model-R legs, NOFIFO_MAX_N the cross-check lane.
+minifab-floor-recheck:
+	bash semicon/minifab-floor/recheck.sh

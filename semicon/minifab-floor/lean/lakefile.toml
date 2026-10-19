@@ -1,0 +1,22 @@
+name = "minifab-floor"
+version = "0.1.0"
+defaultTargets = ["IDT"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "6f604786851f312da512a988fd54eee4ca35dcf9"
+
+# Vendored verbatim (sha256 in ../ORIGINALS.sha256) from the original MAITRIA
+# bernstein-logic lean-aux package: the Mini-Fab floor module and the
+# deterministic-collapse module with its exact import closure.
+[[lean_lib]]
+name = "BernsteinLogicAux"
+globs = ["BernsteinLogicAux.Imprecise.Credal"]
+
+[[lean_lib]]
+name = "IDT"
+globs = ["IDT.Basic", "IDT.Composition", "IDT.Selection", "IDT.FloorContiguity", "IDT.DeterministicCollapse"]

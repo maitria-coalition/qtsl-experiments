@@ -1,0 +1,20 @@
+diff --git a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+index 7012d52ad..84643f2ab 100644
+--- a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
++++ b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+@@ -46,13 +46,13 @@ namespace BernsteinLogic.MiniFab
+ 
+ /-- Carved processing times of steps 1..5 (net constants T with step 6
+ dropped), verified at mtk main bytes (`minifab.rs`): T = [225,30,55,50,255]. -/
+-def procTime : Fin 5 → ℕ := ![225, 30, 55, 50, 255]
++def procTime : Fin 5 → ℕ := ![225, 30, 55, 50, 254]
+ 
+ @[simp] lemma procTime_zero : procTime 0 = 225 := rfl
+ @[simp] lemma procTime_one : procTime 1 = 30 := rfl
+ @[simp] lemma procTime_two : procTime 2 = 55 := rfl
+ @[simp] lemma procTime_three : procTime 3 = 50 := rfl
+-@[simp] lemma procTime_four : procTime 4 = 255 := rfl
++@[simp] lemma procTime_four : procTime 4 = 254 := rfl
+ 
+ lemma procTime_pos (k : Fin 5) : 0 < procTime k := by fin_cases k <;> decide
+ 

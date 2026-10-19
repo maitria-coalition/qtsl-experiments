@@ -156,27 +156,46 @@ there. Under the theory's discrete clock semantics (every transition
 dwells exactly one tick) the same containers reseal with identical
 row tallies, and the counting bounds become tick bounds by a no-idle
 argument ($\le 626N$ gated, $\le 638N - 12$ open). Beneath them sits
-a floor over \emph{all} dispatch policies of any kind, supervisory
-or never-idle: no policy reaches all-arrivals in fewer than
-$255N + 375$ ticks for $N \ge 4$ --- a machine-contiguity argument
-proved in Lean~4 over mathlib, with adversarial mutants at
-preregistered loci refused by the kernel, lifting an arithmetic
-floor of $255N + 371$ (verified by exhaustive SMT search below
-$N = 8$, with witness schedules independently re-validated); the
-exact wall-clock optimum is $255N + 371 + d(N)$,
-$d = (0, 0, 2, 4, 4, \dots)$, closed from both sides at every $N$.
-An explicit supervisor family attains the lifted floor exactly at
-every tested lot count: $21{,}795$ ticks at $N = 84$, per-lot
-throughput $255$ ticks closed from both sides --- so the
-certified-optimality column of the dispatch grid reads $100.00\%$,
-earned rather than rounded: a Lean-checked floor meeting a
-container-replayed attainment at $255N + 375$ exactly. The grid
+an optimum over all dispatch policies, measured as the round of the
+$N$-th arrival into the last queue (not the round at which all lots
+have shipped): $T_{\mathrm{opt}}(N) = 255N + 371 + d(N)$,
+$d = (0, 0, 2, 4, 4, \dots)$. \emph{Erratum (2026-10-19): this is
+established for $N \le 7$ only.} For $N = 1, \dots, 7$ it is closed
+from both sides: no schedule meets $T_{\mathrm{opt}} - 1$ on a stated
+relaxation of the net that also imposes a queue-order reduction (UNSAT
+with LRAT proofs accepted by the CakeML-verified checker cake\_lpr, and
+by an independent integer SMT encoding). Two
+pen-and-paper arguments carry this to every policy: that the
+relaxation contains every run of the net, and an exchange lemma
+justifying the queue-order reduction. Without the reduction, the
+same certificates are published for $N \le 5$.
+and an explicit supervisor family $\pi^*$ meets $T_{\mathrm{opt}}$ in a
+replay against the decoded container plus a named transcription of
+the net rows the container does not seal (at $N = 84$ as sealed,
+$21{,}795$ ticks; and at $N = 1, \dots, 12$ with the sealed pending-lot
+count and unlock threshold substituted). A
+machine-contiguity floor of $255N + 375$ for $N \ge 4$ is proved in
+Lean~4 over mathlib, with adversarial mutants refused by the kernel,
+but for an abstract schedule model onto which the net does not
+project exactly: the net also allows a tick in a lot's own start
+round and a same-round handover of a diffusion machine. So for
+$N \ge 8$ the floor is not yet proved for the net, and optimality
+there is open, although $\pi^*$ is replayed at $255N + 375$. An
+earlier version of this paragraph claimed a Lean floor over all
+policies and a two-sided optimum at every $N$; both overclaimed. The
+evidence and its exact scope are in
+\texttt{semicon/minifab-floor/README.md}. Accordingly the
+certified-optimality column of the dispatch grid reads $100.00\%$ as
+certified for $N \le 7$; at the weekly $N = 84$ it is measured
+against the attained but unproved $255N + 375$. The grid
 around it separates the levers. The sixteen never-idle full-dispatch
 policies deliver $99.63$, $75.61$, $65.34$, and $54.35\%$ of
-certifiably-unbeatable performance, and only the diffusion-station
-pull preference ever moves a number; deliberate idling is necessary
-for the last stretch (the best work-conserving policy needs
-$255N + 455$ ticks, $80$ behind optimal); and the wall-clock value
+that reference, and only the diffusion-station
+pull preference ever moves a number; at $N = 84$ the tested
+deliberately idling supervisor family improves on the best tested
+work-conserving policy ($255N + 455$ ticks) by $80$ ticks, though
+whether some untested work-conserving policy closes that gap is open;
+and the wall-clock value
 concentrates in the dispatch seat: an adversarial pull order costs
 $+83.5\%$, while the synthesized gate --- whose value is the
 certified worst-case floor, a guarantee over every schedule ---
@@ -253,8 +272,9 @@ freedom the certificates have already priced. An earlier preview of
 this section stated that no claim was made about optimality of the
 dispatch policies, only their certified stability region; that
 sentence is now true of the fluid track alone --- on the discrete
-Mini-Fab the optimality question is closed, floor and attainment
-meeting at $255N + 375$ --- and the correction is recorded here
+Mini-Fab the optimality question is closed for $N \le 7$ and open
+beyond, where attainment at $255N + 375$ is replayed but the floor is
+proved only for the abstract model (erratum above) --- and the correction is recorded here
 rather than silently edited away, because the distance between the
 two previews is itself a result. The ladder's remaining nine rungs
 --- MIMAC sets 1--6, the SMT2020 pair, and SMAT2022 --- are
