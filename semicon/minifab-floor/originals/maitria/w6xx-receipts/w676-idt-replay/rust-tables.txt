@@ -1,0 +1,1554 @@
+pistar N=1 lot=0 rel=1
+pistar N=1 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=1 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=1 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=1 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=1 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=2 lot=0 rel=1
+pistar N=2 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=2 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=2 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=2 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=2 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=2 lot=1 rel=2
+pistar N=2 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=2 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=2 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=2 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=2 lot=1 k=5 s=625 f=881 ticks=626..880
+pistar N=3 lot=0 rel=1
+pistar N=3 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=3 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=3 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=3 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=3 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=3 lot=1 rel=2
+pistar N=3 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=3 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=3 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=3 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=3 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=3 lot=2 rel=3
+pistar N=3 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=3 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=3 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=3 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=3 lot=2 k=5 s=882 f=1138 ticks=883..1137
+pistar N=4 lot=0 rel=1
+pistar N=4 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=4 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=4 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=4 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=4 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=4 lot=1 rel=2
+pistar N=4 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=4 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=4 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=4 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=4 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=4 lot=2 rel=3
+pistar N=4 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=4 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=4 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=4 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=4 lot=2 k=5 s=884 f=1140 ticks=885..1139
+pistar N=4 lot=3 rel=4
+pistar N=4 lot=3 k=1 s=683 f=909 ticks=684..908
+pistar N=4 lot=3 k=2 s=910 f=941 ticks=911..940
+pistar N=4 lot=3 k=3 s=942 f=998 ticks=943..997
+pistar N=4 lot=3 k=4 s=999 f=1050 ticks=1000..1049
+pistar N=4 lot=3 k=5 s=1139 f=1395 ticks=1140..1394
+pistar N=5 lot=0 rel=1
+pistar N=5 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=5 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=5 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=5 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=5 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=5 lot=1 rel=2
+pistar N=5 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=5 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=5 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=5 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=5 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=5 lot=2 rel=3
+pistar N=5 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=5 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=5 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=5 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=5 lot=2 k=5 s=884 f=1140 ticks=885..1139
+pistar N=5 lot=3 rel=4
+pistar N=5 lot=3 k=1 s=683 f=909 ticks=684..908
+pistar N=5 lot=3 k=2 s=910 f=941 ticks=911..940
+pistar N=5 lot=3 k=3 s=942 f=998 ticks=943..997
+pistar N=5 lot=3 k=4 s=999 f=1050 ticks=1000..1049
+pistar N=5 lot=3 k=5 s=1139 f=1395 ticks=1140..1394
+pistar N=5 lot=4 rel=5
+pistar N=5 lot=4 k=1 s=910 f=1136 ticks=911..1135
+pistar N=5 lot=4 k=2 s=1137 f=1168 ticks=1138..1167
+pistar N=5 lot=4 k=3 s=1169 f=1225 ticks=1170..1224
+pistar N=5 lot=4 k=4 s=1226 f=1277 ticks=1227..1276
+pistar N=5 lot=4 k=5 s=1394 f=1650 ticks=1395..1649
+pistar N=6 lot=0 rel=1
+pistar N=6 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=6 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=6 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=6 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=6 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=6 lot=1 rel=2
+pistar N=6 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=6 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=6 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=6 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=6 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=6 lot=2 rel=3
+pistar N=6 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=6 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=6 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=6 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=6 lot=2 k=5 s=884 f=1140 ticks=885..1139
+pistar N=6 lot=3 rel=4
+pistar N=6 lot=3 k=1 s=683 f=909 ticks=684..908
+pistar N=6 lot=3 k=2 s=910 f=941 ticks=911..940
+pistar N=6 lot=3 k=3 s=942 f=998 ticks=943..997
+pistar N=6 lot=3 k=4 s=999 f=1050 ticks=1000..1049
+pistar N=6 lot=3 k=5 s=1139 f=1395 ticks=1140..1394
+pistar N=6 lot=4 rel=5
+pistar N=6 lot=4 k=1 s=910 f=1136 ticks=911..1135
+pistar N=6 lot=4 k=2 s=1137 f=1168 ticks=1138..1167
+pistar N=6 lot=4 k=3 s=1169 f=1225 ticks=1170..1224
+pistar N=6 lot=4 k=4 s=1226 f=1277 ticks=1227..1276
+pistar N=6 lot=4 k=5 s=1394 f=1650 ticks=1395..1649
+pistar N=6 lot=5 rel=6
+pistar N=6 lot=5 k=1 s=1141 f=1367 ticks=1142..1366
+pistar N=6 lot=5 k=2 s=1368 f=1399 ticks=1369..1398
+pistar N=6 lot=5 k=3 s=1400 f=1456 ticks=1401..1455
+pistar N=6 lot=5 k=4 s=1457 f=1508 ticks=1458..1507
+pistar N=6 lot=5 k=5 s=1649 f=1905 ticks=1650..1904
+pistar N=8 lot=0 rel=1
+pistar N=8 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=8 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=8 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=8 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=8 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=8 lot=1 rel=2
+pistar N=8 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=8 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=8 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=8 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=8 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=8 lot=2 rel=3
+pistar N=8 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=8 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=8 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=8 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=8 lot=2 k=5 s=884 f=1140 ticks=885..1139
+pistar N=8 lot=3 rel=4
+pistar N=8 lot=3 k=1 s=683 f=909 ticks=684..908
+pistar N=8 lot=3 k=2 s=910 f=941 ticks=911..940
+pistar N=8 lot=3 k=3 s=942 f=998 ticks=943..997
+pistar N=8 lot=3 k=4 s=999 f=1050 ticks=1000..1049
+pistar N=8 lot=3 k=5 s=1139 f=1395 ticks=1140..1394
+pistar N=8 lot=4 rel=5
+pistar N=8 lot=4 k=1 s=910 f=1136 ticks=911..1135
+pistar N=8 lot=4 k=2 s=1137 f=1168 ticks=1138..1167
+pistar N=8 lot=4 k=3 s=1169 f=1225 ticks=1170..1224
+pistar N=8 lot=4 k=4 s=1226 f=1277 ticks=1227..1276
+pistar N=8 lot=4 k=5 s=1394 f=1650 ticks=1395..1649
+pistar N=8 lot=5 rel=6
+pistar N=8 lot=5 k=1 s=1141 f=1367 ticks=1142..1366
+pistar N=8 lot=5 k=2 s=1368 f=1399 ticks=1369..1398
+pistar N=8 lot=5 k=3 s=1400 f=1456 ticks=1401..1455
+pistar N=8 lot=5 k=4 s=1457 f=1508 ticks=1458..1507
+pistar N=8 lot=5 k=5 s=1649 f=1905 ticks=1650..1904
+pistar N=8 lot=6 rel=7
+pistar N=8 lot=6 k=1 s=1396 f=1622 ticks=1397..1621
+pistar N=8 lot=6 k=2 s=1623 f=1654 ticks=1624..1653
+pistar N=8 lot=6 k=3 s=1655 f=1711 ticks=1656..1710
+pistar N=8 lot=6 k=4 s=1712 f=1763 ticks=1713..1762
+pistar N=8 lot=6 k=5 s=1904 f=2160 ticks=1905..2159
+pistar N=8 lot=7 rel=8
+pistar N=8 lot=7 k=1 s=1651 f=1877 ticks=1652..1876
+pistar N=8 lot=7 k=2 s=1878 f=1909 ticks=1879..1908
+pistar N=8 lot=7 k=3 s=1910 f=1966 ticks=1911..1965
+pistar N=8 lot=7 k=4 s=1967 f=2018 ticks=1968..2017
+pistar N=8 lot=7 k=5 s=2159 f=2415 ticks=2160..2414
+pistar N=12 lot=0 rel=1
+pistar N=12 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=12 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=12 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=12 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=12 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=12 lot=1 rel=2
+pistar N=12 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=12 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=12 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=12 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=12 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=12 lot=2 rel=3
+pistar N=12 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=12 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=12 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=12 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=12 lot=2 k=5 s=884 f=1140 ticks=885..1139
+pistar N=12 lot=3 rel=4
+pistar N=12 lot=3 k=1 s=683 f=909 ticks=684..908
+pistar N=12 lot=3 k=2 s=910 f=941 ticks=911..940
+pistar N=12 lot=3 k=3 s=942 f=998 ticks=943..997
+pistar N=12 lot=3 k=4 s=999 f=1050 ticks=1000..1049
+pistar N=12 lot=3 k=5 s=1139 f=1395 ticks=1140..1394
+pistar N=12 lot=4 rel=5
+pistar N=12 lot=4 k=1 s=910 f=1136 ticks=911..1135
+pistar N=12 lot=4 k=2 s=1137 f=1168 ticks=1138..1167
+pistar N=12 lot=4 k=3 s=1169 f=1225 ticks=1170..1224
+pistar N=12 lot=4 k=4 s=1226 f=1277 ticks=1227..1276
+pistar N=12 lot=4 k=5 s=1394 f=1650 ticks=1395..1649
+pistar N=12 lot=5 rel=6
+pistar N=12 lot=5 k=1 s=1141 f=1367 ticks=1142..1366
+pistar N=12 lot=5 k=2 s=1368 f=1399 ticks=1369..1398
+pistar N=12 lot=5 k=3 s=1400 f=1456 ticks=1401..1455
+pistar N=12 lot=5 k=4 s=1457 f=1508 ticks=1458..1507
+pistar N=12 lot=5 k=5 s=1649 f=1905 ticks=1650..1904
+pistar N=12 lot=6 rel=7
+pistar N=12 lot=6 k=1 s=1396 f=1622 ticks=1397..1621
+pistar N=12 lot=6 k=2 s=1623 f=1654 ticks=1624..1653
+pistar N=12 lot=6 k=3 s=1655 f=1711 ticks=1656..1710
+pistar N=12 lot=6 k=4 s=1712 f=1763 ticks=1713..1762
+pistar N=12 lot=6 k=5 s=1904 f=2160 ticks=1905..2159
+pistar N=12 lot=7 rel=8
+pistar N=12 lot=7 k=1 s=1651 f=1877 ticks=1652..1876
+pistar N=12 lot=7 k=2 s=1878 f=1909 ticks=1879..1908
+pistar N=12 lot=7 k=3 s=1910 f=1966 ticks=1911..1965
+pistar N=12 lot=7 k=4 s=1967 f=2018 ticks=1968..2017
+pistar N=12 lot=7 k=5 s=2159 f=2415 ticks=2160..2414
+pistar N=12 lot=8 rel=9
+pistar N=12 lot=8 k=1 s=1906 f=2132 ticks=1907..2131
+pistar N=12 lot=8 k=2 s=2133 f=2164 ticks=2134..2163
+pistar N=12 lot=8 k=3 s=2165 f=2221 ticks=2166..2220
+pistar N=12 lot=8 k=4 s=2222 f=2273 ticks=2223..2272
+pistar N=12 lot=8 k=5 s=2414 f=2670 ticks=2415..2669
+pistar N=12 lot=9 rel=10
+pistar N=12 lot=9 k=1 s=2161 f=2387 ticks=2162..2386
+pistar N=12 lot=9 k=2 s=2388 f=2419 ticks=2389..2418
+pistar N=12 lot=9 k=3 s=2420 f=2476 ticks=2421..2475
+pistar N=12 lot=9 k=4 s=2477 f=2528 ticks=2478..2527
+pistar N=12 lot=9 k=5 s=2669 f=2925 ticks=2670..2924
+pistar N=12 lot=10 rel=11
+pistar N=12 lot=10 k=1 s=2416 f=2642 ticks=2417..2641
+pistar N=12 lot=10 k=2 s=2643 f=2674 ticks=2644..2673
+pistar N=12 lot=10 k=3 s=2675 f=2731 ticks=2676..2730
+pistar N=12 lot=10 k=4 s=2732 f=2783 ticks=2733..2782
+pistar N=12 lot=10 k=5 s=2924 f=3180 ticks=2925..3179
+pistar N=12 lot=11 rel=12
+pistar N=12 lot=11 k=1 s=2671 f=2897 ticks=2672..2896
+pistar N=12 lot=11 k=2 s=2898 f=2929 ticks=2899..2928
+pistar N=12 lot=11 k=3 s=2930 f=2986 ticks=2931..2985
+pistar N=12 lot=11 k=4 s=2987 f=3038 ticks=2988..3037
+pistar N=12 lot=11 k=5 s=3179 f=3435 ticks=3180..3434
+pistar N=30 lot=0 rel=1
+pistar N=30 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=30 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=30 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=30 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=30 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=30 lot=1 rel=2
+pistar N=30 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=30 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=30 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=30 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=30 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=30 lot=2 rel=3
+pistar N=30 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=30 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=30 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=30 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=30 lot=2 k=5 s=884 f=1140 ticks=885..1139
+pistar N=30 lot=3 rel=4
+pistar N=30 lot=3 k=1 s=683 f=909 ticks=684..908
+pistar N=30 lot=3 k=2 s=910 f=941 ticks=911..940
+pistar N=30 lot=3 k=3 s=942 f=998 ticks=943..997
+pistar N=30 lot=3 k=4 s=999 f=1050 ticks=1000..1049
+pistar N=30 lot=3 k=5 s=1139 f=1395 ticks=1140..1394
+pistar N=30 lot=4 rel=5
+pistar N=30 lot=4 k=1 s=910 f=1136 ticks=911..1135
+pistar N=30 lot=4 k=2 s=1137 f=1168 ticks=1138..1167
+pistar N=30 lot=4 k=3 s=1169 f=1225 ticks=1170..1224
+pistar N=30 lot=4 k=4 s=1226 f=1277 ticks=1227..1276
+pistar N=30 lot=4 k=5 s=1394 f=1650 ticks=1395..1649
+pistar N=30 lot=5 rel=6
+pistar N=30 lot=5 k=1 s=1141 f=1367 ticks=1142..1366
+pistar N=30 lot=5 k=2 s=1368 f=1399 ticks=1369..1398
+pistar N=30 lot=5 k=3 s=1400 f=1456 ticks=1401..1455
+pistar N=30 lot=5 k=4 s=1457 f=1508 ticks=1458..1507
+pistar N=30 lot=5 k=5 s=1649 f=1905 ticks=1650..1904
+pistar N=30 lot=6 rel=7
+pistar N=30 lot=6 k=1 s=1396 f=1622 ticks=1397..1621
+pistar N=30 lot=6 k=2 s=1623 f=1654 ticks=1624..1653
+pistar N=30 lot=6 k=3 s=1655 f=1711 ticks=1656..1710
+pistar N=30 lot=6 k=4 s=1712 f=1763 ticks=1713..1762
+pistar N=30 lot=6 k=5 s=1904 f=2160 ticks=1905..2159
+pistar N=30 lot=7 rel=8
+pistar N=30 lot=7 k=1 s=1651 f=1877 ticks=1652..1876
+pistar N=30 lot=7 k=2 s=1878 f=1909 ticks=1879..1908
+pistar N=30 lot=7 k=3 s=1910 f=1966 ticks=1911..1965
+pistar N=30 lot=7 k=4 s=1967 f=2018 ticks=1968..2017
+pistar N=30 lot=7 k=5 s=2159 f=2415 ticks=2160..2414
+pistar N=30 lot=8 rel=9
+pistar N=30 lot=8 k=1 s=1906 f=2132 ticks=1907..2131
+pistar N=30 lot=8 k=2 s=2133 f=2164 ticks=2134..2163
+pistar N=30 lot=8 k=3 s=2165 f=2221 ticks=2166..2220
+pistar N=30 lot=8 k=4 s=2222 f=2273 ticks=2223..2272
+pistar N=30 lot=8 k=5 s=2414 f=2670 ticks=2415..2669
+pistar N=30 lot=9 rel=10
+pistar N=30 lot=9 k=1 s=2161 f=2387 ticks=2162..2386
+pistar N=30 lot=9 k=2 s=2388 f=2419 ticks=2389..2418
+pistar N=30 lot=9 k=3 s=2420 f=2476 ticks=2421..2475
+pistar N=30 lot=9 k=4 s=2477 f=2528 ticks=2478..2527
+pistar N=30 lot=9 k=5 s=2669 f=2925 ticks=2670..2924
+pistar N=30 lot=10 rel=11
+pistar N=30 lot=10 k=1 s=2416 f=2642 ticks=2417..2641
+pistar N=30 lot=10 k=2 s=2643 f=2674 ticks=2644..2673
+pistar N=30 lot=10 k=3 s=2675 f=2731 ticks=2676..2730
+pistar N=30 lot=10 k=4 s=2732 f=2783 ticks=2733..2782
+pistar N=30 lot=10 k=5 s=2924 f=3180 ticks=2925..3179
+pistar N=30 lot=11 rel=12
+pistar N=30 lot=11 k=1 s=2671 f=2897 ticks=2672..2896
+pistar N=30 lot=11 k=2 s=2898 f=2929 ticks=2899..2928
+pistar N=30 lot=11 k=3 s=2930 f=2986 ticks=2931..2985
+pistar N=30 lot=11 k=4 s=2987 f=3038 ticks=2988..3037
+pistar N=30 lot=11 k=5 s=3179 f=3435 ticks=3180..3434
+pistar N=30 lot=12 rel=13
+pistar N=30 lot=12 k=1 s=2926 f=3152 ticks=2927..3151
+pistar N=30 lot=12 k=2 s=3153 f=3184 ticks=3154..3183
+pistar N=30 lot=12 k=3 s=3185 f=3241 ticks=3186..3240
+pistar N=30 lot=12 k=4 s=3242 f=3293 ticks=3243..3292
+pistar N=30 lot=12 k=5 s=3434 f=3690 ticks=3435..3689
+pistar N=30 lot=13 rel=14
+pistar N=30 lot=13 k=1 s=3181 f=3407 ticks=3182..3406
+pistar N=30 lot=13 k=2 s=3408 f=3439 ticks=3409..3438
+pistar N=30 lot=13 k=3 s=3440 f=3496 ticks=3441..3495
+pistar N=30 lot=13 k=4 s=3497 f=3548 ticks=3498..3547
+pistar N=30 lot=13 k=5 s=3689 f=3945 ticks=3690..3944
+pistar N=30 lot=14 rel=15
+pistar N=30 lot=14 k=1 s=3436 f=3662 ticks=3437..3661
+pistar N=30 lot=14 k=2 s=3663 f=3694 ticks=3664..3693
+pistar N=30 lot=14 k=3 s=3695 f=3751 ticks=3696..3750
+pistar N=30 lot=14 k=4 s=3752 f=3803 ticks=3753..3802
+pistar N=30 lot=14 k=5 s=3944 f=4200 ticks=3945..4199
+pistar N=30 lot=15 rel=16
+pistar N=30 lot=15 k=1 s=3691 f=3917 ticks=3692..3916
+pistar N=30 lot=15 k=2 s=3918 f=3949 ticks=3919..3948
+pistar N=30 lot=15 k=3 s=3950 f=4006 ticks=3951..4005
+pistar N=30 lot=15 k=4 s=4007 f=4058 ticks=4008..4057
+pistar N=30 lot=15 k=5 s=4199 f=4455 ticks=4200..4454
+pistar N=30 lot=16 rel=17
+pistar N=30 lot=16 k=1 s=3946 f=4172 ticks=3947..4171
+pistar N=30 lot=16 k=2 s=4173 f=4204 ticks=4174..4203
+pistar N=30 lot=16 k=3 s=4205 f=4261 ticks=4206..4260
+pistar N=30 lot=16 k=4 s=4262 f=4313 ticks=4263..4312
+pistar N=30 lot=16 k=5 s=4454 f=4710 ticks=4455..4709
+pistar N=30 lot=17 rel=18
+pistar N=30 lot=17 k=1 s=4201 f=4427 ticks=4202..4426
+pistar N=30 lot=17 k=2 s=4428 f=4459 ticks=4429..4458
+pistar N=30 lot=17 k=3 s=4460 f=4516 ticks=4461..4515
+pistar N=30 lot=17 k=4 s=4517 f=4568 ticks=4518..4567
+pistar N=30 lot=17 k=5 s=4709 f=4965 ticks=4710..4964
+pistar N=30 lot=18 rel=19
+pistar N=30 lot=18 k=1 s=4456 f=4682 ticks=4457..4681
+pistar N=30 lot=18 k=2 s=4683 f=4714 ticks=4684..4713
+pistar N=30 lot=18 k=3 s=4715 f=4771 ticks=4716..4770
+pistar N=30 lot=18 k=4 s=4772 f=4823 ticks=4773..4822
+pistar N=30 lot=18 k=5 s=4964 f=5220 ticks=4965..5219
+pistar N=30 lot=19 rel=20
+pistar N=30 lot=19 k=1 s=4711 f=4937 ticks=4712..4936
+pistar N=30 lot=19 k=2 s=4938 f=4969 ticks=4939..4968
+pistar N=30 lot=19 k=3 s=4970 f=5026 ticks=4971..5025
+pistar N=30 lot=19 k=4 s=5027 f=5078 ticks=5028..5077
+pistar N=30 lot=19 k=5 s=5219 f=5475 ticks=5220..5474
+pistar N=30 lot=20 rel=21
+pistar N=30 lot=20 k=1 s=4966 f=5192 ticks=4967..5191
+pistar N=30 lot=20 k=2 s=5193 f=5224 ticks=5194..5223
+pistar N=30 lot=20 k=3 s=5225 f=5281 ticks=5226..5280
+pistar N=30 lot=20 k=4 s=5282 f=5333 ticks=5283..5332
+pistar N=30 lot=20 k=5 s=5474 f=5730 ticks=5475..5729
+pistar N=30 lot=21 rel=22
+pistar N=30 lot=21 k=1 s=5221 f=5447 ticks=5222..5446
+pistar N=30 lot=21 k=2 s=5448 f=5479 ticks=5449..5478
+pistar N=30 lot=21 k=3 s=5480 f=5536 ticks=5481..5535
+pistar N=30 lot=21 k=4 s=5537 f=5588 ticks=5538..5587
+pistar N=30 lot=21 k=5 s=5729 f=5985 ticks=5730..5984
+pistar N=30 lot=22 rel=23
+pistar N=30 lot=22 k=1 s=5476 f=5702 ticks=5477..5701
+pistar N=30 lot=22 k=2 s=5703 f=5734 ticks=5704..5733
+pistar N=30 lot=22 k=3 s=5735 f=5791 ticks=5736..5790
+pistar N=30 lot=22 k=4 s=5792 f=5843 ticks=5793..5842
+pistar N=30 lot=22 k=5 s=5984 f=6240 ticks=5985..6239
+pistar N=30 lot=23 rel=24
+pistar N=30 lot=23 k=1 s=5731 f=5957 ticks=5732..5956
+pistar N=30 lot=23 k=2 s=5958 f=5989 ticks=5959..5988
+pistar N=30 lot=23 k=3 s=5990 f=6046 ticks=5991..6045
+pistar N=30 lot=23 k=4 s=6047 f=6098 ticks=6048..6097
+pistar N=30 lot=23 k=5 s=6239 f=6495 ticks=6240..6494
+pistar N=30 lot=24 rel=25
+pistar N=30 lot=24 k=1 s=5986 f=6212 ticks=5987..6211
+pistar N=30 lot=24 k=2 s=6213 f=6244 ticks=6214..6243
+pistar N=30 lot=24 k=3 s=6245 f=6301 ticks=6246..6300
+pistar N=30 lot=24 k=4 s=6302 f=6353 ticks=6303..6352
+pistar N=30 lot=24 k=5 s=6494 f=6750 ticks=6495..6749
+pistar N=30 lot=25 rel=26
+pistar N=30 lot=25 k=1 s=6241 f=6467 ticks=6242..6466
+pistar N=30 lot=25 k=2 s=6468 f=6499 ticks=6469..6498
+pistar N=30 lot=25 k=3 s=6500 f=6556 ticks=6501..6555
+pistar N=30 lot=25 k=4 s=6557 f=6608 ticks=6558..6607
+pistar N=30 lot=25 k=5 s=6749 f=7005 ticks=6750..7004
+pistar N=30 lot=26 rel=27
+pistar N=30 lot=26 k=1 s=6496 f=6722 ticks=6497..6721
+pistar N=30 lot=26 k=2 s=6723 f=6754 ticks=6724..6753
+pistar N=30 lot=26 k=3 s=6755 f=6811 ticks=6756..6810
+pistar N=30 lot=26 k=4 s=6812 f=6863 ticks=6813..6862
+pistar N=30 lot=26 k=5 s=7004 f=7260 ticks=7005..7259
+pistar N=30 lot=27 rel=28
+pistar N=30 lot=27 k=1 s=6751 f=6977 ticks=6752..6976
+pistar N=30 lot=27 k=2 s=6978 f=7009 ticks=6979..7008
+pistar N=30 lot=27 k=3 s=7010 f=7066 ticks=7011..7065
+pistar N=30 lot=27 k=4 s=7067 f=7118 ticks=7068..7117
+pistar N=30 lot=27 k=5 s=7259 f=7515 ticks=7260..7514
+pistar N=30 lot=28 rel=29
+pistar N=30 lot=28 k=1 s=7006 f=7232 ticks=7007..7231
+pistar N=30 lot=28 k=2 s=7233 f=7264 ticks=7234..7263
+pistar N=30 lot=28 k=3 s=7265 f=7321 ticks=7266..7320
+pistar N=30 lot=28 k=4 s=7322 f=7373 ticks=7323..7372
+pistar N=30 lot=28 k=5 s=7514 f=7770 ticks=7515..7769
+pistar N=30 lot=29 rel=30
+pistar N=30 lot=29 k=1 s=7261 f=7487 ticks=7262..7486
+pistar N=30 lot=29 k=2 s=7488 f=7519 ticks=7489..7518
+pistar N=30 lot=29 k=3 s=7520 f=7576 ticks=7521..7575
+pistar N=30 lot=29 k=4 s=7577 f=7628 ticks=7578..7627
+pistar N=30 lot=29 k=5 s=7769 f=8025 ticks=7770..8024
+pistar N=84 lot=0 rel=1
+pistar N=84 lot=0 k=1 s=2 f=228 ticks=3..227
+pistar N=84 lot=0 k=2 s=229 f=260 ticks=230..259
+pistar N=84 lot=0 k=3 s=261 f=317 ticks=262..316
+pistar N=84 lot=0 k=4 s=318 f=369 ticks=319..368
+pistar N=84 lot=0 k=5 s=370 f=626 ticks=371..625
+pistar N=84 lot=1 rel=2
+pistar N=84 lot=1 k=1 s=229 f=455 ticks=230..454
+pistar N=84 lot=1 k=2 s=456 f=487 ticks=457..486
+pistar N=84 lot=1 k=3 s=488 f=544 ticks=489..543
+pistar N=84 lot=1 k=4 s=545 f=596 ticks=546..595
+pistar N=84 lot=1 k=5 s=627 f=883 ticks=628..882
+pistar N=84 lot=2 rel=3
+pistar N=84 lot=2 k=1 s=456 f=682 ticks=457..681
+pistar N=84 lot=2 k=2 s=683 f=714 ticks=684..713
+pistar N=84 lot=2 k=3 s=715 f=771 ticks=716..770
+pistar N=84 lot=2 k=4 s=772 f=823 ticks=773..822
+pistar N=84 lot=2 k=5 s=884 f=1140 ticks=885..1139
+pistar N=84 lot=3 rel=4
+pistar N=84 lot=3 k=1 s=683 f=909 ticks=684..908
+pistar N=84 lot=3 k=2 s=910 f=941 ticks=911..940
+pistar N=84 lot=3 k=3 s=942 f=998 ticks=943..997
+pistar N=84 lot=3 k=4 s=999 f=1050 ticks=1000..1049
+pistar N=84 lot=3 k=5 s=1139 f=1395 ticks=1140..1394
+pistar N=84 lot=4 rel=5
+pistar N=84 lot=4 k=1 s=910 f=1136 ticks=911..1135
+pistar N=84 lot=4 k=2 s=1137 f=1168 ticks=1138..1167
+pistar N=84 lot=4 k=3 s=1169 f=1225 ticks=1170..1224
+pistar N=84 lot=4 k=4 s=1226 f=1277 ticks=1227..1276
+pistar N=84 lot=4 k=5 s=1394 f=1650 ticks=1395..1649
+pistar N=84 lot=5 rel=6
+pistar N=84 lot=5 k=1 s=1141 f=1367 ticks=1142..1366
+pistar N=84 lot=5 k=2 s=1368 f=1399 ticks=1369..1398
+pistar N=84 lot=5 k=3 s=1400 f=1456 ticks=1401..1455
+pistar N=84 lot=5 k=4 s=1457 f=1508 ticks=1458..1507
+pistar N=84 lot=5 k=5 s=1649 f=1905 ticks=1650..1904
+pistar N=84 lot=6 rel=7
+pistar N=84 lot=6 k=1 s=1396 f=1622 ticks=1397..1621
+pistar N=84 lot=6 k=2 s=1623 f=1654 ticks=1624..1653
+pistar N=84 lot=6 k=3 s=1655 f=1711 ticks=1656..1710
+pistar N=84 lot=6 k=4 s=1712 f=1763 ticks=1713..1762
+pistar N=84 lot=6 k=5 s=1904 f=2160 ticks=1905..2159
+pistar N=84 lot=7 rel=8
+pistar N=84 lot=7 k=1 s=1651 f=1877 ticks=1652..1876
+pistar N=84 lot=7 k=2 s=1878 f=1909 ticks=1879..1908
+pistar N=84 lot=7 k=3 s=1910 f=1966 ticks=1911..1965
+pistar N=84 lot=7 k=4 s=1967 f=2018 ticks=1968..2017
+pistar N=84 lot=7 k=5 s=2159 f=2415 ticks=2160..2414
+pistar N=84 lot=8 rel=9
+pistar N=84 lot=8 k=1 s=1906 f=2132 ticks=1907..2131
+pistar N=84 lot=8 k=2 s=2133 f=2164 ticks=2134..2163
+pistar N=84 lot=8 k=3 s=2165 f=2221 ticks=2166..2220
+pistar N=84 lot=8 k=4 s=2222 f=2273 ticks=2223..2272
+pistar N=84 lot=8 k=5 s=2414 f=2670 ticks=2415..2669
+pistar N=84 lot=9 rel=10
+pistar N=84 lot=9 k=1 s=2161 f=2387 ticks=2162..2386
+pistar N=84 lot=9 k=2 s=2388 f=2419 ticks=2389..2418
+pistar N=84 lot=9 k=3 s=2420 f=2476 ticks=2421..2475
+pistar N=84 lot=9 k=4 s=2477 f=2528 ticks=2478..2527
+pistar N=84 lot=9 k=5 s=2669 f=2925 ticks=2670..2924
+pistar N=84 lot=10 rel=11
+pistar N=84 lot=10 k=1 s=2416 f=2642 ticks=2417..2641
+pistar N=84 lot=10 k=2 s=2643 f=2674 ticks=2644..2673
+pistar N=84 lot=10 k=3 s=2675 f=2731 ticks=2676..2730
+pistar N=84 lot=10 k=4 s=2732 f=2783 ticks=2733..2782
+pistar N=84 lot=10 k=5 s=2924 f=3180 ticks=2925..3179
+pistar N=84 lot=11 rel=12
+pistar N=84 lot=11 k=1 s=2671 f=2897 ticks=2672..2896
+pistar N=84 lot=11 k=2 s=2898 f=2929 ticks=2899..2928
+pistar N=84 lot=11 k=3 s=2930 f=2986 ticks=2931..2985
+pistar N=84 lot=11 k=4 s=2987 f=3038 ticks=2988..3037
+pistar N=84 lot=11 k=5 s=3179 f=3435 ticks=3180..3434
+pistar N=84 lot=12 rel=13
+pistar N=84 lot=12 k=1 s=2926 f=3152 ticks=2927..3151
+pistar N=84 lot=12 k=2 s=3153 f=3184 ticks=3154..3183
+pistar N=84 lot=12 k=3 s=3185 f=3241 ticks=3186..3240
+pistar N=84 lot=12 k=4 s=3242 f=3293 ticks=3243..3292
+pistar N=84 lot=12 k=5 s=3434 f=3690 ticks=3435..3689
+pistar N=84 lot=13 rel=14
+pistar N=84 lot=13 k=1 s=3181 f=3407 ticks=3182..3406
+pistar N=84 lot=13 k=2 s=3408 f=3439 ticks=3409..3438
+pistar N=84 lot=13 k=3 s=3440 f=3496 ticks=3441..3495
+pistar N=84 lot=13 k=4 s=3497 f=3548 ticks=3498..3547
+pistar N=84 lot=13 k=5 s=3689 f=3945 ticks=3690..3944
+pistar N=84 lot=14 rel=15
+pistar N=84 lot=14 k=1 s=3436 f=3662 ticks=3437..3661
+pistar N=84 lot=14 k=2 s=3663 f=3694 ticks=3664..3693
+pistar N=84 lot=14 k=3 s=3695 f=3751 ticks=3696..3750
+pistar N=84 lot=14 k=4 s=3752 f=3803 ticks=3753..3802
+pistar N=84 lot=14 k=5 s=3944 f=4200 ticks=3945..4199
+pistar N=84 lot=15 rel=16
+pistar N=84 lot=15 k=1 s=3691 f=3917 ticks=3692..3916
+pistar N=84 lot=15 k=2 s=3918 f=3949 ticks=3919..3948
+pistar N=84 lot=15 k=3 s=3950 f=4006 ticks=3951..4005
+pistar N=84 lot=15 k=4 s=4007 f=4058 ticks=4008..4057
+pistar N=84 lot=15 k=5 s=4199 f=4455 ticks=4200..4454
+pistar N=84 lot=16 rel=17
+pistar N=84 lot=16 k=1 s=3946 f=4172 ticks=3947..4171
+pistar N=84 lot=16 k=2 s=4173 f=4204 ticks=4174..4203
+pistar N=84 lot=16 k=3 s=4205 f=4261 ticks=4206..4260
+pistar N=84 lot=16 k=4 s=4262 f=4313 ticks=4263..4312
+pistar N=84 lot=16 k=5 s=4454 f=4710 ticks=4455..4709
+pistar N=84 lot=17 rel=18
+pistar N=84 lot=17 k=1 s=4201 f=4427 ticks=4202..4426
+pistar N=84 lot=17 k=2 s=4428 f=4459 ticks=4429..4458
+pistar N=84 lot=17 k=3 s=4460 f=4516 ticks=4461..4515
+pistar N=84 lot=17 k=4 s=4517 f=4568 ticks=4518..4567
+pistar N=84 lot=17 k=5 s=4709 f=4965 ticks=4710..4964
+pistar N=84 lot=18 rel=19
+pistar N=84 lot=18 k=1 s=4456 f=4682 ticks=4457..4681
+pistar N=84 lot=18 k=2 s=4683 f=4714 ticks=4684..4713
+pistar N=84 lot=18 k=3 s=4715 f=4771 ticks=4716..4770
+pistar N=84 lot=18 k=4 s=4772 f=4823 ticks=4773..4822
+pistar N=84 lot=18 k=5 s=4964 f=5220 ticks=4965..5219
+pistar N=84 lot=19 rel=20
+pistar N=84 lot=19 k=1 s=4711 f=4937 ticks=4712..4936
+pistar N=84 lot=19 k=2 s=4938 f=4969 ticks=4939..4968
+pistar N=84 lot=19 k=3 s=4970 f=5026 ticks=4971..5025
+pistar N=84 lot=19 k=4 s=5027 f=5078 ticks=5028..5077
+pistar N=84 lot=19 k=5 s=5219 f=5475 ticks=5220..5474
+pistar N=84 lot=20 rel=21
+pistar N=84 lot=20 k=1 s=4966 f=5192 ticks=4967..5191
+pistar N=84 lot=20 k=2 s=5193 f=5224 ticks=5194..5223
+pistar N=84 lot=20 k=3 s=5225 f=5281 ticks=5226..5280
+pistar N=84 lot=20 k=4 s=5282 f=5333 ticks=5283..5332
+pistar N=84 lot=20 k=5 s=5474 f=5730 ticks=5475..5729
+pistar N=84 lot=21 rel=22
+pistar N=84 lot=21 k=1 s=5221 f=5447 ticks=5222..5446
+pistar N=84 lot=21 k=2 s=5448 f=5479 ticks=5449..5478
+pistar N=84 lot=21 k=3 s=5480 f=5536 ticks=5481..5535
+pistar N=84 lot=21 k=4 s=5537 f=5588 ticks=5538..5587
+pistar N=84 lot=21 k=5 s=5729 f=5985 ticks=5730..5984
+pistar N=84 lot=22 rel=23
+pistar N=84 lot=22 k=1 s=5476 f=5702 ticks=5477..5701
+pistar N=84 lot=22 k=2 s=5703 f=5734 ticks=5704..5733
+pistar N=84 lot=22 k=3 s=5735 f=5791 ticks=5736..5790
+pistar N=84 lot=22 k=4 s=5792 f=5843 ticks=5793..5842
+pistar N=84 lot=22 k=5 s=5984 f=6240 ticks=5985..6239
+pistar N=84 lot=23 rel=24
+pistar N=84 lot=23 k=1 s=5731 f=5957 ticks=5732..5956
+pistar N=84 lot=23 k=2 s=5958 f=5989 ticks=5959..5988
+pistar N=84 lot=23 k=3 s=5990 f=6046 ticks=5991..6045
+pistar N=84 lot=23 k=4 s=6047 f=6098 ticks=6048..6097
+pistar N=84 lot=23 k=5 s=6239 f=6495 ticks=6240..6494
+pistar N=84 lot=24 rel=25
+pistar N=84 lot=24 k=1 s=5986 f=6212 ticks=5987..6211
+pistar N=84 lot=24 k=2 s=6213 f=6244 ticks=6214..6243
+pistar N=84 lot=24 k=3 s=6245 f=6301 ticks=6246..6300
+pistar N=84 lot=24 k=4 s=6302 f=6353 ticks=6303..6352
+pistar N=84 lot=24 k=5 s=6494 f=6750 ticks=6495..6749
+pistar N=84 lot=25 rel=26
+pistar N=84 lot=25 k=1 s=6241 f=6467 ticks=6242..6466
+pistar N=84 lot=25 k=2 s=6468 f=6499 ticks=6469..6498
+pistar N=84 lot=25 k=3 s=6500 f=6556 ticks=6501..6555
+pistar N=84 lot=25 k=4 s=6557 f=6608 ticks=6558..6607
+pistar N=84 lot=25 k=5 s=6749 f=7005 ticks=6750..7004
+pistar N=84 lot=26 rel=27
+pistar N=84 lot=26 k=1 s=6496 f=6722 ticks=6497..6721
+pistar N=84 lot=26 k=2 s=6723 f=6754 ticks=6724..6753
+pistar N=84 lot=26 k=3 s=6755 f=6811 ticks=6756..6810
+pistar N=84 lot=26 k=4 s=6812 f=6863 ticks=6813..6862
+pistar N=84 lot=26 k=5 s=7004 f=7260 ticks=7005..7259
+pistar N=84 lot=27 rel=28
+pistar N=84 lot=27 k=1 s=6751 f=6977 ticks=6752..6976
+pistar N=84 lot=27 k=2 s=6978 f=7009 ticks=6979..7008
+pistar N=84 lot=27 k=3 s=7010 f=7066 ticks=7011..7065
+pistar N=84 lot=27 k=4 s=7067 f=7118 ticks=7068..7117
+pistar N=84 lot=27 k=5 s=7259 f=7515 ticks=7260..7514
+pistar N=84 lot=28 rel=29
+pistar N=84 lot=28 k=1 s=7006 f=7232 ticks=7007..7231
+pistar N=84 lot=28 k=2 s=7233 f=7264 ticks=7234..7263
+pistar N=84 lot=28 k=3 s=7265 f=7321 ticks=7266..7320
+pistar N=84 lot=28 k=4 s=7322 f=7373 ticks=7323..7372
+pistar N=84 lot=28 k=5 s=7514 f=7770 ticks=7515..7769
+pistar N=84 lot=29 rel=30
+pistar N=84 lot=29 k=1 s=7261 f=7487 ticks=7262..7486
+pistar N=84 lot=29 k=2 s=7488 f=7519 ticks=7489..7518
+pistar N=84 lot=29 k=3 s=7520 f=7576 ticks=7521..7575
+pistar N=84 lot=29 k=4 s=7577 f=7628 ticks=7578..7627
+pistar N=84 lot=29 k=5 s=7769 f=8025 ticks=7770..8024
+pistar N=84 lot=30 rel=31
+pistar N=84 lot=30 k=1 s=7516 f=7742 ticks=7517..7741
+pistar N=84 lot=30 k=2 s=7743 f=7774 ticks=7744..7773
+pistar N=84 lot=30 k=3 s=7775 f=7831 ticks=7776..7830
+pistar N=84 lot=30 k=4 s=7832 f=7883 ticks=7833..7882
+pistar N=84 lot=30 k=5 s=8024 f=8280 ticks=8025..8279
+pistar N=84 lot=31 rel=32
+pistar N=84 lot=31 k=1 s=7771 f=7997 ticks=7772..7996
+pistar N=84 lot=31 k=2 s=7998 f=8029 ticks=7999..8028
+pistar N=84 lot=31 k=3 s=8030 f=8086 ticks=8031..8085
+pistar N=84 lot=31 k=4 s=8087 f=8138 ticks=8088..8137
+pistar N=84 lot=31 k=5 s=8279 f=8535 ticks=8280..8534
+pistar N=84 lot=32 rel=33
+pistar N=84 lot=32 k=1 s=8026 f=8252 ticks=8027..8251
+pistar N=84 lot=32 k=2 s=8253 f=8284 ticks=8254..8283
+pistar N=84 lot=32 k=3 s=8285 f=8341 ticks=8286..8340
+pistar N=84 lot=32 k=4 s=8342 f=8393 ticks=8343..8392
+pistar N=84 lot=32 k=5 s=8534 f=8790 ticks=8535..8789
+pistar N=84 lot=33 rel=34
+pistar N=84 lot=33 k=1 s=8281 f=8507 ticks=8282..8506
+pistar N=84 lot=33 k=2 s=8508 f=8539 ticks=8509..8538
+pistar N=84 lot=33 k=3 s=8540 f=8596 ticks=8541..8595
+pistar N=84 lot=33 k=4 s=8597 f=8648 ticks=8598..8647
+pistar N=84 lot=33 k=5 s=8789 f=9045 ticks=8790..9044
+pistar N=84 lot=34 rel=35
+pistar N=84 lot=34 k=1 s=8536 f=8762 ticks=8537..8761
+pistar N=84 lot=34 k=2 s=8763 f=8794 ticks=8764..8793
+pistar N=84 lot=34 k=3 s=8795 f=8851 ticks=8796..8850
+pistar N=84 lot=34 k=4 s=8852 f=8903 ticks=8853..8902
+pistar N=84 lot=34 k=5 s=9044 f=9300 ticks=9045..9299
+pistar N=84 lot=35 rel=36
+pistar N=84 lot=35 k=1 s=8791 f=9017 ticks=8792..9016
+pistar N=84 lot=35 k=2 s=9018 f=9049 ticks=9019..9048
+pistar N=84 lot=35 k=3 s=9050 f=9106 ticks=9051..9105
+pistar N=84 lot=35 k=4 s=9107 f=9158 ticks=9108..9157
+pistar N=84 lot=35 k=5 s=9299 f=9555 ticks=9300..9554
+pistar N=84 lot=36 rel=37
+pistar N=84 lot=36 k=1 s=9046 f=9272 ticks=9047..9271
+pistar N=84 lot=36 k=2 s=9273 f=9304 ticks=9274..9303
+pistar N=84 lot=36 k=3 s=9305 f=9361 ticks=9306..9360
+pistar N=84 lot=36 k=4 s=9362 f=9413 ticks=9363..9412
+pistar N=84 lot=36 k=5 s=9554 f=9810 ticks=9555..9809
+pistar N=84 lot=37 rel=38
+pistar N=84 lot=37 k=1 s=9301 f=9527 ticks=9302..9526
+pistar N=84 lot=37 k=2 s=9528 f=9559 ticks=9529..9558
+pistar N=84 lot=37 k=3 s=9560 f=9616 ticks=9561..9615
+pistar N=84 lot=37 k=4 s=9617 f=9668 ticks=9618..9667
+pistar N=84 lot=37 k=5 s=9809 f=10065 ticks=9810..10064
+pistar N=84 lot=38 rel=39
+pistar N=84 lot=38 k=1 s=9556 f=9782 ticks=9557..9781
+pistar N=84 lot=38 k=2 s=9783 f=9814 ticks=9784..9813
+pistar N=84 lot=38 k=3 s=9815 f=9871 ticks=9816..9870
+pistar N=84 lot=38 k=4 s=9872 f=9923 ticks=9873..9922
+pistar N=84 lot=38 k=5 s=10064 f=10320 ticks=10065..10319
+pistar N=84 lot=39 rel=40
+pistar N=84 lot=39 k=1 s=9811 f=10037 ticks=9812..10036
+pistar N=84 lot=39 k=2 s=10038 f=10069 ticks=10039..10068
+pistar N=84 lot=39 k=3 s=10070 f=10126 ticks=10071..10125
+pistar N=84 lot=39 k=4 s=10127 f=10178 ticks=10128..10177
+pistar N=84 lot=39 k=5 s=10319 f=10575 ticks=10320..10574
+pistar N=84 lot=40 rel=41
+pistar N=84 lot=40 k=1 s=10066 f=10292 ticks=10067..10291
+pistar N=84 lot=40 k=2 s=10293 f=10324 ticks=10294..10323
+pistar N=84 lot=40 k=3 s=10325 f=10381 ticks=10326..10380
+pistar N=84 lot=40 k=4 s=10382 f=10433 ticks=10383..10432
+pistar N=84 lot=40 k=5 s=10574 f=10830 ticks=10575..10829
+pistar N=84 lot=41 rel=42
+pistar N=84 lot=41 k=1 s=10321 f=10547 ticks=10322..10546
+pistar N=84 lot=41 k=2 s=10548 f=10579 ticks=10549..10578
+pistar N=84 lot=41 k=3 s=10580 f=10636 ticks=10581..10635
+pistar N=84 lot=41 k=4 s=10637 f=10688 ticks=10638..10687
+pistar N=84 lot=41 k=5 s=10829 f=11085 ticks=10830..11084
+pistar N=84 lot=42 rel=43
+pistar N=84 lot=42 k=1 s=10576 f=10802 ticks=10577..10801
+pistar N=84 lot=42 k=2 s=10803 f=10834 ticks=10804..10833
+pistar N=84 lot=42 k=3 s=10835 f=10891 ticks=10836..10890
+pistar N=84 lot=42 k=4 s=10892 f=10943 ticks=10893..10942
+pistar N=84 lot=42 k=5 s=11084 f=11340 ticks=11085..11339
+pistar N=84 lot=43 rel=44
+pistar N=84 lot=43 k=1 s=10831 f=11057 ticks=10832..11056
+pistar N=84 lot=43 k=2 s=11058 f=11089 ticks=11059..11088
+pistar N=84 lot=43 k=3 s=11090 f=11146 ticks=11091..11145
+pistar N=84 lot=43 k=4 s=11147 f=11198 ticks=11148..11197
+pistar N=84 lot=43 k=5 s=11339 f=11595 ticks=11340..11594
+pistar N=84 lot=44 rel=45
+pistar N=84 lot=44 k=1 s=11086 f=11312 ticks=11087..11311
+pistar N=84 lot=44 k=2 s=11313 f=11344 ticks=11314..11343
+pistar N=84 lot=44 k=3 s=11345 f=11401 ticks=11346..11400
+pistar N=84 lot=44 k=4 s=11402 f=11453 ticks=11403..11452
+pistar N=84 lot=44 k=5 s=11594 f=11850 ticks=11595..11849
+pistar N=84 lot=45 rel=46
+pistar N=84 lot=45 k=1 s=11341 f=11567 ticks=11342..11566
+pistar N=84 lot=45 k=2 s=11568 f=11599 ticks=11569..11598
+pistar N=84 lot=45 k=3 s=11600 f=11656 ticks=11601..11655
+pistar N=84 lot=45 k=4 s=11657 f=11708 ticks=11658..11707
+pistar N=84 lot=45 k=5 s=11849 f=12105 ticks=11850..12104
+pistar N=84 lot=46 rel=47
+pistar N=84 lot=46 k=1 s=11596 f=11822 ticks=11597..11821
+pistar N=84 lot=46 k=2 s=11823 f=11854 ticks=11824..11853
+pistar N=84 lot=46 k=3 s=11855 f=11911 ticks=11856..11910
+pistar N=84 lot=46 k=4 s=11912 f=11963 ticks=11913..11962
+pistar N=84 lot=46 k=5 s=12104 f=12360 ticks=12105..12359
+pistar N=84 lot=47 rel=48
+pistar N=84 lot=47 k=1 s=11851 f=12077 ticks=11852..12076
+pistar N=84 lot=47 k=2 s=12078 f=12109 ticks=12079..12108
+pistar N=84 lot=47 k=3 s=12110 f=12166 ticks=12111..12165
+pistar N=84 lot=47 k=4 s=12167 f=12218 ticks=12168..12217
+pistar N=84 lot=47 k=5 s=12359 f=12615 ticks=12360..12614
+pistar N=84 lot=48 rel=49
+pistar N=84 lot=48 k=1 s=12106 f=12332 ticks=12107..12331
+pistar N=84 lot=48 k=2 s=12333 f=12364 ticks=12334..12363
+pistar N=84 lot=48 k=3 s=12365 f=12421 ticks=12366..12420
+pistar N=84 lot=48 k=4 s=12422 f=12473 ticks=12423..12472
+pistar N=84 lot=48 k=5 s=12614 f=12870 ticks=12615..12869
+pistar N=84 lot=49 rel=50
+pistar N=84 lot=49 k=1 s=12361 f=12587 ticks=12362..12586
+pistar N=84 lot=49 k=2 s=12588 f=12619 ticks=12589..12618
+pistar N=84 lot=49 k=3 s=12620 f=12676 ticks=12621..12675
+pistar N=84 lot=49 k=4 s=12677 f=12728 ticks=12678..12727
+pistar N=84 lot=49 k=5 s=12869 f=13125 ticks=12870..13124
+pistar N=84 lot=50 rel=51
+pistar N=84 lot=50 k=1 s=12616 f=12842 ticks=12617..12841
+pistar N=84 lot=50 k=2 s=12843 f=12874 ticks=12844..12873
+pistar N=84 lot=50 k=3 s=12875 f=12931 ticks=12876..12930
+pistar N=84 lot=50 k=4 s=12932 f=12983 ticks=12933..12982
+pistar N=84 lot=50 k=5 s=13124 f=13380 ticks=13125..13379
+pistar N=84 lot=51 rel=52
+pistar N=84 lot=51 k=1 s=12871 f=13097 ticks=12872..13096
+pistar N=84 lot=51 k=2 s=13098 f=13129 ticks=13099..13128
+pistar N=84 lot=51 k=3 s=13130 f=13186 ticks=13131..13185
+pistar N=84 lot=51 k=4 s=13187 f=13238 ticks=13188..13237
+pistar N=84 lot=51 k=5 s=13379 f=13635 ticks=13380..13634
+pistar N=84 lot=52 rel=53
+pistar N=84 lot=52 k=1 s=13126 f=13352 ticks=13127..13351
+pistar N=84 lot=52 k=2 s=13353 f=13384 ticks=13354..13383
+pistar N=84 lot=52 k=3 s=13385 f=13441 ticks=13386..13440
+pistar N=84 lot=52 k=4 s=13442 f=13493 ticks=13443..13492
+pistar N=84 lot=52 k=5 s=13634 f=13890 ticks=13635..13889
+pistar N=84 lot=53 rel=54
+pistar N=84 lot=53 k=1 s=13381 f=13607 ticks=13382..13606
+pistar N=84 lot=53 k=2 s=13608 f=13639 ticks=13609..13638
+pistar N=84 lot=53 k=3 s=13640 f=13696 ticks=13641..13695
+pistar N=84 lot=53 k=4 s=13697 f=13748 ticks=13698..13747
+pistar N=84 lot=53 k=5 s=13889 f=14145 ticks=13890..14144
+pistar N=84 lot=54 rel=55
+pistar N=84 lot=54 k=1 s=13636 f=13862 ticks=13637..13861
+pistar N=84 lot=54 k=2 s=13863 f=13894 ticks=13864..13893
+pistar N=84 lot=54 k=3 s=13895 f=13951 ticks=13896..13950
+pistar N=84 lot=54 k=4 s=13952 f=14003 ticks=13953..14002
+pistar N=84 lot=54 k=5 s=14144 f=14400 ticks=14145..14399
+pistar N=84 lot=55 rel=56
+pistar N=84 lot=55 k=1 s=13891 f=14117 ticks=13892..14116
+pistar N=84 lot=55 k=2 s=14118 f=14149 ticks=14119..14148
+pistar N=84 lot=55 k=3 s=14150 f=14206 ticks=14151..14205
+pistar N=84 lot=55 k=4 s=14207 f=14258 ticks=14208..14257
+pistar N=84 lot=55 k=5 s=14399 f=14655 ticks=14400..14654
+pistar N=84 lot=56 rel=57
+pistar N=84 lot=56 k=1 s=14146 f=14372 ticks=14147..14371
+pistar N=84 lot=56 k=2 s=14373 f=14404 ticks=14374..14403
+pistar N=84 lot=56 k=3 s=14405 f=14461 ticks=14406..14460
+pistar N=84 lot=56 k=4 s=14462 f=14513 ticks=14463..14512
+pistar N=84 lot=56 k=5 s=14654 f=14910 ticks=14655..14909
+pistar N=84 lot=57 rel=58
+pistar N=84 lot=57 k=1 s=14401 f=14627 ticks=14402..14626
+pistar N=84 lot=57 k=2 s=14628 f=14659 ticks=14629..14658
+pistar N=84 lot=57 k=3 s=14660 f=14716 ticks=14661..14715
+pistar N=84 lot=57 k=4 s=14717 f=14768 ticks=14718..14767
+pistar N=84 lot=57 k=5 s=14909 f=15165 ticks=14910..15164
+pistar N=84 lot=58 rel=59
+pistar N=84 lot=58 k=1 s=14656 f=14882 ticks=14657..14881
+pistar N=84 lot=58 k=2 s=14883 f=14914 ticks=14884..14913
+pistar N=84 lot=58 k=3 s=14915 f=14971 ticks=14916..14970
+pistar N=84 lot=58 k=4 s=14972 f=15023 ticks=14973..15022
+pistar N=84 lot=58 k=5 s=15164 f=15420 ticks=15165..15419
+pistar N=84 lot=59 rel=60
+pistar N=84 lot=59 k=1 s=14911 f=15137 ticks=14912..15136
+pistar N=84 lot=59 k=2 s=15138 f=15169 ticks=15139..15168
+pistar N=84 lot=59 k=3 s=15170 f=15226 ticks=15171..15225
+pistar N=84 lot=59 k=4 s=15227 f=15278 ticks=15228..15277
+pistar N=84 lot=59 k=5 s=15419 f=15675 ticks=15420..15674
+pistar N=84 lot=60 rel=61
+pistar N=84 lot=60 k=1 s=15166 f=15392 ticks=15167..15391
+pistar N=84 lot=60 k=2 s=15393 f=15424 ticks=15394..15423
+pistar N=84 lot=60 k=3 s=15425 f=15481 ticks=15426..15480
+pistar N=84 lot=60 k=4 s=15482 f=15533 ticks=15483..15532
+pistar N=84 lot=60 k=5 s=15674 f=15930 ticks=15675..15929
+pistar N=84 lot=61 rel=62
+pistar N=84 lot=61 k=1 s=15421 f=15647 ticks=15422..15646
+pistar N=84 lot=61 k=2 s=15648 f=15679 ticks=15649..15678
+pistar N=84 lot=61 k=3 s=15680 f=15736 ticks=15681..15735
+pistar N=84 lot=61 k=4 s=15737 f=15788 ticks=15738..15787
+pistar N=84 lot=61 k=5 s=15929 f=16185 ticks=15930..16184
+pistar N=84 lot=62 rel=63
+pistar N=84 lot=62 k=1 s=15676 f=15902 ticks=15677..15901
+pistar N=84 lot=62 k=2 s=15903 f=15934 ticks=15904..15933
+pistar N=84 lot=62 k=3 s=15935 f=15991 ticks=15936..15990
+pistar N=84 lot=62 k=4 s=15992 f=16043 ticks=15993..16042
+pistar N=84 lot=62 k=5 s=16184 f=16440 ticks=16185..16439
+pistar N=84 lot=63 rel=64
+pistar N=84 lot=63 k=1 s=15931 f=16157 ticks=15932..16156
+pistar N=84 lot=63 k=2 s=16158 f=16189 ticks=16159..16188
+pistar N=84 lot=63 k=3 s=16190 f=16246 ticks=16191..16245
+pistar N=84 lot=63 k=4 s=16247 f=16298 ticks=16248..16297
+pistar N=84 lot=63 k=5 s=16439 f=16695 ticks=16440..16694
+pistar N=84 lot=64 rel=65
+pistar N=84 lot=64 k=1 s=16186 f=16412 ticks=16187..16411
+pistar N=84 lot=64 k=2 s=16413 f=16444 ticks=16414..16443
+pistar N=84 lot=64 k=3 s=16445 f=16501 ticks=16446..16500
+pistar N=84 lot=64 k=4 s=16502 f=16553 ticks=16503..16552
+pistar N=84 lot=64 k=5 s=16694 f=16950 ticks=16695..16949
+pistar N=84 lot=65 rel=66
+pistar N=84 lot=65 k=1 s=16441 f=16667 ticks=16442..16666
+pistar N=84 lot=65 k=2 s=16668 f=16699 ticks=16669..16698
+pistar N=84 lot=65 k=3 s=16700 f=16756 ticks=16701..16755
+pistar N=84 lot=65 k=4 s=16757 f=16808 ticks=16758..16807
+pistar N=84 lot=65 k=5 s=16949 f=17205 ticks=16950..17204
+pistar N=84 lot=66 rel=67
+pistar N=84 lot=66 k=1 s=16696 f=16922 ticks=16697..16921
+pistar N=84 lot=66 k=2 s=16923 f=16954 ticks=16924..16953
+pistar N=84 lot=66 k=3 s=16955 f=17011 ticks=16956..17010
+pistar N=84 lot=66 k=4 s=17012 f=17063 ticks=17013..17062
+pistar N=84 lot=66 k=5 s=17204 f=17460 ticks=17205..17459
+pistar N=84 lot=67 rel=68
+pistar N=84 lot=67 k=1 s=16951 f=17177 ticks=16952..17176
+pistar N=84 lot=67 k=2 s=17178 f=17209 ticks=17179..17208
+pistar N=84 lot=67 k=3 s=17210 f=17266 ticks=17211..17265
+pistar N=84 lot=67 k=4 s=17267 f=17318 ticks=17268..17317
+pistar N=84 lot=67 k=5 s=17459 f=17715 ticks=17460..17714
+pistar N=84 lot=68 rel=69
+pistar N=84 lot=68 k=1 s=17206 f=17432 ticks=17207..17431
+pistar N=84 lot=68 k=2 s=17433 f=17464 ticks=17434..17463
+pistar N=84 lot=68 k=3 s=17465 f=17521 ticks=17466..17520
+pistar N=84 lot=68 k=4 s=17522 f=17573 ticks=17523..17572
+pistar N=84 lot=68 k=5 s=17714 f=17970 ticks=17715..17969
+pistar N=84 lot=69 rel=70
+pistar N=84 lot=69 k=1 s=17461 f=17687 ticks=17462..17686
+pistar N=84 lot=69 k=2 s=17688 f=17719 ticks=17689..17718
+pistar N=84 lot=69 k=3 s=17720 f=17776 ticks=17721..17775
+pistar N=84 lot=69 k=4 s=17777 f=17828 ticks=17778..17827
+pistar N=84 lot=69 k=5 s=17969 f=18225 ticks=17970..18224
+pistar N=84 lot=70 rel=71
+pistar N=84 lot=70 k=1 s=17716 f=17942 ticks=17717..17941
+pistar N=84 lot=70 k=2 s=17943 f=17974 ticks=17944..17973
+pistar N=84 lot=70 k=3 s=17975 f=18031 ticks=17976..18030
+pistar N=84 lot=70 k=4 s=18032 f=18083 ticks=18033..18082
+pistar N=84 lot=70 k=5 s=18224 f=18480 ticks=18225..18479
+pistar N=84 lot=71 rel=72
+pistar N=84 lot=71 k=1 s=17971 f=18197 ticks=17972..18196
+pistar N=84 lot=71 k=2 s=18198 f=18229 ticks=18199..18228
+pistar N=84 lot=71 k=3 s=18230 f=18286 ticks=18231..18285
+pistar N=84 lot=71 k=4 s=18287 f=18338 ticks=18288..18337
+pistar N=84 lot=71 k=5 s=18479 f=18735 ticks=18480..18734
+pistar N=84 lot=72 rel=73
+pistar N=84 lot=72 k=1 s=18226 f=18452 ticks=18227..18451
+pistar N=84 lot=72 k=2 s=18453 f=18484 ticks=18454..18483
+pistar N=84 lot=72 k=3 s=18485 f=18541 ticks=18486..18540
+pistar N=84 lot=72 k=4 s=18542 f=18593 ticks=18543..18592
+pistar N=84 lot=72 k=5 s=18734 f=18990 ticks=18735..18989
+pistar N=84 lot=73 rel=74
+pistar N=84 lot=73 k=1 s=18481 f=18707 ticks=18482..18706
+pistar N=84 lot=73 k=2 s=18708 f=18739 ticks=18709..18738
+pistar N=84 lot=73 k=3 s=18740 f=18796 ticks=18741..18795
+pistar N=84 lot=73 k=4 s=18797 f=18848 ticks=18798..18847
+pistar N=84 lot=73 k=5 s=18989 f=19245 ticks=18990..19244
+pistar N=84 lot=74 rel=75
+pistar N=84 lot=74 k=1 s=18736 f=18962 ticks=18737..18961
+pistar N=84 lot=74 k=2 s=18963 f=18994 ticks=18964..18993
+pistar N=84 lot=74 k=3 s=18995 f=19051 ticks=18996..19050
+pistar N=84 lot=74 k=4 s=19052 f=19103 ticks=19053..19102
+pistar N=84 lot=74 k=5 s=19244 f=19500 ticks=19245..19499
+pistar N=84 lot=75 rel=76
+pistar N=84 lot=75 k=1 s=18991 f=19217 ticks=18992..19216
+pistar N=84 lot=75 k=2 s=19218 f=19249 ticks=19219..19248
+pistar N=84 lot=75 k=3 s=19250 f=19306 ticks=19251..19305
+pistar N=84 lot=75 k=4 s=19307 f=19358 ticks=19308..19357
+pistar N=84 lot=75 k=5 s=19499 f=19755 ticks=19500..19754
+pistar N=84 lot=76 rel=77
+pistar N=84 lot=76 k=1 s=19246 f=19472 ticks=19247..19471
+pistar N=84 lot=76 k=2 s=19473 f=19504 ticks=19474..19503
+pistar N=84 lot=76 k=3 s=19505 f=19561 ticks=19506..19560
+pistar N=84 lot=76 k=4 s=19562 f=19613 ticks=19563..19612
+pistar N=84 lot=76 k=5 s=19754 f=20010 ticks=19755..20009
+pistar N=84 lot=77 rel=78
+pistar N=84 lot=77 k=1 s=19501 f=19727 ticks=19502..19726
+pistar N=84 lot=77 k=2 s=19728 f=19759 ticks=19729..19758
+pistar N=84 lot=77 k=3 s=19760 f=19816 ticks=19761..19815
+pistar N=84 lot=77 k=4 s=19817 f=19868 ticks=19818..19867
+pistar N=84 lot=77 k=5 s=20009 f=20265 ticks=20010..20264
+pistar N=84 lot=78 rel=79
+pistar N=84 lot=78 k=1 s=19756 f=19982 ticks=19757..19981
+pistar N=84 lot=78 k=2 s=19983 f=20014 ticks=19984..20013
+pistar N=84 lot=78 k=3 s=20015 f=20071 ticks=20016..20070
+pistar N=84 lot=78 k=4 s=20072 f=20123 ticks=20073..20122
+pistar N=84 lot=78 k=5 s=20264 f=20520 ticks=20265..20519
+pistar N=84 lot=79 rel=80
+pistar N=84 lot=79 k=1 s=20011 f=20237 ticks=20012..20236
+pistar N=84 lot=79 k=2 s=20238 f=20269 ticks=20239..20268
+pistar N=84 lot=79 k=3 s=20270 f=20326 ticks=20271..20325
+pistar N=84 lot=79 k=4 s=20327 f=20378 ticks=20328..20377
+pistar N=84 lot=79 k=5 s=20519 f=20775 ticks=20520..20774
+pistar N=84 lot=80 rel=81
+pistar N=84 lot=80 k=1 s=20266 f=20492 ticks=20267..20491
+pistar N=84 lot=80 k=2 s=20493 f=20524 ticks=20494..20523
+pistar N=84 lot=80 k=3 s=20525 f=20581 ticks=20526..20580
+pistar N=84 lot=80 k=4 s=20582 f=20633 ticks=20583..20632
+pistar N=84 lot=80 k=5 s=20774 f=21030 ticks=20775..21029
+pistar N=84 lot=81 rel=82
+pistar N=84 lot=81 k=1 s=20521 f=20747 ticks=20522..20746
+pistar N=84 lot=81 k=2 s=20748 f=20779 ticks=20749..20778
+pistar N=84 lot=81 k=3 s=20780 f=20836 ticks=20781..20835
+pistar N=84 lot=81 k=4 s=20837 f=20888 ticks=20838..20887
+pistar N=84 lot=81 k=5 s=21029 f=21285 ticks=21030..21284
+pistar N=84 lot=82 rel=83
+pistar N=84 lot=82 k=1 s=20776 f=21002 ticks=20777..21001
+pistar N=84 lot=82 k=2 s=21003 f=21034 ticks=21004..21033
+pistar N=84 lot=82 k=3 s=21035 f=21091 ticks=21036..21090
+pistar N=84 lot=82 k=4 s=21092 f=21143 ticks=21093..21142
+pistar N=84 lot=82 k=5 s=21284 f=21540 ticks=21285..21539
+pistar N=84 lot=83 rel=84
+pistar N=84 lot=83 k=1 s=21031 f=21257 ticks=21032..21256
+pistar N=84 lot=83 k=2 s=21258 f=21289 ticks=21259..21288
+pistar N=84 lot=83 k=3 s=21290 f=21346 ticks=21291..21345
+pistar N=84 lot=83 k=4 s=21347 f=21398 ticks=21348..21397
+pistar N=84 lot=83 k=5 s=21539 f=21795 ticks=21540..21794
+wcfamily N=3 lot=0 rel=1
+wcfamily N=3 lot=0 k=1 s=2 f=228 ticks=3..227
+wcfamily N=3 lot=0 k=2 s=229 f=260 ticks=230..259
+wcfamily N=3 lot=0 k=3 s=261 f=317 ticks=262..316
+wcfamily N=3 lot=0 k=4 s=318 f=369 ticks=319..368
+wcfamily N=3 lot=0 k=5 s=454 f=710 ticks=455..709
+wcfamily N=3 lot=1 rel=2
+wcfamily N=3 lot=1 k=1 s=3 f=453 ticks=228..452
+wcfamily N=3 lot=1 k=2 s=454 f=485 ticks=455..484
+wcfamily N=3 lot=1 k=3 s=486 f=542 ticks=487..541
+wcfamily N=3 lot=1 k=4 s=543 f=594 ticks=544..593
+wcfamily N=3 lot=1 k=5 s=679 f=965 ticks=710..964
+wcfamily N=3 lot=2 rel=3
+wcfamily N=3 lot=2 k=1 s=229 f=678 ticks=453..677
+wcfamily N=3 lot=2 k=2 s=679 f=710 ticks=680..709
+wcfamily N=3 lot=2 k=3 s=711 f=767 ticks=712..766
+wcfamily N=3 lot=2 k=4 s=768 f=819 ticks=769..818
+wcfamily N=3 lot=2 k=5 s=820 f=1220 ticks=965..1219
+wcfamily N=4 lot=0 rel=1
+wcfamily N=4 lot=0 k=1 s=2 f=228 ticks=3..227
+wcfamily N=4 lot=0 k=2 s=229 f=260 ticks=230..259
+wcfamily N=4 lot=0 k=3 s=261 f=317 ticks=262..316
+wcfamily N=4 lot=0 k=4 s=318 f=369 ticks=319..368
+wcfamily N=4 lot=0 k=5 s=454 f=710 ticks=455..709
+wcfamily N=4 lot=1 rel=2
+wcfamily N=4 lot=1 k=1 s=3 f=453 ticks=228..452
+wcfamily N=4 lot=1 k=2 s=454 f=485 ticks=455..484
+wcfamily N=4 lot=1 k=3 s=486 f=542 ticks=487..541
+wcfamily N=4 lot=1 k=4 s=543 f=594 ticks=544..593
+wcfamily N=4 lot=1 k=5 s=679 f=965 ticks=710..964
+wcfamily N=4 lot=2 rel=3
+wcfamily N=4 lot=2 k=1 s=229 f=678 ticks=453..677
+wcfamily N=4 lot=2 k=2 s=679 f=710 ticks=680..709
+wcfamily N=4 lot=2 k=3 s=711 f=767 ticks=712..766
+wcfamily N=4 lot=2 k=4 s=768 f=819 ticks=769..818
+wcfamily N=4 lot=2 k=5 s=938 f=1220 ticks=965..1219
+wcfamily N=4 lot=3 rel=4
+wcfamily N=4 lot=3 k=1 s=711 f=937 ticks=712..936
+wcfamily N=4 lot=3 k=2 s=938 f=969 ticks=939..968
+wcfamily N=4 lot=3 k=3 s=970 f=1026 ticks=971..1025
+wcfamily N=4 lot=3 k=4 s=1027 f=1078 ticks=1028..1077
+wcfamily N=4 lot=3 k=5 s=1079 f=1475 ticks=1220..1474
+wcfamily N=5 lot=0 rel=1
+wcfamily N=5 lot=0 k=1 s=2 f=228 ticks=3..227
+wcfamily N=5 lot=0 k=2 s=229 f=260 ticks=230..259
+wcfamily N=5 lot=0 k=3 s=261 f=317 ticks=262..316
+wcfamily N=5 lot=0 k=4 s=318 f=369 ticks=319..368
+wcfamily N=5 lot=0 k=5 s=454 f=710 ticks=455..709
+wcfamily N=5 lot=1 rel=2
+wcfamily N=5 lot=1 k=1 s=3 f=453 ticks=228..452
+wcfamily N=5 lot=1 k=2 s=454 f=485 ticks=455..484
+wcfamily N=5 lot=1 k=3 s=486 f=542 ticks=487..541
+wcfamily N=5 lot=1 k=4 s=543 f=594 ticks=544..593
+wcfamily N=5 lot=1 k=5 s=679 f=965 ticks=710..964
+wcfamily N=5 lot=2 rel=3
+wcfamily N=5 lot=2 k=1 s=229 f=678 ticks=453..677
+wcfamily N=5 lot=2 k=2 s=679 f=710 ticks=680..709
+wcfamily N=5 lot=2 k=3 s=711 f=767 ticks=712..766
+wcfamily N=5 lot=2 k=4 s=768 f=819 ticks=769..818
+wcfamily N=5 lot=2 k=5 s=938 f=1220 ticks=965..1219
+wcfamily N=5 lot=3 rel=4
+wcfamily N=5 lot=3 k=1 s=711 f=937 ticks=712..936
+wcfamily N=5 lot=3 k=2 s=938 f=969 ticks=939..968
+wcfamily N=5 lot=3 k=3 s=970 f=1026 ticks=971..1025
+wcfamily N=5 lot=3 k=4 s=1027 f=1078 ticks=1028..1077
+wcfamily N=5 lot=3 k=5 s=1193 f=1475 ticks=1220..1474
+wcfamily N=5 lot=4 rel=5
+wcfamily N=5 lot=4 k=1 s=966 f=1192 ticks=967..1191
+wcfamily N=5 lot=4 k=2 s=1193 f=1224 ticks=1194..1223
+wcfamily N=5 lot=4 k=3 s=1225 f=1281 ticks=1226..1280
+wcfamily N=5 lot=4 k=4 s=1282 f=1333 ticks=1283..1332
+wcfamily N=5 lot=4 k=5 s=1334 f=1730 ticks=1475..1729
+wcfamily N=8 lot=0 rel=1
+wcfamily N=8 lot=0 k=1 s=2 f=228 ticks=3..227
+wcfamily N=8 lot=0 k=2 s=229 f=260 ticks=230..259
+wcfamily N=8 lot=0 k=3 s=261 f=317 ticks=262..316
+wcfamily N=8 lot=0 k=4 s=318 f=369 ticks=319..368
+wcfamily N=8 lot=0 k=5 s=454 f=710 ticks=455..709
+wcfamily N=8 lot=1 rel=2
+wcfamily N=8 lot=1 k=1 s=3 f=453 ticks=228..452
+wcfamily N=8 lot=1 k=2 s=454 f=485 ticks=455..484
+wcfamily N=8 lot=1 k=3 s=486 f=542 ticks=487..541
+wcfamily N=8 lot=1 k=4 s=543 f=594 ticks=544..593
+wcfamily N=8 lot=1 k=5 s=679 f=965 ticks=710..964
+wcfamily N=8 lot=2 rel=3
+wcfamily N=8 lot=2 k=1 s=229 f=678 ticks=453..677
+wcfamily N=8 lot=2 k=2 s=679 f=710 ticks=680..709
+wcfamily N=8 lot=2 k=3 s=711 f=767 ticks=712..766
+wcfamily N=8 lot=2 k=4 s=768 f=819 ticks=769..818
+wcfamily N=8 lot=2 k=5 s=938 f=1220 ticks=965..1219
+wcfamily N=8 lot=3 rel=4
+wcfamily N=8 lot=3 k=1 s=711 f=937 ticks=712..936
+wcfamily N=8 lot=3 k=2 s=938 f=969 ticks=939..968
+wcfamily N=8 lot=3 k=3 s=970 f=1026 ticks=971..1025
+wcfamily N=8 lot=3 k=4 s=1027 f=1078 ticks=1028..1077
+wcfamily N=8 lot=3 k=5 s=1193 f=1475 ticks=1220..1474
+wcfamily N=8 lot=4 rel=5
+wcfamily N=8 lot=4 k=1 s=966 f=1192 ticks=967..1191
+wcfamily N=8 lot=4 k=2 s=1193 f=1224 ticks=1194..1223
+wcfamily N=8 lot=4 k=3 s=1225 f=1281 ticks=1226..1280
+wcfamily N=8 lot=4 k=4 s=1282 f=1333 ticks=1283..1332
+wcfamily N=8 lot=4 k=5 s=1448 f=1730 ticks=1475..1729
+wcfamily N=8 lot=5 rel=6
+wcfamily N=8 lot=5 k=1 s=1221 f=1447 ticks=1222..1446
+wcfamily N=8 lot=5 k=2 s=1448 f=1479 ticks=1449..1478
+wcfamily N=8 lot=5 k=3 s=1480 f=1536 ticks=1481..1535
+wcfamily N=8 lot=5 k=4 s=1537 f=1588 ticks=1538..1587
+wcfamily N=8 lot=5 k=5 s=1703 f=1985 ticks=1730..1984
+wcfamily N=8 lot=6 rel=7
+wcfamily N=8 lot=6 k=1 s=1476 f=1702 ticks=1477..1701
+wcfamily N=8 lot=6 k=2 s=1703 f=1734 ticks=1704..1733
+wcfamily N=8 lot=6 k=3 s=1735 f=1791 ticks=1736..1790
+wcfamily N=8 lot=6 k=4 s=1792 f=1843 ticks=1793..1842
+wcfamily N=8 lot=6 k=5 s=1958 f=2240 ticks=1985..2239
+wcfamily N=8 lot=7 rel=8
+wcfamily N=8 lot=7 k=1 s=1731 f=1957 ticks=1732..1956
+wcfamily N=8 lot=7 k=2 s=1958 f=1989 ticks=1959..1988
+wcfamily N=8 lot=7 k=3 s=1990 f=2046 ticks=1991..2045
+wcfamily N=8 lot=7 k=4 s=2047 f=2098 ticks=2048..2097
+wcfamily N=8 lot=7 k=5 s=2099 f=2495 ticks=2240..2494
+wcfamily N=84 lot=0 rel=1
+wcfamily N=84 lot=0 k=1 s=2 f=228 ticks=3..227
+wcfamily N=84 lot=0 k=2 s=229 f=260 ticks=230..259
+wcfamily N=84 lot=0 k=3 s=261 f=317 ticks=262..316
+wcfamily N=84 lot=0 k=4 s=318 f=369 ticks=319..368
+wcfamily N=84 lot=0 k=5 s=454 f=710 ticks=455..709
+wcfamily N=84 lot=1 rel=2
+wcfamily N=84 lot=1 k=1 s=3 f=453 ticks=228..452
+wcfamily N=84 lot=1 k=2 s=454 f=485 ticks=455..484
+wcfamily N=84 lot=1 k=3 s=486 f=542 ticks=487..541
+wcfamily N=84 lot=1 k=4 s=543 f=594 ticks=544..593
+wcfamily N=84 lot=1 k=5 s=679 f=965 ticks=710..964
+wcfamily N=84 lot=2 rel=3
+wcfamily N=84 lot=2 k=1 s=229 f=678 ticks=453..677
+wcfamily N=84 lot=2 k=2 s=679 f=710 ticks=680..709
+wcfamily N=84 lot=2 k=3 s=711 f=767 ticks=712..766
+wcfamily N=84 lot=2 k=4 s=768 f=819 ticks=769..818
+wcfamily N=84 lot=2 k=5 s=938 f=1220 ticks=965..1219
+wcfamily N=84 lot=3 rel=4
+wcfamily N=84 lot=3 k=1 s=711 f=937 ticks=712..936
+wcfamily N=84 lot=3 k=2 s=938 f=969 ticks=939..968
+wcfamily N=84 lot=3 k=3 s=970 f=1026 ticks=971..1025
+wcfamily N=84 lot=3 k=4 s=1027 f=1078 ticks=1028..1077
+wcfamily N=84 lot=3 k=5 s=1193 f=1475 ticks=1220..1474
+wcfamily N=84 lot=4 rel=5
+wcfamily N=84 lot=4 k=1 s=966 f=1192 ticks=967..1191
+wcfamily N=84 lot=4 k=2 s=1193 f=1224 ticks=1194..1223
+wcfamily N=84 lot=4 k=3 s=1225 f=1281 ticks=1226..1280
+wcfamily N=84 lot=4 k=4 s=1282 f=1333 ticks=1283..1332
+wcfamily N=84 lot=4 k=5 s=1448 f=1730 ticks=1475..1729
+wcfamily N=84 lot=5 rel=6
+wcfamily N=84 lot=5 k=1 s=1221 f=1447 ticks=1222..1446
+wcfamily N=84 lot=5 k=2 s=1448 f=1479 ticks=1449..1478
+wcfamily N=84 lot=5 k=3 s=1480 f=1536 ticks=1481..1535
+wcfamily N=84 lot=5 k=4 s=1537 f=1588 ticks=1538..1587
+wcfamily N=84 lot=5 k=5 s=1703 f=1985 ticks=1730..1984
+wcfamily N=84 lot=6 rel=7
+wcfamily N=84 lot=6 k=1 s=1476 f=1702 ticks=1477..1701
+wcfamily N=84 lot=6 k=2 s=1703 f=1734 ticks=1704..1733
+wcfamily N=84 lot=6 k=3 s=1735 f=1791 ticks=1736..1790
+wcfamily N=84 lot=6 k=4 s=1792 f=1843 ticks=1793..1842
+wcfamily N=84 lot=6 k=5 s=1958 f=2240 ticks=1985..2239
+wcfamily N=84 lot=7 rel=8
+wcfamily N=84 lot=7 k=1 s=1731 f=1957 ticks=1732..1956
+wcfamily N=84 lot=7 k=2 s=1958 f=1989 ticks=1959..1988
+wcfamily N=84 lot=7 k=3 s=1990 f=2046 ticks=1991..2045
+wcfamily N=84 lot=7 k=4 s=2047 f=2098 ticks=2048..2097
+wcfamily N=84 lot=7 k=5 s=2213 f=2495 ticks=2240..2494
+wcfamily N=84 lot=8 rel=9
+wcfamily N=84 lot=8 k=1 s=1986 f=2212 ticks=1987..2211
+wcfamily N=84 lot=8 k=2 s=2213 f=2244 ticks=2214..2243
+wcfamily N=84 lot=8 k=3 s=2245 f=2301 ticks=2246..2300
+wcfamily N=84 lot=8 k=4 s=2302 f=2353 ticks=2303..2352
+wcfamily N=84 lot=8 k=5 s=2468 f=2750 ticks=2495..2749
+wcfamily N=84 lot=9 rel=10
+wcfamily N=84 lot=9 k=1 s=2241 f=2467 ticks=2242..2466
+wcfamily N=84 lot=9 k=2 s=2468 f=2499 ticks=2469..2498
+wcfamily N=84 lot=9 k=3 s=2500 f=2556 ticks=2501..2555
+wcfamily N=84 lot=9 k=4 s=2557 f=2608 ticks=2558..2607
+wcfamily N=84 lot=9 k=5 s=2723 f=3005 ticks=2750..3004
+wcfamily N=84 lot=10 rel=11
+wcfamily N=84 lot=10 k=1 s=2496 f=2722 ticks=2497..2721
+wcfamily N=84 lot=10 k=2 s=2723 f=2754 ticks=2724..2753
+wcfamily N=84 lot=10 k=3 s=2755 f=2811 ticks=2756..2810
+wcfamily N=84 lot=10 k=4 s=2812 f=2863 ticks=2813..2862
+wcfamily N=84 lot=10 k=5 s=2978 f=3260 ticks=3005..3259
+wcfamily N=84 lot=11 rel=12
+wcfamily N=84 lot=11 k=1 s=2751 f=2977 ticks=2752..2976
+wcfamily N=84 lot=11 k=2 s=2978 f=3009 ticks=2979..3008
+wcfamily N=84 lot=11 k=3 s=3010 f=3066 ticks=3011..3065
+wcfamily N=84 lot=11 k=4 s=3067 f=3118 ticks=3068..3117
+wcfamily N=84 lot=11 k=5 s=3233 f=3515 ticks=3260..3514
+wcfamily N=84 lot=12 rel=13
+wcfamily N=84 lot=12 k=1 s=3006 f=3232 ticks=3007..3231
+wcfamily N=84 lot=12 k=2 s=3233 f=3264 ticks=3234..3263
+wcfamily N=84 lot=12 k=3 s=3265 f=3321 ticks=3266..3320
+wcfamily N=84 lot=12 k=4 s=3322 f=3373 ticks=3323..3372
+wcfamily N=84 lot=12 k=5 s=3488 f=3770 ticks=3515..3769
+wcfamily N=84 lot=13 rel=14
+wcfamily N=84 lot=13 k=1 s=3261 f=3487 ticks=3262..3486
+wcfamily N=84 lot=13 k=2 s=3488 f=3519 ticks=3489..3518
+wcfamily N=84 lot=13 k=3 s=3520 f=3576 ticks=3521..3575
+wcfamily N=84 lot=13 k=4 s=3577 f=3628 ticks=3578..3627
+wcfamily N=84 lot=13 k=5 s=3743 f=4025 ticks=3770..4024
+wcfamily N=84 lot=14 rel=15
+wcfamily N=84 lot=14 k=1 s=3516 f=3742 ticks=3517..3741
+wcfamily N=84 lot=14 k=2 s=3743 f=3774 ticks=3744..3773
+wcfamily N=84 lot=14 k=3 s=3775 f=3831 ticks=3776..3830
+wcfamily N=84 lot=14 k=4 s=3832 f=3883 ticks=3833..3882
+wcfamily N=84 lot=14 k=5 s=3998 f=4280 ticks=4025..4279
+wcfamily N=84 lot=15 rel=16
+wcfamily N=84 lot=15 k=1 s=3771 f=3997 ticks=3772..3996
+wcfamily N=84 lot=15 k=2 s=3998 f=4029 ticks=3999..4028
+wcfamily N=84 lot=15 k=3 s=4030 f=4086 ticks=4031..4085
+wcfamily N=84 lot=15 k=4 s=4087 f=4138 ticks=4088..4137
+wcfamily N=84 lot=15 k=5 s=4253 f=4535 ticks=4280..4534
+wcfamily N=84 lot=16 rel=17
+wcfamily N=84 lot=16 k=1 s=4026 f=4252 ticks=4027..4251
+wcfamily N=84 lot=16 k=2 s=4253 f=4284 ticks=4254..4283
+wcfamily N=84 lot=16 k=3 s=4285 f=4341 ticks=4286..4340
+wcfamily N=84 lot=16 k=4 s=4342 f=4393 ticks=4343..4392
+wcfamily N=84 lot=16 k=5 s=4508 f=4790 ticks=4535..4789
+wcfamily N=84 lot=17 rel=18
+wcfamily N=84 lot=17 k=1 s=4281 f=4507 ticks=4282..4506
+wcfamily N=84 lot=17 k=2 s=4508 f=4539 ticks=4509..4538
+wcfamily N=84 lot=17 k=3 s=4540 f=4596 ticks=4541..4595
+wcfamily N=84 lot=17 k=4 s=4597 f=4648 ticks=4598..4647
+wcfamily N=84 lot=17 k=5 s=4763 f=5045 ticks=4790..5044
+wcfamily N=84 lot=18 rel=19
+wcfamily N=84 lot=18 k=1 s=4536 f=4762 ticks=4537..4761
+wcfamily N=84 lot=18 k=2 s=4763 f=4794 ticks=4764..4793
+wcfamily N=84 lot=18 k=3 s=4795 f=4851 ticks=4796..4850
+wcfamily N=84 lot=18 k=4 s=4852 f=4903 ticks=4853..4902
+wcfamily N=84 lot=18 k=5 s=5018 f=5300 ticks=5045..5299
+wcfamily N=84 lot=19 rel=20
+wcfamily N=84 lot=19 k=1 s=4791 f=5017 ticks=4792..5016
+wcfamily N=84 lot=19 k=2 s=5018 f=5049 ticks=5019..5048
+wcfamily N=84 lot=19 k=3 s=5050 f=5106 ticks=5051..5105
+wcfamily N=84 lot=19 k=4 s=5107 f=5158 ticks=5108..5157
+wcfamily N=84 lot=19 k=5 s=5273 f=5555 ticks=5300..5554
+wcfamily N=84 lot=20 rel=21
+wcfamily N=84 lot=20 k=1 s=5046 f=5272 ticks=5047..5271
+wcfamily N=84 lot=20 k=2 s=5273 f=5304 ticks=5274..5303
+wcfamily N=84 lot=20 k=3 s=5305 f=5361 ticks=5306..5360
+wcfamily N=84 lot=20 k=4 s=5362 f=5413 ticks=5363..5412
+wcfamily N=84 lot=20 k=5 s=5528 f=5810 ticks=5555..5809
+wcfamily N=84 lot=21 rel=22
+wcfamily N=84 lot=21 k=1 s=5301 f=5527 ticks=5302..5526
+wcfamily N=84 lot=21 k=2 s=5528 f=5559 ticks=5529..5558
+wcfamily N=84 lot=21 k=3 s=5560 f=5616 ticks=5561..5615
+wcfamily N=84 lot=21 k=4 s=5617 f=5668 ticks=5618..5667
+wcfamily N=84 lot=21 k=5 s=5783 f=6065 ticks=5810..6064
+wcfamily N=84 lot=22 rel=23
+wcfamily N=84 lot=22 k=1 s=5556 f=5782 ticks=5557..5781
+wcfamily N=84 lot=22 k=2 s=5783 f=5814 ticks=5784..5813
+wcfamily N=84 lot=22 k=3 s=5815 f=5871 ticks=5816..5870
+wcfamily N=84 lot=22 k=4 s=5872 f=5923 ticks=5873..5922
+wcfamily N=84 lot=22 k=5 s=6038 f=6320 ticks=6065..6319
+wcfamily N=84 lot=23 rel=24
+wcfamily N=84 lot=23 k=1 s=5811 f=6037 ticks=5812..6036
+wcfamily N=84 lot=23 k=2 s=6038 f=6069 ticks=6039..6068
+wcfamily N=84 lot=23 k=3 s=6070 f=6126 ticks=6071..6125
+wcfamily N=84 lot=23 k=4 s=6127 f=6178 ticks=6128..6177
+wcfamily N=84 lot=23 k=5 s=6293 f=6575 ticks=6320..6574
+wcfamily N=84 lot=24 rel=25
+wcfamily N=84 lot=24 k=1 s=6066 f=6292 ticks=6067..6291
+wcfamily N=84 lot=24 k=2 s=6293 f=6324 ticks=6294..6323
+wcfamily N=84 lot=24 k=3 s=6325 f=6381 ticks=6326..6380
+wcfamily N=84 lot=24 k=4 s=6382 f=6433 ticks=6383..6432
+wcfamily N=84 lot=24 k=5 s=6548 f=6830 ticks=6575..6829
+wcfamily N=84 lot=25 rel=26
+wcfamily N=84 lot=25 k=1 s=6321 f=6547 ticks=6322..6546
+wcfamily N=84 lot=25 k=2 s=6548 f=6579 ticks=6549..6578
+wcfamily N=84 lot=25 k=3 s=6580 f=6636 ticks=6581..6635
+wcfamily N=84 lot=25 k=4 s=6637 f=6688 ticks=6638..6687
+wcfamily N=84 lot=25 k=5 s=6803 f=7085 ticks=6830..7084
+wcfamily N=84 lot=26 rel=27
+wcfamily N=84 lot=26 k=1 s=6576 f=6802 ticks=6577..6801
+wcfamily N=84 lot=26 k=2 s=6803 f=6834 ticks=6804..6833
+wcfamily N=84 lot=26 k=3 s=6835 f=6891 ticks=6836..6890
+wcfamily N=84 lot=26 k=4 s=6892 f=6943 ticks=6893..6942
+wcfamily N=84 lot=26 k=5 s=7058 f=7340 ticks=7085..7339
+wcfamily N=84 lot=27 rel=28
+wcfamily N=84 lot=27 k=1 s=6831 f=7057 ticks=6832..7056
+wcfamily N=84 lot=27 k=2 s=7058 f=7089 ticks=7059..7088
+wcfamily N=84 lot=27 k=3 s=7090 f=7146 ticks=7091..7145
+wcfamily N=84 lot=27 k=4 s=7147 f=7198 ticks=7148..7197
+wcfamily N=84 lot=27 k=5 s=7313 f=7595 ticks=7340..7594
+wcfamily N=84 lot=28 rel=29
+wcfamily N=84 lot=28 k=1 s=7086 f=7312 ticks=7087..7311
+wcfamily N=84 lot=28 k=2 s=7313 f=7344 ticks=7314..7343
+wcfamily N=84 lot=28 k=3 s=7345 f=7401 ticks=7346..7400
+wcfamily N=84 lot=28 k=4 s=7402 f=7453 ticks=7403..7452
+wcfamily N=84 lot=28 k=5 s=7568 f=7850 ticks=7595..7849
+wcfamily N=84 lot=29 rel=30
+wcfamily N=84 lot=29 k=1 s=7341 f=7567 ticks=7342..7566
+wcfamily N=84 lot=29 k=2 s=7568 f=7599 ticks=7569..7598
+wcfamily N=84 lot=29 k=3 s=7600 f=7656 ticks=7601..7655
+wcfamily N=84 lot=29 k=4 s=7657 f=7708 ticks=7658..7707
+wcfamily N=84 lot=29 k=5 s=7823 f=8105 ticks=7850..8104
+wcfamily N=84 lot=30 rel=31
+wcfamily N=84 lot=30 k=1 s=7596 f=7822 ticks=7597..7821
+wcfamily N=84 lot=30 k=2 s=7823 f=7854 ticks=7824..7853
+wcfamily N=84 lot=30 k=3 s=7855 f=7911 ticks=7856..7910
+wcfamily N=84 lot=30 k=4 s=7912 f=7963 ticks=7913..7962
+wcfamily N=84 lot=30 k=5 s=8078 f=8360 ticks=8105..8359
+wcfamily N=84 lot=31 rel=32
+wcfamily N=84 lot=31 k=1 s=7851 f=8077 ticks=7852..8076
+wcfamily N=84 lot=31 k=2 s=8078 f=8109 ticks=8079..8108
+wcfamily N=84 lot=31 k=3 s=8110 f=8166 ticks=8111..8165
+wcfamily N=84 lot=31 k=4 s=8167 f=8218 ticks=8168..8217
+wcfamily N=84 lot=31 k=5 s=8333 f=8615 ticks=8360..8614
+wcfamily N=84 lot=32 rel=33
+wcfamily N=84 lot=32 k=1 s=8106 f=8332 ticks=8107..8331
+wcfamily N=84 lot=32 k=2 s=8333 f=8364 ticks=8334..8363
+wcfamily N=84 lot=32 k=3 s=8365 f=8421 ticks=8366..8420
+wcfamily N=84 lot=32 k=4 s=8422 f=8473 ticks=8423..8472
+wcfamily N=84 lot=32 k=5 s=8588 f=8870 ticks=8615..8869
+wcfamily N=84 lot=33 rel=34
+wcfamily N=84 lot=33 k=1 s=8361 f=8587 ticks=8362..8586
+wcfamily N=84 lot=33 k=2 s=8588 f=8619 ticks=8589..8618
+wcfamily N=84 lot=33 k=3 s=8620 f=8676 ticks=8621..8675
+wcfamily N=84 lot=33 k=4 s=8677 f=8728 ticks=8678..8727
+wcfamily N=84 lot=33 k=5 s=8843 f=9125 ticks=8870..9124
+wcfamily N=84 lot=34 rel=35
+wcfamily N=84 lot=34 k=1 s=8616 f=8842 ticks=8617..8841
+wcfamily N=84 lot=34 k=2 s=8843 f=8874 ticks=8844..8873
+wcfamily N=84 lot=34 k=3 s=8875 f=8931 ticks=8876..8930
+wcfamily N=84 lot=34 k=4 s=8932 f=8983 ticks=8933..8982
+wcfamily N=84 lot=34 k=5 s=9098 f=9380 ticks=9125..9379
+wcfamily N=84 lot=35 rel=36
+wcfamily N=84 lot=35 k=1 s=8871 f=9097 ticks=8872..9096
+wcfamily N=84 lot=35 k=2 s=9098 f=9129 ticks=9099..9128
+wcfamily N=84 lot=35 k=3 s=9130 f=9186 ticks=9131..9185
+wcfamily N=84 lot=35 k=4 s=9187 f=9238 ticks=9188..9237
+wcfamily N=84 lot=35 k=5 s=9353 f=9635 ticks=9380..9634
+wcfamily N=84 lot=36 rel=37
+wcfamily N=84 lot=36 k=1 s=9126 f=9352 ticks=9127..9351
+wcfamily N=84 lot=36 k=2 s=9353 f=9384 ticks=9354..9383
+wcfamily N=84 lot=36 k=3 s=9385 f=9441 ticks=9386..9440
+wcfamily N=84 lot=36 k=4 s=9442 f=9493 ticks=9443..9492
+wcfamily N=84 lot=36 k=5 s=9608 f=9890 ticks=9635..9889
+wcfamily N=84 lot=37 rel=38
+wcfamily N=84 lot=37 k=1 s=9381 f=9607 ticks=9382..9606
+wcfamily N=84 lot=37 k=2 s=9608 f=9639 ticks=9609..9638
+wcfamily N=84 lot=37 k=3 s=9640 f=9696 ticks=9641..9695
+wcfamily N=84 lot=37 k=4 s=9697 f=9748 ticks=9698..9747
+wcfamily N=84 lot=37 k=5 s=9863 f=10145 ticks=9890..10144
+wcfamily N=84 lot=38 rel=39
+wcfamily N=84 lot=38 k=1 s=9636 f=9862 ticks=9637..9861
+wcfamily N=84 lot=38 k=2 s=9863 f=9894 ticks=9864..9893
+wcfamily N=84 lot=38 k=3 s=9895 f=9951 ticks=9896..9950
+wcfamily N=84 lot=38 k=4 s=9952 f=10003 ticks=9953..10002
+wcfamily N=84 lot=38 k=5 s=10118 f=10400 ticks=10145..10399
+wcfamily N=84 lot=39 rel=40
+wcfamily N=84 lot=39 k=1 s=9891 f=10117 ticks=9892..10116
+wcfamily N=84 lot=39 k=2 s=10118 f=10149 ticks=10119..10148
+wcfamily N=84 lot=39 k=3 s=10150 f=10206 ticks=10151..10205
+wcfamily N=84 lot=39 k=4 s=10207 f=10258 ticks=10208..10257
+wcfamily N=84 lot=39 k=5 s=10373 f=10655 ticks=10400..10654
+wcfamily N=84 lot=40 rel=41
+wcfamily N=84 lot=40 k=1 s=10146 f=10372 ticks=10147..10371
+wcfamily N=84 lot=40 k=2 s=10373 f=10404 ticks=10374..10403
+wcfamily N=84 lot=40 k=3 s=10405 f=10461 ticks=10406..10460
+wcfamily N=84 lot=40 k=4 s=10462 f=10513 ticks=10463..10512
+wcfamily N=84 lot=40 k=5 s=10628 f=10910 ticks=10655..10909
+wcfamily N=84 lot=41 rel=42
+wcfamily N=84 lot=41 k=1 s=10401 f=10627 ticks=10402..10626
+wcfamily N=84 lot=41 k=2 s=10628 f=10659 ticks=10629..10658
+wcfamily N=84 lot=41 k=3 s=10660 f=10716 ticks=10661..10715
+wcfamily N=84 lot=41 k=4 s=10717 f=10768 ticks=10718..10767
+wcfamily N=84 lot=41 k=5 s=10883 f=11165 ticks=10910..11164
+wcfamily N=84 lot=42 rel=43
+wcfamily N=84 lot=42 k=1 s=10656 f=10882 ticks=10657..10881
+wcfamily N=84 lot=42 k=2 s=10883 f=10914 ticks=10884..10913
+wcfamily N=84 lot=42 k=3 s=10915 f=10971 ticks=10916..10970
+wcfamily N=84 lot=42 k=4 s=10972 f=11023 ticks=10973..11022
+wcfamily N=84 lot=42 k=5 s=11138 f=11420 ticks=11165..11419
+wcfamily N=84 lot=43 rel=44
+wcfamily N=84 lot=43 k=1 s=10911 f=11137 ticks=10912..11136
+wcfamily N=84 lot=43 k=2 s=11138 f=11169 ticks=11139..11168
+wcfamily N=84 lot=43 k=3 s=11170 f=11226 ticks=11171..11225
+wcfamily N=84 lot=43 k=4 s=11227 f=11278 ticks=11228..11277
+wcfamily N=84 lot=43 k=5 s=11393 f=11675 ticks=11420..11674
+wcfamily N=84 lot=44 rel=45
+wcfamily N=84 lot=44 k=1 s=11166 f=11392 ticks=11167..11391
+wcfamily N=84 lot=44 k=2 s=11393 f=11424 ticks=11394..11423
+wcfamily N=84 lot=44 k=3 s=11425 f=11481 ticks=11426..11480
+wcfamily N=84 lot=44 k=4 s=11482 f=11533 ticks=11483..11532
+wcfamily N=84 lot=44 k=5 s=11648 f=11930 ticks=11675..11929
+wcfamily N=84 lot=45 rel=46
+wcfamily N=84 lot=45 k=1 s=11421 f=11647 ticks=11422..11646
+wcfamily N=84 lot=45 k=2 s=11648 f=11679 ticks=11649..11678
+wcfamily N=84 lot=45 k=3 s=11680 f=11736 ticks=11681..11735
+wcfamily N=84 lot=45 k=4 s=11737 f=11788 ticks=11738..11787
+wcfamily N=84 lot=45 k=5 s=11903 f=12185 ticks=11930..12184
+wcfamily N=84 lot=46 rel=47
+wcfamily N=84 lot=46 k=1 s=11676 f=11902 ticks=11677..11901
+wcfamily N=84 lot=46 k=2 s=11903 f=11934 ticks=11904..11933
+wcfamily N=84 lot=46 k=3 s=11935 f=11991 ticks=11936..11990
+wcfamily N=84 lot=46 k=4 s=11992 f=12043 ticks=11993..12042
+wcfamily N=84 lot=46 k=5 s=12158 f=12440 ticks=12185..12439
+wcfamily N=84 lot=47 rel=48
+wcfamily N=84 lot=47 k=1 s=11931 f=12157 ticks=11932..12156
+wcfamily N=84 lot=47 k=2 s=12158 f=12189 ticks=12159..12188
+wcfamily N=84 lot=47 k=3 s=12190 f=12246 ticks=12191..12245
+wcfamily N=84 lot=47 k=4 s=12247 f=12298 ticks=12248..12297
+wcfamily N=84 lot=47 k=5 s=12413 f=12695 ticks=12440..12694
+wcfamily N=84 lot=48 rel=49
+wcfamily N=84 lot=48 k=1 s=12186 f=12412 ticks=12187..12411
+wcfamily N=84 lot=48 k=2 s=12413 f=12444 ticks=12414..12443
+wcfamily N=84 lot=48 k=3 s=12445 f=12501 ticks=12446..12500
+wcfamily N=84 lot=48 k=4 s=12502 f=12553 ticks=12503..12552
+wcfamily N=84 lot=48 k=5 s=12668 f=12950 ticks=12695..12949
+wcfamily N=84 lot=49 rel=50
+wcfamily N=84 lot=49 k=1 s=12441 f=12667 ticks=12442..12666
+wcfamily N=84 lot=49 k=2 s=12668 f=12699 ticks=12669..12698
+wcfamily N=84 lot=49 k=3 s=12700 f=12756 ticks=12701..12755
+wcfamily N=84 lot=49 k=4 s=12757 f=12808 ticks=12758..12807
+wcfamily N=84 lot=49 k=5 s=12923 f=13205 ticks=12950..13204
+wcfamily N=84 lot=50 rel=51
+wcfamily N=84 lot=50 k=1 s=12696 f=12922 ticks=12697..12921
+wcfamily N=84 lot=50 k=2 s=12923 f=12954 ticks=12924..12953
+wcfamily N=84 lot=50 k=3 s=12955 f=13011 ticks=12956..13010
+wcfamily N=84 lot=50 k=4 s=13012 f=13063 ticks=13013..13062
+wcfamily N=84 lot=50 k=5 s=13178 f=13460 ticks=13205..13459
+wcfamily N=84 lot=51 rel=52
+wcfamily N=84 lot=51 k=1 s=12951 f=13177 ticks=12952..13176
+wcfamily N=84 lot=51 k=2 s=13178 f=13209 ticks=13179..13208
+wcfamily N=84 lot=51 k=3 s=13210 f=13266 ticks=13211..13265
+wcfamily N=84 lot=51 k=4 s=13267 f=13318 ticks=13268..13317
+wcfamily N=84 lot=51 k=5 s=13433 f=13715 ticks=13460..13714
+wcfamily N=84 lot=52 rel=53
+wcfamily N=84 lot=52 k=1 s=13206 f=13432 ticks=13207..13431
+wcfamily N=84 lot=52 k=2 s=13433 f=13464 ticks=13434..13463
+wcfamily N=84 lot=52 k=3 s=13465 f=13521 ticks=13466..13520
+wcfamily N=84 lot=52 k=4 s=13522 f=13573 ticks=13523..13572
+wcfamily N=84 lot=52 k=5 s=13688 f=13970 ticks=13715..13969
+wcfamily N=84 lot=53 rel=54
+wcfamily N=84 lot=53 k=1 s=13461 f=13687 ticks=13462..13686
+wcfamily N=84 lot=53 k=2 s=13688 f=13719 ticks=13689..13718
+wcfamily N=84 lot=53 k=3 s=13720 f=13776 ticks=13721..13775
+wcfamily N=84 lot=53 k=4 s=13777 f=13828 ticks=13778..13827
+wcfamily N=84 lot=53 k=5 s=13943 f=14225 ticks=13970..14224
+wcfamily N=84 lot=54 rel=55
+wcfamily N=84 lot=54 k=1 s=13716 f=13942 ticks=13717..13941
+wcfamily N=84 lot=54 k=2 s=13943 f=13974 ticks=13944..13973
+wcfamily N=84 lot=54 k=3 s=13975 f=14031 ticks=13976..14030
+wcfamily N=84 lot=54 k=4 s=14032 f=14083 ticks=14033..14082
+wcfamily N=84 lot=54 k=5 s=14198 f=14480 ticks=14225..14479
+wcfamily N=84 lot=55 rel=56
+wcfamily N=84 lot=55 k=1 s=13971 f=14197 ticks=13972..14196
+wcfamily N=84 lot=55 k=2 s=14198 f=14229 ticks=14199..14228
+wcfamily N=84 lot=55 k=3 s=14230 f=14286 ticks=14231..14285
+wcfamily N=84 lot=55 k=4 s=14287 f=14338 ticks=14288..14337
+wcfamily N=84 lot=55 k=5 s=14453 f=14735 ticks=14480..14734
+wcfamily N=84 lot=56 rel=57
+wcfamily N=84 lot=56 k=1 s=14226 f=14452 ticks=14227..14451
+wcfamily N=84 lot=56 k=2 s=14453 f=14484 ticks=14454..14483
+wcfamily N=84 lot=56 k=3 s=14485 f=14541 ticks=14486..14540
+wcfamily N=84 lot=56 k=4 s=14542 f=14593 ticks=14543..14592
+wcfamily N=84 lot=56 k=5 s=14708 f=14990 ticks=14735..14989
+wcfamily N=84 lot=57 rel=58
+wcfamily N=84 lot=57 k=1 s=14481 f=14707 ticks=14482..14706
+wcfamily N=84 lot=57 k=2 s=14708 f=14739 ticks=14709..14738
+wcfamily N=84 lot=57 k=3 s=14740 f=14796 ticks=14741..14795
+wcfamily N=84 lot=57 k=4 s=14797 f=14848 ticks=14798..14847
+wcfamily N=84 lot=57 k=5 s=14963 f=15245 ticks=14990..15244
+wcfamily N=84 lot=58 rel=59
+wcfamily N=84 lot=58 k=1 s=14736 f=14962 ticks=14737..14961
+wcfamily N=84 lot=58 k=2 s=14963 f=14994 ticks=14964..14993
+wcfamily N=84 lot=58 k=3 s=14995 f=15051 ticks=14996..15050
+wcfamily N=84 lot=58 k=4 s=15052 f=15103 ticks=15053..15102
+wcfamily N=84 lot=58 k=5 s=15218 f=15500 ticks=15245..15499
+wcfamily N=84 lot=59 rel=60
+wcfamily N=84 lot=59 k=1 s=14991 f=15217 ticks=14992..15216
+wcfamily N=84 lot=59 k=2 s=15218 f=15249 ticks=15219..15248
+wcfamily N=84 lot=59 k=3 s=15250 f=15306 ticks=15251..15305
+wcfamily N=84 lot=59 k=4 s=15307 f=15358 ticks=15308..15357
+wcfamily N=84 lot=59 k=5 s=15473 f=15755 ticks=15500..15754
+wcfamily N=84 lot=60 rel=61
+wcfamily N=84 lot=60 k=1 s=15246 f=15472 ticks=15247..15471
+wcfamily N=84 lot=60 k=2 s=15473 f=15504 ticks=15474..15503
+wcfamily N=84 lot=60 k=3 s=15505 f=15561 ticks=15506..15560
+wcfamily N=84 lot=60 k=4 s=15562 f=15613 ticks=15563..15612
+wcfamily N=84 lot=60 k=5 s=15728 f=16010 ticks=15755..16009
+wcfamily N=84 lot=61 rel=62
+wcfamily N=84 lot=61 k=1 s=15501 f=15727 ticks=15502..15726
+wcfamily N=84 lot=61 k=2 s=15728 f=15759 ticks=15729..15758
+wcfamily N=84 lot=61 k=3 s=15760 f=15816 ticks=15761..15815
+wcfamily N=84 lot=61 k=4 s=15817 f=15868 ticks=15818..15867
+wcfamily N=84 lot=61 k=5 s=15983 f=16265 ticks=16010..16264
+wcfamily N=84 lot=62 rel=63
+wcfamily N=84 lot=62 k=1 s=15756 f=15982 ticks=15757..15981
+wcfamily N=84 lot=62 k=2 s=15983 f=16014 ticks=15984..16013
+wcfamily N=84 lot=62 k=3 s=16015 f=16071 ticks=16016..16070
+wcfamily N=84 lot=62 k=4 s=16072 f=16123 ticks=16073..16122
+wcfamily N=84 lot=62 k=5 s=16238 f=16520 ticks=16265..16519
+wcfamily N=84 lot=63 rel=64
+wcfamily N=84 lot=63 k=1 s=16011 f=16237 ticks=16012..16236
+wcfamily N=84 lot=63 k=2 s=16238 f=16269 ticks=16239..16268
+wcfamily N=84 lot=63 k=3 s=16270 f=16326 ticks=16271..16325
+wcfamily N=84 lot=63 k=4 s=16327 f=16378 ticks=16328..16377
+wcfamily N=84 lot=63 k=5 s=16493 f=16775 ticks=16520..16774
+wcfamily N=84 lot=64 rel=65
+wcfamily N=84 lot=64 k=1 s=16266 f=16492 ticks=16267..16491
+wcfamily N=84 lot=64 k=2 s=16493 f=16524 ticks=16494..16523
+wcfamily N=84 lot=64 k=3 s=16525 f=16581 ticks=16526..16580
+wcfamily N=84 lot=64 k=4 s=16582 f=16633 ticks=16583..16632
+wcfamily N=84 lot=64 k=5 s=16748 f=17030 ticks=16775..17029
+wcfamily N=84 lot=65 rel=66
+wcfamily N=84 lot=65 k=1 s=16521 f=16747 ticks=16522..16746
+wcfamily N=84 lot=65 k=2 s=16748 f=16779 ticks=16749..16778
+wcfamily N=84 lot=65 k=3 s=16780 f=16836 ticks=16781..16835
+wcfamily N=84 lot=65 k=4 s=16837 f=16888 ticks=16838..16887
+wcfamily N=84 lot=65 k=5 s=17003 f=17285 ticks=17030..17284
+wcfamily N=84 lot=66 rel=67
+wcfamily N=84 lot=66 k=1 s=16776 f=17002 ticks=16777..17001
+wcfamily N=84 lot=66 k=2 s=17003 f=17034 ticks=17004..17033
+wcfamily N=84 lot=66 k=3 s=17035 f=17091 ticks=17036..17090
+wcfamily N=84 lot=66 k=4 s=17092 f=17143 ticks=17093..17142
+wcfamily N=84 lot=66 k=5 s=17258 f=17540 ticks=17285..17539
+wcfamily N=84 lot=67 rel=68
+wcfamily N=84 lot=67 k=1 s=17031 f=17257 ticks=17032..17256
+wcfamily N=84 lot=67 k=2 s=17258 f=17289 ticks=17259..17288
+wcfamily N=84 lot=67 k=3 s=17290 f=17346 ticks=17291..17345
+wcfamily N=84 lot=67 k=4 s=17347 f=17398 ticks=17348..17397
+wcfamily N=84 lot=67 k=5 s=17513 f=17795 ticks=17540..17794
+wcfamily N=84 lot=68 rel=69
+wcfamily N=84 lot=68 k=1 s=17286 f=17512 ticks=17287..17511
+wcfamily N=84 lot=68 k=2 s=17513 f=17544 ticks=17514..17543
+wcfamily N=84 lot=68 k=3 s=17545 f=17601 ticks=17546..17600
+wcfamily N=84 lot=68 k=4 s=17602 f=17653 ticks=17603..17652
+wcfamily N=84 lot=68 k=5 s=17768 f=18050 ticks=17795..18049
+wcfamily N=84 lot=69 rel=70
+wcfamily N=84 lot=69 k=1 s=17541 f=17767 ticks=17542..17766
+wcfamily N=84 lot=69 k=2 s=17768 f=17799 ticks=17769..17798
+wcfamily N=84 lot=69 k=3 s=17800 f=17856 ticks=17801..17855
+wcfamily N=84 lot=69 k=4 s=17857 f=17908 ticks=17858..17907
+wcfamily N=84 lot=69 k=5 s=18023 f=18305 ticks=18050..18304
+wcfamily N=84 lot=70 rel=71
+wcfamily N=84 lot=70 k=1 s=17796 f=18022 ticks=17797..18021
+wcfamily N=84 lot=70 k=2 s=18023 f=18054 ticks=18024..18053
+wcfamily N=84 lot=70 k=3 s=18055 f=18111 ticks=18056..18110
+wcfamily N=84 lot=70 k=4 s=18112 f=18163 ticks=18113..18162
+wcfamily N=84 lot=70 k=5 s=18278 f=18560 ticks=18305..18559
+wcfamily N=84 lot=71 rel=72
+wcfamily N=84 lot=71 k=1 s=18051 f=18277 ticks=18052..18276
+wcfamily N=84 lot=71 k=2 s=18278 f=18309 ticks=18279..18308
+wcfamily N=84 lot=71 k=3 s=18310 f=18366 ticks=18311..18365
+wcfamily N=84 lot=71 k=4 s=18367 f=18418 ticks=18368..18417
+wcfamily N=84 lot=71 k=5 s=18533 f=18815 ticks=18560..18814
+wcfamily N=84 lot=72 rel=73
+wcfamily N=84 lot=72 k=1 s=18306 f=18532 ticks=18307..18531
+wcfamily N=84 lot=72 k=2 s=18533 f=18564 ticks=18534..18563
+wcfamily N=84 lot=72 k=3 s=18565 f=18621 ticks=18566..18620
+wcfamily N=84 lot=72 k=4 s=18622 f=18673 ticks=18623..18672
+wcfamily N=84 lot=72 k=5 s=18788 f=19070 ticks=18815..19069
+wcfamily N=84 lot=73 rel=74
+wcfamily N=84 lot=73 k=1 s=18561 f=18787 ticks=18562..18786
+wcfamily N=84 lot=73 k=2 s=18788 f=18819 ticks=18789..18818
+wcfamily N=84 lot=73 k=3 s=18820 f=18876 ticks=18821..18875
+wcfamily N=84 lot=73 k=4 s=18877 f=18928 ticks=18878..18927
+wcfamily N=84 lot=73 k=5 s=19043 f=19325 ticks=19070..19324
+wcfamily N=84 lot=74 rel=75
+wcfamily N=84 lot=74 k=1 s=18816 f=19042 ticks=18817..19041
+wcfamily N=84 lot=74 k=2 s=19043 f=19074 ticks=19044..19073
+wcfamily N=84 lot=74 k=3 s=19075 f=19131 ticks=19076..19130
+wcfamily N=84 lot=74 k=4 s=19132 f=19183 ticks=19133..19182
+wcfamily N=84 lot=74 k=5 s=19298 f=19580 ticks=19325..19579
+wcfamily N=84 lot=75 rel=76
+wcfamily N=84 lot=75 k=1 s=19071 f=19297 ticks=19072..19296
+wcfamily N=84 lot=75 k=2 s=19298 f=19329 ticks=19299..19328
+wcfamily N=84 lot=75 k=3 s=19330 f=19386 ticks=19331..19385
+wcfamily N=84 lot=75 k=4 s=19387 f=19438 ticks=19388..19437
+wcfamily N=84 lot=75 k=5 s=19553 f=19835 ticks=19580..19834
+wcfamily N=84 lot=76 rel=77
+wcfamily N=84 lot=76 k=1 s=19326 f=19552 ticks=19327..19551
+wcfamily N=84 lot=76 k=2 s=19553 f=19584 ticks=19554..19583
+wcfamily N=84 lot=76 k=3 s=19585 f=19641 ticks=19586..19640
+wcfamily N=84 lot=76 k=4 s=19642 f=19693 ticks=19643..19692
+wcfamily N=84 lot=76 k=5 s=19808 f=20090 ticks=19835..20089
+wcfamily N=84 lot=77 rel=78
+wcfamily N=84 lot=77 k=1 s=19581 f=19807 ticks=19582..19806
+wcfamily N=84 lot=77 k=2 s=19808 f=19839 ticks=19809..19838
+wcfamily N=84 lot=77 k=3 s=19840 f=19896 ticks=19841..19895
+wcfamily N=84 lot=77 k=4 s=19897 f=19948 ticks=19898..19947
+wcfamily N=84 lot=77 k=5 s=20063 f=20345 ticks=20090..20344
+wcfamily N=84 lot=78 rel=79
+wcfamily N=84 lot=78 k=1 s=19836 f=20062 ticks=19837..20061
+wcfamily N=84 lot=78 k=2 s=20063 f=20094 ticks=20064..20093
+wcfamily N=84 lot=78 k=3 s=20095 f=20151 ticks=20096..20150
+wcfamily N=84 lot=78 k=4 s=20152 f=20203 ticks=20153..20202
+wcfamily N=84 lot=78 k=5 s=20318 f=20600 ticks=20345..20599
+wcfamily N=84 lot=79 rel=80
+wcfamily N=84 lot=79 k=1 s=20091 f=20317 ticks=20092..20316
+wcfamily N=84 lot=79 k=2 s=20318 f=20349 ticks=20319..20348
+wcfamily N=84 lot=79 k=3 s=20350 f=20406 ticks=20351..20405
+wcfamily N=84 lot=79 k=4 s=20407 f=20458 ticks=20408..20457
+wcfamily N=84 lot=79 k=5 s=20573 f=20855 ticks=20600..20854
+wcfamily N=84 lot=80 rel=81
+wcfamily N=84 lot=80 k=1 s=20346 f=20572 ticks=20347..20571
+wcfamily N=84 lot=80 k=2 s=20573 f=20604 ticks=20574..20603
+wcfamily N=84 lot=80 k=3 s=20605 f=20661 ticks=20606..20660
+wcfamily N=84 lot=80 k=4 s=20662 f=20713 ticks=20663..20712
+wcfamily N=84 lot=80 k=5 s=20828 f=21110 ticks=20855..21109
+wcfamily N=84 lot=81 rel=82
+wcfamily N=84 lot=81 k=1 s=20601 f=20827 ticks=20602..20826
+wcfamily N=84 lot=81 k=2 s=20828 f=20859 ticks=20829..20858
+wcfamily N=84 lot=81 k=3 s=20860 f=20916 ticks=20861..20915
+wcfamily N=84 lot=81 k=4 s=20917 f=20968 ticks=20918..20967
+wcfamily N=84 lot=81 k=5 s=21083 f=21365 ticks=21110..21364
+wcfamily N=84 lot=82 rel=83
+wcfamily N=84 lot=82 k=1 s=20856 f=21082 ticks=20857..21081
+wcfamily N=84 lot=82 k=2 s=21083 f=21114 ticks=21084..21113
+wcfamily N=84 lot=82 k=3 s=21115 f=21171 ticks=21116..21170
+wcfamily N=84 lot=82 k=4 s=21172 f=21223 ticks=21173..21222
+wcfamily N=84 lot=82 k=5 s=21338 f=21620 ticks=21365..21619
+wcfamily N=84 lot=83 rel=84
+wcfamily N=84 lot=83 k=1 s=21111 f=21337 ticks=21112..21336
+wcfamily N=84 lot=83 k=2 s=21338 f=21369 ticks=21339..21368
+wcfamily N=84 lot=83 k=3 s=21370 f=21426 ticks=21371..21425
+wcfamily N=84 lot=83 k=4 s=21427 f=21478 ticks=21428..21477
+wcfamily N=84 lot=83 k=5 s=21479 f=21875 ticks=21620..21874

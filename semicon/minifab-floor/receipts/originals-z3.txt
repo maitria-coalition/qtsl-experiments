@@ -1,0 +1,40 @@
+# minifab_idt.py sha256 ced66ff6b1365435d11d9cd3c4178b00e1a753ef9c634241836388303ffaeb17
+# z3 4.16.0 python 3.13.15
+N=1 T<=625: unsat
+N=1 T<=626: sat
+  witness validated, makespan=626
+N=2 T<=880: unsat
+N=2 T<=881: sat
+  witness validated, makespan=881
+N=3 T<=1137: unsat
+N=3 T<=1138: sat
+  witness validated, makespan=1138
+N=4 T<=1394: unsat
+N=4 T<=1395: sat
+  witness validated, makespan=1395
+N=5 T<=1649: unsat
+N=5 T<=1650: sat
+  witness validated, makespan=1650
+N=6 T<=1904: unsat
+N=6 T<=1905: sat
+  witness validated, makespan=1905
+N=7 T<=2159: unsat
+N=7 T<=2160: sat
+  witness validated, makespan=2160
+family N=1: makespan=626 = 255N+371+0
+family N=2: makespan=881 = 255N+371+0
+family N=3: makespan=1138 = 255N+371+2
+family N=4: makespan=1395 = 255N+371+4
+family N=5: makespan=1650 = 255N+371+4
+family N=6: makespan=1905 = 255N+371+4
+family N=7: makespan=2160 = 255N+371+4
+family N=8: makespan=2415 = 255N+371+4
+family N=12: makespan=3435 = 255N+371+4
+family N=30: makespan=8025 = 255N+371+4
+family N=84: makespan=21795 = 255N+371+4
+M2 t5=254 N=1: opt=625? sat@625=sat unsat@624=unsat -> PASS
+M2 t5=254 N=2: opt=879? sat@879=sat unsat@878=unsat -> PASS
+M2 t5=254 N=3: opt=1135? sat@1135=sat unsat@1134=unsat -> PASS
+M3 no-tick5-meter N=2 sat@880=sat -> PASS (meter law is load-bearing)
+M6 no-machines N=1 unsat@625=unsat -> PASS (B0 rides meters+chains)
+M6 no-machines N=2 unsat@880=unsat -> PASS (B0 rides meters+chains)

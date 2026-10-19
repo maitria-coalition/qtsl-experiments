@@ -1,0 +1,13 @@
+diff --git a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+index 7012d52ad..ab26e700a 100644
+--- a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
++++ b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+@@ -84,7 +84,7 @@ structure MFSchedule (N : ℕ) where
+   hwin : ∀ l k, ticks l k ⊆ Finset.Ioo (start l k) (finish l k)
+   /-- METER LAW (one clock per schema): same-step ticks of distinct lots
+   occupy distinct rounds. -/
+-  hmeter : ∀ (k : Fin 5) ⦃l l' : Fin N⦄, l ≠ l' → Disjoint (ticks l k) (ticks l' k)
++  hmeter : ∀ ⦃l l' : Fin N⦄, l ≠ l' → Disjoint (ticks l 4) (ticks l' 4)
+   /-- diffusion capacity 2, assignment form: a step-1 service and a step-5
+   service holding the same machine token are disjoint in time. -/
+   hcap15 : ∀ l l', mach1 l = mach5 l' → finish l 0 < start l' 4 ∨ finish l' 4 < start l 0

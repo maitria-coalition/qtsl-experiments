@@ -1,0 +1,15 @@
+diff --git a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+index 7012d52ad..1ad49a625 100644
+--- a/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
++++ b/hearth/research/bernstein-logic/lean-aux/IDT/FloorContiguity.lean
+@@ -67,8 +67,8 @@ structure MFSchedule (N : ℕ) where
+   start : Fin N → Fin 5 → ℕ
+   finish : Fin N → Fin 5 → ℕ
+   ticks : Fin N → Fin 5 → Finset ℕ
+-  mach1 : Fin N → Bool
+-  mach5 : Fin N → Bool
++  mach1 : Fin N → Fin 3
++  mach5 : Fin N → Fin 3
+   /-- the initial marking is in force at round 0; release fires ≥ 1. -/
+   hrel : ∀ l, 1 ≤ rel l
+   /-- token dwell: the q1 token from `rel` is consumable one round later. -/

@@ -1,0 +1,30 @@
+# toolchain leanprover/lean4:v4.32.0-rc1 :: Lean (version 4.32.0-rc1, x86_64-unknown-linux-gnu, commit b4812ae53eea93439ad5dce5a5c26591c31cb697, Release)
+# mathlib rev 6f604786851f312da512a988fd54eee4ca35dcf9
+# sources sha256
+ea3d8d03ecb35d7ecaf6700197058e122937ab6474479db2a4fae74f94022889  IDT/Basic.lean
+b5436ecafaa4ed2fc7edcabf2122a7ec9432c93ba0958753140cb3cf9187171a  IDT/Composition.lean
+5f33f47276f7937d25bd8ce37f38f097b5f3077569d82ed1852f310582ad925a  IDT/DeterministicCollapse.lean
+6e91d9ccc9f434747fee1f6c2d7116b323c62a32a298e12b512fcbdbe6052825  IDT/FloorContiguity.lean
+498667084ca70dae2d0709ec5c9bd5a22e0dd86399a799a0a412d6089a056fd7  IDT/Selection.lean
+ef888d8e2af89d85d5bfe3b39f45ae4fb806cc4ee7d70d213dca819ec2db19a2  BernsteinLogicAux/Imprecise/Credal.lean
+# sorry count: 0
+BUILD ok
+# axiom audit
+'BernsteinLogic.MiniFab.MFSchedule.floor_contiguity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BernsteinLogic.MiniFab.MFSchedule.floor_contiguity_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BernsteinLogic.MiniFab.MFSchedule.anchor_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BernsteinLogic.MiniFab.MFSchedule.anchor_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BernsteinLogic.IDT.isMWERChoice_makespan_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BernsteinLogic.IDT.wregret_makespan' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT ok: 6/6 expected theorems, axioms within {propext, Classical.choice, Quot.sound}
+# audit-checker negative tests (each must be REJECTED)
+neg 1 (audit command fails, no output): AUDIT REJECTED: audit command exited 1; BernsteinLogic.MiniFab.MFSchedule.floor_contiguity: printed 
+neg 2 (sorry-backed theorem added to the audit): REJECTED (audit_negative_probe: axioms ['sorryAx'])
+# mutants (temporary copies; vendored source untouched)
+control (unmutated copy): COMPILES
+mutant mutant-A-cap3.patch: REFUSED: 2 error(s) at lines 343 452 (as expected)
+mutant mutant-B-t5-254.patch: REFUSED: 2 error(s) at lines 145 212 (as expected)
+mutant mutant-C-drop-cap55.patch: REFUSED: 4 error(s) at lines 345 455 (as expected)
+mutant mutant-D-drop-tick1-meter.patch: REFUSED: 1 error(s) at lines 184 (as expected)
+# vendored source sha256 6e91d9ccc9f434747fee1f6c2d7116b323c62a32a298e12b512fcbdbe6052825
+LEAN LEG OK
