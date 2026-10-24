@@ -2,12 +2,14 @@
 
 Claim (the qtsl book, worked-example chapter `qtsl-minifab-example.tex`,
 §"Optimal throughput, exactly", source lines 1331–1398; restated in this
-repository's chapter, `chapter/sections/semicon.tex`):
+repository's chapter, `chapter/sections/semicon.tex`; at the time of
+writing, 2026-10-24, the book's wording predates both the 2026-10-19
+erratum and the model caveat below):
 
     T_opt(N) = 255N + 371 + d(N),   d = 0 (N ≤ 2), 2 (N = 3), 4 (N ≥ 4)
 
 T_opt(N) is the round of the **N-th arrival into q6** (the N-th `finish5`)
-in the carved-clock Mini-Fab. It is not the round at which all N lots have
+in the carved-clock discrete model of the Mini-Fab. It is not the round at which all N lots have
 shipped. This directory rechecks the claim. It does **not** prove it for
 every N. The model is the **discrete lane**: mtk
 `crates/mtk-strategies/src/semicon/minifab.rs` @ `8904467`. Its process times
@@ -17,14 +19,19 @@ exactly 1. It is *not* the fluid lane's occupancies m_k.
 
 **Model caveat (2026-10-24).** This model departs from Kempf's 1994
 Mini-Fab in a way that matters for any optimality claim. In the net, each
-transition fires at most once per round (the meter law below). So in any
-round at most one lot can start, receive a unit of service, or finish at a
-given process step, even at the two-machine stations. In effect every step
-is a single server. Kempf's specification lets the machines of a station
-work in parallel. The results in this directory are exact for the model as
-stated, and only for it. Whether they carry over to a net that follows
-Kempf's specification is open. A re-model with per-machine parallelism is
-in progress.
+transition fires at most once per round (the meter law below).
+So at a given process step, in any one round, at most one lot can start,
+at most one can receive a unit of service, and at most one can finish. A
+station's two machines can still work in the same round on lots at
+different steps, but never on two lots at the same step. Kempf's
+specification allows both. The scope table below separates
+results about the net, certificates about the relaxation R, and the Lean
+proof about the abstract `MFSchedule` model. All of them, including what
+they leave open, are about this model or abstractions of it. Whether they
+carry over to a net with Kempf's per-machine parallelism, and more
+generally to Kempf's full specification (batching, setups, personnel,
+failures), is open. A re-model with per-machine parallelism is in
+progress.
 
 `make minifab-floor-recheck` (or `bash semicon/minifab-floor/recheck.sh`)
 re-derives every receipt in `receipts/`. `MAX_N=5` gives a quick run, whose receipts go to `build/` rather than `receipts/`.
@@ -157,8 +164,9 @@ release `rel_i`, start `s_ik` and finish `f_ik`.
 * **Meter law.** Each schema fires at most once per round: the `rel_i` are
   distinct, the `s_·k` are distinct, the `f_·k` are distinct, and at most
   one `tick_k` fires per round.
-  This is the net's own rule, not a relaxation, and it is where the model
-  departs from Kempf (see the model caveat at the top).
+  The net itself imposes this rule, and model R carries it over unchanged.
+  It is where the model departs from Kempf (see the model caveat at the
+  top).
 * **Dueness.** A row fires at r only if it was enabled at the end of r − 1.
   So `s_i1 ≥ rel_i + 1` and `s_ik ≥ f_i,k−1 + 1`. Queue tokens are colourless
   (unit colour), so the lot identity of a start can always be traced to a

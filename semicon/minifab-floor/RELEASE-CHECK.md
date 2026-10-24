@@ -52,11 +52,13 @@ editing the file.
 ## Checklist
 
 1. **Safety-sensitive material.** None. The content is:
-   * the optimal makespan, for N ≤ 7, of a simplified discrete model of a
-     public 1994 benchmark (Kempf's Intel Mini-Fab). The model serves at
-     most one lot per step per round, while Kempf's specification lets a
-     station's machines work in parallel (see the model caveat in
-     `README.md`; wording corrected 2026-10-24);
+   * the optimal round of the N-th arrival into the last queue, for
+     N ≤ 7, of a simplified discrete model of a public 1994 benchmark
+     (Kempf's Intel Mini-Fab). The model gives each process step at most
+     one unit of service per round, even at the two-machine stations,
+     while Kempf's specification lets a station's machines work in
+     parallel (see the model caveat in `README.md`; wording corrected
+     2026-10-24);
    * SAT/LRAT certificates;
    * a Lean scheduling lemma;
    * a decoder for containers that are already public.

@@ -17,13 +17,14 @@ exactly the polyhedral drift inequalities the toolkit's checkers
 replay. The \emph{discrete} track --- new at this preview, on the
 base rung --- instantiates the worst-case ranking species (U2,
 quantified here over every scheduler rather than every initial
-state): \emph{every dispatch of this line ships all lots by this
-deadline} --- and carries it past any of the chapter's other
+state): \emph{every dispatch of this line brings all lots to the last
+queue by this deadline} --- and carries it past any of the chapter's other
 campaigns, to a claim class none of them produce: exact optimality,
 a certified floor over \emph{all} dispatch policies met exactly by a
-shipped one. That claim is about a simplified discrete model of the
-line, and the model note below says how it differs from Kempf's
-specification.
+shipped one, for up to seven lots. These claims are about a
+simplified discrete model of the line, which gives each process step
+at most one unit of service per round, even at the two-machine
+stations (model note below).
 
 \paragraph{The ladder, whole.} The campaign's target is a fixed
 progression of eleven public fab models in four stages --- the Intel
@@ -41,7 +42,7 @@ of subject:
 rung & one-line identity & certified rows\\
 \midrule
 Mini-Fab & 3 stations, 5 machines, 6 re-entrant steps (Kempf 1994) &
-  this preview\\
+  this preview, on simplified models\\
 MIMAC set 1 & 2 products, 265 tools, routes to 245 steps & ---\\
 MIMAC set 2 & 7 products, 274 tools, routes to 354 steps & ---\\
 MIMAC set 3 & 11 products, 354 tools, routes to 547 steps & ---\\
@@ -76,11 +77,13 @@ enough that every modelling decision can be witnessed line by line
 gives the model and this campaign's certificates a chapter-length
 reading --- yet it already carries the domain's hard structure
 (re-entrance, batching, sequence-dependent setups, shared personnel,
-failures), so the base rung certifies on both tracks: fluid-drift
+failures), and the base rung certifies simplified models of it on
+both tracks: fluid-drift
 stability with the awkward layers priced by explicit adversarial
 rows (work-in-progress and cycle-time moments as named successors),
 and the discrete dispatch campaign, carried at this preview through
-policy synthesis, wall-clock optimality, and a certified envelope
+policy synthesis, wall-clock optimality for up to seven lots, and a
+certified envelope
 for untrusted policies. The
 MIMAC stage is the same claim species at real-fab scale, where the
 sign-mode census dies combinatorially: certifying it means aggregated
@@ -124,8 +127,8 @@ policy-comparison number of the kind this claim species was chosen to
 produce.
 
 \textbf{Certified today: the Mini-Fab, discrete track --- dispatch
-synthesis, to exact optimality on the discrete model.} The same line,
-read as a discrete transition net (16 places, 19 transitions, 49 arcs; every logistical
+synthesis, to exact optimality on a simplified model.} A simplified
+discrete model of the same line, a transition net (16 places, 19 transitions, 49 arcs; every logistical
 step one tick), carries a family of twelve certificates --- $150$
 footprint rows of a sealed certificate container: a work-potential
 ranking budgeting each lot's run at exactly $638$ firings, lot
@@ -153,8 +156,8 @@ never opens ties the arrival optimum and then deadlocks shipping
 nothing, and the search refuses it at the completion certificate
 with the starved queue named.
 
-The counting-time story transfers to the wall clock, and closes
-there. Under the theory's discrete clock semantics (every transition
+The counting-time story transfers to the wall clock, where the
+optimum is closed for up to seven lots. Under the theory's discrete clock semantics (every transition
 dwells exactly one tick) the same containers reseal with identical
 row tallies, and the counting bounds become tick bounds by a no-idle
 argument ($\le 626N$ gated, $\le 638N - 12$ open). Beneath them sits
@@ -186,19 +189,7 @@ there is open, although $\pi^*$ is replayed at $255N + 375$. An
 earlier version of this paragraph claimed a Lean floor over all
 policies and a two-sided optimum at every $N$; both overclaimed. The
 evidence and its exact scope are in
-\texttt{semicon/minifab-floor/README.md}.
-\emph{Model note (2026-10-24).} Everything in this paragraph is about
-the discrete net, and that net departs from Kempf's 1994 specification
-in a way that matters for optimality. Each transition fires at most
-once per round, so in any round at most one lot can start, receive a
-unit of service, or finish at a given process step, even at the
-two-machine stations. In effect every step is a single server, while
-Kempf lets the machines of a station work in parallel. Within the
-scope just stated, the results above hold exactly for this net, and
-the policy comparisons below are measured on it too. Whether they carry
-over to a net that follows Kempf's specification is open, and a
-re-model with per-machine parallelism is in progress.
-Accordingly the
+\texttt{semicon/minifab-floor/README.md}. Accordingly the
 certified-optimality column of the dispatch grid reads $100.00\%$ as
 certified for $N \le 7$; at the weekly $N = 84$ it is measured
 against the attained but unproved $255N + 375$. The grid
@@ -218,6 +209,23 @@ decision-theoretically right word: with deterministic closed
 dynamics, imprecise-decision-theoretic policy selection provably
 collapses to makespan minimization (machine-checked, with a
 refutation cell showing the collapse fails without determinism).
+
+\emph{Model note (2026-10-24).} Everything on this discrete track is
+about the discrete net, except the Lean floor, which is about the
+abstract schedule model named above. The net departs from Kempf's 1994
+specification in a way that matters for optimality. Under the
+wall-clock semantics each transition fires at most once per round.
+So in any one round, at a given process step, at most one lot can
+start, at most one can receive a unit of service, and at most one can
+finish. A station's two machines can still work in the same round on
+lots at different steps, but never on two lots at the same step.
+Kempf's specification allows both. Within their stated scopes, all of
+the results on this track are about this net, including the policy
+comparisons above and the envelope below.
+Whether they carry over to a net with Kempf's per-machine parallelism,
+and more generally to Kempf's full specification (batching, setups,
+personnel, failures), is open. A re-model with per-machine
+parallelism is in progress.
 
 The track's last exhibit prices the case nobody certifies: an
 \emph{uncertified} policy --- a lookahead heuristic standing in for
@@ -275,24 +283,25 @@ declared ledger, and the conversion from certified drain rates to
 work-in-progress and cycle-time bounds on the discrete line (via
 Foster--Lyapunov moment rows and Little's law) is named successor
 work. On the discrete track the claims are exact, but the model sits
-deliberately in the unit-dwell deterministic corner: zero stochastic
+in the unit-dwell deterministic corner: zero stochastic
 species instantiated, so a policy-filled closure has one trajectory
 per lot count, and the demonic quantifiers live at the family level
 (the all-policy floors; the envelope over an untrusted filler).
 Since every certificate quantifies over the full scheduling freedom,
 its claims dominate every rate-raced refinement of that freedom ---
 the stochastic layers, when they arrive on the higher rungs, resolve
-freedom the certificates have already priced. An earlier preview of
+freedom the certificates have already priced. That argument covers
+only refinements that restrict runs. Per-machine parallelism would add
+runs, so the argument does not cover it (model note above). An
+earlier preview of
 this section stated that no claim was made about optimality of the
 dispatch policies, only their certified stability region; that
-sentence is now true of the fluid track alone --- on the discrete
+sentence is now true of the fluid track alone. On the discrete
 Mini-Fab net the optimality question is closed for $N \le 7$ and open
 beyond, where attainment at $255N + 375$ is replayed but the floor is
-proved only for the abstract model (erratum above), and whether any of
-it carries over to a net that follows Kempf's specification is open
-(model note above) ---
-and the correction is recorded here
-rather than silently edited away, because the distance between the
-two previews is itself a result. The ladder's remaining nine rungs
+proved only for the abstract model (erratum above). Whether any of it
+carries over to Kempf's specification is open (model note above). The
+correction is recorded here rather than silently edited away, so that
+readers of the earlier preview can see what changed. The ladder's remaining nine rungs
 --- MIMAC sets 1--6, the SMT2020 pair, and SMAT2022 --- are
 census-scoped but carry no certificates at this preview.

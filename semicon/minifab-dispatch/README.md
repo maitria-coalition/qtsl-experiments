@@ -26,13 +26,18 @@ same content against the semantic wall clock. Companion containers of
 the same family (the throughput-optimality certificate among them)
 drop in as further manifest entries with no driver edits.
 
-**Model caveat (2026-10-24).** Every bound here is about this net, in
-which each transition fires at most once per round. So each process step
-serves at most one lot per round, even at the two-machine stations, while
-Kempf's 1994 specification lets a station's machines work in parallel. The
-certificates are exact for the net as stated. Whether the deadlines and
-the throughput-optimality result carry over to a net that follows Kempf's
-specification is open, and a re-model is in progress. See
+**Model caveat (2026-10-24).** Every bound here is about this net, a
+simplified discrete model of Kempf's 1994 line. The first four containers
+count firings, not rounds. Under the clock semantics of the carved
+reseals, each transition fires at most once per round.
+So at a given process step, in any one round, at most one lot can start,
+at most one can receive a unit of service, and at most one can finish. A
+station's two machines can still work in the same round on lots at
+different steps, but never on two lots at the same step. Kempf's
+specification allows both. Whether these bounds and the
+throughput-optimality result carry over to a net with Kempf's per-machine
+parallelism, and more generally to Kempf's full specification, is open. A
+re-model with per-machine parallelism is in progress. See
 `../minifab-floor/README.md`.
 
 ## What runs, and what each leg witnesses
