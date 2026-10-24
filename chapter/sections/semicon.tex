@@ -21,7 +21,9 @@ state): \emph{every dispatch of this line ships all lots by this
 deadline} --- and carries it past any of the chapter's other
 campaigns, to a claim class none of them produce: exact optimality,
 a certified floor over \emph{all} dispatch policies met exactly by a
-shipped one.
+shipped one. That claim is about a simplified discrete model of the
+line, and the model note below says how it differs from Kempf's
+specification.
 
 \paragraph{The ladder, whole.} The campaign's target is a fixed
 progression of eleven public fab models in four stages --- the Intel
@@ -122,8 +124,8 @@ policy-comparison number of the kind this claim species was chosen to
 produce.
 
 \textbf{Certified today: the Mini-Fab, discrete track --- dispatch
-synthesis, to exact optimality.} The same line, read as a discrete
-transition net (16 places, 19 transitions, 49 arcs; every logistical
+synthesis, to exact optimality on the discrete model.} The same line,
+read as a discrete transition net (16 places, 19 transitions, 49 arcs; every logistical
 step one tick), carries a family of twelve certificates --- $150$
 footprint rows of a sealed certificate container: a work-potential
 ranking budgeting each lot's run at exactly $638$ firings, lot
@@ -169,7 +171,7 @@ pen-and-paper arguments carry this to every policy: that the
 relaxation contains every run of the net, and an exchange lemma
 justifying the queue-order reduction. Without the reduction, the
 same certificates are published for $N \le 5$.
-and an explicit supervisor family $\pi^*$ meets $T_{\mathrm{opt}}$ in a
+On the upper side, an explicit supervisor family $\pi^*$ meets $T_{\mathrm{opt}}$ in a
 replay against the decoded container plus a named transcription of
 the net rows the container does not seal (at $N = 84$ as sealed,
 $21{,}795$ ticks; and at $N = 1, \dots, 12$ with the sealed pending-lot
@@ -184,7 +186,19 @@ there is open, although $\pi^*$ is replayed at $255N + 375$. An
 earlier version of this paragraph claimed a Lean floor over all
 policies and a two-sided optimum at every $N$; both overclaimed. The
 evidence and its exact scope are in
-\texttt{semicon/minifab-floor/README.md}. Accordingly the
+\texttt{semicon/minifab-floor/README.md}.
+\emph{Model note (2026-10-24).} Everything in this paragraph is about
+the discrete net, and that net departs from Kempf's 1994 specification
+in a way that matters for optimality. Each transition fires at most
+once per round, so in any round at most one lot can start, receive a
+unit of service, or finish at a given process step, even at the
+two-machine stations. In effect every step is a single server, while
+Kempf lets the machines of a station work in parallel. Within the
+scope just stated, the results above hold exactly for this net, and
+the policy comparisons below are measured on it too. Whether they carry
+over to a net that follows Kempf's specification is open, and a
+re-model with per-machine parallelism is in progress.
+Accordingly the
 certified-optimality column of the dispatch grid reads $100.00\%$ as
 certified for $N \le 7$; at the weekly $N = 84$ it is measured
 against the attained but unproved $255N + 375$. The grid
@@ -272,9 +286,12 @@ freedom the certificates have already priced. An earlier preview of
 this section stated that no claim was made about optimality of the
 dispatch policies, only their certified stability region; that
 sentence is now true of the fluid track alone --- on the discrete
-Mini-Fab the optimality question is closed for $N \le 7$ and open
+Mini-Fab net the optimality question is closed for $N \le 7$ and open
 beyond, where attainment at $255N + 375$ is replayed but the floor is
-proved only for the abstract model (erratum above) --- and the correction is recorded here
+proved only for the abstract model (erratum above), and whether any of
+it carries over to a net that follows Kempf's specification is open
+(model note above) ---
+and the correction is recorded here
 rather than silently edited away, because the distance between the
 two previews is itself a result. The ladder's remaining nine rungs
 --- MIMAC sets 1--6, the SMT2020 pair, and SMAT2022 --- are
