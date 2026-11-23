@@ -199,7 +199,7 @@ but for an abstract schedule model onto which the net does not
 project exactly: the net also allows a tick in a lot's own start
 round and a same-round handover of a diffusion machine. So for
 $N \ge 8$ the floor is not yet proved for the net, and optimality
-there is open, although $\pi^*$ is replayed at $255N + 375$. An
+there is not yet established, although $\pi^*$ is replayed at $255N + 375$. An
 earlier version of this paragraph claimed a Lean floor over all
 policies and a two-sided optimum at every $N$; both overclaimed. The
 evidence and its exact scope are in
@@ -213,7 +213,8 @@ that reference, and only the diffusion-station
 pull preference ever moves a number; at $N = 84$ the tested
 deliberately idling supervisor family improves on the best tested
 work-conserving policy ($255N + 455$ ticks) by $80$ ticks, though
-whether some untested work-conserving policy closes that gap is open;
+it is not yet established whether an untested work-conserving policy
+can close that $80$-tick gap to $\pi^\ast$ at $N = 84$;
 and the wall-clock value
 concentrates in the dispatch seat: an adversarial pull order costs
 $+83.5\%$, while the synthesized gate --- whose value is the
@@ -236,10 +237,11 @@ lots at different steps, but never on two lots at the same step.
 Kempf's specification allows both. Within their stated scopes, all of
 the results on this track are about this net, including the policy
 comparisons above and the envelope below.
-Whether they carry over to a net with Kempf's per-machine parallelism,
-and more generally to Kempf's full specification (batching, setups,
-personnel, failures), is open. A re-model with per-machine
-parallelism is in progress.
+We are developing a net with Kempf's per-machine parallelism. The
+investigation (work in progress, reopened 2026-10-23) asks whether
+these results carry over to that net and whether they carry over to
+Kempf's full specification, including batching, setups, personnel,
+and failures.
 
 The track's last exhibit prices the case nobody certifies: an
 \emph{uncertified} policy --- a lookahead heuristic standing in for
@@ -311,10 +313,12 @@ earlier preview of
 this section stated that no claim was made about optimality of the
 dispatch policies, only their certified stability region; that
 sentence is now true of the fluid track alone. On the discrete
-Mini-Fab net the optimality question is closed for $N \le 7$ and open
-beyond, where attainment at $255N + 375$ is replayed but the floor is
-proved only for the abstract model (erratum above). Whether any of it
-carries over to Kempf's specification is open (model note above). The
+Mini-Fab net, optimality is established for $N \le 7$. For $N \ge 8$,
+optimality is not yet established: $\pi^\ast$ attains $255N + 375$ in
+replay at $N = 8, \ldots, 12$ and $N = 84$, but the lower bound is
+proved only for the abstract schedule model (see the erratum above).
+The model note above discusses whether these results carry over to
+Kempf's specification. The
 correction is recorded here rather than silently edited away, so that
 readers of the earlier preview can see what changed. The ladder's remaining nine rungs
 --- MIMAC sets 1--6, the SMT2020 pair, and SMAT2022 --- are
