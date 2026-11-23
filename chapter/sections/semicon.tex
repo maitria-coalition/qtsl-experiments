@@ -135,15 +135,29 @@ ranking budgeting each lot's run at exactly $638$ firings, lot
 conservation, six machine conservation bounds, congestion, a
 ceiling, and an arrival-potential + step-budget pair yielding the
 worst-case deadline, \emph{all $N$ lots arrived within $638N - 12$
-steps}, over every scheduler interleaving. Nothing in the
+steps}, over every scheduler interleaving. The sealed checker
+evaluates only $36$ of those $150$ footprint rows, all of them rows
+of the six tick transitions. The other $114$ are not evaluated. They
+include every row of the other $13$ transitions (release, the six
+starts, the five finishes, ship), whose outputs the container does
+not carry, so those rows cannot be checked from the sealed bytes;
+among them are the rows the deadline depends on.
+Those outputs are checked only by mtk's producer-side verifier
+(\texttt{verify\_campaign}), trusted Rust that is not itself verified
+and cannot be rebuilt from public sources. So the sealed checker
+alone does not establish the deadline, and the sealed bytes do not
+identify the net: a variant in which lots skip step~2 seals to the
+same bytes (every certificate is also true of it, so this is not a
+soundness defect; ``the net'' is the one defined by the pinned mtk
+source). Nothing in the
 certificate scales with the lot count: $N$ enters only as three
 integers in the container's own data, so the same rows instantiate
 from $N = 7$ to $N = 10^{7}$ with the container growing six bytes
-across six orders of magnitude and the checker's wall time flat at
-$\sim\!2$\,ms per container --- at the top of that sweep the claims
+across six orders of magnitude and the sealed checker's wall time flat at
+$\sim\!2$\,ms per container --- at the top of that sweep the sealed claims
 quantify over at least $2\times10^{38}$ reachable markings and
-$10^{2\times10^{7}}$ distinct maximal schedules, none of which the
-checker visits. Opening one supervisor seat (the plant re-stated as
+$10^{2\times10^{7}}$ distinct maximal schedules, none of which the sealed
+checker enumerates. Opening one supervisor seat (the plant re-stated as
 a comb with a single policy-shaped hole; the hole count is itself a
 checked claim) turns the deadline into a synthesis instrument: joint
 policy+certificate search returns a latest-safe-unlock supervisor

@@ -48,7 +48,14 @@ The two legs partition honestly:
    built from the pinned qtsl checkout — checkers are imported, never
    vendored): everything the bytes witness. Envelope integrity first,
    then every claim row is re-derived through the exact-rational
-   ground provider, gated by the manifest's per-relation claim counts
+   ground provider (for `minifab.glc`: 93 claim rows across four
+   relations. The footprint claims are 36 of the 150 footprint rows,
+   all of them rows of the six tick transitions. The other 114 are not
+   claimed; they include every row of the other 13 transitions
+   (release, the six starts, the five finishes and ship), whose outputs
+   the bytes do not carry, and those rows are checked only by leg 2.
+   mtk's own minifab test asserts this census in advance:
+   `semicon/minifab.rs:1654–1682` at the pinned `MTK_REV`), gated by the manifest's per-relation claim counts
    (the count gate is load-bearing: deleting a whole relation leaves
    every surviving claim true, and only the count refuses it). Every
    artifact is sha256-verified against the manifest before checking,
@@ -64,7 +71,9 @@ The two legs partition honestly:
    attaining $T^{*}$ pointwise, and the envelope's bench/recovery
    runs). The manifest pins a minimum test count so an over-narrow
    filter cannot pass vacuously. The suite is self-contained library
-   tests — no external stores, no network.
+   tests — no external stores, no network. This tier is trusted,
+   unverified Rust, and it cannot be re-run from public sources alone:
+   public mtk does not build without private `-dev` pins.
 
 Semantic glue that is argued rather than row-checked (the enabledness
 side of completion, and the residue items named below) is graded
@@ -73,6 +82,21 @@ what is checkable and re-runs exactly the batteries that guard the
 rest.
 
 ## Honest edges, named
+
+- The sealed bytes do not carry the produced tokens of release,
+  start, finish or ship. Mutating those outputs so that a machine is
+  never returned (breaking machine conservation) or a lot lands with
+  the wrong remaining work (breaking the work-potential ranking, and
+  with it the $638N - 12$ deadline) seals to byte-identical containers
+  that the sealed checker accepts; only the producer battery refutes
+  them. The deadline therefore depends on leg 2; leg 1 alone does not
+  establish it.
+- The container does not identify the net: a variant in which lots
+  skip step 2 seals to the same bytes, and the producer tier rightly
+  discharges every certificate for it, since each is also true of that
+  net. "The net" in any optimality claim here is the one defined by the
+  pinned mtk source, not by the sealed bytes. This is not a checker
+  soundness defect.
 
 - The gated and supervised containers carry two deliberate encoding
   variants of the same plant (a native-read gate versus a one-shot
